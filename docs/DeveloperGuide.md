@@ -262,16 +262,71 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `GreenTea` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case: View help**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests help
+2.  GreenTea returns a message explaining how to access the help page
+    Use case ends.
+
+**Use case: Add a new entry**
+
+**MSS**
+
+1.  User requests to add a new entry
+2.  GreenTea add the new entry
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The entry is invalid
+
+    * 1a1. GreenTea shows an error message
+
+  Use case ends.
+
+* 1b. The entry is valid.
+
+  Use case resumes at step 2.
+
+**Use case: List all entries**
+
+**MSS**
+
+1.  User requests to see the list of entries
+2.  GreenTea shows a list of entries
+
+    Use case ends.
+
+**Use case: Edit an entry**
+
+**MSS**
+
+1.  User requests to edit an entry with updated fields via the given index
+2.  GreenTea updates entry with new fields
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. User fed an invalid index
+    
+    * 1a1. GreenTea returns an error message
+
+  Use case ends.
+
+**Use case: Delete an entry**
+
+**MSS**
+
+1.  User requests to list entries
+2.  GreenTea shows a list of entries
+3.  User requests to delete a specific entry in the list via the given index
+4.  GreenTea deletes the person
 
     Use case ends.
 
@@ -283,9 +338,28 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. GreenTea shows an error message.
 
       Use case resumes at step 2.
+
+**Use case: Clear a person**
+
+**MSS**
+
+1.  User requests to clear entries
+2.  GreenTea clears all entries
+
+    Use case ends.
+
+**Use case: Exit **
+
+**MSS**
+
+1.  User requests to exit program
+2.  GreenTea exits
+
+    Use case ends.
+
 
 *{More to be added}*
 
