@@ -71,7 +71,7 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 
 ### Viewing help: `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
@@ -81,7 +81,7 @@ Format: `help`
 
 Format: `add <STRING IN ENGLISH> | <STRING IN JAPANESE>`
 
-Adds a new wntry to the word bank.
+Adds a new entry to the word bank.
 
 Examples:
 
@@ -134,7 +134,7 @@ Exits the program.
 
 ### Saving the data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+AddressBook data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ---
 
