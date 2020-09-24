@@ -22,15 +22,13 @@ import seedu.address.model.person.Person;
 public class TypicalPersons {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
-            .withEmail("alice@example.com")
-            .withTags("friends").build();
+            .withEmail("alice@example.com").build();
     public static final Person BENSON = new PersonBuilder().withName("Benson Meier")
-            .withEmail("johnd@example.com")
-            .withTags("owesMoney", "friends").build();
+            .withEmail("johnd@example.com").build();
     public static final Person CARL = new PersonBuilder().withName("Carl Kurz")
             .withEmail("heinz@example.com").build();
     public static final Person DANIEL = new PersonBuilder().withName("Daniel Meier")
-            .withEmail("cornelia@example.com").withTags("friends").build();
+            .withEmail("cornelia@example.com").build();
     public static final Person ELLE = new PersonBuilder().withName("Elle Meyer")
             .withEmail("werner@example.com").build();
     public static final Person FIONA = new PersonBuilder().withName("Fiona Kunz")
@@ -46,10 +44,9 @@ public class TypicalPersons {
 
     // Manually added - Person's details found in {@code CommandTestUtil}
     public static final Person AMY = new PersonBuilder().withName(VALID_NAME_AMY)
-            .withEmail(VALID_EMAIL_AMY).withTags(VALID_TAG_FRIEND).build();
+            .withEmail(VALID_EMAIL_AMY).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB)
-            .withEmail(VALID_EMAIL_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND)
-            .build();
+            .withEmail(VALID_EMAIL_BOB).build();
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
