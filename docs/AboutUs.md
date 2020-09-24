@@ -9,51 +9,52 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
+### Prof Damith Rajapakse
 
 <img src="images/johndoe.png" width="200px">
 
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[Homepage](http://www.comp.nus.edu.sg/~damithch)]
+[[GitHub](https://github.com/johndoe)]
+[[Portfolio](team/johndoe.md)]
 
 * Role: Project Advisor
 
-### Jane Doe
+### Vignesh Bhuvan
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[GitHub](http://github.com/vigneshbhuvan-nus)]
+[[Portfolio](team/johndoe.md)]
 
-* Role: Team Lead
+* Role: Team Leader
 * Responsibilities: UI
 
-### Johnny Doe
+### Gabriel Sim
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[GitHub](http://github.com/GabrielSimbingyang)] 
+[[Portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Melanie Ng
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[GitHub](http://github.com/IlyaRin)]
+[[Portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
 
-### James Doe
+### Georgie Lee
 
 <img src="images/johndoe.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[GitHub](http://github.com/geoboom)]
+[[Portfolio](team/johndoe.md)]
 
 * Role: Developer
 * Responsibilities: UI
