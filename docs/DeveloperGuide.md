@@ -236,28 +236,52 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* has a need to manage a significant number of contacts
+* has a need to learn and practice a language
+* wants to remember the meaning and spelling of words in a new language
+* prefers question based testing to learn a language
 * prefer desktop apps over other types
 * can type fast
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: manage contacts faster than a typical mouse/GUI driven app
+**Value proposition**: helps to learn a language better through better modes of practice
 
 
 ### User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                     | So that I can…​                                                        |
-| -------- | ------------------------------------------ | ------------------------------ | ---------------------------------------------------------------------- |
-| `* * *`  | new user                                   | see usage instructions         | refer to instructions when I forget how to use the App                 |
-| `* * *`  | user                                       | add a new person               |                                                                        |
-| `* * *`  | user                                       | delete a person                | remove entries that I no longer need                                   |
-| `* * *`  | user                                       | find a person by name          | locate details of persons without having to go through the entire list |
-| `* *`    | user                                       | hide private contact details   | minimize chance of someone else seeing them by accident                |
-| `*`      | user with many persons in the address book | sort persons by name           | locate a person easily                                                 |
-
+| Priority | As a …​                                    | I want to …​                                | So that I can…​                                                        |
+| -------- | ------------------------------------------ | ------------------------------------------- | ---------------------------------------------------------------------- |
+| `* * *`  | new user                                   | see usage instructions                      | refer to instructions when I forget how to use the App                 |
+| `* * *`  | user                                       | add a Word-Meaning pair                     | populate the list with words and their meanings                        |
+| `* * *`  | user                                       | delete a Word-Meaning pair                  | delete an unwanted entry                                               |
+| `* * *`  | user                                       | edit a Word-Meaning pair                    | edit an entry                                                          |
+| `* *`    | user                                       | assign a Difficulty Ranking to words        | determine which words are more difficult for me                        |
+| `* * *`  | user                                       | access a Dictionary of Word-Meaning pairs   | refresh my understanding of the words                                  |
+| `* * *`  | user                                       | search the dictionary with a word           | find out its meaning                                                   |
+| `* * *`  | user                                       | search the dictionary with a meaning        | find out the word                                                      |
+| `* *`    | user                                       | sort the Dictionary by difficulty           | view the more difficult words in the dictionary                        |
+| `* * *`  | user                                       | create a question                           | test my understanding of a word                                        |
+| `* * *`  | user                                       | create a multiple choice question           | choose the correct answer                                              |
+| `* * *`  | user                                       | create an open-ended question               | test my spelling and understanding of the word                         |
+| `* * *`  | user                                       | delete a question                           | delete an unwanted entry                                               |
+| `* * *`  | user                                       | edit a question                             | delete an unwanted entry                                               |
+| `* * *`  | user                                       | access the list of questions                | view all the questions                                                 |
+| `*`      | user                                       | tag a question with a difficulty rating     | create a quiz based on difficulty rating                               |
+| `* * *`  | user                                       | create a quiz from the pool of questions    | attempt the questions                                                  |
+| `* * *`  | user                                       | submit the quiz                             | see my results                                                         |
+| `* *`    | user                                       | have a timer                                | find out how long I took to complete the quiz                          |
+| `* *`    | user                                       | view statistics of the quiz                 | gauge my strengths and weaknesses                                      |
+| `* *`    | user                                       | have a Rating System based on quiz results  | know my progress so far in learning the language                       |
+| `* *`    | user                                       | view all the quiz scores                    | know how I performed for each quiz                                     |
+| `* *`    | user                                       | go back one question in the quiz            | review the question                                                    |
+| `* *`    | user                                       | skip a question in the quiz                 | skip a question and come back later                                    |
+| `* *`    | user                                       | have a reminder of any incomplete questions | know if my quiz is complete                                            |
+| `*`      | user                                       | view hints for the quiz                     | have help when I am stuck on a difficult question                      |
+| `*`      | user                                       | test my spelling                            | learn how to spell the words correctly                                 |
+| `*`      | user                                       | test a sentence structure                   | learn the grammar of the language                                      |
+| `*`      | user                                       | have a reminder to practice everyday        | continue my progress consistently                                      |
 *{More to be added}*
 
 ### Use cases
