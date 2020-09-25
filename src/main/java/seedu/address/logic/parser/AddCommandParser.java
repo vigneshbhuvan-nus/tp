@@ -1,11 +1,8 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSLATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
 
 import java.util.stream.Stream;
 
@@ -27,15 +24,15 @@ public class AddCommandParser implements Parser<AddCommand> {
      */
     public AddCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ADDRESS, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_WORD, PREFIX_TRANSLATION);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_EMAIL)
+        if (!arePrefixesPresent(argMultimap, PREFIX_WORD, PREFIX_TRANSLATION)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Word name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Translation email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        Word name = ParserUtil.parseName(argMultimap.getValue(PREFIX_WORD).get());
+        Translation email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_TRANSLATION).get());
 
         Entry person = new Entry(name, email);
 
