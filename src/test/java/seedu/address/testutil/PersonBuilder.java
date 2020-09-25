@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Translation;
+import seedu.address.model.person.Word;
 import seedu.address.model.person.Person;
 
 /**
@@ -11,15 +11,15 @@ public class PersonBuilder {
 
     public static final String DEFAULT_NAME = "Alice Pauline";
     public static final String DEFAULT_EMAIL = "alice@gmail.com";
-    private Name name;
-    private Email email;
+    private Word name;
+    private Translation email;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
      */
     public PersonBuilder() {
-        name = new Name(DEFAULT_NAME);
-        email = new Email(DEFAULT_EMAIL);
+        name = new Word(DEFAULT_NAME);
+        email = new Translation(DEFAULT_EMAIL);
     }
 
     /**
@@ -31,18 +31,18 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code Person} that we are building.
+     * Sets the {@code Word} of the {@code Person} that we are building.
      */
     public PersonBuilder withName(String name) {
-        this.name = new Name(name);
+        this.name = new Word(name);
         return this;
     }
 
     /**
-     * Sets the {@code Email} of the {@code Person} that we are building.
+     * Sets the {@code Translation} of the {@code Person} that we are building.
      */
     public PersonBuilder withEmail(String email) {
-        this.email = new Email(email);
+        this.email = new Translation(email);
         return this;
     }
 

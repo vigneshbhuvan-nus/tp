@@ -11,23 +11,23 @@ import java.util.Objects;
 public class Person {
 
     // Identity fields
-    private final Name name;
-    private final Email email;
+    private final Word name;
+    private final Translation email;
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Email email) {
+    public Person(Word name, Translation email) {
         requireAllNonNull(name, email);
         this.name = name;
         this.email = email;
     }
 
-    public Name getName() {
+    public Word getName() {
         return name;
     }
 
-    public Email getEmail() {
+    public Translation getEmail() {
         return email;
     }
 
@@ -74,7 +74,7 @@ public class Person {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getName())
-                .append(" Email: ")
+                .append(" Translation: ")
                 .append(getEmail());
         return builder.toString();
     }

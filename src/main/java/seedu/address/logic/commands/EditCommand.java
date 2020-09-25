@@ -16,8 +16,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Translation;
+import seedu.address.model.person.Word;
 import seedu.address.model.person.Person;
 
 /**
@@ -87,8 +87,8 @@ public class EditCommand extends Command {
     private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-        Name updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Email updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Word updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
+        Translation updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
 
         return new Person(updatedName, updatedEmail);
     }
@@ -116,8 +116,8 @@ public class EditCommand extends Command {
      * corresponding field value of the person.
      */
     public static class EditPersonDescriptor {
-        private Name name;
-        private Email email;
+        private Word name;
+        private Translation email;
 
         public EditPersonDescriptor() {}
 
@@ -137,18 +137,18 @@ public class EditCommand extends Command {
             return CollectionUtil.isAnyNonNull(name, email);
         }
 
-        public void setName(Name name) {
+        public void setName(Word name) {
             this.name = name;
         }
 
-        public Optional<Name> getName() {
+        public Optional<Word> getName() {
             return Optional.ofNullable(name);
         }
-        public void setEmail(Email email) {
+        public void setEmail(Translation email) {
             this.email = email;
         }
 
-        public Optional<Email> getEmail() {
+        public Optional<Translation> getEmail() {
             return Optional.ofNullable(email);
         }
 

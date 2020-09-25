@@ -9,8 +9,8 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Translation;
+import seedu.address.model.person.Word;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -58,14 +58,14 @@ public class ParserUtilTest {
 
     @Test
     public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {
-        Name expectedName = new Name(VALID_NAME);
+        Word expectedName = new Word(VALID_NAME);
         assertEquals(expectedName, ParserUtil.parseName(VALID_NAME));
     }
 
     @Test
     public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {
         String nameWithWhitespace = WHITESPACE + VALID_NAME + WHITESPACE;
-        Name expectedName = new Name(VALID_NAME);
+        Word expectedName = new Word(VALID_NAME);
         assertEquals(expectedName, ParserUtil.parseName(nameWithWhitespace));
     }
 
@@ -81,14 +81,14 @@ public class ParserUtilTest {
 
     @Test
     public void parseEmail_validValueWithoutWhitespace_returnsEmail() throws Exception {
-        Email expectedEmail = new Email(VALID_EMAIL);
+        Translation expectedEmail = new Translation(VALID_EMAIL);
         assertEquals(expectedEmail, ParserUtil.parseEmail(VALID_EMAIL));
     }
 
     @Test
     public void parseEmail_validValueWithWhitespace_returnsTrimmedEmail() throws Exception {
         String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
-        Email expectedEmail = new Email(VALID_EMAIL);
+        Translation expectedEmail = new Translation(VALID_EMAIL);
         assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
     }
 }

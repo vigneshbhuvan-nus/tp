@@ -1,8 +1,8 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Translation;
+import seedu.address.model.person.Word;
 import seedu.address.model.person.Person;
 
 /**
@@ -30,18 +30,18 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Sets the {@code Name} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Word} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withName(String name) {
-        descriptor.setName(new Name(name));
+        descriptor.setName(new Word(name));
         return this;
     }
 
     /**
-     * Sets the {@code Email} of the {@code EditPersonDescriptor} that we are building.
+     * Sets the {@code Translation} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withEmail(String email) {
-        descriptor.setEmail(new Email(email));
+        descriptor.setEmail(new Translation(email));
         return this;
     }
 

@@ -5,8 +5,8 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Translation;
+import seedu.address.model.person.Word;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -29,32 +29,32 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Name}.
+     * Parses a {@code String name} into a {@code Word}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code name} is invalid.
      */
-    public static Name parseName(String name) throws ParseException {
+    public static Word parseName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (!Name.isValidName(trimmedName)) {
-            throw new ParseException(Name.MESSAGE_CONSTRAINTS);
+        if (!Word.isValidName(trimmedName)) {
+            throw new ParseException(Word.MESSAGE_CONSTRAINTS);
         }
-        return new Name(trimmedName);
+        return new Word(trimmedName);
     }
 
     /**
-     * Parses a {@code String email} into an {@code Email}.
+     * Parses a {@code String email} into an {@code Translation}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code email} is invalid.
      */
-    public static Email parseEmail(String email) throws ParseException {
+    public static Translation parseEmail(String email) throws ParseException {
         requireNonNull(email);
         String trimmedEmail = email.trim();
-        if (!Email.isValidEmail(trimmedEmail)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+        if (!Translation.isValidEmail(trimmedEmail)) {
+            throw new ParseException(Translation.MESSAGE_CONSTRAINTS);
         }
-        return new Email(trimmedEmail);
+        return new Translation(trimmedEmail);
     }
 }

@@ -11,8 +11,8 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Translation;
+import seedu.address.model.person.Word;
 import seedu.address.model.person.Person;
 
 /**
@@ -34,8 +34,8 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Name name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
-        Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
+        Word name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
+        Translation email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
 
         Person person = new Person(name, email);
 

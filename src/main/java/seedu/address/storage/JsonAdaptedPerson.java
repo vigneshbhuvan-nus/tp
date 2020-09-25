@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.Email;
-import seedu.address.model.person.Name;
+import seedu.address.model.person.Translation;
+import seedu.address.model.person.Word;
 import seedu.address.model.person.Person;
 
 /**
@@ -44,19 +44,19 @@ class JsonAdaptedPerson {
     public Person toModelType() throws IllegalValueException {
 
         if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Word.class.getSimpleName()));
         }
-        if (!Name.isValidName(name)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        if (!Word.isValidName(name)) {
+            throw new IllegalValueException(Word.MESSAGE_CONSTRAINTS);
         }
-        final Name modelName = new Name(name);
+        final Word modelName = new Word(name);
         if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Translation.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!Translation.isValidEmail(email)) {
+            throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final Translation modelEmail = new Translation(email);
         return new Person(modelName, modelEmail);
     }
 
