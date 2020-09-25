@@ -2,10 +2,10 @@ package seedu.address.testutil;
 
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Entry;
 
 /**
- * A utility class to help with building Person objects.
+ * A utility class to help with building Entry objects.
  */
 public class PersonBuilder {
 
@@ -25,13 +25,13 @@ public class PersonBuilder {
     /**
      * Initializes the PersonBuilder with the data of {@code personToCopy}.
      */
-    public PersonBuilder(Person personToCopy) {
+    public PersonBuilder(Entry personToCopy) {
         name = personToCopy.getName();
         email = personToCopy.getEmail();
     }
 
     /**
-     * Sets the {@code Word} of the {@code Person} that we are building.
+     * Sets the {@code Word} of the {@code Entry} that we are building.
      */
     public PersonBuilder withName(String name) {
         this.name = new Word(name);
@@ -39,15 +39,15 @@ public class PersonBuilder {
     }
 
     /**
-     * Sets the {@code Translation} of the {@code Person} that we are building.
+     * Sets the {@code Translation} of the {@code Entry} that we are building.
      */
     public PersonBuilder withEmail(String email) {
         this.email = new Translation(email);
         return this;
     }
 
-    public Person build() {
-        return new Person(name, email);
+    public Entry build() {
+        return new Entry(name, email);
     }
 
 }

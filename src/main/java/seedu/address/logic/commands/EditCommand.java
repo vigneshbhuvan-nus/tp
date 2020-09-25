@@ -18,7 +18,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Entry;
 
 /**
  * Edits the details of an existing person in the address book.
@@ -40,7 +40,7 @@ public class EditCommand extends Command {
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Entry: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
 
@@ -62,14 +62,14 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Person> lastShownList = model.getFilteredPersonList();
+        List<Entry> lastShownList = model.getFilteredPersonList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
         }
 
-        Person personToEdit = lastShownList.get(index.getZeroBased());
-        Person editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        Entry personToEdit = lastShownList.get(index.getZeroBased());
+        Entry editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
         if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
@@ -81,16 +81,16 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Creates and returns a {@code Person} with the details of {@code personToEdit}
+     * Creates and returns a {@code Entry} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Person createEditedPerson(Person personToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private static Entry createEditedPerson(Entry personToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
         Word updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
         Translation updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
 
-        return new Person(updatedName, updatedEmail);
+        return new Entry(updatedName, updatedEmail);
     }
 
     @Override

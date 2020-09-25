@@ -13,7 +13,7 @@ import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Entry;
 
 /**
  * Parses input arguments and creates a new AddCommand object
@@ -37,7 +37,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         Word name = ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get());
         Translation email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
 
-        Person person = new Person(name, email);
+        Entry person = new Entry(name, email);
 
         return new AddCommand(person);
     }

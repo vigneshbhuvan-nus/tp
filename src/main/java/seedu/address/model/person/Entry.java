@@ -5,10 +5,10 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import java.util.Objects;
 
 /**
- * Represents a Person in the address book.
+ * Represents a Entry in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Person {
+public class Entry {
 
     // Identity fields
     private final Word name;
@@ -17,7 +17,7 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Word name, Translation email) {
+    public Entry(Word name, Translation email) {
         requireAllNonNull(name, email);
         this.name = name;
         this.email = email;
@@ -35,7 +35,7 @@ public class Person {
      * Returns true if both persons of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two persons.
      */
-    public boolean isSamePerson(Person otherPerson) {
+    public boolean isSamePerson(Entry otherPerson) {
         if (otherPerson == this) {
             return true;
         }
@@ -55,11 +55,11 @@ public class Person {
             return true;
         }
 
-        if (!(other instanceof Person)) {
+        if (!(other instanceof Entry)) {
             return false;
         }
 
-        Person otherPerson = (Person) other;
+        Entry otherPerson = (Entry) other;
         return otherPerson.getName().equals(getName())
                 && otherPerson.getEmail().equals(getEmail());
     }

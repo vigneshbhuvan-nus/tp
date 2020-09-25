@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Entry;
 
 /**
- * Jackson-friendly version of {@link Person}.
+ * Jackson-friendly version of {@link Entry}.
  */
 class JsonAdaptedPerson {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Person's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Entry's %s field is missing!";
 
     private final String name;
     private final String email;
@@ -29,19 +29,19 @@ class JsonAdaptedPerson {
     }
 
     /**
-     * Converts a given {@code Person} into this class for Jackson use.
+     * Converts a given {@code Entry} into this class for Jackson use.
      */
-    public JsonAdaptedPerson(Person source) {
+    public JsonAdaptedPerson(Entry source) {
         name = source.getName().fullName;
         email = source.getEmail().value;
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Person} object.
+     * Converts this Jackson-friendly adapted person object into the model's {@code Entry} object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted person.
      */
-    public Person toModelType() throws IllegalValueException {
+    public Entry toModelType() throws IllegalValueException {
 
         if (name == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Word.class.getSimpleName()));
@@ -57,7 +57,7 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);
         }
         final Translation modelEmail = new Translation(email);
-        return new Person(modelName, modelEmail);
+        return new Entry(modelName, modelEmail);
     }
 
 }

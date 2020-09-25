@@ -3,7 +3,7 @@ package seedu.address.testutil;
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.model.person.Person;
+import seedu.address.model.person.Entry;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.
@@ -23,7 +23,7 @@ public class EditPersonDescriptorBuilder {
     /**
      * Returns an {@code EditPersonDescriptor} with fields containing {@code person}'s details
      */
-    public EditPersonDescriptorBuilder(Person person) {
+    public EditPersonDescriptorBuilder(Entry person) {
         descriptor = new EditPersonDescriptor();
         descriptor.setName(person.getName());
         descriptor.setEmail(person.getEmail());
