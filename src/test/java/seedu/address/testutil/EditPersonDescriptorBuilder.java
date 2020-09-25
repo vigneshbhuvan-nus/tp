@@ -1,9 +1,9 @@
 package seedu.address.testutil;
 
 import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.model.person.Entry;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.model.person.Entry;
 
 /**
  * A utility class to help with building EditPersonDescriptor objects.

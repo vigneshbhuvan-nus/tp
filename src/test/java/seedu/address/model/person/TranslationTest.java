@@ -32,7 +32,6 @@ public class TranslationTest {
         assertFalse(Translation.isValidEmail("@example.com")); // missing local part
         assertFalse(Translation.isValidEmail("peterjackexample.com")); // missing '@' symbol
         assertFalse(Translation.isValidEmail("peterjack@")); // missing domain name
-        
         // invalid parts
         assertFalse(Translation.isValidEmail("peterjack@-")); // invalid domain name
         assertFalse(Translation.isValidEmail("peterjack@exam_ple.com")); // underscore in domain name

@@ -41,7 +41,6 @@ public class UniquePersonListTest {
     public void contains_personWithSameIdentityFieldsInList_returnsTrue() {
         uniquePersonList.add(ALICE);
         Entry editedAlice = new PersonBuilder(ALICE).build();
-        
         assertTrue(uniquePersonList.contains(editedAlice));
     }
 

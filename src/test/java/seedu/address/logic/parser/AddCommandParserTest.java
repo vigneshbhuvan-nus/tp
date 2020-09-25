@@ -28,9 +28,9 @@ import static seedu.address.testutil.TypicalPersons.BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCommand;
+import seedu.address.model.person.Entry;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.model.person.Entry;
 import seedu.address.testutil.PersonBuilder;
 
 public class AddCommandParserTest {
@@ -62,7 +62,6 @@ public class AddCommandParserTest {
 
         // multiple tags - all accepted
         Entry expectedPersonMultipleTags = new PersonBuilder(BOB).build();
-        
         assertParseSuccess(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                 + TAG_DESC_HUSBAND + TAG_DESC_FRIEND, new AddCommand(expectedPersonMultipleTags));
     }

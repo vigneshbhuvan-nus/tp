@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.testutil.PersonBuilder;
 
 public class EntryTest {
-    
     @Test
     public void isSamePerson() {
         // same object -> returns true

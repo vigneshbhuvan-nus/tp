@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.person.Entry;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.model.person.Entry;
 
 /**
  * Jackson-friendly version of {@link Entry}.
@@ -51,7 +51,8 @@ class JsonAdaptedPerson {
         }
         final Word modelName = new Word(name);
         if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Translation.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Translation.class.getSimpleName()));
         }
         if (!Translation.isValidEmail(email)) {
             throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);
