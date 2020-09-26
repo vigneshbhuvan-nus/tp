@@ -1,7 +1,5 @@
----
-layout: page
-title: User Guide
----
+# User Guide
+Team Name: AY2021S1-CS2103T-T09-4
 
 GrrenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. In this UG, we will be assuming that you are practising Japanese (Hiragana).
 
