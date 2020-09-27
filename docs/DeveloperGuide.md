@@ -338,7 +338,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. User fed an invalid index
-    
+
     * 1a1. GreenTea returns an error message
 
   Use case ends.
