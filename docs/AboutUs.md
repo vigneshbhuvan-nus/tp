@@ -9,19 +9,9 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### Prof Damith Rajapakse
-
-<img src="images/johndoe.png" width="200px">
-
-[[Homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[GitHub](https://github.com/johndoe)]
-[[Portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
-
 ### Vignesh Bhuvan
 
-<img src="images/vigneshbhuvan-nus.png.JPG" width="200px">
+<img src="images/vigneshbhuvan-nus.png" width="200px">
 
 [[GitHub](http://github.com/vigneshbhuvan-nus)]
 [[Portfolio](team/johndoe.md)]
@@ -51,7 +41,7 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ### Georgie Lee
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/geoboom.png" width="200px">
 
 [[GitHub](http://github.com/geoboom)]
 [[Portfolio](team/johndoe.md)]
