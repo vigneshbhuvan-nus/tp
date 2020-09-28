@@ -29,32 +29,32 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String name} into a {@code Word}.
+     * Parses a {@code String word} into a {@code Word}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code name} is invalid.
+     * @throws ParseException if the given {@code word} is invalid.
      */
-    public static Word parseName(String name) throws ParseException {
-        requireNonNull(name);
-        String trimmedName = name.trim();
-        if (!Word.isValidWord(trimmedName)) {
+    public static Word parseWord(String word) throws ParseException {
+        requireNonNull(word);
+        String trimmedWord = word.trim();
+        if (!Word.isValidWord(trimmedWord)) {
             throw new ParseException(Word.MESSAGE_CONSTRAINTS);
         }
-        return new Word(trimmedName);
+        return new Word(trimmedWord);
     }
 
     /**
-     * Parses a {@code String email} into an {@code Translation}.
+     * Parses a {@code String translation} into an {@code Translation}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code email} is invalid.
+     * @throws ParseException if the given {@code translation} is invalid.
      */
-    public static Translation parseEmail(String email) throws ParseException {
-        requireNonNull(email);
-        String trimmedEmail = email.trim();
-        if (!Translation.isValidTranslation(trimmedEmail)) {
+    public static Translation parseTranslation(String translation) throws ParseException {
+        requireNonNull(translation);
+        String trimmedTranslation = translation.trim();
+        if (!Translation.isValidTranslation(trimmedTranslation)) {
             throw new ParseException(Translation.MESSAGE_CONSTRAINTS);
         }
-        return new Translation(trimmedEmail);
+        return new Translation(trimmedTranslation);
     }
 }

@@ -18,7 +18,7 @@ import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
 
 /**
- * Edits the details of an existing person in the address book.
+ * Edits the details of an existing entry in the word bank.
  */
 public class EditCommand extends Command {
 
@@ -33,23 +33,23 @@ public class EditCommand extends Command {
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_TRANSLATION + "johndoe@example.com";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Entry: %1$s";
+    public static final String MESSAGE_EDIT_ENTRY_SUCCESS = "Edited Entry: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This person already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the address book.";
 
     private final Index index;
-    private final EditPersonDescriptor editPersonDescriptor;
+    private final EditEntryDescriptor editEntryDescriptor;
 
     /**
-     * @param index of the person in the filtered person list to edit
-     * @param editPersonDescriptor details to edit the person with
+     * @param index of the entry in the filtered entry list to edit
+     * @param editEntryDescriptor details to edit the entry with
      */
-    public EditCommand(Index index, EditPersonDescriptor editPersonDescriptor) {
+    public EditCommand(Index index, EditEntryDescriptor editEntryDescriptor) {
         requireNonNull(index);
-        requireNonNull(editPersonDescriptor);
+        requireNonNull(editEntryDescriptor);
 
         this.index = index;
-        this.editPersonDescriptor = new EditPersonDescriptor(editPersonDescriptor);
+        this.editEntryDescriptor = new EditEntryDescriptor(editEntryDescriptor);
     }
 
     @Override
@@ -58,32 +58,32 @@ public class EditCommand extends Command {
         List<Entry> lastShownList = model.getFilteredEntryList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX);
         }
 
-        Entry personToEdit = lastShownList.get(index.getZeroBased());
-        Entry editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
+        Entry entryToEdit = lastShownList.get(index.getZeroBased());
+        Entry editedEntry = createEditedEntry(entryToEdit, editEntryDescriptor);
 
-        if (!personToEdit.isSameEntry(editedPerson) && model.hasEntry(editedPerson)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+        if (!entryToEdit.isSameEntry(editedEntry) && model.hasEntry(editedEntry)) {
+            throw new CommandException(MESSAGE_DUPLICATE_ENTRY);
         }
 
-        model.setEntry(personToEdit, editedPerson);
+        model.setEntry(entryToEdit, editedEntry);
         model.updateFilteredEntryList(PREDICATE_SHOW_ALL_ENTRIES);
-        return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
+        return new CommandResult(String.format(MESSAGE_EDIT_ENTRY_SUCCESS, editedEntry));
     }
 
     /**
-     * Creates and returns a {@code Entry} with the details of {@code personToEdit}
-     * edited with {@code editPersonDescriptor}.
+     * Creates and returns a {@code Entry} with the details of {@code entryToEdit}
+     * edited with {@code editEntryDescriptor}.
      */
-    private static Entry createEditedPerson(Entry personToEdit, EditPersonDescriptor editPersonDescriptor) {
-        assert personToEdit != null;
+    private static Entry createEditedEntry(Entry entryToEdit, EditEntryDescriptor editEntryDescriptor) {
+        assert entryToEdit != null;
 
-        Word updatedName = editPersonDescriptor.getName().orElse(personToEdit.getWord());
-        Translation updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getTranslation());
+        Word updatedWord = editEntryDescriptor.getWord().orElse(entryToEdit.getWord());
+        Translation updatedTranslation = editEntryDescriptor.getTranslation().orElse(entryToEdit.getTranslation());
 
-        return new Entry(updatedName, updatedEmail);
+        return new Entry(updatedWord, updatedTranslation);
     }
 
     @Override
@@ -101,48 +101,48 @@ public class EditCommand extends Command {
         // state check
         EditCommand e = (EditCommand) other;
         return index.equals(e.index)
-                && editPersonDescriptor.equals(e.editPersonDescriptor);
+                && editEntryDescriptor.equals(e.editEntryDescriptor);
     }
 
     /**
-     * Stores the details to edit the person with. Each non-empty field value will replace the
-     * corresponding field value of the person.
+     * Stores the details to edit the entry with. Each non-empty field value will replace the
+     * corresponding field value of the entry.
      */
-    public static class EditPersonDescriptor {
-        private Word name;
-        private Translation email;
+    public static class EditEntryDescriptor {
+        private Word word;
+        private Translation translation;
 
-        public EditPersonDescriptor() {}
+        public EditEntryDescriptor() {}
 
         /**
          * Copy constructor.
          * A defensive copy of {@code tags} is used internally.
          */
-        public EditPersonDescriptor(EditPersonDescriptor toCopy) {
-            setName(toCopy.name);
-            setEmail(toCopy.email);
+        public EditEntryDescriptor(EditEntryDescriptor toCopy) {
+            setWord(toCopy.word);
+            setTranslation(toCopy.translation);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, email);
+            return CollectionUtil.isAnyNonNull(word, translation);
         }
 
-        public void setName(Word name) {
-            this.name = name;
+        public void setWord(Word word) {
+            this.word = word;
         }
 
-        public Optional<Word> getName() {
-            return Optional.ofNullable(name);
+        public Optional<Word> getWord() {
+            return Optional.ofNullable(word);
         }
-        public void setEmail(Translation email) {
-            this.email = email;
+        public void setTranslation(Translation translation) {
+            this.translation = translation;
         }
 
-        public Optional<Translation> getEmail() {
-            return Optional.ofNullable(email);
+        public Optional<Translation> getTranslation() {
+            return Optional.ofNullable(translation);
         }
 
         @Override
@@ -153,15 +153,15 @@ public class EditCommand extends Command {
             }
 
             // instanceof handles nulls
-            if (!(other instanceof EditPersonDescriptor)) {
+            if (!(other instanceof EditEntryDescriptor)) {
                 return false;
             }
 
             // state check
-            EditPersonDescriptor e = (EditPersonDescriptor) other;
+            EditEntryDescriptor e = (EditEntryDescriptor) other;
 
-            return getName().equals(e.getName())
-                    && getEmail().equals(e.getEmail());
+            return getWord().equals(e.getWord())
+                    && getTranslation().equals(e.getTranslation());
         }
     }
 }

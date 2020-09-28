@@ -26,7 +26,7 @@ public class PersonBuilder {
      * Initializes the PersonBuilder with the data of {@code personToCopy}.
      */
     public PersonBuilder(Entry personToCopy) {
-        name = personToCopy.getName();
+        name = personToCopy.getWord();
         email = personToCopy.getTranslation();
     }
 

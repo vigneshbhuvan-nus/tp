@@ -1,6 +1,6 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
 import seedu.address.model.person.Entry;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
@@ -10,30 +10,30 @@ import seedu.address.model.person.Word;
  */
 public class EditPersonDescriptorBuilder {
 
-    private EditPersonDescriptor descriptor;
+    private EditEntryDescriptor descriptor;
 
     public EditPersonDescriptorBuilder() {
-        descriptor = new EditPersonDescriptor();
+        descriptor = new EditEntryDescriptor();
     }
 
-    public EditPersonDescriptorBuilder(EditPersonDescriptor descriptor) {
-        this.descriptor = new EditPersonDescriptor(descriptor);
+    public EditPersonDescriptorBuilder(EditEntryDescriptor descriptor) {
+        this.descriptor = new EditEntryDescriptor(descriptor);
     }
 
     /**
      * Returns an {@code EditPersonDescriptor} with fields containing {@code person}'s details
      */
     public EditPersonDescriptorBuilder(Entry person) {
-        descriptor = new EditPersonDescriptor();
-        descriptor.setName(person.getName());
-        descriptor.setEmail(person.getTranslation());
+        descriptor = new EditEntryDescriptor();
+        descriptor.setWord(person.getWord());
+        descriptor.setTranslation(person.getTranslation());
     }
 
     /**
      * Sets the {@code Word} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withName(String name) {
-        descriptor.setName(new Word(name));
+        descriptor.setWord(new Word(name));
         return this;
     }
 
@@ -41,11 +41,11 @@ public class EditPersonDescriptorBuilder {
      * Sets the {@code Translation} of the {@code EditPersonDescriptor} that we are building.
      */
     public EditPersonDescriptorBuilder withEmail(String email) {
-        descriptor.setEmail(new Translation(email));
+        descriptor.setTranslation(new Translation(email));
         return this;
     }
 
-    public EditPersonDescriptor build() {
+    public EditEntryDescriptor build() {
         return descriptor;
     }
 }

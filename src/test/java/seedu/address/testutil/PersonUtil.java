@@ -4,7 +4,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSLATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
 import seedu.address.model.person.Entry;
 
 /**
@@ -32,10 +32,10 @@ public class PersonUtil {
     /**
      * Returns the part of command string for the given {@code EditPersonDescriptor}'s details.
      */
-    public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
+    public static String getEditPersonDescriptorDetails(EditEntryDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_WORD).append(name.word).append(" "));
-        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_TRANSLATION).append(email.translation).append(" "));
+        descriptor.getWord().ifPresent(name -> sb.append(PREFIX_WORD).append(name.word).append(" "));
+        descriptor.getTranslation().ifPresent(email -> sb.append(PREFIX_TRANSLATION).append(email.translation).append(" "));
         return sb.toString();
     }
 }

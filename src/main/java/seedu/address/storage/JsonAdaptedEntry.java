@@ -11,7 +11,7 @@ import seedu.address.model.person.Word;
 /**
  * Jackson-friendly version of {@link Entry}.
  */
-class JsonAdaptedPerson {
+class JsonAdaptedEntry {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Entry's %s field is missing!";
 
@@ -19,27 +19,27 @@ class JsonAdaptedPerson {
     private final String translation;
 
     /**
-     * Constructs a {@code JsonAdaptedPerson} with the given person details.
+     * Constructs a {@code JsonAdaptedEntry} with the given entry details.
      */
     @JsonCreator
-    public JsonAdaptedPerson(@JsonProperty("name") String name,
-            @JsonProperty("email") String email) {
-        this.word = name;
-        this.translation = email;
+    public JsonAdaptedEntry(@JsonProperty("word") String word,
+                            @JsonProperty("translation") String translation) {
+        this.word = word;
+        this.translation = translation;
     }
 
     /**
      * Converts a given {@code Entry} into this class for Jackson use.
      */
-    public JsonAdaptedPerson(Entry source) {
+    public JsonAdaptedEntry(Entry source) {
         word = source.getWord().word;
         translation = source.getTranslation().translation;
     }
 
     /**
-     * Converts this Jackson-friendly adapted person object into the model's {@code Entry} object.
+     * Converts this Jackson-friendly adapted entry object into the model's {@code Entry} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted person.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted entry.
      */
     public Entry toModelType() throws IllegalValueException {
 
@@ -49,7 +49,7 @@ class JsonAdaptedPerson {
         if (!Word.isValidWord(word)) {
             throw new IllegalValueException(Word.MESSAGE_CONSTRAINTS);
         }
-        final Word modelName = new Word(word);
+        final Word modelWord = new Word(word);
         if (translation == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Translation.class.getSimpleName()));
@@ -57,8 +57,8 @@ class JsonAdaptedPerson {
         if (!Translation.isValidTranslation(translation)) {
             throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);
         }
-        final Translation modelEmail = new Translation(translation);
-        return new Entry(modelName, modelEmail);
+        final Translation modelTranslation = new Translation(translation);
+        return new Entry(modelWord, modelTranslation);
     }
 
 }
