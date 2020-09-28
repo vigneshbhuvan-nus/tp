@@ -4,8 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.ALICE;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalEntries.ALICE;
+import static seedu.address.testutil.TypicalEntries.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -18,7 +18,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.person.Entry;
 import seedu.address.model.person.exceptions.DuplicateEntryException;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.EntryBuilder;
 
 public class AddressBookTest {
 
@@ -42,56 +42,56 @@ public class AddressBookTest {
     }
 
     @Test
-    public void resetData_withDuplicatePersons_throwsDuplicatePersonException() {
-        // Two persons with the same identity fields
-        Entry editedAlice = new PersonBuilder(ALICE).build();
-        List<Entry> newPersons = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newPersons);
+    public void resetData_withDuplicateEntries_throwsDuplicateEntryException() {
+        // Two entries with the same identity fields
+        Entry editedAlice = new EntryBuilder(ALICE).build();
+        List<Entry> newEntries = Arrays.asList(ALICE, editedAlice);
+        AddressBookStub newData = new AddressBookStub(newEntries);
 
         assertThrows(DuplicateEntryException.class, () -> addressBook.resetData(newData));
     }
 
     @Test
-    public void hasPerson_nullPerson_throwsNullPointerException() {
+    public void hasEntry_nullEntry_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> addressBook.hasEntry(null));
     }
 
     @Test
-    public void hasPerson_personNotInAddressBook_returnsFalse() {
+    public void hasEntry_entryNotInAddressBook_returnsFalse() {
         assertFalse(addressBook.hasEntry(ALICE));
     }
 
     @Test
-    public void hasPerson_personInAddressBook_returnsTrue() {
+    public void hasEntry_entryInAddressBook_returnsTrue() {
         addressBook.addEntry(ALICE);
         assertTrue(addressBook.hasEntry(ALICE));
     }
 
     @Test
-    public void hasPerson_personWithSameIdentityFieldsInAddressBook_returnsTrue() {
+    public void hasEntry_entryWithSameIdentityFieldsInAddressBook_returnsTrue() {
         addressBook.addEntry(ALICE);
-        Entry editedAlice = new PersonBuilder(ALICE).build();
+        Entry editedAlice = new EntryBuilder(ALICE).build();
         assertTrue(addressBook.hasEntry(editedAlice));
     }
 
     @Test
-    public void getPersonList_modifyList_throwsUnsupportedOperationException() {
+    public void getEntryList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getEntryList().remove(0));
     }
 
     /**
-     * A stub ReadOnlyAddressBook whose persons list can violate interface constraints.
+     * A stub ReadOnlyAddressBook whose entries list can violate interface constraints.
      */
     private static class AddressBookStub implements ReadOnlyAddressBook {
-        private final ObservableList<Entry> persons = FXCollections.observableArrayList();
+        private final ObservableList<Entry> entries = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Entry> persons) {
-            this.persons.setAll(persons);
+        AddressBookStub(Collection<Entry> entries) {
+            this.entries.setAll(entries);
         }
 
         @Override
         public ObservableList<Entry> getEntryList() {
-            return persons;
+            return entries;
         }
     }
 

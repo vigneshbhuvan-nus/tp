@@ -1,0 +1,9 @@
+{
+  "entries": [ {
+    "word": "Valid Person",
+    "translation": "hans@example.com"
+  }, {
+    "word": "Person With Invalid Phone Field",
+    "translation": "hans@example.com"
+  } ]
+}

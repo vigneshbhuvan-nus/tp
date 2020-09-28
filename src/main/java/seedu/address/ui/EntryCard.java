@@ -9,9 +9,9 @@ import seedu.address.model.person.Entry;
 /**
  * An UI component that displays information of a {@code Entry}.
  */
-public class PersonCard extends UiPart<Region> {
+public class EntryCard extends UiPart<Region> {
 
-    private static final String FXML = "PersonListCard.fxml";
+    private static final String FXML = "EntryListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -21,7 +21,7 @@ public class PersonCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Entry person;
+    public final Entry entry;
 
     @FXML
     private HBox cardPane;
@@ -33,14 +33,14 @@ public class PersonCard extends UiPart<Region> {
     private Label email;
 
     /**
-     * Creates a {@code PersonCode} with the given {@code Entry} and index to display.
+     * Creates a {@code EntryCode} with the given {@code Entry} and index to display.
      */
-    public PersonCard(Entry person, int displayedIndex) {
+    public EntryCard(Entry entry, int displayedIndex) {
         super(FXML);
-        this.person = person;
+        this.entry = entry;
         id.setText(displayedIndex + ". ");
-        name.setText(person.getWord().word);
-        email.setText(person.getTranslation().translation);
+        name.setText(entry.getWord().word);
+        email.setText(entry.getTranslation().translation);
     }
 
     @Override
@@ -51,13 +51,13 @@ public class PersonCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof PersonCard)) {
+        if (!(other instanceof EntryCard)) {
             return false;
         }
 
         // state check
-        PersonCard card = (PersonCard) other;
+        EntryCard card = (EntryCard) other;
         return id.getText().equals(card.id.getText())
-                && person.equals(card.person);
+                && entry.equals(card.entry);
     }
 }

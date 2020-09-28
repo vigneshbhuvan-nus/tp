@@ -9,9 +9,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.EntryBuilder;
 
-public class NameContainsKeywordsPredicateTest {
+public class WordContainsKeywordsPredicateTest {
 
     @Test
     public void equals() {
@@ -34,42 +34,42 @@ public class NameContainsKeywordsPredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
-        // different person -> returns false
+        // different entry -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
     @Test
-    public void test_nameContainsKeywords_returnsTrue() {
+    public void test_wordContainsKeywords_returnsTrue() {
         // One keyword
         WordContainsKeywordsPredicate predicate = new WordContainsKeywordsPredicate(Collections.singletonList("Alice"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+        assertTrue(predicate.test(new EntryBuilder().withWord("Alice Bob").build()));
 
         // Multiple keywords
         predicate = new WordContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+        assertTrue(predicate.test(new EntryBuilder().withWord("Alice Bob").build()));
 
         // Only one matching keyword
         predicate = new WordContainsKeywordsPredicate(Arrays.asList("Bob", "Carol"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Carol").build()));
+        assertTrue(predicate.test(new EntryBuilder().withWord("Alice Carol").build()));
 
         // Mixed-case keywords
         predicate = new WordContainsKeywordsPredicate(Arrays.asList("aLIce", "bOB"));
-        assertTrue(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+        assertTrue(predicate.test(new EntryBuilder().withWord("Alice Bob").build()));
     }
 
     @Test
-    public void test_nameDoesNotContainKeywords_returnsFalse() {
+    public void test_wordDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
         WordContainsKeywordsPredicate predicate = new WordContainsKeywordsPredicate(Collections.emptyList());
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice").build()));
+        assertFalse(predicate.test(new EntryBuilder().withWord("Alice").build()));
 
         // Non-matching keyword
         predicate = new WordContainsKeywordsPredicate(Arrays.asList("Carol"));
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice Bob").build()));
+        assertFalse(predicate.test(new EntryBuilder().withWord("Alice Bob").build()));
 
-        // Keywords match phone, email and address, but does not match name
+        // Keywords match phone, translation and address, but does not match word
         predicate = new WordContainsKeywordsPredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
-        assertFalse(predicate.test(new PersonBuilder().withName("Alice")
-                .withEmail("alice@email.com").build()));
+        assertFalse(predicate.test(new EntryBuilder().withWord("Alice")
+                .withTranslation("alice@email.com").build()));
     }
 }

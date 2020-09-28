@@ -3,7 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedEntry.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalPersons.BENSON;
+import static seedu.address.testutil.TypicalEntries.BENSON;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,45 +12,45 @@ import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
 
 public class JsonAdaptedEntryTest {
-    private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_EMAIL = "example.com";
+    private static final String INVALID_WORD = "R@chel";
+    private static final String INVALID_TRANSLATION = "example.com";
 
-    private static final String VALID_NAME = BENSON.getWord().toString();
-    private static final String VALID_EMAIL = BENSON.getTranslation().toString();
+    private static final String VALID_WORD = BENSON.getWord().toString();
+    private static final String VALID_TRANSLATION = BENSON.getTranslation().toString();
 
     @Test
-    public void toModelType_validPersonDetails_returnsPerson() throws Exception {
-        JsonAdaptedEntry person = new JsonAdaptedEntry(BENSON);
-        assertEquals(BENSON, person.toModelType());
+    public void toModelType_validEntryDetails_returnsEntry() throws Exception {
+        JsonAdaptedEntry entry = new JsonAdaptedEntry(BENSON);
+        assertEquals(BENSON, entry.toModelType());
     }
 
     @Test
-    public void toModelType_invalidName_throwsIllegalValueException() {
-        JsonAdaptedEntry person =
-                new JsonAdaptedEntry(INVALID_NAME, VALID_EMAIL);
+    public void toModelType_invalidWord_throwsIllegalValueException() {
+        JsonAdaptedEntry entry =
+                new JsonAdaptedEntry(INVALID_WORD, VALID_TRANSLATION);
         String expectedMessage = Word.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, entry::toModelType);
     }
 
     @Test
-    public void toModelType_nullName_throwsIllegalValueException() {
-        JsonAdaptedEntry person = new JsonAdaptedEntry(null, VALID_EMAIL);
+    public void toModelType_nullWord_throwsIllegalValueException() {
+        JsonAdaptedEntry entry = new JsonAdaptedEntry(null, VALID_TRANSLATION);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Word.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, entry::toModelType);
     }
 
     @Test
-    public void toModelType_invalidEmail_throwsIllegalValueException() {
-        JsonAdaptedEntry person =
-                new JsonAdaptedEntry(VALID_NAME, INVALID_EMAIL);
+    public void toModelType_invalidTranslation_throwsIllegalValueException() {
+        JsonAdaptedEntry entry =
+                new JsonAdaptedEntry(VALID_WORD, INVALID_TRANSLATION);
         String expectedMessage = Translation.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, entry::toModelType);
     }
 
     @Test
     public void toModelType_nullEmail_throwsIllegalValueException() {
-        JsonAdaptedEntry person = new JsonAdaptedEntry(VALID_NAME, null);
+        JsonAdaptedEntry entry = new JsonAdaptedEntry(VALID_WORD, null);
         String expectedMessage = String.format(MISSING_FIELD_MESSAGE_FORMAT, Translation.class.getSimpleName());
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
+        assertThrows(IllegalValueException.class, expectedMessage, entry::toModelType);
     }
 }

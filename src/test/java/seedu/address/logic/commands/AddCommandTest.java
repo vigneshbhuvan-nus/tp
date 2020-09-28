@@ -21,39 +21,39 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.person.Entry;
-import seedu.address.testutil.PersonBuilder;
+import seedu.address.testutil.EntryBuilder;
 
 public class AddCommandTest {
 
     @Test
-    public void constructor_nullPerson_throwsNullPointerException() {
+    public void constructor_nullEntry_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new AddCommand(null));
     }
 
     @Test
-    public void execute_personAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingPersonAdded modelStub = new ModelStubAcceptingPersonAdded();
-        Entry validPerson = new PersonBuilder().build();
+    public void execute_entryAcceptedByModel_addSuccessful() throws Exception {
+        ModelStubAcceptingEntryAdded modelStub = new ModelStubAcceptingEntryAdded();
+        Entry validEntry = new EntryBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validPerson).execute(modelStub);
+        CommandResult commandResult = new AddCommand(validEntry).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validPerson), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validPerson), modelStub.personsAdded);
+        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validEntry), commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validEntry), modelStub.entriesAdded);
     }
 
     @Test
-    public void execute_duplicatePerson_throwsCommandException() {
-        Entry validPerson = new PersonBuilder().build();
-        AddCommand addCommand = new AddCommand(validPerson);
-        ModelStub modelStub = new ModelStubWithPerson(validPerson);
+    public void execute_duplicateEntry_throwsCommandException() {
+        Entry validEntry = new EntryBuilder().build();
+        AddCommand addCommand = new AddCommand(validEntry);
+        ModelStub modelStub = new ModelStubWithEntry(validEntry);
 
         assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_ENTRY, () -> addCommand.execute(modelStub));
     }
 
     @Test
     public void equals() {
-        Entry alice = new PersonBuilder().withName("Alice").build();
-        Entry bob = new PersonBuilder().withName("Bob").build();
+        Entry alice = new EntryBuilder().withWord("Alice").build();
+        Entry bob = new EntryBuilder().withWord("Bob").build();
         AddCommand addAliceCommand = new AddCommand(alice);
         AddCommand addBobCommand = new AddCommand(bob);
 
@@ -70,7 +70,7 @@ public class AddCommandTest {
         // null -> returns false
         assertFalse(addAliceCommand.equals(null));
 
-        // different person -> returns false
+        // different entry -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
 
@@ -109,7 +109,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void addPerson(Entry person) {
+        public void addEntry(Entry entry) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -124,22 +124,22 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasEntry(Entry person) {
+        public boolean hasEntry(Entry entry) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void deletePerson(Entry target) {
+        public void deleteEntry(Entry target) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setEntry(Entry target, Entry editedPerson) {
+        public void setEntry(Entry target, Entry editedEntry) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ObservableList<Entry> getFilteredPersonList() {
+        public ObservableList<Entry> getFilteredEntryList() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -150,39 +150,39 @@ public class AddCommandTest {
     }
 
     /**
-     * A Model stub that contains a single person.
+     * A Model stub that contains a single entry.
      */
-    private class ModelStubWithPerson extends ModelStub {
-        private final Entry person;
+    private class ModelStubWithEntry extends ModelStub {
+        private final Entry entry;
 
-        ModelStubWithPerson(Entry person) {
-            requireNonNull(person);
-            this.person = person;
+        ModelStubWithEntry(Entry entry) {
+            requireNonNull(entry);
+            this.entry = entry;
         }
 
         @Override
-        public boolean hasEntry(Entry person) {
-            requireNonNull(person);
-            return this.person.isSameEntry(person);
+        public boolean hasEntry(Entry entry) {
+            requireNonNull(entry);
+            return this.entry.isSameEntry(entry);
         }
     }
 
     /**
-     * A Model stub that always accept the person being added.
+     * A Model stub that always accept the entry being added.
      */
-    private class ModelStubAcceptingPersonAdded extends ModelStub {
-        final ArrayList<Entry> personsAdded = new ArrayList<>();
+    private class ModelStubAcceptingEntryAdded extends ModelStub {
+        final ArrayList<Entry> entriesAdded = new ArrayList<>();
 
         @Override
-        public boolean hasEntry(Entry person) {
-            requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSameEntry);
+        public boolean hasEntry(Entry entry) {
+            requireNonNull(entry);
+            return entriesAdded.stream().anyMatch(entry::isSameEntry);
         }
 
         @Override
-        public void addPerson(Entry person) {
-            requireNonNull(person);
-            personsAdded.add(person);
+        public void addEntry(Entry entry) {
+            requireNonNull(entry);
+            entriesAdded.add(entry);
         }
 
         @Override
