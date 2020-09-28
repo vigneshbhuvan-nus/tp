@@ -24,8 +24,8 @@ public class PersonUtil {
      */
     public static String getPersonDetails(Entry person) {
         StringBuilder sb = new StringBuilder();
-        sb.append(PREFIX_WORD + person.getName().fullName + " ");
-        sb.append(PREFIX_TRANSLATION + person.getEmail().value + " ");
+        sb.append(PREFIX_WORD + person.getWord().word + " ");
+        sb.append(PREFIX_TRANSLATION + person.getTranslation().translation+ " ");
         return sb.toString();
     }
 
@@ -34,8 +34,8 @@ public class PersonUtil {
      */
     public static String getEditPersonDescriptorDetails(EditPersonDescriptor descriptor) {
         StringBuilder sb = new StringBuilder();
-        descriptor.getName().ifPresent(name -> sb.append(PREFIX_WORD).append(name.fullName).append(" "));
-        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_TRANSLATION).append(email.value).append(" "));
+        descriptor.getName().ifPresent(name -> sb.append(PREFIX_WORD).append(name.word).append(" "));
+        descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_TRANSLATION).append(email.translation).append(" "));
         return sb.toString();
     }
 }

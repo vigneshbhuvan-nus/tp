@@ -27,7 +27,7 @@ public class PersonBuilder {
      */
     public PersonBuilder(Entry personToCopy) {
         name = personToCopy.getName();
-        email = personToCopy.getEmail();
+        email = personToCopy.getTranslation();
     }
 
     /**

@@ -26,7 +26,7 @@ public class EditPersonDescriptorBuilder {
     public EditPersonDescriptorBuilder(Entry person) {
         descriptor = new EditPersonDescriptor();
         descriptor.setName(person.getName());
-        descriptor.setEmail(person.getEmail());
+        descriptor.setEmail(person.getTranslation());
     }
 
     /**

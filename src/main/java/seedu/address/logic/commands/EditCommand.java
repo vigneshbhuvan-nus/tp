@@ -3,7 +3,7 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSLATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ENTRIES;
 
 import java.util.List;
 import java.util.Optional;
@@ -55,7 +55,7 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        List<Entry> lastShownList = model.getFilteredPersonList();
+        List<Entry> lastShownList = model.getFilteredEntryList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
@@ -64,12 +64,12 @@ public class EditCommand extends Command {
         Entry personToEdit = lastShownList.get(index.getZeroBased());
         Entry editedPerson = createEditedPerson(personToEdit, editPersonDescriptor);
 
-        if (!personToEdit.isSamePerson(editedPerson) && model.hasPerson(editedPerson)) {
+        if (!personToEdit.isSameEntry(editedPerson) && model.hasEntry(editedPerson)) {
             throw new CommandException(MESSAGE_DUPLICATE_PERSON);
         }
 
-        model.setPerson(personToEdit, editedPerson);
-        model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        model.setEntry(personToEdit, editedPerson);
+        model.updateFilteredEntryList(PREDICATE_SHOW_ALL_ENTRIES);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, editedPerson));
     }
 
@@ -80,8 +80,8 @@ public class EditCommand extends Command {
     private static Entry createEditedPerson(Entry personToEdit, EditPersonDescriptor editPersonDescriptor) {
         assert personToEdit != null;
 
-        Word updatedName = editPersonDescriptor.getName().orElse(personToEdit.getName());
-        Translation updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getEmail());
+        Word updatedName = editPersonDescriptor.getName().orElse(personToEdit.getWord());
+        Translation updatedEmail = editPersonDescriptor.getEmail().orElse(personToEdit.getTranslation());
 
         return new Entry(updatedName, updatedEmail);
     }

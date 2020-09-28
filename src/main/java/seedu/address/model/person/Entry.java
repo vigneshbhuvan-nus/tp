@@ -11,43 +11,43 @@ import java.util.Objects;
 public class Entry {
 
     // Identity fields
-    private final Word name;
-    private final Translation email;
+    private final Word word;
+    private final Translation translation;
 
     /**
      * Every field must be present and not null.
      */
-    public Entry(Word name, Translation email) {
-        requireAllNonNull(name, email);
-        this.name = name;
-        this.email = email;
+    public Entry(Word word, Translation translation) {
+        requireAllNonNull(word, translation);
+        this.word = word;
+        this.translation = translation;
     }
 
-    public Word getName() {
-        return name;
+    public Word getWord() {
+        return word;
     }
 
-    public Translation getEmail() {
-        return email;
+    public Translation getTranslation() {
+        return translation;
     }
 
     /**
-     * Returns true if both persons of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two persons.
+     * Returns true if both entries of the same word have the same translation
+     * This defines a notion of equality between the two entries
      */
-    public boolean isSamePerson(Entry otherPerson) {
-        if (otherPerson == this) {
+    public boolean isSameEntry(Entry otherEntry) {
+        if (otherEntry == this) {
             return true;
         }
 
-        return otherPerson != null
-                && otherPerson.getName().equals(getName())
-                && (otherPerson.getEmail().equals(getEmail()));
+        return otherEntry != null
+                && otherEntry.getWord().equals(getWord())
+                && (otherEntry.getTranslation().equals(getTranslation()));
     }
 
     /**
-     * Returns true if both persons have the same identity and data fields.
-     * This defines a stronger notion of equality between two persons.
+     * Returns true if both entries have the same translation
+     * This defines a notion of equality between two entry objects
      */
     @Override
     public boolean equals(Object other) {
@@ -59,23 +59,23 @@ public class Entry {
             return false;
         }
 
-        Entry otherPerson = (Entry) other;
-        return otherPerson.getName().equals(getName())
-                && otherPerson.getEmail().equals(getEmail());
+        Entry otherEntry = (Entry) other;
+        return otherEntry.getWord().equals(getWord())
+                && otherEntry.getTranslation().equals(getTranslation());
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, email);
+        return Objects.hash(word, translation);
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
+        builder.append(getWord())
                 .append(" Translation: ")
-                .append(getEmail());
+                .append(getTranslation());
         return builder.toString();
     }
 

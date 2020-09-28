@@ -39,8 +39,8 @@ public class PersonCard extends UiPart<Region> {
         super(FXML);
         this.person = person;
         id.setText(displayedIndex + ". ");
-        name.setText(person.getName().fullName);
-        email.setText(person.getEmail().value);
+        name.setText(person.getWord().word);
+        email.setText(person.getTranslation().translation);
     }
 
     @Override

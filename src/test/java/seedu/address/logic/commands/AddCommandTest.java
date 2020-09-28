@@ -124,7 +124,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Entry person) {
+        public boolean hasEntry(Entry person) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -134,7 +134,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setPerson(Entry target, Entry editedPerson) {
+        public void setEntry(Entry target, Entry editedPerson) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -144,7 +144,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void updateFilteredPersonList(Predicate<Entry> predicate) {
+        public void updateFilteredEntryList(Predicate<Entry> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -161,9 +161,9 @@ public class AddCommandTest {
         }
 
         @Override
-        public boolean hasPerson(Entry person) {
+        public boolean hasEntry(Entry person) {
             requireNonNull(person);
-            return this.person.isSamePerson(person);
+            return this.person.isSameEntry(person);
         }
     }
 
@@ -174,9 +174,9 @@ public class AddCommandTest {
         final ArrayList<Entry> personsAdded = new ArrayList<>();
 
         @Override
-        public boolean hasPerson(Entry person) {
+        public boolean hasEntry(Entry person) {
             requireNonNull(person);
-            return personsAdded.stream().anyMatch(person::isSamePerson);
+            return personsAdded.stream().anyMatch(person::isSameEntry);
         }
 
         @Override

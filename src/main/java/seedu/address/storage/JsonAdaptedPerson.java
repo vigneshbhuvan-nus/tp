@@ -15,8 +15,8 @@ class JsonAdaptedPerson {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Entry's %s field is missing!";
 
-    private final String name;
-    private final String email;
+    private final String word;
+    private final String translation;
 
     /**
      * Constructs a {@code JsonAdaptedPerson} with the given person details.
@@ -24,16 +24,16 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name,
             @JsonProperty("email") String email) {
-        this.name = name;
-        this.email = email;
+        this.word = name;
+        this.translation = email;
     }
 
     /**
      * Converts a given {@code Entry} into this class for Jackson use.
      */
     public JsonAdaptedPerson(Entry source) {
-        name = source.getName().fullName;
-        email = source.getEmail().value;
+        word = source.getWord().word;
+        translation = source.getTranslation().translation;
     }
 
     /**
@@ -43,21 +43,21 @@ class JsonAdaptedPerson {
      */
     public Entry toModelType() throws IllegalValueException {
 
-        if (name == null) {
+        if (word == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Word.class.getSimpleName()));
         }
-        if (!Word.isValidName(name)) {
+        if (!Word.isValidWord(word)) {
             throw new IllegalValueException(Word.MESSAGE_CONSTRAINTS);
         }
-        final Word modelName = new Word(name);
-        if (email == null) {
+        final Word modelName = new Word(word);
+        if (translation == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Translation.class.getSimpleName()));
         }
-        if (!Translation.isValidEmail(email)) {
+        if (!Translation.isValidTranslation(translation)) {
             throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);
         }
-        final Translation modelEmail = new Translation(email);
+        final Translation modelEmail = new Translation(translation);
         return new Entry(modelName, modelEmail);
     }
 

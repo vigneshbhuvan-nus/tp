@@ -22,19 +22,19 @@ public class WordTest {
     @Test
     public void isValidName() {
         // null name
-        assertThrows(NullPointerException.class, () -> Word.isValidName(null));
+        assertThrows(NullPointerException.class, () -> Word.isValidWord(null));
 
         // invalid name
-        assertFalse(Word.isValidName("")); // empty string
-        assertFalse(Word.isValidName(" ")); // spaces only
-        assertFalse(Word.isValidName("^")); // only non-alphanumeric characters
-        assertFalse(Word.isValidName("peter*")); // contains non-alphanumeric characters
+        assertFalse(Word.isValidWord("")); // empty string
+        assertFalse(Word.isValidWord(" ")); // spaces only
+        assertFalse(Word.isValidWord("^")); // only non-alphanumeric characters
+        assertFalse(Word.isValidWord("peter*")); // contains non-alphanumeric characters
 
         // valid name
-        assertTrue(Word.isValidName("peter jack")); // alphabets only
-        assertTrue(Word.isValidName("12345")); // numbers only
-        assertTrue(Word.isValidName("peter the 2nd")); // alphanumeric characters
-        assertTrue(Word.isValidName("Capital Tan")); // with capital letters
-        assertTrue(Word.isValidName("David Roger Jackson Ray Jr 2nd")); // long names
+        assertTrue(Word.isValidWord("peter jack")); // alphabets only
+        assertTrue(Word.isValidWord("12345")); // numbers only
+        assertTrue(Word.isValidWord("peter the 2nd")); // alphanumeric characters
+        assertTrue(Word.isValidWord("Capital Tan")); // with capital letters
+        assertTrue(Word.isValidWord("David Roger Jackson Ray Jr 2nd")); // long names
     }
 }

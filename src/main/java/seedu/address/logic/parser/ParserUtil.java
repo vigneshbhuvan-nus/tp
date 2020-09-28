@@ -37,7 +37,7 @@ public class ParserUtil {
     public static Word parseName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (!Word.isValidName(trimmedName)) {
+        if (!Word.isValidWord(trimmedName)) {
             throw new ParseException(Word.MESSAGE_CONSTRAINTS);
         }
         return new Word(trimmedName);
@@ -52,7 +52,7 @@ public class ParserUtil {
     public static Translation parseEmail(String email) throws ParseException {
         requireNonNull(email);
         String trimmedEmail = email.trim();
-        if (!Translation.isValidEmail(trimmedEmail)) {
+        if (!Translation.isValidTranslation(trimmedEmail)) {
             throw new ParseException(Translation.MESSAGE_CONSTRAINTS);
         }
         return new Translation(trimmedEmail);
