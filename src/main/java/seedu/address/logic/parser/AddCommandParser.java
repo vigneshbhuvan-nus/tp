@@ -31,12 +31,12 @@ public class AddCommandParser implements Parser<AddCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
         }
 
-        Word name = ParserUtil.parseName(argMultimap.getValue(PREFIX_WORD).get());
-        Translation email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_TRANSLATION).get());
+        Word word = ParserUtil.parseWord(argMultimap.getValue(PREFIX_WORD).get());
+        Translation translation = ParserUtil.parseTranslation(argMultimap.getValue(PREFIX_TRANSLATION).get());
 
-        Entry person = new Entry(name, email);
+        Entry entry = new Entry(word, translation);
 
-        return new AddCommand(person);
+        return new AddCommand(entry);
     }
 
     /**

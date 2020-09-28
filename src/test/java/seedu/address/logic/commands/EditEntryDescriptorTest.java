@@ -4,20 +4,20 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSLATION_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_BOB;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
+import seedu.address.testutil.EditEntryDescriptorBuilder;
 
-public class EditPersonDescriptorTest {
+public class EditEntryDescriptorTest {
 
     @Test
     public void equals() {
         // same values -> returns true
-        EditPersonDescriptor descriptorWithSameValues = new EditPersonDescriptor(DESC_AMY);
+        EditEntryDescriptor descriptorWithSameValues = new EditEntryDescriptor(DESC_AMY);
         assertTrue(DESC_AMY.equals(descriptorWithSameValues));
 
         // same object -> returns true
@@ -32,12 +32,12 @@ public class EditPersonDescriptorTest {
         // different values -> returns false
         assertFalse(DESC_AMY.equals(DESC_BOB));
 
-        // different name -> returns false
-        EditPersonDescriptor editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withName(VALID_NAME_BOB).build();
+        // different word -> returns false
+        EditEntryDescriptor editedAmy = new EditEntryDescriptorBuilder(DESC_AMY).withWord(VALID_WORD_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
-        // different email -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withEmail(VALID_EMAIL_BOB).build();
+        // different translation -> returns false
+        editedAmy = new EditEntryDescriptorBuilder(DESC_AMY).withTranslation(VALID_TRANSLATION_BOB).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
     }

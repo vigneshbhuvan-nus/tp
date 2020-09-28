@@ -7,7 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
 import seedu.address.logic.parser.exceptions.ParseException;
 
 /**
@@ -33,17 +33,18 @@ public class EditCommandParser implements Parser<EditCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, EditCommand.MESSAGE_USAGE), pe);
         }
 
-        EditPersonDescriptor editPersonDescriptor = new EditPersonDescriptor();
+        EditEntryDescriptor editEntryDescriptor = new EditEntryDescriptor();
         if (argMultimap.getValue(PREFIX_WORD).isPresent()) {
-            editPersonDescriptor.setName(ParserUtil.parseName(argMultimap.getValue(PREFIX_WORD).get()));
+            editEntryDescriptor.setWord(ParserUtil.parseWord(argMultimap.getValue(PREFIX_WORD).get()));
         }
         if (argMultimap.getValue(PREFIX_TRANSLATION).isPresent()) {
-            editPersonDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_TRANSLATION).get()));
+            editEntryDescriptor.setTranslation(ParserUtil.parseTranslation(
+                    argMultimap.getValue(PREFIX_TRANSLATION).get()));
         }
-        if (!editPersonDescriptor.isAnyFieldEdited()) {
+        if (!editEntryDescriptor.isAnyFieldEdited()) {
             throw new ParseException(EditCommand.MESSAGE_NOT_EDITED);
         }
 
-        return new EditCommand(index, editPersonDescriptor);
+        return new EditCommand(index, editEntryDescriptor);
     }
 }
