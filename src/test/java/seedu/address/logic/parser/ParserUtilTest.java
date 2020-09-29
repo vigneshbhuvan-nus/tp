@@ -3,7 +3,7 @@ package seedu.address.logic.parser;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ENTRY;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +12,11 @@ import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
 
 public class ParserUtilTest {
-    private static final String INVALID_NAME = "R@chel";
-    private static final String INVALID_PHONE = "+651234";
-    private static final String INVALID_EMAIL = "example.com";
-    private static final String INVALID_TAG = "#friend";
+    private static final String INVALID_WORD = "R@chel";
+    private static final String INVALID_TRANSLATION = "example.com";
 
-    private static final String VALID_NAME = "Rachel Walker";
-    private static final String VALID_PHONE = "123456";
-    private static final String VALID_EMAIL = "rachel@example.com";
-    private static final String VALID_TAG_1 = "friend";
-    private static final String VALID_TAG_2 = "neighbour";
+    private static final String VALID_WORD = "Rachel Walker";
+    private static final String VALID_TRANSLATION = "rachel@example.com";
 
     private static final String WHITESPACE = " \t\r\n";
 
@@ -39,55 +34,55 @@ public class ParserUtilTest {
     @Test
     public void parseIndex_validInput_success() throws Exception {
         // No whitespaces
-        assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex("1"));
+        assertEquals(INDEX_FIRST_ENTRY, ParserUtil.parseIndex("1"));
 
         // Leading and trailing whitespaces
-        assertEquals(INDEX_FIRST_PERSON, ParserUtil.parseIndex("  1  "));
+        assertEquals(INDEX_FIRST_ENTRY, ParserUtil.parseIndex("  1  "));
     }
 
     @Test
-    public void parseName_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseName((String) null));
+    public void parseWord_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseWord((String) null));
     }
 
     @Test
-    public void parseName_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseName(INVALID_NAME));
+    public void parseWord_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseWord(INVALID_WORD));
     }
 
     @Test
-    public void parseName_validValueWithoutWhitespace_returnsName() throws Exception {
-        Word expectedName = new Word(VALID_NAME);
-        assertEquals(expectedName, ParserUtil.parseName(VALID_NAME));
+    public void parseWord_validValueWithoutWhitespace_returnsWord() throws Exception {
+        Word expectedWord = new Word(VALID_WORD);
+        assertEquals(expectedWord, ParserUtil.parseWord(VALID_WORD));
     }
 
     @Test
-    public void parseName_validValueWithWhitespace_returnsTrimmedName() throws Exception {
-        String nameWithWhitespace = WHITESPACE + VALID_NAME + WHITESPACE;
-        Word expectedName = new Word(VALID_NAME);
-        assertEquals(expectedName, ParserUtil.parseName(nameWithWhitespace));
+    public void parseWord_validValueWithWhitespace_returnsTrimmedWord() throws Exception {
+        String wordWithWhitespace = WHITESPACE + VALID_WORD + WHITESPACE;
+        Word expectedWord = new Word(VALID_WORD);
+        assertEquals(expectedWord, ParserUtil.parseWord(wordWithWhitespace));
     }
 
     @Test
-    public void parseEmail_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseEmail((String) null));
+    public void parseTranslation_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseTranslation((String) null));
     }
 
     @Test
-    public void parseEmail_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseEmail(INVALID_EMAIL));
+    public void parseTranslation_invalidValue_throwsParseException() {
+        assertThrows(ParseException.class, () -> ParserUtil.parseTranslation(INVALID_TRANSLATION));
     }
 
     @Test
-    public void parseEmail_validValueWithoutWhitespace_returnsEmail() throws Exception {
-        Translation expectedEmail = new Translation(VALID_EMAIL);
-        assertEquals(expectedEmail, ParserUtil.parseEmail(VALID_EMAIL));
+    public void parseTranslation_validValueWithoutWhitespace_returnsTranslation() throws Exception {
+        Translation expectedTranslation = new Translation(VALID_TRANSLATION);
+        assertEquals(expectedTranslation, ParserUtil.parseTranslation(VALID_TRANSLATION));
     }
 
     @Test
-    public void parseEmail_validValueWithWhitespace_returnsTrimmedEmail() throws Exception {
-        String emailWithWhitespace = WHITESPACE + VALID_EMAIL + WHITESPACE;
-        Translation expectedEmail = new Translation(VALID_EMAIL);
-        assertEquals(expectedEmail, ParserUtil.parseEmail(emailWithWhitespace));
+    public void parseTranslation_validValueWithWhitespace_returnsTrimmedTranslation() throws Exception {
+        String translationWithWhitespace = WHITESPACE + VALID_TRANSLATION + WHITESPACE;
+        Translation expectedTranslation = new Translation(VALID_TRANSLATION);
+        assertEquals(expectedTranslation, ParserUtil.parseTranslation(translationWithWhitespace));
     }
 }

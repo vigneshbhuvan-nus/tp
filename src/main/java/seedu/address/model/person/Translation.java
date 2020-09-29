@@ -4,11 +4,10 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Entry's email in the address book.
- * Guarantees: immutable; is valid as declared in {@link #isValidEmail(String)}
+ * Represents a Entry's translation in the word bank.
+ * Guarantees: immutable; is valid as declared in {@link #isValidTranslation(String)}
  */
 public class Translation {
-
     private static final String SPECIAL_CHARACTERS = "!#$%&'*+/=?`{|}~^.-";
     public static final String MESSAGE_CONSTRAINTS = "Emails should be of the format local-part@domain "
             + "and adhere to the following constraints:\n"
@@ -27,41 +26,42 @@ public class Translation {
     public static final String VALIDATION_REGEX = LOCAL_PART_REGEX + "@"
             + DOMAIN_FIRST_CHARACTER_REGEX + DOMAIN_MIDDLE_REGEX + DOMAIN_LAST_CHARACTER_REGEX;
 
-    public final String value;
+
+    public final String translation;
 
     /**
      * Constructs an {@code Translation}.
      *
-     * @param email A valid email address.
+     * @param translation A valid translation.
      */
-    public Translation(String email) {
-        requireNonNull(email);
-        checkArgument(isValidEmail(email), MESSAGE_CONSTRAINTS);
-        value = email;
+    public Translation(String translation) {
+        requireNonNull(translation);
+        checkArgument(isValidTranslation(translation), MESSAGE_CONSTRAINTS);
+        this.translation = translation;
     }
 
     /**
-     * Returns if a given string is a valid email.
+     * Returns if a given string is a valid translation.
      */
-    public static boolean isValidEmail(String test) {
+    public static boolean isValidTranslation(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
     @Override
     public String toString() {
-        return value;
+        return translation;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Translation // instanceof handles nulls
-                && value.equals(((Translation) other).value)); // state check
+                && translation.equals(((Translation) other).translation)); // state check
     }
 
     @Override
     public int hashCode() {
-        return value.hashCode();
+        return translation.hashCode();
     }
 
 }

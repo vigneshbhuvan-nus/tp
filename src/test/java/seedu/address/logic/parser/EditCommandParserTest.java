@@ -1,30 +1,30 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TRANSLATION_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_WORD_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.TRANSLATION_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TRANSLATION_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSLATION_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSLATION_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.WORD_DESC_AMY;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_PERSON;
-import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_PERSON;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ENTRY;
+import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ENTRY;
+import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_ENTRY;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
+import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
 import seedu.address.model.person.Translation;
 import seedu.address.model.person.Word;
-import seedu.address.testutil.EditPersonDescriptorBuilder;
+import seedu.address.testutil.EditEntryDescriptorBuilder;
 
 public class EditCommandParserTest {
 
@@ -36,7 +36,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_WORD_AMY, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
@@ -48,10 +48,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + WORD_DESC_AMY, MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + NAME_DESC_AMY, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + WORD_DESC_AMY, MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
@@ -62,21 +62,23 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC, Word.MESSAGE_CONSTRAINTS); // invalid name
-        assertParseFailure(parser, "1" + INVALID_EMAIL_DESC, Translation.MESSAGE_CONSTRAINTS); // invalid email
+        assertParseFailure(parser, "1" + INVALID_WORD_DESC, Word.MESSAGE_CONSTRAINTS); // invalid word
+        assertParseFailure(parser, "1" + INVALID_TRANSLATION_DESC,
+                Translation.MESSAGE_CONSTRAINTS); // invalid translation
 
         // multiple invalid values, but only the first invalid value is captured
-        assertParseFailure(parser, "1" + INVALID_NAME_DESC + INVALID_EMAIL_DESC + VALID_ADDRESS_AMY + VALID_PHONE_AMY,
+        assertParseFailure(parser, "1" + INVALID_WORD_DESC + INVALID_TRANSLATION_DESC
+                        + VALID_ADDRESS_AMY + VALID_PHONE_AMY,
                 Word.MESSAGE_CONSTRAINTS);
     }
 
     @Test
     public void parse_allFieldsSpecified_success() {
-        Index targetIndex = INDEX_SECOND_PERSON;
-        String userInput = targetIndex.getOneBased() + EMAIL_DESC_AMY + NAME_DESC_AMY;
+        Index targetIndex = INDEX_SECOND_ENTRY;
+        String userInput = targetIndex.getOneBased() + TRANSLATION_DESC_AMY + WORD_DESC_AMY;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY)
-                .withEmail(VALID_EMAIL_AMY).build();
+        EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder().withWord(VALID_WORD_AMY)
+                .withTranslation(VALID_TRANSLATION_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -84,11 +86,11 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_someFieldsSpecified_success() {
-        Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + EMAIL_DESC_AMY;
+        Index targetIndex = INDEX_FIRST_ENTRY;
+        String userInput = targetIndex.getOneBased() + TRANSLATION_DESC_AMY;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
-                .withEmail(VALID_EMAIL_AMY).build();
+        EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder()
+                .withTranslation(VALID_TRANSLATION_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -96,28 +98,28 @@ public class EditCommandParserTest {
 
     @Test
     public void parse_oneFieldSpecified_success() {
-        // name
-        Index targetIndex = INDEX_THIRD_PERSON;
-        String userInput = targetIndex.getOneBased() + NAME_DESC_AMY;
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_AMY).build();
+        // word
+        Index targetIndex = INDEX_THIRD_ENTRY;
+        String userInput = targetIndex.getOneBased() + WORD_DESC_AMY;
+        EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder().withWord(VALID_WORD_AMY).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
 
-        // email
-        userInput = targetIndex.getOneBased() + EMAIL_DESC_AMY;
-        descriptor = new EditPersonDescriptorBuilder().withEmail(VALID_EMAIL_AMY).build();
+        // translation
+        userInput = targetIndex.getOneBased() + TRANSLATION_DESC_AMY;
+        descriptor = new EditEntryDescriptorBuilder().withTranslation(VALID_TRANSLATION_AMY).build();
         expectedCommand = new EditCommand(targetIndex, descriptor);
         assertParseSuccess(parser, userInput, expectedCommand);
     }
 
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
-        Index targetIndex = INDEX_FIRST_PERSON;
-        String userInput = targetIndex.getOneBased() + EMAIL_DESC_AMY
-                + EMAIL_DESC_AMY + EMAIL_DESC_BOB;
+        Index targetIndex = INDEX_FIRST_ENTRY;
+        String userInput = targetIndex.getOneBased() + TRANSLATION_DESC_AMY
+                + TRANSLATION_DESC_AMY + TRANSLATION_DESC_BOB;
 
-        EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder()
-                .withEmail(VALID_EMAIL_BOB).build();
+        EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder()
+                .withTranslation(VALID_TRANSLATION_BOB).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
