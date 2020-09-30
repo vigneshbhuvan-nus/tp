@@ -13,7 +13,7 @@ import seedu.address.model.person.Word;
 
 public class ParserUtilTest {
     private static final String INVALID_WORD = "R@chel";
-    private static final String INVALID_TRANSLATION = "example.com";
+    private static final String INVALID_TRANSLATION = "      ";
 
     private static final String VALID_WORD = "Rachel Walker";
     private static final String VALID_TRANSLATION = "rachel@example.com";

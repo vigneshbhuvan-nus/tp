@@ -28,25 +28,6 @@ public class TranslationTest {
         assertFalse(Translation.isValidTranslation("")); // empty string
         assertFalse(Translation.isValidTranslation(" ")); // spaces only
 
-        // missing parts
-        assertFalse(Translation.isValidTranslation("@example.com")); // missing local part
-        assertFalse(Translation.isValidTranslation("peterjackexample.com")); // missing '@' symbol
-        assertFalse(Translation.isValidTranslation("peterjack@")); // missing domain name
-        // invalid parts
-        assertFalse(Translation.isValidTranslation("peterjack@-")); // invalid domain name
-        assertFalse(Translation.isValidTranslation("peterjack@exam_ple.com")); // underscore in domain name
-        assertFalse(Translation.isValidTranslation("peter jack@example.com")); // spaces in local part
-        assertFalse(Translation.isValidTranslation("peterjack@exam ple.com")); // spaces in domain name
-        assertFalse(Translation.isValidTranslation(" peterjack@example.com")); // leading space
-        assertFalse(Translation.isValidTranslation("peterjack@example.com ")); // trailing space
-        assertFalse(Translation.isValidTranslation("peterjack@@example.com")); // double '@' symbol
-        assertFalse(Translation.isValidTranslation("peter@jack@example.com")); // '@' symbol in local part
-        assertFalse(Translation.isValidTranslation("peterjack@example@com")); // '@' symbol in domain name
-        assertFalse(Translation.isValidTranslation("peterjack@.example.com")); // domain name starts with a period
-        assertFalse(Translation.isValidTranslation("peterjack@example.com.")); // domain name ends with a period
-        assertFalse(Translation.isValidTranslation("peterjack@-example.com")); // domain name starts with a hyphen
-        assertFalse(Translation.isValidTranslation("peterjack@example.com-")); // domain name ends with a hyphen
-
         // valid translation
         assertTrue(Translation.isValidTranslation("PeterJack_1190@example.com"));
         assertTrue(Translation.isValidTranslation("a@bc")); // minimal

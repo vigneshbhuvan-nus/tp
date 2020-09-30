@@ -1,9 +1,9 @@
 {
   "entries": [ {
-    "word": "Valid Person",
+    "word": "Valid Entry",
     "translation": "hans@example.com"
   }, {
-    "word": "Person With Invalid Phone Field",
+    "word": "Entry with invalid name field!",
     "translation": "hans@example.com"
   } ]
 }
