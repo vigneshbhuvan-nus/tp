@@ -13,7 +13,7 @@ import seedu.address.model.person.Word;
 
 public class JsonAdaptedEntryTest {
     private static final String INVALID_WORD = "R@chel";
-    private static final String INVALID_TRANSLATION = "example.com";
+    private static final String INVALID_TRANSLATION = "      ";
 
     private static final String VALID_WORD = BENSON.getWord().toString();
     private static final String VALID_TRANSLATION = BENSON.getTranslation().toString();
