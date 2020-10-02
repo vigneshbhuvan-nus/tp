@@ -17,8 +17,8 @@ import seedu.address.model.entry.Entry;
  */
 public class TypicalEntries {
 
-    public static final Entry ALICE = new EntryBuilder().withWord("Alice Pauline")
-            .withTranslation("alice@example.com").build();
+    public static final Entry ALICE = new EntryBuilder().withWord("Time")
+            .withTranslation("時間").build();
     public static final Entry BENSON = new EntryBuilder().withWord("Benson Meier")
             .withTranslation("johnd@example.com").build();
     public static final Entry CARL = new EntryBuilder().withWord("Carl Kurz")
