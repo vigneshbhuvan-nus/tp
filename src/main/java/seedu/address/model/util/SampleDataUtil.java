@@ -10,7 +10,7 @@ import seedu.address.model.person.Word;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
-    public static Entry[] getSamplePersons() {
+    public static Entry[] getSampleEntries() {
         return new Entry[] {
             new Entry(new Word("Alex Yeoh"), new Translation("alexyeoh@example.com")),
             new Entry(new Word("Bernice Yu"), new Translation("berniceyu@example.com")),
@@ -23,8 +23,8 @@ public class SampleDataUtil {
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
-        for (Entry samplePerson : getSamplePersons()) {
-            sampleAb.addPerson(samplePerson);
+        for (Entry sampleEntry : getSampleEntries()) {
+            sampleAb.addEntry(sampleEntry);
         }
         return sampleAb;
     }

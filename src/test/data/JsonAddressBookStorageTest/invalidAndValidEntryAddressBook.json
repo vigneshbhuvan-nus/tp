@@ -1,0 +1,9 @@
+{
+  "entries": [ {
+    "word": "Valid Entry",
+    "translation": "hans@example.com"
+  }, {
+    "word": "Entry with invalid name field!",
+    "translation": "hans@example.com"
+  } ]
+}
