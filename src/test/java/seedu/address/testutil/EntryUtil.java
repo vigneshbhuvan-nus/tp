@@ -5,7 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
 
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
-import seedu.address.model.person.Entry;
+import seedu.address.model.entry.Entry;
 
 /**
  * A utility class for Entry.

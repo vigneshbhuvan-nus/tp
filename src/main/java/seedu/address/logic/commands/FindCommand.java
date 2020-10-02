@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.model.Model;
-import seedu.address.model.person.WordContainsKeywordsPredicate;
+import seedu.address.model.entry.WordContainsKeywordsPredicate;
 
 /**
  * Finds and lists all entries in word bank whose word contains any of the argument keywords.

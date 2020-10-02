@@ -6,25 +6,25 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
 
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.person.Entry;
+import seedu.address.model.entry.Entry;
 
 /**
- * Adds an entry to the address book.
+ * Adds an entry to the word bank.
  */
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a entry to the address book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a entry to the word bank. "
             + "Parameters: "
             + PREFIX_WORD + "WORD "
             + PREFIX_TRANSLATION + "TRANSLATION "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_WORD + "John Doe "
-            + PREFIX_TRANSLATION + "johnd@example.com ";
+            + PREFIX_WORD + "Fruits "
+            + PREFIX_TRANSLATION + "果物";
 
     public static final String MESSAGE_SUCCESS = "New entry added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the word bank";
 
     private final Entry toAdd;
 
