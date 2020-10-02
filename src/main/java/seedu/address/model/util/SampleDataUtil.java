@@ -2,9 +2,9 @@ package seedu.address.model.util;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.person.Entry;
-import seedu.address.model.person.Translation;
-import seedu.address.model.person.Word;
+import seedu.address.model.entry.Entry;
+import seedu.address.model.entry.Translation;
+import seedu.address.model.entry.Word;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.

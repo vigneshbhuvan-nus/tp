@@ -1,8 +1,8 @@
 {
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
   "entries" : [ {
-    "word" : "Alice Pauline",
-    "translation" : "alice@example.com"
+    "word" : "Time",
+    "translation" : "時間"
   }, {
     "word" : "Benson Meier",
     "translation" : "johnd@example.com"

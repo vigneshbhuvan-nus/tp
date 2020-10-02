@@ -22,8 +22,8 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
-import seedu.address.model.person.Translation;
-import seedu.address.model.person.Word;
+import seedu.address.model.entry.Translation;
+import seedu.address.model.entry.Word;
 import seedu.address.testutil.EditEntryDescriptorBuilder;
 
 public class EditCommandParserTest {
