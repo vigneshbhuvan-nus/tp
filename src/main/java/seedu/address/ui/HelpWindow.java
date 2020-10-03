@@ -5,6 +5,8 @@ import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
@@ -15,8 +17,31 @@ import seedu.address.commons.core.LogsCenter;
  */
 public class HelpWindow extends UiPart<Stage> {
 
-    public static final String USERGUIDE_URL = "https://se-education.org/addressbook-level3/UserGuide.html";
-    public static final String HELP_MESSAGE = "Refer to the user guide: " + USERGUIDE_URL;
+    public static final String USERGUIDE_URL = "https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md\n\n";
+
+    public static final String ADD_COMMAND = "Adding a new entry: add\n" +
+                                              "Format: add <STRING IN ENGLISH> | <STRING IN JAPANESE>\n\n";
+
+    public static final String LIST_COMMAND = "Listing all entries: list\n" +
+                                              "Format: list\n\n";
+
+    public static final String EDIT_COMMAND = "Editing an entry: edit\n" +
+                                               "Format: edit <INDEX> [e/<STRING IN ENGLISH>] [f/<STRING IN JAPANESE>]\n\n";
+
+    public static final String DELETE_COMMAND = "Deleting an entry: delete\n" +
+                                                  "Format: edit <INDEX>\n\n";
+
+    public static final String CLEAR_COMMAND = "Clearing all entries: clear\n" +
+                                                    "Format: clear\n\n";
+
+    public static final String EXIT_COMMAND = "Exiting the program: exit\n" +
+                                                "Format: exit\n\n";
+
+
+    public static final String COMMAND_LIST = ADD_COMMAND  + LIST_COMMAND + EDIT_COMMAND
+                                                + DELETE_COMMAND + CLEAR_COMMAND + EXIT_COMMAND;
+
+    public static final String HELP_MESSAGE = "Please refer to the user guide for more information: " + USERGUIDE_URL + COMMAND_LIST;
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
     private static final String FXML = "HelpWindow.fxml";
@@ -35,6 +60,7 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
+        helpMessage.setFont(new Font("Arial", 16));
     }
 
     /**
