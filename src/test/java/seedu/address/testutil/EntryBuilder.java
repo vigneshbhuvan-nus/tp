@@ -1,8 +1,8 @@
 package seedu.address.testutil;
 
-import seedu.address.model.person.Entry;
-import seedu.address.model.person.Translation;
-import seedu.address.model.person.Word;
+import seedu.address.model.entry.Entry;
+import seedu.address.model.entry.Translation;
+import seedu.address.model.entry.Word;
 
 /**
  * A utility class to help with building Entry objects.

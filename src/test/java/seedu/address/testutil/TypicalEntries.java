@@ -10,15 +10,15 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.AddressBook;
-import seedu.address.model.person.Entry;
+import seedu.address.model.entry.Entry;
 
 /**
  * A utility class containing a list of {@code Entry} objects to be used in tests.
  */
 public class TypicalEntries {
 
-    public static final Entry ALICE = new EntryBuilder().withWord("Alice Pauline")
-            .withTranslation("alice@example.com").build();
+    public static final Entry ALICE = new EntryBuilder().withWord("Time")
+            .withTranslation("時間").build();
     public static final Entry BENSON = new EntryBuilder().withWord("Benson Meier")
             .withTranslation("johnd@example.com").build();
     public static final Entry CARL = new EntryBuilder().withWord("Carl Kurz")
