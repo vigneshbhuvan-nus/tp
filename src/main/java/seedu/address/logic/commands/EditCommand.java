@@ -24,14 +24,19 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the person identified "
-            + "by the index number used in the displayed person list. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the entry identified "
+            + "by the index number used in the displayed entry list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_WORD + "NAME] "
-            + "[" + PREFIX_TRANSLATION + "EMAIL] "
+            + "[" + PREFIX_WORD + "Entry] "
+            + "[" + PREFIX_TRANSLATION + "Translation]\n"
             + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_TRANSLATION + "johndoe@example.com";
+            + PREFIX_WORD + "hello "
+            + PREFIX_TRANSLATION + "こんにちは\n"
+            + "OR " + COMMAND_WORD + " 1 "
+            + PREFIX_WORD + "hello\n"
+            + "OR " + COMMAND_WORD + " 1 "
+            + PREFIX_TRANSLATION + "こんにちは";
 
     public static final String MESSAGE_EDIT_ENTRY_SUCCESS = "Edited Entry: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
