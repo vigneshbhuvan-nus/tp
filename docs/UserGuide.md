@@ -1,16 +1,16 @@
 # User Guide
 Team Name: AY2021S1-CS2103T-T09-4
 
-GrrenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps. In this UG, we will be assuming that you are practising Japanese (Hiragana).
+GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you like to use a FlashCard system to learn new languages, this app would be perfect for you. In this User Guide (UG), you will learn about the various commands and actions that would allow you to use GreenTea seamlessly.
 
 - Table of Contents
-  - [Viewing help: help](#viewing-help-help)
-  - [Adding a new entry: add](#adding-a-new-entry-add)
-  - [Listing all entries: list](#listing-all-entries-list)
-  - [Editing an entry: edit](#editing-an-entry-edit)
-  - [Deleting an entry: delete](#deleting-an-entry-delete)
-  - [Clearing all entries: clear](#clearing-all-entries-clear)
-  - [Exiting the program: exit](#exiting-the-program-exit)
+  - [Viewing Help: help](#viewing-help-help)
+  - [Adding a New Entry: add](#adding-a-new-entry-add)
+  - [Listing All Entries: list](#listing-all-entries-list)
+  - [Editing an Entry: edit](#editing-an-entry-edit)
+  - [Deleting an Entry: delete](#deleting-an-entry-delete)
+  - [Clearing All Entries: clear](#clearing-all-entries-clear)
+  - [Exiting the Program: exit](#exiting-the-program-exit)
   - [Saving the data](#saving-the-data)
   - [FAQ (WIP)](#faq-wip)
   - [Command summary](#command-summary)
@@ -18,65 +18,63 @@ GrrenTea is a **desktop app for learning a new language, optimized for use via a
 
 ### Viewing help: `help`
 
-Shows a message explaining how to access the help page.
-
+Shows a cheat-sheet of commands in addition to a link of this UG.
 
 Format: `help`
 
 ### Adding a new entry: `add`
 
-Format: `add <STRING IN ENGLISH> | <STRING IN JAPANESE>`
-
 Adds a new entry to the word bank.
+
+Format: `add w/<WORD> t/<TRANSLATION>`
 
 Examples:
 
-- `add Hello | おはようございます`
-- `add Why aren’t they here yet? | どうして彼らはまだここにいないの`
+- `add w/Fruits t/果物`
+- `add w/Why aren’t they here yet? t/どうして彼らはまだここにいないの`
 
 ### Listing all entries: `list`
 
-Format: `list`
+Lists all entries in the word bank with their respective index.
 
-Lists all entries in the word bank with their respective indexes.
+Format: `list`
 
 ### Editing an entry: `edit`
 
-Format: `edit <INDEX> [e/<STRING IN ENGLISH>] [f/<STRING IN JAPANESE>]`
+Edits an entry whose index is `<INDEX>`, replacing the original word with `<WORD>` and its translation with `<TRANSLATION>`.
+You may provide either `<WORD>` or `<TRANSLATION>`, or both and only the one(s) provided will replace the original(s).
 
-Edits the entry whose index is `INDEX`, replacing its original English string with `<STRING IN ENGLISH>` and its original Japanese string with `<STRING IN JAPANESE>`. Note that you may provide either `<STRING IN ENGLISH>` or `<STRING IN JAPANESE>`, or both and only the one(s) provided will replace the original(s).
+Format: `edit <INDEX> w/<WORD> t/<TRANSLATION>` OR `edit <INDEX> w/<WORD>` OR `edit <INDEX> t/<TRANSLATION>`
 
-**Note:** to get the indexes of the entries, you may run `list` - the index of each entry is shown beside its respective entry in the output of running the `list` command.
+**Note:** to get the index of an entry, you may run `list` - the index would be shown beside its respective entry
 
 Examples:
 
-- `edit 1 [e/Cup]` edits the English string to `Cup` of `entry#1`.
-- `edit 2 [e/Book] [f/ほん]` edits the English string to `Book` and the Japanese string to `ほん` of `entry#2`.
+- `edit 1 w/hello` edits the word in  `entry#1` to `hello`.
+- `edit 1 t/こんにちは` edits the translation in  `entry#1` to `こんにちは`
+- `edit 1 w/hello t/こんにちは` edits the word and translation in  `entry#1` to `hello` and `こんにちは` respectively.
 
 ### Deleting an entry: `delete`
 
-Format: `edit <INDEX>`
-
 Delete the entry whose index is `INDEX`.
 
-**Note:** to get the indexes of the entries, you may run `list` - the index of each entry is shown beside its respective entry in the output of running the `list` command.
+Format: `delete <INDEX>`
 
-Examples:
 
-- `edit 1 [e/Cup]` edits the English string to `Cup` of `entry#1`.
-- `edit 2 [e/Book] [f/ほん]` edits the English string to `Book` and the Japanese string to `ほん` of `entry#2`.
+
+**Note:** to get the index of an entry, you may run `list` - the index would be shown beside its respective entry
 
 ### Clearing all entries: `clear`
 
-Format: `clear`
+Clears all entries from the word bank.
 
-Deletes all entries from the word bank.
+Format: `clear`
 
 ### Exiting the program: `exit`
 
-Format: `exit`
-
 Exits the program.
+
+Format: `exit`
 
 ### Saving the data
 
@@ -95,9 +93,15 @@ Entries ares saved in the hard disk automatically after any command that changes
 
 | Action     | Format, Examples                                                                                                      |
 | ---------- | --------------------------------------------------------------------------------------------------------------------- |
-| **Add**    | `add <STRING IN ENGLISH> | <STRING IN JAPANESE>` <br> e.g., `add Hello | おはようございます`                          |
-| **Clear**  | `clear`                                                                                                               |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                                   |
-| **Edit**   | `edit <INDEX> [e/<STRING IN ENGLISH>] [f/<STRING IN JAPANESE>]`<br> e.g.,`edit 1 [e/Cup]`, `edit 2 [e/Book] [f/ほん]` |
-| **List**   | `list`                                                                                                                |
 | **Help**   | `help`                                                                                                                |
+| **Add**    | `add w/<WORD> t/<TRANSLATION>` e.g. `add w/Hello t/hola`                                                              |
+| **List**   | `list`                                                                                                                |
+| **Edit**   | `edit <INDEX> w/<WORD> t/<TRANSLATION>` OR `edit <INDEX> w/<WORD>` OR `edit <INDEX> t/<TRANSLATION>`                  |
+|            |   e.g. `edit 1 w/hello t/こんにちは` OR `edit 1 w/hello` OR `edit 1 t/こんにちは`                                       |
+| **Delete** | `delete <INDEX>` e.g. `delete 3`                                                                                      |
+| **Clear**  | `clear`                                                                                                               |
+| **Exit**   | `exit`                                                                                                                |
+
+
+
+
