@@ -6,11 +6,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
 
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.AddCommand;
+import seedu.address.logic.commands.entry.AddCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.Translation;
-import seedu.address.model.entry.Word;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.Word;
 
 /**
  * Parses input arguments and creates a new AddCommand object

@@ -13,18 +13,18 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
+import seedu.address.logic.commands.entry.AddCommand;
+import seedu.address.logic.commands.entry.ClearCommand;
+import seedu.address.logic.commands.entry.DeleteCommand;
+import seedu.address.logic.commands.entry.EditCommand;
+import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
+import seedu.address.logic.commands.entry.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.entry.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.WordContainsKeywordsPredicate;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.WordContainsKeywordsPredicate;
 import seedu.address.testutil.EditEntryDescriptorBuilder;
 import seedu.address.testutil.EntryBuilder;
 import seedu.address.testutil.EntryUtil;

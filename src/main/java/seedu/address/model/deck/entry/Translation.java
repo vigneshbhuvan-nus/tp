@@ -1,4 +1,4 @@
-package seedu.address.model.entry;
+package seedu.address.model.deck.entry;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
@@ -8,7 +8,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
  * Guarantees: immutable; is valid as declared in {@link #isValidTranslation(String)}
  */
 public class Translation {
-    public static final String MESSAGE_CONSTRAINTS = "None";
+    public static final String MESSAGE_CONSTRAINTS = "Translation cannot be blank";
 
     public static final String VALIDATION_REGEX = "^(?!\\s*$).+";
 

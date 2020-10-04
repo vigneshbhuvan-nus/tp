@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.exceptions.DuplicateEntryException;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.exceptions.DuplicateEntryException;
 import seedu.address.testutil.EntryBuilder;
 
 public class AddressBookTest {

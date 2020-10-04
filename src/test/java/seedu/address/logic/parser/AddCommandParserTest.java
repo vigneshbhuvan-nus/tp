@@ -20,10 +20,10 @@ import static seedu.address.testutil.TypicalEntries.BOB;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.Translation;
-import seedu.address.model.entry.Word;
+import seedu.address.logic.commands.entry.AddCommand;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.Word;
 import seedu.address.testutil.EntryBuilder;
 
 public class AddCommandParserTest {

@@ -1,12 +1,14 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.entry;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSLATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
 
+import seedu.address.logic.commands.Command;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.entry.Entry;
+import seedu.address.model.deck.entry.Entry;
 
 /**
  * Adds an entry to the word bank.

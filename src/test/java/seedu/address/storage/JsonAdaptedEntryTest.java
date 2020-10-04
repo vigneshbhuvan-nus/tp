@@ -8,8 +8,8 @@ import static seedu.address.testutil.TypicalEntries.BENSON;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.entry.Translation;
-import seedu.address.model.entry.Word;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.Word;
 
 public class JsonAdaptedEntryTest {
     private static final String INVALID_WORD = "R@chel";

@@ -1,4 +1,4 @@
-package seedu.address.model.entry;
+package seedu.address.model.deck.entry;
 
 import java.util.List;
 import java.util.function.Predicate;
