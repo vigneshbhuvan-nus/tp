@@ -220,7 +220,7 @@ all translations together in the same list. This means that the user could have 
 for different languages or even multiple decks for the same languages. 
 
 
-_{Feature will be added in v1.2}_
+_{Feature will be added in v1.3}_
 
 ### \[Proposed\] Flashcard System
 
@@ -228,7 +228,7 @@ The flashcard system would allow the user to choose to practice in whichever dec
 he wishes.
 
 The methodology behind GreenTea's flashcard system will be based on the Leitner System (https://en.wikipedia.org/wiki/Leitner_system)
-To put it simply, it is a proven quizzing system that increases the user's rate of learning by 
+The Letiner system is a proven quizzing system that increases the user's rate of learning by 
 using spaced repetition. In the Leitner system, flashcards are sorted based on the user's ability to answer them. Correctly 
 answered flashcards are put at the end of the question queue and incorrectly answered 
 flashcards are placed at the front. 
