@@ -213,9 +213,45 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
 
-_{Explain here how the data archiving feature will be implemented}_
+### \[Proposed\] Deck System
+This feature would allow the user to create multiple lists of entries rather than having 
+all translations together in the same list. This means that the user could have different decks
+for different languages or even multiple decks for the same languages. 
+
+
+_{Feature will be added in v1.2}_
+
+### \[Proposed\] Flashcard System
+
+The flashcard system would allow the user to choose to practice in whichever deck
+he wishes.
+
+The methodology behind GreenTea's flashcard system will be based on the Leitner System (https://en.wikipedia.org/wiki/Leitner_system)
+To put it simply, it is a proven quizzing system that increases the user's rate of learning by 
+using spaced repetition. In the Leitner system, flashcards are sorted based on the user's ability to answer them. Correctly 
+answered flashcards are put at the end of the question queue and incorrectly answered 
+flashcards are placed at the front. 
+
+_{Feature will be added in v1.3}_
+
+
+### \[Proposed\] Data Analysis
+Some of the proposed parameters tracked by GreenTea include:
+1. Number of correctly answered flashcards
+2. Previous scores
+3. Average time taken in total
+4. Time of quiz
+
+From these data, GreenTea would be able to derive some meaningful analytics to 
+display to the user. These include:
+1. Progression since last attempt
+2. Length of time between quizzes
+3. Most forgotten phrase/translation 
+4. Language mastery 
+
+_{Feature will be added in v1.3}_
+
 
 
 --------------------------------------------------------------------------------------------------------------------
