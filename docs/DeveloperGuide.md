@@ -219,6 +219,10 @@ This feature would allow the user to create multiple lists of entries rather tha
 all translations together in the same list. This means that the user could have different decks
 for different languages or even multiple decks for the same languages. 
 
+e.g. 
+1. Deck 1: Japanese
+2. Deck 2: Spanish Food
+3. Deck 3: Spanish Animals
 
 _{Feature will be added in v1.3}_
 
@@ -249,6 +253,7 @@ display to the user. These include:
 2. Length of time between quizzes
 3. Most forgotten phrase/translation 
 4. Language mastery 
+5. Progress in each deck
 
 _{Feature will be added in v1.3}_
 
