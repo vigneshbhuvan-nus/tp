@@ -21,6 +21,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.testutil.EntryBuilder;
 
@@ -146,6 +147,31 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredEntryList(Predicate<Entry> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasDeck(Deck deck) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void removeDeck(Deck target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addDeck(Deck deck) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Deck> getFilteredDeckList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredDeckList(Predicate<Deck> predicate) {
             throw new AssertionError("This method should not be called.");
         }
     }

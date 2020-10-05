@@ -13,14 +13,14 @@ import java.util.stream.Collectors;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.logic.commands.ExitCommand;
+import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.entry.AddCommand;
 import seedu.address.logic.commands.entry.ClearCommand;
 import seedu.address.logic.commands.entry.DeleteCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
-import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.entry.FindCommand;
-import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.entry.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.deck.entry.Entry;
