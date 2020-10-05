@@ -54,16 +54,9 @@ public class Deck {
      */
     @Override
     public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-
-        if (!(other instanceof Deck)) {
-            return false;
-        }
-
-        Deck otherDeck = (Deck) other;
-        return otherDeck.getDeckName().equals(getDeckName());
+        return other == this // short circuit if same object
+                || (other instanceof Deck // instanceof handles nulls
+                && getDeckName().equals(((Deck) other).getDeckName())); // state check
     }
 
     @Override
