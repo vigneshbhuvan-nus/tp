@@ -5,6 +5,8 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.Word;
 
@@ -56,5 +58,20 @@ public class ParserUtil {
             throw new ParseException(Translation.MESSAGE_CONSTRAINTS);
         }
         return new Translation(trimmedTranslation);
+    }
+
+    /**
+     * Parses a {@code String name} into an {@code DeckName}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code name} is invalid.
+     */
+    public static DeckName parseDeckName(String name) throws ParseException {
+        requireNonNull(name);
+        String trimmedName = name.trim();
+        if (!DeckName.isValidName(trimmedName)) {
+            throw new ParseException(DeckName.MESSAGE_CONSTRAINTS);
+        }
+        return new DeckName(trimmedName);
     }
 }

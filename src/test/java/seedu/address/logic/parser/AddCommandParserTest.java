@@ -21,6 +21,7 @@ import static seedu.address.testutil.TypicalEntries.BOB;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.entry.AddCommand;
+import seedu.address.logic.parser.entry.AddCommandParser;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.Word;
