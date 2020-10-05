@@ -122,6 +122,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void removeDeck(Deck target) {
+        addressBook.removeDeck(target);
+    }
+
+
+    @Override
     public void addDeck(Deck deck) {
         addressBook.addDeck(deck);
         updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
@@ -142,6 +148,15 @@ public class ModelManager implements Model {
     public void updateFilteredEntryList(Predicate<Entry> predicate) {
         requireNonNull(predicate);
         filteredEntries.setPredicate(predicate);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Deck} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Deck> getFilteredDeckList() {
+        return filteredDecks;
     }
 
     @Override

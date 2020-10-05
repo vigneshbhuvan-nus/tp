@@ -95,10 +95,19 @@ public interface Model {
     boolean hasDeck(Deck deck);
 
     /**
+     * Removes the given deck.
+     * The deck must exist in the word bank.
+     */
+    void removeDeck(Deck target);
+
+    /**
      * Adds the given deck.
      * {@code deck} must not already exist in the word bank.
      */
     void addDeck(Deck deck);
+
+    /** Returns an unmodifiable view of the filtered deck list */
+    ObservableList<Deck> getFilteredDeckList();
 
     /**
      * Updates the filter of the filtered deck list to filter by the given {@code predicate}.

@@ -108,6 +108,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the word bank.
+     */
+    public void removeDeck(Deck key) {
+        decks.remove(key);
+    }
+
+    /**
      * Adds a deck to the word bank.
      * The deck must not already exist in the word bank.
      */
