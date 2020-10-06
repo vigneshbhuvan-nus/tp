@@ -11,7 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.entry.Entry;
+import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.entry.Entry;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -22,6 +23,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private final FilteredList<Entry> filteredEntries;
+    private final FilteredList<Deck> filteredDecks;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -35,6 +37,7 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         filteredEntries = new FilteredList<>(this.addressBook.getEntryList());
+        filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
     }
 
     public ModelManager() {
@@ -76,7 +79,7 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== Word Bank ================================================================================
 
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
@@ -112,6 +115,24 @@ public class ModelManager implements Model {
         addressBook.setEntry(target, editedEntry);
     }
 
+    @Override
+    public boolean hasDeck(Deck deck) {
+        requireNonNull(deck);
+        return addressBook.hasDeck(deck);
+    }
+
+    @Override
+    public void removeDeck(Deck target) {
+        addressBook.removeDeck(target);
+    }
+
+
+    @Override
+    public void addDeck(Deck deck) {
+        addressBook.addDeck(deck);
+        updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
+    }
+
     //=========== Filtered Entry List Accessors =============================================================
 
     /**
@@ -127,6 +148,21 @@ public class ModelManager implements Model {
     public void updateFilteredEntryList(Predicate<Entry> predicate) {
         requireNonNull(predicate);
         filteredEntries.setPredicate(predicate);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Deck} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Deck> getFilteredDeckList() {
+        return filteredDecks;
+    }
+
+    @Override
+    public void updateFilteredDeckList(Predicate<Deck> predicate) {
+        requireNonNull(predicate);
+        filteredDecks.setPredicate(predicate);
     }
 
     @Override

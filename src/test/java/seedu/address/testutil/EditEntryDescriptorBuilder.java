@@ -1,9 +1,9 @@
 package seedu.address.testutil;
 
-import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
-import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.Translation;
-import seedu.address.model.entry.Word;
+import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.Word;
 
 /**
  * A utility class to help with building EditEntryDescriptor objects.

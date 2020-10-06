@@ -9,7 +9,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_BOB;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
+import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
 import seedu.address.testutil.EditEntryDescriptorBuilder;
 
 public class EditEntryDescriptorTest {

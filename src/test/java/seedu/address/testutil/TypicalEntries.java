@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.AddressBook;
-import seedu.address.model.entry.Entry;
+import seedu.address.model.deck.entry.Entry;
 
 /**
  * A utility class containing a list of {@code Entry} objects to be used in tests.

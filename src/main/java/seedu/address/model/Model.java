@@ -5,7 +5,8 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.entry.Entry;
+import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.entry.Entry;
 
 /**
  * The API of the Model component.
@@ -13,6 +14,9 @@ import seedu.address.model.entry.Entry;
 public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Entry> PREDICATE_SHOW_ALL_ENTRIES = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Deck> PREDICATE_SHOW_ALL_DECKS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -84,4 +88,30 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredEntryList(Predicate<Entry> predicate);
+
+    /**
+     * Returns true if a deck with the same identity as {@code deck} exists in the word bank.
+     */
+    boolean hasDeck(Deck deck);
+
+    /**
+     * Removes the given deck.
+     * The deck must exist in the word bank.
+     */
+    void removeDeck(Deck target);
+
+    /**
+     * Adds the given deck.
+     * {@code deck} must not already exist in the word bank.
+     */
+    void addDeck(Deck deck);
+
+    /** Returns an unmodifiable view of the filtered deck list */
+    ObservableList<Deck> getFilteredDeckList();
+
+    /**
+     * Updates the filter of the filtered deck list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredDeckList(Predicate<Deck> predicate);
 }

@@ -1,4 +1,4 @@
-package seedu.address.model.entry;
+package seedu.address.model.deck.entry;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 

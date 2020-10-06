@@ -1,4 +1,4 @@
-package seedu.address.model.entry.exceptions;
+package seedu.address.model.deck.exceptions;
 
 /**
  * Signals that the operation will result in duplicate Entries (Entries are considered duplicates if they have the same
