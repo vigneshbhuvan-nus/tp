@@ -74,7 +74,8 @@ The `UI` component,
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
 
-MainWindow.fxml - Houses the rest of the fxml in Stackpane
+MainWindow.fxml - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox
+                - also contains the code for the actual menu bar
 
 CommandBox.fxml - Stackpane where the user writes input
 
@@ -82,7 +83,7 @@ EntryListPanel.fxml -  Houses a ListView<Entry>
 
 EntryListCard.fxml- (not housed by Mainwindow.fxml) contains the data from each entry
 
-HelpWindow.fxml - Help menu item (not a stack pane) used to display the help menu
+HelpWindow.fxml - Only displays label and copy url button
 
 ResultDisplay.fxml - Prints results to user 
 
