@@ -20,10 +20,11 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_THIRD_ENTRY;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.EditCommand;
-import seedu.address.logic.commands.EditCommand.EditEntryDescriptor;
-import seedu.address.model.entry.Translation;
-import seedu.address.model.entry.Word;
+import seedu.address.logic.commands.entry.EditCommand;
+import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
+import seedu.address.logic.parser.entry.EditCommandParser;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.Word;
 import seedu.address.testutil.EditEntryDescriptorBuilder;
 
 public class EditCommandParserTest {

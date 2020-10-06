@@ -1,4 +1,4 @@
-package seedu.address.model.entry;
+package seedu.address.model.deck;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,6 +9,7 @@ import static seedu.address.testutil.TypicalEntries.BOB;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.deck.entry.Entry;
 import seedu.address.testutil.EntryBuilder;
 
 public class EntryTest {

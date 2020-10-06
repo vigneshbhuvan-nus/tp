@@ -1,4 +1,4 @@
-package seedu.address.model.entry;
+package seedu.address.model.deck.entry;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
@@ -8,8 +8,8 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.entry.exceptions.DuplicateEntryException;
-import seedu.address.model.entry.exceptions.EntryNotFoundException;
+import seedu.address.model.deck.exceptions.DuplicateEntryException;
+import seedu.address.model.deck.exceptions.EntryNotFoundException;
 
 /**
  * A list of entries that enforces uniqueness between its elements and does not allow nulls.

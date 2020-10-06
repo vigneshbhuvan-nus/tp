@@ -5,8 +5,10 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.entry.Entry;
-import seedu.address.model.entry.UniqueEntryList;
+import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.UniqueDeckList;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.UniqueEntryList;
 
 /**
  * Wraps all data at the address-book level
@@ -15,6 +17,7 @@ import seedu.address.model.entry.UniqueEntryList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniqueEntryList entries;
+    private final UniqueDeckList decks;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,6 +28,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         entries = new UniqueEntryList();
+        decks = new UniqueDeckList();
     }
 
     public AddressBook() {}
@@ -93,6 +97,32 @@ public class AddressBook implements ReadOnlyAddressBook {
         entries.remove(key);
     }
 
+    //// deck-level operations
+
+    /**
+     * Returns true if a deck with the same identity as {@code deck} exists in the word bank.
+     */
+    public boolean hasDeck(Deck deck) {
+        requireNonNull(deck);
+        return decks.contains(deck);
+    }
+
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the word bank.
+     */
+    public void removeDeck(Deck key) {
+        decks.remove(key);
+    }
+
+    /**
+     * Adds a deck to the word bank.
+     * The deck must not already exist in the word bank.
+     */
+    public void addDeck(Deck deck) {
+        decks.add(deck);
+    }
+
     //// util methods
 
     @Override
@@ -104,6 +134,11 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public ObservableList<Entry> getEntryList() {
         return entries.asUnmodifiableObservableList();
+    }
+
+    @Override
+    public ObservableList<Deck> getDeckList() {
+        return decks.asUnmodifiableObservableList();
     }
 
     @Override

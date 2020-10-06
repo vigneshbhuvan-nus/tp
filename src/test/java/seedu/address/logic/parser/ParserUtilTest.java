@@ -8,8 +8,8 @@ import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ENTRY;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.entry.Translation;
-import seedu.address.model.entry.Word;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.Word;
 
 public class ParserUtilTest {
     private static final String INVALID_WORD = "R@chel";
