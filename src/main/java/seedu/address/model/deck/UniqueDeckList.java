@@ -10,7 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.deck.exceptions.DeckNotFoundException;
 import seedu.address.model.deck.exceptions.DuplicateDeckException;
-import seedu.address.model.deck.exceptions.DuplicateEntryException;
 
 public class UniqueDeckList implements Iterable<Deck> {
 
@@ -52,7 +51,7 @@ public class UniqueDeckList implements Iterable<Deck> {
         }
 
         if (!target.isSameDeck(editedDeck) && contains(editedDeck)) {
-            throw new DuplicateEntryException();
+            throw new DuplicateDeckException();
         }
 
         internalList.set(index, editedDeck);
@@ -81,7 +80,7 @@ public class UniqueDeckList implements Iterable<Deck> {
     public void setDecks(List<Deck> decks) {
         requireAllNonNull(decks);
         if (!decksAreUnique(decks)) {
-            throw new DuplicateEntryException();
+            throw new DuplicateDeckException();
         }
 
         internalList.setAll(decks);

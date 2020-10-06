@@ -68,7 +68,7 @@ public class ParserUtil {
     public static DeckName parseDeckName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
-        if (!DeckName.isValidName(trimmedName)) {
+        if (!DeckName.isValidDeckName(trimmedName)) {
             throw new ParseException(DeckName.MESSAGE_CONSTRAINTS);
         }
         return new DeckName(trimmedName);

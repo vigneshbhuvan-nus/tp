@@ -12,7 +12,7 @@ import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.Word;
 
 public class JsonAdaptedEntryTest {
-    private static final String INVALID_WORD = "R@chel";
+    private static final String INVALID_WORD = "";
     private static final String INVALID_TRANSLATION = "      ";
 
     private static final String VALID_WORD = JAPANESE_2.getWord().toString();

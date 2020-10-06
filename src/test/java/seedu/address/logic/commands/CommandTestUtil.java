@@ -34,7 +34,7 @@ public class CommandTestUtil {
     public static final String TRANSLATION_DESC_AMY = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_JAPANESE;
     public static final String TRANSLATION_DESC_BOB = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_SPANISH;
 
-    public static final String INVALID_WORD_DESC = " " + PREFIX_WORD + "James&"; // '&' not allowed in words
+    public static final String INVALID_WORD_DESC = " " + PREFIX_WORD + " "; // blank word
     public static final String INVALID_TRANSLATION_DESC = " " + PREFIX_TRANSLATION + "  "; // blank translation
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

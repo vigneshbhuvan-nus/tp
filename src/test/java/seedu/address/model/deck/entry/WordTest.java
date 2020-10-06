@@ -6,8 +6,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.deck.entry.Word;
-
 public class WordTest {
 
     @Test
@@ -29,8 +27,6 @@ public class WordTest {
         // invalid word
         assertFalse(Word.isValidWord("")); // empty string
         assertFalse(Word.isValidWord(" ")); // spaces only
-        assertFalse(Word.isValidWord("^")); // only non-alphanumeric characters
-        assertFalse(Word.isValidWord("peter*")); // contains non-alphanumeric characters
 
         // valid word
         assertTrue(Word.isValidWord("peter jack")); // alphabets only
