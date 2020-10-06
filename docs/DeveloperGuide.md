@@ -86,7 +86,7 @@ HelpWindow.fxml - Help menu item (not a stack pane) used to display the help men
 
 ResultDisplay.fxml - Prints results to user 
 
-StatusBarFooter - Dosent seem to do anything
+StatusBarFooter - returns the path of the file retrieved
 
 ### Logic component
 
