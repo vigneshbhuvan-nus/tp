@@ -30,10 +30,10 @@
           <Menu mnemonicParsing="false" text="Help">
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp" text="Help" />
           </Menu>
-               <Menu mnemonicParsing="false" text="Deck">
+               <Menu  mnemonicParsing="false" text="Deck">
                  <items>
-                   <MenuItem mnemonicParsing="false" text="Deck 1" />
-                     <MenuItem mnemonicParsing="false" text="Deck 2" />
+                   <MenuItem fx:id="Deck1" mnemonicParsing="false" text="Deck 1" onAction="#handleDeck" />
+                     <MenuItem fx:id="Deck2" mnemonicParsing="false" text="Deck 2" onAction="#handleDeck" />
                  </items>
                </Menu>
         </MenuBar>
