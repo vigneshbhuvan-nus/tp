@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
 import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_1;
 import static seedu.address.testutil.entry.TypicalEntries.getTypicalAddressBook;
 
@@ -19,6 +20,7 @@ import javafx.collections.ObservableList;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.exceptions.DuplicateEntryException;
+import seedu.address.testutil.deck.DeckBuilder;
 import seedu.address.testutil.entry.EntryBuilder;
 
 public class AddressBookTest {
@@ -76,10 +78,37 @@ public class AddressBookTest {
     }
 
     @Test
+    public void hasDeck_nullDeck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasDeck(null));
+    }
+
+    @Test
+    public void hasDeck_deckNotInAddressBook_returnsFalse() {
+        assertFalse(addressBook.hasDeck(JAPANESE_DECK));
+    }
+
+    @Test
+    public void hasDeck_deckInAddressBook_returnsTrue() {
+        addressBook.addDeck(JAPANESE_DECK);
+        assertTrue(addressBook.hasDeck(JAPANESE_DECK));
+    }
+
+    @Test
+    public void hasDeck_deckWithSameIdentityFieldsInAddressBook_returnsTrue() {
+        addressBook.addDeck(JAPANESE_DECK);
+        Deck editedJapaneseDeck = new DeckBuilder(JAPANESE_DECK).build();
+        assertTrue(addressBook.hasDeck(editedJapaneseDeck));
+    }
+
+    @Test
     public void getEntryList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getEntryList().remove(0));
     }
 
+    @Test
+    public void getDeckList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> addressBook.getDeckList().remove(0));
+    }
     /**
      * A stub ReadOnlyAddressBook whose entries list can violate interface constraints.
      */

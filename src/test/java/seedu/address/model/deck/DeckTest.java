@@ -1,14 +1,15 @@
 package seedu.address.model.deck;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.testutil.deck.DeckBuilder;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_JAPANESE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_SPANISH;
 import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
 import static seedu.address.testutil.deck.TypicalDecks.SPANISH_DECK;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.testutil.deck.DeckBuilder;
 
 public class DeckTest {
 

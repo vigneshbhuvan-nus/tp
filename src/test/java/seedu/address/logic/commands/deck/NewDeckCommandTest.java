@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.deck;
 
 import static java.util.Objects.requireNonNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.commands.entry.AddCommand;
+import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
@@ -23,58 +23,59 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.testutil.entry.EntryBuilder;
+import seedu.address.testutil.deck.DeckBuilder;
 
-public class AddCommandTest {
+public class NewDeckCommandTest {
 
     @Test
-    public void constructor_nullEntry_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> new AddCommand(null));
+    public void constructor_nullDeck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> new NewDeckCommand(null));
     }
 
     @Test
-    public void execute_entryAcceptedByModel_addSuccessful() throws Exception {
-        ModelStubAcceptingEntryAdded modelStub = new ModelStubAcceptingEntryAdded();
-        Entry validEntry = new EntryBuilder().build();
+    public void execute_deckAcceptedByModel_addSuccessful() throws Exception {
+        NewDeckCommandTest.ModelStubAcceptingDeckAdded modelStub = new NewDeckCommandTest.ModelStubAcceptingDeckAdded();
+        Deck validDeck = new DeckBuilder().build();
 
-        CommandResult commandResult = new AddCommand(validEntry).execute(modelStub);
+        CommandResult commandResult = new NewDeckCommand(validDeck).execute(modelStub);
 
-        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validEntry), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validEntry), modelStub.entriesAdded);
+        assertEquals(String.format(NewDeckCommand.MESSAGE_SUCCESS, validDeck), commandResult.getFeedbackToUser());
+        assertEquals(Arrays.asList(validDeck), modelStub.decksAdded);
     }
 
     @Test
-    public void execute_duplicateEntry_throwsCommandException() {
-        Entry validEntry = new EntryBuilder().build();
-        AddCommand addCommand = new AddCommand(validEntry);
-        ModelStub modelStub = new ModelStubWithEntry(validEntry);
+    public void execute_duplicateDeck_throwsCommandException() {
+        Deck validDeck = new DeckBuilder().build();
+        NewDeckCommand newDeckCommand = new NewDeckCommand(validDeck);
+        NewDeckCommandTest.ModelStub modelStub = new NewDeckCommandTest.ModelStubWithDeck(validDeck);
 
-        assertThrows(CommandException.class, AddCommand.MESSAGE_DUPLICATE_ENTRY, () -> addCommand.execute(modelStub));
+        assertThrows(CommandException.class, NewDeckCommand.MESSAGE_DUPLICATE_DECK, () ->
+                newDeckCommand.execute(modelStub));
     }
-
     @Test
     public void equals() {
-        Entry alice = new EntryBuilder().withWord("Alice").build();
-        Entry bob = new EntryBuilder().withWord("Bob").build();
-        AddCommand addAliceCommand = new AddCommand(alice);
-        AddCommand addBobCommand = new AddCommand(bob);
+        Deck japanese = new DeckBuilder().withDeckName("Japanese").build();
+        Deck spanish = new DeckBuilder().withDeckName("Spanish").build();
+        NewDeckCommand addJapaneseCommand = new NewDeckCommand(japanese);
+        NewDeckCommand addSpanishCommand = new NewDeckCommand(spanish);
 
         // same object -> returns true
-        assertTrue(addAliceCommand.equals(addAliceCommand));
+        assertTrue(addJapaneseCommand.equals(addJapaneseCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(alice);
-        assertTrue(addAliceCommand.equals(addAliceCommandCopy));
+        NewDeckCommand addJapaneseCommandCopy = new NewDeckCommand(japanese);
+        assertTrue(addJapaneseCommand.equals(addJapaneseCommandCopy));
 
         // different types -> returns false
-        assertFalse(addAliceCommand.equals(1));
+        assertFalse(addJapaneseCommand.equals(1));
 
         // null -> returns false
-        assertFalse(addAliceCommand.equals(null));
+        assertFalse(addJapaneseCommand.equals(null));
 
-        // different entry -> returns false
-        assertFalse(addAliceCommand.equals(addBobCommand));
+        // different deck -> returns false
+        assertFalse(addJapaneseCommand.equals(addSpanishCommand));
     }
+
 
     /**
      * A default model stub that have all of the methods failing.
@@ -177,39 +178,39 @@ public class AddCommandTest {
     }
 
     /**
-     * A Model stub that contains a single entry.
+     * A Model stub that contains a single Deck.
      */
-    private class ModelStubWithEntry extends ModelStub {
-        private final Entry entry;
+    private class ModelStubWithDeck extends NewDeckCommandTest.ModelStub {
+        private final Deck deck;
 
-        ModelStubWithEntry(Entry entry) {
-            requireNonNull(entry);
-            this.entry = entry;
+        ModelStubWithDeck(Deck deck) {
+            requireNonNull(deck);
+            this.deck = deck;
         }
 
         @Override
-        public boolean hasEntry(Entry entry) {
-            requireNonNull(entry);
-            return this.entry.isSameEntry(entry);
+        public boolean hasDeck(Deck deck) {
+            requireNonNull(deck);
+            return this.deck.isSameDeck(deck);
         }
     }
 
     /**
-     * A Model stub that always accept the entry being added.
+     * A Model stub that always accept the deck being added.
      */
-    private class ModelStubAcceptingEntryAdded extends ModelStub {
-        final ArrayList<Entry> entriesAdded = new ArrayList<>();
+    private class ModelStubAcceptingDeckAdded extends NewDeckCommandTest.ModelStub {
+        final ArrayList<Deck> decksAdded = new ArrayList<>();
 
         @Override
-        public boolean hasEntry(Entry entry) {
-            requireNonNull(entry);
-            return entriesAdded.stream().anyMatch(entry::isSameEntry);
+        public boolean hasDeck(Deck deck) {
+            requireNonNull(deck);
+            return decksAdded.stream().anyMatch(deck::isSameDeck);
         }
 
         @Override
-        public void addEntry(Entry entry) {
-            requireNonNull(entry);
-            entriesAdded.add(entry);
+        public void addDeck(Deck deck) {
+            requireNonNull(deck);
+            decksAdded.add(deck);
         }
 
         @Override
@@ -217,5 +218,4 @@ public class AddCommandTest {
             return new AddressBook();
         }
     }
-
 }

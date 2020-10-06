@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ENTRIES;
 import static seedu.address.testutil.Assert.assertThrows;
+import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
 import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_1;
 import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_2;
 
@@ -86,6 +87,22 @@ public class ModelManagerTest {
     public void hasEntry_entryInAddressBook_returnsTrue() {
         modelManager.addEntry(JAPANESE_1);
         assertTrue(modelManager.hasEntry(JAPANESE_1));
+    }
+
+    @Test
+    public void hasDeck_nullDeck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasDeck(null));
+    }
+
+    @Test
+    public void hasDeck_deckNotInAddressBook_returnsFalse() {
+        assertFalse(modelManager.hasDeck(JAPANESE_DECK));
+    }
+
+    @Test
+    public void hasDeck_deckInAddressBook_returnsTrue() {
+        modelManager.addDeck(JAPANESE_DECK);
+        assertTrue(modelManager.hasDeck(JAPANESE_DECK));
     }
 
     @Test

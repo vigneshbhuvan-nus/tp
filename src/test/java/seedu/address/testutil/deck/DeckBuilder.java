@@ -4,7 +4,6 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 
 public class DeckBuilder {
-    
     public static final String DEFAULT_DECK_NAME = "Japanese";
     private DeckName deckName;
 

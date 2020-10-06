@@ -1,14 +1,5 @@
 package seedu.address.model.deck;
 
-import org.junit.jupiter.api.Test;
-import seedu.address.model.deck.exceptions.DeckNotFoundException;
-import seedu.address.model.deck.exceptions.DuplicateDeckException;
-import seedu.address.testutil.deck.DeckBuilder;
-
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,8 +7,18 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
 import static seedu.address.testutil.deck.TypicalDecks.SPANISH_DECK;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.address.model.deck.exceptions.DeckNotFoundException;
+import seedu.address.model.deck.exceptions.DuplicateDeckException;
+import seedu.address.testutil.deck.DeckBuilder;
+
+
 public class UniqueDeckListTest {
-    
     private final UniqueDeckList uniqueDeckList = new UniqueDeckList();
 
     @Test
@@ -31,7 +32,7 @@ public class UniqueDeckListTest {
     }
 
     @Test
-    public void contains_DeckInList_returnsTrue() {
+    public void contains_deckInList_returnsTrue() {
         uniqueDeckList.add(JAPANESE_DECK);
         assertTrue(uniqueDeckList.contains(JAPANESE_DECK));
     }
@@ -160,7 +161,7 @@ public class UniqueDeckListTest {
 
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, ()
-                -> uniqueDeckList.asUnmodifiableObservableList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> uniqueDeckList
+                .asUnmodifiableObservableList().remove(0));
     }
 }

@@ -43,10 +43,8 @@ public class TypicalEntries {
             .withTranslation(VALID_TRANSLATION_JAPANESE).build();
     public static final Entry SPANISH = new EntryBuilder().withWord(VALID_WORD_SPANISH)
             .withTranslation(VALID_TRANSLATION_SPANISH).build();
-    
 
     private TypicalEntries() {} // prevents instantiation
-    
     /**
      * Returns an {@code AddressBook} with all the typical entries.
      */

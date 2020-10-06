@@ -28,25 +28,28 @@ public class CommandTestUtil {
     public static final String VALID_WORD_SPANISH = "Please";
     public static final String VALID_TRANSLATION_JAPANESE = "地球";
     public static final String VALID_TRANSLATION_SPANISH = "Por favor";
+    public static final String VALID_DECK_NAME_JAPANESE = "Japanese";
+    public static final String VALID_DECK_NAME_SPANISH = "Spanish";
 
-    public static final String WORD_DESC_AMY = " " + PREFIX_WORD + VALID_WORD_JAPANESE;
-    public static final String WORD_DESC_BOB = " " + PREFIX_WORD + VALID_WORD_SPANISH;
-    public static final String TRANSLATION_DESC_AMY = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_JAPANESE;
-    public static final String TRANSLATION_DESC_BOB = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_SPANISH;
+    public static final String WORD_DESC_JAPANESE = " " + PREFIX_WORD + VALID_WORD_JAPANESE;
+    public static final String WORD_DESC_SPANISH = " " + PREFIX_WORD + VALID_WORD_SPANISH;
+    public static final String TRANSLATION_DESC_JAPANESE = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_JAPANESE;
+    public static final String TRANSLATION_DESC_SPANISH = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_SPANISH;
 
+    public static final String INVALID_DECK_NAME = ""; // blank deck name
     public static final String INVALID_WORD_DESC = " " + PREFIX_WORD + " "; // blank word
     public static final String INVALID_TRANSLATION_DESC = " " + PREFIX_TRANSLATION + "  "; // blank translation
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditEntryDescriptor DESC_AMY;
-    public static final EditCommand.EditEntryDescriptor DESC_BOB;
+    public static final EditCommand.EditEntryDescriptor DESC_JAPANESE;
+    public static final EditCommand.EditEntryDescriptor DESC_SPANISH;
 
     static {
-        DESC_AMY = new EditEntryDescriptorBuilder().withWord(VALID_WORD_JAPANESE)
+        DESC_JAPANESE = new EditEntryDescriptorBuilder().withWord(VALID_WORD_JAPANESE)
                 .withTranslation(VALID_TRANSLATION_JAPANESE).build();
-        DESC_BOB = new EditEntryDescriptorBuilder().withWord(VALID_WORD_SPANISH)
+        DESC_SPANISH = new EditEntryDescriptorBuilder().withWord(VALID_WORD_SPANISH)
                 .withTranslation(VALID_TRANSLATION_SPANISH).build();
     }
 
