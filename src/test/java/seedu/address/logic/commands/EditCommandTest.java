@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_SPANISH;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showEntryAtIndex;
-import static seedu.address.testutil.TypicalEntries.getTypicalAddressBook;
+import static seedu.address.testutil.entry.TypicalEntries.getTypicalAddressBook;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_ENTRY;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_ENTRY;
 
@@ -24,8 +24,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.testutil.EditEntryDescriptorBuilder;
-import seedu.address.testutil.EntryBuilder;
+import seedu.address.testutil.entry.EditEntryDescriptorBuilder;
+import seedu.address.testutil.entry.EntryBuilder;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests for EditCommand.
@@ -54,16 +54,16 @@ public class EditCommandTest {
         Entry lastEntry = model.getFilteredEntryList().get(indexLastEntry.getZeroBased());
 
         EntryBuilder entryInList = new EntryBuilder(lastEntry);
-        Entry editedEntry = entryInList.withWord(VALID_WORD_BOB).build();
+        Entry editedEntry = entryInList.withWord(VALID_WORD_SPANISH).build();
 
-        EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder().withWord(VALID_WORD_BOB).build();
+        EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder().withWord(VALID_WORD_SPANISH).build();
         EditCommand editCommand = new EditCommand(indexLastEntry, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ENTRY_SUCCESS, editedEntry);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs());
         expectedModel.setEntry(lastEntry, editedEntry);
-
+        
         assertCommandSuccess(editCommand, model, expectedMessage, expectedModel);
     }
 
@@ -84,9 +84,9 @@ public class EditCommandTest {
         showEntryAtIndex(model, INDEX_FIRST_ENTRY);
 
         Entry entryInFilteredList = model.getFilteredEntryList().get(INDEX_FIRST_ENTRY.getZeroBased());
-        Entry editedEntry = new EntryBuilder(entryInFilteredList).withWord(VALID_WORD_BOB).build();
+        Entry editedEntry = new EntryBuilder(entryInFilteredList).withWord(VALID_WORD_SPANISH).build();
         EditCommand editCommand = new EditCommand(INDEX_FIRST_ENTRY,
-                new EditEntryDescriptorBuilder().withWord(VALID_WORD_BOB).build());
+                new EditEntryDescriptorBuilder().withWord(VALID_WORD_SPANISH).build());
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_ENTRY_SUCCESS, editedEntry);
 
@@ -120,7 +120,7 @@ public class EditCommandTest {
     @Test
     public void execute_invalidEntryIndexUnfilteredList_failure() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredEntryList().size() + 1);
-        EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder().withWord(VALID_WORD_BOB).build();
+        EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder().withWord(VALID_WORD_SPANISH).build();
         EditCommand editCommand = new EditCommand(outOfBoundIndex, descriptor);
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX);
@@ -138,7 +138,7 @@ public class EditCommandTest {
         assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getEntryList().size());
 
         EditCommand editCommand = new EditCommand(outOfBoundIndex,
-                new EditEntryDescriptorBuilder().withWord(VALID_WORD_BOB).build());
+                new EditEntryDescriptorBuilder().withWord(VALID_WORD_SPANISH).build());
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX);
     }

@@ -1,4 +1,4 @@
-package seedu.address.testutil;
+package seedu.address.testutil.entry;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSLATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;

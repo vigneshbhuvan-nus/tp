@@ -1,4 +1,4 @@
-package seedu.address.testutil;
+package seedu.address.testutil.entry;
 
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;

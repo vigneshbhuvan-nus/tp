@@ -1,25 +1,25 @@
 {
   "_comment": "AddressBook save file which contains the same Person values as in TypicalPersons#getTypicalAddressBook()",
   "entries" : [ {
-    "word" : "Time",
-    "translation" : "時間"
+    "word" : "Apple",
+    "translation" : "りんご"
   }, {
-    "word" : "Benson Meier",
-    "translation" : "johnd@example.com"
+    "word" : "Bridge",
+    "translation" : "橋"
   }, {
-    "word" : "Carl Kurz",
-    "translation" : "heinz@example.com"
+    "word" : "Cat",
+    "translation" : "猫"
   }, {
-    "word" : "Daniel Meier",
-    "translation" : "cornelia@example.com"
+    "word" : "Deadline",
+    "translation" : "締め切り"
   }, {
-    "word" : "Elle Meyer",
-    "translation" : "werner@example.com"
+    "word" : "Summer",
+    "translation" : "verano"
   }, {
-    "word" : "Fiona Kunz",
-    "translation" : "lydia@example.com"
+    "word" : "Winter",
+    "translation" : "invierno"
   }, {
-    "word" : "George Best",
-    "translation" : "anna@example.com"
+    "word" : "Spring",
+    "translation" : "primavera"
   } ]
 }

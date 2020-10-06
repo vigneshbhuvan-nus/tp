@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSLATION_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSLATION_SPANISH;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_SPANISH;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
-import seedu.address.testutil.EditEntryDescriptorBuilder;
+import seedu.address.testutil.entry.EditEntryDescriptorBuilder;
 
 public class EditEntryDescriptorTest {
 
@@ -33,11 +33,11 @@ public class EditEntryDescriptorTest {
         assertFalse(DESC_AMY.equals(DESC_BOB));
 
         // different word -> returns false
-        EditEntryDescriptor editedAmy = new EditEntryDescriptorBuilder(DESC_AMY).withWord(VALID_WORD_BOB).build();
+        EditEntryDescriptor editedAmy = new EditEntryDescriptorBuilder(DESC_AMY).withWord(VALID_WORD_SPANISH).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different translation -> returns false
-        editedAmy = new EditEntryDescriptorBuilder(DESC_AMY).withTranslation(VALID_TRANSLATION_BOB).build();
+        editedAmy = new EditEntryDescriptorBuilder(DESC_AMY).withTranslation(VALID_TRANSLATION_SPANISH).build();
         assertFalse(DESC_AMY.equals(editedAmy));
 
     }

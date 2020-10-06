@@ -25,9 +25,9 @@ import seedu.address.logic.commands.entry.ListCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.WordContainsKeywordsPredicate;
-import seedu.address.testutil.EditEntryDescriptorBuilder;
-import seedu.address.testutil.EntryBuilder;
-import seedu.address.testutil.EntryUtil;
+import seedu.address.testutil.entry.EditEntryDescriptorBuilder;
+import seedu.address.testutil.entry.EntryBuilder;
+import seedu.address.testutil.entry.EntryUtil;
 
 public class AddressBookParserTest {
 

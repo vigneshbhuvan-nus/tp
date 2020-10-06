@@ -1,4 +1,4 @@
-package seedu.address.testutil;
+package seedu.address.testutil.entry;
 
 import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
 import seedu.address.model.deck.entry.Entry;

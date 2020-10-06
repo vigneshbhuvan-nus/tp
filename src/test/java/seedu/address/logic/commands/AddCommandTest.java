@@ -23,7 +23,7 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.testutil.EntryBuilder;
+import seedu.address.testutil.entry.EntryBuilder;
 
 public class AddCommandTest {
 
