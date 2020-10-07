@@ -19,15 +19,13 @@ public class EntryListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(EntryListPanel.class);
 
     @FXML
-    private ListView<Deck> entryListView;
+    private ListView<Entry> entryListView;
 
-    @FXML
-    private ListView<Deck> entryListViewTwo;
 
     /**
      * Creates a {@code EntryListPanel} with the given {@code ObservableList}.
      */
-    public EntryListPanel(ObservableList<Deck> entryList) {
+    public EntryListPanel(ObservableList<Entry> entryList) {
         super(FXML);
         entryListView.setItems(entryList);
         entryListView.setCellFactory(listView -> new EntryListViewCell());
@@ -36,9 +34,9 @@ public class EntryListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code EntryCard}.
      */
-    class EntryListViewCell extends ListCell<Deck> {
+    class EntryListViewCell extends ListCell<Entry> {
         @Override
-        protected void updateItem(Deck entry, boolean empty) {
+        protected void updateItem(Entry entry, boolean empty) {
             super.updateItem(entry, empty);
 
             if (empty || entry == null) {

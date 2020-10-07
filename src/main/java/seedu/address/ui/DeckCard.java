@@ -4,12 +4,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 
 /**
  * An UI component that displays information of a {@code Entry}.
  */
-public class EntryCard extends UiPart<Region> {
+public class DeckCard extends UiPart<Region> {
 
     private static final String FXML = "EntryListCard.fxml";
 
@@ -21,7 +22,7 @@ public class EntryCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Entry entry;
+    public final Deck entry;
 
     @FXML
     private HBox cardPane;
@@ -35,12 +36,12 @@ public class EntryCard extends UiPart<Region> {
     /**
      * Creates a {@code EntryCode} with the given {@code Entry} and index to display.
      */
-    public EntryCard(Entry entry, int displayedIndex) {
+    public DeckCard(Deck entry, int displayedIndex) {
         super(FXML);
         this.entry = entry;
         id.setText(displayedIndex + ". ");
-        name.setText(entry.getWord().toString());
-        email.setText(entry.getTranslation().toString());
+        name.setText(entry.getDeckName().toString());
+        email.setText("Entries:");
     }
 
     @Override
@@ -51,12 +52,12 @@ public class EntryCard extends UiPart<Region> {
         }
 
         // instanceof handles nulls
-        if (!(other instanceof EntryCard)) {
+        if (!(other instanceof DeckCard)) {
             return false;
         }
 
         // state check
-        EntryCard card = (EntryCard) other;
+        DeckCard card = (DeckCard) other;
         return id.getText().equals(card.id.getText())
                 && entry.equals(card.entry);
     }

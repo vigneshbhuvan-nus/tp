@@ -14,7 +14,10 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.Word;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -163,7 +166,12 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
         Deck currentDeck = getCurrentDeck();
-        return currentDeck.getFilteredEntryList();
+        Deck deck = new Deck(new DeckName("Deck 1"));
+        deck.addEntry(new Entry(new Word("StubEntry"), new Translation("Stub o Entry o")));
+        deck.addEntry(new Entry(new Word("ScrollBarTestEntry"), new Translation("Scroll o Bar o")));
+        deck.addEntry(new Entry(new Word("Vignesh Hurry up"), new Translation("Vigneshu hurry uppo")));
+        deck.addEntry(new Entry(new Word("ModelManager.java"), new Translation("Line 173")));
+        return deck.getFilteredEntryList();
     }
 
     @Override

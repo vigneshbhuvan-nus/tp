@@ -124,7 +124,7 @@ public class MainWindow extends UiPart<Stage> {
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList());
         deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
-        entryListPanel = new EntryListPanel(logic.getFilteredDeckList());
+        entryListPanel = new EntryListPanel(logic.getFilteredEntryList());
         entryListPanelPlaceholder.getChildren().add(entryListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();

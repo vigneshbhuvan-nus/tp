@@ -32,12 +32,6 @@ public class DeckListPanel extends UiPart<Region> {
         entryListView.setCellFactory(listView -> new EntryListViewCell());
     }
 
-    public DeckListPanel(ObservableList<Deck> entryList, String type) {
-        super(FXML);
-        entryListView.setItems(entryList); //refers to class below
-        entryListView.setCellFactory(listView -> new EntryListViewCell());
-    }
-
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code EntryCard}.
      */
@@ -50,7 +44,7 @@ public class DeckListPanel extends UiPart<Region> {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new EntryCard(entry, getIndex() + 1).getRoot());
+                setGraphic(new DeckCard(entry, getIndex() + 1).getRoot());
             }
         }
     }
