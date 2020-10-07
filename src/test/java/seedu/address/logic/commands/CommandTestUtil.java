@@ -17,41 +17,40 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.WordContainsKeywordsPredicate;
-import seedu.address.testutil.EditEntryDescriptorBuilder;
+import seedu.address.testutil.entry.EditEntryDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
  */
 public class CommandTestUtil {
 
-    public static final String VALID_WORD_AMY = "Amy Bee";
-    public static final String VALID_WORD_BOB = "Bob Choo";
-    public static final String VALID_PHONE_AMY = "11111111";
-    public static final String VALID_PHONE_BOB = "22222222";
-    public static final String VALID_TRANSLATION_AMY = "amy@example.com";
-    public static final String VALID_TRANSLATION_BOB = "bob@example.com";
-    public static final String VALID_ADDRESS_AMY = "Block 312, Amy Street 1";
-    public static final String VALID_ADDRESS_BOB = "Block 123, Bobby Street 3";
+    public static final String VALID_WORD_JAPANESE = "Earth";
+    public static final String VALID_WORD_SPANISH = "Please";
+    public static final String VALID_TRANSLATION_JAPANESE = "地球";
+    public static final String VALID_TRANSLATION_SPANISH = "Por favor";
+    public static final String VALID_DECK_NAME_JAPANESE = "Japanese";
+    public static final String VALID_DECK_NAME_SPANISH = "Spanish";
 
-    public static final String WORD_DESC_AMY = " " + PREFIX_WORD + VALID_WORD_AMY;
-    public static final String WORD_DESC_BOB = " " + PREFIX_WORD + VALID_WORD_BOB;
-    public static final String TRANSLATION_DESC_AMY = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_AMY;
-    public static final String TRANSLATION_DESC_BOB = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_BOB;
+    public static final String WORD_DESC_JAPANESE = " " + PREFIX_WORD + VALID_WORD_JAPANESE;
+    public static final String WORD_DESC_SPANISH = " " + PREFIX_WORD + VALID_WORD_SPANISH;
+    public static final String TRANSLATION_DESC_JAPANESE = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_JAPANESE;
+    public static final String TRANSLATION_DESC_SPANISH = " " + PREFIX_TRANSLATION + VALID_TRANSLATION_SPANISH;
 
-    public static final String INVALID_WORD_DESC = " " + PREFIX_WORD + "James&"; // '&' not allowed in words
+    public static final String INVALID_DECK_NAME = ""; // blank deck name
+    public static final String INVALID_WORD_DESC = " " + PREFIX_WORD + " "; // blank word
     public static final String INVALID_TRANSLATION_DESC = " " + PREFIX_TRANSLATION + "  "; // blank translation
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditEntryDescriptor DESC_AMY;
-    public static final EditCommand.EditEntryDescriptor DESC_BOB;
+    public static final EditCommand.EditEntryDescriptor DESC_JAPANESE;
+    public static final EditCommand.EditEntryDescriptor DESC_SPANISH;
 
     static {
-        DESC_AMY = new EditEntryDescriptorBuilder().withWord(VALID_WORD_AMY)
-                .withTranslation(VALID_TRANSLATION_AMY).build();
-        DESC_BOB = new EditEntryDescriptorBuilder().withWord(VALID_WORD_BOB)
-                .withTranslation(VALID_TRANSLATION_BOB).build();
+        DESC_JAPANESE = new EditEntryDescriptorBuilder().withWord(VALID_WORD_JAPANESE)
+                .withTranslation(VALID_TRANSLATION_JAPANESE).build();
+        DESC_SPANISH = new EditEntryDescriptorBuilder().withWord(VALID_WORD_SPANISH)
+                .withTranslation(VALID_TRANSLATION_SPANISH).build();
     }
 
     /**

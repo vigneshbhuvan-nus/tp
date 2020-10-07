@@ -1,12 +1,10 @@
-package seedu.address.model.deck;
+package seedu.address.model.deck.entry;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 
 import org.junit.jupiter.api.Test;
-
-import seedu.address.model.deck.entry.Word;
 
 public class WordTest {
 
@@ -29,8 +27,6 @@ public class WordTest {
         // invalid word
         assertFalse(Word.isValidWord("")); // empty string
         assertFalse(Word.isValidWord(" ")); // spaces only
-        assertFalse(Word.isValidWord("^")); // only non-alphanumeric characters
-        assertFalse(Word.isValidWord("peter*")); // contains non-alphanumeric characters
 
         // valid word
         assertTrue(Word.isValidWord("peter jack")); // alphabets only

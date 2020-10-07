@@ -4,8 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalEntries.ALICE;
-import static seedu.address.testutil.TypicalEntries.getTypicalAddressBook;
+import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
+import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_1;
+import static seedu.address.testutil.entry.TypicalEntries.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,7 +20,8 @@ import javafx.collections.ObservableList;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.exceptions.DuplicateEntryException;
-import seedu.address.testutil.EntryBuilder;
+import seedu.address.testutil.deck.DeckBuilder;
+import seedu.address.testutil.entry.EntryBuilder;
 
 public class AddressBookTest {
 
@@ -45,8 +47,8 @@ public class AddressBookTest {
     @Test
     public void resetData_withDuplicateEntries_throwsDuplicateEntryException() {
         // Two entries with the same identity fields
-        Entry editedAlice = new EntryBuilder(ALICE).build();
-        List<Entry> newEntries = Arrays.asList(ALICE, editedAlice);
+        Entry editedAlice = new EntryBuilder(JAPANESE_1).build();
+        List<Entry> newEntries = Arrays.asList(JAPANESE_1, editedAlice);
         AddressBookStub newData = new AddressBookStub(newEntries);
 
         assertThrows(DuplicateEntryException.class, () -> addressBook.resetData(newData));
@@ -59,20 +61,43 @@ public class AddressBookTest {
 
     @Test
     public void hasEntry_entryNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasEntry(ALICE));
+        assertFalse(addressBook.hasEntry(JAPANESE_1));
     }
 
     @Test
     public void hasEntry_entryInAddressBook_returnsTrue() {
-        addressBook.addEntry(ALICE);
-        assertTrue(addressBook.hasEntry(ALICE));
+        addressBook.addEntry(JAPANESE_1);
+        assertTrue(addressBook.hasEntry(JAPANESE_1));
     }
 
     @Test
     public void hasEntry_entryWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addEntry(ALICE);
-        Entry editedAlice = new EntryBuilder(ALICE).build();
+        addressBook.addEntry(JAPANESE_1);
+        Entry editedAlice = new EntryBuilder(JAPANESE_1).build();
         assertTrue(addressBook.hasEntry(editedAlice));
+    }
+
+    @Test
+    public void hasDeck_nullDeck_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> addressBook.hasDeck(null));
+    }
+
+    @Test
+    public void hasDeck_deckNotInAddressBook_returnsFalse() {
+        assertFalse(addressBook.hasDeck(JAPANESE_DECK));
+    }
+
+    @Test
+    public void hasDeck_deckInAddressBook_returnsTrue() {
+        addressBook.addDeck(JAPANESE_DECK);
+        assertTrue(addressBook.hasDeck(JAPANESE_DECK));
+    }
+
+    @Test
+    public void hasDeck_deckWithSameIdentityFieldsInAddressBook_returnsTrue() {
+        addressBook.addDeck(JAPANESE_DECK);
+        Deck editedJapaneseDeck = new DeckBuilder(JAPANESE_DECK).build();
+        assertTrue(addressBook.hasDeck(editedJapaneseDeck));
     }
 
     @Test
@@ -80,6 +105,10 @@ public class AddressBookTest {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getEntryList().remove(0));
     }
 
+    @Test
+    public void getDeckList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> addressBook.getDeckList().remove(0));
+    }
     /**
      * A stub ReadOnlyAddressBook whose entries list can violate interface constraints.
      */

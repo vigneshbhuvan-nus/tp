@@ -5,43 +5,43 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class DeckName {
 
-    public static final String MESSAGE_CONSTRAINTS = "Name cannot be blank";
+    public static final String MESSAGE_CONSTRAINTS = "Deck name cannot be blank";
     public static final String VALIDATION_REGEX = "^(?!\\s*$).+";
-    private final String name;
+    private final String deckName;
 
     /**
      * Constructs an {@code DeckName}.
      *
-     * @param name A valid name.
+     * @param deckName A valid deck name.
      */
-    public DeckName(String name) {
-        requireNonNull(name);
-        checkArgument(isValidName(name), MESSAGE_CONSTRAINTS);
-        this.name = name;
+    public DeckName(String deckName) {
+        requireNonNull(deckName);
+        checkArgument(isValidDeckName(deckName), MESSAGE_CONSTRAINTS);
+        this.deckName = deckName;
     }
 
     /**
      * Returns true if a given string is a valid name.
      */
-    public static boolean isValidName(String test) {
+    public static boolean isValidDeckName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
     @Override
     public String toString() {
-        return name;
+        return deckName;
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof DeckName // instanceof handles nulls
-                && name.equals(((DeckName) other).name)); // state check
+                && deckName.equals(((DeckName) other).deckName)); // state check
     }
 
     @Override
     public int hashCode() {
-        return name.hashCode();
+        return deckName.hashCode();
     }
 
 }

@@ -3,10 +3,10 @@ package seedu.address.logic;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.TRANSLATION_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.WORD_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.TRANSLATION_DESC_JAPANESE;
+import static seedu.address.logic.commands.CommandTestUtil.WORD_DESC_JAPANESE;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalEntries.AMY;
+import static seedu.address.testutil.entry.TypicalEntries.JAPANESE;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -28,7 +28,7 @@ import seedu.address.model.deck.entry.Entry;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
-import seedu.address.testutil.EntryBuilder;
+import seedu.address.testutil.entry.EntryBuilder;
 
 public class LogicManagerTest {
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
@@ -77,8 +77,8 @@ public class LogicManagerTest {
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + WORD_DESC_AMY + TRANSLATION_DESC_AMY;
-        Entry expectedEntry = new EntryBuilder(AMY).build();
+        String addCommand = AddCommand.COMMAND_WORD + WORD_DESC_JAPANESE + TRANSLATION_DESC_JAPANESE;
+        Entry expectedEntry = new EntryBuilder(JAPANESE).build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addEntry(expectedEntry);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;

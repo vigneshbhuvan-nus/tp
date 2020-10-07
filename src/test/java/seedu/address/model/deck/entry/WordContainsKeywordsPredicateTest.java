@@ -1,4 +1,4 @@
-package seedu.address.model.deck;
+package seedu.address.model.deck.entry;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,8 +9,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.deck.entry.WordContainsKeywordsPredicate;
-import seedu.address.testutil.EntryBuilder;
+import seedu.address.testutil.entry.EntryBuilder;
 
 public class WordContainsKeywordsPredicateTest {
 

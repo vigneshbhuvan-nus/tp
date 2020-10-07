@@ -3,7 +3,7 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.JsonAdaptedEntry.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalEntries.BENSON;
+import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_2;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +12,16 @@ import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.Word;
 
 public class JsonAdaptedEntryTest {
-    private static final String INVALID_WORD = "R@chel";
+    private static final String INVALID_WORD = "";
     private static final String INVALID_TRANSLATION = "      ";
 
-    private static final String VALID_WORD = BENSON.getWord().toString();
-    private static final String VALID_TRANSLATION = BENSON.getTranslation().toString();
+    private static final String VALID_WORD = JAPANESE_2.getWord().toString();
+    private static final String VALID_TRANSLATION = JAPANESE_2.getTranslation().toString();
 
     @Test
     public void toModelType_validEntryDetails_returnsEntry() throws Exception {
-        JsonAdaptedEntry entry = new JsonAdaptedEntry(BENSON);
-        assertEquals(BENSON, entry.toModelType());
+        JsonAdaptedEntry entry = new JsonAdaptedEntry(JAPANESE_2);
+        assertEquals(JAPANESE_2, entry.toModelType());
     }
 
     @Test
