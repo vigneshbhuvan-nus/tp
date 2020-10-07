@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
@@ -13,7 +14,6 @@ import seedu.address.logic.commands.deck.NewDeckCommand;
 import seedu.address.logic.commands.deck.RemoveDeckCommand;
 import seedu.address.logic.commands.deck.SelectDeckCommand;
 import seedu.address.logic.commands.entry.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.entry.DeleteCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.FindCommand;

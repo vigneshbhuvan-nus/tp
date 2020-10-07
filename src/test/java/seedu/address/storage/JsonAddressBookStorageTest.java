@@ -3,10 +3,9 @@ package seedu.address.storage;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.entry.TypicalEntries.HOON;
-import static seedu.address.testutil.entry.TypicalEntries.IDA;
-import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_1;
-import static seedu.address.testutil.entry.TypicalEntries.getTypicalAddressBook;
+import static seedu.address.testutil.deck.TypicalDecks.FRENCH_DECK;
+import static seedu.address.testutil.deck.TypicalDecks.GERMAN_DECK;
+import static seedu.address.testutil.deck.TypicalDecks.getTypicalAddressBook;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -67,14 +66,13 @@ public class JsonAddressBookStorageTest {
         assertEquals(original, new AddressBook(readBack));
 
         // Modify data, overwrite exiting file, and read back
-        original.addEntry(HOON);
-        original.removeEntry(JAPANESE_1);
+        original.addDeck(FRENCH_DECK);
         jsonAddressBookStorage.saveAddressBook(original, filePath);
         readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
         assertEquals(original, new AddressBook(readBack));
 
         // Save and read without specifying file path
-        original.addEntry(IDA);
+        original.addDeck(GERMAN_DECK);
         jsonAddressBookStorage.saveAddressBook(original); // file path not specified
         readBack = jsonAddressBookStorage.readAddressBook().get(); // file path not specified
         assertEquals(original, new AddressBook(readBack));

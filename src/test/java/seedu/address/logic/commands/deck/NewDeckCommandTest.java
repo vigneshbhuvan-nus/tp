@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
@@ -164,6 +165,16 @@ public class NewDeckCommandTest {
         @Override
         public void addDeck(Deck deck) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void selectDeck (Index index) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public Deck getCurrentDeck() {
+            throw new AssertionError("This method should not be called");
         }
 
         @Override

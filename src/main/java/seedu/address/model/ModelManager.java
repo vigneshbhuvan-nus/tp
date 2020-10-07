@@ -140,12 +140,12 @@ public class ModelManager implements Model {
         addressBook.addDeck(deck);
         updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
     }
-    
+
     @Override
     public void selectDeck (Index index) {
         currentDeckIndex = Optional.of(index);
     }
-    
+
     @Override
     public Deck getCurrentDeck() {
         if (currentDeckIndex.equals(Optional.empty())) {

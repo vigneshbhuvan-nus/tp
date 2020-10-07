@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.entry.AddCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -23,6 +24,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.testutil.entry.EntryBuilder;
 
@@ -167,6 +169,16 @@ public class AddCommandTest {
         }
 
         @Override
+        public void selectDeck (Index index) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public Deck getCurrentDeck() {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
         public ObservableList<Deck> getFilteredDeckList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -177,6 +189,21 @@ public class AddCommandTest {
         }
     }
 
+    /**
+     * A Deck stub which accepts all entries
+     */
+    private class DeckStub extends Deck {
+        private ArrayList<Entry> entries;
+
+        DeckStub (String deckName) {
+            super(new DeckName(deckName));
+            this.entries = new ArrayList<>();
+        }
+
+        public void add (Entry entry) {
+            entries.add(entry);
+        }
+    }
     /**
      * A Model stub that contains a single entry.
      */
@@ -192,6 +219,11 @@ public class AddCommandTest {
         public boolean hasEntry(Entry entry) {
             requireNonNull(entry);
             return this.entry.isSameEntry(entry);
+        }
+
+        @Override
+        public Deck getCurrentDeck() {
+            return new DeckStub("stub");
         }
     }
 
@@ -211,6 +243,11 @@ public class AddCommandTest {
         public void addEntry(Entry entry) {
             requireNonNull(entry);
             entriesAdded.add(entry);
+        }
+
+        @Override
+        public Deck getCurrentDeck() {
+            return new DeckStub("stub");
         }
 
         @Override

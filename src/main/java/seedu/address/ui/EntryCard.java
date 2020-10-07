@@ -40,7 +40,7 @@ public class EntryCard extends UiPart<Region> {
         this.entry = entry;
         id.setText(displayedIndex + ". ");
         name.setText(entry.getDeckName().toString());
-        email.setText("hello");
+        email.setText("Entries:");
     }
 
     @Override

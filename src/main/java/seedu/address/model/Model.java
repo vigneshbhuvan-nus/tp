@@ -108,15 +108,13 @@ public interface Model {
     void addDeck(Deck deck);
 
     /**
-     * sdfg
-     * @param index
-     * @return
+     * Selects the deck at the specified index
+     * @param index of the selected deck
      */
     void selectDeck (Index index);
 
     /**
-     * 
-     * @return
+     * Retrieves the deck last selected by the user
      */
     Deck getCurrentDeck();
 
