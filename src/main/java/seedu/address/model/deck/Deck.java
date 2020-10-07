@@ -3,7 +3,10 @@ package seedu.address.model.deck;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
+import java.util.function.Predicate;
 
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
 
@@ -13,7 +16,8 @@ import seedu.address.model.deck.entry.UniqueEntryList;
 public class Deck {
 
     private final DeckName deckName;
-    private UniqueEntryList cards;
+    private UniqueEntryList entries;
+    private final FilteredList<Entry> filteredEntries;
 
     /**
      * Name must be present and not null
@@ -22,15 +26,49 @@ public class Deck {
     public Deck(DeckName deckName) {
         requireNonNull(deckName);
         this.deckName = deckName;
-        this.cards = new UniqueEntryList();
+        this.entries = new UniqueEntryList();
+        this.filteredEntries = new FilteredList<>(getEntryList());
     }
 
     public DeckName getDeckName() {
         return this.deckName;
     }
 
-    public UniqueEntryList getCards() {
-        return this.cards;
+    public UniqueEntryList getEntries() {
+        return this.entries;
+    }
+
+    public ObservableList<Entry> getEntryList() {
+        return entries.asUnmodifiableObservableList();
+    }
+
+    public ObservableList<Entry> getFilteredEntryList() {
+        return filteredEntries;
+    }
+
+    /**
+     * Updates the filter of the filtered entry list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    public void updateFilteredEntryList(Predicate<Entry> predicate) {
+        requireNonNull(predicate);
+        filteredEntries.setPredicate(predicate);
+    }
+
+    public boolean hasEntry(Entry entry) {
+        return entries.contains(entry);
+    }
+
+    public void addEntry(Entry entry) {
+        entries.add(entry);
+    }
+
+    public void removeEntry(Entry target) {
+        entries.remove(target);
+    }
+
+    public void setEntry(Entry target, Entry editedEntry) {
+        entries.setEntry(target, editedEntry);
     }
 
     /**
@@ -61,7 +99,7 @@ public class Deck {
 
     @Override
     public int hashCode() {
-        return Objects.hash(deckName, cards);
+        return Objects.hash(deckName, entries);
     }
 
     @Override
@@ -69,7 +107,7 @@ public class Deck {
         final StringBuilder builder = new StringBuilder();
         builder.append(getDeckName())
                 .append(" Cards: ");
-        for (Entry entry : cards) {
+        for (Entry entry : entries) {
             builder.append (entry.toString());
         }
         return builder.toString();

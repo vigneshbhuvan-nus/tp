@@ -35,6 +35,10 @@ public class DeleteCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        if (model.getCurrentDeck() == null) {
+            throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
+        }
         List<Entry> lastShownList = model.getFilteredEntryList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
@@ -45,6 +49,7 @@ public class DeleteCommand extends Command {
         model.deleteEntry(entryToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_ENTRY_SUCCESS, entryToDelete));
     }
+
 
     @Override
     public boolean equals(Object other) {

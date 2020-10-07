@@ -1,7 +1,7 @@
 package seedu.address.testutil;
 
 import seedu.address.model.AddressBook;
-import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.Deck;
 
 /**
  * A utility class to help with building Addressbook objects.
@@ -21,10 +21,10 @@ public class AddressBookBuilder {
     }
 
     /**
-     * Adds a new {@code Entry} to the {@code AddressBook} that we are building.
+     * Adds a new {@code Deck} to the {@code AddressBook} that we are building.
      */
-    public AddressBookBuilder withEntry(Entry entry) {
-        addressBook.addEntry(entry);
+    public AddressBookBuilder withDeck(Deck deck) {
+        addressBook.addDeck(deck);
         return this;
     }
 

@@ -15,6 +15,7 @@ import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.WordContainsKeywordsPredicate;
 import seedu.address.testutil.entry.EditEntryDescriptorBuilder;
@@ -89,11 +90,11 @@ public class CommandTestUtil {
         // we are unable to defensively copy the model for comparison later, so we can
         // only do so by copying its components.
         AddressBook expectedAddressBook = new AddressBook(actualModel.getAddressBook());
-        List<Entry> expectedFilteredList = new ArrayList<>(actualModel.getFilteredEntryList());
+        List<Deck> expectedFilteredList = new ArrayList<>(actualModel.getFilteredDeckList());
 
         assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel));
         assertEquals(expectedAddressBook, actualModel.getAddressBook());
-        assertEquals(expectedFilteredList, actualModel.getFilteredEntryList());
+        assertEquals(expectedFilteredList, actualModel.getFilteredDeckList());
     }
     /**
      * Updates {@code model}'s filtered list to show only the entry at the given {@code targetIndex} in the

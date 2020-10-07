@@ -52,12 +52,20 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the contents of the entry list with {@code entries}.
+     * {@code entries} must not contain duplicate entries.
+     */
+    public void setDecks(List<Deck> decks) {
+        this.decks.setDecks(decks);
+    }
+
+    /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
 
-        setEntries(newData.getEntryList());
+        setDecks(newData.getDeckList());
     }
 
     //// entry-level operations
