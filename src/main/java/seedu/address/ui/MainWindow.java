@@ -116,7 +116,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        entryListPanel = new EntryListPanel(logic.getFilteredEntryList());
+        entryListPanel = new EntryListPanel(logic.getFilteredDeckList());
         entryListPanelPlaceholder.getChildren().add(entryListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();

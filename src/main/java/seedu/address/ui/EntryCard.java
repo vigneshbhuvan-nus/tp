@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.Deck;
 
 /**
  * An UI component that displays information of a {@code Entry}.
@@ -21,7 +21,7 @@ public class EntryCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Entry entry;
+    public final Deck entry;
 
     @FXML
     private HBox cardPane;
@@ -35,12 +35,12 @@ public class EntryCard extends UiPart<Region> {
     /**
      * Creates a {@code EntryCode} with the given {@code Entry} and index to display.
      */
-    public EntryCard(Entry entry, int displayedIndex) {
+    public EntryCard(Deck entry, int displayedIndex) {
         super(FXML);
         this.entry = entry;
         id.setText(displayedIndex + ". ");
-        name.setText(entry.getWord().word);
-        email.setText(entry.getTranslation().translation);
+        name.setText(entry.getDeckName().toString());
+        email.setText("hello");
     }
 
     @Override

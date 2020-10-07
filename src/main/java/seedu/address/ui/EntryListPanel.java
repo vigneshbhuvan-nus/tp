@@ -8,6 +8,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 
 /**
@@ -18,12 +19,12 @@ public class EntryListPanel extends UiPart<Region> {
     private final Logger logger = LogsCenter.getLogger(EntryListPanel.class);
 
     @FXML
-    private ListView<Entry> entryListView;
+    private ListView<Deck> entryListView;
 
     /**
      * Creates a {@code EntryListPanel} with the given {@code ObservableList}.
      */
-    public EntryListPanel(ObservableList<Entry> entryList) {
+    public EntryListPanel(ObservableList<Deck> entryList) {
         super(FXML);
         entryListView.setItems(entryList);
         entryListView.setCellFactory(listView -> new EntryListViewCell());
@@ -32,9 +33,9 @@ public class EntryListPanel extends UiPart<Region> {
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code EntryCard}.
      */
-    class EntryListViewCell extends ListCell<Entry> {
+    class EntryListViewCell extends ListCell<Deck> {
         @Override
-        protected void updateItem(Entry entry, boolean empty) {
+        protected void updateItem(Deck entry, boolean empty) {
             super.updateItem(entry, empty);
 
             if (empty || entry == null) {
