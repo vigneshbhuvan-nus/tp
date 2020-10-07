@@ -3,20 +3,17 @@ package seedu.address.model;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ENTRIES;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_DECKS;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
-import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_1;
-import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_2;
+import static seedu.address.testutil.deck.TypicalDecks.SPANISH_DECK;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
-import seedu.address.model.deck.entry.WordContainsKeywordsPredicate;
 import seedu.address.testutil.AddressBookBuilder;
 
 public class ModelManagerTest {
@@ -79,17 +76,6 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void hasEntry_entryNotInAddressBook_returnsFalse() {
-        assertFalse(modelManager.hasEntry(JAPANESE_1));
-    }
-
-    @Test
-    public void hasEntry_entryInAddressBook_returnsTrue() {
-        modelManager.addEntry(JAPANESE_1);
-        assertTrue(modelManager.hasEntry(JAPANESE_1));
-    }
-
-    @Test
     public void hasDeck_nullDeck_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> modelManager.hasDeck(null));
     }
@@ -106,13 +92,13 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void getFilteredEntryList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredEntryList().remove(0));
+    public void getFilteredDeckList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> modelManager.getFilteredDeckList().remove(0));
     }
 
     @Test
     public void equals() {
-        AddressBook addressBook = new AddressBookBuilder().withEntry(JAPANESE_1).withEntry(JAPANESE_2).build();
+        AddressBook addressBook = new AddressBookBuilder().withDeck(JAPANESE_DECK).withDeck(SPANISH_DECK).build();
         AddressBook differentAddressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
 
@@ -133,13 +119,8 @@ public class ModelManagerTest {
         // different addressBook -> returns false
         assertFalse(modelManager.equals(new ModelManager(differentAddressBook, userPrefs)));
 
-        // different filteredList -> returns false
-        String[] keywords = JAPANESE_1.getWord().word.split("\\s+");
-        modelManager.updateFilteredEntryList(new WordContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs)));
-
         // resets modelManager to initial state for upcoming tests
-        modelManager.updateFilteredEntryList(PREDICATE_SHOW_ALL_ENTRIES);
+        modelManager.updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();

@@ -62,6 +62,11 @@ public class EditCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
+
+        if (model.getCurrentDeck() == null) {
+            throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
+        }
+
         List<Entry> lastShownList = model.getFilteredEntryList();
 
         if (index.getZeroBased() >= lastShownList.size()) {

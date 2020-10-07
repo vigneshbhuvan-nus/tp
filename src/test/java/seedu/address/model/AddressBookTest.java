@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
+import static seedu.address.testutil.deck.TypicalDecks.getTypicalAddressBook;
 import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_1;
-import static seedu.address.testutil.entry.TypicalEntries.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,7 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.deck.exceptions.DuplicateEntryException;
+import seedu.address.model.deck.exceptions.DuplicateDeckException;
 import seedu.address.testutil.deck.DeckBuilder;
 import seedu.address.testutil.entry.EntryBuilder;
 
@@ -45,13 +45,13 @@ public class AddressBookTest {
     }
 
     @Test
-    public void resetData_withDuplicateEntries_throwsDuplicateEntryException() {
-        // Two entries with the same identity fields
-        Entry editedAlice = new EntryBuilder(JAPANESE_1).build();
-        List<Entry> newEntries = Arrays.asList(JAPANESE_1, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newEntries);
+    public void resetData_withDuplicateDecks_throwsDuplicateDeckException() {
+        // Two decks with the same identity fields
+        Deck editedJapaneseDeck = new DeckBuilder(JAPANESE_DECK).build();
+        List<Deck> newDecks = Arrays.asList(JAPANESE_DECK, editedJapaneseDeck);
+        AddressBookStub newData = new AddressBookStub(newDecks);
 
-        assertThrows(DuplicateEntryException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateDeckException.class, () -> addressBook.resetData(newData));
     }
 
     @Test
@@ -116,8 +116,8 @@ public class AddressBookTest {
         private final ObservableList<Entry> entries = FXCollections.observableArrayList();
         private final ObservableList<Deck> decks = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Entry> entries) {
-            this.entries.setAll(entries);
+        AddressBookStub(Collection<Deck> decks) {
+            this.decks.setAll(decks);
         }
 
         @Override

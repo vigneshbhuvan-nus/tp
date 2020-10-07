@@ -73,6 +73,22 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
+
+MainWindow.fxml - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox
+                - also contains the code for the actual menu bar
+
+CommandBox.fxml - Stackpane where the user writes input
+
+EntryListPanel.fxml -  Houses a ListView<Entry>
+
+EntryListCard.fxml- (not housed by Mainwindow.fxml) contains the data from each entry
+
+HelpWindow.fxml - Only displays label and copy url button
+
+ResultDisplay.fxml - Prints results to user 
+
+StatusBarFooter - returns the path of the file retrieved
+
 ### Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)

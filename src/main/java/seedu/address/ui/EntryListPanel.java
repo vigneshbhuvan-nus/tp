@@ -20,6 +20,7 @@ public class EntryListPanel extends UiPart<Region> {
     @FXML
     private ListView<Entry> entryListView;
 
+
     /**
      * Creates a {@code EntryListPanel} with the given {@code ObservableList}.
      */

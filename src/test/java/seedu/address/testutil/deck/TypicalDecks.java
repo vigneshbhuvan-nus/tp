@@ -11,6 +11,8 @@ public class TypicalDecks {
     public static final Deck JAPANESE_DECK = new DeckBuilder().withDeckName("Japanese").build();
     public static final Deck SPANISH_DECK = new DeckBuilder().withDeckName("Spanish").build();
     public static final Deck KOREAN_DECK = new DeckBuilder().withDeckName("Korean").build();
+    public static final Deck FRENCH_DECK = new DeckBuilder().withDeckName("French").build();
+    public static final Deck GERMAN_DECK = new DeckBuilder().withDeckName("German").build();
 
     private TypicalDecks() {} // prevents instantiation
 

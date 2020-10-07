@@ -5,6 +5,7 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 
@@ -105,6 +106,17 @@ public interface Model {
      * {@code deck} must not already exist in the word bank.
      */
     void addDeck(Deck deck);
+
+    /**
+     * Selects the deck at the specified index
+     * @param index of the selected deck
+     */
+    void selectDeck (Index index);
+
+    /**
+     * Retrieves the deck last selected by the user
+     */
+    Deck getCurrentDeck();
 
     /** Returns an unmodifiable view of the filtered deck list */
     ObservableList<Deck> getFilteredDeckList();
