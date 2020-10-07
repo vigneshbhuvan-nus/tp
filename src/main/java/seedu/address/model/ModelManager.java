@@ -165,7 +165,7 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
-        Deck currentDeck = getCurrentDeck();
+        Deck currentDeck = getCurrentDeck(); //keeps returning null causing null error
         Deck deck = new Deck(new DeckName("Deck 1"));
         deck.addEntry(new Entry(new Word("StubEntry"), new Translation("Stub o Entry o")));
         deck.addEntry(new Entry(new Word("ScrollBarTestEntry"), new Translation("Scroll o Bar o")));

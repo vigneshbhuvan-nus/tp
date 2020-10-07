@@ -22,7 +22,7 @@ public class DeckCard extends UiPart<Region> {
      * @see <a href="https://github.com/se-edu/addressbook-level4/issues/336">The issue on AddressBook level 4</a>
      */
 
-    public final Deck entry;
+    public final Deck deck;
 
     @FXML
     private HBox cardPane;
@@ -36,11 +36,11 @@ public class DeckCard extends UiPart<Region> {
     /**
      * Creates a {@code EntryCode} with the given {@code Entry} and index to display.
      */
-    public DeckCard(Deck entry, int displayedIndex) {
+    public DeckCard(Deck deck, int displayedIndex) {
         super(FXML);
-        this.entry = entry;
+        this.deck = deck;
         id.setText(displayedIndex + ". ");
-        name.setText(entry.getDeckName().toString());
+        name.setText(deck.getDeckName().toString());
         email.setText("Entries:");
     }
 
@@ -59,6 +59,6 @@ public class DeckCard extends UiPart<Region> {
         // state check
         DeckCard card = (DeckCard) other;
         return id.getText().equals(card.id.getText())
-                && entry.equals(card.entry);
+                && deck.equals(card.deck);
     }
 }

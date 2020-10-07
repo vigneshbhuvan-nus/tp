@@ -14,37 +14,34 @@ import java.util.logging.Logger;
  * Panel containing the list of entries.
  */
 public class DeckListPanel extends UiPart<Region> {
-    private static final String FXML = "EntryListPanel.fxml";
+    private static final String FXML = "DeckListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(DeckListPanel.class);
 
     @FXML
-    private ListView<Deck> entryListView;
-
-    @FXML
-    private ListView<Deck> entryListViewTwo;
+    private ListView<Deck> deckListView;
 
     /**
      * Creates a {@code EntryListPanel} with the given {@code ObservableList}.
      */
-    public DeckListPanel(ObservableList<Deck> entryList) {
+    public DeckListPanel(ObservableList<Deck> deckList) {
         super(FXML);
-        entryListView.setItems(entryList);
-        entryListView.setCellFactory(listView -> new EntryListViewCell());
+        deckListView.setItems(deckList);
+        deckListView.setCellFactory(listView -> new deckListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code EntryCard}.
      */
-    class EntryListViewCell extends ListCell<Deck> {
+    class deckListViewCell extends ListCell<Deck> {
         @Override
-        protected void updateItem(Deck entry, boolean empty) {
-            super.updateItem(entry, empty);
+        protected void updateItem(Deck deck, boolean empty) {
+            super.updateItem(deck, empty);
 
-            if (empty || entry == null) {
+            if (empty || deck == null) {
                 setGraphic(null);
                 setText(null);
             } else {
-                setGraphic(new DeckCard(entry, getIndex() + 1).getRoot());
+                setGraphic(new DeckCard(deck, getIndex() + 1).getRoot());
             }
         }
     }
