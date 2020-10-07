@@ -10,9 +10,19 @@
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
 
+/*
+Darkest to brightest:
+Pullman Green: #2B3E13 main color
+Dark moss green: 455A20 secondary color
+Dark olive green : 5F6F3C even entry result
+Middle green yellow : B8C65A odd entry result
+Brass : A5AF37  unused
+
+*/
+
 /*Used in fxml*/
 .stack-pane {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#2B3E13, 20%);
 }
 
 .cell_big_label {
@@ -28,12 +38,12 @@
 }
 
 .status-bar {
-    -fx-background-color: derive(#1d1d1d, 30%);
+    -fx-background-color: derive(#2B3E13, 30%);
 }
 
 .pane-with-border {
-    -fx-background-color: derive(#1d1d1d, 20%);
-    -fx-border-color: derive(#1d1d1d, 10%);
+    -fx-background-color: derive(#2B3E13, 20%);
+    -fx-border-color: derive(#2B3E13, 10%);
     -fx-border-top-width: 1px;
 }
 
@@ -56,15 +66,15 @@
 }
 
 .list-cell:filled:even {
-    -fx-background-color: #3c3e3f;
+    -fx-background-color: #5F6F3C;
 }
 
 .list-cell:filled:odd {
-    -fx-background-color: #515658;
+    -fx-background-color: #B8C65A;
 }
 
 .list-cell:filled:selected {
-    -fx-background-color: #424d5f;
+    -fx-background-color: #455A20;
 }
 
 .list-cell:filled:selected #cardPane {
@@ -80,12 +90,12 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#2B3E13, 20%);
 }
 
 /*Menu bar styling*/
 .context-menu {
-    -fx-background-color: derive(#1d1d1d, 50%);
+    -fx-background-color: derive(#2B3E13, 50%);
 }
 
 .context-menu .label {
@@ -93,7 +103,7 @@
 }
 
 .menu-bar {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#2B3E13, 20%);
 }
 
 .menu-bar .label {
@@ -108,11 +118,11 @@
 }
 /*Scroll bar*/
 .scroll-bar {
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#2B3E13, 20%);
 }
 
 .scroll-bar .thumb {
-    -fx-background-color: derive(#1d1d1d, 50%);
+    -fx-background-color: derive(#2B3E13, 50%);
     -fx-background-insets: 3;
 }
 
@@ -135,9 +145,9 @@
 
 /*Command box text settings*/
 #commandTextField {
-    -fx-background-color: transparent #383838 transparent #383838;
+    -fx-background-color: transparent #2B3E13 transparent #2B3E13;
     -fx-background-insets: 0;
-    -fx-border-color: #383838 #383838 #ffffff #383838;
+    -fx-border-color: #2B3E13 #2B3E13 #ffffff #2B3E13;
     -fx-border-insets: 0;
     -fx-border-width: 1;
     -fx-font-family: "Segoe UI Light";
@@ -147,7 +157,7 @@
 
 /*Command box background colour*/
 #resultDisplay .content {
-    -fx-background-color: transparent, #383838, transparent, #383838;
+    -fx-background-color: transparent, #455A20, transparent, #455A20;
     -fx-background-radius: 0;
 }
 
