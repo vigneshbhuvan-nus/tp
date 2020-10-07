@@ -33,6 +33,7 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private EntryListPanel entryListPanel;
+    private DeckListPanel deckListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -56,6 +57,10 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem Deck2;
+
+    @FXML
+    private StackPane deckListPanelPlaceholder;
+
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
      */
@@ -116,6 +121,9 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        deckListPanel = new DeckListPanel(logic.getFilteredDeckList());
+        deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
+
         entryListPanel = new EntryListPanel(logic.getFilteredDeckList());
         entryListPanelPlaceholder.getChildren().add(entryListPanel.getRoot());
 

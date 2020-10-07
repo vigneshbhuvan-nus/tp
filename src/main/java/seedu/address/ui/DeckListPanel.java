@@ -1,7 +1,5 @@
 package seedu.address.ui;
 
-import java.util.logging.Logger;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -9,14 +7,15 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.deck.Deck;
-import seedu.address.model.deck.entry.Entry;
+
+import java.util.logging.Logger;
 
 /**
  * Panel containing the list of entries.
  */
-public class EntryListPanel extends UiPart<Region> {
+public class DeckListPanel extends UiPart<Region> {
     private static final String FXML = "EntryListPanel.fxml";
-    private final Logger logger = LogsCenter.getLogger(EntryListPanel.class);
+    private final Logger logger = LogsCenter.getLogger(DeckListPanel.class);
 
     @FXML
     private ListView<Deck> entryListView;
@@ -27,9 +26,15 @@ public class EntryListPanel extends UiPart<Region> {
     /**
      * Creates a {@code EntryListPanel} with the given {@code ObservableList}.
      */
-    public EntryListPanel(ObservableList<Deck> entryList) {
+    public DeckListPanel(ObservableList<Deck> entryList) {
         super(FXML);
         entryListView.setItems(entryList);
+        entryListView.setCellFactory(listView -> new EntryListViewCell());
+    }
+
+    public DeckListPanel(ObservableList<Deck> entryList, String type) {
+        super(FXML);
+        entryListView.setItems(entryList); //refers to class below
         entryListView.setCellFactory(listView -> new EntryListViewCell());
     }
 
