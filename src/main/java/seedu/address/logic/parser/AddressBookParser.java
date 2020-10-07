@@ -13,7 +13,7 @@ import seedu.address.logic.commands.deck.NewDeckCommand;
 import seedu.address.logic.commands.deck.RemoveDeckCommand;
 import seedu.address.logic.commands.deck.SelectDeckCommand;
 import seedu.address.logic.commands.entry.AddCommand;
-import seedu.address.logic.commands.entry.ClearCommand;
+import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.entry.DeleteCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.FindCommand;

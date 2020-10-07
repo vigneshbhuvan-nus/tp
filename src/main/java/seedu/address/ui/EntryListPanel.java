@@ -9,7 +9,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.deck.Deck;
-import seedu.address.model.deck.entry.Entry;
 
 /**
  * Panel containing the list of entries.

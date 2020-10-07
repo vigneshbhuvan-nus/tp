@@ -46,6 +46,10 @@ public class Deck {
         return filteredEntries;
     }
 
+    /**
+     * Updates the filter of the filtered entry list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
     public void updateFilteredEntryList(Predicate<Entry> predicate) {
         requireNonNull(predicate);
         filteredEntries.setPredicate(predicate);
@@ -57,6 +61,14 @@ public class Deck {
 
     public void addEntry(Entry entry) {
         entries.add(entry);
+    }
+
+    public void removeEntry(Entry target) {
+        entries.remove(target);
+    }
+
+    public void setEntry(Entry target, Entry editedEntry) {
+        entries.setEntry(target, editedEntry);
     }
 
     /**

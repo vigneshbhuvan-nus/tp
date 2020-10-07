@@ -15,7 +15,6 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.exception.DeckNotSelectedException;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -105,7 +104,8 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteEntry(Entry target) {
-        addressBook.removeEntry(target);
+        Deck currentDeck = getCurrentDeck();
+        currentDeck.removeEntry(target);
     }
 
     @Override
@@ -119,7 +119,8 @@ public class ModelManager implements Model {
     public void setEntry(Entry target, Entry editedEntry) {
         requireAllNonNull(target, editedEntry);
 
-        addressBook.setEntry(target, editedEntry);
+        Deck currentDeck = getCurrentDeck();
+        currentDeck.setEntry(target, editedEntry);
     }
 
     @Override
@@ -148,7 +149,7 @@ public class ModelManager implements Model {
     @Override
     public Deck getCurrentDeck() {
         if (currentDeckIndex.equals(Optional.empty())) {
-            throw new DeckNotSelectedException();
+            return null;
         }
         return filteredDecks.get(currentDeckIndex.get().getZeroBased());
     }

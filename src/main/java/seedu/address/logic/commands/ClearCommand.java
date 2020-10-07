@@ -1,9 +1,7 @@
-package seedu.address.logic.commands.entry;
+package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 
@@ -13,7 +11,7 @@ import seedu.address.model.Model;
 public class ClearCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "Green Tea has been cleared! You may continue to add new entries";
+    public static final String MESSAGE_SUCCESS = "Green Tea has been cleared! You may continue to add new decks";
 
 
     @Override
