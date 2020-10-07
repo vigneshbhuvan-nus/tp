@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -11,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 
@@ -22,8 +24,8 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
-    private final FilteredList<Entry> filteredEntries;
     private final FilteredList<Deck> filteredDecks;
+    private Optional<Index> currentDeckIndex;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -36,8 +38,8 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredEntries = new FilteredList<>(this.addressBook.getEntryList());
         filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
+        currentDeckIndex = Optional.empty();
     }
 
     public ModelManager() {
@@ -94,7 +96,8 @@ public class ModelManager implements Model {
     @Override
     public boolean hasEntry(Entry entry) {
         requireNonNull(entry);
-        return addressBook.hasEntry(entry);
+        Deck currentDeck = getCurrentDeck();
+        return currentDeck.hasEntry(entry);
     }
 
     @Override
@@ -104,7 +107,8 @@ public class ModelManager implements Model {
 
     @Override
     public void addEntry(Entry entry) {
-        addressBook.addEntry(entry);
+        Deck currentDeck = getCurrentDeck();
+        currentDeck.addEntry(entry);
         updateFilteredEntryList(PREDICATE_SHOW_ALL_ENTRIES);
     }
 
@@ -132,6 +136,19 @@ public class ModelManager implements Model {
         addressBook.addDeck(deck);
         updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
     }
+    
+    @Override
+    public void selectDeck (Index index) {
+        currentDeckIndex = Optional.of(index);
+    }
+    
+    @Override
+    public Deck getCurrentDeck() {
+        if (currentDeckIndex.equals(Optional.empty())) {
+            return null;
+        }
+        return filteredDecks.get(currentDeckIndex.get().getZeroBased());
+    }
 
     //=========== Filtered Entry List Accessors =============================================================
 
@@ -141,13 +158,15 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
-        return filteredEntries;
+        Deck currentDeck = getCurrentDeck();
+        return currentDeck.getFilteredEntryList();
     }
 
     @Override
     public void updateFilteredEntryList(Predicate<Entry> predicate) {
         requireNonNull(predicate);
-        filteredEntries.setPredicate(predicate);
+        Deck currentDeck = getCurrentDeck();
+        currentDeck.updateFilteredEntryList(predicate);
     }
 
     /**
@@ -181,7 +200,6 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
                 && userPrefs.equals(other.userPrefs)
-                && filteredEntries.equals(other.filteredEntries);
+                && filteredDecks.equals(other.filteredDecks);
     }
-
 }
