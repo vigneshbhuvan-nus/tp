@@ -12,7 +12,7 @@ import seedu.address.model.deck.Deck;
 
 
 /**
- * Panel containing the list of entries.
+ * Panel containing the list of entriess.
  */
 public class DeckListPanel extends UiPart<Region> {
     private static final String FXML = "DeckListPanel.fxml";
