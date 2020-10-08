@@ -38,6 +38,10 @@ public class Deck {
         return this.entries;
     }
 
+    public void setEntries(UniqueEntryList entries) {
+        this.entries = entries;
+    }
+
     public ObservableList<Entry> getEntryList() {
         return entries.asUnmodifiableObservableList();
     }
@@ -45,6 +49,8 @@ public class Deck {
     public ObservableList<Entry> getFilteredEntryList() {
         return filteredEntries;
     }
+
+
 
     /**
      * Updates the filter of the filtered entry list to filter by the given {@code predicate}.
