@@ -31,7 +31,7 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
-    private final FilteredList<Entry> filteredEntries;
+    /*private final FilteredList<Entry> filteredEntries;*/
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
 
@@ -46,7 +46,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredEntries = new FilteredList<>(this.addressBook.getEntryList());
+        /*filteredEntries = new FilteredList<>(this.addressBook.getEntryList());*/
         filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
         currentDeckIndex = Optional.empty();
     }
@@ -173,9 +173,7 @@ public class ModelManager implements Model {
         if (getCurrentDeck() == null) {
             return null;
         }
-        Deck currentDeck = getCurrentDeck();/*
-        filteredEntries.addAll(currentDeck.getFilteredEntryList());
-        return filteredEntries;*/
+        Deck currentDeck = getCurrentDeck();
         return currentDeck.getEntryList();
     }
 

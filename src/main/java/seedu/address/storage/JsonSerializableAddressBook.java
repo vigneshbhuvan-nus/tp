@@ -24,18 +24,14 @@ import javax.lang.model.type.ArrayType;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_DECK = "Deck list contains duplicate entry(s).";
-
     private final List<JsonAdaptedDeck> decks = new ArrayList<>();
-    private final List<JsonAdaptedEntry> entries = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given entries.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("decks") List<JsonAdaptedDeck> decks,
-                                       @JsonProperty("entries") List<JsonAdaptedEntry> entries) {
+    public JsonSerializableAddressBook(@JsonProperty("decks") List<JsonAdaptedDeck> decks) {
         this.decks.addAll(decks);
-        this.entries.addAll(entries);
     }
 
     /**

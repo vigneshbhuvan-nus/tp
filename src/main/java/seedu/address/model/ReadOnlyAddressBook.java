@@ -13,7 +13,7 @@ public interface ReadOnlyAddressBook {
      * Returns an unmodifiable view of the entries list.
      * This list will not contain any duplicate entries.
      */
-    ObservableList<Entry> getEntryList();
+    /*ObservableList<Entry> getEntryList();*/
 
     /**
      * Returns an unmodifiable view of the deck list.
