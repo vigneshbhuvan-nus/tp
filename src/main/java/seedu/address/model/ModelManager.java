@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -18,6 +20,8 @@ import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.Word;
+import seedu.address.commons.core.index.Index;
+
 
 /**
  * Represents the in-memory model of the address book data.
@@ -165,13 +169,14 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
-        Deck currentDeck = getCurrentDeck(); //keeps returning null causing null error
-        Deck deck = new Deck(new DeckName("Deck 1"));
-        deck.addEntry(new Entry(new Word("StubEntry"), new Translation("Stub o Entry o")));
-        deck.addEntry(new Entry(new Word("ScrollBarTestEntry"), new Translation("Scroll o Bar o")));
-        deck.addEntry(new Entry(new Word("Vignesh Hurry up"), new Translation("Vigneshu hurry uppo")));
-        deck.addEntry(new Entry(new Word("ModelManager.java"), new Translation("Line 173")));
-        return deck.getFilteredEntryList();
+        //keeps returning null causing null error
+        if (getCurrentDeck() == null) {
+            return null;
+        }
+        Deck currentDeck = getCurrentDeck();/*
+        filteredEntries.addAll(currentDeck.getFilteredEntryList());
+        return filteredEntries;*/
+        return currentDeck.getEntryList();
     }
 
     @Override
