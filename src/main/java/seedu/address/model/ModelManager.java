@@ -174,10 +174,14 @@ public class ModelManager implements Model {
             return null;
         }
         Deck currentDeck = getCurrentDeck();
+<<<<<<< HEAD
         Deck sampleDeck = new Deck(new DeckName("sample"));
         sampleDeck.addEntry(new Entry(new Word("w"), new Translation("t")));
         /*return currentDeck.getEntryList();*/
         return sampleDeck.getFilteredEntryList();
+=======
+        return currentDeck.getEntryList();
+>>>>>>> master
     }
 
     @Override

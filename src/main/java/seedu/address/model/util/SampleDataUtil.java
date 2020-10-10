@@ -24,8 +24,13 @@ public class SampleDataUtil {
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Entry sampleEntry : getSampleEntries()) {
+<<<<<<< HEAD
             /*sampleAb.addEntry(sampleEntry);
         */}
+=======
+            //sampleAb.addEntry(sampleEntry);
+        }
+>>>>>>> master
         return sampleAb;
     }
 }

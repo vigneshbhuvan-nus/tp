@@ -21,18 +21,25 @@ import seedu.address.model.deck.Deck;
 class JsonSerializableAddressBook {
 
     public static final String MESSAGE_DUPLICATE_DECK = "Deck list contains duplicate entry(s).";
-
     private final List<JsonAdaptedDeck> decks = new ArrayList<>();
+<<<<<<< HEAD
     /*private final List<JsonAdaptedEntry> entries = new ArrayList<>();*/
+=======
+>>>>>>> master
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given entries.
      */
     @JsonCreator
+<<<<<<< HEAD
     public JsonSerializableAddressBook(@JsonProperty("decks") List<JsonAdaptedDeck> decks/*,
                                        @JsonProperty("entries") List<JsonAdaptedEntry> entries*/) {
         this.decks.addAll(decks);
         /*this.entries.addAll(entries);*/
+=======
+    public JsonSerializableAddressBook(@JsonProperty("decks") List<JsonAdaptedDeck> decks) {
+        this.decks.addAll(decks);
+>>>>>>> master
     }
 
     /**
