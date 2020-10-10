@@ -124,7 +124,7 @@ public class UniqueEntryList implements Iterable<Entry> {
     /**
      * Returns true if {@code entries} contains only unique entries.
      */
-    private boolean entriesAreUnique(List<Entry> entries) {
+    public static boolean entriesAreUnique(List<Entry> entries) {
         for (int i = 0; i < entries.size() - 1; i++) {
             for (int j = i + 1; j < entries.size(); j++) {
                 if (entries.get(i).isSameEntry(entries.get(j))) {
