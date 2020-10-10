@@ -5,11 +5,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
 
-import seedu.address.model.deck.Deck;
-import seedu.address.model.deck.DeckName;
 
 
 /**
@@ -48,7 +48,8 @@ class JsonAdaptedDeck {
     public Deck toModelType() throws IllegalValueException {
 
         if (deckName == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, DeckName.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    DeckName.class.getSimpleName()));
         }
         if (!DeckName.isValidDeckName(deckName)) {
             throw new IllegalValueException(DeckName.MESSAGE_CONSTRAINTS);

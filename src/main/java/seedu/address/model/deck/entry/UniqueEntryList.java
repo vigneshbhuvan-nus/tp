@@ -22,7 +22,7 @@ import seedu.address.model.deck.exceptions.EntryNotFoundException;
  *
  * @see Entry#isSameEntry(Entry)
  */
-public class  UniqueEntryList implements Iterable<Entry> {
+public class UniqueEntryList implements Iterable<Entry> {
 
     private final ObservableList<Entry> internalList = FXCollections.observableArrayList();
     private final ObservableList<Entry> internalUnmodifiableList =

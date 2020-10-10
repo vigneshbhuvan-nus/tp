@@ -12,10 +12,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.deck.Deck;
-import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.deck.entry.UniqueEntryList;
 
-import javax.lang.model.type.ArrayType;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.

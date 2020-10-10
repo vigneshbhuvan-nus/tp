@@ -4,12 +4,9 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
-
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -17,12 +14,10 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
-import seedu.address.model.deck.UniqueDeckList;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
-import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
-import seedu.address.commons.core.index.Index;
+
 
 
 /**
@@ -179,10 +174,10 @@ public class ModelManager implements Model {
             return null;
         }
         Deck currentDeck = getCurrentDeck();
-        Deck sample_deck = new Deck(new DeckName("sample"));
-        sample_deck.addEntry(new Entry(new Word("w"), new Translation("t")));
+        Deck sampleDeck = new Deck(new DeckName("sample"));
+        sampleDeck.addEntry(new Entry(new Word("w"), new Translation("t")));
         /*return currentDeck.getEntryList();*/
-        return sample_deck.getFilteredEntryList();
+        return sampleDeck.getFilteredEntryList();
     }
 
     @Override
