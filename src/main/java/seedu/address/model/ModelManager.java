@@ -17,8 +17,10 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
+import seedu.address.model.deck.UniqueDeckList;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
 import seedu.address.commons.core.index.Index;
 
@@ -31,9 +33,10 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
-    private final FilteredList<Entry> filteredEntries;
+    /*private final FilteredList<Entry> filteredEntries;*/
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
+
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -46,7 +49,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredEntries = new FilteredList<>(this.addressBook.getEntryList());
+        /*filteredEntries = new FilteredList<>(this.addressBook.getEntryList());*/
         filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
         currentDeckIndex = Optional.empty();
     }
@@ -156,6 +159,7 @@ public class ModelManager implements Model {
     @Override
     public Deck getCurrentDeck() {
         if (currentDeckIndex.equals(Optional.empty())) {
+            logger.info("currentDeckIndex is 0");
             return null;
         }
         return filteredDecks.get(currentDeckIndex.get().getZeroBased());
@@ -170,13 +174,15 @@ public class ModelManager implements Model {
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
         //keeps returning null causing null error
-        if (getCurrentDeck() == null) {
+        if (this.getCurrentDeck() == null) {
+            logger.info("Current Deck is null");
             return null;
         }
-        Deck currentDeck = getCurrentDeck();/*
-        filteredEntries.addAll(currentDeck.getFilteredEntryList());
-        return filteredEntries;*/
-        return currentDeck.getEntryList();
+        Deck currentDeck = getCurrentDeck();
+        Deck sample_deck = new Deck(new DeckName("sample"));
+        sample_deck.addEntry(new Entry(new Word("w"), new Translation("t")));
+        /*return currentDeck.getEntryList();*/
+        return sample_deck.getFilteredEntryList();
     }
 
     @Override
@@ -192,6 +198,11 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Deck> getFilteredDeckList() {
+        /*UniqueDeckList udl = new UniqueDeckList();
+        udl.add(new Deck(new DeckName("deck_1")));
+        udl.add(new Deck(new DeckName("deck_2")));
+        udl.add(new Deck(new DeckName("deck_3")));
+        return udl.asUnmodifiableObservableList();*/
         return filteredDecks;
     }
 
