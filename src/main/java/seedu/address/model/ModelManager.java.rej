@@ -1,0 +1,16 @@
+diff a/src/main/java/seedu/address/model/ModelManager.java b/src/main/java/seedu/address/model/ModelManager.java	(rejected hunks)
+@@ -174,10 +174,14 @@
+             return null;
+         }
+         Deck currentDeck = getCurrentDeck();
++<<<<<<< HEAD
+         Deck sampleDeck = new Deck(new DeckName("sample"));
+         sampleDeck.addEntry(new Entry(new Word("w"), new Translation("t")));
+         /*return currentDeck.getEntryList();*/
+         return sampleDeck.getFilteredEntryList();
++=======
++        return currentDeck.getEntryList();
++>>>>>>> master
+     }
+ 
+     @Override
