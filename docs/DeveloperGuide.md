@@ -267,8 +267,8 @@ From these data, GreenTea would be able to derive some meaningful analytics to
 display to the user. These include:
 1. Progression since last attempt
 2. Length of time between quizzes
-3. Most forgotten phrase/translation 
-4. Language mastery 
+3. Most forgotten phrase/translation
+4. Language mastery
 5. Progress in each deck
 
 _{Feature will be added in v1.3}_
