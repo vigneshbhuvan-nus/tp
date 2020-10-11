@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
-
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -19,6 +18,8 @@ import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.Word;
 
+
+
 /**
  * Represents the in-memory model of the address book data.
  */
@@ -27,9 +28,10 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
-    private final FilteredList<Entry> filteredEntries;
+    /*private final FilteredList<Entry> filteredEntries;*/
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
+
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -42,7 +44,7 @@ public class ModelManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        filteredEntries = new FilteredList<>(this.addressBook.getEntryList());
+        /*filteredEntries = new FilteredList<>(this.addressBook.getEntryList());*/
         filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
         currentDeckIndex = Optional.empty();
     }
@@ -152,6 +154,7 @@ public class ModelManager implements Model {
     @Override
     public Deck getCurrentDeck() {
         if (currentDeckIndex.equals(Optional.empty())) {
+            logger.info("currentDeckIndex is 0");
             return null;
         }
         return filteredDecks.get(currentDeckIndex.get().getZeroBased());
@@ -165,13 +168,16 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
-        Deck currentDeck = getCurrentDeck(); //keeps returning null causing null error
-        Deck deck = new Deck(new DeckName("Deck 1"));
-        deck.addEntry(new Entry(new Word("StubEntry"), new Translation("Stub o Entry o")));
-        deck.addEntry(new Entry(new Word("ScrollBarTestEntry"), new Translation("Scroll o Bar o")));
-        deck.addEntry(new Entry(new Word("Vignesh Hurry up"), new Translation("Vigneshu hurry uppo")));
-        deck.addEntry(new Entry(new Word("ModelManager.java"), new Translation("Line 173")));
-        return deck.getFilteredEntryList();
+        //keeps returning null causing null error
+        if (this.getCurrentDeck() == null) {
+            logger.info("Current Deck is null");
+            return null;
+        }
+        Deck currentDeck = getCurrentDeck();
+        Deck sampleDeck = new Deck(new DeckName("sample"));
+        sampleDeck.addEntry(new Entry(new Word("w"), new Translation("t")));
+        /*return currentDeck.getEntryList();*/
+        return sampleDeck.getFilteredEntryList();
     }
 
     @Override
@@ -187,6 +193,11 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Deck> getFilteredDeckList() {
+        /*UniqueDeckList udl = new UniqueDeckList();
+        udl.add(new Deck(new DeckName("deck_1")));
+        udl.add(new Deck(new DeckName("deck_2")));
+        udl.add(new Deck(new DeckName("deck_3")));
+        return udl.asUnmodifiableObservableList();*/
         return filteredDecks;
     }
 

@@ -7,7 +7,7 @@ public class DeckName {
 
     public static final String MESSAGE_CONSTRAINTS = "Deck name cannot be blank";
     public static final String VALIDATION_REGEX = "^(?!\\s*$).+";
-    private final String deckName;
+    public final String deckName;
 
     /**
      * Constructs an {@code DeckName}.
@@ -25,6 +25,10 @@ public class DeckName {
      */
     public static boolean isValidDeckName(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public String getDeckName() {
+        return deckName;
     }
 
     @Override

@@ -11,7 +11,8 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.Deck;
+
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.
@@ -19,16 +20,15 @@ import seedu.address.model.deck.entry.Entry;
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_ENTRY = "Entries list contains duplicate entry(s).";
-
-    private final List<JsonAdaptedEntry> entries = new ArrayList<>();
+    public static final String MESSAGE_DUPLICATE_DECK = "Deck list contains duplicate entry(s).";
+    private final List<JsonAdaptedDeck> decks = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonSerializableAddressBook} with the given entries.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("entries") List<JsonAdaptedEntry> entries) {
-        this.entries.addAll(entries);
+    public JsonSerializableAddressBook(@JsonProperty("decks") List<JsonAdaptedDeck> decks) {
+        this.decks.addAll(decks);
     }
 
     /**
@@ -37,7 +37,7 @@ class JsonSerializableAddressBook {
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
     public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        entries.addAll(source.getEntryList().stream().map(JsonAdaptedEntry::new).collect(Collectors.toList()));
+        decks.addAll(source.getDeckList().stream().map(JsonAdaptedDeck::new).collect(Collectors.toList()));
     }
 
     /**
@@ -47,14 +47,14 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-        for (JsonAdaptedEntry jsonAdaptedEntry : entries) {
-            Entry entry = jsonAdaptedEntry.toModelType();
-            if (addressBook.hasEntry(entry)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_ENTRY);
+
+        for (JsonAdaptedDeck jsonAdaptedDeck: decks) {
+            Deck deck = jsonAdaptedDeck.toModelType();
+            if (addressBook.hasDeck(deck)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_DECK);
             }
-            addressBook.addEntry(entry);
+            addressBook.addDeck(deck);
         }
         return addressBook;
     }
-
 }

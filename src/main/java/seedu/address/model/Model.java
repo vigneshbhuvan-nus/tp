@@ -94,7 +94,6 @@ public interface Model {
      * Returns true if a deck with the same identity as {@code deck} exists in the word bank.
      */
     boolean hasDeck(Deck deck);
-
     /**
      * Removes the given deck.
      * The deck must exist in the word bank.
