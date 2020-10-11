@@ -154,11 +154,13 @@ public class ModelManager implements Model {
         currentDeckIndex = Optional.of(index);
         //select command will also call  replaceEntryList() below
     }
-
+    /*
+    * */
     public void replaceEntryList() {
         UniqueEntryList observedList = observedDeck.getEntries();
         for (Entry entry : observedList) {
-            observedDeck.removeEntry(entry); //concurrent modification error -> find a way to delete all entries and replace with new entries?
+            observedDeck.removeEntry(entry); //concurrent modification error -> find a way to delete all entries and
+            // replace with new entries?
         }
         observedDeck.setEntries(getCurrentDeck().getEntries());
     }

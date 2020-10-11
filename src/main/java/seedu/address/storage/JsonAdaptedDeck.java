@@ -2,15 +2,12 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.ObservableList;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
-
 
 
 /**
@@ -24,7 +21,6 @@ class JsonAdaptedDeck {
 
     /**
      * Constructs a {@code JsonAdaptedDeck} with the given entry details.
-     *
      */
     @JsonCreator
     public JsonAdaptedDeck(@JsonProperty("deckname") String deckName,
