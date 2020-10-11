@@ -154,8 +154,8 @@ public class ModelManager implements Model {
         currentDeckIndex = Optional.of(index);
         //select command will also call  replaceEntryList() below
     }
-    /*
-    * */
+
+    @Override
     public void replaceEntryList() {
         UniqueEntryList observedList = observedDeck.getEntries();
         for (Entry entry : observedList) {
