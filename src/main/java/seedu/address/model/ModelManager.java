@@ -171,13 +171,19 @@ public class ModelManager implements Model {
         //keeps returning null causing null error
         if (this.getCurrentDeck() == null) {
             logger.info("Current Deck is null");
-            return null;
+            Deck sampleDeck = new Deck(new DeckName("Japanese(Built In Stub)"));
+            sampleDeck.addEntry(new Entry(new Word("Hello"), new Translation("こんにちは")));
+            sampleDeck.addEntry(new Entry(new Word("Goodbye"), new Translation("さようなら")));
+            sampleDeck.addEntry(new Entry(new Word("Software"), new Translation("ソフトウェア")));
+            sampleDeck.addEntry(new Entry(new Word("Engineering"), new Translation("エンジニアリング")));
+            sampleDeck.addEntry(new Entry(new Word("This is"), new Translation("a stub btw")));
+            addressBook.addDeck(sampleDeck);
+            selectDeck(new Index(0));
+            return getCurrentDeck().getFilteredEntryList();
+            //return null;
         }
         Deck currentDeck = getCurrentDeck();
-        Deck sampleDeck = new Deck(new DeckName("sample"));
-        sampleDeck.addEntry(new Entry(new Word("w"), new Translation("t")));
-        /*return currentDeck.getEntryList();*/
-        return sampleDeck.getFilteredEntryList();
+        return currentDeck.getEntryList();
     }
 
     @Override
