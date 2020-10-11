@@ -8,7 +8,9 @@ import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.UniqueEntryList;
+import seedu.address.model.deck.entry.Word;
 
 /**
  * Represents a deck of flashcards

@@ -34,7 +34,7 @@ public class UniqueDeckList implements Iterable<Deck> {
         if (contains(toAdd)) {
             throw new DuplicateDeckException();
         }
-        internalList.add(toAdd);
+        internalList.add(toAdd); //calls some javafx library code to create a change  to ui
     }
 
     /**

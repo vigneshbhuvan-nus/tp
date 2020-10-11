@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -16,8 +17,8 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
-
 
 
 /**
@@ -31,6 +32,8 @@ public class ModelManager implements Model {
     /*private final FilteredList<Entry> filteredEntries;*/
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
+
+    private Deck observedDeck;
 
 
     /**
@@ -147,9 +150,19 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void selectDeck (Index index) {
+    public void selectDeck(Index index) {
         currentDeckIndex = Optional.of(index);
+        //select command will also call  replaceEntryList() below
     }
+
+    public void replaceEntryList() {
+        UniqueEntryList observedList = observedDeck.getEntries();
+        for (Entry entry : observedList) {
+            observedDeck.removeEntry(entry); //concurrent modification error -> find a way to delete all entries and replace with new entries?
+        }
+        observedDeck.setEntries(getCurrentDeck().getEntries());
+    }
+
 
     @Override
     public Deck getCurrentDeck() {
@@ -171,19 +184,21 @@ public class ModelManager implements Model {
         //keeps returning null causing null error
         if (this.getCurrentDeck() == null) {
             logger.info("Current Deck is null");
-            Deck sampleDeck = new Deck(new DeckName("Japanese(Built In Stub)"));
-            sampleDeck.addEntry(new Entry(new Word("Hello"), new Translation("こんにちは")));
-            sampleDeck.addEntry(new Entry(new Word("Goodbye"), new Translation("さようなら")));
-            sampleDeck.addEntry(new Entry(new Word("Software"), new Translation("ソフトウェア")));
-            sampleDeck.addEntry(new Entry(new Word("Engineering"), new Translation("エンジニアリング")));
-            sampleDeck.addEntry(new Entry(new Word("This is"), new Translation("a stub btw")));
-            addressBook.addDeck(sampleDeck);
+            observedDeck = new Deck(new DeckName("Japanese(Built In Stub)"));
+            observedDeck.addEntry(new Entry(new Word("Hello"), new Translation("こんにちは")));
+            observedDeck.addEntry(new Entry(new Word("Goodbye"), new Translation("さようなら")));
+            observedDeck.addEntry(new Entry(new Word("Software"), new Translation("ソフトウェア")));
+            observedDeck.addEntry(new Entry(new Word("Engineering"), new Translation("エンジニアリング")));
+            observedDeck.addEntry(new Entry(new Word("This is"), new Translation("a stub btw")));
+            addressBook.addDeck(observedDeck);
             selectDeck(new Index(0));
             return getCurrentDeck().getFilteredEntryList();
             //return null;
         }
         Deck currentDeck = getCurrentDeck();
-        return currentDeck.getEntryList();
+        System.out.println(currentDeck.getDeckName());
+        System.out.println(currentDeck.getEntryList());
+        return getCurrentDeck().getFilteredEntryList();
     }
 
     @Override
@@ -191,6 +206,7 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         Deck currentDeck = getCurrentDeck();
         currentDeck.updateFilteredEntryList(predicate);
+
     }
 
     /**
