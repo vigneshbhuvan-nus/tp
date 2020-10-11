@@ -163,7 +163,7 @@ public class ModelManager implements Model {
     //=========== Filtered Entry List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Entry} backed by the internal list of
+     * Returns a default deck as memory is not fixed yet.
      * {@code versionedAddressBook}
      */
     @Override
