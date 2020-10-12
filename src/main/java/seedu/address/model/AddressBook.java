@@ -35,7 +35,6 @@ public class AddressBook implements ReadOnlyAddressBook {
         /*entries = new UniqueEntryList();*/
         decks = new UniqueDeckList();
         observedEntries = new UniqueEntryList();
-        observedEntries.add(new Entry(new Word("observed List "), new Translation(" is in addressbook.java")));
         filteredEntries = new FilteredList<>(observedEntries.asUnmodifiableObservableList());
 
     }
