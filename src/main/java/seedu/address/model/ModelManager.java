@@ -243,7 +243,7 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         Deck currentDeck = getCurrentDeck();
         currentDeck.updateFilteredEntryList(predicate);
-        
+
         Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
         ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
         while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
@@ -256,7 +256,6 @@ public class ModelManager implements Model {
         for (Entry entry : currentDeck.getFilteredEntryList()) { //for each entry in filtered list
             addressBook.getObservedEntries().add(entry); //add it to the GUI
         }
-
     }
 
     /**
