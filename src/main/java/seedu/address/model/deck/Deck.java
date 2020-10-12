@@ -113,7 +113,7 @@ public class Deck {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getDeckName())
-                .append(" Cards: ");
+                .append(" internalList: ");
         for (Entry entry : entries) {
             builder.append(entry.toString());
         }
