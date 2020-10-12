@@ -121,10 +121,10 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        deckListPanel = new DeckListPanel(logic.getFilteredDeckList());
+        deckListPanel = new DeckListPanel(logic.getFilteredDeckList()); //get the initial decklist
         deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
-        entryListPanel = new EntryListPanel(logic.getFilteredEntryList());
+        entryListPanel = new EntryListPanel(logic.getFilteredEntryList()); //get the initial entrylist from model
         entryListPanelPlaceholder.getChildren().add(entryListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();

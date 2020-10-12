@@ -125,4 +125,11 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredDeckList(Predicate<Deck> predicate);
+
+    void replaceEntryList();
+
+    /**
+     * Deletes entries on the GUI when clear command is called.
+     */
+    void clearEntryList();
 }
