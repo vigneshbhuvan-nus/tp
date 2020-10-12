@@ -3,11 +3,9 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
-import java.lang.reflect.Array;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -190,6 +188,18 @@ public class ModelManager implements Model {
         // note: you can use a void function to change the ui apparently
     }
 
+    @Override
+    public void clearEntryList() {
+        Iterator<Entry> iterator = addressBook.observedEntries.iterator();
+        ArrayList<Entry> copy = new ArrayList<>();
+        while (iterator.hasNext()) {
+            copy.add(iterator.next());
+        }
+        for (Entry entry: copy) {
+            addressBook.observedEntries.remove(entry);
+        }
+    }
+
 
     @Override
     public Deck getCurrentDeck() {
@@ -220,7 +230,6 @@ public class ModelManager implements Model {
             observedDeck.addEntry(new Entry(new Word("Engineering"), new Translation("エンジニアリング")));
             observedDeck.addEntry(new Entry(new Word("This is"), new Translation("a stub btw")));
             addressBook.addDeck(observedDeck);
-            selectDeck(new Index(0));
             return addressBook.filteredEntries;
         }
         Deck currentDeck = getCurrentDeck();
