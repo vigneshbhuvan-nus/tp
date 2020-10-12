@@ -9,9 +9,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.UniqueDeckList;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.UniqueEntryList;
-import seedu.address.model.deck.entry.Word;
 
 /**
  * Wraps all data at the address-book level
@@ -21,8 +19,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /*private final UniqueEntryList entries;*/
     private final UniqueDeckList decks;
-    public UniqueEntryList observedEntries;
-    public FilteredList<Entry> filteredEntries;
+    private UniqueEntryList observedEntries;
+    private FilteredList<Entry> filteredEntries;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -50,6 +48,15 @@ public class AddressBook implements ReadOnlyAddressBook {
         resetData(toBeCopied);
     }
 
+    // get list operations
+    public UniqueEntryList getObservedEntries() {
+        return observedEntries;
+    }
+
+    public FilteredList<Entry> getFilteredEntries() {
+        return filteredEntries;
+    }
+
     /**
      * This function directly modifies what is seen on the GUI
      * @param entry refers to the entry added by the user
@@ -67,7 +74,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     /*public void setEntries(List<Entry> entries) {
         this.entries.setEntries(entries);
     }*/
-
     /**
      * Replaces the contents of the entry list with {@code entries}.
      * {@code entries} must not contain duplicate entries.
@@ -116,8 +122,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public String toString() {
         return decks.asUnmodifiableObservableList().size() + " decks";
-        // TODO: refine later
-
     }
 
     /*@Override

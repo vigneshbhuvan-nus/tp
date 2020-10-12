@@ -186,12 +186,12 @@ public class NewDeckCommandTest {
         public void updateFilteredDeckList(Predicate<Deck> predicate) {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public void replaceEntryList() {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public void clearEntryList() {
             throw new AssertionError("This method should not be called.");

@@ -116,7 +116,7 @@ public class ModelManager implements Model {
     public void deleteEntry(Entry target) {
         Deck currentDeck = getCurrentDeck();
         currentDeck.removeEntry(target);
-        addressBook.observedEntries.remove(target);
+        addressBook.getObservedEntries().remove(target);
     }
 
     /**
@@ -129,7 +129,7 @@ public class ModelManager implements Model {
     public void addEntry(Entry entry) {
         Deck currentDeck = getCurrentDeck();
         currentDeck.addEntry(entry);
-        addressBook.observedEntries.add(entry);
+        addressBook.getObservedEntries().add(entry);
         updateFilteredEntryList(PREDICATE_SHOW_ALL_ENTRIES);
     }
 
@@ -173,30 +173,30 @@ public class ModelManager implements Model {
     @Override
     public void replaceEntryList() {
         UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
-        Iterator<Entry> iterator = addressBook.observedEntries.iterator(); //create iterator
+        Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
         ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
         while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
             copy.add(iterator.next()); //this avoids the concurrentModification exception
         }
         for (Entry entry : copy) { //for each entry in the copy, delete the same entry in the observedEntries
-            addressBook.observedEntries.remove(entry); //this changes the GUI
+            addressBook.getObservedEntries().remove(entry); //this changes the GUI
         }
 
         for (Entry entry : observedList) { //for each entry in the new selected deck entryList
-            addressBook.observedEntries.add(entry); //add it to the GUI
+            addressBook.getObservedEntries().add(entry); //add it to the GUI
         }
         // note: you can use a void function to change the ui apparently
     }
 
     @Override
     public void clearEntryList() {
-        Iterator<Entry> iterator = addressBook.observedEntries.iterator();
+        Iterator<Entry> iterator = addressBook.getObservedEntries().iterator();
         ArrayList<Entry> copy = new ArrayList<>();
         while (iterator.hasNext()) {
             copy.add(iterator.next());
         }
         for (Entry entry: copy) {
-            addressBook.observedEntries.remove(entry);
+            addressBook.getObservedEntries().remove(entry);
         }
     }
 
@@ -230,7 +230,7 @@ public class ModelManager implements Model {
             observedDeck.addEntry(new Entry(new Word("Engineering"), new Translation("エンジニアリング")));
             observedDeck.addEntry(new Entry(new Word("This is"), new Translation("a stub btw")));
             addressBook.addDeck(observedDeck);
-            return addressBook.filteredEntries;
+            return addressBook.getFilteredEntries();
         }
         Deck currentDeck = getCurrentDeck();
         System.out.println(currentDeck.getDeckName());
