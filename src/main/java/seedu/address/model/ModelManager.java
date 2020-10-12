@@ -3,10 +3,15 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.lang.reflect.Array;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -16,8 +21,8 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
-
 
 
 /**
@@ -31,6 +36,8 @@ public class ModelManager implements Model {
     /*private final FilteredList<Entry> filteredEntries;*/
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
+
+    private Deck observedDeck;
 
 
     /**
@@ -111,12 +118,20 @@ public class ModelManager implements Model {
     public void deleteEntry(Entry target) {
         Deck currentDeck = getCurrentDeck();
         currentDeck.removeEntry(target);
+        addressBook.observedEntries.remove(target);
     }
+
+    /**
+     * This function takes the entry and adds it to the deck entry list as well as the observedEntries in the
+     * AddressBook
+     * @param entry refers to the entry inputted by the user
+     */
 
     @Override
     public void addEntry(Entry entry) {
         Deck currentDeck = getCurrentDeck();
         currentDeck.addEntry(entry);
+        addressBook.observedEntries.add(entry);
         updateFilteredEntryList(PREDICATE_SHOW_ALL_ENTRIES);
     }
 
@@ -147,9 +162,34 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void selectDeck (Index index) {
+    public void selectDeck(Index index) {
         currentDeckIndex = Optional.of(index);
+        //selectCommand.execute also called the function (below) replaceEntryList()
     }
+
+    /**
+     * This function deletes what is on the GUI and replaces it with the next entries in the selected deck.
+     * To replace the observedEntry in Addressbook.java that controls the GUI, a copy of it has to be created first.
+     * This avoids the concurrent modification exception.
+     */
+    @Override
+    public void replaceEntryList() {
+        UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
+        Iterator<Entry> iterator = addressBook.observedEntries.iterator(); //create iterator
+        ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
+        while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
+            copy.add(iterator.next()); //this avoids the concurrentModification exception
+        }
+        for (Entry entry : copy) { //for each entry in the copy, delete the same entry in the observedEntries
+            addressBook.observedEntries.remove(entry); //this changes the GUI
+        }
+
+        for (Entry entry : observedList) { //for each entry in the new selected deck entryList
+            addressBook.observedEntries.add(entry); //add it to the GUI
+        }
+        // note: you can use a void function to change the ui apparently
+    }
+
 
     @Override
     public Deck getCurrentDeck() {
@@ -163,7 +203,9 @@ public class ModelManager implements Model {
     //=========== Filtered Entry List Accessors =============================================================
 
     /**
-     * Returns an unmodifiable view of the list of {@code Entry} backed by the internal list of
+     * Returns a default deck as memory is not fixed yet. During initialisation, the observedEntryList value is
+     * passed as the AddressBook.javas uniqueEntryList. I.e the GUI now watches for any changes in the AddressBook,java
+     * field observedEntries
      * {@code versionedAddressBook}
      */
     @Override
@@ -171,13 +213,20 @@ public class ModelManager implements Model {
         //keeps returning null causing null error
         if (this.getCurrentDeck() == null) {
             logger.info("Current Deck is null");
-            return null;
+            observedDeck = new Deck(new DeckName("Japanese(Built In Stub)"));
+            observedDeck.addEntry(new Entry(new Word("Hello"), new Translation("こんにちは")));
+            observedDeck.addEntry(new Entry(new Word("Goodbye"), new Translation("さようなら")));
+            observedDeck.addEntry(new Entry(new Word("Software"), new Translation("ソフトウェア")));
+            observedDeck.addEntry(new Entry(new Word("Engineering"), new Translation("エンジニアリング")));
+            observedDeck.addEntry(new Entry(new Word("This is"), new Translation("a stub btw")));
+            addressBook.addDeck(observedDeck);
+            selectDeck(new Index(0));
+            return addressBook.filteredEntries;
         }
         Deck currentDeck = getCurrentDeck();
-        Deck sampleDeck = new Deck(new DeckName("sample"));
-        sampleDeck.addEntry(new Entry(new Word("w"), new Translation("t")));
-        /*return currentDeck.getEntryList();*/
-        return sampleDeck.getFilteredEntryList();
+        System.out.println(currentDeck.getDeckName());
+        System.out.println(currentDeck.getEntryList());
+        return getCurrentDeck().getFilteredEntryList();
     }
 
     @Override
@@ -185,6 +234,7 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         Deck currentDeck = getCurrentDeck();
         currentDeck.updateFilteredEntryList(predicate);
+
     }
 
     /**

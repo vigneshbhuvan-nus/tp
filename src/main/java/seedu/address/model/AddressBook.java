@@ -5,8 +5,13 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.UniqueDeckList;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.UniqueEntryList;
+import seedu.address.model.deck.entry.Word;
 
 /**
  * Wraps all data at the address-book level
@@ -16,6 +21,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /*private final UniqueEntryList entries;*/
     private final UniqueDeckList decks;
+    public UniqueEntryList observedEntries;
+    public FilteredList<Entry> filteredEntries;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -27,9 +34,13 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         /*entries = new UniqueEntryList();*/
         decks = new UniqueDeckList();
+        observedEntries = new UniqueEntryList();
+        filteredEntries = new FilteredList<>(observedEntries.asUnmodifiableObservableList());
+
     }
 
-    public AddressBook() {}
+    public AddressBook() {
+    }
 
     /**
      * Creates an AddressBook using the Entries in the {@code toBeCopied}
@@ -39,12 +50,20 @@ public class AddressBook implements ReadOnlyAddressBook {
         resetData(toBeCopied);
     }
 
+    /**
+     * This function directly modifies what is seen on the GUI
+     * @param entry refers to the entry added by the user
+     * */
+    public void addEntry(Entry entry) {
+        observedEntries.add(entry);
+    }
+
     //// list overwrite operations
-/*
-    *
+    /*
+     *
      * Replaces the contents of the entry list with {@code entries}.
      * {@code entries} must not contain duplicate entries.
-*/
+     */
     /*public void setEntries(List<Entry> entries) {
         this.entries.setEntries(entries);
     }*/
@@ -65,47 +84,6 @@ public class AddressBook implements ReadOnlyAddressBook {
 
         setDecks(newData.getDeckList());
     }
-
-    //// entry-level operations
-/*
-
-    *
-     * Returns true if an entry with the same identity as {@code entry} exists in the address book.
-*/
-    /*public boolean hasEntry(Entry entry) {
-        requireNonNull(entry);
-        return entries.contains(entry);
-    }*/
-
-/*
-    *
-     * Adds an entry to the word bank.
-     * The entry must not already exist in the word bank.
-*/
-    /*public void addEntry(Entry entry) {
-        entries.add(entry);
-    }*/
-/*
-
-    *
-     * Replaces the given entry {@code target} in the list with {@code editedEntry}.
-     * {@code target} must exist in the address book.
-     * The entry identity of {@code editedEntry} must not be the same as another existing entry in the address book.
-*/
-    /*public void setEntry(Entry target, Entry editedEntry) {
-        requireNonNull(editedEntry);
-
-        entries.setEntry(target, editedEntry);
-    }*/
-
-/*
-    *
-     * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the address book.
-*/
-    /*public void removeEntry(Entry key) {
-        entries.remove(key);
-    }*/
 
     //// deck-level operations
 
@@ -164,3 +142,44 @@ public class AddressBook implements ReadOnlyAddressBook {
         return decks.hashCode();
     }
 }
+
+/// entry-level operations
+/*
+
+ *
+ * Returns true if an entry with the same identity as {@code entry} exists in the address book.
+ */
+    /*public boolean hasEntry(Entry entry) {
+        requireNonNull(entry);
+        return entries.contains(entry);
+    }*/
+
+/*
+ *
+ * Adds an entry to the word bank.
+ * The entry must not already exist in the word bank.
+ */
+    /*public void addEntry(Entry entry) {
+        entries.add(entry);
+    }*/
+/*
+
+ *
+ * Replaces the given entry {@code target} in the list with {@code editedEntry}.
+ * {@code target} must exist in the address book.
+ * The entry identity of {@code editedEntry} must not be the same as another existing entry in the address book.
+ */
+    /*public void setEntry(Entry target, Entry editedEntry) {
+        requireNonNull(editedEntry);
+
+        entries.setEntry(target, editedEntry);
+    }*/
+
+/*
+ *
+ * Removes {@code key} from this {@code AddressBook}.
+ * {@code key} must exist in the address book.
+ */
+    /*public void removeEntry(Entry key) {
+        entries.remove(key);
+    }*/

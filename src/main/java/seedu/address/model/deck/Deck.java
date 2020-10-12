@@ -21,6 +21,7 @@ public class Deck {
 
     /**
      * Name must be present and not null
+     *
      * @param deckName name of the deck of cards
      */
     public Deck(DeckName deckName) {
@@ -51,9 +52,9 @@ public class Deck {
     }
 
 
-
     /**
      * Updates the filter of the filtered entry list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     public void updateFilteredEntryList(Predicate<Entry> predicate) {
@@ -114,7 +115,7 @@ public class Deck {
         builder.append(getDeckName())
                 .append(" Cards: ");
         for (Entry entry : entries) {
-            builder.append (entry.toString());
+            builder.append(entry.toString());
         }
         return builder.toString();
     }
