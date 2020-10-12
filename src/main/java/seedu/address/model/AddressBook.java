@@ -5,8 +5,13 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.UniqueDeckList;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.UniqueEntryList;
+import seedu.address.model.deck.entry.Word;
 
 /**
  * Wraps all data at the address-book level
@@ -16,6 +21,8 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /*private final UniqueEntryList entries;*/
     private final UniqueDeckList decks;
+    public UniqueEntryList entries;
+    public FilteredList<Entry> filteredEntries;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -27,6 +34,10 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         /*entries = new UniqueEntryList();*/
         decks = new UniqueDeckList();
+        entries = new UniqueEntryList();
+        entries.add(new Entry(new Word("observed List "), new Translation(" is in addressbook.java")));
+        filteredEntries = new FilteredList<>(entries.asUnmodifiableObservableList());
+
     }
 
     public AddressBook() {
@@ -38,6 +49,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     public AddressBook(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
+    }
+
+    public void addEntry(Entry entry) {
+        entries.add(entry);
+    }
+
+    public void setEntries(UniqueEntryList entries) {
+        this.entries = entries;
     }
 
     //// list overwrite operations

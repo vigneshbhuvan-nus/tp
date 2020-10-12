@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -159,10 +160,9 @@ public class ModelManager implements Model {
     public void replaceEntryList() {
         UniqueEntryList observedList = observedDeck.getEntries();
         for (Entry entry : observedList) {
-            observedDeck.removeEntry(entry); //concurrent modification error -> find a way to delete all entries and
-            // replace with new entries?
+            addressBook.entries.add(entry);
         }
-        observedDeck.setEntries(getCurrentDeck().getEntries());
+        //addressBook.setEntries(observedList);
     }
 
 
@@ -194,7 +194,8 @@ public class ModelManager implements Model {
             observedDeck.addEntry(new Entry(new Word("This is"), new Translation("a stub btw")));
             addressBook.addDeck(observedDeck);
             selectDeck(new Index(0));
-            return getCurrentDeck().getFilteredEntryList();
+            //return getCurrentDeck().getFilteredEntryList();
+            return addressBook.filteredEntries;
             //return null;
         }
         Deck currentDeck = getCurrentDeck();
