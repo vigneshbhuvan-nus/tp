@@ -21,7 +21,7 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /*private final UniqueEntryList entries;*/
     private final UniqueDeckList decks;
-    public UniqueEntryList entries;
+    public UniqueEntryList observedEntries;
     public FilteredList<Entry> filteredEntries;
 
     /*
@@ -34,9 +34,9 @@ public class AddressBook implements ReadOnlyAddressBook {
     {
         /*entries = new UniqueEntryList();*/
         decks = new UniqueDeckList();
-        entries = new UniqueEntryList();
-        entries.add(new Entry(new Word("observed List "), new Translation(" is in addressbook.java")));
-        filteredEntries = new FilteredList<>(entries.asUnmodifiableObservableList());
+        observedEntries = new UniqueEntryList();
+        observedEntries.add(new Entry(new Word("observed List "), new Translation(" is in addressbook.java")));
+        filteredEntries = new FilteredList<>(observedEntries.asUnmodifiableObservableList());
 
     }
 
@@ -51,12 +51,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         resetData(toBeCopied);
     }
 
+    /**
+     * This function directly modifies what is seen on the GUI
+     * @param entry refers to the entry added by the user
+     * */
     public void addEntry(Entry entry) {
-        entries.add(entry);
-    }
-
-    public void setEntries(UniqueEntryList entries) {
-        this.entries = entries;
+        observedEntries.add(entry);
     }
 
     //// list overwrite operations
