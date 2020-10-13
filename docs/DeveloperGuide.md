@@ -1,12 +1,25 @@
----
-layout: page
-title: Developer Guide
----
-* Table of Contents
-{:toc}
+Green Tea Developer Guide (v1.2)
+--------------------------------------------------
+
+### Table of Contents
 
 --------------------------------------------------------------------------------------------------------------------
+## 1. Introduction
 
+### 1.1 Purpose
+This document details the architecture, design decisions and implementations for the flashcard application, Green Tea.
+
+### 1.2 Audience
+The intended audience of this document is the developers and testers of Green Tea.
+
+### 1.3 Glossary
+
+|         |          |
+|---------|----------|
+|Deck     | A collection of entries|
+|Entry    | A word and its translation|
+
+-------------------------------------------------------------------------------------------------------------------
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
