@@ -20,19 +20,26 @@ The intended audience of this document is the developers and testers of Green Te
 |Entry    | A word and its translation|
 
 -------------------------------------------------------------------------------------------------------------------
-## **Setting up, getting started**
+## 2. **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## 3. **Design**
 
-### Architecture
+This section details the various components of the application. It covers the internal structure of each component and
+how the components work together with one another.
 
-<img src="images/ArchitectureDiagram.png" width="450" />
+### 3.1 Component Overview
 
-The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
+The components of the application are Main, Commons, UI, Logic, Model and Storage.
+
+<p align="center"><<img src="images/ArchitectureDiagram.png" width="450" />
+<p align="center">Figure 1.Overview of components and their relationships </p>
+
+The ***Component Overview Diagram*** above shows the high-level design of the application.
+Given below is a quick overview of each component.
 
 <div markdown="span" class="alert alert-primary">
 
@@ -40,8 +47,9 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 </div>
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
-* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
+**`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/MainApp.java).
+It is responsible for:
+* At app launch: Initializes the components in the correct sequence and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
@@ -61,14 +69,26 @@ Each of the four components,
 For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+<p align="center"> Figure 2. Example of a component's API and functionality
 
-**How the architecture components interact with each other**
+#### **How the architecture components interact with one another**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `remove 1`.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
+<p align="center"> Figure 3. Components interacting with one another
 
 The sections below give more details of each component.
+
+### <a name="common-classes"></a> 3.2 Common classes
+
+Common classes are classes used by multiple components. Common classes include:
+
+* `Index`: Represents a zero or one based index. Using `Index` removes the need for a component to know what base other 
+components are using for their index. Can be converted to an integer (int).
+* `Messages`: Stores messages to be displayed to the user.
+* `GuiSettings`: Contains the GUI settings.
+* `LogsCenter`: Writes messages to the console and a log file. Records the state of the program as the app is running.
 
 ### UI component
 
@@ -151,10 +171,6 @@ The `Model`,
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the address book data in json format and read it back.
-
-### Common classes
-
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
