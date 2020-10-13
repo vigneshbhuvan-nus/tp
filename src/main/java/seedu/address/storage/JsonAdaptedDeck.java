@@ -17,7 +17,7 @@ import java.util.List;
  */
 class JsonAdaptedDeck {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Entry's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Deck's %s field is missing!";
     private final String deckName;
     private final List<JsonAdaptedEntry> internalList = new ArrayList<>();
 

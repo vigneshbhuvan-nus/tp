@@ -20,7 +20,7 @@ import seedu.address.model.deck.Deck;
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_DECK = "Deck list contains duplicate entry(s).";
+    public static final String MESSAGE_DUPLICATE_DECK = "Decks list contains duplicate entry(s).";
     private final List<JsonAdaptedDeck> decks = new ArrayList<>();
 
     /**
@@ -47,7 +47,6 @@ class JsonSerializableAddressBook {
      */
     public AddressBook toModelType() throws IllegalValueException {
         AddressBook addressBook = new AddressBook();
-
         for (JsonAdaptedDeck jsonAdaptedDeck: decks) {
             Deck deck = jsonAdaptedDeck.toModelType();
             if (addressBook.hasDeck(deck)) {

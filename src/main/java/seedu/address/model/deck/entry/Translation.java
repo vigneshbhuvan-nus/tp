@@ -26,6 +26,10 @@ public class Translation {
         this.translation = translation;
     }
 
+    public String getTranslation() {
+        return translation;
+    }
+
     /**
      * Returns if a given string is a valid translation.
      */
