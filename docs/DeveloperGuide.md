@@ -114,6 +114,10 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 
 `CommandBox.fxml` - Stackpane where the user writes input
 
+`DeckListPanel.fxml` - Houses a ListView<Deck>
+
+`DeckListCard.fxml` - (not housed by Mainwindow.fxml) contains the data from each deck
+
 `EntryListPanel.fxml` -  Houses a ListView<Entry>
 
 `EntryListCard.fxml`- (not housed by Mainwindow.fxml) contains the data from each entry
@@ -132,13 +136,13 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 <p align="center"> Figure 5. Logic component class relationship diagram
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
+1. `Logic` uses the `WorkBankParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
 1. The command execution can affect the `Model` (e.g. adding a deck).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("remove 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 <p align="center"> Figure 6. Interactions between different parts of the logic component
@@ -155,8 +159,8 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The `Model`
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the address book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the word bank data.
+* exposes an unmodifiable `ObservableList<Deck>` and `ObservableList<Entry>` that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
 ### <a name="storage-component"></a>  3.6 Storage component
@@ -168,7 +172,7 @@ The `Model`
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
-* can save the address book data in json format and read it back.
+* can save the word bank data in json format and read it back.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -191,7 +195,7 @@ E.g.
 The rationale behind the deck system is so that users will be better able to organize their entries.
 A deck system will also allow the flashcard system, a proposed feature, to be implemented more easily.
 
- ### 4.2 Select Deck
+### 4.2 Select Deck
 This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
 Once a deck is selected, entry level operations such as `add`, `delete`, `find`, `list` can be performed.
 
@@ -202,15 +206,15 @@ UI, Logic and Model components.
 ##### Aspect: Command format to select a deck
 * **Alternative 1 (current choice)**: `select <deck_index>` Select a deck before any entry level command can be given.
 E.g. `select 1` followed by `delete 1`
-  + Pros: 
+  + Pros: Easier for a user to make continuous changes to the same deck
   + Cons: Users have to give an additional command
   
 * **Alternative 2**: `delete <deck_index> <entry_index>` Entry level commands specify a deck. E.g `delete 1 1`
-  + Pros:
-  + Cons:
+  + Pros: Single command for users to execute 
+  + Cons: May cause confusion to the users.
+          
 
-
-### \[Proposed\] Flashcard System
+### 4.3 \[Proposed\] Flashcard System
 
 The flashcard system would allow the user to choose to practice in whichever deck
 he wishes.
@@ -224,7 +228,7 @@ flashcards are placed at the front.
 _{Feature will be added in v1.3}_
 
 
-### \[Proposed\] Data Analysis
+### 4.4 \[Proposed\] Data Analysis
 Some of the proposed parameters tracked by GreenTea include:
 * Number of correctly answered flashcards
 * Previous scores
@@ -245,7 +249,7 @@ _{Feature will be added in v1.3}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## 5. **Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -255,9 +259,9 @@ _{Feature will be added in v1.3}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## 6. **Appendix: Requirements**
 
-### Product scope
+### 6.1 Product scope
 
 **Target user profile**:
 
@@ -269,10 +273,10 @@ _{Feature will be added in v1.3}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: helps to learn a language better through better modes of practice
+**Value proposition**: helps users learn a language better through a flashcard system
 
 
-### User stories
+### 6.2 User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -309,7 +313,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | user                                       | have a reminder to practice everyday        | continue my progress consistently                                      |
 *{More to be added}*
 
-### Use cases
+### 6.3 Use cases
 
 (For all use cases below, the **System** is `GreenTea` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -412,10 +416,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Non-Functional Requirements
+### 6.4 Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 entries without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Should be easy for new users to understand, use and navigate the UI
 5.  Any interface between a user and the system should have a maximum response time of 2 seconds
@@ -424,14 +428,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Glossary
+### 6.5 Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## 7. **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -440,44 +444,44 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+### 7.1 Launch and shutdown
 
-1. Initial launch
+Initial launch
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+_{ more test cases …​ }_
 
-### Deleting a person
+### 7.2 Removing a deck
 
-1. Deleting a person while all persons are being shown
+Removing a deck while all decks are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: Multiple decks in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   2. Test case: `remove 1`<br>
+      Expected: First deck is removed from the list. Status message shown to confirm that the deck has been deleted. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   3. Test case: `remove 0`<br>
+      Expected: No deck is removed. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   4. Other incorrect remove commands to try: `remove`, `remove asdf`, `remove x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous test case 3
 
-1. _{ more test cases …​ }_
+_{ more test cases …​ }_
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
+_{ more test cases …​ }_
