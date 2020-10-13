@@ -90,16 +90,13 @@ components are using for their index. Can be converted to an integer (int).
 * `GuiSettings`: Contains the GUI settings.
 * `LogsCenter`: Writes messages to the console and a log file. Records the state of the program as the app is running.
 
-### UI component
+### <a name="ui-component"></a> 3.3 UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
+<p align="center"> Figure 4. UI component class relationship diagram </p>
 
 **API** :
-[`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
-
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
-
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+[`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 The `UI` component,
 
@@ -107,66 +104,67 @@ The `UI` component,
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
 
-MainWindow.fxml - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox
-                - also contains the code for the actual menu bar
+The UI consists of a `MainWindow` that is made up of parts (`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`)
+All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-CommandBox.fxml - Stackpane where the user writes input
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
-EntryListPanel.fxml -  Houses a ListView<Entry>
+`MainWindow.fxml` - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox. Contains the code for the actual menu bar
 
-EntryListCard.fxml- (not housed by Mainwindow.fxml) contains the data from each entry
+`CommandBox.fxml` - Stackpane where the user writes input
 
-HelpWindow.fxml - Only displays label and copy url button
+`EntryListPanel.fxml` -  Houses a ListView<Entry>
 
-ResultDisplay.fxml - Prints results to user 
+`EntryListCard.fxml`- (not housed by Mainwindow.fxml) contains the data from each entry
 
-StatusBarFooter - returns the path of the file retrieved
+`HelpWindow.fxml` - Only displays label and copy url button
 
-### Logic component
+`ResultDisplay.fxml` - Prints results to user 
+
+`StatusBarFooter` - returns the path of the file retrieved
+
+### <a name="logic-component"></a> 3.4 Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
 **API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+[`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
+<p align="center"> Figure 5. Logic component class relationship diagram
 
 1. `Logic` uses the `AddressBookParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
+1. The command execution can affect the `Model` (e.g. adding a deck).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+<p align="center"> Figure 6. Interactions between different parts of the logic component
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</div>
+***Photoshop method name and the line after the X
 
-### Model component
+### <a name="model-component"></a> 3.5 Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
+<p align="center"> Figure 7. Model component class relationship diagram
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-The `Model`,
+The `Model`
 
 * stores a `UserPref` object that represents the user’s preferences.
 * stores the address book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* exposes an unmodifiable `ObservableList<Person>` that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
-</div>
-
-
-### Storage component
+### <a name="storage-component"></a>  3.6 Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
+<p align="center"> Figure 8. Storage component class relationship diagram
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
@@ -174,102 +172,43 @@ The `Storage` component,
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## 4. **Implementation**
 
-This section describes some noteworthy details on how certain features are implemented.
-
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
-#### Design consideration:
-
-##### Aspect: How undo & redo executes
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
+This section describes some noteworthy details on how and why certain features are implemented.
 
 
-### \[Proposed\] Deck System
-This feature would allow the user to create multiple lists of entries rather than having 
-all translations together in the same list. This means that the user could have different decks
-for different languages or even multiple decks for the same languages. 
+### 4.1 Deck System
+This feature allows the user to create multiple lists of entries rather than having 
+all entries together in the same list. The user could have different decks
+for different languages or multiple decks for the same language. 
 
-e.g. 
-1. Deck 1: Japanese
-2. Deck 2: Spanish Food
-3. Deck 3: Spanish Animals
+E.g. 
+*  Deck 1: Japanese
+*  Deck 2: Spanish Food
+*  Deck 3: Spanish Animals
 
-_{Feature will be added in v1.3}_
+#### Design Considerations
+The rationale behind the deck system is so that users will be better able to organize their entries.
+A deck system will also allow the flashcard system, a proposed feature, to be implemented more easily.
+
+ ### 4.2 Select Deck
+This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
+Once a deck is selected, entry level operations such as `add`, `delete`, `find`, `list` can be performed.
+
+The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
+UI, Logic and Model components.
+
+#### Design Considerations
+##### Aspect: Command format to select a deck
+* **Alternative 1 (current choice)**: `select <deck_index>` Select a deck before any entry level command can be given.
+E.g. `select 1` followed by `delete 1`
+  + Pros: 
+  + Cons: Users have to give an additional command
+  
+* **Alternative 2**: `delete <deck_index> <entry_index>` Entry level commands specify a deck. E.g `delete 1 1`
+  + Pros:
+  + Cons:
+
 
 ### \[Proposed\] Flashcard System
 
@@ -287,18 +226,18 @@ _{Feature will be added in v1.3}_
 
 ### \[Proposed\] Data Analysis
 Some of the proposed parameters tracked by GreenTea include:
-1. Number of correctly answered flashcards
-2. Previous scores
-3. Average time taken in total
-4. Time of quiz
+* Number of correctly answered flashcards
+* Previous scores
+* Average time taken in total
+* Time of quiz
 
 From these data, GreenTea would be able to derive some meaningful analytics to 
 display to the user. These include:
-1. Progression since last attempt
-2. Length of time between quizzes
-3. Most forgotten phrase/translation
-4. Language mastery
-5. Progress in each deck
+* Progression since last attempt
+* Length of time between quizzes
+* Most forgotten phrase/translation
+* Language mastery
+* Progress in each deck
 
 _{Feature will be added in v1.3}_
 
