@@ -27,6 +27,11 @@ public class JsonAdaptedTranslation {
         translation = source.getTranslation();
     }
 
+    //Dummy Constructor
+    public JsonAdaptedTranslation() {
+        translation = "";
+    }
+
     @JsonValue
     public String getTranslation() {
         return translation;

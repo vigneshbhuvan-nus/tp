@@ -27,6 +27,11 @@ public class JsonAdaptedWord {
         word = source.getWord();
     }
 
+    //Dummy Constructor
+    public JsonAdaptedWord() {
+        word = "";
+    }
+
     @JsonValue
     public String getWord() {
         return word;
