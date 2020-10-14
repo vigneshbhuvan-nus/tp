@@ -51,6 +51,7 @@ public class AddCommand extends Command {
         }
 
         model.addEntry(toAdd);
+        model.replaceEntryList();
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 
