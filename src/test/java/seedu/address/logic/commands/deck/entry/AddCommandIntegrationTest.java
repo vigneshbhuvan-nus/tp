@@ -1,12 +1,14 @@
 package seedu.address.logic.commands.deck.entry;
 
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.deck.TypicalDecks.getTypicalAddressBook;
 
-import org.junit.jupiter.api.Test;
+import java.util.Arrays;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.CommandResult;
@@ -18,7 +20,6 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.testutil.entry.EntryBuilder;
 
-import java.util.Arrays;
 
 
 /**

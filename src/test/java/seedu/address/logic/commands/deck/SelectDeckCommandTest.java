@@ -20,11 +20,6 @@ public class SelectDeckCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
 
-//    @Test
-//    public void constructor_nullDeck_throwsNullPointerException() {
-//        assertThrows(NullPointerException.class, () -> new SelectDeckCommand(null));
-//    }
-
     @Test
     public void execute_deckSelectedByModel_selectSuccessful() throws Exception {
         SelectDeckCommand selectDeckCommand = new SelectDeckCommand(Index.fromZeroBased(1));

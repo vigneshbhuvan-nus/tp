@@ -47,7 +47,7 @@ public class TranslationTest {
         Object object = (Object) new Translation("I like green tea ice cream");
 
         assertTrue(validTranslation.equals(validTranslation)); //same object
-        assertFalse(validTranslation.equals(null));  //null object
+        assertFalse(validTranslation.equals(null)); //null object
         assertTrue(validTranslation.equals(object));
     }
 
