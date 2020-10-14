@@ -20,7 +20,7 @@ import seedu.address.model.deck.Deck;
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
 
-    public static final String MESSAGE_DUPLICATE_DECK = "Decks list contains duplicate entry(s).";
+    public static final String MESSAGE_DUPLICATE_DECK = "Decks list contains duplicate deck(s).";
     private final List<JsonAdaptedDeck> decks = new ArrayList<>();
 
     /**

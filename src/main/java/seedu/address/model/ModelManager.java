@@ -220,7 +220,7 @@ public class ModelManager implements Model {
         //keeps returning null causing null error
         if (this.getCurrentDeck() == null) {
             logger.info("Current Deck is null");
-/*            observedDeck = new Deck(new DeckName("Japanese(Built In Stub)"));
+            /*observedDeck = new Deck(new DeckName("Japanese(Built In Stub)"));
             observedDeck.addEntry(new Entry(new Word("Hello"), new Translation("こんにちは")));
             observedDeck.addEntry(new Entry(new Word("Goodbye"), new Translation("さようなら")));
             observedDeck.addEntry(new Entry(new Word("Software"), new Translation("ソフトウェア")));

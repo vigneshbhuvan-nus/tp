@@ -1,5 +1,9 @@
 package seedu.address.storage;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -7,10 +11,6 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.UniqueEntryList;
-import java.util.stream.Collectors;
-import java.util.ArrayList;
-import java.util.List;
-
 
 /**
  * Jackson-friendly version of {@link Deck}.
@@ -29,7 +29,7 @@ class JsonAdaptedDeck {
                            @JsonProperty("internallist") List<JsonAdaptedEntry> internalList) {
         this.deckName = deckName;
 
-        if(internalList != null) {
+        if (internalList != null) {
             this.internalList.addAll(internalList);
         }
     }

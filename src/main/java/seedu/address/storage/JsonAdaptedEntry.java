@@ -44,7 +44,8 @@ class JsonAdaptedEntry {
     public Entry toModelType() throws IllegalValueException {
 
         if (word == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Word.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    JsonAdaptedWord.class.getSimpleName()));
         }
         if (!Word.isValidWord(word.getWord())) {
             throw new IllegalValueException(Word.MESSAGE_CONSTRAINTS);
@@ -52,7 +53,7 @@ class JsonAdaptedEntry {
         final Word modelWord = new Word(word.getWord());
         if (translation == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Translation.class.getSimpleName()));
+                    JsonAdaptedTranslation.class.getSimpleName()));
         }
         if (!Translation.isValidTranslation(translation.getTranslation())) {
             throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);

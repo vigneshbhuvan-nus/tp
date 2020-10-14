@@ -2,8 +2,8 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import seedu.address.commons.exceptions.IllegalValueException;
 
+import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deck.entry.Translation;
 
 
@@ -44,7 +44,8 @@ public class JsonAdaptedTranslation {
      */
     public Translation toModelType() throws IllegalValueException {
         if (translation == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Translation.class.getSimpleName()));
+            throw new IllegalValueException(
+                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Translation.class.getSimpleName()));
         }
         if (!Translation.isValidTranslation(translation)) {
             throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);
