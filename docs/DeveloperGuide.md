@@ -18,6 +18,7 @@ The intended audience of this document is the developers and testers of Green Te
 |---------|----------|
 |Deck     | A collection of entries|
 |Entry    | A word and its translation|
+|Word Bank| A collection of decks. |
 
 -------------------------------------------------------------------------------------------------------------------
 ## 2. **Setting up, getting started**
@@ -142,17 +143,22 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("remove 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 <p align="center"> Figure 6. Interactions between different parts of the logic component
-
-***Photoshop method name and the line after the X
 
 ### <a name="model-component"></a> 3.5 Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 <p align="center"> Figure 7. Model component class relationship diagram
+
+The diagram above shows a general overview of the model component. The diagram below will give more details about the
+word bank section of the model component. 
+
+
+![Structure of the Model Component](images/ModelWordBankDiagram.png)
+<p align="center"> Figure 8. Structure of classes in the word bank
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
@@ -166,7 +172,7 @@ The `Model`
 ### <a name="storage-component"></a>  3.6 Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
-<p align="center"> Figure 8. Storage component class relationship diagram
+<p align="center"> Figure 9. Storage component class relationship diagram
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
