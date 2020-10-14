@@ -1,6 +1,8 @@
 package seedu.address.model.deck;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_JAPANESE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_SPANISH;
 import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;

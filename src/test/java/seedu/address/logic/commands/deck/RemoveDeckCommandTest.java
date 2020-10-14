@@ -21,6 +21,7 @@ import seedu.address.model.deck.Deck;
 public class RemoveDeckCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+
     @Test
     public void execute_invalidRemoveIndex_throwsCommandException() {
         Index outOfBoundIndex = Index.fromOneBased(model.getFilteredDeckList().size() + 1);
@@ -30,7 +31,7 @@ public class RemoveDeckCommandTest {
     }
 
     @Test
-    public void execute_validRemoveIndex_removeSuccessful() throws Exception{
+    public void execute_validRemoveIndex_removeSuccessful() throws Exception {
         Index validIndex = Index.fromOneBased(model.getFilteredDeckList().size());
         Deck deck = model.getFilteredDeckList().get(validIndex.getZeroBased());
         RemoveDeckCommand removeDeckCommand = new RemoveDeckCommand(validIndex);
