@@ -32,14 +32,14 @@ public class AddCommandTest {
         assertThrows(NullPointerException.class, () -> new AddCommand(null));
     }
 
-//  @Test
-//  public void execute_entryAcceptedByModel_addSuccessful() throws Exception {
-//      ModelStubAcceptingEntryAdded modelStub = new ModelStubAcceptingEntryAdded();
-//      Entry validEntry = new EntryBuilder().build();
-//      CommandResult commandResult = new AddCommand(validEntry).execute(modelStub);
-//      assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validEntry), commandResult.getFeedbackToUser());
-//      assertEquals(Arrays.asList(validEntry), modelStub.entriesAdded);
-//  }
+    //    @Test
+    //    public void execute_entryAcceptedByModel_addSuccessful() throws Exception {
+    //        ModelStubAcceptingEntryAdded modelStub = new ModelStubAcceptingEntryAdded();
+    //        Entry validEntry = new EntryBuilder().build();
+    //        CommandResult commandResult = new AddCommand(validEntry).execute(modelStub);
+    //        assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validEntry), commandResult.getFeedbackToUser());
+    //        assertEquals(Arrays.asList(validEntry), modelStub.entriesAdded);
+    //    }
 
     @Test
     public void execute_duplicateEntry_throwsCommandException() {
