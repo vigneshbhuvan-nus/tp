@@ -28,6 +28,10 @@ public class Word {
         this.word = word;
     }
 
+    public String getWord() {
+        return word;
+    }
+
     /**
      * Returns true if a given string is a valid word.
      */

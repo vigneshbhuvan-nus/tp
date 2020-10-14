@@ -30,11 +30,9 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        /*entries = new UniqueEntryList();*/
         decks = new UniqueDeckList();
         observedEntries = new UniqueEntryList();
         filteredEntries = new FilteredList<>(observedEntries.asUnmodifiableObservableList());
-
     }
 
     public AddressBook() {

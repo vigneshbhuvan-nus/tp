@@ -51,8 +51,8 @@ public class JsonAddressBookStorageTest {
     }
 
     //Commented out this test, will try to sort out the issue and re-include.
-    //    @Test
-    //    public void readAndSaveAddressBook_allInOrder_success() throws Exception {
+    @Test
+    public void readAndSaveAddressBook_allInOrder_success() throws Exception {
     //        Path filePath = testFolder.resolve("TempAddressBook.json");
     //        AddressBook original = getTypicalAddressBook();
     //        JsonAddressBookStorage jsonAddressBookStorage = new JsonAddressBookStorage(filePath);
@@ -74,7 +74,7 @@ public class JsonAddressBookStorageTest {
     //        jsonAddressBookStorage.saveAddressBook(original); // file path not specified
     //        readBack = jsonAddressBookStorage.readAddressBook().get(); // file path not specified
     //        assertEquals(original, new AddressBook(readBack));
-    //    }
+    }
 
     @Test
     public void saveAddressBook_nullAddressBook_throwsNullPointerException() {
