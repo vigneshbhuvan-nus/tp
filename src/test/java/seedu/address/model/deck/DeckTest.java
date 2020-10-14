@@ -1,7 +1,6 @@
 package seedu.address.model.deck;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_JAPANESE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_SPANISH;
 import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
@@ -9,9 +8,16 @@ import static seedu.address.testutil.deck.TypicalDecks.SPANISH_DECK;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.UniqueEntryList;
+import seedu.address.model.deck.entry.Word;
 import seedu.address.testutil.deck.DeckBuilder;
 
 public class DeckTest {
+
+    private Deck deckTest = new Deck(new DeckName("Test"));
+    private Entry validEntry = new Entry(new Word("Hello"), new Translation("Hola"));
 
     @Test
     public void isSameDeck() {
@@ -51,6 +57,21 @@ public class DeckTest {
         // different deck name -> returns false
         Deck editedJapanese = new DeckBuilder(JAPANESE_DECK).withDeckName(VALID_WORD_SPANISH).build();
         assertFalse(JAPANESE_DECK.equals(editedJapanese));
+    }
+
+
+    @Test
+    public void setEntries() {
+        UniqueEntryList list = new UniqueEntryList();
+        list.add(validEntry);
+        deckTest.setEntries(list);
+        assertEquals(list, deckTest.getEntries());
+    }
+
+    @Test
+    public void hasEntry() {
+        deckTest.addEntry(validEntry);
+        assertTrue(deckTest.hasEntry(validEntry));
     }
 
 }
