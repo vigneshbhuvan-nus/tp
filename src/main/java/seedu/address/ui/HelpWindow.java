@@ -18,7 +18,9 @@ public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL = "github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md\n\n";
 
-    public static final String DECK_COMMANDS = "===============================DECK COMMANDS===============================\n\n";
+    public static final String DECK_COMMANDS = "==============================="
+                                             + "DECK COMMANDS"
+                                             + "==============================\n\n";
 
     public static final String NEW_DECK_COMMAND = "Creating a new deck: new\n"
                                                 + "Format: new <NAME OF NEW DECK> e.g. new Korean\n\n";
@@ -29,8 +31,10 @@ public class HelpWindow extends UiPart<Stage> {
     public static final String SELECT_DECK_COMMAND = "Selecting an existing deck: select\n"
                                                    + "Format: select <DECK_INDEX> e.g. select 1\n\n";
 
-    public static final String ENTRY_COMMANDS = "===============================ENTRY COMMANDS==============================\n\n"
-                                              + "**Remember to select a deck before using an Entry command**\n\n";
+    public static final String ENTRY_COMMANDS = "==============================="
+                                               + "ENTRY COMMANDS"
+                                               + "==============================\n\n"
+                                               + "**Remember to select a deck before using an Entry command**\n\n";
 
     public static final String ADD_COMMAND = "Adding a new entry: add\n"
                                             + "Format: add w/<WORD> t/<TRANSLATION> e.g. add w/hola t/hello\n\n";
@@ -52,7 +56,9 @@ public class HelpWindow extends UiPart<Stage> {
     public static final String CLEAR_COMMAND = "Clearing all entries: clear\n"
                                             + "Format: clear\n\n";
 
-    public static final String MISC_COMMAND = "===============================MISC COMMANDS===============================\n\n";
+    public static final String MISC_COMMAND = "==============================="
+                                            + "MISC COMMANDS"
+                                            + "==============================\n\n";
 
     public static final String EXIT_COMMAND = "Exiting the program: exit\n"
                                             + "Format: exit\n\n";
