@@ -1,25 +1,46 @@
----
-layout: page
-title: Developer Guide
----
-* Table of Contents
-{:toc}
+Green Tea Developer Guide (v1.2)
+--------------------------------------------------
+
+### Table of Contents
 
 --------------------------------------------------------------------------------------------------------------------
+## 1. Introduction
 
-## **Setting up, getting started**
+### 1.1 Purpose
+This document details the architecture, design decisions and implementations for the flashcard application, Green Tea.
+
+### 1.2 Audience
+The intended audience of this document is the developers and testers of Green Tea.
+
+### 1.3 Glossary
+
+|         |          |
+|---------|----------|
+|Deck     | A collection of entries|
+|Entry    | A word and its translation|
+|Word Bank| A collection of decks. |
+
+-------------------------------------------------------------------------------------------------------------------
+## 2. **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Design**
+## 3. **Design**
 
-### Architecture
+This section details the various components of the application. It covers the internal structure of each component and
+how the components work together with one another.
 
-<img src="images/ArchitectureDiagram.png" width="450" />
+### 3.1 Component Overview
 
-The ***Architecture Diagram*** given above explains the high-level design of the App. Given below is a quick overview of each component.
+The components of the application are Main, Commons, UI, Logic, Model and Storage.
+
+<p align="center"><<img src="images/ArchitectureDiagram.png" width="450" />
+<p align="center">Figure 1.Overview of components and their relationships </p>
+
+The ***Component Overview Diagram*** above shows the high-level design of the application.
+Given below is a quick overview of each component.
 
 <div markdown="span" class="alert alert-primary">
 
@@ -27,8 +48,9 @@ The ***Architecture Diagram*** given above explains the high-level design of the
 
 </div>
 
-**`Main`** has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). It is responsible for,
-* At app launch: Initializes the components in the correct sequence, and connects them up with each other.
+**`Main`** has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/MainApp.java).
+It is responsible for:
+* At app launch: Initializes the components in the correct sequence and connects them up with each other.
 * At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
 [**`Commons`**](#common-classes) represents a collection of classes used by multiple other components.
@@ -48,25 +70,34 @@ Each of the four components,
 For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+<p align="center"> Figure 2. Example of a component's API and functionality
 
-**How the architecture components interact with each other**
+#### **How the architecture components interact with one another**
 
-The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `delete 1`.
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues the command `remove 1`.
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
+<p align="center"> Figure 3. Components interacting with one another
 
 The sections below give more details of each component.
 
-### UI component
+### <a name="common-classes"></a> 3.2 Common classes
+
+Common classes are classes used by multiple components. Common classes include:
+
+* `Index`: Represents a zero or one based index. Using `Index` removes the need for a component to know what base other 
+components are using for their index. Can be converted to an integer (int).
+* `Messages`: Stores messages to be displayed to the user.
+* `GuiSettings`: Contains the GUI settings.
+* `LogsCenter`: Writes messages to the console and a log file. Records the state of the program as the app is running.
+
+### <a name="ui-component"></a> 3.3 UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
+<p align="center"> Figure 4. UI component class relationship diagram </p>
 
 **API** :
-[`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
-
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
-
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+[`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 The `UI` component,
 
@@ -74,175 +105,122 @@ The `UI` component,
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
 
-MainWindow.fxml - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox
-                - also contains the code for the actual menu bar
+The UI consists of a `MainWindow` that is made up of parts (`CommandBox`, `ResultDisplay`, `PersonListPanel`, `StatusBarFooter`)
+All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-CommandBox.fxml - Stackpane where the user writes input
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
-EntryListPanel.fxml -  Houses a ListView<Entry>
+`MainWindow.fxml` - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox. Contains the code for the actual menu bar
 
-EntryListCard.fxml- (not housed by Mainwindow.fxml) contains the data from each entry
+`CommandBox.fxml` - Stackpane where the user writes input
 
-HelpWindow.fxml - Only displays label and copy url button
+`DeckListPanel.fxml` - Houses a ListView<Deck>
 
-ResultDisplay.fxml - Prints results to user 
+`DeckListCard.fxml` - (not housed by Mainwindow.fxml) contains the data from each deck
 
-StatusBarFooter - returns the path of the file retrieved
+`EntryListPanel.fxml` -  Houses a ListView<Entry>
 
-### Logic component
+`EntryListCard.fxml`- (not housed by Mainwindow.fxml) contains the data from each entry
+
+`HelpWindow.fxml` - Only displays label and copy url button
+
+`ResultDisplay.fxml` - Prints results to user 
+
+`StatusBarFooter` - returns the path of the file retrieved
+
+### <a name="logic-component"></a> 3.4 Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
 **API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+[`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
+<p align="center"> Figure 5. Logic component class relationship diagram
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
+1. `Logic` uses the `WorkBankParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
-1. The command execution can affect the `Model` (e.g. adding a person).
+1. The command execution can affect the `Model` (e.g. adding a deck).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
+<p align="center"> Figure 6. Interactions between different parts of the logic component
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-</div>
-
-### Model component
+### <a name="model-component"></a> 3.5 Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
+<p align="center"> Figure 7. Model component class relationship diagram
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+The diagram above shows a general overview of the model component. The diagram below will give more details about the
+word bank section of the model component. 
 
-The `Model`,
+
+![Structure of the Model Component](images/ModelWordBankDiagram.png)
+<p align="center"> Figure 8. Structure of classes in the word bank
+
+**API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
+
+The `Model`
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the address book data.
-* exposes an unmodifiable `ObservableList<Person>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+* stores the word bank data.
+* exposes an unmodifiable `ObservableList<Deck>` and `ObservableList<Entry>` that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Person` needing their own `Tag` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
-
-</div>
-
-
-### Storage component
+### <a name="storage-component"></a>  3.6 Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
+<p align="center"> Figure 9. Storage component class relationship diagram
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
-* can save the address book data in json format and read it back.
-
-### Common classes
-
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+* can save the word bank data in json format and read it back.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## 4. **Implementation**
 
-This section describes some noteworthy details on how certain features are implemented.
-
-### \[Proposed\] Undo/redo feature
-
-#### Proposed Implementation
-
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
-
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
-
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
-
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
-
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
-
-![UndoRedoState0](images/UndoRedoState0.png)
-
-Step 2. The user executes `delete 5` command to delete the 5th person in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
-
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new person. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
-#### Design consideration:
-
-##### Aspect: How undo & redo executes
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the person being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
+This section describes some noteworthy details on how and why certain features are implemented.
 
 
-### \[Proposed\] Deck System
-This feature would allow the user to create multiple lists of entries rather than having 
-all translations together in the same list. This means that the user could have different decks
-for different languages or even multiple decks for the same languages. 
+### 4.1 Deck System
+This feature allows the user to create multiple lists of entries rather than having 
+all entries together in the same list. The user could have different decks
+for different languages or multiple decks for the same language. 
 
-e.g. 
-1. Deck 1: Japanese
-2. Deck 2: Spanish Food
-3. Deck 3: Spanish Animals
+E.g. 
+*  Deck 1: Japanese
+*  Deck 2: Spanish Food
+*  Deck 3: Spanish Animals
 
-_{Feature will be added in v1.3}_
+#### Design Considerations
+The rationale behind the deck system is so that users will be better able to organize their entries.
+A deck system will also allow the flashcard system, a proposed feature, to be implemented more easily.
 
-### \[Proposed\] Flashcard System
+### 4.2 Select Deck
+This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
+Once a deck is selected, entry level operations such as `add`, `delete`, `find`, `list` can be performed.
+
+The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
+UI, Logic and Model components.
+
+#### Design Considerations
+##### Aspect: Command format to select a deck
+* **Alternative 1 (current choice)**: `select <deck_index>` Select a deck before any entry level command can be given.
+E.g. `select 1` followed by `delete 1`
+  + Pros: Easier for a user to make continuous changes to the same deck
+  + Cons: Users have to give an additional command
+  
+* **Alternative 2**: `delete <deck_index> <entry_index>` Entry level commands specify a deck. E.g `delete 1 1`
+  + Pros: Single command for users to execute 
+  + Cons: May cause confusion to the users.
+          
+
+### 4.3 \[Proposed\] Flashcard System
 
 The flashcard system would allow the user to choose to practice in whichever deck
 he wishes.
@@ -256,20 +234,20 @@ flashcards are placed at the front.
 _{Feature will be added in v1.3}_
 
 
-### \[Proposed\] Data Analysis
+### 4.4 \[Proposed\] Data Analysis
 Some of the proposed parameters tracked by GreenTea include:
-1. Number of correctly answered flashcards
-2. Previous scores
-3. Average time taken in total
-4. Time of quiz
+* Number of correctly answered flashcards
+* Previous scores
+* Average time taken in total
+* Time of quiz
 
 From these data, GreenTea would be able to derive some meaningful analytics to 
 display to the user. These include:
-1. Progression since last attempt
-2. Length of time between quizzes
-3. Most forgotten phrase/translation
-4. Language mastery
-5. Progress in each deck
+* Progression since last attempt
+* Length of time between quizzes
+* Most forgotten phrase/translation
+* Language mastery
+* Progress in each deck
 
 _{Feature will be added in v1.3}_
 
@@ -277,7 +255,7 @@ _{Feature will be added in v1.3}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## 5. **Documentation, logging, testing, configuration, dev-ops**
 
 * [Documentation guide](Documentation.md)
 * [Testing guide](Testing.md)
@@ -287,9 +265,9 @@ _{Feature will be added in v1.3}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## 6. **Appendix: Requirements**
 
-### Product scope
+### 6.1 Product scope
 
 **Target user profile**:
 
@@ -301,10 +279,10 @@ _{Feature will be added in v1.3}_
 * prefers typing to mouse interactions
 * is reasonably comfortable using CLI apps
 
-**Value proposition**: helps to learn a language better through better modes of practice
+**Value proposition**: helps users learn a language better through a flashcard system
 
 
-### User stories
+### 6.2 User stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -341,7 +319,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*`      | user                                       | have a reminder to practice everyday        | continue my progress consistently                                      |
 *{More to be added}*
 
-### Use cases
+### 6.3 Use cases
 
 (For all use cases below, the **System** is `GreenTea` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -444,10 +422,10 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Non-Functional Requirements
+### 6.4 Non-Functional Requirements
 
 1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+2.  Should be able to hold up to 1000 entries without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  Should be easy for new users to understand, use and navigate the UI
 5.  Any interface between a user and the system should have a maximum response time of 2 seconds
@@ -456,14 +434,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Glossary
+### 6.5 Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## 7. **Appendix: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -472,44 +450,44 @@ testers are expected to do more *exploratory* testing.
 
 </div>
 
-### Launch and shutdown
+### 7.1 Launch and shutdown
 
-1. Initial launch
+Initial launch
 
    1. Download the jar file and copy into an empty folder
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   2. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
-1. Saving window preferences
+Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
+   2. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+_{ more test cases …​ }_
 
-### Deleting a person
+### 7.2 Removing a deck
 
-1. Deleting a person while all persons are being shown
+Removing a deck while all decks are being shown
 
-   1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+   1. Prerequisites: Multiple decks in the list.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+   2. Test case: `remove 1`<br>
+      Expected: First deck is removed from the list. Status message shown to confirm that the deck has been deleted. Timestamp in the status bar is updated.
 
-   1. Test case: `delete 0`<br>
-      Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+   3. Test case: `remove 0`<br>
+      Expected: No deck is removed. Error details shown in the status message. Status bar remains the same.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   4. Other incorrect remove commands to try: `remove`, `remove asdf`, `remove x`, `...` (where x is larger than the list size)<br>
+      Expected: Similar to previous test case 3
 
-1. _{ more test cases …​ }_
+_{ more test cases …​ }_
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
-1. _{ more test cases …​ }_
+_{ more test cases …​ }_
