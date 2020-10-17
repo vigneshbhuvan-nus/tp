@@ -17,7 +17,7 @@ public class Deck {
 
     private final DeckName deckName;
     private UniqueEntryList entries;
-    private final FilteredList<Entry> filteredEntries;
+    private FilteredList<Entry> filteredEntries;
 
     /**
      * Name must be present and not null
@@ -41,6 +41,7 @@ public class Deck {
 
     public void setEntries(UniqueEntryList entries) {
         this.entries = entries;
+        this.filteredEntries = new FilteredList<>(getEntryList());
     }
 
     public ObservableList<Entry> getEntryList() {

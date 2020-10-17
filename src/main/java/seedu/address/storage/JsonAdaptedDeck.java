@@ -45,7 +45,7 @@ class JsonAdaptedDeck {
     }
 
     /**
-     * Converts this Jackson-friendly adapted entry object into the model's {@code Entry} object.
+     * Converts this Jackson-friendly adapted entry object into the model's {@code Deck} object.
      *
      * @throws IllegalValueException if there were any data constraints violated in the adapted entry.
      */
