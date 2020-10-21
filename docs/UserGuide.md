@@ -58,14 +58,6 @@ Decks are the foundation to GreenTea. A deck is simply a list of translation
 you write into GreenTea. A deck can be your favourite Chinese idioms, a list of beverages in Japanese,
 or even some romantic phrases in French!
 
-
-
-### Viewing help: `help` 
-
-Shows a cheat-sheet of commands in addition to a link to this User Guide.
-
-Format: `help`
-
 ### Creating a new deck: `new`
 
 Creates a new deck that can store entries of word-translation pairs.
@@ -96,7 +88,15 @@ Format: `select <INDEX OF DECK>`
 Examples: `select 1`
 
 
-### ===== ENTRY OPERATIONS ====
+## 5. Entry Commands (Gabriel)
+
+Entries are what make up a deck. They are the words or phrases that you wish to memorise in GreenTea.
+An entry is made up of two parts; the `word` and the `translation`. The `word` is written in the 
+language you are most familiar and the `translation` is written in the language you wish to learn. In 
+this User Guide, we will be assuming the language for `word` will be in English.
+
+Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
+see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
 
 ### Adding a new entry: `add`
 
@@ -145,6 +145,13 @@ Format: `delete <INDEX>`
 Clears all entries from the word bank.
 
 Format: `clear`
+
+
+### Viewing help: `help` 
+
+Shows a cheat-sheet of commands in addition to a link to this User Guide.
+
+Format: `help`
 
 ### Exiting the program: `exit`
 
