@@ -319,6 +319,7 @@ public class ModelManager implements Model {
     }
     @Override
     public void endGame() {
+        replaceEntryList();
 
     }
     @Override
