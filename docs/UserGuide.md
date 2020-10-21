@@ -8,7 +8,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   4. [Deck Commands](#4-deck-commands-gabriel)
      1. [Creating a Deck](#creating-a-deck-new)
      2. [Deleting a Deck](#deleting-a-deck)
-     3. [Selecting a Deck](#selecting-a-deck)
+     3. [Selecting a Deck](#selecting-a-deck-select)
      4. [Clearing all Decks](#clearing-all-decks)
   5. [Entry Commands](#5-entry-commands-gabriel)
      1. [Adding an Entry](#adding-a-new-entry)
@@ -60,9 +60,8 @@ or even some romantic phrases in French!
 
 ### Creating a deck: `new`
 
-Creates a new deck that can store entries of word-translation pairs.
 
-Format: `new <NAME OF NEW DECK`
+Format: `new <NAME OF NEW DECK>`
 
 Examples: - `new Japanese-Animals`
 
@@ -94,6 +93,8 @@ Entries are what make up a deck. They are the words or phrases that you wish to 
 An entry is made up of two parts; the `word` and the `translation`. The `word` is written in the 
 language you are most familiar and the `translation` is written in the language you wish to learn. In 
 this User Guide, we will be assuming the language for `word` will be in English.
+
+Before you start adding a new entry, remember to [select a deck first!](#selecting-a-deck-select)
 
 Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
@@ -140,9 +141,15 @@ Format: `delete <INDEX>`
 
 ## 6. Play Commands (Gabriel)
 
+More to be added
+
 ## 7. Statistics Commands (Gabriel)
 
+More to be added
+
 ## 8. Extra Commands (Gabriel)
+
+These are some extra commands that you might or might not need in the future!
 
 ### Viewing help: `help` 
 
