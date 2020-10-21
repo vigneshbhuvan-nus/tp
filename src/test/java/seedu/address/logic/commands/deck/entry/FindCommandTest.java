@@ -62,7 +62,6 @@ public class FindCommandTest {
         return new WordContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
     }
 
-    
     @Test
     public void equals() {
         WordContainsKeywordsPredicate firstPredicate =
