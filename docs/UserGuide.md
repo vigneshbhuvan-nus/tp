@@ -6,7 +6,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   2. [About This Document](#2-about-this-document)
   3. [Quick Start](#3-quick-start)
   4. [Deck Commands](#4-deck-commands)
-     1. [Creating a New Deck](#creating-a-new-deck-new)
+     1. [Creating a Deck](#creating-a-deck-new)
      2. [Deleting a Deck](#deleting-a-deck)
      3. [Selecting a Deck](#selecting-a-deck)
      4. [Clearing all Decks](#clearing-all-decks)
@@ -58,7 +58,7 @@ Decks are the foundation to GreenTea. A deck is simply a list of translation
 you write into GreenTea. A deck can be your favourite Chinese idioms, a list of beverages in Japanese,
 or even some romantic phrases in French!
 
-### Creating a new deck: `new`
+### Creating a deck: `new`
 
 Creates a new deck that can store entries of word-translation pairs.
 
