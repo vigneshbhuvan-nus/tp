@@ -209,7 +209,7 @@ The `Model`
 - exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`  
 that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 - does not depend on any of the other three components.
--
+
 
 ### <a name="storage-component"></a> 3.6 Storage component
 
@@ -271,8 +271,18 @@ approach is done for other commands that changes the UI such as `new <deck>` and
 
 ### 4.3 \[Proposed\] Flashcard System
 
-The flashcard system would allow the user to choose to practice in whichever deck
-he wishes.
+Three more commands will be added to the existing command list named PlayCommand, StopCommand and AnswerCommand.
+
+By default, StopCommand and AnswerCommand cannot be accessed by the user until a PlayCommand is typed by the user.
+After a PlayCommand is created, a boolean isPlayMode in AddressBookParser (we will rename it later) is becomes True 
+and all incoming user inputs will be converted to a AnswerCommand automatically unless the user input is "/stop". 
+
+Also, when the user types a PlayCommand into the system, a Leitner object will be created, storing the 
+current entries in a list. The entry's translation is then displayed to the user who can either input
+a new answer or a stop command. After all entries have been asked or a stop command has been issued, the leitner object
+saves the score and time data of the user and gets deleted by the Java Garbage Collector. 
+
+__The diagram for this process will be created after the flashcard system is implemented__
 
 The methodology behind GreenTea's flashcard system will be based on the Leitner System (https://en.wikipedia.org/wiki/Leitner_system)
 The Letiner system is a proven quizzing system that increases the user's rate of learning by
