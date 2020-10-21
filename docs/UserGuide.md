@@ -41,6 +41,19 @@ That's why here at GreenTea, we have come up with this neat little
 user guide to help __you__ hit the ground running. With this foolproof User Guide, learning a new 
 language will be as relaxing as drinking a hot cup of Green Tea.
 
+## 3. Quick Start (Gabriel)
+
+Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.java.com/en/)
+is installed on your computer. 
+
+To start using GreenTea: 
+
+1. Download the latest jar file [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases/new)
+2. Copy the jar file to your folder of choice (we recommend on your desktop!)
+3. Double-Click the file to start the application! 
+
+
+
 
 
 ### Viewing help: `help` 
