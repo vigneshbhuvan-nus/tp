@@ -5,6 +5,11 @@ GreenTea is a **desktop app for learning a new language, optimized for use via a
 
 - Table of Contents
   - [Viewing Help: help](#viewing-help-help)
+  - [===== DECK OPERATIONS ====](#=====-DECK-OPERATIONS-====)
+  - [Creating a new deck: new](#creating-a-new-deck-new)
+  - [Removing a deck: remove](#removing-a-deck-remove)
+  - [Selecting a deck: select](#selecting-a-deck-select)
+  - [===== ENTRY OPERATIONS ====](#=====-ENTRY-OPERATIONS-====)
   - [Adding a New Entry: add](#adding-a-new-entry-add)
   - [Listing All Entries: list](#listing-all-entries-list)
   - [Editing an Entry: edit](#editing-an-entry-edit)
@@ -21,6 +26,40 @@ GreenTea is a **desktop app for learning a new language, optimized for use via a
 Shows a cheat-sheet of commands in addition to a link of this UG.
 
 Format: `help`
+
+### ===== DECK OPERATIONS ====
+
+### Creating a new deck: `new`
+
+Creates a new deck that can store entries of word-translation pairs.
+
+Format: `new <NAME OF NEW DECK`
+
+Examples: - `new Japanese-Animals`
+
+### Removing a deck: `remove`
+
+Removes a particular deck from GreenTea
+
+Format: `remove <INDEX OF DECK>`
+
+**Note:** to get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck
+
+Examples: `remove 1`
+
+
+### Selecting a deck: `select`
+
+Selects a deck to perform deck-level operations on
+
+Format: `select <INDEX OF DECK>`
+
+**Note:** to get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck
+
+Examples: `select 1`
+
+
+### ===== ENTRY OPERATIONS ====
 
 ### Adding a new entry: `add`
 
@@ -94,10 +133,16 @@ Entries ares saved in the hard disk automatically after any command that changes
 | Action     | Format, Examples                                                                                                      |
 | ---------- | --------------------------------------------------------------------------------------------------------------------- |
 | **Help**   | `help`                                                                                                                |
+| **New**    | `new <NAME OF NEW DECK>`  e.g. `new Japanese-Animals`                                                                 |
+| **Remove** | `remove <INDEXOF DECK>` e.g. `remove 1`                                                                               |
+| **Select** | `select <INDEXOF DECK>` e.g. `select 1`                                                                               |
+|*****************************************************************                                                                   |
+|**Select a Deck before Using the following Commands**                                                                               | 
+|*****************************************************************                                                                   |
 | **Add**    | `add w/<WORD> t/<TRANSLATION>` e.g. `add w/Hello t/hola`                                                              |
 | **List**   | `list`                                                                                                                |
 | **Edit**   | `edit <INDEX> w/<WORD> t/<TRANSLATION>` OR `edit <INDEX> w/<WORD>` OR `edit <INDEX> t/<TRANSLATION>`                  |
-|            |   e.g. `edit 1 w/hello t/こんにちは` OR `edit 1 w/hello` OR `edit 1 t/こんにちは`                                       |
+|            |   e.g. `edit 1 w/hello t/こんにちは` OR `edit 1 w/hello` OR `edit 1 t/こんにちは`                                      |
 | **Delete** | `delete <INDEX>` e.g. `delete 3`                                                                                      |
 | **Clear**  | `clear`                                                                                                               |
 | **Exit**   | `exit`                                                                                                                |
