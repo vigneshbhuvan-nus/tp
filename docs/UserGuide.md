@@ -1,25 +1,27 @@
 # User Guide
 Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
-- Table of Contents
-  - [What is GreenTea?](#what-is-greentea)
-  - [Viewing Help: help](#viewing-help-help)
-  - [===== DECK OPERATIONS ====](#=====-DECK-OPERATIONS-====)
-  - [Creating a new deck: new](#creating-a-new-deck-new)
-  - [Removing a deck: remove](#removing-a-deck-remove)
-  - [Selecting a deck: select](#selecting-a-deck-select)
-  - [===== ENTRY OPERATIONS ====](#=====-ENTRY-OPERATIONS-====)
-  - [Adding a New Entry: add](#adding-a-new-entry-add)
-  - [Listing All Entries: list](#listing-all-entries-list)
-  - [Editing an Entry: edit](#editing-an-entry-edit)
-  - [Deleting an Entry: delete](#deleting-an-entry-delete)
-  - [Clearing All Entries: clear](#clearing-all-entries-clear)
-  - [Exiting the Program: exit](#exiting-the-program-exit)
-  - [Saving the data](#saving-the-data)
-  - [FAQ (WIP)](#faq-wip)
-  - [Command summary](#command-summary)
+## Table of Contents
+  1. [What is GreenTea?](#1-what-is-greentea)
+  2. [About This Document](#2-about-this-document)
+  3. [Quick Start](#3-quick-start)
+  4. [Deck Commands](#4-deck-commands)
+     1. [Creating a New Deck](#creating-a-new-deck-new)
+     2. [Deleting a Deck](#deleting-a-deck)
+     3. [Selecting a Deck](#selecting-a-deck)
+     4. [Clearing all Decks](#clearing-all-decks)
+  5. [Entry Commands](#5-entry-commands)
+     1. [Adding an Entry](#adding-a-new-entry)
+     2. [Editing an Entry](#editing-an-entry)
+     3. [Deleting an Entry](#deleting-an-entry)
+  6. [Play Commands](#6-play-commands)
+  7. [Statistics Commands](#7-play-commands)
+  8. [Exit Commands](#8-exit-commands)
+  8. [Data Sharing](#9-exit-commands)
+  9. [Command Summary](#10-command-summary)
+  10. [FAQ](#11-faq)
   
-### 1. What is GreenTea?
+### 1. What is GreenTea? 
 
 GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while 
 still having the benefits of a Graphical User Interface (GUI). It adopts the Leitner flashcard system, a proven method
