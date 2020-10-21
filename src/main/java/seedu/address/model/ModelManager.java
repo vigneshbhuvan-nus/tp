@@ -17,7 +17,9 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.UniqueEntryList;
+import seedu.address.model.deck.entry.Word;
 import seedu.address.model.play.Leitner;
 
 
@@ -294,10 +296,26 @@ public class ModelManager implements Model {
     //====Games=====
     @Override
     public void newGame() {
-        Deck currentDeck = getCurrentDeck();
-        currentDeck.getFilteredEntryList().toString();
-        System.out.println(
-                currentDeck.getFilteredEntryList().toString());
+        UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
+        this.leitner = new Leitner(observedList);
+        System.out.println(this.leitner.questions);
+        System.out.println(this.leitner.answers);
+
+
+        Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
+        ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
+        while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
+            copy.add(iterator.next()); //this avoids the concurrentModification exception
+        }
+        for (Entry entry : copy) { //for each entry in the copy, delete the same entry in the observedEntries
+            addressBook.getObservedEntries().remove(entry); //this changes the GUI
+        }
+
+
+        for (int i = 0; i < this.leitner.entries.size(); i++){
+            Entry quiz = new Entry(new Word("???"), this.leitner.questions.get(i));
+            addressBook.getObservedEntries().add(quiz);
+        }
     }
     @Override
     public void endGame() {
