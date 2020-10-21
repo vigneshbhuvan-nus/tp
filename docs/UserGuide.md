@@ -16,7 +16,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
      3. [Deleting an Entry](#deleting-an-entry)
   6. [Play Commands](#6-play-commands)
   7. [Statistics Commands](#7-play-commands)
-  8. [Exit Commands](#8-exit-commands)
+  8. [Extra Commands](#8-extra-commands)
   8. [Data Sharing](#9-exit-commands)
   9. [Command Summary](#10-command-summary)
   10. [FAQ](#11-faq)
@@ -52,7 +52,11 @@ To start using GreenTea:
 2. Copy the jar file to your folder of choice (we recommend on your desktop!)
 3. Double-Click the file to start the application! 
 
+## 4. Deck Commands (Gabriel)
 
+Decks are the foundation to GreenTea. A deck is simply a list of translation
+you write into GreenTea. A deck can be your favourite Chinese idioms, a list of beverages in Japanese,
+or even some romantic phrases in French!
 
 
 
@@ -61,8 +65,6 @@ To start using GreenTea:
 Shows a cheat-sheet of commands in addition to a link to this User Guide.
 
 Format: `help`
-
-### ===== DECK OPERATIONS ====
 
 ### Creating a new deck: `new`
 
