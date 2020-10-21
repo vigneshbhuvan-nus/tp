@@ -11,6 +11,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_SPANISH;
 import static seedu.address.logic.commands.CommandTestUtil.WORD_DESC_JAPANESE;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
 import static seedu.address.testutil.deck.TypicalDecks.getTypicalAddressBook;
@@ -23,6 +24,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -48,13 +50,14 @@ public class EditCommandTest {
         Deck deck = new Deck(new DeckName("Stub"));
         Entry entry = new EntryBuilder(new Entry (new Word(VALID_WORD_JAPANESE),
                 new Translation(VALID_TRANSLATION_JAPANESE))).build();
-        Entry secondEntry = new EntryBuilder().build();
+        Entry secondEntry = new EntryBuilder(new Entry(new Word(VALID_WORD_SPANISH),
+                new Translation(VALID_TRANSLATION_SPANISH))).build();
         model.addDeck(deck);
         model.selectDeck(INDEX_FIRST);
         model.addEntry(entry);
         model.addEntry(secondEntry);
     }
-
+    
     @Test
     public void execute_duplicateEntryUnfilteredList_failure() {
         Entry firstEntry = model.getFilteredEntryList().get(INDEX_FIRST.getZeroBased());

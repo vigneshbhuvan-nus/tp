@@ -17,13 +17,17 @@ import java.util.Collections;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.entry.AddCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.FindCommand;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.WordContainsKeywordsPredicate;
+import seedu.address.testutil.entry.EntryBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -37,7 +41,14 @@ public class FindCommandTest {
     public void constructor_nullEntry_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () -> new EditCommand(null, null));
     }
-    
+
+    @Test
+    public void execute_noDeckSelected_throwsCommandException() {
+        WordContainsKeywordsPredicate predicate = preparePredicate(" ");
+        FindCommand findCommand = new FindCommand(predicate);
+        assertThrows(CommandException.class, Messages.MESSAGE_NO_DECK_SELECTED, () -> findCommand.execute(model));
+    }
+
     @Test
     public void execute_zeroKeywords_noEntryFound() {
         model.selectDeck(INDEX_FIRST);
