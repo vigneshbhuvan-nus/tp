@@ -30,8 +30,7 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp"
               text="Help"/>
           </Menu>
-        </MenuBar>
-          
+        </MenuBar>         
         <HBox VBox.vgrow="ALWAYS">
           <VBox>
             <StackPane fx:id="deckListPanelPlaceholder" VBox.vgrow="ALWAYS" minWidth="300" maxWidth="300"/>
@@ -44,14 +43,12 @@
               <Tab text="Quiz"></Tab>
               <Tab text="Statistics"></Tab>
             </TabPane>
-
           <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100.0"
                      prefHeight="100.0" styleClass="pane-with-border" VBox.vgrow="NEVER">
             <padding>
               <Insets bottom="5" left="10" right="10" top="5"/>
             </padding>
           </StackPane>
-        
           <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER">
             <padding>
               <Insets bottom="5" left="10" right="10" top="5"/>
