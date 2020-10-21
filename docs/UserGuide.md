@@ -2,7 +2,7 @@
 Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 ## Table of Contents
-  1. [What is GreenTea?](#1-what-is-greentea)
+  1. [What is GreenTea?](#1-what-is-greentea-gabriel)
   2. [About This Document](#2-about-this-document)
   3. [Quick Start](#3-quick-start)
   4. [Deck Commands](#4-deck-commands)
