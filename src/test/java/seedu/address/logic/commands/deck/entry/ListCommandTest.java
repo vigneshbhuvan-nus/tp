@@ -1,9 +1,7 @@
 package seedu.address.logic.commands.deck.entry;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.logic.commands.CommandTestUtil.showEntryAtIndex;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.deck.TypicalDecks.getTypicalAddressBook;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -11,14 +9,11 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.ListCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.testutil.entry.EditEntryDescriptorBuilder;
-import seedu.address.testutil.entry.EntryBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) and unit tests for ListCommand.

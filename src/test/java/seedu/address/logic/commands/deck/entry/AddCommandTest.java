@@ -36,7 +36,7 @@ public class AddCommandTest {
     }
 
     @Test
-    public void execute_entryAcceptedByModel_addSuccessful() throws Exception { 
+    public void execute_entryAcceptedByModel_addSuccessful() throws Exception {
         ModelStubAcceptingEntryAdded modelStub = new ModelStubAcceptingEntryAdded();
         Entry validEntry = new EntryBuilder().build();
         CommandResult commandResult = new AddCommand(validEntry).execute(modelStub);
@@ -76,7 +76,7 @@ public class AddCommandTest {
         // different entry -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
-
+    
     /**
      * A default model stub that have all of the methods failing.
      */
@@ -263,7 +263,7 @@ public class AddCommandTest {
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
         }
-        
+
         @Override
         public void replaceEntryList() {}
     }

@@ -8,9 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.deck.TypicalDecks.getTypicalAddressBook;
-import static seedu.address.testutil.entry.TypicalEntries.JAPANESE_3;
-import static seedu.address.testutil.entry.TypicalEntries.SPANISH_1;
-import static seedu.address.testutil.entry.TypicalEntries.SPANISH_2;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,16 +15,13 @@ import java.util.Collections;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.entry.AddCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.FindCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.WordContainsKeywordsPredicate;
-import seedu.address.testutil.entry.EntryBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.

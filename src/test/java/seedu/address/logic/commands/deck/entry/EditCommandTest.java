@@ -8,13 +8,9 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSLATION_JAP
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TRANSLATION_SPANISH;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_JAPANESE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_SPANISH;
-import static seedu.address.logic.commands.CommandTestUtil.WORD_DESC_JAPANESE;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND;
-import static seedu.address.testutil.deck.TypicalDecks.getTypicalAddressBook;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,7 +20,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
-import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -57,13 +52,12 @@ public class EditCommandTest {
         model.addEntry(entry);
         model.addEntry(secondEntry);
     }
-    
+
     @Test
     public void execute_duplicateEntryUnfilteredList_failure() {
         Entry firstEntry = model.getFilteredEntryList().get(INDEX_FIRST.getZeroBased());
         EditEntryDescriptor descriptor = new EditEntryDescriptorBuilder(firstEntry).build();
         EditCommand editCommand = new EditCommand(INDEX_SECOND, descriptor);
-
         assertCommandFailure(editCommand, model, EditCommand.MESSAGE_DUPLICATE_ENTRY);
     }
 
@@ -86,7 +80,7 @@ public class EditCommandTest {
 
         assertCommandFailure(editCommand, model, Messages.MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX);
     }
-
+    
  @Test
     public void equals() {
         final EditCommand standardCommand = new EditCommand(INDEX_FIRST, DESC_JAPANESE);
