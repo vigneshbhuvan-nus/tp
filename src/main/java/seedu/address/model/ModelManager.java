@@ -31,7 +31,6 @@ public class ModelManager implements Model {
     /*private final FilteredList<Entry> filteredEntries;*/
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
-
     private Deck observedDeck;
 
 
@@ -111,6 +110,7 @@ public class ModelManager implements Model {
 
     @Override
     public void deleteEntry(Entry target) {
+        requireNonNull(target);
         Deck currentDeck = getCurrentDeck();
         currentDeck.removeEntry(target);
         addressBook.getObservedEntries().remove(target);
@@ -124,6 +124,7 @@ public class ModelManager implements Model {
 
     @Override
     public void addEntry(Entry entry) {
+        requireNonNull(entry);
         Deck currentDeck = getCurrentDeck();
         currentDeck.addEntry(entry);
         addressBook.getObservedEntries().add(entry);
@@ -200,6 +201,7 @@ public class ModelManager implements Model {
 
     @Override
     public Deck getCurrentDeck() {
+        assert (getFilteredDeckList().size() > 0);
         if (currentDeckIndex.equals(Optional.empty())) {
             logger.info("currentDeckIndex is 0");
             return null;
