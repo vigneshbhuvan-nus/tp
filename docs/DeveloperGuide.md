@@ -43,15 +43,16 @@ This document details the architecture, design decisions and implementations for
 
 ### 1.2 Audience
 
-The intended audience of this document is the developers and testers of Green Tea.
+The intended audience of this document are the developers and testers of Green Tea.
 
 ### 1.3 Glossary
 
-|           |                            |
+| Syntax    | Description     |
 | --------- | -------------------------- |
 | Deck      | A collection of entries    |
 | Entry     | A word and its translation |
 | Word Bank | A collection of decks.     |
+<div><sup>Table 1. Syntax and Description of Technical Terms in GreenTea</sup></div>
 
 ---
 
@@ -192,7 +193,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 <p align="center"> Figure 7. Model component class relationship diagram
 
-The diagram above shows a general overview of the model component. The diagram below will give more details about the
+Figure 7 shows a general overview of the model component. The diagram below will give more details about the
 word bank section of the model component.
 
 ![Structure of the Model Component](images/ModelWordBankDiagram.png)
@@ -204,9 +205,11 @@ word bank section of the model component.
 The `Model`
 
 - stores a `UserPref` object that represents the user’s preferences.
-- stores the word bank data.
-- exposes an unmodifiable `ObservableList<Deck>` and `ObservableList<Entry>` that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+- stores a `FilteredList<Deck>` object that maintain`s the current list of decks in memory.
+- exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`  
+that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 - does not depend on any of the other three components.
+
 
 ### <a name="storage-component"></a> 3.6 Storage component
 
@@ -250,7 +253,9 @@ This feature requires the user to select a deck (using `select <index>`) in orde
 Once a deck is selected, entry level operations such as `add`, `delete`, `find`, `list` can be performed.
 
 The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
-UI, Logic and Model components.
+UI, Logic and Model components. The selected deck is retrieved from `FilteredList<Deck>` in the model component and replaces
+the current entries in the `UniqueEntryList` object of WordBank causing the UI to change accordingly. A similar
+approach is done for other commands that changes the UI such as `new <deck>` and `clear` command
 
 #### Design Considerations
 
@@ -266,8 +271,18 @@ UI, Logic and Model components.
 
 ### 4.3 \[Proposed\] Flashcard System
 
-The flashcard system would allow the user to choose to practice in whichever deck
-he wishes.
+Three more commands will be added to the existing command list named PlayCommand, StopCommand and AnswerCommand.
+
+By default, StopCommand and AnswerCommand cannot be accessed by the user until a PlayCommand is typed by the user.
+After a PlayCommand is created, a boolean isPlayMode in AddressBookParser (we will rename it later) is becomes True 
+and all incoming user inputs will be converted to a AnswerCommand automatically unless the user input is "/stop". 
+
+Also, when the user types a PlayCommand into the system, a Leitner object will be created, storing the 
+current entries in a list. The entry's translation is then displayed to the user who can either input
+a new answer or a stop command. After all entries have been asked or a stop command has been issued, the leitner object
+saves the score and time data of the user and gets deleted by the Java Garbage Collector. 
+
+__The diagram for this process will be created after the flashcard system is implemented__
 
 The methodology behind GreenTea's flashcard system will be based on the Leitner System (https://en.wikipedia.org/wiki/Leitner_system)
 The Letiner system is a proven quizzing system that increases the user's rate of learning by

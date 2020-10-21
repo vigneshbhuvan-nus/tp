@@ -18,7 +18,7 @@ import seedu.address.model.deck.entry.UniqueEntryList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     /*private final UniqueEntryList entries;*/
-    private final UniqueDeckList decks;
+    private final UniqueDeckList observedDecks;
     private UniqueEntryList observedEntries;
     private FilteredList<Entry> filteredEntries;
 
@@ -30,7 +30,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      *   among constructors.
      */
     {
-        decks = new UniqueDeckList();
+        observedDecks = new UniqueDeckList();
         observedEntries = new UniqueEntryList();
         filteredEntries = new FilteredList<>(observedEntries.asUnmodifiableObservableList());
     }
@@ -77,7 +77,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code entries} must not contain duplicate entries.
      */
     public void setDecks(List<Deck> decks) {
-        this.decks.setDecks(decks);
+        this.observedDecks.setDecks(decks);
     }
 
     /**
@@ -96,7 +96,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public boolean hasDeck(Deck deck) {
         requireNonNull(deck);
-        return decks.contains(deck);
+        return observedDecks.contains(deck);
     }
 
     /**
@@ -104,7 +104,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code key} must exist in the word bank.
      */
     public void removeDeck(Deck key) {
-        decks.remove(key);
+        observedDecks.remove(key);
     }
 
     /**
@@ -112,14 +112,14 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The deck must not already exist in the word bank.
      */
     public void addDeck(Deck deck) {
-        decks.add(deck);
+        observedDecks.add(deck);
     }
 
     //// util methods
 
     @Override
     public String toString() {
-        return decks.asUnmodifiableObservableList().size() + " decks";
+        return observedDecks.asUnmodifiableObservableList().size() + " decks";
     }
 
     /*@Override
@@ -129,19 +129,19 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     @Override
     public ObservableList<Deck> getDeckList() {
-        return decks.asUnmodifiableObservableList();
+        return observedDecks.asUnmodifiableObservableList();
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                && decks.equals(((AddressBook) other).decks));
+                && observedDecks.equals(((AddressBook) other).observedDecks));
     }
 
     @Override
     public int hashCode() {
-        return decks.hashCode();
+        return observedDecks.hashCode();
     }
 }
 
