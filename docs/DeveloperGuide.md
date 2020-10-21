@@ -205,9 +205,11 @@ word bank section of the model component.
 The `Model`
 
 - stores a `UserPref` object that represents the user’s preferences.
-- stores the word bank data.
-- exposes an unmodifiable `ObservableList<Deck>` named `observedDecks` and `ObservableList<Entry>` named `observedEntries` that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+- stores a `FilteredList<Deck>` object that maintain`s the current list of decks in memory.
+- exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`  
+that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 - does not depend on any of the other three components.
+-
 
 ### <a name="storage-component"></a> 3.6 Storage component
 
@@ -251,7 +253,9 @@ This feature requires the user to select a deck (using `select <index>`) in orde
 Once a deck is selected, entry level operations such as `add`, `delete`, `find`, `list` can be performed.
 
 The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
-UI, Logic and Model components.
+UI, Logic and Model components. The selected deck is retrieved from `FilteredList<Deck>` in the model component and replaces
+the current entries in the `UniqueEntryList` object of WordBank causing the UI to change accordingly. A similar
+approach is done for other commands that changes the UI such as `new <deck>` and `clear` command
 
 #### Design Considerations
 
