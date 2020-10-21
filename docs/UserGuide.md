@@ -1,7 +1,11 @@
 # User Guide
 Team Name: AY2021S1-CS2103T-T09-4
 
-GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you like to use a FlashCard system to learn new languages, this app would be perfect for you. In this User Guide (UG), you will learn about the various commands and actions that would allow you to use GreenTea seamlessly.
+GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while 
+still having the benefits of a Graphical User Interface (GUI). It adopts the Leitner flashcard system, a proven method
+to helps users retain memory in the context of learning a new language. This app is perfect for users who wish to 
+optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and 
+actions that would allow you to use GreenTea seamlessly.
 
 - Table of Contents
   - [Viewing Help: help](#viewing-help-help)
