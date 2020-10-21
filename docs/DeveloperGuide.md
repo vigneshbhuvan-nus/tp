@@ -43,15 +43,16 @@ This document details the architecture, design decisions and implementations for
 
 ### 1.2 Audience
 
-The intended audience of this document is the developers and testers of Green Tea.
+The intended audience of this document are the developers and testers of Green Tea.
 
 ### 1.3 Glossary
 
-|           |                            |
+| Syntax    | Description     |
 | --------- | -------------------------- |
 | Deck      | A collection of entries    |
 | Entry     | A word and its translation |
 | Word Bank | A collection of decks.     |
+<div><sup>Table 1. Syntax and Description of Technical Terms in GreenTea</sup></div>
 
 ---
 
