@@ -21,13 +21,27 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   9. [Command Summary](#10-command-summary)
   10. [FAQ](#11-faq)
   
-### 1. What is GreenTea? 
+## 1. What is GreenTea? (Gabriel)
 
 GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while 
 still having the benefits of a Graphical User Interface (GUI). It adopts the Leitner flashcard system, a proven method
 to helps users retain memory in the context of learning a new language. This app is perfect for users who wish to 
 optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and 
 actions that would allow you to use GreenTea seamlessly.
+
+## 2. About This Document (Gabriel)
+
+Welcome to the GreenTea User Guide!
+
+I am proud that you have taken your first few steps towards optimising your learning. We at GreenTea know that
+learning a new language can be __hard__ and __intimidating__. Trust us when we say we know __exactly__ what you're
+going through and we feel __frustrated__ just as much you do. 
+
+That's why here at GreenTea, we have come up with this neat little
+user guide to help __you__ hit the ground running. With this foolproof User Guide, learning a new 
+language will be as relaxing as drinking a hot cup of Green Tea.
+
+
 
 ### Viewing help: `help` 
 
