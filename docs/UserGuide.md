@@ -1,13 +1,8 @@
 # User Guide
-Team Name: AY2021S1-CS2103T-T09-4
-
-GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while 
-still having the benefits of a Graphical User Interface (GUI). It adopts the Leitner flashcard system, a proven method
-to helps users retain memory in the context of learning a new language. This app is perfect for users who wish to 
-optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and 
-actions that would allow you to use GreenTea seamlessly.
+Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 - Table of Contents
+  - [What is GreenTea?](#what-is-greentea)
   - [Viewing Help: help](#viewing-help-help)
   - [===== DECK OPERATIONS ====](#=====-DECK-OPERATIONS-====)
   - [Creating a new deck: new](#creating-a-new-deck-new)
@@ -23,11 +18,18 @@ actions that would allow you to use GreenTea seamlessly.
   - [Saving the data](#saving-the-data)
   - [FAQ (WIP)](#faq-wip)
   - [Command summary](#command-summary)
+  
+### 1. What is GreenTea?
 
+GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while 
+still having the benefits of a Graphical User Interface (GUI). It adopts the Leitner flashcard system, a proven method
+to helps users retain memory in the context of learning a new language. This app is perfect for users who wish to 
+optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and 
+actions that would allow you to use GreenTea seamlessly.
 
-### Viewing help: `help`
+### Viewing help: `help` 
 
-Shows a cheat-sheet of commands in addition to a link of this UG.
+Shows a cheat-sheet of commands in addition to a link to this User Guide.
 
 Format: `help`
 
