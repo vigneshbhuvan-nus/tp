@@ -25,7 +25,7 @@ public class AnswerCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-
+        model.playGame(answer.substring(0,answer.length()- 1));
         return new CommandResult(MESSAGE_SUCCESS + answer);
     }
 }

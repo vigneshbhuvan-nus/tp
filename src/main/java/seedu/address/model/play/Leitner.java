@@ -15,8 +15,8 @@ public class Leitner {
     public ArrayList<Entry> entries = new ArrayList<>();
     public ArrayList<Translation> questions = new ArrayList<>();
     public ArrayList<Word> answers = new ArrayList<>();
-    int count;
-    int current = 0;
+    public int count = 0;
+    public int max;
 
     public Leitner(UniqueEntryList input){
         for(Entry entry: input) {
@@ -27,7 +27,7 @@ public class Leitner {
             questions.add(entry.getTranslation());
             answers.add(entry.getWord());
         }
-        this.count = questions.size();
+        this.max = questions.size() - 1;
     }
 
 

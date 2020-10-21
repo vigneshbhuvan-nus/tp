@@ -323,7 +323,30 @@ public class ModelManager implements Model {
 
     }
     @Override
-    public void playGame() {
+    public void playGame(String answer) { //change from void to string to return input to answercommand
+        if (this.leitner.count == this.leitner.max) {
+            System.out.println("no more questions, not sure how to break this");
+            replaceEntryList();
+        } else {
+            String answerToQuestion = this.leitner.answers.get(this.leitner.count).toString();
+            if (answer.equals(answerToQuestion)) {
+                System.out.println(answer);
+                System.out.println(answerToQuestion);
+                System.out.println("correct!");
+                this.leitner.count ++;
+            } else {
+                System.out.println(answer);
+                System.out.println(answerToQuestion);
+                System.out.println("wrong!");
+                this.leitner.count ++;
+            }
+        }
+
+        Entry answerEntry = this.leitner.entries.get(this.leitner.count - 1);
+        Entry questionEntry = new Entry(this.leitner.answers.get(this.leitner.count - 1),
+                this.leitner.questions.get(this.leitner.count-1));
+        addressBook.getObservedEntries().add(answerEntry);
+        //find a way to remove entries
 
     }
 

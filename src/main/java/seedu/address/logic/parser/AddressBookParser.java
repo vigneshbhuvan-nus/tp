@@ -68,7 +68,7 @@ public class AddressBookParser {
         }
 
         if (isPlayMode) {
-            System.out.println(commandWord + arguments);
+
             return new AnswerCommandParser().parse(commandWord + " " + arguments);
         } else {
             switch (commandWord) {

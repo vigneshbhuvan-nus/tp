@@ -138,6 +138,6 @@ public interface Model {
 
     void endGame();
 
-    void playGame();
+    void playGame(String answer);
 
 }
