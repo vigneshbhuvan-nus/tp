@@ -17,9 +17,9 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   6. [Play Commands](#6-play-commands)
   7. [Statistics Commands](#7-play-commands)
   8. [Extra Commands](#8-extra-commands)
-  8. [Data Sharing](#9-exit-commands)
-  9. [Command Summary](#10-command-summary)
+  9. [Data Sharing](#9-exit-commands)
   10. [FAQ](#11-faq)
+  11. [Command Summary](#10-command-summary)
   
 ## 1. What is GreenTea? (Gabriel)
 
@@ -136,16 +136,13 @@ Delete the entry whose index is `INDEX`.
 
 Format: `delete <INDEX>`
 
-
-
 **Note:** to get the index of an entry, you may run `list` - the index would be shown beside its respective entry
 
-### Clearing all entries: `clear`
+## 6. Play Commands (Gabriel)
 
-Clears all entries from the word bank.
+## 7. Statistics Commands (Gabriel)
 
-Format: `clear`
-
+## 8. Extra Commands (Gabriel)
 
 ### Viewing help: `help` 
 
@@ -159,20 +156,22 @@ Exits the program.
 
 Format: `exit`
 
+## 9. Data Sharing (Gabriel)
+
+
 ### Saving the data
 
 Entries ares saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
----
-
-## FAQ (WIP)
+## 10. FAQ (Gabriel)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GreenTea home folder.
 
 ---
 
-## Command summary
+## 11. Command Summary (Gabriel)
+
 
 | Action     | Format, Examples                                                                                                      |
 | ---------- | --------------------------------------------------------------------------------------------------------------------- |
