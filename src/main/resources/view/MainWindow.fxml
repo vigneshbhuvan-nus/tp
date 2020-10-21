@@ -30,7 +30,7 @@
             <MenuItem fx:id="helpMenuItem" mnemonicParsing="false" onAction="#handleHelp"
               text="Help"/>
           </Menu>
-        </MenuBar>         
+        </MenuBar>
         <HBox VBox.vgrow="ALWAYS">
           <VBox>
             <StackPane fx:id="deckListPanelPlaceholder" VBox.vgrow="ALWAYS" minWidth="300" maxWidth="300"/>
