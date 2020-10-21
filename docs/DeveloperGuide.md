@@ -2,8 +2,6 @@
 
 ### Table of Contents
 
-- [Green Tea Developer Guide (v1.2)](#green-tea-developer-guide-v12)
-  - [Table of Contents](#table-of-contents)
 - [1. Introduction](#1-introduction)
   - [1.1 Purpose](#11-purpose)
   - [1.2 Audience](#12-audience)
@@ -11,11 +9,13 @@
 - [2. Setting up, getting started](#2-setting-up-getting-started)
 - [3. Design](#3-design)
   - [3.1 Component Overview](#31-component-overview)
-  - [3.2 Common classes](#-32-common-classes)
-  - [3.3 UI component](#-33-ui-component)
-  - [3.4 Logic component](#-34-logic-component)
-  - [3.5 Model component](#-35-model-component)
-  - [3.6 Storage component](#--36-storage-component)
+  - [How the architecture components interact with one another](#how-the-architecture-components-interact-with-one-another)
+  - [3.2 Common classes](#32-common-classes)
+  - [3.3 UI component](#33-ui-component)
+  - [3.4 Logic component](#34-logic-component)
+  - [3.5 Model component](#35-model-component)
+  - [3.6 Storage component](#36-storage-component)
+  - [3.7 PhaseManager component](#37-phasemanager-component)
 - [4. Implementation](#4-implementation)
   - [4.1 Deck System](#41-deck-system)
   - [4.2 Select Deck](#42-select-deck)
@@ -56,13 +56,13 @@ The intended audience of this document are the developers and testers of Green T
 
 ---
 
-## 2. **Setting up, getting started**
+## 2. Setting up, getting started
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
 ---
 
-## 3. **Design**
+## 3. Design
 
 This section details the various components of the application. It covers the internal structure of each component and
 how the components work together with one another.
@@ -109,7 +109,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 <p align="center"> Figure 2. Example of a component's API and functionality
 
-#### **How the architecture components interact with one another**
+#### How the architecture components interact with one another
 
 The _Sequence Diagram_ below shows how the components interact with each other for the scenario where the user issues the command `remove 1`.
 
@@ -118,7 +118,7 @@ The _Sequence Diagram_ below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
-### <a name="common-classes"></a> 3.2 Common classes
+### 3.2 Common classes
 
 Common classes are classes used by multiple components. Common classes include:
 
@@ -128,7 +128,7 @@ Common classes are classes used by multiple components. Common classes include:
 - `GuiSettings`: Contains the GUI settings.
 - `LogsCenter`: Writes messages to the console and a log file. Records the state of the program as the app is running.
 
-### <a name="ui-component"></a> 3.3 UI component
+### 3.3 UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -166,7 +166,7 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 
 `StatusBarFooter` - returns the path of the file retrieved
 
-### <a name="logic-component"></a> 3.4 Logic component
+### 3.4 Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
@@ -176,7 +176,9 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 <p align="center"> Figure 5. Logic component class relationship diagram
 
 1. `Logic` uses the `WorkBankParser` class to parse the user command.
-1. This results in a `Command` object which is executed by the `LogicManager`.
+1. This results in a `Command` object which is passed to `LogicManager`.
+   1. The `Command` is first checked by `PhaseManager` whether it can be executed in the current `Phase`.
+   1. If yes, execute the `Command`; otherwise, throw `PhaseIncorrectException`.
 1. The command execution can affect the `Model` (e.g. adding a deck).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
@@ -187,7 +189,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 <p align="center"> Figure 6. Interactions between different parts of the logic component
 
-### <a name="model-component"></a> 3.5 Model component
+### 3.5 Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -210,8 +212,7 @@ The `Model`
 that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 - does not depend on any of the other three components.
 
-
-### <a name="storage-component"></a> 3.6 Storage component
+### 3.6 Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -224,9 +225,23 @@ The `Storage` component,
 - can save `UserPref` objects in json format and read it back.
 - can save the word bank data in json format and read it back.
 
+### 3.7 PhaseManager component
+
+![Structure of PhaseManager Component]()
+
+<p align="center"> Figure 10. PhaseManager component diagram (WIP)
+
+**API** : [`PhaseManager.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/phase/PhaseManager.java)
+
+The `PhaseManager` component serves the following functions:
+
+- Keep track of the current `Phase` (`LOBBY`, `QUIZ`, `RESULTS`) the app is in.
+- Validate whether a `Command` can be executed in the current `Phase`.
+- Check whether a `Command` is a `PhaseTransitionCommand` and if so, update the `Phase` to be the `nextPhase` specified by this `PhaseTransitionCommand`.
+
 ---
 
-## 4. **Implementation**
+## 4. Implementation
 
 This section describes some noteworthy details on how and why certain features are implemented.
 
@@ -310,11 +325,11 @@ display to the user. These include:
 - Language mastery
 - Progress in each deck
 
-_{Feature will be added in v1.3}_
+_{Feature will be added in v1.3.2}_
 
 ---
 
-## 5. **Documentation, logging, testing, configuration, dev-ops**
+## 5. Documentation, logging, testing, configuration, dev-ops
 
 - [Documentation guide](Documentation.md)
 - [Testing guide](Testing.md)
@@ -324,7 +339,7 @@ _{Feature will be added in v1.3}_
 
 ---
 
-## 6. **Appendix: Requirements**
+## 6. Appendix: Requirements
 
 ### 6.1 Product scope
 
@@ -498,7 +513,7 @@ _{More to be added}_
 
 ---
 
-## 7. **Appendix: Instructions for manual testing**
+## 7. Appendix: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
