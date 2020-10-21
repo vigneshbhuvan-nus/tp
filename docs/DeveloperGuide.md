@@ -193,7 +193,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 <p align="center"> Figure 7. Model component class relationship diagram
 
-The diagram above shows a general overview of the model component. The diagram below will give more details about the
+Figure 7 shows a general overview of the model component. The diagram below will give more details about the
 word bank section of the model component.
 
 ![Structure of the Model Component](images/ModelWordBankDiagram.png)
@@ -206,7 +206,7 @@ The `Model`
 
 - stores a `UserPref` object that represents the user’s preferences.
 - stores the word bank data.
-- exposes an unmodifiable `ObservableList<Deck>` and `ObservableList<Entry>` that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+- exposes an unmodifiable `ObservableList<Deck>` named `observedDecks` and `ObservableList<Entry>` named `observedEntries` that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 - does not depend on any of the other three components.
 
 ### <a name="storage-component"></a> 3.6 Storage component
