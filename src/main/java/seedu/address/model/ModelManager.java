@@ -18,6 +18,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
+import seedu.address.model.play.Leitner;
 
 
 /**
@@ -32,6 +33,7 @@ public class ModelManager implements Model {
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
     private Deck observedDeck;
+    private Leitner leitner;
 
 
     /**
@@ -288,4 +290,23 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredDecks.equals(other.filteredDecks);
     }
+
+    //====Games=====
+    @Override
+    public void newGame() {
+        Deck currentDeck = getCurrentDeck();
+        currentDeck.getFilteredEntryList().toString();
+        System.out.println(
+                currentDeck.getFilteredEntryList().toString());
+    }
+    @Override
+    public void endGame() {
+
+    }
+    @Override
+    public void playGame() {
+
+    }
+
+    //====EndGames====
 }

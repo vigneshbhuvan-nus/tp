@@ -132,4 +132,12 @@ public interface Model {
      * Deletes entries on the GUI when clear command is called.
      */
     void clearEntryList();
+
+    //game commands
+    void newGame();
+
+    void endGame();
+
+    void playGame();
+
 }

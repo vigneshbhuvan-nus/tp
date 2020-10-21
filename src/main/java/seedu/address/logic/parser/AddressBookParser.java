@@ -18,6 +18,9 @@ import seedu.address.logic.commands.entry.DeleteCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.FindCommand;
 import seedu.address.logic.commands.entry.ListCommand;
+import seedu.address.logic.commands.play.AnswerCommand;
+import seedu.address.logic.commands.play.PlayCommand;
+import seedu.address.logic.commands.play.StopCommand;
 import seedu.address.logic.parser.deck.NewDeckCommandParser;
 import seedu.address.logic.parser.deck.RemoveDeckCommandParser;
 import seedu.address.logic.parser.deck.SelectDeckCommandParser;
@@ -26,6 +29,7 @@ import seedu.address.logic.parser.entry.DeleteCommandParser;
 import seedu.address.logic.parser.entry.EditCommandParser;
 import seedu.address.logic.parser.entry.FindCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.logic.parser.play.AnswerCommandParser;
 
 /**
  * Parses user input.
@@ -36,6 +40,7 @@ public class AddressBookParser {
      * Used for initial separation of command word and args.
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
+    private boolean isPlayMode = false;
 
     /**
      * Parses user input into command for execution.
@@ -52,43 +57,58 @@ public class AddressBookParser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-        switch (commandWord) {
+        if (userInput.equals("play")) {
+            isPlayMode = true;
+            return new PlayCommand();
 
-        case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+        }
+        if (userInput.equals("stop")) {
+            isPlayMode = false;
+            return new StopCommand();
+        }
 
-        case EditCommand.COMMAND_WORD:
-            return new EditCommandParser().parse(arguments);
+        if (isPlayMode) {
+            System.out.println(commandWord + arguments);
+            return new AnswerCommandParser().parse(commandWord + " " + arguments);
+        } else {
+            switch (commandWord) {
 
-        case DeleteCommand.COMMAND_WORD:
-            return new DeleteCommandParser().parse(arguments);
+                case AddCommand.COMMAND_WORD:
+                    return new AddCommandParser().parse(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+                case EditCommand.COMMAND_WORD:
+                    return new EditCommandParser().parse(arguments);
 
-        case FindCommand.COMMAND_WORD:
-            return new FindCommandParser().parse(arguments);
+                case DeleteCommand.COMMAND_WORD:
+                    return new DeleteCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+                case ClearCommand.COMMAND_WORD:
+                    return new ClearCommand();
 
-        case NewDeckCommand.COMMAND_WORD:
-            return new NewDeckCommandParser().parse(arguments);
+                case FindCommand.COMMAND_WORD:
+                    return new FindCommandParser().parse(arguments);
 
-        case RemoveDeckCommand.COMMAND_WORD:
-            return new RemoveDeckCommandParser().parse(arguments);
+                case ListCommand.COMMAND_WORD:
+                    return new ListCommand();
 
-        case SelectDeckCommand.COMMAND_WORD:
-            return new SelectDeckCommandParser().parse(arguments);
+                case NewDeckCommand.COMMAND_WORD:
+                    return new NewDeckCommandParser().parse(arguments);
 
-        case ExitCommand.COMMAND_WORD:
-            return new ExitCommand();
+                case RemoveDeckCommand.COMMAND_WORD:
+                    return new RemoveDeckCommandParser().parse(arguments);
 
-        case HelpCommand.COMMAND_WORD:
-            return new HelpCommand();
+                case SelectDeckCommand.COMMAND_WORD:
+                    return new SelectDeckCommandParser().parse(arguments);
 
-        default:
-            throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+                case ExitCommand.COMMAND_WORD:
+                    return new ExitCommand();
+
+                case HelpCommand.COMMAND_WORD:
+                    return new HelpCommand();
+
+                default:
+                    throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
+            }
         }
     }
 
