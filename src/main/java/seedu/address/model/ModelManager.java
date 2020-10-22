@@ -317,10 +317,11 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void endGame() {
+    public String endGame() {
+        String score = leitner.getScore();
         this.leitner = null;
         replaceEntryList();
-
+        return score;
     }
 
     @Override
@@ -336,6 +337,7 @@ public class ModelManager implements Model {
                 logger.info(answerGiven);
                 logger.info(answerToQuestion);
                 logger.info("Correct Answer!");
+                leitner.incrementScore();
             } else {
                 logger.info(answerGiven);
                 logger.info(answerToQuestion);
@@ -349,6 +351,11 @@ public class ModelManager implements Model {
         Entry entryToRemove = addressBook.getObservedEntries().get(this.leitner.getCount() - 1);
         addressBook.setEntry(entryToRemove,entryToAdd);
 
+    }
+
+    @Override
+    public boolean checkScore() {
+        return leitner.getCount() == leitner.getMax();
     }
 
     //====EndGames====

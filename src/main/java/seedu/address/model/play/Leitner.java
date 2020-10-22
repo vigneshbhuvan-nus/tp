@@ -16,6 +16,7 @@ public class Leitner {
     private ArrayList<Word> answers = new ArrayList<>();
     private int count = 0;
     private int max;
+    private int score = 0;
 
     /**
      * Returns a Leitner object that is essentially a flashcard memory object
@@ -52,7 +53,15 @@ public class Leitner {
         return this.max;
     }
 
+    public String getScore() {
+        return "Your score is " + score + "/" + max;
+    }
+
     public void incrementCount() {
         this.count++;
+    }
+
+    public void incrementScore() {
+        this.score++;
     }
 }

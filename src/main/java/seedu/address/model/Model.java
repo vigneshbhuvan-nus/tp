@@ -136,8 +136,10 @@ public interface Model {
     //game commands
     void newGame();
 
-    void endGame();
+    String endGame();
 
     void playGame(String answer);
+
+    boolean checkScore();
 
 }
