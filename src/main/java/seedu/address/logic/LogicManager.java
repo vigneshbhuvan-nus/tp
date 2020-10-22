@@ -60,15 +60,15 @@ public class LogicManager implements Logic {
             playMode.turnOn();
         }
 
-        if (playMode.isPlayMode() && commandText.equals("stop")) {
-            playMode.turnOff();
-        }
-
         if (playMode.isPlayMode()) {
             command = playModeParser.parseCommand(commandText);
+            if (command.equals("stop")) {
+                playMode.turnOff();
+            }
         } else {
             command = addressBookParser.parseCommand(commandText);
         }
+
         commandResult = command.execute(model);
 
         try {

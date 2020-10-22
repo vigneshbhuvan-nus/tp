@@ -40,7 +40,6 @@ public class AddressBookParser {
      * Used for initial separation of command word and args.
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-    private PlayMode playMode = new PlayMode();
 
     /**
      * Parses user input into command for execution.
@@ -58,21 +57,8 @@ public class AddressBookParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-        if (userInput.equals("play")) {
-            playMode.turnOn();
-            return new PlayCommand();
-        }
 
-        if (userInput.equals("stop")) {
-            playMode.turnOff();
-            return new StopCommand();
-        }
-
-        if (playMode.isPlayMode()) {
-
-            return new AnswerCommandParser().parse(commandWord + " " + arguments);
-        } else {
-            switch (commandWord) {
+        switch (commandWord) {
 
             case AddCommand.COMMAND_WORD:
                 return new AddCommandParser().parse(arguments);
@@ -109,7 +95,7 @@ public class AddressBookParser {
 
             default:
                 throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
-            }
+
         }
     }
 
