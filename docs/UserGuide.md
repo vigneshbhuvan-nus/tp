@@ -4,24 +4,29 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 ## Table of Contents
 
-1. [What is GreenTea?](#1-what-is-greentea-gabriel)
-2. [About This Document](#2-about-this-document-gabriel)
-3. [Quick Start](#3-quick-start-gabriel)
-4. [Deck Commands](#4-deck-commands-gabriel)
-   1. [Creating a Deck](#creating-a-deck-new)
-   2. [Deleting a Deck](#deleting-a-deck)
-   3. [Selecting a Deck](#selecting-a-deck-select)
-   4. [Clearing all Decks](#clearing-all-decks)
-5. [Entry Commands](#5-entry-commands-gabriel)
-   1. [Adding an Entry](#adding-a-new-entry)
-   2. [Editing an Entry](#editing-an-entry)
-   3. [Deleting an Entry](#deleting-an-entry)
-6. [Play Commands](#6-play-commands-gabriel)
-7. [Statistics Commands](#7-play-commands-gabriel)
-8. [Extra Commands](#8-extra-commands-gabriel)
-9. [Data Sharing](#9-exit-commands-gabriel)
-10. [FAQ](#11-faq-gabriel)
-11. [Command Summary](#10-command-summary-gabriel)
+- [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
+- [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
+- [3. Let's Get Started (Gabriel)](#3-lets-get-started-gabriel)
+- [4. Deck Commands (Melanie)](#4-deck-commands-melanie)
+  - [Creating a deck: new](#creating-a-deck-new)
+  - [Removing a deck: remove](#removing-a-deck-remove)
+  - [Selecting a deck: select](#selecting-a-deck-select)
+- [5. Entry Commands (Gabriel)](#5-entry-commands-gabriel)
+  - [Adding a new entry: add (Vignesh)](#adding-a-new-entry-add-vignesh)
+  - [Listing all entries: list (Vignesh)](#listing-all-entries-list-vignesh)
+  - [Editing an entry: edit (Vignesh)](#editing-an-entry-edit-vignesh)
+  - [Deleting an entry: delete (Vignesh)](#deleting-an-entry-delete-vignesh)
+- [6. Play Commands (Georgie)](#6-play-commands-georgie)
+- [7. Statistics Commands (Georgie)](#7-statistics-commands-georgie)
+- [8. Extra Commands (Georgie)](#8-extra-commands-georgie)
+  - [Play with timer](#play-with-timer)
+  - [Reset statistics](#reset-statistics)
+  - [Viewing help: help](#viewing-help-help)
+  - [Exiting the program: exit](#exiting-the-program-exit)
+- [9. Data Sharing (Gabriel)](#9-data-sharing-gabriel)
+  - [Saving the data](#saving-the-data)
+- [10. FAQ (Gabriel)](#10-faq-gabriel)
+- [11. Command Summary (Gabriel)](#11-command-summary-gabriel)
 
 ## 1. What is GreenTea? (Gabriel)
 
@@ -143,7 +148,7 @@ Format: `delete <INDEX>`
 
 ## 6. Play Commands (Georgie)
 
-Begins a quiz with questions from the selected deck. This also causes a transition from the `LOBBY` to `QUIZ` phase and the command is only allowed to be executed while in the `LOBBY` phase.
+Starts a quiz with questions from the selected deck. This also causes a transition from the `LOBBY` to `QUIZ` phase and the command is only allowed to be executed while in the `LOBBY` phase.
 
 Format: `play d/<DECK_ID>`
 
@@ -159,7 +164,23 @@ Format: `statistics`
 
 ## 8. Extra Commands (Georgie)
 
-These are some extra commands that you might or might not need in the future!
+These are some commands in the pipeline to be implemented:
+
+### Play with timer
+
+Starts a quiz like in [Play Commands](#6-play-commands-georgie) but with a countdown timer that terminates the quiz once it hits 0.
+
+Format: `play d/<DECK_ID> t/<TIME_IN_MINUTES>`
+
+Examples:
+
+- `play d/1 t/10`
+
+### Reset statistics
+
+Resets the app statistics.
+
+Format: `statistics reset`
 
 ### Viewing help: `help`
 
