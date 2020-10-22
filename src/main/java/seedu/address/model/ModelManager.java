@@ -18,6 +18,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
+import seedu.address.model.deck.entry.Word;
+import seedu.address.model.play.Leitner;
 
 
 /**
@@ -32,6 +34,7 @@ public class ModelManager implements Model {
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
     private Deck observedDeck;
+    private Leitner leitner;
 
 
     /**
@@ -119,6 +122,7 @@ public class ModelManager implements Model {
     /**
      * This function takes the entry and adds it to the deck entry list as well as the observedEntries in the
      * AddressBook
+     *
      * @param entry refers to the entry inputted by the user
      */
 
@@ -193,7 +197,7 @@ public class ModelManager implements Model {
         while (iterator.hasNext()) {
             copy.add(iterator.next());
         }
-        for (Entry entry: copy) {
+        for (Entry entry : copy) {
             addressBook.getObservedEntries().remove(entry);
         }
     }
@@ -288,4 +292,66 @@ public class ModelManager implements Model {
                 && userPrefs.equals(other.userPrefs)
                 && filteredDecks.equals(other.filteredDecks);
     }
+
+    //====Games=====
+    @Override
+    public void newGame() {
+        UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
+        this.leitner = new Leitner(observedList);
+
+
+        Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
+        ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
+        while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
+            copy.add(iterator.next()); //this avoids the concurrentModification exception
+        }
+        for (Entry entry : copy) { //for each entry in the copy, delete the same entry in the observedEntries
+            addressBook.getObservedEntries().remove(entry); //this changes the GUI
+        }
+
+
+        for (int i = 0; i < this.leitner.getEntries().size(); i++) {
+            Entry quiz = new Entry(new Word("???"), this.leitner.getQuestions().get(i));
+            addressBook.getObservedEntries().add(quiz);
+        }
+    }
+
+    @Override
+    public void endGame() {
+        this.leitner = null;
+        replaceEntryList();
+
+    }
+
+    @Override
+    public void playGame(String answer) { //change from void to string to return input to answercommand
+        if (this.leitner.getCount() == this.leitner.getMax()) {
+            System.out.println("no more questions, not sure how to break this");
+            replaceEntryList();
+        } else {
+            String answerCorrect = this.leitner.getAnswers().get(this.leitner.getCount()).toString();
+            String answerToQuestion = "Answer to question was: " + answerCorrect;
+            String answerGiven = "Answer given is: " + answer;
+            if (answer.equals(answerCorrect)) {
+                logger.info(answerGiven);
+                logger.info(answerToQuestion);
+                logger.info("Correct Answer!");
+            } else {
+                logger.info(answerGiven);
+                logger.info(answerToQuestion);
+                logger.info("Wrong Answer!");
+            }
+
+            this.leitner.incrementCount();
+        }
+
+        Entry answerEntry = this.leitner.getEntries().get(this.leitner.getCount() - 1);
+        //Entry questionEntry = new Entry(this.leitner.answers.get(this.leitner.count - 1),
+        //this.leitner.questions.get(this.leitner.count - 1));
+        //addressBook.getObservedEntries().add(answerEntry);
+        //find a way to remove entries
+
+    }
+
+    //====EndGames====
 }
