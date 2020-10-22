@@ -290,17 +290,25 @@ Three additional commands are used for the flashcard system -  PlayCommand, Stop
 
 By default, StopCommand and AnswerCommand cannot be accessed by the user until a PlayCommand is typed by the user.
 
-After a PlayCommand is created:
-* A boolean isPlayMode becomes True. 
-* All incoming user inputs are converted to an AnswerCommand automatically until the user enters "/stop". 
+![Sequence Diagram of Play Command](images/PlayCommandSequenceDiagram.png)
+<p align="center"> Figure 11. Sequence Diagram of Play Command
 
-When the user types a PlayCommand into the system:
- * A Leitner object will be created, storing the 
-current entries in a list. 
-* The entry's translation is displayed to the user who can either input
-a new answer or a stop command. 
-* After all entries have been answered or a stop command is issued, the leitner object
-saves the score and time data of the user. 
+With reference to Figure 11, after a PlayCommand is created:
+* A boolean isPlayMode in AddressBookParser becomes True (not shown yet as the implementation might change). 
+* All following user inputs are treated as either an AnswerCommand or a StopCommand
+* A Leitner object is created that stores the current entries of the selected deck and shuffles them
+* The Leitner object also forms questions and answers list based on the shuffled list
+
+![Sequence Diagram of Answer Command](images/AnswerCommandSequenceDiagram.png)
+<p align="center"> Figure 12. Sequence Diagram of Play Command
+
+With reference to figure 12, when the user types a AnswerCommand into the system:
+ * The AddressBookParser first checks if it is current is in play mode via the boolean isPlayMode
+ * If it is not in play mode, an error message is shown to the user via the UI
+ * If it is in play mode, an AnswerCommand containing hte user input is sent to the model and checked against
+  the current question in Leitner.java
+ * The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
+ * The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
 
 __The diagram for this process will be created after the flashcard system is implemented__
 
