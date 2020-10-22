@@ -41,7 +41,7 @@ That's why here at GreenTea, we have come up with this neat little
 user guide to help __you__ hit the ground running. With this foolproof User Guide, learning a new 
 language will be as relaxing as drinking a hot cup of Green Tea.
 
-## 3. Quick Start (Gabriel)
+## 3. Let's Get Started (Gabriel)
 
 Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.java.com/en/)
 is installed on your computer. 
@@ -52,18 +52,19 @@ To start using GreenTea:
 2. Copy the jar file to your folder of choice (we recommend on your desktop!)
 3. Double-Click the file to start the application! 
 
-## 4. Deck Commands (Gabriel)
+## 4. Deck Commands (Melanie)
 
-Decks are the foundation to GreenTea. A deck is simply a list of translation
+Decks are the foundation to GreenTea. A deck is simply a list of words and translation
 you write into GreenTea. A deck can be your favourite Chinese idioms, a list of beverages in Japanese,
 or even some romantic phrases in French!
 
 ### Creating a deck: `new`
-
+Creates a new empty deck of entries
 
 Format: `new <NAME OF NEW DECK>`
 
-Examples: - `new Japanese-Animals`
+Examples: `new Japanese-Animals`,
+          `new Korean Dramas`
 
 ### Removing a deck: `remove`
 
@@ -73,12 +74,12 @@ Format: `remove <INDEX OF DECK>`
 
 **Note:** to get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck
 
-Examples: `remove 1`
+Example: `remove 1`
 
 
 ### Selecting a deck: `select`
 
-Selects a deck to perform deck-level operations on
+Selects a deck to perform entry-level operations on
 
 Format: `select <INDEX OF DECK>`
 
@@ -164,7 +165,6 @@ Exits the program.
 Format: `exit`
 
 ## 9. Data Sharing (Gabriel)
-
 
 ### Saving the data
 

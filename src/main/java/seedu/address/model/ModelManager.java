@@ -203,7 +203,7 @@ public class ModelManager implements Model {
     public Deck getCurrentDeck() {
         assert (getFilteredDeckList().size() > 0);
         if (currentDeckIndex.equals(Optional.empty())) {
-            logger.info("currentDeckIndex is 0");
+            logger.info("Current deck index is 0");
             return null;
         }
         return filteredDecks.get(currentDeckIndex.get().getZeroBased());

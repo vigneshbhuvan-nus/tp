@@ -245,7 +245,7 @@ The `PhaseManager` component serves the following functions:
 
 This section describes some noteworthy details on how and why certain features are implemented.
 
-### 4.1 Deck System
+### 4.1 Deck System (Melanie)
 
 This feature allows the user to create multiple lists of entries rather than having
 all entries together in the same list. The user could have different decks
@@ -262,7 +262,7 @@ E.g.
 The rationale behind the deck system is so that users will be better able to organize their entries.
 A deck system will also allow the flashcard system, a proposed feature, to be implemented more easily.
 
-### 4.2 Select Deck
+### 4.2 Select Deck (Melanie)
 
 This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
 Once a deck is selected, entry level operations such as `add`, `delete`, `find`, `list` can be performed.
@@ -284,28 +284,40 @@ approach is done for other commands that changes the UI such as `new <deck>` and
   - Pros: Single command for users to execute
   - Cons: May cause confusion to the users.
 
-### 4.3 \[Proposed\] Flashcard System
+### 4.3 Flashcard System (Gabriel)
 
-Three more commands will be added to the existing command list named PlayCommand, StopCommand and AnswerCommand.
+Three additional commands are used for the flashcard system -  PlayCommand, StopCommand and AnswerCommand.
 
 By default, StopCommand and AnswerCommand cannot be accessed by the user until a PlayCommand is typed by the user.
-After a PlayCommand is created, a boolean isPlayMode in AddressBookParser (we will rename it later) is becomes True 
-and all incoming user inputs will be converted to a AnswerCommand automatically unless the user input is "/stop". 
 
-Also, when the user types a PlayCommand into the system, a Leitner object will be created, storing the 
-current entries in a list. The entry's translation is then displayed to the user who can either input
-a new answer or a stop command. After all entries have been asked or a stop command has been issued, the leitner object
-saves the score and time data of the user and gets deleted by the Java Garbage Collector. 
+After a PlayCommand is created:
+* A boolean isPlayMode becomes True. 
+* All incoming user inputs are converted to an AnswerCommand automatically until the user enters "/stop". 
+
+When the user types a PlayCommand into the system:
+ * A Leitner object will be created, storing the 
+current entries in a list. 
+* The entry's translation is displayed to the user who can either input
+a new answer or a stop command. 
+* After all entries have been answered or a stop command is issued, the leitner object
+saves the score and time data of the user. 
 
 __The diagram for this process will be created after the flashcard system is implemented__
 
-The methodology behind GreenTea's flashcard system will be based on the Leitner System (https://en.wikipedia.org/wiki/Leitner_system)
-The Letiner system is a proven quizzing system that increases the user's rate of learning by
-using spaced repetition. In the Leitner system, flashcards are sorted based on the user's ability to answer them. Correctly
-answered flashcards are put at the end of the question queue and incorrectly answered
-flashcards are placed at the front.
+#### Design Considerations:
 
-_{Feature will be added in v1.3}_
+##### Aspect: Type of flashcard system
+
+- **Alternative 1 (current choice)** : Leitner System
+  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
+          using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
+          answered flashcards are put at the end of the question queue and incorrectly answered
+          flashcards are placed at the front.
+          (https://en.wikipedia.org/wiki/Leitner_system)
+  - Cons: More difficult to implement
+- **Alternative 2** : Random shuffling system
+  - Pros: Easier to implement
+  - Cons: Users may not learn as effectively
 
 ### 4.4 \[Proposed\] Data Analysis
 
@@ -397,7 +409,7 @@ _{More to be added}_
 
 (For all use cases below, the **System** is `GreenTea` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: View help**
+**Use case 1: View help**
 
 **MSS**
 
@@ -405,7 +417,7 @@ _{More to be added}_
 2.  GreenTea returns a message explaining how to access the help page
     Use case ends.
 
-**Use case: Add a new entry**
+**Use case 2: Add a new entry**
 
 **MSS**
 
@@ -426,7 +438,7 @@ _{More to be added}_
 
   Use case resumes at step 2.
 
-**Use case: List all entries**
+**Use case 3: List all entries**
 
 **MSS**
 
@@ -435,7 +447,7 @@ _{More to be added}_
 
     Use case ends.
 
-**Use case: Edit an entry**
+**Use case 4: Edit an entry**
 
 **MSS**
 
@@ -446,13 +458,13 @@ _{More to be added}_
 
 **Extensions**
 
-- 1a. User fed an invalid index
+- 1a. User gives an invalid index
 
   - 1a1. GreenTea returns an error message
 
   Use case ends.
 
-**Use case: Delete an entry**
+**Use case 5: Delete an entry**
 
 **MSS**
 
@@ -465,26 +477,28 @@ _{More to be added}_
 
 **Extensions**
 
-- 2a. The list is empty.
+- 3a. The given input does not match the format
 
-  Use case ends.
+  - 3a1. GreenTea shows an error message
+   
+    Use case resumes at step 2.
 
-- 3a. The given index is invalid.
+- 3b. The given index is invalid.
 
-  - 3a1. GreenTea shows an error message.
+  - 3b1. GreenTea shows an error message.
 
     Use case resumes at step 2.
 
-**Use case: Clear a person**
+**Use case 6: Clear decks**
 
 **MSS**
 
-1.  User requests to clear entries
-2.  GreenTea clears all entries
+1.  User requests to clear decks
+2.  GreenTea clears all decks
 
     Use case ends.
 
-**Use case: Exit **
+**Use case 7: Exit**
 
 **MSS**
 
