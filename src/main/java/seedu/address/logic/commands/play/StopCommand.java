@@ -10,13 +10,13 @@ import seedu.address.model.Model;
 public class StopCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "Playmode Stopped!";
+    public static final String MESSAGE_SUCCESS = "Playmode Stopped! ";
 
 
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.endGame();
-        return new CommandResult(MESSAGE_SUCCESS);
+        String score = model.endGame();
+        return new CommandResult(MESSAGE_SUCCESS + score);
     }
 }

@@ -28,6 +28,13 @@ public class UniqueEntryList implements Iterable<Entry> {
     private final ObservableList<Entry> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
+    public Entry get (int index) {
+        return internalList.get(index);
+    }
+
+    public boolean isEmpty () {
+        return internalList.isEmpty();
+    }
     /**
      * Returns true if the list contains an equivalent entry as the given argument.
      */

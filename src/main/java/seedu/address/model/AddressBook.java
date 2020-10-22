@@ -57,8 +57,9 @@ public class AddressBook implements ReadOnlyAddressBook {
 
     /**
      * This function directly modifies what is seen on the GUI
+     *
      * @param entry refers to the entry added by the user
-     * */
+     */
     public void addEntry(Entry entry) {
         observedEntries.add(entry);
     }
@@ -72,6 +73,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /*public void setEntries(List<Entry> entries) {
         this.entries.setEntries(entries);
     }*/
+
     /**
      * Replaces the contents of the entry list with {@code entries}.
      * {@code entries} must not contain duplicate entries.
@@ -143,6 +145,12 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return observedDecks.hashCode();
     }
+
+    public void setEntry(Entry target, Entry editedEntry) {
+        requireNonNull(editedEntry);
+        observedEntries.setEntry(target, editedEntry);
+    }
+
 }
 
 /// entry-level operations

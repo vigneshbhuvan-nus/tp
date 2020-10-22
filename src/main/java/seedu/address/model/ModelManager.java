@@ -35,6 +35,8 @@ public class ModelManager implements Model {
     private Optional<Index> currentDeckIndex;
     private Deck observedDeck;
     private Leitner leitner;
+    private int quizLength = 2;
+    private int currentIndex = 0;
 
 
     /**
@@ -297,7 +299,9 @@ public class ModelManager implements Model {
     @Override
     public void newGame() {
         UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
-        this.leitner = new Leitner(observedList);
+        leitner = new Leitner(observedList);
+        quizLength = leitner.getEntries().size();
+        currentIndex = 0;
 
 
         Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
@@ -317,40 +321,49 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void endGame() {
-        this.leitner = null;
-        replaceEntryList();
+    public String endGame() {
+        String score = leitner.getScore();
+        leitner = null;
 
+        replaceEntryList();
+        return score;
     }
 
     @Override
     public void playGame(String answer) { //change from void to string to return input to answercommand
-        if (this.leitner.getCount() == this.leitner.getMax()) {
+        if (currentIndex == quizLength) {
             System.out.println("no more questions, not sure how to break this");
             replaceEntryList();
         } else {
-            String answerCorrect = this.leitner.getAnswers().get(this.leitner.getCount()).toString();
+            String answerCorrect = this.leitner.getAnswers().get(currentIndex).toString();
             String answerToQuestion = "Answer to question was: " + answerCorrect;
             String answerGiven = "Answer given is: " + answer;
             if (answer.equals(answerCorrect)) {
                 logger.info(answerGiven);
                 logger.info(answerToQuestion);
                 logger.info("Correct Answer!");
+                leitner.incrementScore();
             } else {
                 logger.info(answerGiven);
                 logger.info(answerToQuestion);
                 logger.info("Wrong Answer!");
             }
 
-            this.leitner.incrementCount();
         }
 
-        Entry answerEntry = this.leitner.getEntries().get(this.leitner.getCount() - 1);
-        //Entry questionEntry = new Entry(this.leitner.answers.get(this.leitner.count - 1),
-        //this.leitner.questions.get(this.leitner.count - 1));
-        //addressBook.getObservedEntries().add(answerEntry);
-        //find a way to remove entries
+        Entry entryToAdd = this.leitner.getEntries().get(currentIndex);
+        Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
+        addressBook.setEntry(entryToRemove, entryToAdd);
+        currentIndex++;
+    }
 
+    @Override
+    public boolean checkScore() {
+        return currentIndex == quizLength - 1;
+    }
+
+    public boolean checkScoreTwo() {
+        return currentIndex == quizLength;
     }
 
     //====EndGames====

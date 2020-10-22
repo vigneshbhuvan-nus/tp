@@ -7,10 +7,12 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.PlayModeParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -28,6 +30,8 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
+    private final PlayModeParser playModeParser;
+    private PlayMode playMode = new PlayMode();
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -36,6 +40,7 @@ public class LogicManager implements Logic {
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
+        playModeParser = new PlayModeParser();
     }
 
     @Override
@@ -43,12 +48,31 @@ public class LogicManager implements Logic {
         logger.info("----------------[USER COMMAND][" + commandText + "]");
 
         CommandResult commandResult;
-        Command command = addressBookParser.parseCommand(commandText);
+        Command command;
+
+        if (commandText.equals("play")) {
+            if (model.getCurrentDeck() == null) {
+                throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
+            }
+            if (model.getCurrentDeck().getEntries().isEmpty()) {
+                throw new CommandException(Messages.MESSAGE_EMPTY_DECK);
+            }
+            playMode.turnOn();
+        }
+
+        if (playMode.isPlayMode()) {
+            command = playModeParser.parseCommand(commandText);
+            if (commandText.equals("stop") || model.checkScore()) {
+                playMode.turnOff();
+            }
+        } else {
+            command = addressBookParser.parseCommand(commandText);
+        }
+
         commandResult = command.execute(model);
 
         try {
             storage.saveAddressBook(model.getAddressBook());
-
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
