@@ -17,13 +17,6 @@ public class PlayCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-        if (model.getCurrentDeck() == null) {
-            throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
-        }
-        if (model.getCurrentDeck().getEntries().isEmpty()) {
-            throw new CommandException(Messages.MESSAGE_EMPTY_DECK);
-        }
-
         //switch to playmode
         model.newGame();
         return new CommandResult(MESSAGE_SUCCESS);

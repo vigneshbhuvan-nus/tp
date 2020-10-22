@@ -62,7 +62,7 @@ public class LogicManager implements Logic {
 
         if (playMode.isPlayMode()) {
             command = playModeParser.parseCommand(commandText);
-            if (command.equals("stop")) {
+            if (commandText.equals("stop") || model.checkScore()) {
                 playMode.turnOff();
             }
         } else {

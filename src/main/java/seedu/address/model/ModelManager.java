@@ -35,6 +35,8 @@ public class ModelManager implements Model {
     private Optional<Index> currentDeckIndex;
     private Deck observedDeck;
     private Leitner leitner;
+    private int quizLength = 2;
+    private int currentIndex = 0;
 
 
     /**
@@ -297,7 +299,9 @@ public class ModelManager implements Model {
     @Override
     public void newGame() {
         UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
-        this.leitner = new Leitner(observedList);
+        leitner = new Leitner(observedList);
+        quizLength = leitner.getEntries().size();
+        currentIndex = 0;
 
 
         Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
@@ -319,18 +323,19 @@ public class ModelManager implements Model {
     @Override
     public String endGame() {
         String score = leitner.getScore();
-        this.leitner = null;
+        leitner = null;
+
         replaceEntryList();
         return score;
     }
 
     @Override
     public void playGame(String answer) { //change from void to string to return input to answercommand
-        if (this.leitner.getCount() == this.leitner.getMax()) {
+        if (currentIndex == quizLength) {
             System.out.println("no more questions, not sure how to break this");
             replaceEntryList();
         } else {
-            String answerCorrect = this.leitner.getAnswers().get(this.leitner.getCount()).toString();
+            String answerCorrect = this.leitner.getAnswers().get(currentIndex).toString();
             String answerToQuestion = "Answer to question was: " + answerCorrect;
             String answerGiven = "Answer given is: " + answer;
             if (answer.equals(answerCorrect)) {
@@ -344,18 +349,17 @@ public class ModelManager implements Model {
                 logger.info("Wrong Answer!");
             }
 
-            this.leitner.incrementCount();
         }
 
-        Entry entryToAdd = this.leitner.getEntries().get(this.leitner.getCount() - 1);
-        Entry entryToRemove = addressBook.getObservedEntries().get(this.leitner.getCount() - 1);
+        Entry entryToAdd = this.leitner.getEntries().get(currentIndex);
+        Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
         addressBook.setEntry(entryToRemove,entryToAdd);
-
+        currentIndex++;
     }
 
     @Override
     public boolean checkScore() {
-        return leitner.getCount() == leitner.getMax();
+        return currentIndex == quizLength - 1;
     }
 
     //====EndGames====
