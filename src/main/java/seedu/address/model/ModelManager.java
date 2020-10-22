@@ -17,7 +17,6 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
 import seedu.address.model.play.Leitner;
@@ -123,6 +122,7 @@ public class ModelManager implements Model {
     /**
      * This function takes the entry and adds it to the deck entry list as well as the observedEntries in the
      * AddressBook
+     *
      * @param entry refers to the entry inputted by the user
      */
 
@@ -197,7 +197,7 @@ public class ModelManager implements Model {
         while (iterator.hasNext()) {
             copy.add(iterator.next());
         }
-        for (Entry entry: copy) {
+        for (Entry entry : copy) {
             addressBook.getObservedEntries().remove(entry);
         }
     }
@@ -298,8 +298,6 @@ public class ModelManager implements Model {
     public void newGame() {
         UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
         this.leitner = new Leitner(observedList);
-        System.out.println(this.leitner.questions);
-        System.out.println(this.leitner.answers);
 
 
         Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
@@ -312,40 +310,45 @@ public class ModelManager implements Model {
         }
 
 
-        for (int i = 0; i < this.leitner.entries.size(); i++){
-            Entry quiz = new Entry(new Word("???"), this.leitner.questions.get(i));
+        for (int i = 0; i < this.leitner.getEntries().size(); i++) {
+            Entry quiz = new Entry(new Word("???"), this.leitner.getQuestions().get(i));
             addressBook.getObservedEntries().add(quiz);
         }
     }
+
     @Override
     public void endGame() {
+        this.leitner = null;
         replaceEntryList();
 
     }
+
     @Override
     public void playGame(String answer) { //change from void to string to return input to answercommand
-        if (this.leitner.count == this.leitner.max) {
+        if (this.leitner.getCount() == this.leitner.getMax()) {
             System.out.println("no more questions, not sure how to break this");
             replaceEntryList();
         } else {
-            String answerToQuestion = this.leitner.answers.get(this.leitner.count).toString();
-            if (answer.equals(answerToQuestion)) {
-                System.out.println(answer);
-                System.out.println(answerToQuestion);
-                System.out.println("correct!");
-                this.leitner.count ++;
+            String answerCorrect = this.leitner.getAnswers().get(this.leitner.getCount()).toString();
+            String answerToQuestion = "Answer to question was: " + answerCorrect;
+            String answerGiven = "Answer given is: " + answer;
+            if (answer.equals(answerCorrect)) {
+                logger.info(answerGiven);
+                logger.info(answerToQuestion);
+                logger.info("Correct Answer!");
             } else {
-                System.out.println(answer);
-                System.out.println(answerToQuestion);
-                System.out.println("wrong!");
-                this.leitner.count ++;
+                logger.info(answerGiven);
+                logger.info(answerToQuestion);
+                logger.info("Wrong Answer!");
             }
+
+            this.leitner.incrementCount();
         }
 
-        Entry answerEntry = this.leitner.entries.get(this.leitner.count - 1);
-        Entry questionEntry = new Entry(this.leitner.answers.get(this.leitner.count - 1),
-                this.leitner.questions.get(this.leitner.count-1));
-        addressBook.getObservedEntries().add(answerEntry);
+        Entry answerEntry = this.leitner.getEntries().get(this.leitner.getCount() - 1);
+        //Entry questionEntry = new Entry(this.leitner.answers.get(this.leitner.count - 1),
+        //this.leitner.questions.get(this.leitner.count - 1));
+        //addressBook.getObservedEntries().add(answerEntry);
         //find a way to remove entries
 
     }

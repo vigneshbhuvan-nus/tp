@@ -53,6 +53,7 @@ public class NewDeckCommandTest {
         assertThrows(CommandException.class, NewDeckCommand.MESSAGE_DUPLICATE_DECK, () ->
                 newDeckCommand.execute(modelStub));
     }
+
     @Test
     public void equals() {
         Deck japanese = new DeckBuilder().withDeckName("Japanese").build();
@@ -168,7 +169,7 @@ public class NewDeckCommandTest {
         }
 
         @Override
-        public void selectDeck (Index index) {
+        public void selectDeck(Index index) {
             throw new AssertionError("This method should not be called");
         }
 
@@ -194,6 +195,21 @@ public class NewDeckCommandTest {
 
         @Override
         public void clearEntryList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void newGame() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void endGame() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void playGame(String answer) {
             throw new AssertionError("This method should not be called.");
         }
     }
