@@ -345,11 +345,9 @@ public class ModelManager implements Model {
             this.leitner.incrementCount();
         }
 
-        Entry answerEntry = this.leitner.getEntries().get(this.leitner.getCount() - 1);
-        //Entry questionEntry = new Entry(this.leitner.answers.get(this.leitner.count - 1),
-        //this.leitner.questions.get(this.leitner.count - 1));
-        //addressBook.getObservedEntries().add(answerEntry);
-        //find a way to remove entries
+        Entry entryToAdd = this.leitner.getEntries().get(this.leitner.getCount() - 1);
+        Entry entryToRemove = addressBook.getObservedEntries().get(this.leitner.getCount() - 1);
+        addressBook.setEntry(entryToRemove,entryToAdd);
 
     }
 
