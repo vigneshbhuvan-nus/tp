@@ -3,7 +3,7 @@ package seedu.address.logic;
 public class PlayMode {
     private boolean isPlayMode = false;
 
-    public PlayMode(){
+    public PlayMode() {
     }
 
     public void turnOff() {
@@ -14,7 +14,7 @@ public class PlayMode {
         isPlayMode = true;
     }
 
-    public boolean isPlayMode(){
+    public boolean isPlayMode() {
         return isPlayMode;
     }
 }

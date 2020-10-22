@@ -353,7 +353,7 @@ public class ModelManager implements Model {
 
         Entry entryToAdd = this.leitner.getEntries().get(currentIndex);
         Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
-        addressBook.setEntry(entryToRemove,entryToAdd);
+        addressBook.setEntry(entryToRemove, entryToAdd);
         currentIndex++;
     }
 

@@ -202,13 +202,23 @@ public class AddCommandTest {
         }
 
         @Override
-        public void endGame() {
+        public String endGame() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public void playGame(String answer) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean checkScore() {
+            return true;
+        }
+
+        @Override
+        public boolean checkScoreTwo() {
+            return true;
         }
     }
 
@@ -289,7 +299,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void endGame() {
+        public String endGame() {
             throw new AssertionError("This method should not be called.");
         }
 
