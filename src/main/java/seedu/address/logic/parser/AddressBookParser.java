@@ -6,6 +6,7 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.PlayMode;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.ExitCommand;
@@ -39,7 +40,7 @@ public class AddressBookParser {
      * Used for initial separation of command word and args.
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
-    private boolean isPlayMode = false;
+    private PlayMode playMode = new PlayMode();
 
     /**
      * Parses user input into command for execution.
@@ -58,16 +59,16 @@ public class AddressBookParser {
         final String arguments = matcher.group("arguments");
 
         if (userInput.equals("play")) {
-            isPlayMode = true;
+            playMode.turnOn();
             return new PlayCommand();
-
         }
+
         if (userInput.equals("stop")) {
-            isPlayMode = false;
+            playMode.turnOff();
             return new StopCommand();
         }
 
-        if (isPlayMode) {
+        if (playMode.isPlayMode()) {
 
             return new AnswerCommandParser().parse(commandWord + " " + arguments);
         } else {

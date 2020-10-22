@@ -29,6 +29,7 @@ public class AnswerCommand extends Command {
         model.playGame(answer.substring(0, answer.length() - 1));
         if (model.checkScore()) {
             String score = model.endGame();
+
             return new CommandResult(MESSAGE_SUCCESS + score);
         }
         return new CommandResult(MESSAGE_SUCCESS + answer);
