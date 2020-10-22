@@ -362,5 +362,9 @@ public class ModelManager implements Model {
         return currentIndex == quizLength - 1;
     }
 
+    public boolean checkScoreTwo() {
+        return currentIndex == quizLength;
+    }
+
     //====EndGames====
 }

@@ -142,4 +142,6 @@ public interface Model {
 
     boolean checkScore();
 
+    boolean checkScoreTwo();
+
 }
