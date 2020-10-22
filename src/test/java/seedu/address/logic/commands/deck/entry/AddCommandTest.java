@@ -76,6 +76,7 @@ public class AddCommandTest {
         // different entry -> returns false
         assertFalse(addAliceCommand.equals(addBobCommand));
     }
+
     /**
      * A default model stub that have all of the methods failing.
      */
@@ -194,6 +195,21 @@ public class AddCommandTest {
         public void clearEntryList() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void newGame() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void endGame() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void playGame(String answer) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
@@ -264,6 +280,22 @@ public class AddCommandTest {
         }
 
         @Override
-        public void replaceEntryList() {}
+        public void replaceEntryList() {
+        }
+
+        @Override
+        public void newGame() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void endGame() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void playGame(String answer) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 }
