@@ -32,6 +32,9 @@ public class UniqueEntryList implements Iterable<Entry> {
         return internalList.get(index);
     }
 
+    public boolean isEmpty () {
+        return internalList.isEmpty();
+    }
     /**
      * Returns true if the list contains an equivalent entry as the given argument.
      */
