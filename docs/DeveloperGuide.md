@@ -225,10 +225,10 @@ The `Storage` component,
 - can save `UserPref` objects in json format and read it back.
 - can save the word bank data, such as `Deck`, `Entry`, `Word` and `Translation` in json format and read it back.
 - can save the statistics and scores of each individual quiz
-
-Each Word and Translation is saved in a JsonAdaptedWord and JsonAdaptedTranslation object respectively.
-Each Entry is saved in a JsonAdaptedEntry object, consisting of a JsonAdaptedWord and JsonAdaptedTranslation.
-Each Deck is saved in a JsonAdaptedDeck object, consisting of a list of JsonAdaptedEntry.
+``
+Each `Word` and `Translation` is saved in a `JsonAdaptedWord `and `JsonAdaptedTranslation` object respectively.
+Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdaptedWord` and `JsonAdaptedTranslation`.
+Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry`.
 
 This format allows the files to be saved in json format and be read back accurately.
 
