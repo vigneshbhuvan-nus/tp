@@ -23,6 +23,7 @@ public class PlayCommand extends Command {
         if (model.getCurrentDeck().getEntries().isEmpty()) {
             throw new CommandException(Messages.MESSAGE_EMPTY_DECK);
         }
+
         //switch to playmode
         model.newGame();
         return new CommandResult(MESSAGE_SUCCESS);
