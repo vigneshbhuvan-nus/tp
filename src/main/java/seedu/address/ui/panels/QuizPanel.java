@@ -13,8 +13,9 @@ import seedu.address.ui.UiPart;
 public class QuizPanel extends UiPart<Region> {
     private static final String FXML = "QuizPanel.fxml";
 
-    private int totalNumberOfQuestions;
-    private int numberOfQuestionsLeft;
+    private int currentIndex;
+    private int totalQuestionNumber;
+    private int questionsLeftNumber;
     private ArrayList<Entry> shuffledEntries;
 
     @FXML
@@ -41,26 +42,28 @@ public class QuizPanel extends UiPart<Region> {
      */
     public QuizPanel (Leitner leitner, int currentIndex) {
         super(FXML);
-        initializeValues (leitner, currentIndex);
-        setText (leitner, currentIndex);
-        setProgressBar(currentIndex);
+        this.currentIndex = currentIndex;
+        
+        initializeEntries(leitner);
+        setText();
+        setProgressBar();
     }
 
-    private void initializeValues(Leitner leitner, int currentIndex) {
-        totalNumberOfQuestions = leitner.getMax();
-        numberOfQuestionsLeft = totalNumberOfQuestions - currentIndex;
+    private void initializeEntries(Leitner leitner) {
+        totalQuestionNumber = leitner.getMax();
+        questionsLeftNumber = totalQuestionNumber - currentIndex;
         shuffledEntries = leitner.getEntries();
     }
     
-    private void setText (Leitner leitner, int currentIndex) {
+    private void setText () {
         question.setText(shuffledEntries.get(currentIndex).getTranslation().toString());
-        totalQuestions.setText("Total Questions: " + Integer.toString(totalNumberOfQuestions));
+        totalQuestions.setText("Total Questions: " + Integer.toString(totalQuestionNumber));
         questionsAnswered.setText("Questions Answered: " + Integer.toString(currentIndex));
-        questionsLeft.setText("Questions to go: " + Integer.toString(numberOfQuestionsLeft));
-        answerList.setText(setAnswerList(currentIndex));
+        questionsLeft.setText("Questions to go: " + Integer.toString(questionsLeftNumber));
+        answerList.setText(setAnswerList());
     }
     
-    private String setAnswerList (int currentIndex) {
+    private String setAnswerList () {
         String answerList = "";
         for (int i = 0; i < currentIndex; i++) {
             Entry previousEntry = shuffledEntries.get(i);
@@ -73,8 +76,8 @@ public class QuizPanel extends UiPart<Region> {
         return answerList;
     }
     
-    private void setProgressBar (int currentIndex) {
-        double progress = (double) currentIndex / totalNumberOfQuestions;
+    private void setProgressBar () {
+        double progress = (double) currentIndex / totalQuestionNumber;
         progressBar.setProgress(progress);
     }
 }

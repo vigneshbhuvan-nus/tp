@@ -49,6 +49,10 @@ public class Leitner {
         return "Your score is " + score + "/" + max;
     }
 
+    public int getScoreValue() {
+        return this.score;
+    }
+
     public UniqueEntryList getUniqueEntryList() {
         UniqueEntryList list = new UniqueEntryList();
         for (Entry entry : entries) {

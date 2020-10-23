@@ -4,5 +4,6 @@ public enum View {
     START_VIEW,
     ENTRY_VIEW,
     QUIZ_VIEW,
-    STATISTICS_VIEW
+    STATISTICS_VIEW,
+    SCORE_VIEW;
 }
