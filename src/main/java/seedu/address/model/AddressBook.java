@@ -74,6 +74,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         return observedEntries.length();
     }
 
+    /**
+     * Resets the observable entry list without clearing the memory of the deck
+     * */
     public void resetEntryList() {
         Iterator<Entry> iterator = observedEntries.iterator(); //create iterator
         ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
@@ -85,6 +88,9 @@ public class AddressBook implements ReadOnlyAddressBook {
         }
     }
 
+    /**
+     * Replaces the current observed entry list when given a UniqueEntryList object
+     * */
     public void replaceEntryList(UniqueEntryList newEntryList) {
         for (Entry entry : newEntryList) { //for each entry in the new selected deck entryList
             observedEntries.add(entry); //add it to the GUI
