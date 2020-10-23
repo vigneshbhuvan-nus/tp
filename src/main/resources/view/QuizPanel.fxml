@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.StackPane?>
 
 <?import javafx.scene.layout.VBox?>
@@ -10,10 +9,11 @@
 <?import javafx.scene.control.ProgressBar?>
 <StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/8"
            xmlns:fx="http://javafx.com/fxml/1" >
+    
     <VBox alignment="CENTER">
-        <ProgressBar fx:id="progressBar"/>
+        <ProgressBar fx:id="progressBar" styleClass="progress-bar" minWidth="300" prefWidth="300" maxHeight="30"/>
         <HBox alignment="CENTER">
-            <Label fx:id="question" styleClass="question" minWidth="300" minHeight="300" maxWidth="350" HBox.hgrow="ALWAYS">
+            <Label fx:id="question" styleClass="question" minWidth="300" minHeight="350" maxWidth="350" VBox.vgrow="ALWAYS">
                 <padding>
                     <Insets right="40"/>
                 </padding>

@@ -251,6 +251,10 @@ Brass : A5AF37  unused
     -fx-font-family: "Segoe UI Light";
 }
 
+.progress-bar .bar{
+    -fx-background-color: linear-gradient(green, #F8E9C7);
+}
+
 /* Score Panel */
 .help-message {
     -fx-text-fill: white;

@@ -64,12 +64,14 @@ public class QuizPanel extends UiPart<Region> {
     }
     
     private String setAnswerList () {
+        int lastFive = 0;
         String answerList = "";
-        for (int i = 0; i < currentIndex; i++) {
+        answerList += ("Previous Answers:\n");
+        if (currentIndex - 5 > lastFive) {
+            lastFive = currentIndex - 5;
+        }
+        for (int i = lastFive; i < currentIndex; i++) {
             Entry previousEntry = shuffledEntries.get(i);
-            if (i == 0) {
-                answerList += ("Previous Answers:\n");
-            }
             answerList += previousEntry.getTranslation().toString();
             answerList += ("   Answer: " + previousEntry.getWord().toString() + "\n");
         }
