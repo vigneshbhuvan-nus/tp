@@ -53,6 +53,7 @@ public class LogicManager implements Logic {
         Command command;
 
         if (commandText.equals("play")) {
+            assert (playMode.isPlayMode() == false);
             if (model.getCurrentDeck() == null) {
                 throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
             }
@@ -63,6 +64,7 @@ public class LogicManager implements Logic {
         }
 
         if (playMode.isPlayMode()) {
+            assert (playMode.isPlayMode() == true);
             command = playModeParser.parseCommand(commandText);
             if (commandText.equals("stop") || model.checkScore()) {
                 playMode.turnOff();

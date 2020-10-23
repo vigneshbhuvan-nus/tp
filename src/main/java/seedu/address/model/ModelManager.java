@@ -4,8 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -18,7 +16,6 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
-import seedu.address.model.deck.entry.Word;
 import seedu.address.model.play.Leitner;
 import seedu.address.model.view.CurrentView;
 import seedu.address.model.view.View;
@@ -180,7 +177,6 @@ public class ModelManager implements Model {
     @Override
     public void selectDeck(Index index) {
         currentDeckIndex = Optional.of(index);
-        //selectCommand.execute also called the function (below) replaceEntryList()
     }
 
     /**
@@ -190,32 +186,14 @@ public class ModelManager implements Model {
      */
     @Override
     public void replaceEntryList() {
-        UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
-        Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
-        ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
-        while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
-            copy.add(iterator.next()); //this avoids the concurrentModification exception
-        }
-        for (Entry entry : copy) { //for each entry in the copy, delete the same entry in the observedEntries
-            addressBook.getObservedEntries().remove(entry); //this changes the GUI
-        }
-
-        for (Entry entry : observedList) { //for each entry in the new selected deck entryList
-            addressBook.getObservedEntries().add(entry); //add it to the GUI
-        }
-        // note: you can use a void function to change the ui apparently
+        UniqueEntryList newEntryList = getCurrentDeck().getEntries();
+        addressBook.resetEntryList();
+        addressBook.replaceEntryList(newEntryList);
     }
 
     @Override
     public void clearEntryList() {
-        Iterator<Entry> iterator = addressBook.getObservedEntries().iterator();
-        ArrayList<Entry> copy = new ArrayList<>();
-        while (iterator.hasNext()) {
-            copy.add(iterator.next());
-        }
-        for (Entry entry : copy) {
-            addressBook.getObservedEntries().remove(entry);
-        }
+        addressBook.resetEntryList();
     }
 
 
@@ -239,14 +217,10 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
-        //keeps returning null causing null error
         if (this.getCurrentDeck() == null) {
             logger.info("Current Deck is null");
             return addressBook.getFilteredEntries();
         }
-        Deck currentDeck = getCurrentDeck();
-        System.out.println(currentDeck.getDeckName());
-        System.out.println(currentDeck.getEntryList());
         return addressBook.getFilteredEntries();
     }
 
@@ -255,19 +229,8 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         Deck currentDeck = getCurrentDeck();
         currentDeck.updateFilteredEntryList(predicate);
-
-        Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
-        ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
-        while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
-            copy.add(iterator.next()); //this avoids the concurrentModification exception
-        }
-        for (Entry entry : copy) { //for each entry in the copy, delete the same entry in the observedEntries
-            addressBook.getObservedEntries().remove(entry); //this changes the GUI
-        }
-
-        for (Entry entry : currentDeck.getFilteredEntryList()) { //for each entry in filtered list
-            addressBook.getObservedEntries().add(entry); //add it to the GUI
-        }
+        addressBook.resetEntryList();
+        addressBook.replaceEntryList(currentDeck.getEntries());
     }
 
     /**
@@ -276,11 +239,6 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Deck> getFilteredDeckList() {
-        /*UniqueDeckList udl = new UniqueDeckList();
-        udl.add(new Deck(new DeckName("deck_1")));
-        udl.add(new Deck(new DeckName("deck_2")));
-        udl.add(new Deck(new DeckName("deck_3")));
-        return udl.asUnmodifiableObservableList();*/
         return filteredDecks;
     }
 
@@ -316,59 +274,37 @@ public class ModelManager implements Model {
         leitner = new Leitner(observedList);
         quizLength = leitner.getEntries().size();
         currentIndex = 0;
-
-
-        Iterator<Entry> iterator = addressBook.getObservedEntries().iterator(); //create iterator
-        ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
-        while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
-            copy.add(iterator.next()); //this avoids the concurrentModification exception
-        }
-        for (Entry entry : copy) { //for each entry in the copy, delete the same entry in the observedEntries
-            addressBook.getObservedEntries().remove(entry); //this changes the GUI
-        }
-
-
-        for (int i = 0; i < this.leitner.getEntries().size(); i++) {
-            Entry quiz = new Entry(new Word("???"), this.leitner.getQuestions().get(i));
-            addressBook.getObservedEntries().add(quiz);
-        }
+        addressBook.resetEntryList();
+        addressBook.replaceEntryList(leitner.getUniqueEntryList());
     }
 
     @Override
     public String endGame() {
-        String score = leitner.getScore();
-        leitner = null;
-
         replaceEntryList();
+        String score = leitner.getScore();
+        leitner = null; //delete leitner
         this.currentView.setView(View.ENTRY_VIEW);
         return score;
     }
 
     @Override
-    public void playGame(String answer) { //change from void to string to return input to answercommand
-        if (currentIndex == quizLength) {
-            System.out.println("no more questions, not sure how to break this");
-            replaceEntryList();
-        } else {
-            String answerCorrect = this.leitner.getAnswers().get(currentIndex).toString();
-            String answerToQuestion = "Answer to question was: " + answerCorrect;
-            String answerGiven = "Answer given is: " + answer;
-            if (answer.equals(answerCorrect)) {
-                logger.info(answerGiven);
-                logger.info(answerToQuestion);
-                logger.info("Correct Answer!");
-                leitner.incrementScore();
-            } else {
-                logger.info(answerGiven);
-                logger.info(answerToQuestion);
-                logger.info("Wrong Answer!");
-            }
+    public void playGame(String answer) {
+        String correctAnswer = leitner.getAnswers().get(currentIndex).toString();
+        Entry entryToAdd = leitner.getEntries().get(currentIndex);
+        Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
 
+        if (currentIndex == quizLength) {
+            replaceEntryList();
+        } else if (answer.equals(correctAnswer)) {
+            leitner.incrementScore();
+            logger.info(String.format("Answer given was %s, the correct answer was %s, Correct answer given",
+                    answer, correctAnswer));
+        } else {
+            logger.info(String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
+                    answer, correctAnswer));
         }
 
-        Entry entryToAdd = this.leitner.getEntries().get(currentIndex);
-        Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
-        addressBook.setEntry(entryToRemove, entryToAdd);
+        addressBook.setEntry(entryToRemove, entryToAdd); //swaps entry in GUI
         currentIndex++;
     }
 
@@ -387,6 +323,7 @@ public class ModelManager implements Model {
         return currentIndex == quizLength - 1;
     }
 
+    @Override
     public boolean checkScoreTwo() {
         return currentIndex == quizLength;
     }
