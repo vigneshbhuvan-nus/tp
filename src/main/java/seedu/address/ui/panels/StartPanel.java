@@ -1,10 +1,11 @@
-package seedu.address.ui;
+package seedu.address.ui.panels;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
+import seedu.address.ui.UiPart;
 
 public class StartPanel extends UiPart<Region> {
 
