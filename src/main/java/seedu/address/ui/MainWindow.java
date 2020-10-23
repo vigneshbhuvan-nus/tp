@@ -44,7 +44,6 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private StartPanel startPanel;
-    private QuizPanel quizPanel;
     private StatisticsPanel statisticsPanel;
 
     @FXML
@@ -215,6 +214,11 @@ public class MainWindow extends UiPart<Stage> {
             break;
         }
     }
+    
+    private void handleQuizMode() {
+        QuizPanel quizPanel = new QuizPanel(logic.getLeitner(), logic.getCurrentIndex());
+        quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
+    }
 
     public EntryListPanel getEntryListPanel() {
         return entryListPanel;
@@ -250,6 +254,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+
+            if (logic.getCurrentView() == View.QUIZ_VIEW) {
+                handleQuizMode();
             }
             
             if (logic.getCurrentView() != this.currentView) {

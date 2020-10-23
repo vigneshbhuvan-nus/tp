@@ -43,7 +43,9 @@
               <Tab text="Entries">
                 <StackPane fx:id="entryListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
               </Tab>
-              <Tab text="Quiz"></Tab>
+              <Tab text="Quiz">
+                <StackPane fx:id="quizPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              </Tab>
               <Tab text="Statistics"></Tab>
             </TabPane>
           <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100.0"
