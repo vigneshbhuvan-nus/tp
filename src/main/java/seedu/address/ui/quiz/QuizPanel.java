@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.quiz;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -7,6 +7,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
+import seedu.address.ui.UiPart;
 
 import java.util.ArrayList;
 
