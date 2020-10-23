@@ -21,6 +21,7 @@ public class Leitner {
      * Returns a Leitner object that is essentially a flashcard memory object
      */
     public Leitner(UniqueEntryList input) {
+        assert(!input.isEmpty());
         for (Entry entry : input) {
             this.entries.add(entry);
         }
@@ -54,6 +55,7 @@ public class Leitner {
             Entry quiz = new Entry(new Word("???"), entry.getTranslation());
             list.add(quiz);
         }
+        assert (list.isEmpty() == false);
         return list;
     }
 
