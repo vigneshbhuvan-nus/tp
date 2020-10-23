@@ -5,6 +5,7 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
@@ -42,6 +43,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
+    
+    @FXML
+    private TabPane tabPanelPlaceholder;
 
     @FXML
     private StackPane entryListPanelPlaceholder;
@@ -51,12 +55,6 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane statusbarPlaceholder;
-
-    @FXML
-    private MenuItem Deck1;
-
-    @FXML
-    private MenuItem Deck2;
 
     @FXML
     private StackPane deckListPanelPlaceholder;
