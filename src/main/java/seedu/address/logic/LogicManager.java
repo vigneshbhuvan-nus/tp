@@ -18,6 +18,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.play.Leitner;
+import seedu.address.model.view.View;
 import seedu.address.storage.Storage;
 
 /**
@@ -108,5 +110,21 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
         return model.getFilteredEntryList();
+    }
+
+    //Methods called by the UI
+    @Override
+    public View getCurrentView() {
+        return model.getCurrentView();
+    }
+
+    @Override
+    public Leitner getLeitner() {
+        return model.getLeitner();
+    }
+
+    @Override
+    public int getCurrentIndex() {
+        return model.getCurrentIndex();
     }
 }

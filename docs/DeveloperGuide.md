@@ -208,7 +208,7 @@ The `Model`
 
 - stores a `UserPref` object that represents the user’s preferences.
 - stores a `FilteredList<Deck>` object that maintain`s the current list of decks in memory.
-- exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`  
+- exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`
 that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 - does not depend on any of the other three components.
 
@@ -301,7 +301,7 @@ By default, StopCommand and AnswerCommand cannot be accessed by the user until a
 <p align="center"> Figure 11. Sequence Diagram of Play Command
 
 With reference to Figure 11, after a PlayCommand is created:
-* A boolean isPlayMode in AddressBookParser becomes True (not shown yet as the implementation might change). 
+* A boolean isPlayMode in AddressBookParser becomes True (not shown yet as the implementation might change).
 * All following user inputs are treated as either an AnswerCommand or a StopCommand
 * A Leitner object is created that stores the current entries of the selected deck and shuffles them
 * The Leitner object also forms questions and answers list based on the shuffled list
@@ -495,7 +495,7 @@ _{More to be added}_
 - 3a. The given input does not match the format
 
   - 3a1. GreenTea shows an error message
-   
+
     Use case resumes at step 2.
 
 - 3b. The given index is invalid.

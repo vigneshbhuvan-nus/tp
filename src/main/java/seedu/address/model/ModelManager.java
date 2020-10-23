@@ -20,6 +20,8 @@ import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
 import seedu.address.model.play.Leitner;
+import seedu.address.model.view.CurrentView;
+import seedu.address.model.view.View;
 
 
 /**
@@ -30,6 +32,7 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
+    private CurrentView currentView;
     /*private final FilteredList<Entry> filteredEntries;*/
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
@@ -53,6 +56,7 @@ public class ModelManager implements Model {
         /*filteredEntries = new FilteredList<>(this.addressBook.getEntryList());*/
         filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
         currentDeckIndex = Optional.empty();
+        this.currentView = new CurrentView(View.START_VIEW);
     }
 
     public ModelManager() {
@@ -93,7 +97,17 @@ public class ModelManager implements Model {
         requireNonNull(addressBookFilePath);
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
+    //=========== Current View =============================================================================
 
+    @Override
+    public void setCurrentView(View view) {
+        this.currentView.setView(view);
+    }
+
+    @Override
+    public View getCurrentView() {
+        return this.currentView.getView();
+    }
     //=========== Word Bank ================================================================================
 
     @Override
@@ -326,6 +340,7 @@ public class ModelManager implements Model {
         leitner = null;
 
         replaceEntryList();
+        this.currentView.setView(View.ENTRY_VIEW);
         return score;
     }
 
@@ -355,6 +370,16 @@ public class ModelManager implements Model {
         Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
         addressBook.setEntry(entryToRemove, entryToAdd);
         currentIndex++;
+    }
+
+    @Override
+    public Leitner getLeitner() {
+        return this.leitner;
+    }
+
+    @Override
+    public int getCurrentIndex() {
+        return this.currentIndex;
     }
 
     @Override
