@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Region;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
@@ -29,6 +30,9 @@ public class QuizPanel extends UiPart<Region> {
     
     @FXML
     private Label answerList;
+    
+    @FXML
+    private ProgressBar progressBar;
 
 
     /**
@@ -38,6 +42,7 @@ public class QuizPanel extends UiPart<Region> {
         super(FXML);
         initializeValues (leitner, currentIndex);
         setText (leitner, currentIndex);
+        setProgressBar(currentIndex);
     }
 
     private void initializeValues(Leitner leitner, int currentIndex) {
@@ -61,9 +66,14 @@ public class QuizPanel extends UiPart<Region> {
             if (i == 0) {
                 answerList += ("Previous Answers:\n");
             }
-            answerList += ("Question: " + previousEntry.getTranslation().toString());
+            answerList += previousEntry.getTranslation().toString();
             answerList += ("   Answer: " + previousEntry.getWord().toString() + "\n");
         }
         return answerList;
+    }
+    
+    private void setProgressBar (int currentIndex) {
+        double progress = (double) currentIndex / totalNumberOfQuestions;
+        progressBar.setProgress(progress);
     }
 }
