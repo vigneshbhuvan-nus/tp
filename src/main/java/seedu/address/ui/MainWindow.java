@@ -20,7 +20,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.view.View;
 import seedu.address.ui.deck.DeckListPanel;
 import seedu.address.ui.entry.EntryListPanel;
-import seedu.address.ui.quiz.QuizPanel;
 
 
 /**

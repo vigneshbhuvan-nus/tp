@@ -3,8 +3,20 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.StackPane?>
 
-<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
 <StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/8"
            xmlns:fx="http://javafx.com/fxml/1" >
-    <TextFlow fx:id="quizMessage"></TextFlow>
+    <VBox>
+        <HBox>
+            <Label fx:id="question" styleClass="question" minWidth="300" minHeight="" HBox.hgrow="ALWAYS"/>
+            <Label fx:id="answerList" styleClass="answer-list" minWidth="100" maxWidth="300" HBox.hgrow="ALWAYS"/>
+        </HBox>
+        <HBox>
+            <Label fx:id="totalQuestions" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS"/>
+            <Label fx:id="questionsAnswered" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS"/>
+            <Label fx:id="questionsLeft" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS"/>
+        </HBox>
+    </VBox>
 </StackPane>

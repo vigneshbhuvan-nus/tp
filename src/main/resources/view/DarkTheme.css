@@ -220,11 +220,36 @@ Brass : A5AF37  unused
     -fx-font-size: 30px;
     -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
+    -fx-padding: 0 0 100 0;
 }
 
 .command-message {
     -fx-text-fill: white;
     -fx-font-size: 18px;
     -fx-alignment: center;
-    -fx-font-family: "Segoe UI Light";      
+    -fx-font-family: "Segoe UI Light";     
+    -fx-padding: 100 0 0 0; 
+}
+
+/* Quiz Panel */
+.question {
+    -fx-text-fill: white;
+    -fx-font-size: 30px;
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI Light"; 
+}
+
+.answer-list {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI Light"; 
+}
+
+.quiz-bottom-panel {
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+    -fx-font-family: "Segoe UI Light";
+    -fx-padding: 0 50 0 50;
 }
