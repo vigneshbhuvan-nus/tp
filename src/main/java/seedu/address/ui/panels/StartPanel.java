@@ -11,7 +11,7 @@ public class StartPanel extends UiPart<Region> {
 
     @FXML
     private Label headerMessage;
-    
+
     @FXML
     private Label commandMessage;
 

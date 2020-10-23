@@ -226,7 +226,7 @@ public class MainWindow extends UiPart<Stage> {
         QuizPanel quizPanel = new QuizPanel(logic.getLeitner(), logic.getCurrentIndex());
         quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
-    
+
     private void handleScorePanel() {
         ScorePanel scorePanel = new ScorePanel(logic.getLastScore(), logic.getFilteredEntryList().size());
         quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
@@ -267,7 +267,7 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isExit()) {
                 handleExit();
             }
-            
+
             if (logic.getCurrentView() == View.SCORE_VIEW) {
                 handleScorePanel();
             }

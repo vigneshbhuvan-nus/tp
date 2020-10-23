@@ -20,22 +20,21 @@ public class QuizPanel extends UiPart<Region> {
 
     @FXML
     private Label question;
-    
+
     @FXML
     private Label totalQuestions;
-    
+
     @FXML
     private Label questionsAnswered;
-    
+
     @FXML
     private Label questionsLeft;
-    
+
     @FXML
     private Label answerList;
-    
+
     @FXML
     private ProgressBar progressBar;
-
 
     /**
      * Constructor for quiz panel
@@ -43,7 +42,7 @@ public class QuizPanel extends UiPart<Region> {
     public QuizPanel (Leitner leitner, int currentIndex) {
         super(FXML);
         this.currentIndex = currentIndex;
-        
+
         initializeEntries(leitner);
         setText();
         setProgressBar();
@@ -54,7 +53,7 @@ public class QuizPanel extends UiPart<Region> {
         questionsLeftNumber = totalQuestionNumber - currentIndex;
         shuffledEntries = leitner.getEntries();
     }
-    
+
     private void setText () {
         question.setText(shuffledEntries.get(currentIndex).getTranslation().toString());
         totalQuestions.setText("Total Questions: " + Integer.toString(totalQuestionNumber));
@@ -62,7 +61,7 @@ public class QuizPanel extends UiPart<Region> {
         questionsLeft.setText("Questions to go: " + Integer.toString(questionsLeftNumber));
         answerList.setText(setAnswerList());
     }
-    
+
     private String setAnswerList () {
         int lastFive = 0;
         String answerList = "";
@@ -77,7 +76,7 @@ public class QuizPanel extends UiPart<Region> {
         }
         return answerList;
     }
-    
+
     private void setProgressBar () {
         double progress = (double) currentIndex / totalQuestionNumber;
         progressBar.setProgress(progress);

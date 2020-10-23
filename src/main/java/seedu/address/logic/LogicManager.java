@@ -129,7 +129,9 @@ public class LogicManager implements Logic {
     public int getCurrentIndex() {
         return model.getCurrentIndex();
     }
-    
+
     @Override
-    public int getLastScore() { return model.getLastScore(); }
+    public int getLastScore() {
+        return model.getLastScore();
+    }
 }
