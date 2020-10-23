@@ -8,6 +8,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.view.View;
 
 /**
  * The API of the Model component.
@@ -143,5 +144,15 @@ public interface Model {
     boolean checkScore();
 
     boolean checkScoreTwo();
+    
+    //view methods
+    /**
+     * Changes the current view of the system
+     */
+    void setCurrentView (View view);
 
+    /**
+     * Gets the current view of the system
+     */
+    View getCurrentView();
 }
