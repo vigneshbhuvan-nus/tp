@@ -340,6 +340,7 @@ public class ModelManager implements Model {
         leitner = null;
 
         replaceEntryList();
+        this.currentView.setView(View.ENTRY_VIEW);
         return score;
     }
 
@@ -369,6 +370,11 @@ public class ModelManager implements Model {
         Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
         addressBook.setEntry(entryToRemove, entryToAdd);
         currentIndex++;
+    }
+    
+    @Override
+    public Leitner getLeitner() {
+        return this.leitner;
     }
 
     @Override

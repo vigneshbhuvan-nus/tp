@@ -10,6 +10,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.play.Leitner;
 import seedu.address.model.view.View;
 
 /**
@@ -57,4 +58,9 @@ public interface Logic {
      * Returns the current view of the system to the UI
      */
     View getCurrentView();
+
+    /**
+     * Return the current shuffled quiz questions (Leitner)
+     */
+    Leitner getLeitner();
 }
