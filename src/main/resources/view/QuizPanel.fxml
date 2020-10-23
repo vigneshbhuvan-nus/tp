@@ -9,7 +9,6 @@
 <?import javafx.scene.control.ProgressBar?>
 <StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/8"
            xmlns:fx="http://javafx.com/fxml/1" >
-    
     <VBox alignment="CENTER">
         <ProgressBar fx:id="progressBar" styleClass="progress-bar" minWidth="300" prefWidth="300" maxHeight="30"/>
         <HBox alignment="CENTER">
