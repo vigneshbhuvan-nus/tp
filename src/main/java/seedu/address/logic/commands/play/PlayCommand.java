@@ -6,6 +6,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.view.View;
 
 public class PlayCommand extends Command {
 
@@ -18,6 +19,7 @@ public class PlayCommand extends Command {
         requireNonNull(model);
         //switch to playmode
         model.newGame();
+        model.setCurrentView(View.QUIZ_VIEW);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

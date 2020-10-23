@@ -37,10 +37,15 @@
           </VBox>
           <VBox HBox.hgrow="ALWAYS">
             <TabPane fx:id="tabPanelPlaceholder" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE" tabMinWidth="150" minWidth="450" minHeight="360">
+              <Tab text="Start">
+                <StackPane fx:id="startPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              </Tab>
               <Tab text="Entries">
                 <StackPane fx:id="entryListPanelPlaceholder" VBox.vgrow="ALWAYS"/>
               </Tab>
-              <Tab text="Quiz"></Tab>
+              <Tab text="Quiz">
+                <StackPane fx:id="quizPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+              </Tab>
               <Tab text="Statistics"></Tab>
             </TabPane>
           <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100" minHeight="100.0"

@@ -57,6 +57,10 @@ public class Leitner {
         return list;
     }
 
+    public int getMax() {
+        return max;
+    }
+
     public void incrementScore() {
         this.score++;
     }

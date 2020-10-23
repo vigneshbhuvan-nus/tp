@@ -26,6 +26,8 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.play.Leitner;
+import seedu.address.model.view.View;
 import seedu.address.testutil.entry.EntryBuilder;
 
 public class AddCommandTest {
@@ -219,6 +221,26 @@ public class AddCommandTest {
         @Override
         public boolean checkScoreTwo() {
             return true;
+        }
+
+        @Override
+        public void setCurrentView(View view) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public View getCurrentView() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Leitner getLeitner() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getCurrentIndex() {
+            throw new AssertionError("This method should not be called.");
         }
     }
 
