@@ -27,9 +27,10 @@ import seedu.address.model.view.View;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
-    private static final int ENTRY_INDEX = 0;
-    private static final int QUIZ_INDEX = 1;
-    private static final int STATISTICS_INDEX = 2;
+    private static final int START_INDEX = 0;
+    private static final int ENTRY_INDEX = 1;
+    private static final int QUIZ_INDEX = 2;
+    private static final int STATISTICS_INDEX = 3;
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -42,6 +43,7 @@ public class MainWindow extends UiPart<Stage> {
     private DeckListPanel deckListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private StartPanel startPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -134,6 +136,9 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        startPanel = new StartPanel();
+        startPanelPlaceholder.getChildren().add(startPanel.getRoot());
+                
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList()); //get the initial decklist
         deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
@@ -204,6 +209,7 @@ public class MainWindow extends UiPart<Stage> {
             tabPanelPlaceholder.getSelectionModel().select(STATISTICS_INDEX);
             break;
         default:
+            tabPanelPlaceholder.getSelectionModel().select(START_INDEX);
             break;
         }
     }
