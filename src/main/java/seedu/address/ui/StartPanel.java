@@ -11,8 +11,9 @@ public class StartPanel extends UiPart<Region> {
     private static final String FXML = "StartPanel.fxml";
 
     @FXML
-    private TextFlow startMessage;
     private Label headerMessage;
+    
+    @FXML
     private Label commandMessage;
 
     /**
@@ -20,12 +21,11 @@ public class StartPanel extends UiPart<Region> {
      */
     public StartPanel() {
         super(FXML);
-        headerMessage = new Label("Welcome to Green Tea!\n");
-        commandMessage = new Label("Here are some commands you can try:\n"
-                + "new deck\n"
-                + "remove deck \n"
-                + "select deck \n");
-        startMessage.setTextAlignment(TextAlignment.CENTER);
-        startMessage.getChildren().addAll(headerMessage, commandMessage);
+        headerMessage.setText("Welcome to Green Tea!\n");
+        commandMessage.setText("Here are some commands you can try:\n"
+                + "-----------------------------------------\n"
+                + "                 new deck\n"
+                + "                remove deck \n"
+                + "                select deck \n");
     }
 }
