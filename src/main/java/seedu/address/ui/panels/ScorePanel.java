@@ -2,9 +2,8 @@ package seedu.address.ui.panels;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Region;
 import seedu.address.ui.UiPart;
-
-import javax.swing.plaf.synth.Region;
 
 public class ScorePanel extends UiPart<Region> {
     
@@ -28,6 +27,16 @@ public class ScorePanel extends UiPart<Region> {
     }
     
     private String getEncouragementMessage(int score, int maxScore) {
-        return null;
+        double percentage = (double) score / maxScore;
+        String message = "";
+        
+        if (percentage >= 70) {
+            message = "Well done!!";
+        } else if ((percentage < 70) && (percentage >= 50)) {
+            message = "Nice job! You're almost there";
+        } else {
+            message = "Don't give up! Practice makes perfect";
+        }
+        return message;
     }
 }

@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/8"
       xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER">
-    <Label fx:id="headerMessage" styleClass="header-message"></Label>
-    <Label fx:id="commandMessage" styleClass="command-message"></Label>
+    <Label fx:id="scoreMessage" styleClass="header-message"></Label>
+    <Label fx:id="finalScore" styleClass="header-message"></Label>
+    <Label fx:id="encouragementMessage" styleClass="command-message"/>
 </VBox>

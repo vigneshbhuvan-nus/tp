@@ -21,6 +21,7 @@ import seedu.address.model.view.View;
 import seedu.address.ui.deck.DeckListPanel;
 import seedu.address.ui.entry.EntryListPanel;
 import seedu.address.ui.panels.QuizPanel;
+import seedu.address.ui.panels.ScorePanel;
 import seedu.address.ui.panels.StartPanel;
 import seedu.address.ui.panels.StatisticsPanel;
 
@@ -209,6 +210,7 @@ public class MainWindow extends UiPart<Stage> {
             tabPanelPlaceholder.getSelectionModel().select(ENTRY_INDEX);
             break;
         case QUIZ_VIEW:
+        case SCORE_VIEW:
             tabPanelPlaceholder.getSelectionModel().select(QUIZ_INDEX);
             break;
         case STATISTICS_VIEW:
@@ -223,6 +225,11 @@ public class MainWindow extends UiPart<Stage> {
     private void handleQuizMode() {
         QuizPanel quizPanel = new QuizPanel(logic.getLeitner(), logic.getCurrentIndex());
         quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
+    }
+    
+    private void handleScorePanel() {
+        ScorePanel scorePanel = new ScorePanel(logic.getLastScore(), logic.getFilteredEntryList().size());
+        quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
     }
 
     public EntryListPanel getEntryListPanel() {
@@ -259,6 +266,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+            
+            if (logic.getCurrentView() == View.SCORE_VIEW) {
+                handleScorePanel();
             }
 
             if (logic.getCurrentView() == View.QUIZ_VIEW) {
