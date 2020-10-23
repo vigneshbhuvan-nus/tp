@@ -213,3 +213,11 @@ Brass : A5AF37  unused
     -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
 }
+
+/* Start Panel */
+.start-message .label{
+    -fx-text-fill: white; 
+    -fx-font-family: "Segoe UI Light";
+    -fx-font-size: 25px;
+    -fx-padding: 40 0 0 0;
+}

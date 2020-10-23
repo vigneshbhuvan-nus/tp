@@ -20,7 +20,7 @@ public class StartPanel extends UiPart<Region> {
      */
     public StartPanel() {
         super(FXML);
-        headerMessage = new Label("Welcome to Green Tea!");
+        headerMessage = new Label("Welcome to Green Tea!\n");
         commandMessage = new Label("Here are some commands you can try:\n"
                 + "new deck\n"
                 + "remove deck \n"
