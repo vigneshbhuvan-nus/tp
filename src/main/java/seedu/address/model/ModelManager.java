@@ -376,6 +376,11 @@ public class ModelManager implements Model {
     public Leitner getLeitner() {
         return this.leitner;
     }
+    
+    @Override
+    public int getCurrentIndex() {
+        return this.currentIndex;
+    }
 
     @Override
     public boolean checkScore() {

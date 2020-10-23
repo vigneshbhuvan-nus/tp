@@ -122,4 +122,9 @@ public class LogicManager implements Logic {
     public Leitner getLeitner() {
         return model.getLeitner();
     }
+    
+    @Override
+    public int getCurrentIndex() {
+        return model.getCurrentIndex();
+    }
 }

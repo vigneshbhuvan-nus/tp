@@ -159,4 +159,6 @@ public interface Model {
     
     //UI methods
     Leitner getLeitner();
+    
+    int getCurrentIndex();
 }

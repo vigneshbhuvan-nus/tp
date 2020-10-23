@@ -63,4 +63,9 @@ public interface Logic {
      * Return the current shuffled quiz questions (Leitner)
      */
     Leitner getLeitner();
+
+    /**
+     * Returns the current questions that the user is at
+     */
+    int getCurrentIndex();
 }
