@@ -7,9 +7,9 @@ import javafx.scene.text.TextAlignment;
 import javafx.scene.text.TextFlow;
 
 public class StartPanel extends UiPart<Region> {
-    
+
     private static final String FXML = "StartPanel.fxml";
-    
+
     @FXML
     private TextFlow startMessage;
     private Label headerMessage;

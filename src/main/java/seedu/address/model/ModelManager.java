@@ -98,12 +98,12 @@ public class ModelManager implements Model {
         userPrefs.setAddressBookFilePath(addressBookFilePath);
     }
     //=========== Current View =============================================================================
-    
+
     @Override
     public void setCurrentView(View view) {
         this.currentView.setView(view);
     }
-    
+
     @Override
     public View getCurrentView() {
         return this.currentView.getView();
@@ -371,12 +371,12 @@ public class ModelManager implements Model {
         addressBook.setEntry(entryToRemove, entryToAdd);
         currentIndex++;
     }
-    
+
     @Override
     public Leitner getLeitner() {
         return this.leitner;
     }
-    
+
     @Override
     public int getCurrentIndex() {
         return this.currentIndex;

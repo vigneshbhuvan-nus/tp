@@ -111,18 +111,18 @@ public class LogicManager implements Logic {
     public ObservableList<Entry> getFilteredEntryList() {
         return model.getFilteredEntryList();
     }
-    
+
     //Methods called by the UI
     @Override
     public View getCurrentView() {
         return model.getCurrentView();
     }
-    
+
     @Override
     public Leitner getLeitner() {
         return model.getLeitner();
     }
-    
+
     @Override
     public int getCurrentIndex() {
         return model.getCurrentIndex();

@@ -54,19 +54,19 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private MenuItem helpMenuItem;
-    
+
     @FXML
     private TabPane tabPanelPlaceholder;
-    
+
     @FXML
     private StackPane startPanelPlaceholder;
 
     @FXML
     private StackPane entryListPanelPlaceholder;
-    
+
     @FXML
     private StackPane quizPanelPlaceholder;
-    
+
     @FXML
     private StackPane statisticsPanelPlaceholder;
 
@@ -142,7 +142,7 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         startPanel = new StartPanel();
         startPanelPlaceholder.getChildren().add(startPanel.getRoot());
-                
+
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList()); //get the initial decklist
         deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
@@ -198,10 +198,10 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow.hide();
         primaryStage.hide();
     }
-    
+
     private void handleChangeTab() {
         currentView = logic.getCurrentView();
-        
+
         switch (currentView) {
         case ENTRY_VIEW:
             tabPanelPlaceholder.getSelectionModel().select(ENTRY_INDEX);
@@ -217,7 +217,7 @@ public class MainWindow extends UiPart<Stage> {
             break;
         }
     }
-    
+
     private void handleQuizMode() {
         QuizPanel quizPanel = new QuizPanel(logic.getLeitner(), logic.getCurrentIndex());
         quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
@@ -262,7 +262,7 @@ public class MainWindow extends UiPart<Stage> {
             if (logic.getCurrentView() == View.QUIZ_VIEW) {
                 handleQuizMode();
             }
-            
+
             if (logic.getCurrentView() != this.currentView) {
                 handleChangeTab();
             }

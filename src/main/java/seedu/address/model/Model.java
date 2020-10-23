@@ -145,7 +145,7 @@ public interface Model {
     boolean checkScore();
 
     boolean checkScoreTwo();
-    
+
     //view methods
     /**
      * Changes the current view of the system
@@ -156,9 +156,9 @@ public interface Model {
      * Gets the current view of the system
      */
     View getCurrentView();
-    
+
     //UI methods
     Leitner getLeitner();
-    
+
     int getCurrentIndex();
 }
