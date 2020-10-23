@@ -1,13 +1,13 @@
 package seedu.address.logic.commands.deck.entry;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.commons.core.Messages.MESSAGE_ENTRIES_LISTED_OVERVIEW;
-import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.Assert.assertThrows;
-import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
 import static seedu.address.testutil.deck.TypicalDecks.getTypicalAddressBook;
+//import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST;
+//import static seedu.address.commons.core.Messages.MESSAGE_ENTRIES_LISTED_OVERVIEW;
+//import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
+//import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -43,17 +43,17 @@ public class FindCommandTest {
         assertThrows(CommandException.class, Messages.MESSAGE_NO_DECK_SELECTED, () -> findCommand.execute(model));
     }
 
-//    @Test
-//    public void execute_zeroKeywords_noEntryFound() {
-//        model.selectDeck(INDEX_FIRST);
-//        expectedModel.selectDeck(INDEX_FIRST);
-//        String expectedMessage = String.format(MESSAGE_ENTRIES_LISTED_OVERVIEW, 0);
-//        WordContainsKeywordsPredicate predicate = preparePredicate(" ");
-//        FindCommand command = new FindCommand(predicate);
-//        expectedModel.updateFilteredEntryList(predicate);
-//        assertCommandSuccess(command, model, expectedMessage, expectedModel);
-//        assertEquals(Collections.emptyList(), model.getFilteredEntryList());
-//    }
+    //    @Test
+    //    public void execute_zeroKeywords_noEntryFound() {
+    //        model.selectDeck(INDEX_FIRST);
+    //        expectedModel.selectDeck(INDEX_FIRST);
+    //        String expectedMessage = String.format(MESSAGE_ENTRIES_LISTED_OVERVIEW, 0);
+    //        WordContainsKeywordsPredicate predicate = preparePredicate(" ");
+    //        FindCommand command = new FindCommand(predicate);
+    //        expectedModel.updateFilteredEntryList(predicate);
+    //        assertCommandSuccess(command, model, expectedMessage, expectedModel);
+    //        assertEquals(Collections.emptyList(), model.getFilteredEntryList());
+    //    }
 
     /**
      * Parses {@code userInput} into a {@code WordContainsKeywordsPredicate}.
