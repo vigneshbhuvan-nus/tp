@@ -18,7 +18,7 @@ public class Leitner {
     private int score = 0;
 
     /**
-     * Returns a Leitner object that is essentially a flashcard memory object
+     * Returns a Leitner object that is essentially a flashcard memory object.
      */
     public Leitner(UniqueEntryList input) {
         assert(!input.isEmpty());
