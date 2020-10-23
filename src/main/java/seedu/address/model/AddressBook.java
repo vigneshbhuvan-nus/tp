@@ -2,6 +2,8 @@ package seedu.address.model;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javafx.collections.ObservableList;
@@ -64,6 +66,30 @@ public class AddressBook implements ReadOnlyAddressBook {
         observedEntries.add(entry);
     }
 
+    public Entry getEntry(int index) {
+        return observedEntries.get(index);
+    }
+
+    public int entryListLength() {
+        return observedEntries.length();
+    }
+
+    public void resetEntryList() {
+        Iterator<Entry> iterator = observedEntries.iterator(); //create iterator
+        ArrayList<Entry> copy = new ArrayList<Entry>(); //initialise a copy
+        while (iterator.hasNext()) { //fill the empty copy ArrayList with the existing entries
+            copy.add(iterator.next()); //this avoids the concurrentModification exception
+        }
+        for (Entry entry : copy) { //for each entry in the copy, delete the same entry in the observedEntries
+            observedEntries.remove(entry); //this changes the GUI
+        }
+    }
+
+    public void replaceEntryList(UniqueEntryList newEntryList) {
+        for (Entry entry : newEntryList) { //for each entry in the new selected deck entryList
+            observedEntries.add(entry); //add it to the GUI
+        }
+    }
     //// list overwrite operations
     /*
      *
