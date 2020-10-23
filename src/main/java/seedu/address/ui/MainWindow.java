@@ -17,6 +17,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.view.View;
 
 
 /**
@@ -26,11 +27,15 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
+    private static final int ENTRY_INDEX = 0;
+    private static final int QUIZ_INDEX = 1;
+    private static final int STATISTICS_INDEX = 2;
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private Stage primaryStage;
     private Logic logic;
+    private View currentView;
 
     // Independent Ui parts residing in this Ui container
     private EntryListPanel entryListPanel;
@@ -68,6 +73,7 @@ public class MainWindow extends UiPart<Stage> {
         // Set dependencies
         this.primaryStage = primaryStage;
         this.logic = logic;
+        this.currentView = logic.getCurrentView();
 
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
@@ -174,6 +180,24 @@ public class MainWindow extends UiPart<Stage> {
         helpWindow.hide();
         primaryStage.hide();
     }
+    
+    private void handleChangeTab() {
+        currentView = logic.getCurrentView();
+        
+        switch (currentView) {
+        case ENTRY_VIEW:
+            tabPanelPlaceholder.getSelectionModel().select(ENTRY_INDEX);
+            break;
+        case QUIZ_VIEW:
+            tabPanelPlaceholder.getSelectionModel().select(QUIZ_INDEX);
+            break;
+        case STATISTICS_VIEW:
+            tabPanelPlaceholder.getSelectionModel().select(STATISTICS_INDEX);
+            break;
+        default:
+            break;
+        }
+    }
 
     public EntryListPanel getEntryListPanel() {
         return entryListPanel;
@@ -209,6 +233,10 @@ public class MainWindow extends UiPart<Stage> {
 
             if (commandResult.isExit()) {
                 handleExit();
+            }
+            
+            if (logic.getCurrentView() != this.currentView) {
+                handleChangeTab();
             }
 
             return commandResult;
