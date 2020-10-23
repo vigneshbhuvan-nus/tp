@@ -6,16 +6,29 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
 <StackPane fx:id="placeHolder" styleClass="pane-with-border" xmlns="http://javafx.com/javafx/8"
            xmlns:fx="http://javafx.com/fxml/1" >
     <VBox>
-        <HBox>
-            <Label fx:id="question" styleClass="question" minWidth="300" minHeight="" HBox.hgrow="ALWAYS"/>
-            <Label fx:id="answerList" styleClass="answer-list" minWidth="100" maxWidth="300" HBox.hgrow="ALWAYS"/>
+        <HBox alignment="CENTER">
+            <Label fx:id="question" styleClass="question" minWidth="300" minHeight="300" maxWidth="350" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets right="40"/>
+                </padding>
+            </Label>
+            <Label fx:id="answerList" styleClass="answer-list" minWidth="100" minHeight="300" maxWidth="200" HBox.hgrow="ALWAYS"/>
         </HBox>
-        <HBox>
-            <Label fx:id="totalQuestions" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS"/>
-            <Label fx:id="questionsAnswered" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS"/>
+        <HBox alignment="CENTER">
+            <Label fx:id="totalQuestions" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets right="40"/>
+                </padding>
+            </Label>
+            <Label fx:id="questionsAnswered" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS">
+                <padding>
+                    <Insets right="40"/>
+                </padding>
+            </Label>
             <Label fx:id="questionsLeft" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS"/>
         </HBox>
     </VBox>
