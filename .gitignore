@@ -24,3 +24,7 @@ src/test/data/sandbox/
 docs/_site/
 
 
+src/main/data/addressbook.json
+src/main/config.json
+src/main/preferences.json
+src/main/addressbook.log.0
