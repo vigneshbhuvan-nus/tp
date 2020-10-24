@@ -35,7 +35,7 @@ public class LogicManager implements Logic {
     private final Storage storage;
     private final AddressBookParser addressBookParser;
     private final PlayModeParser playModeParser;
-    private PlayMode playMode = new PlayMode();
+    private final PlayMode playMode = new PlayMode();
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -136,6 +136,11 @@ public class LogicManager implements Logic {
     @Override
     public StatisticsManager getStatisticsManager() {
         return statisticsManager;
+    }
+
+    @Override
+    public double getLastScore() {
+        return model.getQuizAttempt().getScore().getYourScore();
     }
 
     @Override

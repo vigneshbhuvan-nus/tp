@@ -351,5 +351,10 @@ public class ModelManager implements Model {
         return currentIndex == quizLength;
     }
 
-    //====EndGames====
+    @Override
+    public QuizAttempt getQuizAttempt() {
+        return currentQuizAttempt;
+    }
+
+//====EndGames====
 }

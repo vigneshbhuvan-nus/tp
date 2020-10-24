@@ -83,5 +83,5 @@ public interface Logic {
     /**
      * Returns the score of the most recent quiz taken by the user
      */
-    int getLastScore();
+    double getLastScore();
 }

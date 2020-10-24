@@ -13,7 +13,7 @@ import seedu.address.ui.UiPart;
 public class QuizPanel extends UiPart<Region> {
     private static final String FXML = "QuizPanel.fxml";
 
-    private int currentIndex;
+    private final int currentIndex;
     private int totalQuestionNumber;
     private int questionsLeftNumber;
     private ArrayList<Entry> shuffledEntries;
@@ -49,32 +49,32 @@ public class QuizPanel extends UiPart<Region> {
     }
 
     private void initializeEntries(Leitner leitner) {
-        totalQuestionNumber = leitner.getMax();
+        totalQuestionNumber = leitner.getEntries().size();
         questionsLeftNumber = totalQuestionNumber - currentIndex;
         shuffledEntries = leitner.getEntries();
     }
 
     private void setText () {
         question.setText(shuffledEntries.get(currentIndex).getTranslation().toString());
-        totalQuestions.setText("Total Questions: " + Integer.toString(totalQuestionNumber));
-        questionsAnswered.setText("Questions Answered: " + Integer.toString(currentIndex));
-        questionsLeft.setText("Questions to go: " + Integer.toString(questionsLeftNumber));
+        totalQuestions.setText("Total Questions: " + totalQuestionNumber);
+        questionsAnswered.setText("Questions Answered: " + currentIndex);
+        questionsLeft.setText("Questions to go: " + questionsLeftNumber);
         answerList.setText(setAnswerList());
     }
 
     private String setAnswerList () {
         int lastFive = 0;
-        String answerList = "";
-        answerList += ("Previous Answers:\n");
+        StringBuilder sb = new StringBuilder();
+        sb.append("Previous Answers:\n");
         if (currentIndex - 5 > lastFive) {
             lastFive = currentIndex - 5;
         }
         for (int i = lastFive; i < currentIndex; i++) {
             Entry previousEntry = shuffledEntries.get(i);
-            answerList += previousEntry.getTranslation().toString();
-            answerList += ("   Answer: " + previousEntry.getWord().toString() + "\n");
+            sb.append(previousEntry.getTranslation().toString());
+            sb.append("   Answer: ").append(previousEntry.getWord().toString()).append("\n");
         }
-        return answerList;
+        return sb.toString();
     }
 
     private void setProgressBar () {

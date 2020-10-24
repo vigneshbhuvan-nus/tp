@@ -8,6 +8,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.scoring.QuizAttempt;
 import seedu.address.model.play.Leitner;
 import seedu.address.model.play.Score;
 import seedu.address.model.view.View;
@@ -147,7 +148,7 @@ public interface Model {
 
     boolean checkScoreTwo();
 
-    int editDistance(String answer, String correctAnswer, int answerLength, int correctAnswerLength);
+//    int editDistance(String answer, String correctAnswer, int answerLength, int correctAnswerLength);
     //view methods
     /**
      * Changes the current view of the system
@@ -164,5 +165,6 @@ public interface Model {
 
     int getCurrentIndex();
 
-    int getLastScore();
+    QuizAttempt getQuizAttempt();
+
 }
