@@ -147,6 +147,7 @@ public interface Model {
 
     boolean checkScoreTwo();
 
+    int editDistance(String answer, String correctAnswer, int answerLength, int correctAnswerLength);
     //view methods
     /**
      * Changes the current view of the system
@@ -162,4 +163,6 @@ public interface Model {
     Leitner getLeitner();
 
     int getCurrentIndex();
+
+    int getLastScore();
 }

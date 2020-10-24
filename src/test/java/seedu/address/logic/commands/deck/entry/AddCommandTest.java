@@ -224,6 +224,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public int editDistance(String answer, String correctAnswer, int answerLength, int correctAnswerLength) {
+            return 10;
+        }
+
+        @Override
         public void setCurrentView(View view) {
             throw new AssertionError("This method should not be called.");
         }
@@ -240,6 +245,11 @@ public class AddCommandTest {
 
         @Override
         public int getCurrentIndex() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public int getLastScore() {
             throw new AssertionError("This method should not be called.");
         }
     }
@@ -329,5 +339,8 @@ public class AddCommandTest {
         public void playGame(String answer) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void setCurrentView(View view) {}
     }
 }

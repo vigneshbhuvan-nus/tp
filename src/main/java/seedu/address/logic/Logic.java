@@ -79,4 +79,9 @@ public interface Logic {
      * Returns the current questions that the user is at
      */
     int getCurrentIndex();
+
+    /**
+     * Returns the score of the most recent quiz taken by the user
+     */
+    int getLastScore();
 }
