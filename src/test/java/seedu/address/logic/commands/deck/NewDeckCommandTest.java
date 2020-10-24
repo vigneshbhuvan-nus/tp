@@ -244,6 +244,11 @@ public class NewDeckCommandTest {
         public int getCurrentIndex() {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public int getLastScore() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**

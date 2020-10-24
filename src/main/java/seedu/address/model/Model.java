@@ -161,4 +161,6 @@ public interface Model {
     Leitner getLeitner();
 
     int getCurrentIndex();
+
+    int getLastScore();
 }

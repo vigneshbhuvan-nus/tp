@@ -37,6 +37,7 @@ public class ModelManager implements Model {
     private Leitner leitner;
     private int quizLength = 2;
     private int currentIndex = 0;
+    private int lastScore = 0;
 
 
     /**
@@ -282,8 +283,9 @@ public class ModelManager implements Model {
     public String endGame() {
         replaceEntryList();
         String score = leitner.getScore();
+        lastScore = leitner.getScoreValue();
         leitner = null; //delete leitner
-        this.currentView.setView(View.ENTRY_VIEW);
+        this.currentView.setView(View.SCORE_VIEW);
         return score;
     }
 
@@ -328,5 +330,9 @@ public class ModelManager implements Model {
         return currentIndex == quizLength;
     }
 
+    @Override
+    public int getLastScore() {
+        return this.lastScore;
+    }
     //====EndGames====
 }
