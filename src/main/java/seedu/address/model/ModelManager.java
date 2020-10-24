@@ -300,7 +300,12 @@ public class ModelManager implements Model {
             leitner.incrementScore();
             logger.info(String.format("Answer given was %s, the correct answer was %s, Correct answer given",
                     answer, correctAnswer));
+        } else if (withinEditDistance(answer, correctAnswer, answer.length(), correctAnswer.length()) <= 2) {
+
+            leitner.incrementScore();
+            logger.info("within edit distance of 2");
         } else {
+            System.out.println(withinEditDistance(answer, correctAnswer, answer.length(), correctAnswer.length()));
             logger.info(String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
                     answer, correctAnswer));
         }
@@ -333,5 +338,25 @@ public class ModelManager implements Model {
     public int getLastScore() {
         return this.lastScore;
     }
+
+    @Override
+    public int withinEditDistance(String answer, String correctAnswer, int m, int n) {
+        assert (m < Integer.MAX_VALUE && n < Integer.MAX_VALUE);
+        int dp[][] = new int[m + 1][n + 1];
+        if (m == 0) {
+            return n;
+        }
+        if (n == 0) {
+            return m;
+        }
+        if (answer.charAt(m - 1) == correctAnswer.charAt(n - 1)) {
+            return withinEditDistance(answer, correctAnswer, m - 1, n - 1);
+        }
+        return 1 + Math.min(withinEditDistance(answer, correctAnswer, m, n - 1),
+                Math.min(withinEditDistance(answer, correctAnswer, m - 1, n),
+                        withinEditDistance(answer, correctAnswer, m - 1, n - 1)));
+
+    }
+
     //====EndGames====
 }
