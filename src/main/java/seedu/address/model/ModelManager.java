@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -282,9 +283,15 @@ public class ModelManager implements Model {
     public String endGame() {
         replaceEntryList();
         String score = leitner.getScore();
+        ArrayList<Entry> nextQuiz = leitner.getQuizNextAttempt(); //save this to memory
         lastScore = leitner.getScoreValue();
-        leitner = null; //delete leitner
+
+        leitner.organizeQuizNextAttempt();
+        System.out.println(leitner.getQuizNextAttempt());
+
         this.currentView.setView(View.SCORE_VIEW);
+
+        leitner = null; //delete leitner
         return score;
     }
 
@@ -300,13 +307,16 @@ public class ModelManager implements Model {
         if (currentIndex == quizLength) {
             replaceEntryList();
         } else if (answerGiven.equals(correctAnswer)) {
+            leitner.correctAnswered(entryToAdd);
             leitner.incrementScore();
             logger.info(String.format("Answer given was %s, the correct answer was %s, Correct answer given",
                     answerGiven, correctAnswer));
         } else if (isWithinEditDistance) {
+            leitner.correctAnswered(entryToAdd);
             leitner.incrementScore();
             logger.info(String.format("within edit distance of %s, Correct answer given", numEditDistance));
         } else {
+            leitner.wrongAnswered(entryToAdd);
             logger.info(String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
                     answerGiven, correctAnswer));
         }
