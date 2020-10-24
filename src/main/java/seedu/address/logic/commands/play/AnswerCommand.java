@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
+import seedu.address.model.play.Score;
 
 /**
  * Clears GreenTea.
@@ -28,8 +29,8 @@ public class AnswerCommand extends Command {
         requireNonNull(model);
         model.playGame(answer.substring(0, answer.length() - 1));
         if (model.checkScoreTwo()) { //answerCommand sees into the future by 1 move, so have to delay by 1
-            String score = model.endGame();
-            return new CommandResult(MESSAGE_SUCCESS + score);
+            Score score = model.endGame();
+            return new CommandResult(MESSAGE_SUCCESS + score.toString());
         }
         return new CommandResult(MESSAGE_SUCCESS + answer);
     }

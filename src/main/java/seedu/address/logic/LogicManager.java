@@ -56,7 +56,7 @@ public class LogicManager implements Logic {
         Command command;
 
         if (commandText.equals("play")) {
-            assert (playMode.isPlayMode() == false);
+            assert (!playMode.isPlayMode());
             if (model.getCurrentDeck() == null) {
                 throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
             }
@@ -67,7 +67,7 @@ public class LogicManager implements Logic {
         }
 
         if (playMode.isPlayMode()) {
-            assert (playMode.isPlayMode() == true);
+            assert (playMode.isPlayMode());
             command = playModeParser.parseCommand(commandText);
             if (commandText.equals("stop") || model.checkScore()) {
                 playMode.turnOff();
@@ -140,7 +140,7 @@ public class LogicManager implements Logic {
 
     @Override
     public void doCleanup() {
-        statisticsManager.doCleanup();
         // TODO: save stats to json file on disk
+        statisticsManager.doCleanup();
     }
 }

@@ -7,6 +7,8 @@ import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
+import seedu.address.model.deck.scoring.QuestionAttempt;
+import seedu.address.model.deck.scoring.Scoring;
 
 
 public class Leitner {
@@ -14,13 +16,12 @@ public class Leitner {
     private ArrayList<Entry> entries = new ArrayList<>();
     private ArrayList<Translation> questions = new ArrayList<>();
     private ArrayList<Word> answers = new ArrayList<>();
-    private Score score;
 
     /**
      * Returns a Leitner object that is essentially a flashcard memory object.
      */
     public Leitner(UniqueEntryList input) {
-        assert(!input.isEmpty());
+        assert (!input.isEmpty());
         for (Entry entry : input) {
             this.entries.add(entry);
         }
@@ -29,8 +30,9 @@ public class Leitner {
             questions.add(entry.getTranslation());
             answers.add(entry.getWord());
         }
-        score = new Score(questions.size() + 1, 0);
+        // score = new Score(questions.size() + 1, 0);
     }
+
 
     public ArrayList<Translation> getQuestions() {
         return this.questions;
@@ -44,9 +46,9 @@ public class Leitner {
         return this.entries;
     }
 
-    public Score getScore() {
-        return score;
-    }
+//    public Score getScore() {
+//        return score;
+//    }
 
     public UniqueEntryList getUniqueEntryList() {
         UniqueEntryList list = new UniqueEntryList();
@@ -58,11 +60,12 @@ public class Leitner {
         return list;
     }
 
-    public int getMax() {
-        return max;
+    public int getNumberOfQuestions() {
+        return questions.size();
     }
 
-    public void incrementScore() {
-        score.incrementYourScore();
-    }
+//    public void incrementScore() {
+//        score.incrementYourScore();
+//    }
+
 }

@@ -10,23 +10,25 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import jdk.dynalink.beans.StaticClass;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.scoring.BinaryScoring;
+import seedu.address.model.deck.scoring.QuizAttempt;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.play.Leitner;
+import seedu.address.model.play.Score;
 import seedu.address.model.view.CurrentView;
 import seedu.address.model.view.View;
-import seedu.address.statistics.StatisticsManager;
 
 
 /**
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
@@ -39,6 +41,7 @@ public class ModelManager implements Model {
     private Leitner leitner;
     private int quizLength = 2;
     private int currentIndex = 0;
+    private QuizAttempt currentQuizAttempt;
 
 
     /**
@@ -48,7 +51,8 @@ public class ModelManager implements Model {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine(
+            "Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -135,8 +139,8 @@ public class ModelManager implements Model {
     }
 
     /**
-     * This function takes the entry and adds it to the deck entry list as well as the observedEntries in the
-     * AddressBook
+     * This function takes the entry and adds it to the deck entry list as well as the
+     * observedEntries in the AddressBook
      *
      * @param entry refers to the entry inputted by the user
      */
@@ -182,9 +186,9 @@ public class ModelManager implements Model {
     }
 
     /**
-     * This function deletes what is on the GUI and replaces it with the next entries in the selected deck.
-     * To replace the observedEntry in Addressbook.java that controls the GUI, a copy of it has to be created first.
-     * This avoids the concurrent modification exception.
+     * This function deletes what is on the GUI and replaces it with the next entries in the
+     * selected deck. To replace the observedEntry in Addressbook.java that controls the GUI, a copy
+     * of it has to be created first. This avoids the concurrent modification exception.
      */
     @Override
     public void replaceEntryList() {
@@ -212,10 +216,10 @@ public class ModelManager implements Model {
     //=========== Filtered Entry List Accessors =============================================================
 
     /**
-     * Returns a default deck as memory is not fixed yet. During initialisation, the observedEntryList value is
-     * passed as the AddressBook.javas uniqueEntryList. I.e the GUI now watches for any changes in the AddressBook,java
-     * field observedEntries
-     * {@code versionedAddressBook}
+     * Returns a default deck as memory is not fixed yet. During initialisation, the
+     * observedEntryList value is passed as the AddressBook.javas uniqueEntryList. I.e the GUI now
+     * watches for any changes in the AddressBook,java field observedEntries {@code
+     * versionedAddressBook}
      */
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
@@ -265,8 +269,8 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredDecks.equals(other.filteredDecks);
+            && userPrefs.equals(other.userPrefs)
+            && filteredDecks.equals(other.filteredDecks);
     }
 
     //====Games=====
@@ -276,34 +280,51 @@ public class ModelManager implements Model {
         leitner = new Leitner(observedList);
         quizLength = leitner.getEntries().size();
         currentIndex = 0;
+
         addressBook.resetEntryList();
         addressBook.replaceEntryList(leitner.getUniqueEntryList());
+
+        currentQuizAttempt = new QuizAttempt(new BinaryScoring());
     }
 
     @Override
-    public String endGame() {
+    public Score endGame() {
         replaceEntryList();
-        String score = leitner.getScore();
-        leitner = null; //delete leitner
         this.currentView.setView(View.ENTRY_VIEW);
-        return score;
+
+        currentQuizAttempt.endQuiz(quizLength);
+
+        if (checkScoreTwo()) {
+            // update deck's attempt list iff end game due to last question
+            getCurrentDeck().addQuizAttempt(currentQuizAttempt);
+        }
+
+        return currentQuizAttempt.getScore();
     }
 
     @Override
-    public void playGame(String answer) {
+    public void playGame(String guess) { // answer a question
         String correctAnswer = leitner.getAnswers().get(currentIndex).toString();
         Entry entryToAdd = leitner.getEntries().get(currentIndex);
         Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
 
+        logger.info(String.format("You have answered %s.", guess));
+
         if (currentIndex == quizLength) {
             replaceEntryList();
-        } else if (answer.equals(correctAnswer)) {
-            leitner.incrementScore();
-            logger.info(String.format("Answer given was %s, the correct answer was %s, Correct answer given",
-                    answer, correctAnswer));
         } else {
-            logger.info(String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
-                    answer, correctAnswer));
+            currentQuizAttempt.answerQuestion(correctAnswer, guess);
+
+            // FOR DEBUGGING PURPOSES
+            if (correctAnswer.equals(guess)) {
+                logger.info(String
+                    .format("Answer given was %s, the correct answer was %s, Correct answer given",
+                        guess, correctAnswer));
+            } else {
+                logger.info(String
+                    .format("Answer given was %s, the correct answer was %s, Wrong answer given",
+                        guess, correctAnswer));
+            }
         }
 
         addressBook.setEntry(entryToRemove, entryToAdd); //swaps entry in GUI

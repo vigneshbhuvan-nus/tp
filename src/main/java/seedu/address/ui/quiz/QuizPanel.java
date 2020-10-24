@@ -44,7 +44,7 @@ public class QuizPanel extends UiPart<Region> {
     }
 
     private void initializeValues(Leitner leitner, int currentIndex) {
-        totalNumberOfQuestions = leitner.getMax();
+        totalNumberOfQuestions = leitner.getNumberOfQuestions();
         numberOfQuestionsLeft = totalNumberOfQuestions - currentIndex;
         shuffledEntries = leitner.getEntries();
     }

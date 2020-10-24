@@ -195,6 +195,7 @@ public class MainWindow extends UiPart<Stage> {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
                 (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
+        // do clean up here 1. register the logout event 2. save the stats to json
         helpWindow.hide();
         primaryStage.hide();
     }

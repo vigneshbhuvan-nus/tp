@@ -9,6 +9,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
+import seedu.address.model.play.Score;
 import seedu.address.model.view.View;
 
 /**
@@ -138,7 +139,7 @@ public interface Model {
     //game commands
     void newGame();
 
-    String endGame();
+    Score endGame();
 
     void playGame(String answer);
 
