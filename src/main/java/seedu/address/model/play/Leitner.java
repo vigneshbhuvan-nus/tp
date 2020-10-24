@@ -28,7 +28,7 @@ public class Leitner {
      */
     public Leitner(UniqueEntryList input) {
         //if memory has no record of quiz
-        assert(!input.isEmpty());
+        assert (!input.isEmpty());
         for (Entry entry : input) {
             this.entries.add(entry);
         }
@@ -40,12 +40,13 @@ public class Leitner {
         max = questions.size();
     }
 
-    /** Returns a Leitner object. This constructor should be used when there is a memory record of the deck being
-     * played before. Creates a new Leitner object using the already organized ArrayList<Entry> in memory
-     * */
+    /**
+     * Returns a Leitner object. This constructor should be used when there is a memory record of the deck being
+     * played before. Creates a new Leitner object using the already organized ArrayList of entries in memory
+     */
     public Leitner(ArrayList<Entry> organizedQuiz) {
         //if memory has record of quiz attempts, get organizedQuiz from memory
-        assert(!organizedQuiz.isEmpty());
+        assert (!organizedQuiz.isEmpty());
         entries = organizedQuiz;
         for (Entry entry : entries) {
             questions.add(entry.getTranslation());
@@ -55,27 +56,43 @@ public class Leitner {
     }
 
     /**
-     * */
+     * Returns the ArrayList of questions
+     */
     public ArrayList<Translation> getQuestions() {
         return this.questions;
     }
 
+    /**
+     * Returns the ArrayList of answers
+     */
     public ArrayList<Word> getAnswers() {
         return this.answers;
     }
 
+    /**
+     * Returns the shuffled ArrayList of entries
+     */
     public ArrayList<Entry> getEntries() {
         return this.entries;
     }
 
+    /**
+     * Returns the ArrayList of translations
+     */
     public String getScore() {
         return "Your score is " + score + "/" + max;
     }
 
+    /**
+     * Returns the current score
+     */
     public int getScoreValue() {
         return this.score;
     }
 
+    /**
+     * Returns the entries in the form of a UniqueEntryList object
+     */
     public UniqueEntryList getUniqueEntryList() {
         UniqueEntryList list = new UniqueEntryList();
         for (Entry entry : entries) {
@@ -86,34 +103,58 @@ public class Leitner {
         return list;
     }
 
+    /**
+     * Returns the entry list size
+     */
     public int getMax() {
         return max;
     }
 
+    /**
+     * Increments the current score
+     */
     public void incrementScore() {
         this.score++;
     }
 
+    /**
+     * Stores the entry in an ArrayList correctAnsweredEntries
+     *
+     * @Param entry refers to the input entry from ModelManager
+     */
     public void correctAnswered(Entry entry) {
         correctAnsweredEntries.add(entry);
     }
 
+    /**
+     * Stores the entry in an ArrayList wrongAnsweredEntries
+     *
+     * @Param entry refers to the input entry from ModelManager
+     */
     public void wrongAnswered(Entry entry) {
         wrongAnsweredEntries.add(entry);
     }
 
+    /**
+     * Organize the next quiz by adding the wrongly answered entries first followed by the correctly answered entries
+     * into an Arraylist of entries called quizForNextAttempt. WrongAnsweredEntries and correctAnsweredEntries can
+     * be shuffled first before being added the quizForNextAttempt
+     */
     public void organizeQuizNextAttempt() {
-        System.out.println(wrongAnsweredEntries);
-        System.out.println(correctAnsweredEntries);
+        //Collections.shuffle(wrongAnsweredEntries);
+        //Collections.shuffle(correctAnsweredEntries);
         for (Entry entry : wrongAnsweredEntries) {
             quizForNextAttempt.add(entry);
         }
-        for (Entry entry: correctAnsweredEntries) {
+        for (Entry entry : correctAnsweredEntries) {
             quizForNextAttempt.add(entry);
         }
         //assert(quizForNextAttempt.size() == wrongAnsweredEntries.size() + correctAnsweredEntries.size());
     }
 
+    /**
+     * Returns the ArrayList of entries, quizForNextAttempt
+     */
     public ArrayList<Entry> getQuizNextAttempt() {
         return quizForNextAttempt;
     }
