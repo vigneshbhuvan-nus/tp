@@ -295,7 +295,7 @@ public class ModelManager implements Model {
         Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
         int numEditDistance = editDistance(answerGiven, correctAnswer,
                 answerGiven.length(), correctAnswer.length());
-        boolean isWithinEditDistance = numEditDistance == 1; //editDistance can only be maximum 1 
+        boolean isWithinEditDistance = numEditDistance == 1; //editDistance can only be maximum 1
 
         if (currentIndex == quizLength) {
             replaceEntryList();
