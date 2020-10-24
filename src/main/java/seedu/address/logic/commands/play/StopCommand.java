@@ -18,7 +18,7 @@ public class StopCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         String score = model.endGame();
-        model.setCurrentView(View.ENTRY_VIEW);
+        model.setCurrentView(View.SCORE_VIEW);
         return new CommandResult(MESSAGE_SUCCESS + score);
     }
 }
