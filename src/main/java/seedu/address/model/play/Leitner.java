@@ -23,7 +23,8 @@ public class Leitner {
     private int score = 0;
 
     /**
-     * Returns a Leitner object that is essentially a flashcard memory object.
+     * Returns a Leitner object that is essentially a flashcard memory object. This constructor should be used
+     * when there is no record of the deck being played before. It initializes the quiz by doing a random shuffle.
      */
     public Leitner(UniqueEntryList input) {
         //if memory has no record of quiz
@@ -39,6 +40,9 @@ public class Leitner {
         max = questions.size();
     }
 
+    /** Returns a Leitner object. This constructor should be used when there is a memory record of the deck being
+     * played before. Creates a new Leitner object using the already organized ArrayList<Entry> in memory
+     * */
     public Leitner(ArrayList<Entry> organizedQuiz) {
         //if memory has record of quiz attempts, get organizedQuiz from memory
         assert(!organizedQuiz.isEmpty());
@@ -50,6 +54,8 @@ public class Leitner {
         max = questions.size();
     }
 
+    /**
+     * */
     public ArrayList<Translation> getQuestions() {
         return this.questions;
     }

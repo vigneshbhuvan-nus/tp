@@ -269,25 +269,37 @@ public class ModelManager implements Model {
     }
 
     //====Games=====
+
+    /**
+     * Initializes a new flashcard game by creating a new Leitner object. If memory has records of the deck being
+     * played before, the Leitner object can be created using the entry list from memory (still implementing). If
+     * memory has no records of the deck being played, the Leitner object is created using a random shuffle of the
+     * exisiting entries.
+     */
     @Override
     public void newGame() {
         UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
-        leitner = new Leitner(observedList);
+        leitner = new Leitner(observedList); //use exisiting deck or from memory
         quizLength = leitner.getEntries().size();
         currentIndex = 0;
         addressBook.resetEntryList();
         addressBook.replaceEntryList(leitner.getUniqueEntryList());
     }
 
+    /**
+     * Gets called by either a PlayCommand or a StopCommand. Replaces the current observed entry list in addressbook
+     * by the original entries. Score is saved from the leitner object. The next quiz is also generated from the
+     * Leitner object and can be stored in memory. The UI is updated with the new score and the Leitner field of
+     * ModelManager is deleted.
+     */
     @Override
     public String endGame() {
         replaceEntryList();
         String score = leitner.getScore();
-        ArrayList<Entry> nextQuiz = leitner.getQuizNextAttempt(); //save this to memory
         lastScore = leitner.getScoreValue();
 
         leitner.organizeQuizNextAttempt();
-        System.out.println(leitner.getQuizNextAttempt());
+        ArrayList<Entry> nextQuiz = leitner.getQuizNextAttempt(); //save this to memory
 
         this.currentView.setView(View.SCORE_VIEW);
 
@@ -295,6 +307,20 @@ public class ModelManager implements Model {
         return score;
     }
 
+    /**
+     * Initiated from the PlayCommand. Takes in a String answerGiven from the user via the UI and checks if the
+     * answer is a correct, close to correct, or wrong.
+     * The edit distance between the correctAnswer and answerGiven is calculated via withinEditDistance and if the
+     * distance is 1, the answerGiven is considered almost correct.
+     * If the answer is correct, the score is incremented in the
+     * Leitner object and the correctAnsweredEntries field in leitner object is updated with the entry. The same
+     * occurs if the answer is correct except a different message is logged.
+     * If the answer is wrong, the score is not incremented and the wrongAnsweredEntries field in leitner object is
+     * updated
+     * The entry is swapped with the correct entry in addressbook and the currentIndex is incremented.
+     *
+     * @param answerGiven refers to the user input
+     */
     @Override
     public void playGame(String answerGiven) {
         String correctAnswer = leitner.getAnswers().get(currentIndex).toString();
@@ -350,6 +376,9 @@ public class ModelManager implements Model {
         return this.lastScore;
     }
 
+    /**
+     * A dynamic program used to calculate edit distance between two strings
+     */
     @Override
     public int editDistance(String answer, String correctAnswer, int m, int n) {
         assert (m < Integer.MAX_VALUE && n < Integer.MAX_VALUE);
