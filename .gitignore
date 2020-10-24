@@ -28,3 +28,4 @@ src/main/data/addressbook.json
 src/main/config.json
 src/main/preferences.json
 src/main/addressbook.log.0
+src/main/addressbook.log.0.lck
