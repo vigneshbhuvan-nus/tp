@@ -582,3 +582,367 @@ Oct 24, 2020 11:30:03 AM seedu.address.model.ModelManager playGame
 INFO: within edit distance of 2
 Oct 24, 2020 11:30:03 AM seedu.address.ui.MainWindow executeCommand
 INFO: Result: Your Answer was: Your score is 4/4
+Oct 24, 2020 11:34:22 AM seedu.address.MainApp init
+INFO: =============================[ Initializing AddressBook ]===========================
+Oct 24, 2020 11:34:22 AM seedu.address.MainApp initConfig
+INFO: Using config file : config.json
+Oct 24, 2020 11:34:22 AM seedu.address.MainApp initPrefs
+INFO: Using prefs file : preferences.json
+Oct 24, 2020 11:34:22 AM seedu.address.commons.core.LogsCenter init
+INFO: currentLogLevel: INFO
+Oct 24, 2020 11:34:22 AM seedu.address.MainApp start
+INFO: Starting AddressBook V1.3.1ea
+Oct 24, 2020 11:34:22 AM seedu.address.ui.UiManager start
+INFO: Starting UI...
+Oct 24, 2020 11:34:24 AM seedu.address.model.ModelManager getCurrentDeck
+INFO: Current deck index is 0
+Oct 24, 2020 11:34:24 AM seedu.address.model.ModelManager getFilteredEntryList
+INFO: Current Deck is null
+Oct 24, 2020 11:34:27 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][select 1]
+Oct 24, 2020 11:34:27 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Selected Deck: test internalList: japan Translation: japchinese Translation: chienglish Translation: enggerman Translation: ger
+Oct 24, 2020 11:34:28 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:34:28 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:34:29 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][german]
+Oct 24, 2020 11:34:29 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was german, the correct answer was german, Correct answer given
+Oct 24, 2020 11:34:29 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: german 
+Oct 24, 2020 11:34:43 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][jap1an]
+Oct 24, 2020 11:34:43 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:34:43 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: jap1an 
+Oct 24, 2020 11:34:48 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][chine12]
+Oct 24, 2020 11:34:48 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:34:48 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: chine12 
+Oct 24, 2020 11:34:52 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][en  ish]
+Oct 24, 2020 11:34:52 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:34:52 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: Your score is 4/4
+Oct 24, 2020 11:35:01 AM seedu.address.MainApp stop
+INFO: ============================ [ Stopping Address Book ] =============================
+Oct 24, 2020 11:35:33 AM seedu.address.MainApp init
+INFO: =============================[ Initializing AddressBook ]===========================
+Oct 24, 2020 11:35:33 AM seedu.address.MainApp initConfig
+INFO: Using config file : config.json
+Oct 24, 2020 11:35:34 AM seedu.address.MainApp initPrefs
+INFO: Using prefs file : preferences.json
+Oct 24, 2020 11:35:34 AM seedu.address.commons.core.LogsCenter init
+INFO: currentLogLevel: INFO
+Oct 24, 2020 11:35:34 AM seedu.address.MainApp start
+INFO: Starting AddressBook V1.3.1ea
+Oct 24, 2020 11:35:34 AM seedu.address.ui.UiManager start
+INFO: Starting UI...
+Oct 24, 2020 11:35:36 AM seedu.address.model.ModelManager getCurrentDeck
+INFO: Current deck index is 0
+Oct 24, 2020 11:35:36 AM seedu.address.model.ModelManager getFilteredEntryList
+INFO: Current Deck is null
+Oct 24, 2020 11:35:38 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][select 1]
+Oct 24, 2020 11:35:38 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Selected Deck: test internalList: japan Translation: japchinese Translation: chienglish Translation: enggerman Translation: ger
+Oct 24, 2020 11:35:40 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:35:40 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:35:46 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][ja]
+Oct 24, 2020 11:35:46 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:35:46 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: ja 
+Oct 24, 2020 11:35:50 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][engl]
+Oct 24, 2020 11:35:50 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:35:50 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: engl 
+Oct 24, 2020 11:35:54 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][chin]
+Oct 24, 2020 11:35:54 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:35:54 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: chin 
+Oct 24, 2020 11:35:56 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][ger]
+Oct 24, 2020 11:35:56 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:35:56 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: Your score is 4/4
+Oct 24, 2020 11:35:59 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:35:59 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:36:10 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][a]
+Oct 24, 2020 11:36:10 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:36:10 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: a 
+Oct 24, 2020 11:36:10 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][a]
+Oct 24, 2020 11:36:10 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:36:10 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: a 
+Oct 24, 2020 11:36:10 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][a]
+Oct 24, 2020 11:36:10 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:36:10 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: a 
+Oct 24, 2020 11:36:10 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][a]
+Oct 24, 2020 11:36:10 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 2
+Oct 24, 2020 11:36:10 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: Your score is 4/4
+Oct 24, 2020 11:36:48 AM seedu.address.MainApp init
+INFO: =============================[ Initializing AddressBook ]===========================
+Oct 24, 2020 11:36:48 AM seedu.address.MainApp initConfig
+INFO: Using config file : config.json
+Oct 24, 2020 11:36:49 AM seedu.address.MainApp initPrefs
+INFO: Using prefs file : preferences.json
+Oct 24, 2020 11:36:49 AM seedu.address.commons.core.LogsCenter init
+INFO: currentLogLevel: INFO
+Oct 24, 2020 11:36:49 AM seedu.address.MainApp start
+INFO: Starting AddressBook V1.3.1ea
+Oct 24, 2020 11:36:49 AM seedu.address.ui.UiManager start
+INFO: Starting UI...
+Oct 24, 2020 11:36:50 AM seedu.address.model.ModelManager getCurrentDeck
+INFO: Current deck index is 0
+Oct 24, 2020 11:36:50 AM seedu.address.model.ModelManager getFilteredEntryList
+INFO: Current Deck is null
+Oct 24, 2020 11:36:52 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][select 1]
+Oct 24, 2020 11:36:52 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Selected Deck: test internalList: japan Translation: japchinese Translation: chienglish Translation: enggerman Translation: ger
+Oct 24, 2020 11:36:53 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:36:53 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:36:54 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][jap]
+Oct 24, 2020 11:36:55 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 0
+Oct 24, 2020 11:36:55 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: jap 
+Oct 24, 2020 11:37:02 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][c]
+Oct 24, 2020 11:37:02 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 0
+Oct 24, 2020 11:37:02 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: c 
+Oct 24, 2020 11:39:50 AM seedu.address.MainApp init
+INFO: =============================[ Initializing AddressBook ]===========================
+Oct 24, 2020 11:39:50 AM seedu.address.MainApp initConfig
+INFO: Using config file : config.json
+Oct 24, 2020 11:39:51 AM seedu.address.MainApp initPrefs
+INFO: Using prefs file : preferences.json
+Oct 24, 2020 11:39:51 AM seedu.address.commons.core.LogsCenter init
+INFO: currentLogLevel: INFO
+Oct 24, 2020 11:39:51 AM seedu.address.MainApp start
+INFO: Starting AddressBook V1.3.1ea
+Oct 24, 2020 11:39:51 AM seedu.address.ui.UiManager start
+INFO: Starting UI...
+Oct 24, 2020 11:39:52 AM seedu.address.model.ModelManager getCurrentDeck
+INFO: Current deck index is 0
+Oct 24, 2020 11:39:52 AM seedu.address.model.ModelManager getFilteredEntryList
+INFO: Current Deck is null
+Oct 24, 2020 11:39:56 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][select 1]
+Oct 24, 2020 11:39:56 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Selected Deck: test internalList: japan Translation: japchinese Translation: chienglish Translation: enggerman Translation: ger
+Oct 24, 2020 11:39:57 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:39:57 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:39:58 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][adsas]
+Oct 24, 2020 11:39:58 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 0
+Oct 24, 2020 11:39:58 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: adsas 
+Oct 24, 2020 11:39:58 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][sadasd]
+Oct 24, 2020 11:39:58 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 0
+Oct 24, 2020 11:39:58 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: sadasd 
+Oct 24, 2020 11:39:59 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][asdada]
+Oct 24, 2020 11:39:59 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 0
+Oct 24, 2020 11:39:59 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: asdada 
+Oct 24, 2020 11:39:59 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][asda]
+Oct 24, 2020 11:39:59 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 0
+Oct 24, 2020 11:39:59 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: Your score is 4/4
+Oct 24, 2020 11:40:01 AM seedu.address.MainApp stop
+INFO: ============================ [ Stopping Address Book ] =============================
+Oct 24, 2020 11:42:18 AM seedu.address.MainApp init
+INFO: =============================[ Initializing AddressBook ]===========================
+Oct 24, 2020 11:42:18 AM seedu.address.MainApp initConfig
+INFO: Using config file : config.json
+Oct 24, 2020 11:42:18 AM seedu.address.MainApp initPrefs
+INFO: Using prefs file : preferences.json
+Oct 24, 2020 11:42:18 AM seedu.address.commons.core.LogsCenter init
+INFO: currentLogLevel: INFO
+Oct 24, 2020 11:42:18 AM seedu.address.MainApp start
+INFO: Starting AddressBook V1.3.1ea
+Oct 24, 2020 11:42:18 AM seedu.address.ui.UiManager start
+INFO: Starting UI...
+Oct 24, 2020 11:42:20 AM seedu.address.model.ModelManager getCurrentDeck
+INFO: Current deck index is 0
+Oct 24, 2020 11:42:20 AM seedu.address.model.ModelManager getFilteredEntryList
+INFO: Current Deck is null
+Oct 24, 2020 11:42:24 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][select 1]
+Oct 24, 2020 11:42:24 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Selected Deck: test internalList: japan Translation: japchinese Translation: chienglish Translation: enggerman Translation: ger
+Oct 24, 2020 11:42:25 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:42:25 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:42:25 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][adsa]
+Oct 24, 2020 11:42:25 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was adsa, the correct answer was chinese, Wrong answer given
+Oct 24, 2020 11:42:25 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: adsa 
+Oct 24, 2020 11:42:26 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][das]
+Oct 24, 2020 11:42:26 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was das, the correct answer was english, Wrong answer given
+Oct 24, 2020 11:42:26 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: das 
+Oct 24, 2020 11:42:26 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][dsa]
+Oct 24, 2020 11:42:26 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was dsa, the correct answer was german, Wrong answer given
+Oct 24, 2020 11:42:26 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: dsa 
+Oct 24, 2020 11:42:26 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][dsa]
+Oct 24, 2020 11:42:26 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was dsa, the correct answer was japan, Wrong answer given
+Oct 24, 2020 11:42:26 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: Your score is 0/4
+Oct 24, 2020 11:42:28 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:42:29 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:42:33 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][jap]
+Oct 24, 2020 11:42:33 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was jap, the correct answer was japan, Wrong answer given
+Oct 24, 2020 11:42:33 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: jap 
+Oct 24, 2020 11:42:35 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][eng]
+Oct 24, 2020 11:42:35 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was eng, the correct answer was english, Wrong answer given
+Oct 24, 2020 11:42:35 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: eng 
+Oct 24, 2020 11:42:38 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][chi]
+Oct 24, 2020 11:42:38 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was chi, the correct answer was chinese, Wrong answer given
+Oct 24, 2020 11:42:38 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: chi 
+Oct 24, 2020 11:42:39 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][ger]
+Oct 24, 2020 11:42:39 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was ger, the correct answer was german, Wrong answer given
+Oct 24, 2020 11:42:39 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: Your score is 0/4
+Oct 24, 2020 11:42:41 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:42:42 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:42:45 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][hapan]
+Oct 24, 2020 11:42:45 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was hapan, the correct answer was japan, Wrong answer given
+Oct 24, 2020 11:42:45 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: hapan 
+Oct 24, 2020 11:42:50 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][germam]
+Oct 24, 2020 11:42:50 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was germam, the correct answer was german, Wrong answer given
+Oct 24, 2020 11:42:50 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: germam 
+Oct 24, 2020 11:42:53 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][englis1]
+Oct 24, 2020 11:42:53 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was englis1, the correct answer was english, Wrong answer given
+Oct 24, 2020 11:42:53 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: englis1 
+Oct 24, 2020 11:42:58 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][chinesE]
+Oct 24, 2020 11:42:58 AM seedu.address.model.ModelManager playGame
+INFO: Answer given was chinesE, the correct answer was chinese, Wrong answer given
+Oct 24, 2020 11:42:58 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: Your score is 0/4
+Oct 24, 2020 11:45:54 AM seedu.address.MainApp init
+INFO: =============================[ Initializing AddressBook ]===========================
+Oct 24, 2020 11:45:54 AM seedu.address.MainApp initConfig
+INFO: Using config file : config.json
+Oct 24, 2020 11:45:54 AM seedu.address.MainApp initPrefs
+INFO: Using prefs file : preferences.json
+Oct 24, 2020 11:45:54 AM seedu.address.commons.core.LogsCenter init
+INFO: currentLogLevel: INFO
+Oct 24, 2020 11:45:54 AM seedu.address.MainApp start
+INFO: Starting AddressBook V1.3.1ea
+Oct 24, 2020 11:45:54 AM seedu.address.ui.UiManager start
+INFO: Starting UI...
+Oct 24, 2020 11:45:56 AM seedu.address.model.ModelManager getCurrentDeck
+INFO: Current deck index is 0
+Oct 24, 2020 11:45:56 AM seedu.address.model.ModelManager getFilteredEntryList
+INFO: Current Deck is null
+Oct 24, 2020 11:45:58 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][select 1]
+Oct 24, 2020 11:45:58 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Selected Deck: test internalList: japan Translation: japchinese Translation: chienglish Translation: enggerman Translation: ger
+Oct 24, 2020 11:45:59 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][play]
+Oct 24, 2020 11:45:59 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Playmode Initiated!!
+Oct 24, 2020 11:46:05 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][chine5e]
+Oct 24, 2020 11:46:05 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 1
+Oct 24, 2020 11:46:05 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: chine5e 
+Oct 24, 2020 11:46:08 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][englis2]
+Oct 24, 2020 11:46:08 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 1
+Oct 24, 2020 11:46:08 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: englis2 
+Oct 24, 2020 11:46:14 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][japa]
+Oct 24, 2020 11:46:14 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 1
+Oct 24, 2020 11:46:14 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: japa 
+Oct 24, 2020 11:46:17 AM seedu.address.logic.LogicManager execute
+INFO: ----------------[USER COMMAND][germann]
+Oct 24, 2020 11:46:17 AM seedu.address.model.ModelManager playGame
+INFO: within edit distance of 1
+Oct 24, 2020 11:46:17 AM seedu.address.ui.MainWindow executeCommand
+INFO: Result: Your Answer was: Your score is 4/4

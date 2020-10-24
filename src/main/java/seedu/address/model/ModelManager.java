@@ -293,6 +293,9 @@ public class ModelManager implements Model {
         String correctAnswer = leitner.getAnswers().get(currentIndex).toString();
         Entry entryToAdd = leitner.getEntries().get(currentIndex);
         Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
+        int numEditDistance = withinEditDistance(answer, correctAnswer,
+                answer.length(), correctAnswer.length());
+        boolean isWithinEditDistance = numEditDistance == 1;
 
         if (currentIndex == quizLength) {
             replaceEntryList();
@@ -300,12 +303,10 @@ public class ModelManager implements Model {
             leitner.incrementScore();
             logger.info(String.format("Answer given was %s, the correct answer was %s, Correct answer given",
                     answer, correctAnswer));
-        } else if (withinEditDistance(answer, correctAnswer, answer.length(), correctAnswer.length()) <= 2) {
-
+        } else if (isWithinEditDistance) {
             leitner.incrementScore();
-            logger.info("within edit distance of 2");
+            logger.info(String.format("within edit distance of %s, Correct answer given", numEditDistance));
         } else {
-            System.out.println(withinEditDistance(answer, correctAnswer, answer.length(), correctAnswer.length()));
             logger.info(String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
                     answer, correctAnswer));
         }
@@ -342,9 +343,9 @@ public class ModelManager implements Model {
     @Override
     public int withinEditDistance(String answer, String correctAnswer, int m, int n) {
         assert (m < Integer.MAX_VALUE && n < Integer.MAX_VALUE);
-        int dp[][] = new int[m + 1][n + 1];
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        int[][] dp = new int[m + 1][n + 1];
+        for (int i = 0; i <= m; i++) {
+            for (int j = 0; j <= n; j++) {
                 if (i == 0) {
                     dp[i][j] = j;
                 } else if (j == 0) {
