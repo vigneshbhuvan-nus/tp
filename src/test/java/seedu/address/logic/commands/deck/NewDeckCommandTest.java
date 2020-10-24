@@ -226,6 +226,11 @@ public class NewDeckCommandTest {
         }
 
         @Override
+        public int editDistance(String answer, String correctAnswer, int answerLength, int correctAnswerLength) {
+            return 10;
+        }
+
+        @Override
         public void setCurrentView(View view) {
             throw new AssertionError("This method should not be called.");
         }
