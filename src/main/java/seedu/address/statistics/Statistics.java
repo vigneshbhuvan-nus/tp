@@ -23,7 +23,12 @@ public class Statistics {
         eventLog = new ArrayList<>();
     }
 
-    public void incrementTimesOpened() {
+    public void registerAppLogin() {
+        eventLog.add(new Event(EventType.LOGIN));
         timesOpened++;
+    }
+
+    public void registerAppLogout() {
+        eventLog.add(new Event(EventType.LOGOUT));
     }
 }

@@ -14,8 +14,7 @@ public class Leitner {
     private ArrayList<Entry> entries = new ArrayList<>();
     private ArrayList<Translation> questions = new ArrayList<>();
     private ArrayList<Word> answers = new ArrayList<>();
-    private int max;
-    private int score = 0;
+    private Score score;
 
     /**
      * Returns a Leitner object that is essentially a flashcard memory object.
@@ -30,7 +29,7 @@ public class Leitner {
             questions.add(entry.getTranslation());
             answers.add(entry.getWord());
         }
-        this.max = questions.size();
+        score = new Score(questions.size() + 1, 0);
     }
 
     public ArrayList<Translation> getQuestions() {
@@ -45,8 +44,8 @@ public class Leitner {
         return this.entries;
     }
 
-    public String getScore() {
-        return "Your score is " + score + "/" + max;
+    public Score getScore() {
+        return score;
     }
 
     public UniqueEntryList getUniqueEntryList() {
@@ -55,7 +54,7 @@ public class Leitner {
             Entry quiz = new Entry(new Word("???"), entry.getTranslation());
             list.add(quiz);
         }
-        assert (list.isEmpty() == false);
+        assert (!list.isEmpty());
         return list;
     }
 
@@ -64,6 +63,6 @@ public class Leitner {
     }
 
     public void incrementScore() {
-        this.score++;
+        score.incrementYourScore();
     }
 }

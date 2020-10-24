@@ -20,6 +20,7 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
 import seedu.address.model.view.View;
+import seedu.address.statistics.StatisticsManager;
 import seedu.address.storage.Storage;
 
 /**
@@ -29,6 +30,7 @@ public class LogicManager implements Logic {
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
+    private final StatisticsManager statisticsManager;
     private final Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
@@ -39,6 +41,7 @@ public class LogicManager implements Logic {
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
     public LogicManager(Model model, Storage storage) {
+        this.statisticsManager= new StatisticsManager(); // TODO: load data from disk
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
@@ -128,5 +131,16 @@ public class LogicManager implements Logic {
     @Override
     public int getCurrentIndex() {
         return model.getCurrentIndex();
+    }
+
+    @Override
+    public StatisticsManager getStatisticsManager() {
+        return statisticsManager;
+    }
+
+    @Override
+    public void doCleanup() {
+        statisticsManager.doCleanup();
+        // TODO: save stats to json file on disk
     }
 }

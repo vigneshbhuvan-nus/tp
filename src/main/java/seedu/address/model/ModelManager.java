@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
+import jdk.dynalink.beans.StaticClass;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
@@ -19,6 +20,7 @@ import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.play.Leitner;
 import seedu.address.model.view.CurrentView;
 import seedu.address.model.view.View;
+import seedu.address.statistics.StatisticsManager;
 
 
 /**

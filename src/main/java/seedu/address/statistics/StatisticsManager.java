@@ -4,15 +4,19 @@ public class StatisticsManager {
 
     Statistics statistics;
 
+    //  if statistics file exists
     public StatisticsManager(Statistics statistics) {
         this.statistics = statistics;
-        statistics.incrementTimesOpened();
+        statistics.registerAppLogin();
     }
 
+    //  if first time opening the app
     public StatisticsManager() {
         Statistics statistics = new Statistics();
-        statistics.incrementTimesOpened();
+        statistics.registerAppLogin();
     }
 
-    public void
+    public void doCleanup() {
+        statistics.registerAppLogout();
+    }
 }
