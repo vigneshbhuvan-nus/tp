@@ -85,6 +85,10 @@ Format: `new <NAME OF NEW DECK>`
 Examples: `new Japanese-Animals`,
 `new Korean Dramas`
 
+Result: 
+
+![GreenTea](images/Placeholder.png)
+
 ### 4.1.2 Removing a deck: `remove`
 
 Removes a particular deck from GreenTea
@@ -94,6 +98,10 @@ Format: `remove <INDEX OF DECK>`
 **Note:** to get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck
 
 Example: `remove 1`
+
+Result: 
+
+![GreenTea](images/Placeholder.png)
 
 ### 4.1.3 Selecting a deck: `select`
 
@@ -105,6 +113,9 @@ Format: `select <INDEX OF DECK>`
 
 Examples: `select 1`
 
+Result: 
+
+![GreenTea](images/Placeholder.png)
 ## 4.2 Entry Commands (Gabriel)
 
 Entries are what make up a deck. They are the words or phrases that you wish to memorise in GreenTea.
@@ -128,6 +139,10 @@ Examples:
 - `add w/Fruits t/果物`
 - `add w/Why aren’t they here yet? t/どうして彼らはまだここにいないの`
 
+Result: 
+
+![GreenTea](images/Placeholder.png)
+
 ### 4.2.2 Editing an entry: `edit` (Vignesh)
 
 Edits an entry whose index is `<INDEX>`, replacing the original word with `<WORD>` and its translation with `<TRANSLATION>`.
@@ -143,6 +158,10 @@ Examples:
 - `edit 1 t/こんにちは` edits the translation in `entry#1` to `こんにちは`
 - `edit 1 w/hello t/こんにちは` edits the word and translation in `entry#1` to `hello` and `こんにちは` respectively.
 
+Result: 
+
+![GreenTea](images/Placeholder.png)
+
 ### 4.2.3 Deleting an entry: `delete` (Vignesh)
 
 Delete the entry whose index is `INDEX`.
@@ -155,7 +174,11 @@ Format: `delete <INDEX>`
 
 ## 4.3.1 Play Commands (Georgie)
 
-## 4.3.2 Play Commands (Georgie)
+Result: 
+
+![GreenTea](images/Placeholder.png)
+
+## 4.3.2 Stop Commands (Georgie)
 Starts a quiz with questions from the selected deck. This also causes a transition from the `LOBBY` to `QUIZ` phase and the command is only allowed to be executed while in the `LOBBY` phase.
 
 Format: `play d/<DECK_ID>`
@@ -163,6 +186,10 @@ Format: `play d/<DECK_ID>`
 Examples:
 
 - `play d/1`
+
+Result: 
+
+![GreenTea](images/Placeholder.png)
 
 ## 4.4 Extra Commands (Georgie)
 
@@ -174,13 +201,25 @@ Shows a cheat-sheet of commands in addition to a link to this User Guide.
 
 Format: `help`
 
+Result: 
+
+![GreenTea](images/Placeholder.png)
+
 ### 4.4.2 Exiting the program: `exit`
 
 Exits the program.
 
 Format: `exit`
 
+Result: 
+
+![GreenTea](images/Placeholder.png)
+
 ## 5. Data Analytics (Melanie)
+
+Result: 
+
+![GreenTea](images/Placeholder.png)
 
 ## 6. FAQ (Gabriel)
 
