@@ -7,7 +7,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
 - [3. Let's Get Started (Gabriel)](#3-lets-get-started-gabriel)
-- [4. Features(Melanie)]()
+- [4. Features (Melanie)]()
     - [4.1 Deck Commands (Melanie)](#4-deck-commands-melanie)
       - [4.1.1 Creating a deck: new](#creating-a-deck-new)
       - [4.1.2 Removing a deck: remove](#removing-a-deck-remove)
@@ -22,7 +22,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [4.4. Extra Commands (Georgie)](#8-extra-commands-georgie)
       - [4.4.1 Viewing help: help](#viewing-help-help)
       - [4.4.2 Exiting the program: exit](#exiting-the-program-exit)
-- [5. Features(Melanie)]()
+- [5. Data Analytics (Melanie)]()
 - [6. FAQ (Gabriel)](#10-faq-gabriel)
 - [7. Command Summary (Melanie)](#11-command-summary-gabriel)
 
@@ -70,13 +70,13 @@ e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animal
 
 # 4. Features
 
-## 4. Deck Commands (Melanie)
+## 4.1 Deck Commands (Melanie)
 
 Decks are the foundation to GreenTea. A deck is simply a list of words and translation
 you write into GreenTea. A deck can be your favourite Chinese idioms, a list of beverages in Japanese,
 or even some romantic phrases in French!
 
-### Creating a deck: `new`
+### 4.1.1 Creating a deck: `new`
 
 Creates a new empty deck of entries
 
@@ -85,7 +85,7 @@ Format: `new <NAME OF NEW DECK>`
 Examples: `new Japanese-Animals`,
 `new Korean Dramas`
 
-### Removing a deck: `remove`
+### 4.1.2 Removing a deck: `remove`
 
 Removes a particular deck from GreenTea
 
@@ -95,7 +95,7 @@ Format: `remove <INDEX OF DECK>`
 
 Example: `remove 1`
 
-### Selecting a deck: `select`
+### 4.1.3 Selecting a deck: `select`
 
 Selects a deck to perform entry-level operations on
 
@@ -105,7 +105,7 @@ Format: `select <INDEX OF DECK>`
 
 Examples: `select 1`
 
-## 5. Entry Commands (Gabriel)
+## 4.2 Entry Commands (Gabriel)
 
 Entries are what make up a deck. They are the words or phrases that you wish to memorise in GreenTea.
 An entry is made up of two parts; the `word` and the `translation`. The `word` is written in the
@@ -117,7 +117,7 @@ Before you start adding a new entry, remember to [select a deck first!](#selecti
 Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
 
-### Adding a new entry: `add` (Vignesh)
+### 4.2.1 Adding a new entry: `add` (Vignesh)
 
 Adds a new entry to the word bank.
 
@@ -128,13 +128,7 @@ Examples:
 - `add w/Fruits t/果物`
 - `add w/Why aren’t they here yet? t/どうして彼らはまだここにいないの`
 
-### Listing all entries: `list` (Vignesh)
-
-Lists all entries in the word bank with their respective index.
-
-Format: `list`
-
-### Editing an entry: `edit` (Vignesh)
+### 4.2.2 Editing an entry: `edit` (Vignesh)
 
 Edits an entry whose index is `<INDEX>`, replacing the original word with `<WORD>` and its translation with `<TRANSLATION>`.
 You may provide either `<WORD>` or `<TRANSLATION>`, or both and only the one(s) provided will replace the original(s).
@@ -149,7 +143,7 @@ Examples:
 - `edit 1 t/こんにちは` edits the translation in `entry#1` to `こんにちは`
 - `edit 1 w/hello t/こんにちは` edits the word and translation in `entry#1` to `hello` and `こんにちは` respectively.
 
-### Deleting an entry: `delete` (Vignesh)
+### 4.2.3 Deleting an entry: `delete` (Vignesh)
 
 Delete the entry whose index is `INDEX`.
 
@@ -157,8 +151,11 @@ Format: `delete <INDEX>`
 
 **Note:** to get the index of an entry, you may run `list` - the index would be shown beside its respective entry
 
-## 6. Play Commands (Georgie)
+## 4.3 Play Commands (Georgie)
 
+## 4.3.1 Play Commands (Georgie)
+
+## 4.3.2 Play Commands (Georgie)
 Starts a quiz with questions from the selected deck. This also causes a transition from the `LOBBY` to `QUIZ` phase and the command is only allowed to be executed while in the `LOBBY` phase.
 
 Format: `play d/<DECK_ID>`
@@ -167,60 +164,33 @@ Examples:
 
 - `play d/1`
 
-## 7. Statistics Commands (Georgie)
-
-Show the user their current app usage statistics in a modal/pop-up window.
-
-Format: `statistics`
-
-## 8. Extra Commands (Georgie)
+## 4.4 Extra Commands (Georgie)
 
 These are some commands in the pipeline to be implemented:
 
-### Play with timer
-
-Starts a quiz like in [Play Commands](#6-play-commands-georgie) but with a countdown timer that terminates the quiz once it hits 0.
-
-Format: `play d/<DECK_ID> t/<TIME_IN_MINUTES>`
-
-Examples:
-
-- `play d/1 t/10`
-
-### Reset statistics
-
-Resets the app statistics.
-
-Format: `statistics reset`
-
-### Viewing help: `help`
+### 4.4.1 Viewing help: `help`
 
 Shows a cheat-sheet of commands in addition to a link to this User Guide.
 
 Format: `help`
 
-### Exiting the program: `exit`
+### 4.4.2 Exiting the program: `exit`
 
 Exits the program.
 
 Format: `exit`
 
-## 9. Data Sharing (Gabriel)
+## 5. Data Analytics (Melanie)
 
-### Saving the data
-
-Entries ares saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-## 10. FAQ (Gabriel)
+## 6. FAQ (Gabriel)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GreenTea home folder.
 
 ---
 
-## 11. Command Summary (Gabriel)
+## 7. Command Summary (Gabriel)
 
-### 11.1 Deck Commands
 | Action                                                                                             | Format  <img width=00/>                                                                           |Examples <img width=400/>|Remarks|
 | -------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------------------------|--------|--------|
 | **New**                                                                                            | `new <NAME OF NEW DECK>` | `new Japanese-Animals`   |Creates a New Deck With the Given Name          |
