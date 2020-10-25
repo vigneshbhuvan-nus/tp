@@ -30,7 +30,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
 still having the benefits of a Graphical User Interface (GUI). GreenTea uses a proven memory rentention 
-system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d5edafae7f0)  and implements it in the context of a Flashcard game. This app is great for users who wish to
+system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d5edafae7f0)  and implements it in the context of a FlashCard game. This app is great for users who wish to
 optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly.
 
@@ -70,9 +70,12 @@ e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animal
 
 # 4. Features
 
+Every feature can be accessed with a command and every command has a certain format that 
+has to be followed. The following is an explanation of how commands are described in this document.
+
 __Command Format__
 
-- Words in `<Arrowed Brackets>` are parameters supplied by you. They are generally names or translations that
+- Words in `<Arrowed Brackets>` are compulsory parameters supplied by you. They are generally names or translations that
 are unique to each input. \
 e.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the supplied parameter, `NAME OF NEW DECK`  
 - Words in `[Square Brackets]` are optional parameters. They may or may not be added by __at least one__ is required \
@@ -87,12 +90,13 @@ or even some romantic phrases in French!
 
 ### 4.1.1 Creating a deck: `new`
 
-Creates a new empty deck with the name provided.
+Creates a new empty deck with given name.
 
 Format: `new <NAME OF NEW DECK>`
 
-Examples: `new Japanese-Animals`,
-`new Korean Dramas`
+Examples: 
+- `new Japanese-Animals`
+- `new Korean Dramas`
 
 Result: 
 
@@ -100,7 +104,7 @@ Result:
 
 ### 4.1.2 Removing a deck: `remove`
 
-Removes a particular deck from GreenTea
+Removes a deck with the given index.
 
 Format: `remove <INDEX OF DECK>`
 
@@ -114,11 +118,11 @@ Result:
 
 ### 4.1.3 Selecting a deck: `select`
 
-Selects a deck to perform entry-level operations on
+Selects a deck with the given index and lists all of it's entries.
 
 Format: `select <INDEX OF DECK>`
 
-**Note:** to get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck
+**Note:** The index of the deck is the number displayed it on the user interface.
 
 Examples: `select 1`
 
@@ -132,14 +136,14 @@ An entry is made up of two parts; the `word` and the `translation`. The `word` i
 language you are most familiar and the `translation` is written in the language you wish to learn. In
 this User Guide, we will be assuming the language for `word` will be in English.
 
-Before you start adding a new entry, remember to [select a deck first!](#selecting-a-deck-select)
+**Note:** Before you start adding a new entry, remember to [select a deck first!](#selecting-a-deck-select)
 
 Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
 
 ### 4.2.1 Adding a new entry: `add` (Vignesh)
 
-Adds a new entry to the word bank.
+Adds a new entry with the given word and translation.
 
 Format: `add w/<WORD> t/<TRANSLATION>`
 
@@ -154,18 +158,17 @@ Result:
 
 ### 4.2.2 Editing an entry: `edit` (Vignesh)
 
-Edits an entry whose index is `<INDEX>`, replacing the original word with `<WORD>` and its translation with `<TRANSLATION>`.
-You may provide either `<WORD>` or `<TRANSLATION>`, or both and only the one(s) provided will replace the original(s).
+Edits an entry with the given index using the given word or translation or both.
 
 Format: `edit 1 [w/word] [t/translation]` 
 
-**Note:** to get the index of an entry, you may run `list` - the index would be shown beside its respective entry
+**Note:** The word and translation are both optional parameters. You can supply one parameter or both parameters but 
+you must supply at least one.
 
 Examples:
-
-- `edit 1 w/hello` edits the word in `entry#1` to `hello`.
-- `edit 1 t/こんにちは` edits the translation in `entry#1` to `こんにちは`
-- `edit 1 w/hello t/こんにちは` edits the word and translation in `entry#1` to `hello` and `こんにちは` respectively.
+- `edit 1 w/hello` 
+- `edit 1 t/こんにちは` 
+- `edit 1 w/hello t/こんにちは` 
 
 Result: 
 
@@ -173,13 +176,17 @@ Result:
 
 ### 4.2.3 Deleting an entry: `delete` (Vignesh)
 
-Deletes the entry whose index is `INDEX`.
+Deletes the entry with the given index.
 
 Format: `delete <INDEX>`
 
-**Note:** to get the index of an entry, you may run `list` - the index would be shown beside its respective entry
+Result: 
+
+![GreenTea](images/Placeholder.png)
 
 ## 4.3 Play Commands (Georgie)
+
+
 
 ## 4.3.1 Play Commands (Georgie)
 
