@@ -22,7 +22,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [4.4. Extra Commands (Georgie)](#8-extra-commands-georgie)
       - [4.4.1 Viewing help: help](#viewing-help-help)
       - [4.4.2 Exiting the program: exit](#exiting-the-program-exit)
-- [5. Data Analytics (Melanie)]()
+- [5. Statistics (Melanie)]()
 - [6. FAQ (Gabriel)](#10-faq-gabriel)
 - [7. Command Summary (Melanie)](#11-command-summary-gabriel)
 
@@ -186,30 +186,39 @@ Result:
 
 ## 4.3 Play Commands (Georgie)
 
+Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of all
+the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `play` and
+`stop`.
 
 
-## 4.3.1 Play Commands (Georgie)
+## 4.3.1 Play a Game (Georgie)
+
+Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the 
+the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
+to you at the end of the game.
+
+Format: `play`
+
+**Note:** Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
 
 Result: 
-
 ![GreenTea](images/Placeholder.png)
 
-## 4.3.2 Stop Commands (Georgie)
-Starts a quiz with questions from the selected deck. This also causes a transition from the `LOBBY` to `QUIZ` phase and the command is only allowed to be executed while in the `LOBBY` phase.
+## 4.3.2 Stopping a Game  (Georgie)
 
-Format: `play d/<DECK_ID>`
+Stop the current game prematurely.
 
-Examples:
+Format: `stop`
 
-- `play d/1`
+**Note:** Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
 
 Result: 
-
 ![GreenTea](images/Placeholder.png)
 
 ## 4.4 Extra Commands (Georgie)
 
-These are some commands in the pipeline to be implemented:
+These are some extra commands that you can access at any point in the application except when
+you are currently playing a game.
 
 ### 4.4.1 Viewing help: `help`
 
@@ -231,7 +240,16 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-## 5. Data Analytics (Melanie)
+## 5. Statistics (Melanie)
+
+Statistics are how you get to see your own progression as you continuously build and play GreenTea.
+The statistics tab displays the scores of up to your last 10 attempts in the form of 
+a bar chart. 
+
+You can access the statistics tab by first `select`ing a deck before clicking the statistics tab at the top 
+of the application.
+
+**Note:** Before you can view the statistics, remember to [select a deck first!](#selecting-a-deck-select)
 
 Result: 
 
@@ -242,6 +260,8 @@ Result:
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GreenTea home folder.
 
+**Q**: Will my score be recorded if I stop a game before I finish it?<br>
+**A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
 ---
 
 ## 7. Command Summary (Gabriel)
