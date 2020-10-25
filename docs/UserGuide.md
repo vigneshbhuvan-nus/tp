@@ -6,7 +6,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
-- [3. Let's Get Started (Gabriel)](#3-lets-get-started-gabriel)
+- [3. Getting Started (Gabriel)](#3-lets-get-started-gabriel)
 - [4. Features (Melanie)]()
     - [4.1 Deck Commands (Melanie)](#4-deck-commands-melanie)
       - [4.1.1 Creating a deck: new](#creating-a-deck-new)
@@ -29,8 +29,8 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 # 1. What is GreenTea? (Gabriel)
 
 GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
-still having the benefits of a Graphical User Interface (GUI). It adopts the Leitner flashcard system, a proven method
-to helps users retain memory in the context of learning a new language. This app is perfect for users who wish to
+still having the benefits of a Graphical User Interface (GUI). GreenTea uses a proven memory rentention 
+system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d5edafae7f0)  and implements it in the context of a Flashcard game. This app is great for users who wish to
 optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly.
 
@@ -40,15 +40,15 @@ actions that would allow you to use GreenTea seamlessly.
 
 Welcome to the GreenTea User Guide!
 
-I am proud that you have taken your first few steps towards optimising your learning. We at GreenTea know that
+We at GreenTea are happy that you have taken your first few steps towards optimising your learning. We at GreenTea know that
 learning a new language can be **hard** and **intimidating**. Trust us when we say we know **exactly** what you're
 going through and we feel **frustrated** just as much you do.
 
-That's why here at GreenTea, we have come up with this neat little
+That's why here at GreenTea, we have come up with this neat
 user guide to help **you** hit the ground running. With this foolproof User Guide, learning a new
-language will be as relaxing as drinking a hot cup of Green Tea.
+language will be as relaxing as drinking a hot cup of GreenTea.
 
-# 3. Let's Get Started (Gabriel)
+# 3. Getting Started (Gabriel)
 
 Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.java.com/en/)
 is installed on your computer.
@@ -164,7 +164,7 @@ Result:
 
 ### 4.2.3 Deleting an entry: `delete` (Vignesh)
 
-Delete the entry whose index is `INDEX`.
+Deletes the entry whose index is `INDEX`.
 
 Format: `delete <INDEX>`
 
@@ -236,7 +236,7 @@ Result:
 | **Remove**                                                                                         | `remove <INDEXOF DECK>`  |`remove 1`    |Removes the Deck with the Given Index          |
 | **Select**                                                                                         | `select <INDEXOF DECK>`  |`select 1`    |Selects the Deck with the Given Index and Lists All It's Entries         |
 | **Add**                                                                                            | `add w/<WORD> t/<TRANSLATION>` | `add w/Hello t/hola`       |Adds an Entry with the Given Word and Translation to the Selected Deck|
-| **Edit**                                                                                           | `edit <INDEX> w/<WORD> t/<TRANSLATION>` <br/> OR `edit <INDEX> w/<WORD>` <br/> OR `edit <INDEX> t/<TRANSLATION>` | `edit 1 w/hello t/こんにちは` <br/> OR `edit 1 w/hello` <br/> OR `edit 1 t/こんにちは` | Edits the Entry with the Given Index Using the Given Values|
+| **Edit**                                                                                           | `edit <INDEX> w/<WORD> t/<TRANSLATION>`  OR <br/> `edit <INDEX> w/<WORD>`  OR <br/> `edit <INDEX> t/<TRANSLATION>` | `edit 1 w/hello t/こんにちは`  OR <br/> `edit 1 w/hello`  OR <br/> `edit 1 t/こんにちは` | Edits the Entry with the Given Index Using the Given Values|
 | **Delete**                                                                                         | `delete <INDEX>` | `delete 3`                                                                     | Deletes the Entry with the Given Index|
 | **Play**                                                                                          | `play`                                                                                              |  | Starts a New FlashCard Game with the Selected Deck
 | **Stop**                                                                                           | `stop`       | | Stops an Existing Game
