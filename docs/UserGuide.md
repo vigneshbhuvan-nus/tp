@@ -61,7 +61,7 @@ To start using GreenTea:
 ![GreenTea](images/Placeholder.png)
 4. Typing the commands into the command box and pressing enter will execute the commands \
 e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animals 
-5. Try typing these commands to start playing with GreenTea \
+5. Try typing these commands to start playing with GreenTea 
     - `new Japanese Animals`: Creates a new Deck called `Japanese Animals`
     - `select 1` selects the first Deck `Japanese Animals`
     - `add w/Dolphin t/Iruka`: Adds a new Entry into the selected deck with the word `Dolphin` and the translation `Iruka`
@@ -70,15 +70,24 @@ e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animal
 
 # 4. Features
 
+__Command Format__
+
+- Words in `<Arrowed Brackets>` are parameters supplied by you. They are generally names or translations that
+are unique to each input. \
+e.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the supplied parameter, `NAME OF NEW DECK`  
+- Words in `[Square Brackets]` are optional parameters. They may or may not be added by __at least one__ is required \
+e.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1 [w/word]` or `edit 1 [t/translation]`
+or `edit 1 [w/word] [t/translation]` __but cannot be written as__ `edit 1`
+
 ## 4.1 Deck Commands (Melanie)
 
-Decks are the foundation to GreenTea. A deck is simply a list of words and translation
+Decks are the foundation to GreenTea. A deck is simply a list of entries
 you write into GreenTea. A deck can be your favourite Chinese idioms, a list of beverages in Japanese,
 or even some romantic phrases in French!
 
 ### 4.1.1 Creating a deck: `new`
 
-Creates a new empty deck of entries
+Creates a new empty deck with the name provided.
 
 Format: `new <NAME OF NEW DECK>`
 
@@ -148,7 +157,7 @@ Result:
 Edits an entry whose index is `<INDEX>`, replacing the original word with `<WORD>` and its translation with `<TRANSLATION>`.
 You may provide either `<WORD>` or `<TRANSLATION>`, or both and only the one(s) provided will replace the original(s).
 
-Format: `edit <INDEX> w/<WORD> t/<TRANSLATION>` OR `edit <INDEX> w/<WORD>` OR `edit <INDEX> t/<TRANSLATION>`
+Format: `edit 1 [w/word] [t/translation]` 
 
 **Note:** to get the index of an entry, you may run `list` - the index would be shown beside its respective entry
 
@@ -236,7 +245,7 @@ Result:
 | **Remove**                                                                                         | `remove <INDEXOF DECK>`  |`remove 1`    |Removes the Deck with the Given Index          |
 | **Select**                                                                                         | `select <INDEXOF DECK>`  |`select 1`    |Selects the Deck with the Given Index and Lists All It's Entries         |
 | **Add**                                                                                            | `add w/<WORD> t/<TRANSLATION>` | `add w/Hello t/hola`       |Adds an Entry with the Given Word and Translation to the Selected Deck|
-| **Edit**                                                                                           | `edit <INDEX> w/<WORD> t/<TRANSLATION>`  OR <br/> `edit <INDEX> w/<WORD>`  OR <br/> `edit <INDEX> t/<TRANSLATION>` | `edit 1 w/hello t/こんにちは`  OR <br/> `edit 1 w/hello`  OR <br/> `edit 1 t/こんにちは` | Edits the Entry with the Given Index Using the Given Values|
+| **Edit**                                                                                           | `edit 1 [w/word] [t/translation]` | `edit 1 w/hello t/こんにちは`   | Edits the Entry with the Given Index Using the Given Values|
 | **Delete**                                                                                         | `delete <INDEX>` | `delete 3`                                                                     | Deletes the Entry with the Given Index|
 | **Play**                                                                                          | `play`                                                                                              |  | Starts a New FlashCard Game with the Selected Deck
 | **Stop**                                                                                           | `stop`       | | Stops an Existing Game
