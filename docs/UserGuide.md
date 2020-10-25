@@ -266,7 +266,7 @@ Result:
 
 ## 7. Command Summary (Gabriel)
 
-| Action                       |Examples                                                                       | Format  <img width=00/>                                       
+| Action                                                                                             | Format  <img width=00/>                                                                           |Examples |Remarks|
 | -------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------------------------|--------|--------|
 | **New**                                                                                            | `new <NAME OF NEW DECK>` | `new Japanese-Animals`   |Creates a New Deck With the Given Name          |
 | **Remove**                                                                                         | `remove <INDEXOF DECK>`  |`remove 1`    |Removes the Deck with the Given Index          |
