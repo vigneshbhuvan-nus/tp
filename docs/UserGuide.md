@@ -7,28 +7,26 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
 - [3. Let's Get Started (Gabriel)](#3-lets-get-started-gabriel)
-- [4. Deck Commands (Melanie)](#4-deck-commands-melanie)
-  - [Creating a deck: new](#creating-a-deck-new)
-  - [Removing a deck: remove](#removing-a-deck-remove)
-  - [Selecting a deck: select](#selecting-a-deck-select)
-- [5. Entry Commands (Gabriel)](#5-entry-commands-gabriel)
-  - [Adding a new entry: add (Vignesh)](#adding-a-new-entry-add-vignesh)
-  - [Listing all entries: list (Vignesh)](#listing-all-entries-list-vignesh)
-  - [Editing an entry: edit (Vignesh)](#editing-an-entry-edit-vignesh)
-  - [Deleting an entry: delete (Vignesh)](#deleting-an-entry-delete-vignesh)
-- [6. Play Commands (Georgie)](#6-play-commands-georgie)
-- [7. Statistics Commands (Georgie)](#7-statistics-commands-georgie)
-- [8. Extra Commands (Georgie)](#8-extra-commands-georgie)
-  - [Play with timer](#play-with-timer)
-  - [Reset statistics](#reset-statistics)
-  - [Viewing help: help](#viewing-help-help)
-  - [Exiting the program: exit](#exiting-the-program-exit)
-- [9. Data Sharing (Gabriel)](#9-data-sharing-gabriel)
-  - [Saving the data](#saving-the-data)
-- [10. FAQ (Gabriel)](#10-faq-gabriel)
-- [11. Command Summary (Gabriel)](#11-command-summary-gabriel)
+- [4. Features]()
+    - [4.1 Deck Commands (Melanie)](#4-deck-commands-melanie)
+      - [Creating a deck: new](#creating-a-deck-new)
+      - [Removing a deck: remove](#removing-a-deck-remove)
+      - [Selecting a deck: select](#selecting-a-deck-select)
+    - [4.2. Entry Commands (Gabriel)](#5-entry-commands-gabriel)
+      - [Adding a new entry: add (Vignesh)](#adding-a-new-entry-add-vignesh)
+      - [Listing all entries: list (Vignesh)](#listing-all-entries-list-vignesh)
+      - [Editing an entry: edit (Vignesh)](#editing-an-entry-edit-vignesh)
+      - [Deleting an entry: delete (Vignesh)](#deleting-an-entry-delete-vignesh)
+    - [4.3. FlashCard Commands (Georgie)](#6-play-commands-georgie)
+      - [Editing an entry: edit (Vignesh)](#editing-an-entry-edit-vignesh)
+      - [Deleting an entry: delete (Vignesh)](#deleting-an-entry-delete-vignesh)
+    - [4.4. Extra Commands (Georgie)](#8-extra-commands-georgie)
+      - [Viewing help: help](#viewing-help-help)
+      - [Exiting the program: exit](#exiting-the-program-exit)\
+- [5. FAQ (Gabriel)](#10-faq-gabriel)
+- [6. Command Summary (Gabriel)](#11-command-summary-gabriel)
 
-## 1. What is GreenTea? (Gabriel)
+# 1. What is GreenTea? (Gabriel)
 
 GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
 still having the benefits of a Graphical User Interface (GUI). It adopts the Leitner flashcard system, a proven method
@@ -36,7 +34,9 @@ to helps users retain memory in the context of learning a new language. This app
 optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly.
 
-## 2. About This Document (Gabriel)
+![GreenTea](images/Placeholder.png)
+
+# 2. About This Document (Gabriel)
 
 Welcome to the GreenTea User Guide!
 
@@ -48,7 +48,7 @@ That's why here at GreenTea, we have come up with this neat little
 user guide to help **you** hit the ground running. With this foolproof User Guide, learning a new
 language will be as relaxing as drinking a hot cup of Green Tea.
 
-## 3. Let's Get Started (Gabriel)
+# 3. Let's Get Started (Gabriel)
 
 Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.java.com/en/)
 is installed on your computer.
@@ -57,7 +57,18 @@ To start using GreenTea:
 
 1. Download the latest jar file [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases/new)
 2. Copy the jar file to your folder of choice (we recommend on your desktop!)
-3. Double-Click the file to start the application!
+3. Double-Click the file to start the application. The GUI should appear in a few seconds
+![GreenTea](images/Placeholder.png)
+4. Typing the commands into the command box and pressing enter will execute the commands \
+e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animals 
+5. Try typing these commands to start playing with GreenTea \
+    - `new Japanese Animals`: Creates a new Deck called `Japanese Animals`
+    - `select 1` selects the first Deck `Japanese Animals`
+    - `add w/Dolphin t/Iruka`: Adds a new Entry into the selected deck with the word `Dolphin` and the translation `Iruka`
+    - `edit 1 t/イルカ`: Edits first Entry and change the existing translation `Iruka` into `イルカ`
+6. Refer to [Chapter 4 Features](#features) for a detailed explanation for each command.
+
+# 4. Features
 
 ## 4. Deck Commands (Melanie)
 
@@ -209,19 +220,17 @@ Entries ares saved in the hard disk automatically after any command that changes
 
 ## 11. Command Summary (Gabriel)
 
-| Action                                                                                             | Format, Examples                                                                                     |
-| -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **Help**                                                                                           | `help`                                                                                               |
-| **New**                                                                                            | `new <NAME OF NEW DECK>` e.g. `new Japanese-Animals`                                                 |
-| **Remove**                                                                                         | `remove <INDEXOF DECK>` e.g. `remove 1`                                                              |
-| **Select**                                                                                         | `select <INDEXOF DECK>` e.g. `select 1`                                                              |
-| **\*\***\*\***\*\***\*\*\*\***\*\***\*\***\*\***\***\*\***\*\***\*\***\*\*\*\***\*\***\*\***\*\*** |
-| **Select a Deck before Using the following Commands**                                              |
-| **\*\***\*\***\*\***\*\*\*\***\*\***\*\***\*\***\***\*\***\*\***\*\***\*\*\*\***\*\***\*\***\*\*** |
-| **Add**                                                                                            | `add w/<WORD> t/<TRANSLATION>` e.g. `add w/Hello t/hola`                                             |
-| **List**                                                                                           | `list`                                                                                               |
-| **Edit**                                                                                           | `edit <INDEX> w/<WORD> t/<TRANSLATION>` OR `edit <INDEX> w/<WORD>` OR `edit <INDEX> t/<TRANSLATION>` |
-|                                                                                                    | e.g. `edit 1 w/hello t/こんにちは` OR `edit 1 w/hello` OR `edit 1 t/こんにちは`                      |
-| **Delete**                                                                                         | `delete <INDEX>` e.g. `delete 3`                                                                     |
-| **Clear**                                                                                          | `clear`                                                                                              |
-| **Exit**                                                                                           | `exit`                                                                                               |
+### 11.1 Deck Commands
+| Action                                                                                             | Format  <img width=00/>                                                                           |Examples <img width=400/>|Remarks|
+| -------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------------------------|--------|--------|
+| **New**                                                                                            | `new <NAME OF NEW DECK>` | `new Japanese-Animals`   |Creates a New Deck With the Given Name          |
+| **Remove**                                                                                         | `remove <INDEXOF DECK>`  |`remove 1`    |Removes the Deck with the Given Index          |
+| **Select**                                                                                         | `select <INDEXOF DECK>`  |`select 1`    |Selects the Deck with the Given Index and Lists All It's Entries         |
+| **Add**                                                                                            | `add w/<WORD> t/<TRANSLATION>` | `add w/Hello t/hola`       |Adds an Entry with the Given Word and Translation to the Selected Deck|
+| **Edit**                                                                                           | `edit <INDEX> w/<WORD> t/<TRANSLATION>` <br/> OR `edit <INDEX> w/<WORD>` <br/> OR `edit <INDEX> t/<TRANSLATION>` | `edit 1 w/hello t/こんにちは` <br/> OR `edit 1 w/hello` <br/> OR `edit 1 t/こんにちは` | Edits the Entry with the Given Index Using the Given Values|
+| **Delete**                                                                                         | `delete <INDEX>` | `delete 3`                                                                     | Deletes the Entry with the Given Index|
+| **Play**                                                                                          | `play`                                                                                              |  | Starts a New FlashCard Game with the Selected Deck
+| **Stop**                                                                                           | `stop`       | | Stops an Existing Game
+| **Clear**                                                                                          | `clear`                                                                                              |  | Deletes All Decks and Entries
+| **Help**                                                                                           | `help`       | | Opens Our User Guide in the Application|
+| **Exit**                                                                                           | `exit`                                                                                               |  | Saves and Exits the Program
