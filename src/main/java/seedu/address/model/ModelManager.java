@@ -294,7 +294,7 @@ public class ModelManager implements Model {
     @Override
     public Score endGame() {
         replaceEntryList();
-        this.currentView.setView(View.ENTRY_VIEW);
+        this.currentView.setView(View.SCORE_VIEW);
 
         currentQuizAttempt.endQuiz(quizLength);
 

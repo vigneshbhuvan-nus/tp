@@ -28,7 +28,7 @@ public class ScorePanel extends UiPart<Region> {
         super(FXML);
 
         scoreMessage.setText("Here is your score: ");
-        finalScore.setText(score + " out of " + maxScore);
+        finalScore.setText((int) score + " out of " + maxScore);
         encouragementMessage.setText(getEncouragementMessage(score, maxScore));
         helpMessage.setText("Enter any command to continue...");
     }
