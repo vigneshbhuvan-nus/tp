@@ -12,6 +12,7 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
 import seedu.address.model.view.View;
+import seedu.address.statistics.StatisticsManager;
 
 /**
  * API of the Logic component
@@ -55,6 +56,11 @@ public interface Logic {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
+     * Cleanup tasks that run right before app closes.
+     */
+    void doCleanup();
+
+    /**
      * Returns the current view of the system to the UI
      */
     View getCurrentView();
@@ -65,6 +71,11 @@ public interface Logic {
     Leitner getLeitner();
 
     /**
+     * Returns the statisticsManager object
+     */
+    StatisticsManager getStatisticsManager();
+
+    /**
      * Returns the current questions that the user is at
      */
     int getCurrentIndex();
@@ -72,5 +83,5 @@ public interface Logic {
     /**
      * Returns the score of the most recent quiz taken by the user
      */
-    int getLastScore();
+    double getLastScore();
 }

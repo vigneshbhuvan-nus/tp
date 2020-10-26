@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -15,9 +14,12 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.scoring.BinaryScoring;
+import seedu.address.model.deck.scoring.QuizAttempt;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.play.Leitner;
+import seedu.address.model.play.Score;
 import seedu.address.model.view.CurrentView;
 import seedu.address.model.view.View;
 
@@ -26,6 +28,7 @@ import seedu.address.model.view.View;
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
@@ -38,7 +41,7 @@ public class ModelManager implements Model {
     private Leitner leitner;
     private int quizLength = 2;
     private int currentIndex = 0;
-    private int lastScore = 0;
+    private QuizAttempt currentQuizAttempt;
 
 
     /**
@@ -48,7 +51,8 @@ public class ModelManager implements Model {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine(
+            "Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -136,8 +140,8 @@ public class ModelManager implements Model {
     }
 
     /**
-     * This function takes the entry and adds it to the deck entry list as well as the observedEntries in the
-     * AddressBook
+     * This function takes the entry and adds it to the deck entry list as well as the
+     * observedEntries in the AddressBook
      *
      * @param entry refers to the entry inputted by the user
      */
@@ -186,9 +190,9 @@ public class ModelManager implements Model {
     }
 
     /**
-     * This function deletes what is on the GUI and replaces it with the next entries in the selected deck.
-     * To replace the observedEntry in Addressbook.java that controls the GUI, a copy of it has to be created first.
-     * This avoids the concurrent modification exception.
+     * This function deletes what is on the GUI and replaces it with the next entries in the
+     * selected deck. To replace the observedEntry in Addressbook.java that controls the GUI, a copy
+     * of it has to be created first. This avoids the concurrent modification exception.
      */
     @Override
     public void replaceEntryList() {
@@ -205,6 +209,7 @@ public class ModelManager implements Model {
 
     @Override
     public Deck getCurrentDeck() {
+        assert (getFilteredDeckList().size() > 0);
         if (currentDeckIndex.equals(Optional.empty())) {
             logger.info("Current deck index is 0");
             return null;
@@ -215,10 +220,10 @@ public class ModelManager implements Model {
     //=========== Filtered Entry List Accessors =============================================================
 
     /**
-     * Returns a default deck as memory is not fixed yet. During initialisation, the observedEntryList value is
-     * passed as the AddressBook.javas uniqueEntryList. I.e the GUI now watches for any changes in the AddressBook,java
-     * field observedEntries
-     * {@code versionedAddressBook}
+     * Returns a default deck as memory is not fixed yet. During initialisation, the
+     * observedEntryList value is passed as the AddressBook.javas uniqueEntryList. I.e the GUI now
+     * watches for any changes in the AddressBook,java field observedEntries {@code
+     * versionedAddressBook}
      */
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
@@ -268,87 +273,62 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredDecks.equals(other.filteredDecks);
+            && userPrefs.equals(other.userPrefs)
+            && filteredDecks.equals(other.filteredDecks);
     }
 
     //====Games=====
-
-    /**
-     * Initializes a new flashcard game by creating a new Leitner object. If memory has records of the deck being
-     * played before, the Leitner object can be created using the entry list from memory (still implementing). If
-     * memory has no records of the deck being played, the Leitner object is created using a random shuffle of the
-     * exisiting entries.
-     */
     @Override
     public void newGame() {
         UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
-        leitner = new Leitner(observedList); //use exisiting deck or from memory
+        leitner = new Leitner(observedList);
         quizLength = leitner.getEntries().size();
         currentIndex = 0;
+
         addressBook.resetEntryList();
         addressBook.replaceEntryList(leitner.getUniqueEntryList());
+
+        currentQuizAttempt = new QuizAttempt(new BinaryScoring());
     }
 
-    /**
-     * Gets called by either a PlayCommand or a StopCommand. Replaces the current observed entry list in addressbook
-     * by the original entries. Score is saved from the leitner object. The next quiz is also generated from the
-     * Leitner object and can be stored in memory. The UI is updated with the new score and the Leitner field of
-     * ModelManager is deleted.
-     */
     @Override
-    public String endGame() {
+    public Score endGame() {
         replaceEntryList();
-        String score = leitner.getScore();
-        lastScore = leitner.getScoreValue();
+        this.currentView.setView(View.ENTRY_VIEW);
 
-        leitner.organizeQuizNextAttempt();
-        ArrayList<Entry> nextQuiz = leitner.getQuizNextAttempt(); //save this to memory
+        currentQuizAttempt.endQuiz(quizLength);
 
-        this.currentView.setView(View.SCORE_VIEW);
+        if (checkScoreTwo()) {
+            // update deck's attempt list iff end game due to last question
+            getCurrentDeck().addQuizAttempt(currentQuizAttempt);
+        }
 
-        leitner = null; //delete leitner
-        return score;
+        return currentQuizAttempt.getScore();
     }
 
-    /**
-     * Initiated from the PlayCommand. Takes in a String answerGiven from the user via the UI and checks if the
-     * answer is a correct, close to correct, or wrong.
-     * The edit distance between the correctAnswer and answerGiven is calculated via withinEditDistance and if the
-     * distance is 1, the answerGiven is considered almost correct.
-     * If the answer is correct, the score is incremented in the
-     * Leitner object and the correctAnsweredEntries field in leitner object is updated with the entry. The same
-     * occurs if the answer is correct except a different message is logged.
-     * If the answer is wrong, the score is not incremented and the wrongAnsweredEntries field in leitner object is
-     * updated
-     * The entry is swapped with the correct entry in addressbook and the currentIndex is incremented.
-     *
-     * @param answerGiven refers to the user input
-     */
     @Override
-    public void playGame(String answerGiven) {
+    public void playGame(String guess) { // answer a question
         String correctAnswer = leitner.getAnswers().get(currentIndex).toString();
         Entry entryToAdd = leitner.getEntries().get(currentIndex);
         Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
-        int numEditDistance = editDistance(answerGiven, correctAnswer,
-                answerGiven.length(), correctAnswer.length());
-        boolean isWithinEditDistance = numEditDistance == 1; //editDistance can only be maximum 1
+
+        logger.info(String.format("You have answered %s.", guess));
 
         if (currentIndex == quizLength) {
             replaceEntryList();
-        } else if (answerGiven.equals(correctAnswer)) {
-            leitner.correctAnswered(entryToAdd);
-            leitner.incrementScore();
-            logger.info(String.format("Answer given was %s, the correct answer was %s, Correct answer given",
-                    answerGiven, correctAnswer));
-        } else if (isWithinEditDistance) {
-            leitner.correctAnswered(entryToAdd);
-            leitner.incrementScore();
-            logger.info(String.format("within edit distance of %s, Correct answer given", numEditDistance));
         } else {
-            leitner.wrongAnswered(entryToAdd);
-            logger.info(String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
-                    answerGiven, correctAnswer));
+            currentQuizAttempt.answerQuestion(correctAnswer, guess);
+
+            // FOR DEBUGGING PURPOSES
+            if (correctAnswer.equals(guess)) {
+                logger.info(String
+                    .format("Answer given was %s, the correct answer was %s, Correct answer given",
+                        guess, correctAnswer));
+            } else {
+                logger.info(String
+                    .format("Answer given was %s, the correct answer was %s, Wrong answer given",
+                        guess, correctAnswer));
+            }
         }
 
         addressBook.setEntry(entryToRemove, entryToAdd); //swaps entry in GUI
@@ -376,33 +356,9 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public int getLastScore() {
-        return this.lastScore;
+    public QuizAttempt getQuizAttempt() {
+        return currentQuizAttempt;
     }
 
-    /**
-     * A dynamic program used to calculate edit distance between two strings
-     */
-    @Override
-    public int editDistance(String answer, String correctAnswer, int m, int n) {
-        assert (m < Integer.MAX_VALUE && n < Integer.MAX_VALUE);
-        int[][] dp = new int[m + 1][n + 1];
-        for (int i = 0; i <= m; i++) {
-            for (int j = 0; j <= n; j++) {
-                if (i == 0) {
-                    dp[i][j] = j;
-                } else if (j == 0) {
-                    dp[i][j] = i;
-                } else if (answer.charAt(i - 1) == correctAnswer.charAt(j - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1];
-                } else {
-                    dp[i][j] = 1 + Math.min(dp[i][j - 1], Math.min(dp[i - 1][j], dp[i - 1][j - 1]));
-                }
-            }
-        }
-        return dp[m][n];
-
-    }
-
-    //====EndGames====
+//====EndGames====
 }

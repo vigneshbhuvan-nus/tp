@@ -2,6 +2,8 @@ package seedu.address.model.deck;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
@@ -9,6 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
+import seedu.address.model.deck.scoring.QuizAttempt;
 
 /**
  * Represents a deck of flashcards
@@ -18,6 +21,7 @@ public class Deck {
     private final DeckName deckName;
     private UniqueEntryList entries;
     private FilteredList<Entry> filteredEntries;
+    private final List<QuizAttempt> quizAttempts; // append-only
 
     /**
      * Name must be present and not null
@@ -29,6 +33,7 @@ public class Deck {
         this.deckName = deckName;
         this.entries = new UniqueEntryList();
         this.filteredEntries = new FilteredList<>(getEntryList());
+        this.quizAttempts = new ArrayList<>();
     }
 
     public DeckName getDeckName() {
@@ -37,6 +42,14 @@ public class Deck {
 
     public UniqueEntryList getEntries() {
         return this.entries;
+    }
+
+    public List<QuizAttempt> getQuizAttempts() {
+        return this.quizAttempts;
+    }
+
+    public void addQuizAttempt(QuizAttempt quizAttempt) {
+        this.quizAttempts.add(quizAttempt);
     }
 
     public void setEntries(UniqueEntryList entries) {
@@ -80,8 +93,8 @@ public class Deck {
     }
 
     /**
-     * Two decks are considered to be the same if they have the same name
-     * This defines a notion of equality between the two decks
+     * Two decks are considered to be the same if they have the same name This defines a notion of
+     * equality between the two decks
      *
      * @param otherDeck to be compared with the current deck
      * @return true if both decks have the same name
@@ -91,18 +104,18 @@ public class Deck {
             return true;
         }
         return otherDeck != null
-                && otherDeck.getDeckName().equals(getDeckName());
+            && otherDeck.getDeckName().equals(getDeckName());
     }
 
     /**
-     * Returns true if both decks have the same name
-     * This defines a notion of equality between two deck objects
+     * Returns true if both decks have the same name This defines a notion of equality between two
+     * deck objects
      */
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Deck // instanceof handles nulls
-                && getDeckName().equals(((Deck) other).getDeckName())); // state check
+            || (other instanceof Deck // instanceof handles nulls
+            && getDeckName().equals(((Deck) other).getDeckName())); // state check
     }
 
     @Override
@@ -113,7 +126,9 @@ public class Deck {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
+
         builder.append(getDeckName());
+
         for (Entry entry : entries) {
             builder.append(entry.toString());
         }

@@ -20,6 +20,7 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
 import seedu.address.model.view.View;
+import seedu.address.statistics.StatisticsManager;
 import seedu.address.storage.Storage;
 
 /**
@@ -29,16 +30,18 @@ public class LogicManager implements Logic {
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
+    private final StatisticsManager statisticsManager;
     private final Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
     private final PlayModeParser playModeParser;
-    private PlayMode playMode = new PlayMode();
+    private final PlayMode playMode = new PlayMode();
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
     public LogicManager(Model model, Storage storage) {
+        this.statisticsManager= new StatisticsManager(); // TODO: load data from disk
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
@@ -53,7 +56,7 @@ public class LogicManager implements Logic {
         Command command;
 
         if (commandText.equals("play")) {
-            assert (playMode.isPlayMode() == false);
+            assert (!playMode.isPlayMode());
             if (model.getCurrentDeck() == null) {
                 throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
             }
@@ -64,7 +67,7 @@ public class LogicManager implements Logic {
         }
 
         if (playMode.isPlayMode()) {
-            assert (playMode.isPlayMode() == true);
+            assert (playMode.isPlayMode());
             command = playModeParser.parseCommand(commandText);
             if (commandText.equals("stop") || model.checkScore()) {
                 playMode.turnOff();
@@ -131,7 +134,18 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public int getLastScore() {
-        return model.getLastScore();
+    public StatisticsManager getStatisticsManager() {
+        return statisticsManager;
+    }
+
+    @Override
+    public double getLastScore() {
+        return model.getQuizAttempt().getScore().getYourScore();
+    }
+
+    @Override
+    public void doCleanup() {
+        // TODO: save stats to json file on disk
+        statisticsManager.doCleanup();
     }
 }
