@@ -93,10 +93,10 @@ Creates a new empty deck with given name.
 
 Format: `new <NAME OF NEW DECK>`
 
-Examples: 
+Examples:
 - `new Japanese-Animals`
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 
@@ -110,7 +110,7 @@ Format: `remove <INDEX OF DECK>`
 
 Example: `remove 1`
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 
@@ -124,7 +124,7 @@ Format: `select <INDEX OF DECK>`
 
 Examples: `select 1`
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 ## 4.2 Entry Commands (Gabriel)
@@ -150,7 +150,7 @@ Examples:
 - `add w/Fruits t/果物`
 - `add w/Why aren’t they here yet? t/どうして彼らはまだここにいないの`
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 
@@ -158,17 +158,17 @@ Result:
 
 Edits an entry with the given index using the given word or translation or both.
 
-Format: `edit 1 [w/word] [t/translation]` 
+Format: `edit 1 [w/word] [t/translation]`
 
 **Note:** The word and translation are both optional parameters. You can supply one parameter or both parameters but
 you must supply at least one.
 
 Examples:
-- `edit 1 w/hello` 
-- `edit 1 t/こんにちは` 
-- `edit 1 w/hello t/こんにちは` 
+- `edit 1 w/hello`
+- `edit 1 t/こんにちは`
+- `edit 1 w/hello t/こんにちは`
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 
@@ -178,7 +178,7 @@ Deletes the entry with the given index.
 
 Format: `delete <INDEX>`
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 
@@ -191,7 +191,7 @@ the complexities behind starting a new FlashCard game. In fact, there are only t
 
 ## 4.3.1 Play a Game (Georgie)
 
-Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the 
+Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
 to you at the end of the game.
 
@@ -199,7 +199,7 @@ Format: `play`
 
 **Note:** Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
 
-Result: 
+Result:
 ![GreenTea](images/Placeholder.png)
 
 ## 4.3.2 Stopping a Game  (Georgie)
@@ -210,7 +210,7 @@ Format: `stop`
 
 **Note:** Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
 
-Result: 
+Result:
 ![GreenTea](images/Placeholder.png)
 
 ## 4.4 Extra Commands (Georgie)
@@ -224,7 +224,7 @@ Shows a cheat-sheet of commands in addition to a link to this User Guide.
 
 Format: `help`
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 
@@ -234,22 +234,22 @@ Exits the program.
 
 Format: `exit`
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 
 ## 5. Statistics (Melanie)
 
 Statistics are how you get to see your own progression as you continuously build and play GreenTea.
-The statistics tab displays the scores of up to your last 10 attempts in the form of 
+The statistics tab displays the scores of up to your last 10 attempts in the form of
 a bar chart.
 
-You can access the statistics tab by first `select`ing a deck before clicking the statistics tab at the top 
+You can access the statistics tab by first `select`ing a deck before clicking the statistics tab at the top
 of the application.
 
 **Note:** Before you can view the statistics, remember to [select a deck first!](#selecting-a-deck-select)
 
-Result: 
+Result:
 
 ![GreenTea](images/Placeholder.png)
 
