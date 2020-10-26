@@ -359,7 +359,4 @@ public class ModelManager implements Model {
     public QuizAttempt getQuizAttempt() {
         return currentQuizAttempt;
     }
-
-
-//====EndGames====
 }

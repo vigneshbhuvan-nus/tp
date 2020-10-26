@@ -223,7 +223,7 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    private void handleQuizMode() {
+    private void handleQuizMode(String commandText) {
         QuizPanel quizPanel = new QuizPanel(logic.getLeitner(), logic.getCurrentIndex());
         quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
@@ -274,7 +274,7 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (logic.getCurrentView() == View.QUIZ_VIEW) {
-                handleQuizMode();
+                handleQuizMode(commandText);
             }
 
             if (logic.getCurrentView() != this.currentView) {

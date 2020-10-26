@@ -234,14 +234,15 @@ Brass : A5AF37  unused
 /* Quiz Panel */
 .question {
     -fx-text-fill: white;
-    -fx-font-size: 30px;
+    -fx-font-size: 35px;
     -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
 }
 
 .answer-list {
     -fx-text-fill: white;
-    -fx-font-size: 18px;
+    -fx-font-size: 20px;
+    -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
 }
 
