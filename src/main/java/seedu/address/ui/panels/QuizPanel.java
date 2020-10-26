@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.Region;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.deck.entry.Word;
 import seedu.address.model.play.Leitner;
 import seedu.address.ui.UiPart;
 
@@ -18,7 +17,7 @@ public class QuizPanel extends UiPart<Region> {
     private int totalQuestionNumber;
     private int questionsLeftNumber;
     private ArrayList<Entry> shuffledEntries;
-    private ArrayList<Word> givenAnswers;
+    private ArrayList<String> givenAnswers;
 
     @FXML
     private Label question;
@@ -54,7 +53,7 @@ public class QuizPanel extends UiPart<Region> {
         totalQuestionNumber = leitner.getEntries().size();
         questionsLeftNumber = totalQuestionNumber - currentIndex;
         shuffledEntries = leitner.getEntries();
-        givenAnswers = leitner.getAnswers();
+        givenAnswers = leitner.getGuesses();
     }
 
     private void setText () {
@@ -71,14 +70,14 @@ public class QuizPanel extends UiPart<Region> {
         if (currentIndex - 5 > lastFive) {
             lastFive = currentIndex - 5;
         }
-        if (currentIndex == 1) {
+        if (currentIndex >= 1) {
             sb.append("Previous 5 Answers:\n\n");
         }
         for (int i = lastFive; i < currentIndex; i++) {
             Entry previousEntry = shuffledEntries.get(i);
             sb.append(" Question: ").append(previousEntry.getTranslation().toString());
             sb.append("   Answer: ").append(previousEntry.getWord().toString()).append("\n");
-            sb.append(" Your answer: ").append(givenAnswers.get(i).toString()).append("\n");
+            sb.append(" Your answer: ").append(givenAnswers.get(i)).append("\n");
         }
         return sb.toString();
     }

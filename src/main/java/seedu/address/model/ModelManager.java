@@ -308,6 +308,7 @@ public class ModelManager implements Model {
 
     @Override
     public void playGame(String guess) { // answer a question
+        leitner.addGuess(guess);
         String correctAnswer = leitner.getAnswers().get(currentIndex).toString();
         Entry entryToAdd = leitner.getEntries().get(currentIndex);
         Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
