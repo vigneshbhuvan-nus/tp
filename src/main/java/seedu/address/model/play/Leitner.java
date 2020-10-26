@@ -7,9 +7,6 @@ import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
-import seedu.address.model.deck.scoring.QuestionAttempt;
-import seedu.address.model.deck.scoring.Scoring;
-
 
 public class Leitner {
 
@@ -46,10 +43,6 @@ public class Leitner {
         return this.entries;
     }
 
-//    public Score getScore() {
-//        return score;
-//    }
-
     public UniqueEntryList getUniqueEntryList() {
         UniqueEntryList list = new UniqueEntryList();
         for (Entry entry : entries) {
@@ -63,9 +56,4 @@ public class Leitner {
     public int getNumberOfQuestions() {
         return questions.size();
     }
-
-//    public void incrementScore() {
-//        score.incrementYourScore();
-//    }
-
 }

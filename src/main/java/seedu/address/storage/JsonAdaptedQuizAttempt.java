@@ -1,22 +1,19 @@
 package seedu.address.storage;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.deck.entry.Translation;
-import seedu.address.model.deck.entry.Word;
 import seedu.address.model.deck.scoring.BinaryScoring;
 import seedu.address.model.deck.scoring.QuestionAttempt;
 import seedu.address.model.deck.scoring.QuizAttempt;
-import seedu.address.model.deck.scoring.Scoring;
 import seedu.address.model.play.Score;
-
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Jackson-friendly version of {@link Entry}.
@@ -25,10 +22,10 @@ class JsonAdaptedQuizAttempt {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Quiz Attempts's %s field is missing!";
 
-    private  JsonAdaptedScore score;
-    private  int duration; // time in seconds
-    private  LocalDateTime takenAt;
-    private  List<JsonAdaptedQuestionAttempt> questionAttempts = new ArrayList<>();
+    private JsonAdaptedScore score;
+    private int duration; // time in seconds
+    private LocalDateTime takenAt;
+    private List<JsonAdaptedQuestionAttempt> questionAttempts = new ArrayList<>();
 
     /**
      * Constructs a {@code JsonAdaptedQuizAttempt} with the given entry details.

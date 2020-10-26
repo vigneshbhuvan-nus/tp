@@ -2,10 +2,8 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonValue;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.deck.entry.Word;
 import seedu.address.model.play.Score;
 
 
@@ -34,6 +32,9 @@ public class JsonAdaptedScore {
     }
 
     //Dummy Constructor
+    /**
+     *
+     */
     public JsonAdaptedScore() {
         maxScore = 1;
         yourScore = 1;
@@ -42,7 +43,7 @@ public class JsonAdaptedScore {
     public double getMaxScore() {
         return maxScore;
     }
-    
+
     public double getYourScore() {
         return yourScore;
     }

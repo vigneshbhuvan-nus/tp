@@ -1,6 +1,5 @@
 package seedu.address.statistics;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,25 +9,47 @@ import java.util.List;
  */
 public class Statistics {
 
-    int timesOpened;
-    List<Event> eventLog;
+    private int timesOpened;
+    private List<Event> eventLog;
 
+    /**
+     *
+     * @param timesOpened
+     * @param eventLog
+     */
     public Statistics(int timesOpened, List<Event> eventLog) {
         this.timesOpened = timesOpened;
         this.eventLog = eventLog;
     }
 
+    /**
+     *
+     */
     public Statistics() {
         timesOpened = 0;
         eventLog = new ArrayList<>();
     }
 
+    /**
+     *
+     */
     public void registerAppLogin() {
         eventLog.add(new Event(EventType.LOGIN));
         timesOpened++;
     }
 
+    /**
+     *
+     */
     public void registerAppLogout() {
         eventLog.add(new Event(EventType.LOGOUT));
+    }
+
+    public int getTimesOpened() {
+        return timesOpened;
+    }
+
+    public List<Event> getEventLog() {
+        return eventLog;
     }
 }

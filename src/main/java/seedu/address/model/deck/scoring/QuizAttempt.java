@@ -4,16 +4,21 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+
 import seedu.address.model.play.Score;
 
 public class QuizAttempt {
 
-    Score score;
-    int duration; // time in seconds
-    LocalDateTime takenAt;
-    List<QuestionAttempt> questionAttempts;
-    Scoring scoringMethod;
+    private Score score;
+    private int duration; // time in seconds
+    private LocalDateTime takenAt;
+    private List<QuestionAttempt> questionAttempts;
+    private Scoring scoringMethod;
 
+    /**
+     *
+     * @param scoringMethod
+     */
     public QuizAttempt(Scoring scoringMethod) {
         this.duration = -1; // to denote quiz in progress
         this.takenAt = LocalDateTime.now();
@@ -25,6 +30,10 @@ public class QuizAttempt {
         questionAttempts.add(new QuestionAttempt(answer, guess, scoringMethod));
     }
 
+    /**
+     *
+     * @param quizLength
+     */
     public void endQuiz(int quizLength) {
         this.score = new Score(
                 quizLength,
