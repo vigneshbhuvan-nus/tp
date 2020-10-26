@@ -116,6 +116,7 @@ public class ModelManager implements Model {
     @Override
     public void setAddressBook(ReadOnlyAddressBook addressBook) {
         this.addressBook.resetData(addressBook);
+        this.currentDeckIndex = Optional.empty();
     }
 
     @Override
@@ -170,6 +171,9 @@ public class ModelManager implements Model {
 
     @Override
     public void removeDeck(Deck target) {
+        if (target == getCurrentDeck()) {
+            currentDeckIndex = Optional.empty();
+        }
         addressBook.removeDeck(target);
     }
 
@@ -355,6 +359,4 @@ public class ModelManager implements Model {
     public QuizAttempt getQuizAttempt() {
         return currentQuizAttempt;
     }
-
-    //====EndGames====
 }
