@@ -13,6 +13,7 @@ public class Leitner {
     private ArrayList<Entry> entries = new ArrayList<>();
     private ArrayList<Translation> questions = new ArrayList<>();
     private ArrayList<Word> answers = new ArrayList<>();
+    private ArrayList<String> guesses = new ArrayList<>();
 
     /**
      * Returns a Leitner object that is essentially a flashcard memory object.
@@ -43,6 +44,10 @@ public class Leitner {
         return this.entries;
     }
 
+    public ArrayList<String> getGuesses() {
+        return this.guesses;
+    }
+
     public UniqueEntryList getUniqueEntryList() {
         UniqueEntryList list = new UniqueEntryList();
         for (Entry entry : entries) {
@@ -55,5 +60,9 @@ public class Leitner {
 
     public int getNumberOfQuestions() {
         return questions.size();
+    }
+
+    public void addGuess(String guess) {
+        this.guesses.add(guess);
     }
 }

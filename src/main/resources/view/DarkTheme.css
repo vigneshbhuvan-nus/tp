@@ -220,7 +220,7 @@ Brass : A5AF37  unused
     -fx-font-size: 30px;
     -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
-    -fx-padding: 0 0 100 0;
+    -fx-padding: 0 0 10 0;
 }
 
 .command-message {
@@ -228,20 +228,27 @@ Brass : A5AF37  unused
     -fx-font-size: 18px;
     -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
-    -fx-padding: 100 0 0 0;
+    -fx-padding: 10 0 40 0;
 }
 
 /* Quiz Panel */
 .question {
     -fx-text-fill: white;
-    -fx-font-size: 30px;
+    -fx-font-size: 35px;
     -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
+}
+
+.question-box {
+    -fx-border-color: lightgrey;
+    -fx-border-width: 3px;
+    -fx-border-style: hidden solid hidden hidden;
 }
 
 .answer-list {
     -fx-text-fill: white;
     -fx-font-size: 18px;
+    -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
 }
 
@@ -249,6 +256,7 @@ Brass : A5AF37  unused
     -fx-text-fill: white;
     -fx-font-size: 18px;
     -fx-font-family: "Segoe UI Light";
+    -fx-padding: 40 20 0 20;
 }
 
 .progress-bar .bar{
@@ -260,4 +268,10 @@ Brass : A5AF37  unused
     -fx-text-fill: white;
     -fx-font-size: 18px;
     -fx-font-family: "Segoe UI Light";
+}
+
+/* Start Panel */
+.start-panel{
+    -fx-background-color: derive(#2B3E13, 20%);
+    -fx-border-top-width: 1px;
 }

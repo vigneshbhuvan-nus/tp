@@ -17,6 +17,7 @@ public class QuizPanel extends UiPart<Region> {
     private int totalQuestionNumber;
     private int questionsLeftNumber;
     private ArrayList<Entry> shuffledEntries;
+    private ArrayList<String> givenAnswers;
 
     @FXML
     private Label question;
@@ -52,6 +53,7 @@ public class QuizPanel extends UiPart<Region> {
         totalQuestionNumber = leitner.getEntries().size();
         questionsLeftNumber = totalQuestionNumber - currentIndex;
         shuffledEntries = leitner.getEntries();
+        givenAnswers = leitner.getGuesses();
     }
 
     private void setText () {
@@ -65,14 +67,17 @@ public class QuizPanel extends UiPart<Region> {
     private String setAnswerList () {
         int lastFive = 0;
         StringBuilder sb = new StringBuilder();
-        sb.append("Previous Answers:\n");
         if (currentIndex - 5 > lastFive) {
             lastFive = currentIndex - 5;
         }
+        if (currentIndex >= 1) {
+            sb.append("Previous 5 Answers:\n\n");
+        }
         for (int i = lastFive; i < currentIndex; i++) {
             Entry previousEntry = shuffledEntries.get(i);
-            sb.append(previousEntry.getTranslation().toString());
+            sb.append(" Question: ").append(previousEntry.getTranslation().toString());
             sb.append("   Answer: ").append(previousEntry.getWord().toString()).append("\n");
+            sb.append(" Your answer: ").append(givenAnswers.get(i)).append("\n");
         }
         return sb.toString();
     }
