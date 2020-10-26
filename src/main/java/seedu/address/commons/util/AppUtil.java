@@ -39,4 +39,15 @@ public class AppUtil {
             throw new IllegalArgumentException(errorMessage);
         }
     }
+
+    /**
+     * Checks that the length of the input does not exceed the specified length
+     *
+     * @throws IllegalArgumentException with {@code errorMessage} if input length exceed the specified length
+     */
+    public static void checkArgumentLength (String input, int maxLength, String errorMessage) {
+        if (input.length() > maxLength) {
+            throw new IllegalArgumentException(errorMessage);
+        }
+    }
 }
