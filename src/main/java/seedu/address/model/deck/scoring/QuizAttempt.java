@@ -36,4 +36,37 @@ public class QuizAttempt {
     public Score getScore() {
         return score;
     }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public LocalDateTime getTakenAt() {
+        return takenAt;
+    }
+
+    public List<QuestionAttempt> getQuestionAttempts() {
+        return questionAttempts;
+    }
+
+    public Scoring getScoringMethod() {
+        return scoringMethod;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public void setTakenAt(LocalDateTime takenAt) {
+        this.takenAt = takenAt;
+    }
+
+    public void setQuestionAttempts(List<QuestionAttempt> questionAttempts) {
+        this.questionAttempts = questionAttempts;
+    }
 }
+

@@ -21,7 +21,7 @@ public class Deck {
     private final DeckName deckName;
     private UniqueEntryList entries;
     private FilteredList<Entry> filteredEntries;
-    private final List<QuizAttempt> quizAttempts; // append-only
+    private List<QuizAttempt> quizAttempts; // append-only
 
     /**
      * Name must be present and not null
@@ -55,6 +55,10 @@ public class Deck {
     public void setEntries(UniqueEntryList entries) {
         this.entries = entries;
         this.filteredEntries = new FilteredList<>(getEntryList());
+    }
+
+    public void setQuizAttempts(List<QuizAttempt> quizAttempts) {
+        this.quizAttempts = quizAttempts;
     }
 
     public ObservableList<Entry> getEntryList() {
