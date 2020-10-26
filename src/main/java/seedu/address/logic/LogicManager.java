@@ -41,7 +41,7 @@ public class LogicManager implements Logic {
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
     public LogicManager(Model model, Storage storage) {
-        this.statisticsManager= new StatisticsManager(); // TODO: load data from disk
+        this.statisticsManager = new StatisticsManager(); // TODO: load data from disk
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
