@@ -10,7 +10,7 @@ import seedu.address.ui.UiPart;
 public class StartPanel extends UiPart<Region> {
 
     private static final String FXML = "StartPanel.fxml";
-    
+
     @FXML
     private ImageView greenTeaIcon;
 

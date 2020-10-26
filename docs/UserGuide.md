@@ -24,12 +24,12 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
       - [4.4.2 Exiting the program: exit](#exiting-the-program-exit)
 - [5. Statistics (Melanie)]()
 - [6. FAQ (Gabriel)](#10-faq-gabriel)
-- [7. Command Summary (Melanie)](#11-command-summary-gabriel)
+- [7. Command Summary (Melanie)](#11-command-summary-melanie)
 
 # 1. What is GreenTea? (Gabriel)
 
 GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
-still having the benefits of a Graphical User Interface (GUI). GreenTea uses a proven memory rentention 
+still having the benefits of a Graphical User Interface (GUI). GreenTea uses a proven memory rentention
 system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d5edafae7f0)  and implements it in the context of a FlashCard game. This app is great for users who wish to
 optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly.
@@ -60,8 +60,8 @@ To start using GreenTea:
 3. Double-Click the file to start the application. The GUI should appear in a few seconds
 ![GreenTea](images/Placeholder.png)
 4. Typing the commands into the command box and pressing enter will execute the commands \
-e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animals 
-5. Try typing these commands to start playing with GreenTea 
+e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animals
+5. Try typing these commands to start playing with GreenTea
     - `new Japanese Animals`: Creates a new Deck called `Japanese Animals`
     - `select 1` selects the first Deck `Japanese Animals`
     - `add w/Dolphin t/Iruka`: Adds a new Entry into the selected deck with the word `Dolphin` and the translation `Iruka`
@@ -70,14 +70,14 @@ e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animal
 
 # 4. Features
 
-Every feature can be accessed with a command and every command has a certain format that 
+Every feature can be accessed with a command and every command has a certain format that
 has to be followed. The following is an explanation of how commands are described in this document.
 
 __Command Format__
 
 - Words in `<Arrowed Brackets>` are compulsory parameters supplied by you. They are generally names or translations that
 are unique to each input. \
-e.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the supplied parameter, `NAME OF NEW DECK`  
+e.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the supplied parameter, `NAME OF NEW DECK`
 - Words in `[Square Brackets]` are optional parameters. They may or may not be added by __at least one__ is required \
 e.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1 [w/word]` or `edit 1 [t/translation]`
 or `edit 1 [w/word] [t/translation]` __but cannot be written as__ `edit 1`
@@ -85,8 +85,7 @@ or `edit 1 [w/word] [t/translation]` __but cannot be written as__ `edit 1`
 ## 4.1 Deck Commands (Melanie)
 
 Decks are the foundation to GreenTea. A deck is simply a list of entries
-you write into GreenTea. A deck can be your favourite Chinese idioms, a list of beverages in Japanese,
-or even some romantic phrases in French!
+you write into GreenTea. A deck can be your favourite Chinese idioms or a list of animals in Japanese.
 
 ### 4.1.1 Creating a deck: `new`
 
@@ -96,7 +95,6 @@ Format: `new <NAME OF NEW DECK>`
 
 Examples: 
 - `new Japanese-Animals`
-- `new Korean Dramas`
 
 Result: 
 
@@ -162,7 +160,7 @@ Edits an entry with the given index using the given word or translation or both.
 
 Format: `edit 1 [w/word] [t/translation]` 
 
-**Note:** The word and translation are both optional parameters. You can supply one parameter or both parameters but 
+**Note:** The word and translation are both optional parameters. You can supply one parameter or both parameters but
 you must supply at least one.
 
 Examples:
@@ -244,7 +242,7 @@ Result:
 
 Statistics are how you get to see your own progression as you continuously build and play GreenTea.
 The statistics tab displays the scores of up to your last 10 attempts in the form of 
-a bar chart. 
+a bar chart.
 
 You can access the statistics tab by first `select`ing a deck before clicking the statistics tab at the top 
 of the application.
@@ -264,18 +262,18 @@ Result:
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
 ---
 
-## 7. Command Summary (Gabriel)
+## 7. Command Summary (Melanie)
 
 | Action                                                                                             | Format  <img width=00/>                                                                           |Examples |Remarks|
 | -------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------------------------|--------|--------|
 | **New**                                                                                            | `new <NAME OF NEW DECK>` | `new Japanese-Animals`   |Creates a New Deck With the Given Name          |
-| **Remove**                                                                                         | `remove <INDEXOF DECK>`  |`remove 1`    |Removes the Deck with the Given Index          |
-| **Select**                                                                                         | `select <INDEXOF DECK>`  |`select 1`    |Selects the Deck with the Given Index and Lists All It's Entries         |
+| **Remove**                                                                                         | `remove <INDEX OF DECK>`  |`remove 1`    |Removes the Deck with the Given Index          |
+| **Select**                                                                                         | `select <INDEX OF DECK>`  |`select 1`    |Selects the Deck with the Given Index and Lists All It's Entries         |
 | **Add**                                                                                            | `add w/<WORD> t/<TRANSLATION>` | `add w/Hello t/hola`       |Adds an Entry with the Given Word and Translation to the Selected Deck|
 | **Edit**                                                                                           | `edit 1 [w/word] [t/translation]` | `edit 1 w/hello t/こんにちは`   | Edits the Entry with the Given Index Using the Given Values|
 | **Delete**                                                                                         | `delete <INDEX>` | `delete 3`                                                                     | Deletes the Entry with the Given Index|
-| **Play**                                                                                          | `play`                                                                                              |  | Starts a New FlashCard Game with the Selected Deck
+| **Play**                                                                                           | `play`       |  | Starts a New FlashCard Game with the Selected Deck
 | **Stop**                                                                                           | `stop`       | | Stops an Existing Game
-| **Clear**                                                                                          | `clear`                                                                                              |  | Deletes All Decks and Entries
+| **Clear**                                                                                          | `clear`      |  | Deletes All Decks and Entries
 | **Help**                                                                                           | `help`       | | Opens Our User Guide in the Application|
-| **Exit**                                                                                           | `exit`                                                                                               |  | Saves and Exits the Program
+| **Exit**                                                                                           | `exit`       |  | Saves and Exits the Program
