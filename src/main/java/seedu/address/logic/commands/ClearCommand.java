@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
+import seedu.address.model.view.View;
 
 /**
  * Clears GreenTea.
@@ -19,6 +20,7 @@ public class ClearCommand extends Command {
         requireNonNull(model);
         model.setAddressBook(new AddressBook());
         model.clearEntryList();
+        model.setCurrentView(View.START_VIEW);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

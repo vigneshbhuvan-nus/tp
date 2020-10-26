@@ -113,8 +113,7 @@ public class Deck {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getDeckName())
-                .append(" internalList: ");
+        builder.append(getDeckName());
         for (Entry entry : entries) {
             builder.append(entry.toString());
         }

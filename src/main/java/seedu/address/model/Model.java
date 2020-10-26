@@ -159,9 +159,21 @@ public interface Model {
     View getCurrentView();
 
     //UI methods
+
+    /**
+     * Returns the current leitner object to be passed to logic
+     * Should only be called when the user is playing a quiz.
+     */
     Leitner getLeitner();
 
+    /**
+     * Returns the current quiz question that the user is at
+     * Default value is 0
+     */
     int getCurrentIndex();
 
+    /**
+     * Return the score of the most recent quiz that the user has taken
+     */
     int getLastScore();
 }
