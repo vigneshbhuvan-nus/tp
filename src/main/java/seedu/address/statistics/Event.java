@@ -4,16 +4,33 @@ import java.time.LocalDateTime;
 
 public class Event {
 
-    EventType eventType;
-    LocalDateTime localDateTime;
+    private EventType eventType;
+    private LocalDateTime localDateTime;
 
+    /**
+     *
+     * @param eventType
+     * @param localDateTime
+     */
     public Event(EventType eventType, LocalDateTime localDateTime) {
         this.eventType = eventType;
         this.localDateTime = localDateTime;
     }
 
+    /**
+     *
+     * @param eventType
+     */
     public Event(EventType eventType) {
         this.eventType = eventType;
         this.localDateTime = LocalDateTime.now();
+    }
+
+    public EventType getEventType() {
+        return eventType;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
     }
 }
