@@ -239,6 +239,12 @@ Brass : A5AF37  unused
     -fx-font-family: "Segoe UI Light";
 }
 
+.question-box {
+    -fx-border-color: lightgrey;
+    -fx-border-width: 3px;
+    -fx-border-style: hidden solid hidden hidden;
+}
+
 .answer-list {
     -fx-text-fill: white;
     -fx-font-size: 18px;
