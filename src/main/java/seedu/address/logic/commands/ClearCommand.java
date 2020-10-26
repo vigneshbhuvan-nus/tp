@@ -19,7 +19,6 @@ public class ClearCommand extends Command {
         requireNonNull(model);
         model.setAddressBook(new AddressBook());
         model.clearEntryList();
-        model.
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
