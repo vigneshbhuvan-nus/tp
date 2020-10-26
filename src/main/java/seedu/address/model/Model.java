@@ -176,9 +176,4 @@ public interface Model {
 
     QuizAttempt getQuizAttempt();
 
-    /**
-     * Return the score of the most recent quiz that the user has taken
-     */
-    int getLastScore();
-
 }
