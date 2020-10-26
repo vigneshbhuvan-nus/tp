@@ -167,6 +167,9 @@ public class ModelManager implements Model {
 
     @Override
     public void removeDeck(Deck target) {
+        if (target == getCurrentDeck()) {
+            currentDeckIndex = Optional.empty();
+        }
         addressBook.removeDeck(target);
     }
 
