@@ -16,7 +16,8 @@ import seedu.address.commons.core.LogsCenter;
  */
 public class HelpWindow extends UiPart<Stage> {
 
-    public static final String USERGUIDE_URL = "github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md\n\n";
+    public static final String USERGUIDE_URL =
+            "https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md\n\n";
 
     public static final String DECK_COMMANDS = "==============================="
                                              + "DECK COMMANDS"

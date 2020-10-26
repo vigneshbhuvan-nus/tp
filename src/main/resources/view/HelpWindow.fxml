@@ -23,7 +23,7 @@
                </Label>
                <Button fx:id="copyButton" mnemonicParsing="false" onAction="#copyUrl" text="Copy URL">
                   <HBox.margin>
-                     <Insets left="5.0" />
+                     <Insets left="5.0" bottom="730.0"/>
                   </HBox.margin>
                </Button>
             </children>
