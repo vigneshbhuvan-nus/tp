@@ -30,7 +30,7 @@ public class StartPanel extends UiPart<Region> {
         headerMessage.setText("Welcome to Green Tea!\n");
         commandMessage.setText("Here are some commands you can try:\n"
                 + "-----------------------------------------\n"
-                + "                 new deck\n"
+                + "                new deck\n"
                 + "                remove deck \n"
                 + "                select deck \n");
     }
