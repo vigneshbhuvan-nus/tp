@@ -9,6 +9,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.play.PlayCommand;
 import seedu.address.logic.commands.play.StopCommand;
+import seedu.address.logic.commands.statistics.StatisticsCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.play.AnswerCommandParser;
 
@@ -38,14 +39,15 @@ public class PlayModeParser {
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
 
-        if (userInput.equals("play")) {
-            return new PlayCommand();
+        switch (userInput){
+            case "play":
+                return new PlayCommand();
+            case "stop":
+                return new StopCommand();
+            default:
+                // for commands with additional args
+                return new AnswerCommandParser().parse(commandWord + " " + arguments);
         }
-        if (userInput.equals("stop")) {
-            return new StopCommand();
-        }
-        return new AnswerCommandParser().parse(commandWord + " " + arguments);
-
     }
 }
 

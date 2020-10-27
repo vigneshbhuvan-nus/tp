@@ -11,6 +11,7 @@ import seedu.address.model.play.Leitner;
 import seedu.address.ui.UiPart;
 
 public class QuizPanel extends UiPart<Region> {
+
     private static final String FXML = "QuizPanel.fxml";
 
     private final int currentIndex;
@@ -40,7 +41,7 @@ public class QuizPanel extends UiPart<Region> {
     /**
      * Constructor for quiz panel
      */
-    public QuizPanel (Leitner leitner, int currentIndex) {
+    public QuizPanel(Leitner leitner, int currentIndex) {
         super(FXML);
         this.currentIndex = currentIndex;
 
@@ -56,7 +57,7 @@ public class QuizPanel extends UiPart<Region> {
         givenAnswers = leitner.getGuesses();
     }
 
-    private void setText () {
+    private void setText() {
         question.setText(shuffledEntries.get(currentIndex).getTranslation().toString());
         totalQuestions.setText("Total Questions: " + totalQuestionNumber);
         questionsAnswered.setText("Questions Answered: " + currentIndex);
@@ -64,7 +65,7 @@ public class QuizPanel extends UiPart<Region> {
         answerList.setText(setAnswerList());
     }
 
-    private String setAnswerList () {
+    private String setAnswerList() {
         int lastFive = 0;
         StringBuilder sb = new StringBuilder();
         if (currentIndex - 5 > lastFive) {
@@ -82,7 +83,7 @@ public class QuizPanel extends UiPart<Region> {
         return sb.toString();
     }
 
-    private void setProgressBar () {
+    private void setProgressBar() {
         double progress = (double) currentIndex / totalQuestionNumber;
         progressBar.setProgress(progress);
     }
