@@ -8,11 +8,11 @@
   xmlns="http://javafx.com/javafx/11.0.3-internal" xmlns:fx="http://javafx.com/fxml/1">
   <VBox alignment="CENTER">
     <LineChart fx:id="statisticsLineChart" title="Stat Chart" BorderPane.alignment="CENTER">
-      <xAxis>
-        <CategoryAxis side="BOTTOM"/>
+      <xAxis >
+        <CategoryAxis side="BOTTOM" />
       </xAxis>
-      <yAxis>
-        <NumberAxis side="LEFT"/>
+      <yAxis >
+        <NumberAxis side="LEFT" />
       </yAxis>
     </LineChart>
     <VBox alignment="CENTER">

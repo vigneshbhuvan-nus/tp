@@ -33,16 +33,32 @@ public class StatisticsPanel extends UiPart<Region> {
     @FXML
     private Label lastLoginLabel;
     @FXML
-    private LineChart<Number, Number> statisticsLineChart;
+    private LineChart<String, Number> statisticsLineChart;
 
     private static class DataPoint {
 
-        double scoreInPercentage;
-        LocalDateTime takenAt;
+        private double scoreInPercentage;
+        private LocalDateTime takenAt;
 
         DataPoint(LocalDateTime takenAt, double scoreInPercentage) {
             this.scoreInPercentage = scoreInPercentage;
             this.takenAt = takenAt;
+        }
+
+        public double getScoreInPercentage() {
+            return scoreInPercentage;
+        }
+
+        public LocalDateTime getTakenAt() {
+            return takenAt;
+        }
+
+        @Override
+        public String toString() {
+            return "DataPoint{" +
+                "scoreInPercentage=" + scoreInPercentage +
+                ", takenAt=" + takenAt +
+                '}';
         }
     }
 
@@ -64,24 +80,16 @@ public class StatisticsPanel extends UiPart<Region> {
     }
 
     private void plotDataPoints(List<DataPoint> dataPoints) {
-        statisticsLineChart.setTitle("Average Quiz Performance");
+        statisticsLineChart.setTitle("Performance on last 10 quizzes.");
 
-//        XYChart.Series<Number, Number> series1 = new XYChart.Series<>();
-//        series1.setName("Series 1");
-//        series1.getData().add(new XYChart.Data<>(1, 20));
-//        series1.getData().add(new XYChart.Data<>(2, 100));
-//        series1.getData().add(new XYChart.Data<>(3, 80));
-//        series1.getData().add(new XYChart.Data<>(4, 180));
-//        series1.getData().add(new XYChart.Data<>(5, 20));
-//        series1.getData().add(new XYChart.Data<>(6, -10));
-//        statisticsLineChart.getData().add(series1);
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName("");
+        for(DataPoint dataPoint : dataPoints) {
+            System.out.println(dataPoint.toString());
+            series.getData().add(new XYChart.Data<>(dataPoint.getTakenAt().toString(), dataPoint.getScoreInPercentage()));
+        }
+        statisticsLineChart.getData().add(series);
 
-//        XYChart.Series series = new XYChart.Series();
-//        for(DataPoint dataPoint : dataPoints) {
-//            series.getData().add(new XYChart.Data(1,2));
-//        }
-//
-//        statisticsLineChart.getData().add(series);
     }
 
     /**
@@ -94,7 +102,26 @@ public class StatisticsPanel extends UiPart<Region> {
             listsToMerge.add(deck.getQuizAttempts());
         }
 
-        return mergeSortedListsOfAttempts(listsToMerge);
+        List<DataPoint> ret = new ArrayList<>();
+
+        Queue<QuizAttempt> pq = new PriorityQueue<>(Comparator.comparing(QuizAttempt::getTakenAt));
+
+        for (Deck deck : decks) {
+            for(QuizAttempt qa : deck.getQuizAttempts()) {
+                pq.offer(qa);
+            }
+        }
+
+        while(!pq.isEmpty()){
+            QuizAttempt attempt = pq.poll();
+            LocalDateTime takenAt = attempt.getTakenAt();
+            double scoreInPercentage = attempt.getScore().getScoreInPercentage();
+            ret.add(new DataPoint(takenAt, scoreInPercentage));
+        }
+
+        return ret;
+
+        // return mergeSortedListsOfAttempts(listsToMerge);
     }
 
     /**
