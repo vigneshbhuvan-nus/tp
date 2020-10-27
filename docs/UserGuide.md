@@ -7,24 +7,29 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
 - [3. Getting Started (Gabriel)](#3-lets-get-started-gabriel)
-- [4. Features (Melanie)]()
-    - [4.1 Deck Commands (Melanie)](#4-deck-commands-melanie)
-      - [4.1.1 Creating a deck: new](#creating-a-deck-new)
-      - [4.1.2 Removing a deck: remove](#removing-a-deck-remove)
-      - [4.1.3 Selecting a deck: select](#selecting-a-deck-select)
-    - [4.2. Entry Commands (Vignesh)](#5-entry-commands-gabriel)
-      - [4.2.1 Adding a new entry: add](#adding-a-new-entry-add-vignesh)
-      - [4.2.2 Editing an entry: edit](#editing-an-entry-edit-vignesh)
-      - [4.2.3 Deleting an entry: delete](#deleting-an-entry-delete-vignesh)
-    - [4.3. FlashCard Commands (Georgie)](#6-play-commands-georgie)
-      - [4.3.1 Editing an entry: edit](#editing-an-entry-edit-vignesh)
-      - [4.3.2 Deleting an entry: delete](#deleting-an-entry-delete-vignesh)
-    - [4.4. Extra Commands (Georgie)](#8-extra-commands-georgie)
-      - [4.4.1 Viewing help: help](#viewing-help-help)
-      - [4.4.2 Exiting the program: exit](#exiting-the-program-exit)
-- [5. Statistics (Melanie)]()
-- [6. FAQ (Gabriel)](#10-faq-gabriel)
-- [7. Command Summary (Melanie)](#11-command-summary-melanie)
+- [4. Using This Guide (Melanie)](#4-using-this-guide-melanie)
+    - [4.1 Symbols](#41-symbols)
+    - [4.2 Command Format](#42-command-format)
+        - [4.2.1 Arrowed Brackets](#421-arrowed-brackets)
+        - [4.2.2 Square Brackets](#422-square-brackets)
+- [5. Features (Melanie)]()
+    - [5.1 Deck Commands (Melanie)](#4-deck-commands-melanie)
+      - [5.1.1 Creating a deck: new](#creating-a-deck-new)
+      - [5.1.2 Removing a deck: remove](#removing-a-deck-remove)
+      - [5.1.3 Selecting a deck: select](#selecting-a-deck-select)
+    - [5.2. Entry Commands (Vignesh)](#5-entry-commands-gabriel)
+      - [5.2.1 Adding a new entry: add](#adding-a-new-entry-add-vignesh)
+      - [5.2.2 Editing an entry: edit](#editing-an-entry-edit-vignesh)
+      - [5.2.3 Deleting an entry: delete](#deleting-an-entry-delete-vignesh)
+    - [5.3. FlashCard Commands (Georgie)](#6-play-commands-georgie)
+      - [5.3.1 Editing an entry: edit](#editing-an-entry-edit-vignesh)
+      - [5.3.2 Deleting an entry: delete](#deleting-an-entry-delete-vignesh)
+    - [5.4. Extra Commands (Georgie)](#8-extra-commands-georgie)
+      - [5.4.1 Viewing help: help](#viewing-help-help)
+      - [5.4.2 Exiting the program: exit](#exiting-the-program-exit)
+- [6. Statistics (Melanie)]()
+- [7. FAQ (Gabriel)](#10-faq-gabriel)
+- [8. Command Summary (Gabriel)](#11-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -68,26 +73,48 @@ e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animal
     - `edit 1 t/イルカ`: Edits first Entry and change the existing translation `Iruka` into `イルカ`
 6. Refer to [Chapter 4 Features](#features) for a detailed explanation for each command.
 
-# 4. Features
+# 4. Using This Guide (Melanie)
+
+Before going into the features, lets get familiar with the symbols and command format used in this user guide
+
+## 4.1 Symbols
+
+[:information_source:] This symbol represents important information
+[:bulb:] This symbol represents additional information
+
+## 4.2 Command Format
 
 Every feature can be accessed with a command and every command has a certain format that
 has to be followed. The following is an explanation of how commands are described in this document.
 
-__Command Format__
+### 4.2.1 Arrowed Brackets
 
-- Words in `<Arrowed Brackets>` are compulsory parameters supplied by you. They are generally names or translations that
-are unique to each input. \
-e.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the supplied parameter, `NAME OF NEW DECK`
-- Words in `[Square Brackets]` are optional parameters. They may or may not be added by __at least one__ is required \
-e.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1 [w/word]` or `edit 1 [t/translation]`
+Words in `<Arrowed Brackets>` are compulsory inputs supplied by you. They are generally names or translations that
+are unique to each input.
+
+`new <NAME OF NEW DECK>` is a command that creates a new deck with the input, `NAME OF NEW DECK`
+
+E.g new Cat creates a new deck with the name Cat
+
+![GreenTea](images/Placeholder.png)
+
+### 4.2.2 Square Brackets
+
+Words in `[Square Brackets]` are optional inputs. They may or may not be added but __at least one__ is required
+
+E.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1 [w/word]` or `edit 1 [t/translation]`
 or `edit 1 [w/word] [t/translation]` __but cannot be written as__ `edit 1`
 
-## 4.1 Deck Commands (Melanie)
+# 5. Features
+
+In this section, we will go into each feature of GreenTea, along with their command format and examples.
+
+## 5.1 Deck Commands (Melanie)
 
 Decks are the foundation to GreenTea. A deck is simply a list of entries
 you write into GreenTea. A deck can be your favourite Chinese idioms or a list of animals in Japanese.
 
-### 4.1.1 Creating a deck: `new`
+### 5.1.1 Creating a deck: `new`
 
 Creates a new empty deck with given name.
 
@@ -100,13 +127,15 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-### 4.1.2 Removing a deck: `remove`
+### 5.1.2 Removing a deck: `remove`
 
 Removes a deck with the given index.
 
 Format: `remove <INDEX OF DECK>`
 
-**Note:** to get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
+To get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck.
+</div>
 
 Example: `remove 1`
 
@@ -114,32 +143,38 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-### 4.1.3 Selecting a deck: `select`
+### 5.1.3 Selecting a deck: `select`
 
-Selects a deck with the given index and lists all of it's entries.
+Selects a deck with the given index and lists all of its entries.
 
 Format: `select <INDEX OF DECK>`
 
-**Note:** The index of the deck is the number displayed it on the user interface.
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
+The index of the deck is the number displayed it on the user interface.
+</div>
 
 Examples: `select 1`
 
 Result:
 
 ![GreenTea](images/Placeholder.png)
-## 4.2 Entry Commands (Gabriel)
+## 5.2 Entry Commands (Gabriel)
 
 Entries are what make up a deck. They are the words or phrases that you wish to memorise in GreenTea.
 An entry is made up of two parts; the `word` and the `translation`. The `word` is written in the
 language you are most familiar and the `translation` is written in the language you wish to learn. In
 this User Guide, we will be assuming the language for `word` will be in English.
 
-**Note:** Before you start adding a new entry, remember to [select a deck first!](#selecting-a-deck-select)
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
+Before you start giving entry commands, remember to [select a deck first!](#selecting-a-deck-select)
+</div>
 
+<div markdown="span" class="alert alert-primary">:bulb: 
 Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
+</div>
 
-### 4.2.1 Adding a new entry: `add` (Vignesh)
+### 5.2.1 Adding a new entry: `add` (Vignesh)
 
 Adds a new entry with the given word and translation.
 
@@ -154,14 +189,16 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-### 4.2.2 Editing an entry: `edit` (Vignesh)
+### 5.2.2 Editing an entry: `edit` (Vignesh)
 
 Edits an entry with the given index using the given word or translation or both.
 
 Format: `edit 1 [w/word] [t/translation]`
 
-**Note:** The word and translation are both optional parameters. You can supply one parameter or both parameters but
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
+The word and translation are both optional parameters. You can supply one parameter or both parameters but
 you must supply at least one.
+</div>
 
 Examples:
 - `edit 1 w/hello`
@@ -172,7 +209,7 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-### 4.2.3 Deleting an entry: `delete` (Vignesh)
+### 5.2.3 Deleting an entry: `delete` (Vignesh)
 
 Deletes the entry with the given index.
 
@@ -182,14 +219,14 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-## 4.3 Play Commands (Georgie)
+## 5.3 Play Commands (Georgie)
 
 Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of all
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `play` and
 `stop`.
 
 
-## 4.3.1 Play a Game (Georgie)
+## 5.3.1 Play a Game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
@@ -197,28 +234,32 @@ to you at the end of the game.
 
 Format: `play`
 
-**Note:** Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
+Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
+</div>
 
 Result:
 ![GreenTea](images/Placeholder.png)
 
-## 4.3.2 Stopping a Game  (Georgie)
+## 5.3.2 Stopping a Game  (Georgie)
 
 Stop the current game prematurely.
 
 Format: `stop`
 
-**Note:** Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
+Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
+</div>
 
 Result:
 ![GreenTea](images/Placeholder.png)
 
-## 4.4 Extra Commands (Georgie)
+## 5.4 Extra Commands (Georgie)
 
 These are some extra commands that you can access at any point in the application except when
 you are currently playing a game.
 
-### 4.4.1 Viewing help: `help`
+### 5.4.1 Viewing help: `help`
 
 Shows a cheat-sheet of commands in addition to a link to this User Guide.
 
@@ -228,7 +269,7 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-### 4.4.2 Exiting the program: `exit`
+### 5.4.2 Exiting the program: `exit`
 
 Exits the program.
 
@@ -238,7 +279,7 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-## 5. Statistics (Melanie)
+## 6. Statistics (Melanie)
 
 Statistics are how you get to see your own progression as you continuously build and play GreenTea.
 The statistics tab displays the scores of up to your last 10 attempts in the form of
@@ -247,13 +288,15 @@ a bar chart.
 You can access the statistics tab by first `select`ing a deck before clicking the statistics tab at the top
 of the application.
 
-**Note:** Before you can view the statistics, remember to [select a deck first!](#selecting-a-deck-select)
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
+Before you can view the statistics, remember to [select a deck first!](#selecting-a-deck-select)
+</div>
 
 Result:
 
 ![GreenTea](images/Placeholder.png)
 
-## 6. FAQ (Gabriel)
+## 7. FAQ (Gabriel)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GreenTea home folder.
@@ -262,7 +305,7 @@ Result:
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
 ---
 
-## 7. Command Summary (Melanie)
+## 8. Command Summary (Gabriel)
 
 | Action                                                                                             | Format  <img width=00/>                                                                           |Examples |Remarks|
 | -------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------------------------|--------|--------|
