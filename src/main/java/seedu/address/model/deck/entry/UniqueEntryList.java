@@ -61,6 +61,16 @@ public class UniqueEntryList implements Iterable<Entry> {
     }
 
     /**
+     * Adds an entry to the list
+     * The entry can already exist in the list
+     * Only called in Leitner.java during quiz mode
+     */
+    public void addLeitner (Entry toAdd) {
+        requireNonNull(toAdd);
+        internalList.add(toAdd);
+    }
+
+    /**
      * Replaces the entry {@code target} in the list with {@code editedEntry}.
      * {@code target} must exist in the list.
      * The entry identity of {@code editedEntry} must not be the same as another existing entry in the list.

@@ -52,7 +52,7 @@ public class Leitner {
         UniqueEntryList list = new UniqueEntryList();
         for (Entry entry : entries) {
             Entry quiz = new Entry(new Word("???"), entry.getTranslation());
-            list.add(quiz);
+            list.addLeitner(quiz);
         }
         assert (!list.isEmpty());
         return list;
