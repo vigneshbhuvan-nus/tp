@@ -79,9 +79,9 @@ Before going into the features, lets get familiar with the symbols and command f
 
 ## 4.1 Symbols
 
-[:information_source:] This symbol represents important information
+:information_source: This symbol represents important information
 
-[:bulb:] This symbol represents additional information
+:bulb: This symbol represents additional information
 
 ## 4.2 Command Format
 
