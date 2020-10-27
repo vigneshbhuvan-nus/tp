@@ -2,9 +2,13 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -27,8 +31,8 @@ import seedu.address.ui.panels.StatisticsPanel;
 
 
 /**
- * The Main Window. Provides the basic application layout containing
- * a menu bar and space where other JavaFX elements can be placed.
+ * The Main Window. Provides the basic application layout containing a menu bar and space where
+ * other JavaFX elements can be placed.
  */
 public class MainWindow extends UiPart<Stage> {
 
@@ -105,12 +109,38 @@ public class MainWindow extends UiPart<Stage> {
         return primaryStage;
     }
 
+    public void addEventListeners() {
+        // switch tab event listener
+        tabPanelPlaceholder.getSelectionModel().selectedItemProperty().addListener(
+            (observable, oldValue, newValue) -> {
+                logger.info(String.format("Tab switched from %s to %s", oldValue.getId(), newValue.getId()));
+                switch(newValue.getId()){
+                    case "entries_panel":
+                        // to update / refresh entries on this panel
+                        break;
+                    case "start_panel":
+                        // to update / refresh entries on this panel
+                        break;
+                    case "quiz_panel":
+                        // to update / refresh entries on this panel
+                        break;
+                    case "statistics_panel":
+                        handleStatisticsPanel();
+                        break;
+                    default:
+                        break;
+                }
+            }
+        );
+    }
+
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
     }
 
     /**
      * Sets the accelerator of a MenuItem.
+     *
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -149,7 +179,8 @@ public class MainWindow extends UiPart<Stage> {
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList()); //get the initial decklist
         deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
-        entryListPanel = new EntryListPanel(logic.getFilteredEntryList()); //get the initial entrylist from model
+        entryListPanel = new EntryListPanel(
+            logic.getFilteredEntryList()); //get the initial entrylist from model
         entryListPanelPlaceholder.getChildren().add(entryListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -160,6 +191,8 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+
+        handleStatisticsPanel();
     }
 
     /**
@@ -196,7 +229,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
+            (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         // do clean up here 1. register the logout event 2. save the stats to json
         helpWindow.hide();
@@ -207,19 +240,19 @@ public class MainWindow extends UiPart<Stage> {
         currentView = logic.getCurrentView();
 
         switch (currentView) {
-        case ENTRY_VIEW:
-            tabPanelPlaceholder.getSelectionModel().select(ENTRY_INDEX);
-            break;
-        case QUIZ_VIEW:
-        case SCORE_VIEW:
-            tabPanelPlaceholder.getSelectionModel().select(QUIZ_INDEX);
-            break;
-        case STATISTICS_VIEW:
-            tabPanelPlaceholder.getSelectionModel().select(STATISTICS_INDEX);
-            break;
-        default:
-            tabPanelPlaceholder.getSelectionModel().select(START_INDEX);
-            break;
+            case ENTRY_VIEW:
+                tabPanelPlaceholder.getSelectionModel().select(ENTRY_INDEX);
+                break;
+            case QUIZ_VIEW:
+            case SCORE_VIEW:
+                tabPanelPlaceholder.getSelectionModel().select(QUIZ_INDEX);
+                break;
+            case STATISTICS_VIEW:
+                tabPanelPlaceholder.getSelectionModel().select(STATISTICS_INDEX);
+                break;
+            default:
+                tabPanelPlaceholder.getSelectionModel().select(START_INDEX);
+                break;
         }
     }
 
@@ -228,9 +261,15 @@ public class MainWindow extends UiPart<Stage> {
         quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
 
+    private void handleStatisticsPanel() {
+        StatisticsPanel statisticsPanel = new StatisticsPanel(logic, logic.getCurrentIndex());
+        statisticsPanelPlaceholder.getChildren().add(statisticsPanel.getRoot());
+    }
+
+
     private void handleScorePanel() {
-        ScorePanel scorePanel = new ScorePanel(logic.getLastScore(), logic.getFilteredEntryList().size());
-        quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
+        ScorePanel scorePanel = new ScorePanel(logic.getLastScore(),
+            logic.getFilteredEntryList().size()); quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
     }
 
     public EntryListPanel getEntryListPanel() {
@@ -255,7 +294,8 @@ public class MainWindow extends UiPart<Stage> {
      *
      * @see seedu.address.logic.Logic#execute(String)
      */
-    private CommandResult executeCommand(String commandText) throws CommandException, ParseException {
+    private CommandResult executeCommand(String commandText)
+        throws CommandException, ParseException {
         try {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
@@ -269,12 +309,17 @@ public class MainWindow extends UiPart<Stage> {
                 handleExit();
             }
 
+            // force the views to fetch and render new data
             if (logic.getCurrentView() == View.SCORE_VIEW) {
                 handleScorePanel();
             }
 
             if (logic.getCurrentView() == View.QUIZ_VIEW) {
                 handleQuizMode(commandText);
+            }
+
+            if (logic.getCurrentView() == View.STATISTICS_VIEW) {
+                handleStatisticsPanel();
             }
 
             if (logic.getCurrentView() != this.currentView) {
