@@ -13,7 +13,7 @@ public class QuizAttempt {
     private int duration; // time in seconds
     private LocalDateTime takenAt;
     private List<QuestionAttempt> questionAttempts;
-    private Scoring scoringMethod;
+    private final Scoring scoringMethod;
 
     /**
      *

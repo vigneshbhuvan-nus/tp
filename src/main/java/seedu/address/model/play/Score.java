@@ -1,13 +1,13 @@
 package seedu.address.model.play;
 
 public class Score {
+
     public static final String MESSAGE_CONSTRAINTS = "Score cannot be negative";
 
     private double maxScore;
     private double yourScore;
 
     /**
-     *
      * @param maxScore
      * @param yourScore
      */
@@ -24,8 +24,11 @@ public class Score {
         return yourScore;
     }
 
+    public double getScoreInPercentage() {
+        return (yourScore / maxScore) * 100.0;
+    }
+
     /**
-     *
      * @param score
      * @return
      */
@@ -38,11 +41,9 @@ public class Score {
 
     @Override
     public String toString() {
-        return "Score{"
-                + "maxScore="
-                + maxScore
-                + ", yourScore="
-                + yourScore
-                + '}';
+        return "Score{" +
+            "maxScore=" + maxScore +
+            ", yourScore=" + yourScore +
+            '}';
     }
 }
