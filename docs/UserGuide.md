@@ -79,8 +79,9 @@ Before going into the features, lets get familiar with the symbols and command f
 
 ## 4.1 Symbols
 
-[:information_source:] This symbol represents important information
-[:bulb:] This symbol represents additional information
+:information_source: This symbol represents important information
+
+:bulb: This symbol represents additional information
 
 ## 4.2 Command Format
 
@@ -133,9 +134,8 @@ Removes a deck with the given index.
 
 Format: `remove <INDEX OF DECK>`
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:**
+:information_source: **Note:**
 To get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck.
-</div>
 
 Example: `remove 1`
 
@@ -149,9 +149,8 @@ Selects a deck with the given index and lists all of its entries.
 
 Format: `select <INDEX OF DECK>`
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:**
+:information_source: **Note:**
 The index of the deck is the number displayed it on the user interface.
-</div>
 
 Examples: `select 1`
 
@@ -165,14 +164,12 @@ An entry is made up of two parts; the `word` and the `translation`. The `word` i
 language you are most familiar and the `translation` is written in the language you wish to learn. In
 this User Guide, we will be assuming the language for `word` will be in English.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:**
+:information_source: **Note:**
 Before you start giving entry commands, remember to [select a deck first!](#selecting-a-deck-select)
-</div>
 
-<div markdown="span" class="alert alert-primary">:bulb: 
-Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
+
+:bulb: Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
-</div>
 
 ### 5.2.1 Adding a new entry: `add` (Vignesh)
 
@@ -195,10 +192,9 @@ Edits an entry with the given index using the given word or translation or both.
 
 Format: `edit 1 [w/word] [t/translation]`
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:**
+:information_source: **Note:**
 The word and translation are both optional parameters. You can supply one parameter or both parameters but
 you must supply at least one.
-</div>
 
 Examples:
 - `edit 1 w/hello`
@@ -234,9 +230,8 @@ to you at the end of the game.
 
 Format: `play`
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:**
+:information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
-</div>
 
 Result:
 ![GreenTea](images/Placeholder.png)
@@ -247,9 +242,8 @@ Stop the current game prematurely.
 
 Format: `stop`
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:**
+:information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
-</div>
 
 Result:
 ![GreenTea](images/Placeholder.png)
@@ -288,9 +282,8 @@ a bar chart.
 You can access the statistics tab by first `select`ing a deck before clicking the statistics tab at the top
 of the application.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:**
+:information_source: **Note:**
 Before you can view the statistics, remember to [select a deck first!](#selecting-a-deck-select)
-</div>
 
 Result:
 
