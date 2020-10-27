@@ -12,24 +12,24 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [4.2 Command Format](#42-command-format)
         - [4.2.1 Arrowed Brackets](#421-arrowed-brackets)
         - [4.2.2 Square Brackets](#422-square-brackets)
-- [5. Features (Melanie)]()
-    - [5.1 Deck Commands (Melanie)](#4-deck-commands-melanie)
-      - [5.1.1 Creating a deck: new](#creating-a-deck-new)
-      - [5.1.2 Removing a deck: remove](#removing-a-deck-remove)
-      - [5.1.3 Selecting a deck: select](#selecting-a-deck-select)
-    - [5.2. Entry Commands (Vignesh)](#5-entry-commands-gabriel)
-      - [5.2.1 Adding a new entry: add](#adding-a-new-entry-add-vignesh)
-      - [5.2.2 Editing an entry: edit](#editing-an-entry-edit-vignesh)
-      - [5.2.3 Deleting an entry: delete](#deleting-an-entry-delete-vignesh)
-    - [5.3. FlashCard Commands (Georgie)](#6-play-commands-georgie)
-      - [5.3.1 Editing an entry: edit](#editing-an-entry-edit-vignesh)
-      - [5.3.2 Deleting an entry: delete](#deleting-an-entry-delete-vignesh)
-    - [5.4. Extra Commands (Georgie)](#8-extra-commands-georgie)
-      - [5.4.1 Viewing help: help](#viewing-help-help)
-      - [5.4.2 Exiting the program: exit](#exiting-the-program-exit)
-- [6. Statistics (Melanie)]()
-- [7. FAQ (Gabriel)](#10-faq-gabriel)
-- [8. Command Summary (Gabriel)](#11-command-summary-gabriel)
+- [5. Features (Melanie)](#5-features)
+    - [5.1 Deck Commands (Melanie)](#51-deck-commands-melanie)
+      - [5.1.1 Creating a deck: new](#511-creating-a-deck-new)
+      - [5.1.2 Removing a deck: remove](#512-removing-a-deck-remove)
+      - [5.1.3 Selecting a deck: select](#513-selecting-a-deck-select)
+    - [5.2. Entry Commands (Vignesh)](#52-entry-commands-gabriel)
+      - [5.2.1 Adding a new entry: add](#521-adding-a-new-entry-add-vignesh)
+      - [5.2.2 Editing an entry: edit](#522-editing-an-entry-edit-vignesh)
+      - [5.2.3 Deleting an entry: delete](#523-deleting-an-entry-delete-vignesh)
+    - [5.3. PLay Commands (Georgie)](#53-play-commands-georgie)
+      - [5.3.1 Play a Game](#531-play-a-game-georgie)
+      - [5.3.2 Stop a Game](#532-stop-a-game--georgie)
+    - [5.4. Extra Commands (Georgie)](#54-extra-commands-georgie)
+      - [5.4.1 Viewing help: help](#541-viewing-help-help)
+      - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
+- [6. Statistics (Melanie)](#6-statistics-melanie)
+- [7. FAQ (Gabriel)](#7-faq-gabriel)
+- [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -165,7 +165,7 @@ language you are most familiar and the `translation` is written in the language 
 this User Guide, we will be assuming the language for `word` will be in English.
 
 :information_source: **Note:**
-Before you start giving entry commands, remember to [select a deck first!](#selecting-a-deck-select)
+Before you start giving entry commands, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 
 :bulb: Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
@@ -231,19 +231,19 @@ to you at the end of the game.
 Format: `play`
 
 :information_source: **Note:**
-Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
+Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
 ![GreenTea](images/Placeholder.png)
 
-## 5.3.2 Stopping a Game  (Georgie)
+## 5.3.2 Stop a Game  (Georgie)
 
 Stop the current game prematurely.
 
 Format: `stop`
 
 :information_source: **Note:**
-Before you start playing a new game, remember to [select a deck first!](#selecting-a-deck-select)
+Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
 ![GreenTea](images/Placeholder.png)
@@ -283,7 +283,7 @@ You can access the statistics tab by first `select`ing a deck before clicking th
 of the application.
 
 :information_source: **Note:**
-Before you can view the statistics, remember to [select a deck first!](#selecting-a-deck-select)
+Before you can view the statistics, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
 
