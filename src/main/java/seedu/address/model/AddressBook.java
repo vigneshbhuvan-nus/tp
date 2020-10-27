@@ -96,6 +96,16 @@ public class AddressBook implements ReadOnlyAddressBook {
             observedEntries.add(entry); //add it to the GUI
         }
     }
+
+    /**
+     * Replaces the current observed entry list when given a UniqueEntryList object
+     * Only called during quiz mode
+     */
+    public void replaceEntryListLeitner (UniqueEntryList newEntryList) {
+        for (Entry entry : newEntryList) {
+            observedEntries.addLeitner(entry);
+        }
+    }
     //// list overwrite operations
     /*
      *

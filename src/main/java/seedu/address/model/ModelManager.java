@@ -286,7 +286,7 @@ public class ModelManager implements Model {
         currentIndex = 0;
 
         addressBook.resetEntryList();
-        addressBook.replaceEntryList(leitner.getUniqueEntryList());
+        addressBook.replaceEntryListLeitner(leitner.getUniqueEntryList());
 
         currentQuizAttempt = new QuizAttempt(new BinaryScoring());
     }
