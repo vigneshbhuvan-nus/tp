@@ -2,13 +2,13 @@ package seedu.address.ui.panels;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
@@ -29,6 +29,7 @@ public class StatisticsPanel extends UiPart<Region> {
     private Label lastLoginLabel;
     @FXML
     private LineChart<String, Number> statisticsLineChart;
+    private String chartTitle;
 
     private static class DataPoint {
 
@@ -51,12 +52,10 @@ public class StatisticsPanel extends UiPart<Region> {
         @Override
         public String toString() {
             return "DataPoint{" + "scoreInPercentage="
-                + scoreInPercentage + ", takenAt=" + takenAt + '}';
+                    + scoreInPercentage + ", takenAt=" + takenAt + '}';
 
         }
     }
-
-    String chartTitle;
 
     /**
      * Constructor for statistics panel
@@ -69,8 +68,8 @@ public class StatisticsPanel extends UiPart<Region> {
         ObservableList<Deck> originalDecks = logic.getFilteredDeckList();
         // decide which deck to get, or get all of them if indexOfSelectedDeck==-1
         List<Deck> decks = IntStream.range(0, originalDecks.size())
-            .filter(idx -> indexOfSelectedDeck == -1 || idx == indexOfSelectedDeck)
-            .mapToObj(originalDecks::get).collect(Collectors.toList());
+                .filter(idx -> indexOfSelectedDeck == -1 || idx == indexOfSelectedDeck)
+                .mapToObj(originalDecks::get).collect(Collectors.toList());
 
         if (indexOfSelectedDeck == -1) {
             chartTitle = "Recent performance over all decks.";
@@ -93,8 +92,8 @@ public class StatisticsPanel extends UiPart<Region> {
         series.setName("");
         for (DataPoint dataPoint : dataPoints) {
             series.getData()
-                .add(new XYChart.Data<>(dataPoint.getTakenAt().toString(),
-                    dataPoint.getScoreInPercentage()));
+                    .add(new XYChart.Data<>(dataPoint.getTakenAt().toString(),
+                            dataPoint.getScoreInPercentage()));
         }
         statisticsLineChart.getData().add(series);
     }

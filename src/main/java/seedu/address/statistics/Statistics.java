@@ -13,7 +13,6 @@ public class Statistics {
     private List<Event> eventLog;
 
     /**
-     *
      * @param timesOpened
      * @param eventLog
      */
@@ -51,10 +50,10 @@ public class Statistics {
 
     @Override
     public String toString() {
-        return "Statistics{" +
-            "timesOpened=" + timesOpened +
-            ", eventLog=" + eventLog +
-            '}';
+        return "Statistics{"
+                + "timesOpened=" + timesOpened
+                + ", eventLog=" + eventLog
+                + '}';
     }
 
     public List<Event> getEventLog() {

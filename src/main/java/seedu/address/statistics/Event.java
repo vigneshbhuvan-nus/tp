@@ -8,7 +8,6 @@ public class Event {
     private LocalDateTime localDateTime;
 
     /**
-     *
      * @param eventType
      * @param localDateTime
      */
@@ -18,7 +17,6 @@ public class Event {
     }
 
     /**
-     *
      * @param eventType
      */
     public Event(EventType eventType) {
@@ -32,10 +30,10 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" +
-            "eventType=" + eventType +
-            ", localDateTime=" + localDateTime +
-            '}';
+        return "Event{"
+                + "eventType=" + eventType
+                + ", localDateTime=" + localDateTime
+                + '}';
     }
 
     public LocalDateTime getLocalDateTime() {
