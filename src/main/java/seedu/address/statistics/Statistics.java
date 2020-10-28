@@ -49,6 +49,14 @@ public class Statistics {
         return timesOpened;
     }
 
+    @Override
+    public String toString() {
+        return "Statistics{" +
+            "timesOpened=" + timesOpened +
+            ", eventLog=" + eventLog +
+            '}';
+    }
+
     public List<Event> getEventLog() {
         return eventLog;
     }

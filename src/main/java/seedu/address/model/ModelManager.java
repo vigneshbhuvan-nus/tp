@@ -41,6 +41,7 @@ public class ModelManager implements Model {
     private Leitner leitner;
     private int quizLength = 2;
     private int currentIndex = 0;
+    private int statisticsDeckIndex = -1; // sentinel value of -1 to indicate we show stats of all decks
     private QuizAttempt currentQuizAttempt;
 
 
@@ -105,6 +106,20 @@ public class ModelManager implements Model {
     @Override
     public void setCurrentView(View view) {
         this.currentView.setView(view);
+    }
+
+    @Override
+    public int setStatisticsDeckId(int deckIndex) {
+        if (deckIndex < 0 || deckIndex >= filteredDecks.size()) {
+            deckIndex = -1;
+        }
+
+        return (this.statisticsDeckIndex = deckIndex);
+    }
+
+    @Override
+    public int getStatisticsDeckId() {
+        return this.statisticsDeckIndex;
     }
 
     @Override
