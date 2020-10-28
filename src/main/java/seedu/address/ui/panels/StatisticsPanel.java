@@ -6,7 +6,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
-
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
@@ -22,8 +23,6 @@ import seedu.address.ui.UiPart;
 public class StatisticsPanel extends UiPart<Region> {
 
     private static final String FXML = "StatisticsPanel.fxml";
-
-    private final int currentIndex;
 
     @FXML
     private Label lastLoginLabel;
@@ -51,20 +50,34 @@ public class StatisticsPanel extends UiPart<Region> {
         @Override
         public String toString() {
             return "DataPoint{"
-                    + "scoreInPercentage=" + scoreInPercentage
-                    + ", takenAt=" + takenAt
-                    + '}';
+                + "scoreInPercentage=" + scoreInPercentage
+                + ", takenAt=" + takenAt
+                + '}';
         }
     }
+
+    String chartTitle;
 
     /**
      * Constructor for statistics panel
      */
-    public StatisticsPanel(Logic logic, int currentIndex) {
+    public StatisticsPanel(Logic logic, int indexOfSelectedDeck) {
         super(FXML);
-        this.currentIndex = currentIndex;
 
-        ObservableList<Deck> decks = logic.getFilteredDeckList();
+        // System.out.println("deck selected = " + indexOfSelectedDeck);
+
+        ObservableList<Deck> originalDecks = logic.getFilteredDeckList();
+        // decide which deck to get, or get all of them if indexOfSelectedDeck==-1
+        List<Deck> decks = IntStream.range(0, originalDecks.size())
+            .filter(idx -> indexOfSelectedDeck == -1 || idx == indexOfSelectedDeck)
+            .mapToObj(originalDecks::get).collect(Collectors.toList());
+
+        if (indexOfSelectedDeck == -1) {
+            chartTitle = "Recent performance over all decks.";
+        } else {
+            chartTitle = "Recent performance over deck " + decks.get(0).getDeckName();
+        }
+
         StatisticsManager statisticsManager = logic.getStatisticsManager();
 
         plotDataPoints(getDeckPlottingPoints(decks));
@@ -75,28 +88,26 @@ public class StatisticsPanel extends UiPart<Region> {
     }
 
     private void plotDataPoints(List<DataPoint> dataPoints) {
-        statisticsLineChart.setTitle("Performance on last 10 quizzes.");
-
+        statisticsLineChart.setTitle(chartTitle);
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("");
         for (DataPoint dataPoint : dataPoints) {
             System.out.println(dataPoint.toString());
             series.getData().add(new XYChart.Data<>(dataPoint.getTakenAt().toString(),
-                    dataPoint.getScoreInPercentage()));
+                dataPoint.getScoreInPercentage()));
         }
         statisticsLineChart.getData().add(series);
-
     }
 
     /**
      * Helper function to compute the statistics for plotting/displaying
      */
-    private List<DataPoint> getDeckPlottingPoints(ObservableList<Deck> decks) {
-        List<List<QuizAttempt>> listsToMerge = new ArrayList<>();
-
-        for (Deck deck : decks) {
-            listsToMerge.add(deck.getQuizAttempts());
-        }
+    private List<DataPoint> getDeckPlottingPoints(List<Deck> decks) {
+        // List<List<QuizAttempt>> listsToMerge = new ArrayList<>();
+        //
+        // for (Deck deck : decks) {
+        // listsToMerge.add(deck.getQuizAttempts());
+        // }
 
         List<DataPoint> ret = new ArrayList<>();
 

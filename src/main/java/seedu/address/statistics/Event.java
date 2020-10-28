@@ -30,6 +30,14 @@ public class Event {
         return eventType;
     }
 
+    @Override
+    public String toString() {
+        return "Event{" +
+            "eventType=" + eventType +
+            ", localDateTime=" + localDateTime +
+            '}';
+    }
+
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
     }

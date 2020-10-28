@@ -17,10 +17,15 @@ import seedu.address.model.view.View;
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Entry> PREDICATE_SHOW_ALL_ENTRIES = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Deck> PREDICATE_SHOW_ALL_DECKS = unused -> true;
 
     /**
@@ -58,7 +63,9 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
 
     /**
@@ -67,29 +74,30 @@ public interface Model {
     boolean hasEntry(Entry entry);
 
     /**
-     * Deletes the given entry.
-     * The entry must exist in the word bank.
+     * Deletes the given entry. The entry must exist in the word bank.
      */
     void deleteEntry(Entry target);
 
     /**
-     * Adds the given entry.
-     * {@code entry} must not already exist in the word bank.
+     * Adds the given entry. {@code entry} must not already exist in the word bank.
      */
     void addEntry(Entry entry);
 
     /**
-     * Replaces the given entry {@code target} with {@code editedEntry}.
-     * {@code target} must exist in the address book.
-     * The entry identity of {@code editedEntry} must not be the same as another existing entry in the word bank.
+     * Replaces the given entry {@code target} with {@code editedEntry}. {@code target} must exist
+     * in the address book. The entry identity of {@code editedEntry} must not be the same as
+     * another existing entry in the word bank.
      */
     void setEntry(Entry target, Entry editedEntry);
 
-    /** Returns an unmodifiable view of the filtered entry list */
+    /**
+     * Returns an unmodifiable view of the filtered entry list
+     */
     ObservableList<Entry> getFilteredEntryList();
 
     /**
      * Updates the filter of the filtered entry list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredEntryList(Predicate<Entry> predicate);
@@ -98,34 +106,37 @@ public interface Model {
      * Returns true if a deck with the same identity as {@code deck} exists in the word bank.
      */
     boolean hasDeck(Deck deck);
+
     /**
-     * Removes the given deck.
-     * The deck must exist in the word bank.
+     * Removes the given deck. The deck must exist in the word bank.
      */
     void removeDeck(Deck target);
 
     /**
-     * Adds the given deck.
-     * {@code deck} must not already exist in the word bank.
+     * Adds the given deck. {@code deck} must not already exist in the word bank.
      */
     void addDeck(Deck deck);
 
     /**
      * Selects the deck at the specified index
+     *
      * @param index of the selected deck
      */
-    void selectDeck (Index index);
+    void selectDeck(Index index);
 
     /**
      * Retrieves the deck last selected by the user
      */
     Deck getCurrentDeck();
 
-    /** Returns an unmodifiable view of the filtered deck list */
+    /**
+     * Returns an unmodifiable view of the filtered deck list
+     */
     ObservableList<Deck> getFilteredDeckList();
 
     /**
      * Updates the filter of the filtered deck list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredDeckList(Predicate<Deck> predicate);
@@ -150,10 +161,21 @@ public interface Model {
 
     //int editDistance(String answer, String correctAnswer, int answerLength, int correctAnswerLength);
     //view methods
+
     /**
      * Changes the current view of the system
      */
-    void setCurrentView (View view);
+    void setCurrentView(View view);
+
+    /**
+     * Changes the current deck showing for stats pane
+     */
+    int setStatisticsDeckId(int deckIndex);
+
+    /**
+     * Get the current deck showing for stats pane
+     */
+    int getStatisticsDeckId();
 
     /**
      * Gets the current view of the system
@@ -163,14 +185,13 @@ public interface Model {
     //UI methods
 
     /**
-     * Returns the current leitner object to be passed to logic
-     * Should only be called when the user is playing a quiz.
+     * Returns the current leitner object to be passed to logic Should only be called when the user
+     * is playing a quiz.
      */
     Leitner getLeitner();
 
     /**
-     * Returns the current quiz question that the user is at
-     * Default value is 0
+     * Returns the current quiz question that the user is at Default value is 0
      */
     int getCurrentIndex();
 

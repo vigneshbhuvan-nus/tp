@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.stage.*?>
 
-<fx:root minHeight="800.0" minWidth="1000.0" onCloseRequest="#handleExit" title="Word Bank"
+<fx:root minHeight="800.0" minWidth="1000.0" onCloseRequest="#handleExit" title="Green Tea"
   type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0.3-internal"
   xmlns:fx="http://javafx.com/fxml/1">
   <icons>
-    <Image url="@/images/address_book_32.png"/>
+    <Image url="/images/green_tea_icon.png"/>
   </icons>
   <scene>
     <Scene>

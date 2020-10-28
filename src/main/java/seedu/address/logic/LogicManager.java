@@ -134,6 +134,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public int getStatisticsDeckId() {
+        return model.getStatisticsDeckId();
+    }
+
+    @Override
     public StatisticsManager getStatisticsManager() {
         return statisticsManager;
     }
@@ -147,5 +152,7 @@ public class LogicManager implements Logic {
     public void doCleanup() {
         // TODO: save stats to json file on disk
         statisticsManager.doCleanup();
+        System.out.println("cleaning up:");
+        System.out.println(statisticsManager.getStatistics());
     }
 }
