@@ -123,7 +123,7 @@ Format: `new <NAME OF NEW DECK>`
 
 Examples:
 - `new Korean Dramas`
-- `new Chinese Idioms`
+- `new Chinese Idioms I hate everything`
 
 Result:
 
