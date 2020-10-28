@@ -41,9 +41,9 @@ public class Score {
 
     @Override
     public String toString() {
-        return "Score{" +
-            "maxScore=" + maxScore +
-            ", yourScore=" + yourScore +
-            '}';
+        return "Score{"
+                + "maxScore=" + maxScore
+                + ", yourScore=" + yourScore
+                + '}';
     }
 }

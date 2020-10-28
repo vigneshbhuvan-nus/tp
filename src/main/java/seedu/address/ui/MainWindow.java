@@ -2,13 +2,9 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
@@ -109,26 +105,29 @@ public class MainWindow extends UiPart<Stage> {
         return primaryStage;
     }
 
+    /**
+     * Adds event listeners to update GUI when user clicks on a component
+     */
     public void addEventListeners() {
         // switch tab event listener
-        tabPanelPlaceholder.getSelectionModel().selectedItemProperty().addListener(
-            (observable, oldValue, newValue) -> {
+        tabPanelPlaceholder.getSelectionModel().selectedItemProperty().addListener((
+                observable, oldValue, newValue) -> {
                 logger.info(String.format("Tab switched from %s to %s", oldValue.getId(), newValue.getId()));
-                switch(newValue.getId()){
-                    case "entries_panel":
-                        // to update / refresh entries on this panel
-                        break;
-                    case "start_panel":
-                        // to update / refresh entries on this panel
-                        break;
-                    case "quiz_panel":
-                        // to update / refresh entries on this panel
-                        break;
-                    case "statistics_panel":
-                        handleStatisticsPanel();
-                        break;
-                    default:
-                        break;
+                switch(newValue.getId()) {
+                case "entries_panel":
+                    // to update / refresh entries on this panel
+                    break;
+                case "start_panel":
+                    // to update / refresh entries on this panel
+                    break;
+                case "quiz_panel":
+                    // to update / refresh entries on this panel
+                    break;
+                case "statistics_panel":
+                    handleStatisticsPanel();
+                    break;
+                default:
+                    break;
                 }
             }
         );
@@ -240,19 +239,19 @@ public class MainWindow extends UiPart<Stage> {
         currentView = logic.getCurrentView();
 
         switch (currentView) {
-            case ENTRY_VIEW:
-                tabPanelPlaceholder.getSelectionModel().select(ENTRY_INDEX);
-                break;
-            case QUIZ_VIEW:
-            case SCORE_VIEW:
-                tabPanelPlaceholder.getSelectionModel().select(QUIZ_INDEX);
-                break;
-            case STATISTICS_VIEW:
-                tabPanelPlaceholder.getSelectionModel().select(STATISTICS_INDEX);
-                break;
-            default:
-                tabPanelPlaceholder.getSelectionModel().select(START_INDEX);
-                break;
+        case ENTRY_VIEW:
+            tabPanelPlaceholder.getSelectionModel().select(ENTRY_INDEX);
+            break;
+        case QUIZ_VIEW:
+        case SCORE_VIEW:
+            tabPanelPlaceholder.getSelectionModel().select(QUIZ_INDEX);
+            break;
+        case STATISTICS_VIEW:
+            tabPanelPlaceholder.getSelectionModel().select(STATISTICS_INDEX);
+            break;
+        default:
+            tabPanelPlaceholder.getSelectionModel().select(START_INDEX);
+            break;
         }
     }
 
@@ -266,10 +265,10 @@ public class MainWindow extends UiPart<Stage> {
         statisticsPanelPlaceholder.getChildren().add(statisticsPanel.getRoot());
     }
 
-
     private void handleScorePanel() {
         ScorePanel scorePanel = new ScorePanel(logic.getLastScore(),
-            logic.getFilteredEntryList().size()); quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
+                logic.getFilteredEntryList().size());
+        quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
     }
 
     public EntryListPanel getEntryListPanel() {

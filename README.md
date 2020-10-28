@@ -5,8 +5,17 @@
 
 ![Ui](docs/images/Ui.png)
 
+### About Green Tea
+GreenTea is a desktop app for learning a new language, designed for users to **have fun** through quizzes while keeping
+track of their **learning progress**.
 
-* The project is a platform for users to record words of various languages with their translations
-  * It is designed for use with a **CLI** (Command Line Interface)
-  * It comes with a **reasonable level of user and developer documentation**.
+Green Tea is designed for use with a **CLI** (Command Line Interface).
+
+### Documentation Links
+* [About Us](docs/AboutUs.md)
+* [Developer Guide](docs/DeveloperGuide.md)
+* [User Guide](docs/UserGuide.md)
+
+### Acknowledgements
 * This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org).
+* Libraries used: [JavaFX](https://openjfx.io/)

@@ -41,7 +41,7 @@ public class DeckCard extends UiPart<Region> {
         this.deck = deck;
         id.setText(displayedIndex + ". ");
         name.setText(deck.getDeckName().toString());
-        email.setText("Entries:");
+        email.setText("");
     }
 
     @Override
