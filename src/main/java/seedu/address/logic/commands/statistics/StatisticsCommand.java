@@ -11,7 +11,7 @@ import seedu.address.model.view.View;
 public class StatisticsCommand extends Command {
 
     public static final String COMMAND_WORD = "stats";
-    public static String MESSAGE_SUCCESS = "Viewing statistics.";
+    private static String MESSAGE_SUCCESS = "Viewing statistics.";
     public final int deckIndex;
 
     public StatisticsCommand(int deckIndex) {
@@ -22,13 +22,13 @@ public class StatisticsCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         int currentDeckIndex = model
-            .setStatisticsDeckId(deckIndex - 1); // since our decks count from deck
+                .setStatisticsDeckId(deckIndex - 1); // since our decks count from deck
 
         if (currentDeckIndex == -1) { // invalid deck, or none
             MESSAGE_SUCCESS = "Viewing statistics across all decks.";
         } else {
             MESSAGE_SUCCESS = String.format("Viewing statistics for deck %s (id=%d)",
-                model.getFilteredDeckList().get(currentDeckIndex).getDeckName(), currentDeckIndex);
+                    model.getFilteredDeckList().get(currentDeckIndex).getDeckName(), currentDeckIndex);
         }
 
         model.setCurrentView(View.STATISTICS_VIEW);

@@ -16,10 +16,10 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
-import seedu.address.model.play.scoring.BinaryScoring;
-import seedu.address.model.play.scoring.QuizAttempt;
 import seedu.address.model.play.Leitner;
 import seedu.address.model.play.Score;
+import seedu.address.model.play.scoring.BinaryScoring;
+import seedu.address.model.play.scoring.QuizAttempt;
 import seedu.address.model.view.CurrentView;
 import seedu.address.model.view.View;
 

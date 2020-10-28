@@ -13,7 +13,7 @@ public class StatisticsCommandParser implements Parser<StatisticsCommand> {
 
         try {
             deckIndex = Integer.parseInt(userInput);
-        } catch (NumberFormatException numberFormatException){
+        } catch (NumberFormatException numberFormatException) {
             // do nothing
         }
 
