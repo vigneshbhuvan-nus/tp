@@ -2,6 +2,7 @@ package seedu.address.ui.panels;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -11,14 +12,19 @@ import java.util.stream.IntStream;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
+import javax.xml.crypto.Data;
 import seedu.address.logic.Logic;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.scoring.QuizAttempt;
+import seedu.address.statistics.Statistics;
 import seedu.address.statistics.StatisticsManager;
 import seedu.address.ui.UiPart;
+import seedu.address.ui.deck.DeckListPanel;
 
 public class StatisticsPanel extends UiPart<Region> {
 
@@ -49,10 +55,9 @@ public class StatisticsPanel extends UiPart<Region> {
 
         @Override
         public String toString() {
-            return "DataPoint{"
-                + "scoreInPercentage=" + scoreInPercentage
-                + ", takenAt=" + takenAt
-                + '}';
+            return "DataPoint{" + "scoreInPercentage="
+                + scoreInPercentage + ", takenAt=" + takenAt + '}';
+
         }
     }
 
@@ -92,9 +97,9 @@ public class StatisticsPanel extends UiPart<Region> {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("");
         for (DataPoint dataPoint : dataPoints) {
-            System.out.println(dataPoint.toString());
-            series.getData().add(new XYChart.Data<>(dataPoint.getTakenAt().toString(),
-                dataPoint.getScoreInPercentage()));
+            series.getData()
+                .add(new XYChart.Data<>(dataPoint.getTakenAt().toString(),
+                    dataPoint.getScoreInPercentage()));
         }
         statisticsLineChart.getData().add(series);
     }
