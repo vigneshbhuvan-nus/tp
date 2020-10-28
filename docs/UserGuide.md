@@ -6,39 +6,56 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
-- [3. Getting Started (Gabriel)](#3-lets-get-started-gabriel)
+- [3. Getting Started (Gabriel)](#3-getting-started-gabriel)
 - [4. Using This Guide (Melanie)](#4-using-this-guide-melanie)
     - [4.1 Symbols](#41-symbols)
     - [4.2 Command Format](#42-command-format)
         - [4.2.1 Arrowed Brackets](#421-arrowed-brackets)
         - [4.2.2 Square Brackets](#422-square-brackets)
-- [5. Features (Melanie)](#5-features)
-    - [5.1 Deck Commands (Melanie)](#51-deck-commands-melanie)
-      - [5.1.1 Creating a deck: new](#511-creating-a-deck-new)
-      - [5.1.2 Removing a deck: remove](#512-removing-a-deck-remove)
-      - [5.1.3 Selecting a deck: select](#513-selecting-a-deck-select)
-    - [5.2. Entry Commands (Vignesh)](#52-entry-commands-gabriel)
-      - [5.2.1 Adding a new entry: add](#521-adding-a-new-entry-add-vignesh)
-      - [5.2.2 Editing an entry: edit](#522-editing-an-entry-edit-vignesh)
-      - [5.2.3 Deleting an entry: delete](#523-deleting-an-entry-delete-vignesh)
-    - [5.3. PLay Commands (Georgie)](#53-play-commands-georgie)
-      - [5.3.1 Play a Game](#531-play-a-game-georgie)
-      - [5.3.2 Stop a Game](#532-stop-a-game--georgie)
-    - [5.4. Extra Commands (Georgie)](#54-extra-commands-georgie)
-      - [5.4.1 Viewing help: help](#541-viewing-help-help)
-      - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
-- [6. Statistics (Melanie)](#6-statistics-melanie)
-- [7. FAQ (Gabriel)](#7-faq-gabriel)
-- [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
+- [5. Big Picture (Vignesh)](#5-big-picture)
+- [6. Features (Melanie)](#6-features)
+    - [6.1 Deck Commands (Melanie)](#61-deck-commands-melanie)
+      - [6.1.1 Creating a deck: new](#611-creating-a-deck-new)
+      - [6.1.2 Removing a deck: remove](#612-removing-a-deck-remove)
+      - [6.1.3 Selecting a deck: select](#613-selecting-a-deck-select)
+    - [6.2. Entry Commands (Vignesh)](#62-entry-commands-gabriel)
+      - [6.2.1 Adding a new entry: add](#621-adding-a-new-entry-add-vignesh)
+      - [6.2.2 Editing an entry: edit](#622-editing-an-entry-edit-vignesh)
+      - [6.2.3 Deleting an entry: delete](#623-deleting-an-entry-delete-vignesh)
+    - [6.3. PLay Commands (Georgie)](#63-play-commands-georgie)
+      - [6.3.1 Play a Game](#631-play-a-game-georgie)
+      - [6.3.2 Stop a Game](#632-stop-a-game--georgie)
+    - [6.4. Extra Commands (Georgie)](#64-extra-commands-georgie)
+      - [6.4.1 Viewing help: help](#641-viewing-help-help)
+      - [6.4.2 Exiting the program: exit](#642-exiting-the-program-exit)
+- [7. Statistics (Melanie)](#7-statistics-melanie)
+- [8. FAQ (Gabriel)](#8-faq-gabriel)
+- [9. Command Summary (Gabriel)](#9-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 
+<<<<<<< HEAD
 GreenTea is a desktop app for **learning a new language** in a **fun** and **engaging** way.
 GreenTea if **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
 GreenTea uses a proven memory retention system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d5edafae7f0)
 and implements it in the context of a FlashCard game. This app is great for users who wish to
 optimize their time learning a new language. In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly.
+=======
+*GreenTea* is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
+still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language, 
+but often struggle due to the difficulty of remembering new vocabulary. For many learners, vocabulary remains the most challenging aspect of learning a new language.
+We felt that we could help learners struggling with vocabulary to learn the language more efficiently. 
+Therefore, GreenTea uses a proven memory retention system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d6edafae7f0) 
+and implements it in the context of a FlashCard game. 
+
+**Fun Fact:** You may be wondering, why did we choose the name *GreenTea*? Well, in the initial stages of development, the app was intended for users looking to learn Japanese, hence the name *GreenTea*. 
+Although the application now allows for the learning of [many languages](http://www.unicode.org/charts/index.html), 
+we kept the name *GreenTea* to denote the cultural journey a user undertakes when using this application.  
+
+In this User Guide (UG), you will learn about the various commands and
+actions that would allow you to use GreenTea seamlessly and have an enjoyable journey with it.
+>>>>>>> userguide
 
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 1. GreenTea's Graphical User Interface (GUI)
@@ -65,6 +82,7 @@ To start using GreenTea:
 1. Download the latest jar file [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases/new)
 2. Copy the jar file to your folder of choice (we recommend on your desktop!)
 3. Double-Click the file to start the application. The GUI should appear in a few seconds
+<<<<<<< HEAD
 
 ![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
 Figure 2. Different parts fo GreenTea's GUI
@@ -79,6 +97,12 @@ been successfully carried out, or if there are errors in your command formats.
 4. Command Box - The command box is where you type in all your commands. Pressing **enter** on your keyboard will execute the commands.
 
 5. Try typing these commands to start playing with GreenTea
+=======
+![GreenTea](images/Placeholder.png)
+4. Typing the commands into the command box and pressing enter will execute the commands \
+e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animals
+6. Try typing these commands to start playing with GreenTea
+>>>>>>> userguide
     - `new Japanese Animals`: Creates a new Deck called `Japanese Animals`
     ![GreenTea](images/user-guide/3JapaneseAnimalDeck.PNG)
     Figure 3. New deck called Japanese Animals
@@ -92,10 +116,14 @@ been successfully carried out, or if there are errors in your command formats.
     Figure 5. Adding an entry
     
     - `edit 1 t/イルカ`: Edits first Entry and change the existing translation `Iruka` into `イルカ`
+<<<<<<< HEAD
     ![GreenTea](images/user-guide/6EditEntryExample.png)
     Figure 6. Editing an entry
     
 6. Refer to [Chapter 4 Features](#features) for a detailed explanation for each command.
+=======
+6. Refer to [Chapter 6 Features](#6-features) for a detailed explanation for each command.
+>>>>>>> userguide
 
 # 4. Using This Guide (Melanie)
 
@@ -126,16 +154,47 @@ Words in `[Square Brackets]` are optional inputs. They may or may not be added b
 E.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1 [w/word]` or `edit 1 [t/translation]`
 or `edit 1 [w/word] [t/translation]` __but cannot be written as__ `edit 1`
 
-# 5. Features
+
+# 5. Big Picture
+Let us first understand the Big Picture of how this app works. Let us use the example of Bobby, who is learning Spanish to surprise his girlfriend from Madrid. 
+When Bobby begins learning, he is initially bombarded with many new words, and he finds it difficult to remember them. Luckily, he chanced upon *GreenTea*, which would help in this process. 
+
+Bobby would like to remember Spanish greetings so that he can start off with the basics. He could create a `Deck` named 'Spanish Greetings', and store `Entries` in them. An `Entry` consists of a `Word` and its `Translation`
+For example, Bobby would like to remember the word 'Hola', which is Spanish for 'Hello'. He would add it to 'Spanish Greetings', and will be able to access the deck later on and remember the words he have learned so far. 
+
+The `Deck` feature allows Bobby to group different words separately. If he would like to remember Spanish directions, he can create a new `Deck` called 'Spanish Directions'.
+If Bobby is going on a business trip to Paris and would like to learn French, he could create a new `Deck` called 'French Business Terms'. This classification of words allows Bobby to learn the vocabulary efficiently. 
+ 
+ 
+Now that Bobby has learnt new vocabulary, he would like to test his progress thus far. However, he wants to find an automated way to do it. Once again, *GreenTea* has a solution.
+A quiz, using the principles of the famous Leitner System, can be played to improve memory retention of the vocabulary.
+For example, Bobby would like to test his memory of 'Japanese Food'. He would be able to play a quiz that requires him to answer each English `Translation` with its corresponding `Word`.
+At the end of the quiz, he would be able to see his results, allowing him to understand his strength and weaknesses. Therefore, Bobby can fine tune his learning progress by choosing which words and decks to prioritise. 
+
+After learning Spanish for weeks, he would like to see his progress so far. *GreenTea* has a `Statistics` feature that allows him to visualise his progress for each deck. 
+For example he can look at a graph showing the changes in the scores for each Quiz attempt. He can also see the words he is weakest in. 
+
+Now that we have an understanding of the Big Picture of *GreenTea*, let us take a look at each particular feature and how it can be used. 
+
+//Will need to add Pictures later on
+
+![GreenTea](images/Placeholder.png)
+
+# 6. Features
 
 In this section, we will go into each feature of GreenTea, along with their command format and examples.
 
-## 5.1 Deck Commands (Melanie)
+## 6.1 Deck Commands (Melanie)
 
+<<<<<<< HEAD
 Decks are the foundation to GreenTea. A deck is simply a list of entries
 you write into GreenTea. A deck can be your favourite Korean dramas or some Chinese idioms.
+=======
+As mentioned earlier, Decks are the foundation to GreenTea. A deck is simply a list of entries
+you write into GreenTea. A deck can be your favourite Chinese idioms or a list of animals in Japanese.
+>>>>>>> userguide
 
-### 5.1.1 Creating a deck: `new`
+### 6.1.1 Creating a deck: `new`
 
 Creates a new empty deck with given name.
 
@@ -150,7 +209,7 @@ Result:
 ![GreenTea](images/user-guide/7CreatingADeck.png)
 Figure 7. Result of creating new decks
 
-### 5.1.2 Removing a deck: `remove`
+### 6.1.2 Removing a deck: `remove`
 
 Removes a deck with the given index.
 
@@ -166,7 +225,7 @@ Result:
 ![GreenTea](images/user-guide/8RemovingADeck.png)
 Figure 8. GUI after a deck is removed
 
-### 5.1.3 Selecting a deck: `select`
+### 6.1.3 Selecting a deck: `select`
 
 Selects a deck with the given index and lists all of its entries.
 
@@ -179,10 +238,15 @@ Examples: `select 1`
 
 Result:
 
+<<<<<<< HEAD
 ![GreenTea](images/user-guide/9SelectingADeck.png)
 Figure 9: Result of selecting a deck
 
 ## 5.2 Entry Commands (Gabriel)
+=======
+![GreenTea](images/Placeholder.png)
+## 6.2 Entry Commands (Gabriel)
+>>>>>>> userguide
 
 Entries are what make up a deck. They are the words or phrases that you wish to memorise in GreenTea.
 An entry is made up of two parts; the `word` and the `translation`. The `word` is written in the
@@ -190,13 +254,13 @@ language you are most familiar and the `translation` is written in the language 
 this User Guide, we will be assuming the language for `word` will be in English.
 
 :information_source: **Note:**
-Before you start giving entry commands, remember to [select a deck first!](#513-selecting-a-deck-select)
+Before you start giving entry commands, remember to [select a deck first!](#613-selecting-a-deck-select)
 
 
 :bulb: Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
 
-### 5.2.1 Adding a new entry: `add` (Vignesh)
+### 6.2.1 Adding a new entry: `add` (Vignesh)
 
 Adds a new entry with the given word and translation.
 
@@ -211,7 +275,7 @@ Result:
 ![GreenTea](images/user-guide/10AddingAnEntry.png)
 Figure 10: Result of adding an entry
 
-### 5.2.2 Editing an entry: `edit` (Vignesh)
+### 6.2.2 Editing an entry: `edit` (Vignesh)
 
 Edits an entry with the given index using the given word or translation or both.
 
@@ -231,7 +295,7 @@ Result:
 ![GreenTea](images/user-guide/11EditingAnEntry.png)
 Figure 11. Result of editing an entry
 
-### 5.2.3 Deleting an entry: `delete` (Vignesh)
+### 6.2.3 Deleting an entry: `delete` (Vignesh)
 
 Deletes the entry with the given index.
 
@@ -242,14 +306,14 @@ Result:
 ![GreenTea](images/user-guide/12DeletingAnEntry.png)
 Figure 12. Result of deleting an entry
 
-## 5.3 Play Commands (Georgie)
+## 6.3 Play Commands (Georgie)
 
 Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of all
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `play` and
 `stop`.
 
 
-## 5.3.1 Play a Game (Georgie)
+## 6.3.1 Play a Game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
@@ -258,31 +322,31 @@ to you at the end of the game.
 Format: `play`
 
 :information_source: **Note:**
-Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
+Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
 
 Result:
 ![GreenTea](images/user-guide/13PlayAGame.png)
 Figure 13. Result of playing a game
 
-## 5.3.2 Stop a Game  (Georgie)
+## 6.3.2 Stop a Game  (Georgie)
 
 Stop the current game prematurely.
 
 Format: `stop`
 
 :information_source: **Note:**
-Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
+Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
 
 Result:
 ![GreenTea](images/user-guide/14StopAGame.png)
 Figure 14. Result of stopping a game
 
-## 5.4 Extra Commands (Georgie)
+## 6.4 Extra Commands (Georgie)
 
 These are some extra commands that you can access at any point in the application except when
 you are currently playing a game.
 
-### 5.4.1 Viewing help: `help`
+### 6.4.1 Viewing help: `help`
 
 Shows a cheat-sheet of commands in addition to a link to this User Guide.
 
@@ -292,7 +356,7 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-### 5.4.2 Exiting the program: `exit`
+### 6.4.2 Exiting the program: `exit`
 
 Exits the program.
 
@@ -302,7 +366,7 @@ Result:
 
 ![GreenTea](images/Placeholder.png)
 
-## 6. Statistics (Melanie)
+## 7. Statistics (Melanie)
 
 Statistics are how you get to see your own progression as you continuously build and play GreenTea.
 The statistics tab displays the scores of up to your last 10 attempts in the form of
@@ -312,13 +376,13 @@ You can access the statistics tab by first `select`ing a deck before clicking th
 of the application.
 
 :information_source: **Note:**
-Before you can view the statistics, remember to [select a deck first!](#513-selecting-a-deck-select)
+Before you can view the statistics, remember to [select a deck first!](#613-selecting-a-deck-select)
 
 Result:
 
 ![GreenTea](images/Placeholder.png)
 
-## 7. FAQ (Gabriel)
+## 8. FAQ (Gabriel)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GreenTea home folder.
@@ -327,7 +391,7 @@ Result:
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
 ---
 
-## 8. Command Summary (Gabriel)
+## 9. Command Summary (Gabriel)
 
 | Action                                                                                             | Format  <img width=00/>                                                                           |Examples |Remarks|
 | -------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------------------------|--------|--------|
