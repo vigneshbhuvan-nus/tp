@@ -12,19 +12,14 @@ import java.util.stream.IntStream;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
-import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
-import javafx.scene.chart.XYChart.Series;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
-import javax.xml.crypto.Data;
 import seedu.address.logic.Logic;
 import seedu.address.model.deck.Deck;
-import seedu.address.model.deck.scoring.QuizAttempt;
-import seedu.address.statistics.Statistics;
+import seedu.address.model.play.scoring.QuizAttempt;
 import seedu.address.statistics.StatisticsManager;
 import seedu.address.ui.UiPart;
-import seedu.address.ui.deck.DeckListPanel;
 
 public class StatisticsPanel extends UiPart<Region> {
 

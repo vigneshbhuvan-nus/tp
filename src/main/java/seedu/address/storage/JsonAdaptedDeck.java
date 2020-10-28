@@ -11,7 +11,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.UniqueEntryList;
-import seedu.address.model.deck.scoring.QuizAttempt;
+import seedu.address.model.play.scoring.QuizAttempt;
 
 /**
  * Jackson-friendly version of {@link Deck}.
