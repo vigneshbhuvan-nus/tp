@@ -1,4 +1,4 @@
-package seedu.address.model.deck.scoring;
+package seedu.address.model.play.scoring;
 
 public class BinaryScoring implements Scoring {
     @Override

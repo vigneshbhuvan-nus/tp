@@ -1,4 +1,4 @@
-package seedu.address.model.deck.scoring;
+package seedu.address.model.play.scoring;
 
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;

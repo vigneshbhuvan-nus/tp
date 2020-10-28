@@ -10,9 +10,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.deck.scoring.BinaryScoring;
-import seedu.address.model.deck.scoring.QuestionAttempt;
-import seedu.address.model.deck.scoring.QuizAttempt;
+import seedu.address.model.play.scoring.BinaryScoring;
+import seedu.address.model.play.scoring.QuestionAttempt;
+import seedu.address.model.play.scoring.QuizAttempt;
 import seedu.address.model.play.Score;
 
 /**

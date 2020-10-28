@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.UniqueEntryList;
-import seedu.address.model.deck.scoring.QuizAttempt;
+import seedu.address.model.play.scoring.QuizAttempt;
 
 /**
  * Represents a deck of flashcards

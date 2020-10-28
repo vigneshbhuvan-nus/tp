@@ -4,9 +4,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.deck.scoring.BinaryScoring;
-import seedu.address.model.deck.scoring.QuestionAttempt;
-import seedu.address.model.deck.scoring.Scoring;
+import seedu.address.model.play.scoring.BinaryScoring;
+import seedu.address.model.play.scoring.QuestionAttempt;
+import seedu.address.model.play.scoring.Scoring;
 
 
 public class JsonAdaptedQuestionAttempt {

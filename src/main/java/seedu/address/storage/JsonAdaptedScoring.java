@@ -1,7 +1,7 @@
 /*package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
-import seedu.address.model.deck.scoring.Scoring;
+import seedu.address.model.play.scoring.Scoring;
 
 public class JsonAdaptedScoring {
     private Scoring scoringMethod;
