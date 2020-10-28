@@ -26,12 +26,12 @@
 .chart-title {
     -fx-text-fill: #FFFFFF;
    -fx-font-size: 1.6em;
- }
+}
 
- .chart-legend {
-     -fx-background-color:  transparent;
+.chart-legend {
+     -fx-background-color: transparent;
      -fx-padding: 20px;
-  }
+}
 
 .axis {
     -fx-tick-label-fill: #FFFFFF;
