@@ -81,6 +81,11 @@ public interface Logic {
     int getCurrentIndex();
 
     /**
+     * Returns the current statistics deck id being displayed
+     */
+    int getStatisticsDeckId();
+
+    /**
      * Returns the score of the most recent quiz taken by the user
      */
     double getLastScore();

@@ -262,7 +262,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void handleStatisticsPanel() {
-        StatisticsPanel statisticsPanel = new StatisticsPanel(logic, logic.getCurrentIndex());
+        StatisticsPanel statisticsPanel = new StatisticsPanel(logic, logic.getStatisticsDeckId());
         statisticsPanelPlaceholder.getChildren().add(statisticsPanel.getRoot());
     }
 

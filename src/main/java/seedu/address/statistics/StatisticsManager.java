@@ -5,7 +5,7 @@ import java.util.List;
 
 public class StatisticsManager {
 
-    private Statistics statistics;
+    private final Statistics statistics;
 
     //  if statistics file exists
 
@@ -17,14 +17,13 @@ public class StatisticsManager {
         statistics.registerAppLogin();
     }
 
-    //  if first time opening the app
 
     /**
-     *
+     * if first time opening the app
      */
     public StatisticsManager() {
-        Statistics statistics = new Statistics();
-        statistics.registerAppLogin();
+        this.statistics = new Statistics();
+        this.statistics.registerAppLogin();
     }
 
     public void doCleanup() {
@@ -36,11 +35,9 @@ public class StatisticsManager {
     }
 
     public String getLastLoginString() {
-        // LocalDateTime lastLogin = getLastLogin();
-        // List<Event> eventLog = statistics.getEventLog();
-        // System.out.println(eventLog.size());
-        return "-";
-        // return lastLogin == null ? "-" : lastLogin.toString();
+        LocalDateTime lastLogin = getLastLogin();
+        System.out.println("statistics: " + this.statistics);
+        return lastLogin == null ? "-" : lastLogin.toString();
     }
 
     public LocalDateTime getLastLogin() {
