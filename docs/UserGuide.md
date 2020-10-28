@@ -74,27 +74,27 @@ From Figure 2, there are four main components to the GUI. The deck list, the tab
 1. Deck List - The deck list displays all the decks that you currently have in GreenTea. It will update as you keep adding decks.
 2. Tab Panels - The main features of GreenTea are seperated into different tabs. The tabs will change automatically, depending on your
 commands, so you do not need to worry about changing the tabs manually.
-3. Result Display - The result display is where the outcome of your commands are shown. It will show you if your command has 
+3. Result Display - The result display is where the outcome of your commands are shown. It will show you if your command has
 been successfully carried out, or if there are errors in your command formats.
 4. Command Box - The command box is where you type in all your commands. Pressing **enter** on your keyboard will execute the commands.
 
 5. Try typing these commands to start playing with GreenTea
     - `new Japanese Animals`: Creates a new Deck called `Japanese Animals`
-    ![GreenTea](images/user-guide/3JapaneseAnimalDeck.PNG)
+    ![GreenTea](images/user-guide/3JapaneseAnimalDeck.png)
     Figure 3. New deck called Japanese Animals
-    
+
     - `select 1` selects the first Deck `Japanese Animals`
-    ![GreenTea](images/user-guide/4SelectDeckExample.PNG)
+    ![GreenTea](images/user-guide/4SelectDeckExample.png)
     Figure 4. Selecting the first deck in the list
-    
+
     - `add w/Dolphin t/Iruka`: Adds a new Entry into the selected deck with the word `Dolphin` and the translation `Iruka`
     ![GreenTea](images/user-guide/5AddEntryExample.png)
     Figure 5. Adding an entry
-    
+
     - `edit 1 t/イルカ`: Edits first Entry and change the existing translation `Iruka` into `イルカ`
     ![GreenTea](images/user-guide/6EditEntryExample.png)
     Figure 6. Editing an entry
-    
+
 6. Refer to [Chapter 4 Features](#features) for a detailed explanation for each command.
 
 # 4. Using This Guide (Melanie)
