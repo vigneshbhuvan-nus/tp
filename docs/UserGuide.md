@@ -67,34 +67,35 @@ To start using GreenTea:
 3. Double-Click the file to start the application. The GUI should appear in a few seconds
 
 ![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
-Figure 2. Different parts fo GreenTea's GUI
+Figure 2. Different parts of GreenTea's GUI
 
 From Figure 2, there are four main components to the GUI. The deck list, the tab panels, the result display and the command box
 
 1. Deck List - The deck list displays all the decks that you currently have in GreenTea. It will update as you keep adding decks.
 2. Tab Panels - The main features of GreenTea are seperated into different tabs. The tabs will change automatically, depending on your
 commands, so you do not need to worry about changing the tabs manually.
-3. Result Display - The result display is where the outcome of your commands are shown. It will show you if your command has 
+3. Result Display - The result display is where the outcome of your commands are shown. It will show you if your command has
 been successfully carried out, or if there are errors in your command formats.
 4. Command Box - The command box is where you type in all your commands. Pressing **enter** on your keyboard will execute the commands.
 
 5. Try typing these commands to start playing with GreenTea
+
     - `new Japanese Animals`: Creates a new Deck called `Japanese Animals`
-    ![GreenTea](images/user-guide/3JapaneseAnimalDeck.PNG)
+    ![GreenTea](images/user-guide/3JapaneseAnimalDeck.png)
     Figure 3. New deck called Japanese Animals
-    
+
     - `select 1` selects the first Deck `Japanese Animals`
-    ![GreenTea](images/user-guide/4SelectDeckExample.PNG)
+    ![GreenTea](images/user-guide/4SelectDeckExample.png)
     Figure 4. Selecting the first deck in the list
-    
+
     - `add w/Dolphin t/Iruka`: Adds a new Entry into the selected deck with the word `Dolphin` and the translation `Iruka`
     ![GreenTea](images/user-guide/5AddEntryExample.png)
     Figure 5. Adding an entry
-    
+
     - `edit 1 t/イルカ`: Edits first Entry and change the existing translation `Iruka` into `イルカ`
     ![GreenTea](images/user-guide/6EditEntryExample.png)
     Figure 6. Editing an entry
-    
+
 6. Refer to [Chapter 4 Features](#features) for a detailed explanation for each command.
 
 # 4. Using This Guide (Melanie)
@@ -133,7 +134,7 @@ In this section, we will go into each feature of GreenTea, along with their comm
 ## 5.1 Deck Commands (Melanie)
 
 Decks are the foundation to GreenTea. A deck is simply a list of entries
-you write into GreenTea. A deck can be your favourite Korean dramas or some Chinese idioms.
+you write into GreenTea. A deck can be your favourite Korean dramas or some Japanese words
 
 ### 5.1.1 Creating a deck: `new`
 
@@ -143,7 +144,7 @@ Format: `new <NAME OF NEW DECK>`
 
 Examples:
 - `new Korean Dramas`
-- `new Chinese Idioms`
+- `new Japanese Words`
 
 Result:
 
@@ -161,10 +162,14 @@ To get the index of a deck, you may view it on the GUI. It would be the number d
 
 Example: `remove 1`
 
+Before a deck is removed:
+![GreenTea](images/user-guide/8RemovingADeckBefore.png)
+Figure 8: GUI before a deck is removed
+
 Result:
 
-![GreenTea](images/user-guide/8RemovingADeck.png)
-Figure 8. GUI after a deck is removed
+![GreenTea](images/user-guide/9RemovingADeckAfter.png)
+Figure 9. Result of removing a deck
 
 ### 5.1.3 Selecting a deck: `select`
 
@@ -179,8 +184,8 @@ Examples: `select 1`
 
 Result:
 
-![GreenTea](images/user-guide/9SelectingADeck.png)
-Figure 9: Result of selecting a deck
+![GreenTea](images/user-guide/10SelectingADeck.png)
+Figure 10: Result of selecting a deck
 
 ## 5.2 Entry Commands (Gabriel)
 
@@ -205,11 +210,12 @@ Format: `add w/<WORD> t/<TRANSLATION>`
 Examples:
 
 - `add w/Fruits t/果物`
+- `add w/Phone t/電話`
 
 Result:
 
-![GreenTea](images/user-guide/10AddingAnEntry.png)
-Figure 10: Result of adding an entry
+![GreenTea](images/user-guide/11AddingAnEntry.png)
+Figure 11: Result of adding an entry
 
 ### 5.2.2 Editing an entry: `edit` (Vignesh)
 
@@ -224,12 +230,12 @@ you must supply at least one.
 Examples:
 - `edit 1 w/hello`
 - `edit 1 t/こんにちは`
-- `edit 1 w/hello t/こんにちは`
+- `edit 2 w/world t/世界`
 
 Result:
 
-![GreenTea](images/user-guide/11EditingAnEntry.png)
-Figure 11. Result of editing an entry
+![GreenTea](images/user-guide/12EditingAnEntry.png)
+Figure 12. Result of editing an entry
 
 ### 5.2.3 Deleting an entry: `delete` (Vignesh)
 
@@ -237,10 +243,16 @@ Deletes the entry with the given index.
 
 Format: `delete <INDEX>`
 
-Result:
+Example: `delete 1`
 
-![GreenTea](images/user-guide/12DeletingAnEntry.png)
-Figure 12. Result of deleting an entry
+Before an entry is deleted:
+
+![GreenTea](images/user-guide/13DeletingAnEntryBefore.png)
+Figure 13. GUI before an entry is deleted
+
+Result:
+![GreenTea](images/user-guide/14DeletingAnEntryAfter.png)
+Figure 14. Result of deleting an entry
 
 ## 5.3 Play Commands (Georgie)
 
@@ -261,8 +273,8 @@ Format: `play`
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
-![GreenTea](images/user-guide/13PlayAGame.png)
-Figure 13. Result of playing a game
+![GreenTea](images/user-guide/15PlayAGame.png)
+Figure 15. Result of playing a game
 
 ## 5.3.2 Stop a Game  (Georgie)
 
@@ -274,8 +286,8 @@ Format: `stop`
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
-![GreenTea](images/user-guide/14StopAGame.png)
-Figure 14. Result of stopping a game
+![GreenTea](images/user-guide/16StopAGame.png)
+Figure 16. Result of stopping a game
 
 ## 5.4 Extra Commands (Georgie)
 
