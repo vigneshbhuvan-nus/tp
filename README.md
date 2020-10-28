@@ -5,11 +5,11 @@
 
 ![Ui](docs/images/Ui.png)
 
-### About Green Tea
+### About GreenTea
 GreenTea is a desktop app for learning a new language, designed for users to **have fun** through quizzes while keeping
 track of their **learning progress**.
 
-Green Tea is designed for use with a **CLI** (Command Line Interface).
+GreenTea is designed for use with a **CLI** (Command Line Interface).
 
 ### Documentation Links
 * [About Us](docs/AboutUs.md)

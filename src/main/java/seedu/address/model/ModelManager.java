@@ -209,11 +209,11 @@ public class ModelManager implements Model {
 
     @Override
     public Deck getCurrentDeck() {
-        assert (getFilteredDeckList().size() > 0);
         if (currentDeckIndex.equals(Optional.empty())) {
             logger.info("Current deck index is 0");
             return null;
         }
+        assert (getFilteredDeckList().size() > 0);
         return filteredDecks.get(currentDeckIndex.get().getZeroBased());
     }
 
