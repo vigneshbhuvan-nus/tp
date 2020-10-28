@@ -33,13 +33,15 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 # 1. What is GreenTea? (Gabriel)
 
-GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
-still having the benefits of a Graphical User Interface (GUI). GreenTea uses a proven memory rentention
-system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d5edafae7f0)  and implements it in the context of a FlashCard game. This app is great for users who wish to
-optimise their time learning a new language. In this User Guide (UG), you will learn about the various commands and
+GreenTea is a desktop app for **learning a new language** in a **fun** and **engaging** way.
+GreenTea if **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI).
+GreenTea uses a proven memory retention system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d5edafae7f0)
+and implements it in the context of a FlashCard game. This app is great for users who wish to
+optimize their time learning a new language. In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly.
 
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/1EmptyGUI.png)
+Figure 1. GreenTea's Graphical User Interface (GUI)
 
 # 2. About This Document (Gabriel)
 
@@ -63,14 +65,36 @@ To start using GreenTea:
 1. Download the latest jar file [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases/new)
 2. Copy the jar file to your folder of choice (we recommend on your desktop!)
 3. Double-Click the file to start the application. The GUI should appear in a few seconds
-![GreenTea](images/Placeholder.png)
-4. Typing the commands into the command box and pressing enter will execute the commands \
-e.g. Typing `new Japanese Animals` will create a new Deck called Japanese Animals
+
+![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
+Figure 2. Different parts fo GreenTea's GUI
+
+From Figure 2, there are four main components to the GUI. The deck list, the tab panels, the result display and the command box
+
+1. Deck List - The deck list displays all the decks that you currently have in GreenTea. It will update as you keep adding decks.
+2. Tab Panels - The main features of GreenTea are seperated into different tabs. The tabs will change automatically, depending on your
+commands, so you do not need to worry about changing the tabs manually.
+3. Result Display - The result display is where the outcome of your commands are shown. It will show you if your command has 
+been successfully carried out, or if there are errors in your command formats.
+4. Command Box - The command box is where you type in all your commands. Pressing **enter** on your keyboard will execute the commands.
+
 5. Try typing these commands to start playing with GreenTea
     - `new Japanese Animals`: Creates a new Deck called `Japanese Animals`
+    ![GreenTea](images/user-guide/3JapaneseAnimalDeck.PNG)
+    Figure 3. New deck called Japanese Animals
+    
     - `select 1` selects the first Deck `Japanese Animals`
+    ![GreenTea](images/user-guide/4SelectDeckExample.PNG)
+    Figure 4. Selecting the first deck in the list
+    
     - `add w/Dolphin t/Iruka`: Adds a new Entry into the selected deck with the word `Dolphin` and the translation `Iruka`
+    ![GreenTea](images/user-guide/5AddEntryExample.png)
+    Figure 5. Adding an entry
+    
     - `edit 1 t/イルカ`: Edits first Entry and change the existing translation `Iruka` into `イルカ`
+    ![GreenTea](images/user-guide/6EditEntryExample.png)
+    Figure 6. Editing an entry
+    
 6. Refer to [Chapter 4 Features](#features) for a detailed explanation for each command.
 
 # 4. Using This Guide (Melanie)
@@ -93,11 +117,7 @@ has to be followed. The following is an explanation of how commands are describe
 Words in `<Arrowed Brackets>` are compulsory inputs supplied by you. They are generally names or translations that
 are unique to each input.
 
-`new <NAME OF NEW DECK>` is a command that creates a new deck with the input, `NAME OF NEW DECK`
-
-E.g new Cat creates a new deck with the name Cat
-
-![GreenTea](images/Placeholder.png)
+E.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the input, `NAME OF NEW DECK`
 
 ### 4.2.2 Square Brackets
 
@@ -113,7 +133,7 @@ In this section, we will go into each feature of GreenTea, along with their comm
 ## 5.1 Deck Commands (Melanie)
 
 Decks are the foundation to GreenTea. A deck is simply a list of entries
-you write into GreenTea. A deck can be your favourite Chinese idioms or a list of animals in Japanese.
+you write into GreenTea. A deck can be your favourite Korean dramas or some Chinese idioms.
 
 ### 5.1.1 Creating a deck: `new`
 
@@ -122,11 +142,13 @@ Creates a new empty deck with given name.
 Format: `new <NAME OF NEW DECK>`
 
 Examples:
-- `new Japanese-Animals`
+- `new Korean Dramas`
+- `new Chinese Idioms`
 
 Result:
 
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/7CreatingADeck.png)
+Figure 7. Result of creating new decks
 
 ### 5.1.2 Removing a deck: `remove`
 
@@ -141,7 +163,8 @@ Example: `remove 1`
 
 Result:
 
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/8RemovingADeck.png)
+Figure 8. GUI after a deck is removed
 
 ### 5.1.3 Selecting a deck: `select`
 
@@ -156,7 +179,9 @@ Examples: `select 1`
 
 Result:
 
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/9SelectingADeck.png)
+Figure 9: Result of selecting a deck
+
 ## 5.2 Entry Commands (Gabriel)
 
 Entries are what make up a deck. They are the words or phrases that you wish to memorise in GreenTea.
@@ -180,11 +205,11 @@ Format: `add w/<WORD> t/<TRANSLATION>`
 Examples:
 
 - `add w/Fruits t/果物`
-- `add w/Why aren’t they here yet? t/どうして彼らはまだここにいないの`
 
 Result:
 
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/10AddingAnEntry.png)
+Figure 10: Result of adding an entry
 
 ### 5.2.2 Editing an entry: `edit` (Vignesh)
 
@@ -203,7 +228,8 @@ Examples:
 
 Result:
 
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/11EditingAnEntry.png)
+Figure 11. Result of editing an entry
 
 ### 5.2.3 Deleting an entry: `delete` (Vignesh)
 
@@ -213,7 +239,8 @@ Format: `delete <INDEX>`
 
 Result:
 
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/12DeletingAnEntry.png)
+Figure 12. Result of deleting an entry
 
 ## 5.3 Play Commands (Georgie)
 
@@ -234,7 +261,8 @@ Format: `play`
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/13PlayAGame.png)
+Figure 13. Result of playing a game
 
 ## 5.3.2 Stop a Game  (Georgie)
 
@@ -246,7 +274,8 @@ Format: `stop`
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
-![GreenTea](images/Placeholder.png)
+![GreenTea](images/user-guide/14StopAGame.png)
+Figure 14. Result of stopping a game
 
 ## 5.4 Extra Commands (Georgie)
 
