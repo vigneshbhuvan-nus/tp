@@ -43,7 +43,8 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_ENTRY_SUCCESS = "Edited Entry: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the address book.";
+    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the word bank."
+            + "Two entries cannot have the same translation.";
 
     private final Index index;
     private final EditEntryDescriptor editEntryDescriptor;
