@@ -188,6 +188,8 @@ public class ModelManager implements Model {
     public void removeDeck(Deck target) {
         if (target == getCurrentDeck()) {
             currentDeckIndex = Optional.empty();
+            clearEntryList();
+            setCurrentView(View.START_VIEW);
         }
         addressBook.removeDeck(target);
     }
