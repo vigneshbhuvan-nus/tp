@@ -285,7 +285,6 @@ public class MainWindow extends UiPart<Stage> {
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-
     }
 
     /**
