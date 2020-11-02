@@ -20,15 +20,15 @@ public class EntryTest {
         // null -> returns false
         assertFalse(JAPANESE_1.isSameEntry(null));
 
-        // different phone and translation -> returns false
+        // different translation -> returns false
         Entry editedJapanese = new EntryBuilder(JAPANESE_1).withTranslation(VALID_TRANSLATION_SPANISH).build();
         assertFalse(JAPANESE_1.isSameEntry(editedJapanese));
 
-        // different word -> returns false
+        // different word, same translation -> returns true
         editedJapanese = new EntryBuilder(JAPANESE_1).withWord(VALID_WORD_SPANISH).build();
-        assertFalse(JAPANESE_1.isSameEntry(editedJapanese));
+        assertTrue(JAPANESE_1.isSameEntry(editedJapanese));
 
-        // same word, same translation, different attributes -> returns true
+        // same word, same translation -> returns true
         editedJapanese = new EntryBuilder(JAPANESE_1).build();
         assertTrue(JAPANESE_1.isSameEntry(editedJapanese));
     }
@@ -39,6 +39,10 @@ public class EntryTest {
         Entry japaneseCopy = new EntryBuilder(JAPANESE_1).build();
         assertTrue(JAPANESE_1.equals(japaneseCopy));
 
+        // different word -> returns true
+        Entry editedJapanese = new EntryBuilder(JAPANESE_1).withWord(VALID_WORD_SPANISH).build();
+        assertTrue(JAPANESE_1.equals(editedJapanese));
+
         // same object -> returns true
         assertTrue(JAPANESE_1.equals(JAPANESE_1));
 
@@ -48,12 +52,8 @@ public class EntryTest {
         // different type -> returns false
         assertFalse(JAPANESE_1.equals(5));
 
-        // different person -> returns false
+        // different entry -> returns false
         assertFalse(JAPANESE_1.equals(SPANISH));
-
-        // different word -> returns false
-        Entry editedJapanese = new EntryBuilder(JAPANESE_1).withWord(VALID_WORD_SPANISH).build();
-        assertFalse(JAPANESE_1.equals(editedJapanese));
 
         // different translation -> returns false
         editedJapanese = new EntryBuilder(JAPANESE_1).withTranslation(VALID_TRANSLATION_SPANISH).build();

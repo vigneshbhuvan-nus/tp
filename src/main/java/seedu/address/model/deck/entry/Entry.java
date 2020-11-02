@@ -41,7 +41,6 @@ public class Entry {
         }
 
         return otherEntry != null
-                && otherEntry.getWord().equals(getWord())
                 && (otherEntry.getTranslation().equals(getTranslation()));
     }
 
@@ -60,8 +59,7 @@ public class Entry {
         }
 
         Entry otherEntry = (Entry) other;
-        return otherEntry.getWord().equals(getWord())
-                && otherEntry.getTranslation().equals(getTranslation());
+        return otherEntry.getTranslation().equals(getTranslation());
     }
 
     @Override

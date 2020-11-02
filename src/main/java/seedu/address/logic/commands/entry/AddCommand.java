@@ -28,7 +28,8 @@ public class AddCommand extends Command {
             + PREFIX_TRANSLATION + "果物";
 
     public static final String MESSAGE_SUCCESS = "New entry added: %1$s";
-    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the word bank";
+    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the word bank."
+            + "Two entries cannot have the same translation";
 
     private final Entry toAdd;
 

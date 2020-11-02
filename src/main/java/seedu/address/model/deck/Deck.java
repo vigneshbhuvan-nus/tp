@@ -132,10 +132,6 @@ public class Deck {
         final StringBuilder builder = new StringBuilder();
 
         builder.append(getDeckName());
-
-        for (Entry entry : entries) {
-            builder.append(entry.toString());
-        }
         return builder.toString();
     }
 }
