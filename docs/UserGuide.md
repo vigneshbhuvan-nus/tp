@@ -288,7 +288,7 @@ Figure 14. Result of deleting an entry
 
 Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of all
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `play` and
-`stop`.
+`/stop`.
 
 
 ## 6.3.1 Play a Game (Georgie)
@@ -308,9 +308,9 @@ Figure 15. Result of playing a game
 
 ## 6.3.2 Stop a Game  (Georgie)
 
-Stop the current game prematurely.
+Stop the current game prematurely. Note the slash `/` in the command
 
-Format: `stop`
+Format: `/stop`
 
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)

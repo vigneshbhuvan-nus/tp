@@ -27,7 +27,7 @@ public class AnswerCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.playGame(answer.substring(0, answer.length() - 1));
+        model.playGame(answer);
         if (model.checkScoreTwo()) { //answerCommand sees into the future by 1 move, so have to delay by 1
             Score score = model.endGame();
             return new CommandResult(MESSAGE_SUCCESS + score.toString());
