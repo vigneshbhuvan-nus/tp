@@ -13,13 +13,18 @@
         <HBox alignment="CENTER">
             <VBox alignment="CENTER" styleClass="question-box">
                 <ProgressBar fx:id="progressBar" styleClass="progress-bar" minWidth="300" HBox.hgrow="ALWAYS"/>
-                <Label fx:id="question" styleClass="question" minWidth="300" minHeight="350" maxWidth="550"
-                       HBox.hgrow="ALWAYS" StackPane.alignment="CENTER"/>
+                <Label fx:id="question" styleClass="question" minWidth="300" minHeight="350" maxWidth="400" wrapText="true"
+                       HBox.hgrow="ALWAYS" alignment="CENTER"/>
                 <padding>
                     <Insets left="30" right="20"/>
                 </padding>
             </VBox>
-            <Label fx:id="answerList" styleClass="answer-list" minWidth="300" minHeight="350" maxWidth="450" HBox.hgrow="ALWAYS" StackPane.alignment="CENTER"/>
+            <Label fx:id="answerList" styleClass="answer-list" minWidth="300" minHeight="400" maxHeight="400" 
+                   maxWidth="450" HBox.hgrow="ALWAYS" StackPane.alignment="CENTER" wrapText="true">
+                <padding>
+                    <Insets left="20" right="30"/>
+                </padding>
+            </Label>
         </HBox>
         <HBox alignment="CENTER">
             <Label fx:id="totalQuestions" styleClass="quiz-bottom-panel" HBox.hgrow="ALWAYS">

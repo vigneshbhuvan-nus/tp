@@ -6,7 +6,15 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class DeckName {
 
     public static final String MESSAGE_CONSTRAINTS = "Deck name cannot be blank";
+    public static final String LENGTH_CONSTRAINTS = "Deck name cannot be longer than 100 characters";
+
+    /**
+     * Deck names cannot be null or empty
+     * Deck names cannot be more than 100 characters long
+     */
     public static final String VALIDATION_REGEX = "^(?!\\s*$).+";
+    public static final int MAXIMUM_LENGTH = 100;
+
     public final String deckName;
 
     /**
@@ -16,6 +24,7 @@ public class DeckName {
      */
     public DeckName(String deckName) {
         requireNonNull(deckName);
+        checkArgument(isValidLength(deckName), LENGTH_CONSTRAINTS);
         checkArgument(isValidDeckName(deckName), MESSAGE_CONSTRAINTS);
         this.deckName = deckName;
     }
@@ -25,6 +34,10 @@ public class DeckName {
      */
     public static boolean isValidDeckName(String test) {
         return test.matches(VALIDATION_REGEX);
+    }
+
+    public static boolean isValidLength (String test) {
+        return test.length() <= MAXIMUM_LENGTH;
     }
 
     public String getDeckName() {

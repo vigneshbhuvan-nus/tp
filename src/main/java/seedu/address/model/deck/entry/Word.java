@@ -2,7 +2,6 @@ package seedu.address.model.deck.entry;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
-import static seedu.address.commons.util.AppUtil.checkArgumentLength;
 
 /**
  * Represents a Entry's word in the word bank.
@@ -11,10 +10,11 @@ import static seedu.address.commons.util.AppUtil.checkArgumentLength;
 public class Word {
 
     public static final String MESSAGE_CONSTRAINTS = "Words cannot be blank";
-    public static final String LENGTH_CONSTRAINT = "Words cannot be longer than 200 characters";
+    public static final String LENGTH_CONSTRAINTS = "Words cannot be longer than 200 characters";
 
     /**
-     * A Word cannot be null or a blank space
+     * Words cannot be null or empty
+     * Words cannot be more than 200 characters long
      */
     public static final String VALIDATION_REGEX = "^(?!\\s*$).+";
     public static final int MAXIMUM_LENGTH = 200;
@@ -27,7 +27,7 @@ public class Word {
      */
     public Word(String word) {
         requireNonNull(word);
-        checkArgumentLength(word, MAXIMUM_LENGTH, LENGTH_CONSTRAINT);
+        checkArgument(isValidLength(word), LENGTH_CONSTRAINTS);
         checkArgument(isValidWord(word), MESSAGE_CONSTRAINTS);
         this.word = word;
     }

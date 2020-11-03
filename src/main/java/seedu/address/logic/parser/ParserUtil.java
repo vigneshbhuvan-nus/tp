@@ -39,7 +39,7 @@ public class ParserUtil {
         requireNonNull(word);
         String trimmedWord = word.trim();
         if (!Word.isValidLength(trimmedWord)) {
-            throw new ParseException(Word.LENGTH_CONSTRAINT);
+            throw new ParseException(Word.LENGTH_CONSTRAINTS);
         }
         if (!Word.isValidWord(trimmedWord)) {
             throw new ParseException(Word.MESSAGE_CONSTRAINTS);
@@ -57,7 +57,7 @@ public class ParserUtil {
         requireNonNull(translation);
         String trimmedTranslation = translation.trim();
         if (!Translation.isValidLength(trimmedTranslation)) {
-            throw new ParseException(Translation.LENGTH_CONSTRAINT);
+            throw new ParseException(Translation.LENGTH_CONSTRAINTS);
         }
         if (!Translation.isValidTranslation(trimmedTranslation)) {
             throw new ParseException(Translation.MESSAGE_CONSTRAINTS);
@@ -74,6 +74,9 @@ public class ParserUtil {
     public static DeckName parseDeckName(String name) throws ParseException {
         requireNonNull(name);
         String trimmedName = name.trim();
+        if (!DeckName.isValidLength(trimmedName)) {
+            throw new ParseException(DeckName.LENGTH_CONSTRAINTS);
+        }
         if (!DeckName.isValidDeckName(trimmedName)) {
             throw new ParseException(DeckName.MESSAGE_CONSTRAINTS);
         }

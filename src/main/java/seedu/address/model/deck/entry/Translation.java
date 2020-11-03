@@ -2,7 +2,6 @@ package seedu.address.model.deck.entry;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
-import static seedu.address.commons.util.AppUtil.checkArgumentLength;
 
 /**
  * Represents a Entry's translation in the word bank.
@@ -10,8 +9,12 @@ import static seedu.address.commons.util.AppUtil.checkArgumentLength;
  */
 public class Translation {
     public static final String MESSAGE_CONSTRAINTS = "Translations cannot be blank";
-    public static final String LENGTH_CONSTRAINT = "Translations cannot be longer than 200 characters";
+    public static final String LENGTH_CONSTRAINTS = "Translations cannot be longer than 200 characters";
 
+    /**
+     * Translations cannot be null or empty
+     * Translations cannot be more than 200 characters long
+     */
     public static final String VALIDATION_REGEX = "^(?!\\s*$).+";
     public static final int MAXIMUM_LENGTH = 200;
 
@@ -24,7 +27,7 @@ public class Translation {
      */
     public Translation(String translation) {
         requireNonNull(translation);
-        checkArgumentLength(translation, MAXIMUM_LENGTH, LENGTH_CONSTRAINT);
+        checkArgument(isValidLength(translation), LENGTH_CONSTRAINTS);
         checkArgument(isValidTranslation(translation), MESSAGE_CONSTRAINTS);
         this.translation = translation;
     }
