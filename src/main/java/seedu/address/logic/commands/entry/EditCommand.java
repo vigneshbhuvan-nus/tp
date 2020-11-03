@@ -30,7 +30,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the entry identified "
             + "by the index number used in the displayed entry list. "
             + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
+            + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648) "
             + "[" + PREFIX_WORD + "Entry] "
             + "[" + PREFIX_TRANSLATION + "Translation]\n"
             + "Example: " + COMMAND_WORD + " 1 "
