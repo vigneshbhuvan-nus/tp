@@ -165,7 +165,7 @@ In this section, we will go into each feature of GreenTea, along with their comm
 
 ## 6.1 Deck Commands (Melanie)
 As mentioned earlier, Decks are the foundation to GreenTea. A deck is simply a list of entries
-you write into GreenTea. A deck can be your favourite Chinese idioms or a list of animals in Japanese.
+you write into GreenTea. A deck can be your favourite Korean Dramas or a list of Japanese Words.
 
 ### 6.1.1 Creating a deck: `new`
 
@@ -181,6 +181,9 @@ Result:
 
 ![GreenTea](images/user-guide/7CreatingADeck.png)
 Figure 7. Result of creating new decks
+
+:information_source: **Note:**
+The name of the deck cannot be more than 100 characters long.
 
 ### 6.1.2 Removing a deck: `remove`
 
@@ -246,6 +249,9 @@ Result:
 
 ![GreenTea](images/user-guide/11AddingAnEntry.png)
 Figure 11: Result of adding an entry
+
+:information_source: **Note:**
+A word cannot be more than 200 characters long. A translation cannot be more than 200 characters long
 
 ### 6.2.2 Editing an entry: `edit` (Vignesh)
 
