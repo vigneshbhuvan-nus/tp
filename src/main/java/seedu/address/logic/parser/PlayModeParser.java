@@ -41,7 +41,7 @@ public class PlayModeParser {
         switch (userInput) {
         case "play":
             return new PlayCommand();
-        case "stop":
+        case "/stop":
             return new StopCommand();
         default:
             // for commands with additional args
