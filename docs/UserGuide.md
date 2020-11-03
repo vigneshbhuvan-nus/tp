@@ -380,7 +380,7 @@ Result:
 | **Edit**                                                                                           | `edit 1 [w/word] [t/translation]` | `edit 1 w/hello t/こんにちは`   | Edits the Entry with the Given Index Using the Given Values|
 | **Delete**                                                                                         | `delete <INDEX>` | `delete 3`                                                                     | Deletes the Entry with the Given Index|
 | **Play**                                                                                           | `play`       |  | Starts a New FlashCard Game with the Selected Deck
-| **Stop**                                                                                           | `stop`       | | Stops an Existing Game
+| **Stop**                                                                                           | `/stop`       | | Stops an Existing Game
 | **Clear**                                                                                          | `clear`      |  | Deletes All Decks and Entries
 | **Help**                                                                                           | `help`       | | Opens Our User Guide in the Application|
 | **Exit**                                                                                           | `exit`       |  | Saves and Exits the Program
