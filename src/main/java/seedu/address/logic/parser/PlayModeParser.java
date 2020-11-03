@@ -39,7 +39,8 @@ public class PlayModeParser {
         final String arguments = matcher.group("arguments");
 
         switch (userInput) {
-        case "play":
+        case "/play":
+
             return new PlayCommand();
         case "/stop":
             return new StopCommand();

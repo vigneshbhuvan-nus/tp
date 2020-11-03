@@ -30,7 +30,7 @@ public class AddCommand extends Command {
     public static final String MESSAGE_SUCCESS = "New entry added: %1$s";
     public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the word bank."
             + "Two entries cannot have the same translation";
-    public static final String MESSAGES_FORBIDDEN = "Word or translations can't be \"/stop\" ";
+    public static final String MESSAGES_FORBIDDEN = "Word or translations can't be %s ";
 
     private final Entry toAdd;
 
@@ -47,7 +47,10 @@ public class AddCommand extends Command {
         requireNonNull(model);
 
         if (toAdd.getWord().toString().equals("/stop") || toAdd.getTranslation().toString().equals("/stop")) {
-            throw new CommandException(MESSAGES_FORBIDDEN);
+            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "/stop"));
+        }
+        if (toAdd.getWord().toString().equals("/play") || toAdd.getTranslation().toString().equals("/play")) {
+            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "/play"));
         }
         if (model.getCurrentDeck() == null) {
             throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
