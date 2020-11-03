@@ -22,13 +22,16 @@ public class StatisticsCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         int currentDeckIndex = model
-                .setStatisticsDeckId(deckIndex - 1); // since our decks count from deck
+                .setStatisticsDeckId(deckIndex - 1);
 
         if (currentDeckIndex == -1) { // invalid deck, or none
-            MESSAGE_SUCCESS = "Viewing statistics across all decks.";
+            MESSAGE_SUCCESS = "Either invalid deck index or index out of bounds. \n" +
+                    "Please choose an index that is listed and ensure it is a positive integer that is less than" +
+                    "2,147,483,648 " +
+                    "Viewing statistics across all decks instead.";
         } else {
             MESSAGE_SUCCESS = String.format("Viewing statistics for deck %s (id=%d)",
-                    model.getFilteredDeckList().get(currentDeckIndex).getDeckName(), currentDeckIndex);
+                    model.getFilteredDeckList().get(currentDeckIndex).getDeckName(), currentDeckIndex + 1);
         }
 
         model.setCurrentView(View.STATISTICS_VIEW);
