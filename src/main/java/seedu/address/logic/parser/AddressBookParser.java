@@ -16,8 +16,6 @@ import seedu.address.logic.commands.deck.SelectDeckCommand;
 import seedu.address.logic.commands.entry.AddCommand;
 import seedu.address.logic.commands.entry.DeleteCommand;
 import seedu.address.logic.commands.entry.EditCommand;
-import seedu.address.logic.commands.entry.FindCommand;
-import seedu.address.logic.commands.entry.ListCommand;
 import seedu.address.logic.commands.statistics.StatisticsCommand;
 import seedu.address.logic.parser.deck.NewDeckCommandParser;
 import seedu.address.logic.parser.deck.RemoveDeckCommandParser;
@@ -25,7 +23,6 @@ import seedu.address.logic.parser.deck.SelectDeckCommandParser;
 import seedu.address.logic.parser.entry.AddCommandParser;
 import seedu.address.logic.parser.entry.DeleteCommandParser;
 import seedu.address.logic.parser.entry.EditCommandParser;
-import seedu.address.logic.parser.entry.FindCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.statistics.StatisticsCommandParser;
 
