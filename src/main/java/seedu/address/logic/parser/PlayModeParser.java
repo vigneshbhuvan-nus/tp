@@ -45,7 +45,11 @@ public class PlayModeParser {
             return new StopCommand();
         default:
             // for commands with additional args
-            return new AnswerCommandParser().parse(commandWord + " " + arguments);
+            if (arguments.isEmpty()) {
+                return new AnswerCommandParser().parse(commandWord);
+            } else {
+                return new AnswerCommandParser().parse(commandWord + arguments);
+            }
         }
     }
 }
