@@ -12,7 +12,7 @@ import seedu.address.model.view.View;
 public class StopCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "Playmode Stopped! ";
+    public static final String MESSAGE_SUCCESS = "Playmode stopped! Your score was not recorded!";
 
 
     @Override
@@ -20,6 +20,6 @@ public class StopCommand extends Command {
         requireNonNull(model);
         Score score = model.endGame();
         model.setCurrentView(View.SCORE_VIEW);
-        return new CommandResult(MESSAGE_SUCCESS + score);
+        return new CommandResult(MESSAGE_SUCCESS);
     }
 }
