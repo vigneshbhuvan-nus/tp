@@ -19,21 +19,21 @@ public class DeckNameTest {
         String invalidDeckName = "";
         assertThrows(IllegalArgumentException.class, () -> new DeckName(invalidDeckName));
     }
-    
+
     @Test
     public void constructor_invalidDeckNameLength_throwsIllegalArgumentException() {
         String invalidDeckNameLength = "01234567890123456789012345678901234567890123456789"
                 + "0123456789012345678901234567890123456789012345678910";
         assertThrows(IllegalArgumentException.class, () -> new DeckName(invalidDeckNameLength));
     }
-    
+
     @Test
     public void getDeckNameTest() {
         String test = "test";
         DeckName deckName = new DeckName(test);
         assertEquals(deckName.getDeckName(), test);
     }
-    
+
     @Test
     public void isValidDeckNameLength() {
         // maximum deck name length
@@ -42,7 +42,7 @@ public class DeckNameTest {
         // exceed maximum deck name length
         assertFalse(DeckName.isValidLength("012345678901234567890123456789012345678901234567890123456789"
                 + "01234567890123456789012345678901234567890"));
-        // below maximum deck name length 
+        // below maximum deck name length
         assertTrue(DeckName.isValidLength("012345678901234567890123456789012345678901234567890123456789"
                 + "012345678901234567890123456789012345678"));
     }

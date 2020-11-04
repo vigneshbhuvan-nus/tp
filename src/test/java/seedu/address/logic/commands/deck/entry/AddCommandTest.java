@@ -244,17 +244,17 @@ public class AddCommandTest {
         public int getCurrentIndex() {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public int setStatisticsDeckId (int deckIndex) {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public int getStatisticsDeckId() {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public QuizAttempt getQuizAttempt() {
             throw new AssertionError("This method should not be called.");

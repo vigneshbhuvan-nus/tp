@@ -40,7 +40,7 @@ public class NewDeckCommandTest {
     @Test
     public void execute_deckAcceptedByModel_addSuccessful() throws Exception {
         NewDeckCommandTest.ModelStubAcceptingDeckAdded modelStub =
-        new NewDeckCommandTest.ModelStubAcceptingDeckAdded();
+                new NewDeckCommandTest.ModelStubAcceptingDeckAdded();
         Deck validDeck = new DeckBuilder().build();
 
         CommandResult commandResult = new NewDeckCommand(validDeck).execute(modelStub);
@@ -247,17 +247,17 @@ public class NewDeckCommandTest {
         public int getCurrentIndex() {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public QuizAttempt getQuizAttempt() {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public int setStatisticsDeckId(int deckIndex) {
             throw new AssertionError("This method should not be called.");
         }
-        
+
         @Override
         public int getStatisticsDeckId() {
             throw new AssertionError("This method should not be called.");

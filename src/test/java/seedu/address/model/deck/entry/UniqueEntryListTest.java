@@ -164,29 +164,29 @@ public class UniqueEntryListTest {
         assertThrows(UnsupportedOperationException.class, ()
             -> uniqueEntryList.asUnmodifiableObservableList().remove(0));
     }
-    
+
     @Test
     public void length_emptyList_returnsListLengthZero() {
         assertEquals(uniqueEntryList.length(), 0);
     }
-    
+
     @Test
     public void length_oneEntryList_returnsListLengthOne() {
         uniqueEntryList.add(new EntryBuilder().build());
         assertEquals(uniqueEntryList.length(), 1);
     }
-    
+
     @Test
     public void isEmpty_emptyList_returnsTrue() {
         assertTrue(uniqueEntryList.isEmpty());
     }
-    
+
     @Test
     public void isEmpty_oneEntryList_returnsFalse() {
         uniqueEntryList.add(new EntryBuilder().build());
         assertFalse(uniqueEntryList.isEmpty());
     }
-    
+
     @Test
     public void get_emptyList_throwsIndexOutOfBoundsException() {
         assertThrows(IndexOutOfBoundsException.class, () -> uniqueEntryList.get(INDEX_FIRST.getZeroBased()));

@@ -12,13 +12,11 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import javafx.beans.Observable;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.deck.Deck;
-import seedu.address.model.deck.UniqueDeckList;
 import seedu.address.model.deck.exceptions.DuplicateDeckException;
 import seedu.address.testutil.deck.DeckBuilder;
 
@@ -68,12 +66,12 @@ public class AddressBookTest {
         addressBook.addDeck(JAPANESE_DECK);
         assertTrue(addressBook.hasDeck(JAPANESE_DECK));
     }
-    
+
     @Test
     public void removeDeck_emptyAddressBook_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getDeckList().remove(0));
     }
-    
+
     @Test
     public void removeDeck_entryInAddressBook_success() {
         ObservableList deckListCopy = addressBook.getDeckList();
@@ -89,7 +87,7 @@ public class AddressBookTest {
         Deck editedJapaneseDeck = new DeckBuilder(JAPANESE_DECK).build();
         assertTrue(addressBook.hasDeck(editedJapaneseDeck));
     }
-    
+
     @Test
     public void toString_emptyAddressBook_returnsZeroDecks() {
         String expectedString = addressBook.getObservedEntries().asUnmodifiableObservableList().size() + " decks";
