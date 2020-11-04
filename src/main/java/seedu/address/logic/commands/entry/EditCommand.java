@@ -45,12 +45,13 @@ public class EditCommand extends Command {
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the word bank."
             + "Two entries cannot have the same translation.";
+    public static final String MESSAGES_FORBIDDEN = "Word or translations can't be %s ";
 
     private final Index index;
     private final EditEntryDescriptor editEntryDescriptor;
 
     /**
-     * @param index of the entry in the filtered entry list to edit
+     * @param index               of the entry in the filtered entry list to edit
      * @param editEntryDescriptor details to edit the entry with
      */
     public EditCommand(Index index, EditEntryDescriptor editEntryDescriptor) {
@@ -68,7 +69,6 @@ public class EditCommand extends Command {
         if (model.getCurrentDeck() == null) {
             throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
         }
-
         List<Entry> lastShownList = model.getFilteredEntryList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
@@ -80,6 +80,12 @@ public class EditCommand extends Command {
 
         if (!entryToEdit.isSameEntry(editedEntry) && model.hasEntry(editedEntry)) {
             throw new CommandException(MESSAGE_DUPLICATE_ENTRY);
+        }
+        if (editedEntry.getWord().toString().equals("/stop")
+                || editedEntry.getTranslation().toString().equals("/stop")
+                || editedEntry.getWord().toString().equals("/play")
+                || editedEntry.getTranslation().toString().equals("/play")) {
+            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "\"/stop\" or \"/play\""));
         }
 
         model.setEntry(entryToEdit, editedEntry);
@@ -128,7 +134,8 @@ public class EditCommand extends Command {
         private Word word;
         private Translation translation;
 
-        public EditEntryDescriptor() {}
+        public EditEntryDescriptor() {
+        }
 
         /**
          * Copy constructor.
@@ -153,6 +160,7 @@ public class EditCommand extends Command {
         public Optional<Word> getWord() {
             return Optional.ofNullable(word);
         }
+
         public void setTranslation(Translation translation) {
             this.translation = translation;
         }

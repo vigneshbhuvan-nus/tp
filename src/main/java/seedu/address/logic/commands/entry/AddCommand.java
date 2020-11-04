@@ -51,12 +51,11 @@ public class AddCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
 
-        if (toAdd.getWord().toString().equals("/stop") || toAdd.getTranslation().toString().equals("/stop")) {
-            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "/stop"));
+        if (toAdd.getWord().toString().equals("/stop") || toAdd.getTranslation().toString().equals("/stop")
+                || toAdd.getWord().toString().equals("/play") || toAdd.getTranslation().toString().equals("/play")) {
+            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "\"/stop\" or \"/play\""));
         }
-        if (toAdd.getWord().toString().equals("/play") || toAdd.getTranslation().toString().equals("/play")) {
-            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "/play"));
-        }
+
         if (model.getCurrentDeck() == null) {
             throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
         }

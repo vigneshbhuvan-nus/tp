@@ -51,8 +51,8 @@ public class Statistics {
     @Override
     public String toString() {
         return "Statistics{"
-                + "timesOpened=" + timesOpened
-                + ", eventLog=" + eventLog
+                + "timesOpened = " + timesOpened
+                + ", eventLog = " + eventLog
                 + '}';
     }
 

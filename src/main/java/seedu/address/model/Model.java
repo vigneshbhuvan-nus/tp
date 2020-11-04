@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.ConcurrentModificationException;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -141,7 +142,7 @@ public interface Model {
      */
     void updateFilteredDeckList(Predicate<Deck> predicate);
 
-    void replaceEntryList();
+    void replaceEntryList() throws ConcurrentModificationException;
 
     /**
      * Deletes entries on the GUI when clear command is called.

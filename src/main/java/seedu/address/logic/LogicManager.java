@@ -35,13 +35,13 @@ public class LogicManager implements Logic {
     private final Storage storage;
     private final AddressBookParser addressBookParser;
     private final PlayModeParser playModeParser;
-    private final PlayMode playMode = new PlayMode();
+    private boolean isPlayMode = false;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
     public LogicManager(Model model, Storage storage) {
-        this.statisticsManager = new StatisticsManager(); // TODO: load data from disk
+        this.statisticsManager = new StatisticsManager();
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
@@ -55,31 +55,17 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command;
 
-        if (commandText.equals("/play") && !playMode.isPlayMode()) {
-            assert (!playMode.isPlayMode());
-            if (model.getCurrentDeck() == null) {
-                throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
-            }
-            if (model.getCurrentDeck().getEntries().isEmpty()) {
-                throw new CommandException(Messages.MESSAGE_EMPTY_DECK);
-            }
-            playMode.turnOn();
-            return playModeParser.parseCommand(commandText).execute(model);
+        //starts play mode
+        if (commandText.equals("/play") && !isPlayMode) {
+            return initialisePlayMode().execute(model);
         }
-
-        if (playMode.isPlayMode()) {
-            assert (playMode.isPlayMode());
-            command = playModeParser.parseCommand(commandText);
-            if (commandText.equals("/play")) {
-                throw new CommandException("Already in play mode");
-            }
-            if (commandText.equals("/stop") || model.checkScore()) {
-                playMode.turnOff();
-            }
+        //creates AnswerCommand or StopCommand if in play mode
+        if (isPlayMode) {
+            command = createAnswerOrStopCommands(commandText);
         } else {
+            //create regular commands
             command = addressBookParser.parseCommand(commandText);
         }
-
         commandResult = command.execute(model);
 
         try {
@@ -89,6 +75,40 @@ public class LogicManager implements Logic {
         }
 
         return commandResult;
+    }
+
+    @Override
+    public Command initialisePlayMode() throws CommandException, ParseException {
+        assert (!isPlayMode);
+        try {
+            if (model.getCurrentDeck() == null) {
+                throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
+            }
+            if (model.getCurrentDeck().getEntries().isEmpty()) {
+                throw new CommandException(Messages.MESSAGE_EMPTY_DECK);
+            }
+            isPlayMode = true;
+            return playModeParser.parseCommand("/play");
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException {
+        assert (isPlayMode);
+        try {
+            Command command = playModeParser.parseCommand(commandText);
+            if (commandText.equals("/play")) {
+                throw new CommandException("Already in play mode");
+            }
+            if (commandText.equals("/stop") || model.checkScore()) {
+                isPlayMode = false;
+            }
+            return command;
+        } catch (Exception e) {
+            throw e;
+        }
     }
 
     @Override
@@ -156,7 +176,6 @@ public class LogicManager implements Logic {
     public void doCleanup() {
         // TODO: save stats to json file on disk
         statisticsManager.doCleanup();
-        System.out.println("cleaning up:");
-        System.out.println(statisticsManager.getStatistics());
     }
+
 }
