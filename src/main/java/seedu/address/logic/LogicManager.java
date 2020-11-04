@@ -60,7 +60,6 @@ public class LogicManager implements Logic {
         if (commandText.equals("/play") && !playMode.isPlayMode()) {
             return initialisePlayMode().execute(model);
         }
-
         //creates AnswerCommand or StopCommand if in play mode
         if (playMode.isPlayMode()) {
             command = createAnswerOrStopCommands(commandText);
@@ -68,7 +67,6 @@ public class LogicManager implements Logic {
             //create regular commands
             command = addressBookParser.parseCommand(commandText);
         }
-
         commandResult = command.execute(model);
 
         try {

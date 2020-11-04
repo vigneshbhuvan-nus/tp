@@ -34,7 +34,6 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final UserPrefs userPrefs;
     private CurrentView currentView;
-    /*private final FilteredList<Entry> filteredEntries;*/
     private final FilteredList<Deck> filteredDecks;
     private Optional<Index> currentDeckIndex;
     private Deck observedDeck;
@@ -53,7 +52,7 @@ public class ModelManager implements Model {
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine(
-            "Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+                "Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -113,7 +112,6 @@ public class ModelManager implements Model {
         if (deckIndex < 0 || deckIndex >= filteredDecks.size()) {
             deckIndex = -1;
         }
-
         return (this.statisticsDeckIndex = deckIndex);
     }
 
@@ -173,7 +171,6 @@ public class ModelManager implements Model {
     @Override
     public void setEntry(Entry target, Entry editedEntry) {
         requireAllNonNull(target, editedEntry);
-
         Deck currentDeck = getCurrentDeck();
         currentDeck.setEntry(target, editedEntry);
     }
@@ -207,7 +204,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * This function deletes what is on the GUI and replaces it with the next entries in the
+     * replaceEntryList deletes what is on the GUI and replaces it with the next entries in the
      * selected deck. To replace the observedEntry in Addressbook.java that controls the GUI, a copy
      * of it has to be created first. This avoids the concurrent modification exception.
      */
@@ -287,11 +284,11 @@ public class ModelManager implements Model {
             return false;
         }
 
-        // state check
+        //state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
-            && userPrefs.equals(other.userPrefs)
-            && filteredDecks.equals(other.filteredDecks);
+                && userPrefs.equals(other.userPrefs)
+                && filteredDecks.equals(other.filteredDecks);
     }
 
     //====Games=====
@@ -301,7 +298,6 @@ public class ModelManager implements Model {
         leitner = new Leitner(observedList);
         quizLength = leitner.getEntries().size();
         currentIndex = 0;
-
         addressBook.resetEntryList();
         addressBook.replaceEntryListLeitner(leitner.getUniqueEntryList());
 
@@ -312,7 +308,6 @@ public class ModelManager implements Model {
     public Score endGame() {
         replaceEntryList();
         this.currentView.setView(View.SCORE_VIEW);
-
         currentQuizAttempt.endQuiz(quizLength);
 
         if (checkScoreTwo()) {
@@ -334,19 +329,14 @@ public class ModelManager implements Model {
 
         if (currentIndex == quizLength) {
             replaceEntryList();
+        } else if (correctAnswer.equals(guess)) {
+            currentQuizAttempt.answerQuestion(correctAnswer, guess);
+            logger.info(String.format("Answer given was %s, the correct answer was %s, Correct answer given",
+                    guess, correctAnswer));
         } else {
             currentQuizAttempt.answerQuestion(correctAnswer, guess);
-
-            // FOR DEBUGGING PURPOSES
-            if (correctAnswer.equals(guess)) {
-                logger.info(String
-                    .format("Answer given was %s, the correct answer was %s, Correct answer given",
-                        guess, correctAnswer));
-            } else {
-                logger.info(String
-                    .format("Answer given was %s, the correct answer was %s, Wrong answer given",
-                        guess, correctAnswer));
-            }
+            logger.info(String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
+                    guess, correctAnswer));
         }
 
         addressBook.setEntry(entryToRemove, entryToAdd); //swaps entry in GUI

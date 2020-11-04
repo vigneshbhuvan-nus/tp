@@ -11,7 +11,7 @@ import seedu.address.model.view.View;
 public class PlayCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "Playmode Initiated!!";
+    public static final String MESSAGE_SUCCESS = "Playmode Started";
 
 
     @Override
