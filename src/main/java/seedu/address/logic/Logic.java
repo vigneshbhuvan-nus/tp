@@ -39,11 +39,11 @@ public interface Logic {
     Command initialisePlayMode() throws CommandException, ParseException;
 
     /**
-     * Creates a Answer Command or a Stop Command depending on the input. If a Stop Command is created, modifies
-     * the PlayMode object to be switched off.
+     * Creates a Answer Command or a Stop Command depending on the input. If a Stop Command is created, isPlayMode is
+     * set to false
      *
      * @return a Answer Command or a Stop Command.
-     * @throws CommandException If LogicManager if already in PlayMode.
+     * @throws CommandException If LogicManager if already in play mode.
      * @throws ParseException If an error occurs during parsing.
      */
     Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException;

@@ -36,7 +36,7 @@ public class LogicManager implements Logic {
     private final Storage storage;
     private final AddressBookParser addressBookParser;
     private final PlayModeParser playModeParser;
-    private final PlayMode playMode = new PlayMode();
+    private boolean isPlayMode = false;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
@@ -57,11 +57,11 @@ public class LogicManager implements Logic {
         Command command;
 
         //starts play mode
-        if (commandText.equals("/play") && !playMode.isPlayMode()) {
+        if (commandText.equals("/play") && !isPlayMode) {
             return initialisePlayMode().execute(model);
         }
         //creates AnswerCommand or StopCommand if in play mode
-        if (playMode.isPlayMode()) {
+        if (isPlayMode) {
             command = createAnswerOrStopCommands(commandText);
         } else {
             //create regular commands
@@ -80,7 +80,7 @@ public class LogicManager implements Logic {
 
     @Override
     public Command initialisePlayMode() throws CommandException, ParseException {
-        assert (!playMode.isPlayMode());
+        assert (!isPlayMode);
         try {
             if (model.getCurrentDeck() == null) {
                 throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
@@ -88,7 +88,7 @@ public class LogicManager implements Logic {
             if (model.getCurrentDeck().getEntries().isEmpty()) {
                 throw new CommandException(Messages.MESSAGE_EMPTY_DECK);
             }
-            playMode.turnOn();
+            isPlayMode = true;
             return playModeParser.parseCommand("/play");
         } catch (Exception e) {
             throw e;
@@ -97,14 +97,14 @@ public class LogicManager implements Logic {
 
     @Override
     public Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException {
-        assert (playMode.isPlayMode());
+        assert (isPlayMode);
         try {
             Command command = playModeParser.parseCommand(commandText);
             if (commandText.equals("/play")) {
                 throw new CommandException("Already in play mode");
             }
             if (commandText.equals("/stop") || model.checkScore()) {
-                playMode.turnOff();
+                isPlayMode = false;
             }
             return command;
         } catch (Exception e) {
