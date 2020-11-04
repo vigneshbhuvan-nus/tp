@@ -12,7 +12,7 @@ import seedu.address.model.deck.entry.Word;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
-    public static Entry[] getSampleEntriesJapanese() {
+    private static Entry[] getSampleEntriesJapanese() {
         return new Entry[] {
             new Entry(new Word("Apple"), new Translation("りんご")),
             new Entry(new Word("Bridge"), new Translation("橋")),
@@ -20,15 +20,15 @@ public class SampleDataUtil {
         };
     }
 
-    public static Entry[] getSampleEntriesSpanish() {
+    private static Entry[] getSampleEntriesSpanish() {
         return new Entry[] {
-           new Entry(new Word("Summer"), new Translation("verano")),
-           new Entry(new Word("Winter"), new Translation("invierno")),
-           new Entry(new Word("Spring"), new Translation("primavera")),
+            new Entry(new Word("Summer"), new Translation("verano")),
+            new Entry(new Word("Winter"), new Translation("invierno")),
+            new Entry(new Word("Spring"), new Translation("primavera")),
         };
     }
 
-    public static Deck getSampleJapaneseDeck() {
+    private static Deck getSampleJapaneseDeck() {
         Deck sampleJapaneseDeck = new Deck(new DeckName("Japanese"));
         for (Entry sampleJapaneseEntry : getSampleEntriesJapanese()) {
             sampleJapaneseDeck.addEntry(sampleJapaneseEntry);
@@ -36,7 +36,7 @@ public class SampleDataUtil {
         return sampleJapaneseDeck;
     }
 
-    public static Deck getSampleSpanishDeck() {
+    private static Deck getSampleSpanishDeck() {
         Deck sampleSpanishDeck = new Deck(new DeckName("Spanish"));
         for (Entry sampleSpanishEntry: getSampleEntriesSpanish()) {
             sampleSpanishDeck.addEntry(sampleSpanishEntry);
