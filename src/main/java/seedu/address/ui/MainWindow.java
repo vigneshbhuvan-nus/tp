@@ -262,22 +262,6 @@ public class MainWindow extends UiPart<Stage> {
         quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
     }
 
-    public EntryListPanel getEntryListPanel() {
-        return entryListPanel;
-    }
-
-    /**
-     * Opens the help window or focuses on it if it's already opened.
-     */
-    @FXML
-    public void handleDeck() {
-        try {
-            System.out.println();
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
-    }
-
     /**
      * Executes the command and returns the result.
      *
