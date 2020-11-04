@@ -1,6 +1,5 @@
 package seedu.address.logic.parser.deck;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_DECK_NAME;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_DECK_NAME_JAPANESE;
@@ -14,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.deck.NewDeckCommand;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.DeckName;
 import seedu.address.testutil.deck.DeckBuilder;
 
 public class NewDeckCommandParserTest {
@@ -34,7 +34,7 @@ public class NewDeckCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         // invalid word
-        assertParseFailure(parser, INVALID_DECK_NAME, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        assertParseFailure(parser, INVALID_DECK_NAME, String.format(DeckName.MESSAGE_CONSTRAINTS,
                 NewDeckCommand.MESSAGE_USAGE));
     }
 }

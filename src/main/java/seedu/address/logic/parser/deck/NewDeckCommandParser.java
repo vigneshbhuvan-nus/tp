@@ -1,7 +1,5 @@
 package seedu.address.logic.parser.deck;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
 import seedu.address.logic.commands.deck.NewDeckCommand;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
@@ -20,13 +18,8 @@ public class NewDeckCommandParser implements Parser<NewDeckCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public NewDeckCommand parse(String args) throws ParseException {
-        try {
-            DeckName name = ParserUtil.parseDeckName(args);
-            Deck deck = new Deck(name);
-            return new NewDeckCommand(deck);
-        } catch (ParseException pe) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, NewDeckCommand.MESSAGE_USAGE), pe);
-        }
+        DeckName name = ParserUtil.parseDeckName(args);
+        Deck deck = new Deck(name);
+        return new NewDeckCommand(deck);
     }
 }
