@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.deck.NewDeckCommand;
 import seedu.address.model.deck.Deck;
+import seedu.address.model.deck.DeckName;
 import seedu.address.testutil.deck.DeckBuilder;
 
 public class NewDeckCommandParserTest {
@@ -34,7 +35,7 @@ public class NewDeckCommandParserTest {
     @Test
     public void parse_invalidValue_failure() {
         // invalid word
-        assertParseFailure(parser, INVALID_DECK_NAME, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        assertParseFailure(parser, INVALID_DECK_NAME, String.format(DeckName.MESSAGE_CONSTRAINTS,
                 NewDeckCommand.MESSAGE_USAGE));
     }
 }
