@@ -42,7 +42,7 @@ public class LogicManager implements Logic {
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
     public LogicManager(Model model, Storage storage) {
-        this.statisticsManager = new StatisticsManager(); // TODO: load data from disk
+        this.statisticsManager = new StatisticsManager();
         this.model = model;
         this.storage = storage;
         addressBookParser = new AddressBookParser();
@@ -56,13 +56,16 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command;
 
+        //starts play mode
         if (commandText.equals("/play") && !playMode.isPlayMode()) {
             return initialisePlayMode().execute(model);
         }
 
+        //creates AnswerCommand or StopCommand if in play mode
         if (playMode.isPlayMode()) {
             command = createAnswerOrStopCommands(commandText);
         } else {
+            //create regular commands
             command = addressBookParser.parseCommand(commandText);
         }
 
@@ -89,7 +92,7 @@ public class LogicManager implements Logic {
             }
             playMode.turnOn();
             return playModeParser.parseCommand("/play");
-        } catch (ParseException e) {
+        } catch (Exception e) {
             throw e;
         }
     }
@@ -97,14 +100,18 @@ public class LogicManager implements Logic {
     @Override
     public Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException {
         assert (playMode.isPlayMode());
-        Command command = playModeParser.parseCommand(commandText);
-        if (commandText.equals("/play")) {
-            throw new CommandException("Already in play mode");
+        try {
+            Command command = playModeParser.parseCommand(commandText);
+            if (commandText.equals("/play")) {
+                throw new CommandException("Already in play mode");
+            }
+            if (commandText.equals("/stop") || model.checkScore()) {
+                playMode.turnOff();
+            }
+            return command;
+        } catch (Exception e) {
+            throw e;
         }
-        if (commandText.equals("/stop") || model.checkScore()) {
-            playMode.turnOff();
-        }
-        return command;
     }
 
     @Override
