@@ -81,13 +81,11 @@ public class EditCommand extends Command {
         if (!entryToEdit.isSameEntry(editedEntry) && model.hasEntry(editedEntry)) {
             throw new CommandException(MESSAGE_DUPLICATE_ENTRY);
         }
-        if (editedEntry.getWord().toString().equals("/stop") ||
-                editedEntry.getTranslation().toString().equals("/stop")) {
-            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "/stop"));
-        }
-        if (editedEntry.getWord().toString().equals("/play") ||
-                editedEntry.getTranslation().toString().equals("/play")) {
-            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "/play"));
+        if (editedEntry.getWord().toString().equals("/stop")
+                || editedEntry.getTranslation().toString().equals("/stop")
+                || editedEntry.getWord().toString().equals("/play")
+                || editedEntry.getTranslation().toString().equals("/play")) {
+            throw new CommandException(String.format(MESSAGES_FORBIDDEN, "\"/stop\" or \"/play\""));
         }
 
         model.setEntry(entryToEdit, editedEntry);
