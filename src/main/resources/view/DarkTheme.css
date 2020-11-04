@@ -241,7 +241,7 @@ Brass : A5AF37  unused
 
 .answer-list {
     -fx-background: derive(#2B3E13, 40%);
-    -fx-background-color: transparent;
+    -fx-background-color: derive(#2B3E13, 40%);
     -fx-font-size: 18px;
     -fx-alignment: center;
     -fx-font-family: "Segoe UI Light";
@@ -256,6 +256,11 @@ Brass : A5AF37  unused
 
 .progress-bar .bar{
     -fx-background-color: linear-gradient(green, #F8E9C7);
+}
+
+/* Remove the white space between horizontal and vertical scroll bars in quiz mode */
+.corner {
+    -fx-background-color: transparent;
 }
 
 /* Score Panel */

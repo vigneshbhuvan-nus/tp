@@ -78,7 +78,7 @@ public class QuizPanel extends UiPart<Region> {
             Entry previousEntry = shuffledEntries.get(i);
             sb.append("Question: ").append(previousEntry.getTranslation().toString()).append("\n");
             sb.append("Answer: ").append(previousEntry.getWord().toString()).append("\n");
-            sb.append("Your answer: ").append(givenAnswers.get(i)).append("\n");
+            sb.append("Your answer: ").append(givenAnswers.get(i)).append("\n\n");
         }
         return sb.toString();
     }
