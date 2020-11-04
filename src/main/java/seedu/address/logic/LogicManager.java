@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
 
+import com.sun.scenario.effect.Blend;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
@@ -56,26 +57,11 @@ public class LogicManager implements Logic {
         Command command;
 
         if (commandText.equals("/play") && !playMode.isPlayMode()) {
-            assert (!playMode.isPlayMode());
-            if (model.getCurrentDeck() == null) {
-                throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
-            }
-            if (model.getCurrentDeck().getEntries().isEmpty()) {
-                throw new CommandException(Messages.MESSAGE_EMPTY_DECK);
-            }
-            playMode.turnOn();
-            return playModeParser.parseCommand(commandText).execute(model);
+            return initialisePlayMode().execute(model);
         }
 
         if (playMode.isPlayMode()) {
-            assert (playMode.isPlayMode());
-            command = playModeParser.parseCommand(commandText);
-            if (commandText.equals("/play")) {
-                throw new CommandException("Already in play mode");
-            }
-            if (commandText.equals("/stop") || model.checkScore()) {
-                playMode.turnOff();
-            }
+            command = createPlayCommands(commandText);
         } else {
             command = addressBookParser.parseCommand(commandText);
         }
@@ -89,6 +75,36 @@ public class LogicManager implements Logic {
         }
 
         return commandResult;
+    }
+
+    @Override
+    public Command initialisePlayMode() throws CommandException, ParseException {
+        assert (!playMode.isPlayMode());
+        try {
+            if (model.getCurrentDeck() == null) {
+                throw new CommandException(Messages.MESSAGE_NO_DECK_SELECTED);
+            }
+            if (model.getCurrentDeck().getEntries().isEmpty()) {
+                throw new CommandException(Messages.MESSAGE_EMPTY_DECK);
+            }
+            playMode.turnOn();
+            return playModeParser.parseCommand("/play");
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+
+    @Override
+    public Command createPlayCommands(String commandText) throws CommandException, ParseException {
+        assert (playMode.isPlayMode());
+        Command command = playModeParser.parseCommand(commandText);
+        if (commandText.equals("/play")) {
+            throw new CommandException("Already in play mode");
+        }
+        if (commandText.equals("/stop") || model.checkScore()) {
+            playMode.turnOff();
+        }
+        return command;
     }
 
     @Override
@@ -159,4 +175,5 @@ public class LogicManager implements Logic {
         System.out.println("cleaning up:");
         System.out.println(statisticsManager.getStatistics());
     }
+
 }

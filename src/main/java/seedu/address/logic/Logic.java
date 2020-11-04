@@ -4,6 +4,7 @@ import java.nio.file.Path;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -89,4 +90,8 @@ public interface Logic {
      * Returns the score of the most recent quiz taken by the user
      */
     double getLastScore();
+
+    Command initialisePlayMode() throws CommandException, ParseException;
+
+    Command createPlayCommands(String commandText) throws CommandException, ParseException;
 }
