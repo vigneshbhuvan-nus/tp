@@ -1,9 +1,15 @@
 package seedu.address.statistics;
 
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ModelManager;
+
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class StatisticsManager {
+
+    private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final Statistics statistics;
 
@@ -28,6 +34,7 @@ public class StatisticsManager {
 
     public void doCleanup() {
         statistics.registerAppLogout();
+        logger.info("Cleaning up: " + statistics.toString());
     }
 
     public Statistics getStatistics() {
@@ -36,7 +43,7 @@ public class StatisticsManager {
 
     public String getLastLoginString() {
         LocalDateTime lastLogin = getLastLogin();
-        System.out.println("statistics: " + this.statistics);
+        logger.info("Starting Up: " + statistics.toString());
         return lastLogin == null ? "-" : lastLogin.toString();
     }
 
