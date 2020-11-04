@@ -21,12 +21,32 @@ import seedu.address.statistics.StatisticsManager;
 public interface Logic {
     /**
      * Executes the command and returns the result.
+     *
      * @param commandText The command as entered by the user.
      * @return the result of the command execution.
      * @throws CommandException If an error occurs during command execution.
      * @throws ParseException If an error occurs during parsing.
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
+
+    /**
+     * Switches logic manager to play mode by modifying the PlayMode object and returning a Play Command.
+     *
+     * @return a Play Command.
+     * @throws  CommandException If there is no deck currently selected or if the deck is empty.
+     * @throws  ParseException If an error occurs during parsing.
+     */
+    Command initialisePlayMode() throws CommandException, ParseException;
+
+    /**
+     * Creates a Answer Command or a Stop Command depending on the input. If a Stop Command is created, modifies
+     * the PlayMode object to be switched off.
+     *
+     * @return a Answer Command or a Stop Command.
+     * @throws  CommandException If LogicManager if already in PlayMode.
+     * @throws  ParseException If an error occurs during parsing.
+     */
+    Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException;
 
     /**
      * Returns the AddressBook.
@@ -91,7 +111,4 @@ public interface Logic {
      */
     double getLastScore();
 
-    Command initialisePlayMode() throws CommandException, ParseException;
-
-    Command createPlayCommands(String commandText) throws CommandException, ParseException;
 }

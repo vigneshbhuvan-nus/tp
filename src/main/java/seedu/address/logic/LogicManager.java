@@ -61,7 +61,7 @@ public class LogicManager implements Logic {
         }
 
         if (playMode.isPlayMode()) {
-            command = createPlayCommands(commandText);
+            command = createAnswerOrStopCommands(commandText);
         } else {
             command = addressBookParser.parseCommand(commandText);
         }
@@ -89,13 +89,13 @@ public class LogicManager implements Logic {
             }
             playMode.turnOn();
             return playModeParser.parseCommand("/play");
-        } catch (Exception e) {
+        } catch (ParseException e) {
             throw e;
         }
     }
 
     @Override
-    public Command createPlayCommands(String commandText) throws CommandException, ParseException {
+    public Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException {
         assert (playMode.isPlayMode());
         Command command = playModeParser.parseCommand(commandText);
         if (commandText.equals("/play")) {
