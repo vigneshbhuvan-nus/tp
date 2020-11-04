@@ -1,11 +1,12 @@
 package seedu.address.statistics;
 
-import seedu.address.commons.core.LogsCenter;
-import seedu.address.model.ModelManager;
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
+
+import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.ModelManager;
+
 
 public class StatisticsManager {
 
@@ -32,6 +33,9 @@ public class StatisticsManager {
         this.statistics.registerAppLogin();
     }
 
+    /**
+     * Registers the app logout process and logs the statistics information accordingly
+     */
     public void doCleanup() {
         statistics.registerAppLogout();
         logger.info("Cleaning up: " + statistics.toString());

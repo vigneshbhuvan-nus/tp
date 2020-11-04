@@ -10,7 +10,7 @@ import seedu.address.model.deck.entry.Word;
 
 public class Leitner {
 
-    private ArrayList<Entry> entryList= new ArrayList<>();
+    private ArrayList<Entry> entryList = new ArrayList<>();
     private ArrayList<Translation> questionList = new ArrayList<>();
     private ArrayList<Word> answerList = new ArrayList<>();
     private ArrayList<String> guesses = new ArrayList<>();
