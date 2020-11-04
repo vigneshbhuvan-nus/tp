@@ -1,12 +1,9 @@
-package seedu.address.logic;
+package seedu.address.logic.commands.play;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seedu.address.commons.core.Messages.MESSAGE_EMPTY_DECK;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 
-import java.io.IOException;
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -14,25 +11,29 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.Logic;
+import seedu.address.logic.LogicManager;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
+import seedu.address.model.deck.entry.Entry;
+import seedu.address.model.deck.entry.Translation;
+import seedu.address.model.deck.entry.Word;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 
-public class LogicManagerTest {
-    private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
+public class AnswerCommandTest {
 
     @TempDir
     public Path temporaryFolder;
     private Model model = new ModelManager();
+    private Entry entry = new Entry(new Word("abc"), new Translation("123"));
     private Deck deck = new Deck(new DeckName("test"));
     private Logic logic;
 
@@ -43,30 +44,23 @@ public class LogicManagerTest {
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
+        deck.addEntry(entry);
         model.addDeck(deck);
         model.selectDeck(Index.fromZeroBased(0));
     }
 
     @Test
-    public void execute_invalidCommandFormat_throwsParseException() {
-        String invalidCommand = "uicfhmowqewca";
-        assertParseException(invalidCommand, MESSAGE_UNKNOWN_COMMAND);
+    public void execute_answerCommandUntilDeckLimit_throwParseException() throws CommandException, ParseException {
+        assertCommandSuccess("/play", "Playmode Started", model);
+        assertCommandSuccess("/stop", "Playmode stopped! Your score was not recorded!",
+                model);
     }
 
     @Test
-    public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "delete 9";
-        assertCommandException(deleteCommand, MESSAGE_INVALID_ENTRY_DISPLAYED_INDEX);
-    }
-
-    @Test
-    public void getFilteredDeckList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> logic.getFilteredDeckList().remove(0));
-    }
-
-    @Test
-    public void execute_singlePlayCommandEmptyDeck_throwsCommandException() {
-        assertCommandException("/play", MESSAGE_EMPTY_DECK);
+    public void execute_answerCommandWithStopCommandWord_throwParseException() throws CommandException, ParseException {
+        assertCommandSuccess("/play", "Playmode Started", model);
+        assertCommandSuccess("answer", "Your score was 0 / 1", model);
+        assertParseException("another answer", MESSAGE_UNKNOWN_COMMAND);
     }
 
     /**
@@ -82,24 +76,6 @@ public class LogicManagerTest {
         CommandResult result = logic.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedModel, model);
-    }
-
-    /**
-     * Executes the command, confirms that a ParseException is thrown and that the result message is correct.
-     *
-     * @see #assertCommandFailure(String, Class, String, Model)
-     */
-    private void assertParseException(String inputCommand, String expectedMessage) {
-        assertCommandFailure(inputCommand, ParseException.class, expectedMessage);
-    }
-
-    /**
-     * Executes the command, confirms that a CommandException is thrown and that the result message is correct.
-     *
-     * @see #assertCommandFailure(String, Class, String, Model)
-     */
-    private void assertCommandException(String inputCommand, String expectedMessage) {
-        assertCommandFailure(inputCommand, CommandException.class, expectedMessage);
     }
 
     /**
@@ -128,16 +104,12 @@ public class LogicManagerTest {
     }
 
     /**
-     * A stub class to throw an {@code IOException} when the save method is called.
+     * Executes the command, confirms that a ParseException is thrown and that the result message is correct.
+     *
+     * @see #assertCommandFailure(String, Class, String, Model)
      */
-    private static class JsonAddressBookIoExceptionThrowingStub extends JsonAddressBookStorage {
-        private JsonAddressBookIoExceptionThrowingStub(Path filePath) {
-            super(filePath);
-        }
-
-        @Override
-        public void saveAddressBook(ReadOnlyAddressBook addressBook, Path filePath) throws IOException {
-            throw DUMMY_IO_EXCEPTION;
-        }
+    private void assertParseException(String inputCommand, String expectedMessage) {
+        assertCommandFailure(inputCommand, ParseException.class, expectedMessage);
     }
+
 }
