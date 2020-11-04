@@ -2,25 +2,50 @@ package seedu.address.model.deck;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_JAPANESE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_WORD_SPANISH;
 import static seedu.address.testutil.deck.TypicalDecks.JAPANESE_DECK;
 import static seedu.address.testutil.deck.TypicalDecks.SPANISH_DECK;
 
+import javafx.collections.ObservableList;
 import org.junit.jupiter.api.Test;
 
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
+import seedu.address.model.play.scoring.BinaryScoring;
+import seedu.address.model.play.scoring.QuizAttempt;
 import seedu.address.testutil.deck.DeckBuilder;
+import seedu.address.testutil.entry.EntryBuilder;
+
+import java.util.ArrayList;
 
 public class DeckTest {
 
     private Deck deckTest = new Deck(new DeckName("Test"));
     private Entry validEntry = new Entry(new Word("Hello"), new Translation("Hola"));
 
+    @Test
+    public void addQuizAttempt_validQuizAttempt_success() {
+        ArrayList<QuizAttempt> quizAttempts = new ArrayList<>();
+        QuizAttempt validQuizAttempt = new QuizAttempt(new BinaryScoring()); 
+        quizAttempts.add(validQuizAttempt);
+        deckTest.addQuizAttempt(validQuizAttempt);
+        assertEquals(quizAttempts, deckTest.getQuizAttempts());
+    }
+    
+    @Test
+    public void setQuizAttempts_validQuizAttempts_success() {
+        ArrayList<QuizAttempt> quizAttempts = new ArrayList<>();
+        QuizAttempt validQuizAttempt = new QuizAttempt(new BinaryScoring());
+        quizAttempts.add(validQuizAttempt);
+        deckTest.setQuizAttempts(quizAttempts);
+        assertEquals(quizAttempts, deckTest.getQuizAttempts());
+    }
+    
     @Test
     public void isSameDeck() {
         // same object -> returns true
@@ -75,5 +100,21 @@ public class DeckTest {
         deckTest.addEntry(validEntry);
         assertTrue(deckTest.hasEntry(validEntry));
     }
-
+    
+    @Test
+    public void removeEntry_validEntry_success() {
+        ObservableList<Entry> entryListCopy = deckTest.getEntryList();
+        deckTest.addEntry(validEntry);
+        deckTest.removeEntry(validEntry);
+        assertEquals(entryListCopy, deckTest.getEntryList());
+    }
+    
+    @Test
+    public void setEntry_validEntry_success() {
+        Entry otherEntry = new EntryBuilder().build();
+        deckTest.addEntry(validEntry);
+        ObservableList<Entry> entryListCopy = deckTest.getEntryList();
+        deckTest.setEntry(validEntry, otherEntry);
+        assertEquals(entryListCopy, deckTest.getEntryList());
+    }
 }

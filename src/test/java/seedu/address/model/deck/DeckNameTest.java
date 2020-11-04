@@ -1,5 +1,6 @@
 package seedu.address.model.deck;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.testutil.Assert.assertThrows;
@@ -24,6 +25,13 @@ public class DeckNameTest {
         String invalidDeckNameLength = "01234567890123456789012345678901234567890123456789"
                 + "0123456789012345678901234567890123456789012345678910";
         assertThrows(IllegalArgumentException.class, () -> new DeckName(invalidDeckNameLength));
+    }
+    
+    @Test
+    public void getDeckNameTest() {
+        String test = "test";
+        DeckName deckName = new DeckName(test);
+        assertEquals(deckName.getDeckName(), test);
     }
     
     @Test
