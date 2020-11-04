@@ -8,7 +8,7 @@ import static seedu.address.testutil.entry.TypicalEntries.SPANISH_3;
 
 public class BinaryScoringTest {
     
-    BinaryScoring binaryScoring = new BinaryScoring();
+    private BinaryScoring binaryScoring = new BinaryScoring();
     
     @Test
     public void computeScore_sameGuess_returnsOne() {
