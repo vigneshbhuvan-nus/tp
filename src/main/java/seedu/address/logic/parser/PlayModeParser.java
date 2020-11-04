@@ -39,13 +39,18 @@ public class PlayModeParser {
         final String arguments = matcher.group("arguments");
 
         switch (userInput) {
-        case "play":
+        case "/play":
+
             return new PlayCommand();
-        case "stop":
+        case "/stop":
             return new StopCommand();
         default:
             // for commands with additional args
-            return new AnswerCommandParser().parse(commandWord + " " + arguments);
+            if (arguments.isEmpty()) {
+                return new AnswerCommandParser().parse(commandWord);
+            } else {
+                return new AnswerCommandParser().parse(commandWord + arguments);
+            }
         }
     }
 }

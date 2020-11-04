@@ -294,16 +294,16 @@ Figure 14. Result of deleting an entry
 
 Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of all
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `play` and
-`stop`.
+`/stop`.
 
 
 ## 6.3.1 Play a Game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
-to you at the end of the game.
+to you at the end of the game. Note the slash `/` in the command.
 
-Format: `play`
+Format: `/play`
 
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
@@ -314,9 +314,9 @@ Figure 15. Result of playing a game
 
 ## 6.3.2 Stop a Game  (Georgie)
 
-Stop the current game prematurely.
+Stop the current game prematurely. Note the slash `/` in the command.
 
-Format: `stop`
+Format: `/stop`
 
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
@@ -385,8 +385,8 @@ Result:
 | **Add**                                                                                            | `add w/<WORD> t/<TRANSLATION>` | `add w/Hello t/hola`       |Adds an Entry with the Given Word and Translation to the Selected Deck|
 | **Edit**                                                                                           | `edit 1 [w/word] [t/translation]` | `edit 1 w/hello t/こんにちは`   | Edits the Entry with the Given Index Using the Given Values|
 | **Delete**                                                                                         | `delete <INDEX>` | `delete 3`                                                                     | Deletes the Entry with the Given Index|
-| **Play**                                                                                           | `play`       |  | Starts a New FlashCard Game with the Selected Deck
-| **Stop**                                                                                           | `stop`       | | Stops an Existing Game
+| **Play**                                                                                           | `/play`       |  | Starts a New FlashCard Game with the Selected Deck
+| **Stop**                                                                                           | `/stop`       | | Stops an Existing Game
 | **Clear**                                                                                          | `clear`      |  | Deletes All Decks and Entries
 | **Help**                                                                                           | `help`       | | Opens Our User Guide in the Application|
 | **Exit**                                                                                           | `exit`       |  | Saves and Exits the Program

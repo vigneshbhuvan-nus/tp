@@ -21,7 +21,7 @@ public class RemoveDeckCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Removes the deck identified by the index number used in the displayed deck list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_REMOVE_DECK_SUCCESS = "Removed Deck: %1$s";

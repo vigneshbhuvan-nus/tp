@@ -13,7 +13,8 @@ import seedu.address.model.play.Score;
 public class AnswerCommand extends Command {
 
     public static final String COMMAND_WORD = "clear";
-    public static final String MESSAGE_SUCCESS = "Your Answer was: ";
+    public static final String MESSAGE_SCORE = "Your score was %d / %d";
+    public static final String MESSAGE_RESULT = "Your answer was: ";
     private String answer;
 
     /**
@@ -27,11 +28,13 @@ public class AnswerCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.playGame(answer.substring(0, answer.length() - 1));
+        model.playGame(answer);
         if (model.checkScoreTwo()) { //answerCommand sees into the future by 1 move, so have to delay by 1
             Score score = model.endGame();
-            return new CommandResult(MESSAGE_SUCCESS + score.toString());
+            int playerScore = (int) score.getYourScore();
+            int maxScore = (int) score.getMaxScore();
+            return new CommandResult(String.format(MESSAGE_SCORE, playerScore, maxScore));
         }
-        return new CommandResult(MESSAGE_SUCCESS + answer);
+        return new CommandResult(MESSAGE_RESULT + answer);
     }
 }
