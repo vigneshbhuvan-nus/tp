@@ -114,15 +114,6 @@ public class MainWindow extends UiPart<Stage> {
                 observable, oldValue, newValue) -> {
                 logger.info(String.format("Tab switched from %s to %s", oldValue.getId(), newValue.getId()));
                 switch(newValue.getId()) {
-                case "entries_panel":
-                    // to update / refresh entries on this panel
-                    break;
-                case "start_panel":
-                    // to update / refresh entries on this panel
-                    break;
-                case "quiz_panel":
-                    // to update / refresh entries on this panel
-                    break;
                 case "statistics_panel":
                     handleStatisticsPanel();
                     break;
@@ -319,10 +310,7 @@ public class MainWindow extends UiPart<Stage> {
             if (logic.getCurrentView() == View.STATISTICS_VIEW) {
                 handleStatisticsPanel();
             }
-
-            if (logic.getCurrentView() != this.currentView) {
-                handleChangeTab();
-            }
+            handleChangeTab();
 
             return commandResult;
         } catch (CommandException | ParseException e) {
