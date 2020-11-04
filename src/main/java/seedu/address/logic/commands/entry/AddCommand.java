@@ -18,7 +18,6 @@ import seedu.address.model.view.View;
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a entry to the word bank. "
             + "Parameters: "
             + PREFIX_WORD + "WORD "
@@ -28,6 +27,12 @@ public class AddCommand extends Command {
             + PREFIX_TRANSLATION + "果物";
 
     public static final String MESSAGE_SUCCESS = "New entry added: %1$s";
+
+    /**
+     * There cannot be duplicate entries in the word bank.
+     * Two entries are considered to be duplicates if they have the same translation.
+     * An entry cannot contain reserve command words like /play or /stop.
+     */
     public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the word bank."
             + "Two entries cannot have the same translation";
     public static final String MESSAGES_FORBIDDEN = "Word or translations can't be %s ";

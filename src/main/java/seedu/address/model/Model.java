@@ -196,5 +196,4 @@ public interface Model {
     int getCurrentIndex();
 
     QuizAttempt getQuizAttempt();
-
 }
