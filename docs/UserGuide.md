@@ -353,18 +353,32 @@ Result:
 ## 7. Statistics (Melanie)
 
 Statistics are how you get to see your own progression as you continuously build and play GreenTea.
-The statistics tab displays the scores of up to your last 10 attempts in the form of
-a bar chart.
+The statistics tab displays the scores of games up to your last 10 attempts in the form of
+a line graph.
+You can view the statistics of a single deck or the statistics across all your decks.
 
-You can access the statistics tab by first `select`ing a deck before clicking the statistics tab at the top
-of the application.
+To view statistics across all decks:
 
-:information_source: **Note:**
-Before you can view the statistics, remember to [select a deck first!](#613-selecting-a-deck-select)
+Format: `stats`
 
 Result:
 
-![GreenTea](images/Ui.png)
+![GreenTea](images/user-guide/18StatsAllDecks.PNG)
+Figure 18. Result of viewing statistics across all decks
+
+To view statistics of a single deck:
+
+Format: `stats <INDEX>`
+
+Example: `stats 1`
+
+Result:
+
+![GreenTea](images/user-guide/19StatsOneDeck.PNG)
+Figure 19. Result of viewing statistics of a single deck
+
+:information_source: **Note:**
+In order to view your statistics, you must first [play a game!](#631-play-a-game-georgie)
 
 ## 8. FAQ (Gabriel)
 
@@ -373,6 +387,10 @@ Result:
 
 **Q**: Will my score be recorded if I stop a game before I finish it?<br>
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
+
+**Q**: How do I transfer my data to someone else? <br>
+**A**: Ensure that the other person has GreenTea installed on their computer. Use the platform of your choice which supports file sharing (E.g whatsApp, telegram, email).
+Locate the folder in your computer where you installed GreenTea. In the folder, there is file called wordbank.json. Send the file to the other person.  
 ---
 
 ## 9. Command Summary (Gabriel)
