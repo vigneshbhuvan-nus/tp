@@ -2,6 +2,7 @@ package seedu.address.logic.commands.deck;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import seedu.address.commons.core.Messages;
@@ -38,12 +39,15 @@ public class SelectDeckCommand extends Command {
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
             throw new CommandException(Messages.MESSAGE_INVALID_DECK_DISPLAYED_INDEX);
         }
-
-        model.selectDeck(targetIndex);
-        model.replaceEntryList();
-        Deck selectedDeck = model.getCurrentDeck();
-        model.setCurrentView(View.ENTRY_VIEW);
-        return new CommandResult(String.format(MESSAGE_SELECT_DECK_SUCCESS, selectedDeck));
+        try {
+            model.selectDeck(targetIndex);
+            model.replaceEntryList();
+            Deck selectedDeck = model.getCurrentDeck();
+            model.setCurrentView(View.ENTRY_VIEW);
+            return new CommandResult(String.format(MESSAGE_SELECT_DECK_SUCCESS, selectedDeck));
+        } catch (ConcurrentModificationException e) {
+            throw new CommandException(e.toString());
+        }
     }
 
 }

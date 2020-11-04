@@ -16,10 +16,14 @@ public class PlayCommand extends Command {
 
     @Override
     public CommandResult execute(Model model) throws CommandException {
-        requireNonNull(model);
-        //switch to playmode
-        model.newGame();
-        model.setCurrentView(View.QUIZ_VIEW);
-        return new CommandResult(MESSAGE_SUCCESS);
+        try {
+            requireNonNull(model);
+            //switch to playmode
+            model.newGame();
+            model.setCurrentView(View.QUIZ_VIEW);
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (Exception e) {
+            throw new CommandException(e.toString());
+        }
     }
 }

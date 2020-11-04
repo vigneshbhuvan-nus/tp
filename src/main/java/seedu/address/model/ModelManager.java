@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.ConcurrentModificationException;
 import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -209,10 +210,14 @@ public class ModelManager implements Model {
      * of it has to be created first. This avoids the concurrent modification exception.
      */
     @Override
-    public void replaceEntryList() {
-        UniqueEntryList newEntryList = getCurrentDeck().getEntries();
-        addressBook.resetEntryList();
-        addressBook.replaceEntryList(newEntryList);
+    public void replaceEntryList() throws ConcurrentModificationException {
+        try {
+            UniqueEntryList newEntryList = getCurrentDeck().getEntries();
+            addressBook.resetEntryList();
+            addressBook.replaceEntryList(newEntryList);
+        } catch (ConcurrentModificationException e) {
+            throw e;
+        }
     }
 
     @Override
