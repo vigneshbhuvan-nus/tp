@@ -11,7 +11,8 @@ It is written in Java, and has about 10 kLoC.
 
 Given below are my contributions to the project.
 
-* **New Feature**: Implemented the basic quizzing system including new commands such as the PlayCommand, StopCommand and AnswerCommand.
+* **New Feature**: Implemented the basic quizzing system including new commands such as the PlayCommand, StopCommand and AnswerCommand. 
+(Pull requests [\#106](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/106) [\#185](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/185))
   * What it does: Allows the user to quiz themselves on the different entries they have added to the GreenTea.
   * Justification: This feature is essentially the core of the application. The entire application is built around this compulsory feature including other features such as 
   statistics and switching tabs.
@@ -21,7 +22,7 @@ Given below are my contributions to the project.
   allow the program to switch between play mode and command mode also required deep analysis of design alternatives.
   * Credits: I wrote this by myself but I utilized the existing commands created by my teammate, Melanie.
 
-* **New Feature**: Split the UI to hold both deck list and entry list.
+* **New Feature**: Split the UI to hold both deck list and entry list. (Pull requests [\#67](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/67))
   * What it does: Allows the user to observe both the deck list and the entry list which is essential for GreenTea to be an intuitive application.
   * Justification: This feature allowed the user to observe a more intuitive user interface. It also allowed the team to develop  the tabbing feature which meant 
   that more data/features can be stored in each of the tabs
@@ -38,21 +39,25 @@ Given below are my contributions to the project.
   * Wrote additional tests for existing features such as PlayCommand, StopCommand, TestCommand and Leitner.java
   (Pull requests [\#188](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/188) [\#185](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/185) 
   * Updated the GUI color scheme 
-  (Pull requests )
+  (Pull requests [\#61](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/61) [\#44](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/44))
   * Fix several critical bugs such as the Select Command bug and the Answer Command Bug 
   (Pull requests [\#180](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/180) [\#72](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/72))
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the Chapter 1, What is GreenTea 
-    * Added documentation for the Chapter 2, About 
-    * Added documentation for the Chapter 3, Getting Started [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
-    * Added documentation for the Chapter 8, FAQ 
-    * Added documentation for the Chapter 9, Command Summary 
-    * Did tweaks to existing documentation of Chapter 4, Using this Guide: [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
+    * Added documentation for the Chapter 1, What is GreenTea [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126) 
+    * Added documentation for the Chapter 2, About [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
+    * Added documentation for the Chapter 3, Getting Started [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126) [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
+    * Added documentation for the Chapter 8, FAQ  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
+    * Added documentation for the Chapter 9, Command Summary  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
+    * Did tweaks to existing documentation of Chapter 4, Using this Guide [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
   * Developer Guide:
     * Added several diagrams to the developer guide 
     (Pull requests [\#104](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/104) [\#109](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/109))
+  * Others:
+    * Added the Leitner System psuedo code for team reference 
+    (Pull requests [\#65](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/65))
+    
 
 * **Community**:
   * Team leader
