@@ -50,15 +50,26 @@ public class StopCommandTest {
     }
 
     @Test
-    public void execute_stopCommandWithoutStartCommand_throwParseException() throws CommandException, ParseException {
+    public void execute_stopCommandWithoutStartCommand_throwParseException() {
         assertParseException("/stop", MESSAGE_UNKNOWN_COMMAND);
     }
 
     @Test
-    public void execute_stopCommandWithStartCommand_success() throws CommandException, ParseException {
+    public void execute_stopCommandWithPlayCommand_success() throws CommandException, ParseException {
         assertCommandSuccess("/play", "Playmode Started", model);
         assertCommandSuccess("/stop", "Playmode stopped! Your score was not recorded!",
                 model);
+    }
+
+    @Test
+    public void execute_stopCommandWithPlayCommandTwice_success() throws CommandException, ParseException {
+        assertCommandSuccess("/play", "Playmode Started", model);
+        assertCommandSuccess("/stop", "Playmode stopped! Your score was not recorded!",
+                model);
+        assertCommandSuccess("/play", "Playmode Started", model);
+        assertCommandSuccess("/stop", "Playmode stopped! Your score was not recorded!",
+                model);
+        assertParseException("/stop", MESSAGE_UNKNOWN_COMMAND);
     }
 
     /**
