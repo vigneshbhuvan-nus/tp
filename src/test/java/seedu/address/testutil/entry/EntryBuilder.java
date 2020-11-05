@@ -9,8 +9,9 @@ import seedu.address.model.deck.entry.Word;
  */
 public class EntryBuilder {
 
-    public static final String DEFAULT_WORD = "Alice Pauline";
-    public static final String DEFAULT_TRANSLATION = "alice@gmail.com";
+    public static final String DEFAULT_WORD = "Apple Pear";
+    public static final String DEFAULT_TRANSLATION = "りんご　梨";
+    
     private Word word;
     private Translation translation;
 
@@ -18,20 +19,23 @@ public class EntryBuilder {
      * Creates a {@code EntryBuilder} with the default details.
      */
     public EntryBuilder() {
-        word = new Word(DEFAULT_WORD);
-        translation = new Translation(DEFAULT_TRANSLATION);
+        this.word = new Word(DEFAULT_WORD);
+        this.translation = new Translation(DEFAULT_TRANSLATION);
     }
 
     /**
      * Initializes the EntryBuilder with the data of {@code entryToCopy}.
+     * @param entryToCopy Entry used to initialize the entry builder
      */
     public EntryBuilder(Entry entryToCopy) {
-        word = entryToCopy.getWord();
-        translation = entryToCopy.getTranslation();
+        this.word = entryToCopy.getWord();
+        this.translation = entryToCopy.getTranslation();
     }
 
     /**
      * Sets the {@code Word} of the {@code Entry} that we are building.
+     * @param word Word to set the word field of the entry builder.
+     * @return Entry builder with the given word.
      */
     public EntryBuilder withWord(String word) {
         this.word = new Word(word);
@@ -40,12 +44,18 @@ public class EntryBuilder {
 
     /**
      * Sets the {@code Translation} of the {@code Entry} that we are building.
+     * @param translation Translation to set the translation field of the entry builder.
+     * @return Entry builder with the given translation.
      */
     public EntryBuilder withTranslation(String translation) {
         this.translation = new Translation(translation);
         return this;
     }
 
+    /**
+     * Creates an entry using the data fields in the entry builder
+     * @return Entry with data from the entry builder
+     */
     public Entry build() {
         return new Entry(word, translation);
     }

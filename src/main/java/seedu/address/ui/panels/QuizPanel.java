@@ -10,6 +10,9 @@ import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
 import seedu.address.ui.UiPart;
 
+/**
+ * Panel containing all the information that the user needs to play a quiz game.
+ */
 public class QuizPanel extends UiPart<Region> {
 
     private static final String FXML = "QuizPanel.fxml";
@@ -39,7 +42,7 @@ public class QuizPanel extends UiPart<Region> {
     private ProgressBar progressBar;
 
     /**
-     * Constructor for quiz panel
+     * Constructor for quiz panel. Takes in a Leitner object {@code leitner} and an integer {@code currentIndex}
      */
     public QuizPanel(Leitner leitner, int currentIndex) {
         super(FXML);

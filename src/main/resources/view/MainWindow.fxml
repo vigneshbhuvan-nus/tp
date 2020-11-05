@@ -32,10 +32,7 @@
           </Menu>
         </MenuBar>
         <HBox VBox.vgrow="ALWAYS">
-          <VBox>
-            <StackPane fx:id="deckListPanelPlaceholder" VBox.vgrow="ALWAYS" minWidth="300"
-              maxWidth="300"/>
-          </VBox>
+          <StackPane fx:id="deckListPanelPlaceholder" VBox.vgrow="ALWAYS" minWidth="300" maxWidth="300"/>
           <VBox HBox.hgrow="ALWAYS">
             <TabPane fx:id="tabPanelPlaceholder" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE"
               tabMinWidth="150" minWidth="450" minHeight="360">

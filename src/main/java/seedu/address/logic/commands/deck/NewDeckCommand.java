@@ -8,10 +8,12 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.deck.Deck;
 
+/**
+ * A command class to add a new deck to the word bank
+ */
 public class NewDeckCommand extends Command {
 
     public static final String COMMAND_WORD = "new";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Create an empty deck of flashcards. "
             + "Parameters: "
             + "DECK_NAME "
@@ -24,7 +26,8 @@ public class NewDeckCommand extends Command {
     private final Deck toAdd;
 
     /**
-     * Creates a NewDeckCommand to add the specified {@code Deck}
+     * Constructs a NewDeckCommand to add the given deck {@code deck}.
+     * @param deck Deck to be added.
      */
     public NewDeckCommand(Deck deck) {
         requireNonNull(deck);
