@@ -62,7 +62,7 @@ That's why here at GreenTea, we have come up with this neat
 user guide to help **you** hit the ground running. With this foolproof User Guide, learning a new
 language will be as relaxing as drinking a hot cup of GreenTea.
 
-# 3. Getting Started (Gabriel)
+# 3. Getting Started (Gabriel and Melanie)
 
 Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.java.com/en/)
 is installed on your computer.
@@ -71,38 +71,85 @@ To start using GreenTea:
 
 1. Download the latest jar file [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases/new)
 2. Copy the jar file to your folder of choice (we recommend on your desktop!)
-3. Double-Click the file to start the application. The GUI should appear in a few seconds
+3. Double-Click the file to start the application. The GUI should appear in a few seconds and it should look like Figure 2.
+
+
+Figure 2.  GreenTea's GUI
 
 ![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
-Figure 2. Different parts of GreenTea's GUI
+Figure 3. Annotated GUI
 
-From Figure 2, there are four main components to the GUI. The deck list, the tab panels, the result display and the command box
+Figure 3 is simply an annotated version of Figure 2 that we will use to explain the GUI. 
+There are four main components to the GUI. The deck list, the tab panels, the result display and the command box
 
-1. Deck List - The deck list displays all the decks that you currently have in GreenTea. It will update as you keep adding decks.
-2. Tab Panels - The main features of GreenTea are seperated into different tabs. The tabs will change automatically, depending on your
-commands, so you do not need to worry about changing the tabs manually.
-3. Result Display - The result display is where the outcome of your commands are shown. It will show you if your command has
+1. Deck List - The deck list displays all the decks that you currently have in GreenTea. 
+A deck is a list of entries and an entry consists of a word and a translation. It will update as you keep adding decks.
+2. Tab Panels - The main features of GreenTea are separated into tabs. The tabs will change automatically, depending on your
+commands, so you do not need to worry about changing the tabs manually. GreenTea currently has four different tabs.
+    1. Start Tab: Consists of the welcome page that is shown on startup of the application.
+    2. Entries Tab: Displays all the entries of a selected deck.
+    3. Quiz Tab: Displays the current.
+    4. Statistics Tab: Displays the score of your past attempts of the current selected deck or overall.
+    
+    We understand that you might be curious about each part of the GUI, don't worry, in this chapter we will briefly look through 
+    every part of the GUI.
+3. Result Display - The result display is where the outcome of your commands are shown. GreenTea will feedback to you if your command has
 been successfully carried out, or if there are errors in your command formats.
-4. Command Box - The command box is where you type in all your commands. Pressing **enter** on your keyboard will execute the commands.
+4. Command Box - The command box is where you type in your commands. Pressing **enter** on your keyboard will execute the commands.
 
 5. Try typing these commands to start playing with GreenTea
 
-    - `new Japanese Animals`: Creates a new Deck called `Japanese Animals`
+    - `new Japanese Animals`
+    
     ![GreenTea](images/user-guide/3JapaneseAnimalDeck.png)
-    Figure 3. New deck called Japanese Animals
-
-    - `select 1` selects the first Deck `Japanese Animals`
+    Figure 4. New deck called Japanese Animals
+    
+    Your screen should now look like Figure 4.
+    The previous command that you wrote created a new Deck in GreenTea called `Japanese Animals`.
+    Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `1`. 
+    
+    - `select 1` 
+    
     ![GreenTea](images/user-guide/4SelectDeckExample.png)
-    Figure 4. Selecting the first deck in the list
+    Figure 5. Selecting the first deck in the list
+    
+    Your screen should now look like Figure 5.
+    The previous command that you wrote made GreenTea `select` the deck with index `1` which happens to be the Deck 
+    `Japanese Animals` that you have created previously. Notice that the current tab has automatically changed to the 
+    Entries Tab. The Entries Tab is empty because there are currently no entries in `Japanese Animals`. Let's fix that
+    shall we?
 
-    - `add w/Dolphin t/Iruka`: Adds a new Entry into the selected deck with the word `Dolphin` and the translation `Iruka`
+    - `add w/Dolphin t/Iruka`
+    
     ![GreenTea](images/user-guide/5AddEntryExample.png)
-    Figure 5. Adding an entry
+    Figure 6. Adding an Entry
 
-    - `edit 1 t/イルカ`: Edits first Entry and change the existing translation `Iruka` into `イルカ`
+    Your screen should now look like Figure 6.
+    The previous command that you wrote added a new Entry into the selected deck. The entry consists of 
+    the word `Dolphin` and the translation `Iruka`. Notice that the Entries Tab, which displays the current selected deck,
+    has updated accordingly. Now, let us try editing the entry using the japanese characters for `Dolphin` instead 
+    of the translation `Iruka`.
+    
+    - `edit 1 t/イルカ`
 
     ![GreenTea](images/user-guide/6EditEntryExample.png)
-    Figure 6. Editing an entry
+    Figure 7. Editing an entry
+    
+    Your screen should look like Figure 7. 
+    The previous command modified the translation of the entry from `Iruka` to `イルカ`. Notice that now the
+    first entry in the entries tab has the word `Dolphin` and the translation `イルカ`. Congratulations! You have 
+    now created a brand new deck called `Japanese Animals` with a new entry of the word `Dolphin` and the 
+    translation `イルカ`.
+    
+6. Now, let us try to play a game of FlashCards. Note than in our application, we use the terms Flashcards and Quizzes 
+interchangeably. Try typing and entering the following commands into GreenTea.
+
+    - `/play`
+    Figure 8. Playing a Game of Flashcards
+    
+    Your screen should now look like Figure 8.  
+    The command you wrote previously switched GreenTea into Quiz mode. This means that all commands written from now on
+    will be treated as answers to the question given by GreenTea. 
 
 6. Refer to [Chapter 6 Features](#6-features) for a detailed explanation for each command.
 
