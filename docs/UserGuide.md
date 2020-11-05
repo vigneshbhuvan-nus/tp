@@ -448,19 +448,11 @@ Figure 19. Result of viewing statistics of a single deck
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#631-play-a-game-georgie)
 
-## 7. FAQ (Gabriel)
-
-**Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GreenTea home folder.
+## 7. FAQ (Gabriel and Vignesh)
 
 **Q**: Will my score be recorded if I stop a game before I finish it?<br>
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
 
-**Q**: How do I transfer my data to someone else? <br>
-**A**: Ensure that the other person has GreenTea installed on their computer. Use the platform of your choice which supports file sharing (E.g whatsApp, telegram, email).
-Locate the folder in your computer where you installed GreenTea. In the folder, there is file called wordbank.json. Send the file to the other person.  
-
----
 
 ## 8. Command Summary (Gabriel)
 
