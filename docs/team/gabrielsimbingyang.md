@@ -58,7 +58,7 @@ Given below are my contributions to the project.
     * Added documentation for the Chapter 9, Command Summary  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
     * Did tweaks to existing documentation of Chapter 4, Using this Guide [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
   * Developer Guide:
-    * Added several diagrams to the developer guide 
+    * Added several diagrams to the developer guide such as the logic uml diagrams
     (Pull requests [\#104](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/104) [\#109](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/109))
   * Others:
     * Added the Leitner System psuedo code for team reference 
