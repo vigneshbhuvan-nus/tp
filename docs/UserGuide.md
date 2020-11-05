@@ -64,6 +64,9 @@ language will be as relaxing as drinking a hot cup of GreenTea.
 
 # 3. Getting Started (Gabriel and Melanie)
 
+Greetings! This chapter will be on helping you get started with using GreenTea. In this chapter,
+we will be covering installation, explanation of the GUI and basic commands needed to use GreenTea.
+
 Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.java.com/en/)
 is installed on your computer.
 
