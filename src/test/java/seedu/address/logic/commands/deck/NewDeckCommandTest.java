@@ -42,11 +42,10 @@ public class NewDeckCommandTest {
         NewDeckCommandTest.ModelStubAcceptingDeckAdded modelStub =
                 new NewDeckCommandTest.ModelStubAcceptingDeckAdded();
         Deck validDeck = new DeckBuilder().build();
-
         CommandResult commandResult = new NewDeckCommand(validDeck).execute(modelStub);
 
         assertEquals(String.format(NewDeckCommand.MESSAGE_SUCCESS, validDeck), commandResult.getFeedbackToUser());
-        assertEquals(Arrays.asList(validDeck), modelStub.decksAdded);
+        assertEquals(Arrays.asList(validDeck), modelStub.decks);
     }
 
     @Test
@@ -220,12 +219,12 @@ public class NewDeckCommandTest {
 
         @Override
         public boolean checkScore() {
-            return true;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public boolean checkScoreTwo() {
-            return true;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -270,7 +269,7 @@ public class NewDeckCommandTest {
     private class ModelStubWithDeck extends NewDeckCommandTest.ModelStub {
         private final Deck deck;
 
-        ModelStubWithDeck(Deck deck) {
+        private ModelStubWithDeck(Deck deck) {
             requireNonNull(deck);
             this.deck = deck;
         }
@@ -286,18 +285,18 @@ public class NewDeckCommandTest {
      * A Model stub that always accept the deck being added.
      */
     private class ModelStubAcceptingDeckAdded extends NewDeckCommandTest.ModelStub {
-        final ArrayList<Deck> decksAdded = new ArrayList<>();
+        private ArrayList<Deck> decks = new ArrayList<>();
 
         @Override
         public boolean hasDeck(Deck deck) {
             requireNonNull(deck);
-            return decksAdded.stream().anyMatch(deck::isSameDeck);
+            return decks.stream().anyMatch(deck::isSameDeck);
         }
 
         @Override
         public void addDeck(Deck deck) {
             requireNonNull(deck);
-            decksAdded.add(deck);
+            decks.add(deck);
         }
 
         @Override
