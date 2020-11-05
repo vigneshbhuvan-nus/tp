@@ -12,24 +12,24 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [4.2 Command Format](#42-command-format)
         - [4.2.1 Arrowed Brackets](#421-arrowed-brackets)
         - [4.2.2 Square Brackets](#422-square-brackets)
-- [5. Features (Melanie)](#6-features)
-    - [5.1 Deck Commands (Melanie)](#61-deck-commands-melanie)
-      - [5.1.1 Creating a deck: new](#611-creating-a-deck-new)
-      - [5.1.2 Removing a deck: remove](#612-removing-a-deck-remove)
-      - [5.1.3 Selecting a deck: select](#613-selecting-a-deck-select)
-    - [5.2. Entry Commands (Vignesh)](#62-entry-commands-gabriel)
-      - [5.2.1 Adding a new entry: add](#621-adding-a-new-entry-add-vignesh)
-      - [5.2.2 Editing an entry: edit](#622-editing-an-entry-edit-vignesh)
-      - [5.2.3 Deleting an entry: delete](#623-deleting-an-entry-delete-vignesh)
-    - [5.3. PLay Commands (Georgie)](#63-play-commands-georgie)
-      - [5.3.1 Play a Game](#631-play-a-game-georgie)
-      - [5.3.2 Stop a Game](#632-stop-a-game--georgie)
-    - [5.4. Extra Commands (Georgie)](#64-extra-commands-georgie)
-      - [5.4.1 Viewing help: help](#641-viewing-help-help)
-      - [5.4.2 Exiting the program: exit](#642-exiting-the-program-exit)
-- [6. Statistics (Melanie)](#7-statistics-melanie)
-- [7. FAQ (Gabriel)](#8-faq-gabriel)
-- [8. Command Summary (Gabriel)](#9-command-summary-gabriel)
+- [5. Features (Melanie)](#5-features)
+    - [5.1 Deck Commands (Melanie)](#51-deck-commands-melanie)
+      - [5.1.1 Creating a deck: new](#511-creating-a-deck-new)
+      - [5.1.2 Removing a deck: remove](#512-removing-a-deck-remove)
+      - [5.1.3 Selecting a deck: select](#513-selecting-a-deck-select)
+    - [5.2. Entry Commands (Vignesh)](#52-entry-commands-gabriel)
+      - [5.2.1 Adding a new entry: add](#521-adding-a-new-entry-add-vignesh)
+      - [5.2.2 Editing an entry: edit](#522-editing-an-entry-edit-vignesh)
+      - [5.2.3 Deleting an entry: delete](#523-deleting-an-entry-delete-vignesh)
+    - [5.3. PLay Commands (Georgie)](#53-play-commands-georgie)
+      - [5.3.1 Play a Game](#531-play-a-game-georgie)
+      - [5.3.2 Stop a Game](#532-stop-a-game--georgie)
+    - [5.4. Extra Commands (Georgie)](#54-extra-commands-georgie)
+      - [5.4.1 Viewing help: help](#541-viewing-help-help)
+      - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
+- [6. Statistics (Melanie)](#6-statistics-melanie)
+- [7. FAQ (Gabriel)](#7-faq-gabriel)
+- [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 *GreenTea* is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
@@ -226,16 +226,16 @@ E.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1
 or `edit 1 [w/word] [t/translation]` __but cannot be written as__ `edit 1`
 
 
-# 6. Features
+# 5. Features
 
 In this chapter, we will be going into detail each feature of GreenTea, along with their command format and 
 relevant examples.
 
-## 6.1 Deck Commands (Melanie)
+## 5.1 Deck Commands (Melanie)
 As mentioned earlier, Decks are the foundation to GreenTea. A deck is simply a list of entries
 you write into GreenTea. A deck can be your favourite Korean Dramas or a list of Japanese Words.
 
-### 6.1.1 Creating a deck: `new`
+### 5.1.1 Creating a deck: `new`
 
 Creates a new empty deck with given name.
 
@@ -253,7 +253,7 @@ Figure 7. Result of creating new decks
 :information_source: **Note:**
 The name of the deck cannot be more than 100 characters long.
 
-### 6.1.2 Removing a deck: `remove`
+### 5.1.2 Removing a deck: `remove`
 
 Removes a deck with the given index.
 
@@ -273,7 +273,7 @@ Result:
 ![GreenTea](images/user-guide/9RemovingADeckAfter.png)
 Figure 9. Result of removing a deck
 
-### 6.1.3 Selecting a deck: `select`
+### 5.1.3 Selecting a deck: `select`
 
 Selects a deck with the given index and lists all of its entries.
 
@@ -288,7 +288,7 @@ Result:
 ![GreenTea](images/user-guide/10SelectingADeck.png)
 Figure 10: Result of selecting a deck
 
-## 6.2 Entry Commands (Gabriel)
+## 5.2 Entry Commands (Gabriel)
 
 Entries are what make up a deck. They are the words or phrases that you wish to memorise in GreenTea.
 An entry is made up of two parts; the `word` and the `translation`. The `word` is written in the
@@ -302,7 +302,7 @@ Before you start giving entry commands, remember to [select a deck first!](#613-
 :bulb: Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
 
-### 6.2.1 Adding a new entry: `add` (Vignesh)
+### 5.2.1 Adding a new entry: `add` (Vignesh)
 
 Adds a new entry with the given word and translation.
 
@@ -321,7 +321,7 @@ Figure 11: Result of adding an entry
 :information_source: **Note:**
 A word cannot be more than 200 characters long. A translation cannot be more than 200 characters long
 
-### 6.2.2 Editing an entry: `edit` (Vignesh)
+### 5.2.2 Editing an entry: `edit` (Vignesh)
 
 Edits an entry with the given index using the given word or translation or both.
 
@@ -341,7 +341,7 @@ Result:
 ![GreenTea](images/user-guide/12EditingAnEntry.png)
 Figure 12. Result of editing an entry
 
-### 6.2.3 Deleting an entry: `delete` (Vignesh)
+### 5.2.3 Deleting an entry: `delete` (Vignesh)
 
 Deletes the entry with the given index.
 
@@ -358,14 +358,14 @@ Result:
 ![GreenTea](images/user-guide/14DeletingAnEntryAfter.png)
 Figure 14. Result of deleting an entry
 
-## 6.3 Play Commands (Georgie)
+## 5.3 Play Commands (Georgie)
 
 Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of all
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `play` and
 `/stop`.
 
 
-## 6.3.1 Play a Game (Georgie)
+## 5.3.1 Play a Game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
@@ -380,7 +380,7 @@ Result:
 ![GreenTea](images/user-guide/15PlayAGame.png)
 Figure 15. Result of playing a game
 
-## 6.3.2 Stop a Game  (Georgie)
+## 5.3.2 Stop a Game  (Georgie)
 
 Stop the current game prematurely. Note the slash `/` in the command.
 
@@ -393,12 +393,12 @@ Result:
 ![GreenTea](images/user-guide/16StopAGame.png)
 Figure 16. Result of stopping a game
 
-## 6.4 Extra Commands (Georgie)
+## 5.4 Extra Commands (Georgie)
 
 These are some extra commands that you can access at any point in the application except when
 you are currently playing a game.
 
-### 6.4.1 Viewing help: `help`
+### 5.4.1 Viewing help: `help`
 
 Shows a cheat-sheet of commands in addition to a link to this User Guide.
 
@@ -408,7 +408,7 @@ Result:
 
 ![GreenTea](images/Ui.png)
 
-### 6.4.2 Exiting the program: `exit`
+### 5.4.2 Exiting the program: `exit`
 
 Exits the program.
 
@@ -418,7 +418,7 @@ Result:
 
 ![GreenTea](images/Ui.png)
 
-## 7. Statistics (Melanie)
+## 6. Statistics (Melanie)
 
 Statistics are how you get to see your own progression as you continuously build and play GreenTea.
 The statistics tab displays the scores of games up to your last 10 attempts in the form of
@@ -448,7 +448,7 @@ Figure 19. Result of viewing statistics of a single deck
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#631-play-a-game-georgie)
 
-## 8. FAQ (Gabriel)
+## 7. FAQ (Gabriel)
 
 **Q**: How do I transfer my data to another Computer?<br>
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GreenTea home folder.
@@ -461,7 +461,7 @@ In order to view your statistics, you must first [play a game!](#631-play-a-game
 Locate the folder in your computer where you installed GreenTea. In the folder, there is file called wordbank.json. Send the file to the other person.  
 ---
 
-## 9. Command Summary (Gabriel)
+## 8. Command Summary (Gabriel)
 
 | Action                                                                                             | Format  <img width=00/>                                                                           |Examples |Remarks|
 | -------------------------------------------------------------------------------------------------- | -----------------------------------------------------------------------------------|--------|--------|
