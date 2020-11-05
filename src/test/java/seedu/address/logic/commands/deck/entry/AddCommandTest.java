@@ -44,6 +44,7 @@ public class AddCommandTest {
         ModelStubAcceptingEntryAdded modelStub = new ModelStubAcceptingEntryAdded();
         Entry validEntry = new EntryBuilder().build();
         CommandResult commandResult = new AddCommand(validEntry).execute(modelStub);
+
         assertEquals(String.format(AddCommand.MESSAGE_SUCCESS, validEntry), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validEntry), modelStub.entriesAdded);
     }
@@ -68,8 +69,8 @@ public class AddCommandTest {
         assertTrue(addAppleCommand.equals(addAppleCommand));
 
         // same values -> returns true
-        AddCommand addAliceCommandCopy = new AddCommand(apple);
-        assertTrue(addAppleCommand.equals(addAliceCommandCopy));
+        AddCommand addAppleCommandCopy = new AddCommand(apple);
+        assertTrue(addAppleCommand.equals(addAppleCommandCopy));
 
         // different types -> returns false
         assertFalse(addAppleCommand.equals(1));
@@ -217,12 +218,12 @@ public class AddCommandTest {
 
         @Override
         public boolean checkScore() {
-            return true;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public boolean checkScoreTwo() {
-            return true;
+            throw new AssertionError("This method should not be called.");
         }
 
         @Override
@@ -267,7 +268,7 @@ public class AddCommandTest {
     private class DeckStub extends Deck {
         private ArrayList<Entry> entries;
 
-        DeckStub(String deckName) {
+        private DeckStub(String deckName) {
             super(new DeckName(deckName));
             this.entries = new ArrayList<>();
         }
@@ -283,7 +284,7 @@ public class AddCommandTest {
     private class ModelStubWithEntry extends ModelStub {
         private final Entry entry;
 
-        ModelStubWithEntry(Entry entry) {
+        private ModelStubWithEntry(Entry entry) {
             requireNonNull(entry);
             this.entry = entry;
         }
@@ -329,23 +330,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void replaceEntryList() {
-        }
-
-        @Override
-        public void newGame() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public Score endGame() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
-        public void playGame(String answer) {
-            throw new AssertionError("This method should not be called.");
-        }
+        public void replaceEntryList() {}
 
         @Override
         public void setCurrentView(View view) {}
