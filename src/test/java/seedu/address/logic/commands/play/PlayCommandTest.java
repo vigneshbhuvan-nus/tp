@@ -48,19 +48,19 @@ public class PlayCommandTest {
     }
 
     @Test
-    public void execute_singlePlayCommandWithoutSelectedDeck_throwCommandException() throws Exception {
+    public void execute_singlePlayCommandWithoutSelectedDeck_throwCommandException() {
         assertCommandException("/play", MESSAGE_NO_DECK_SELECTED);
     }
 
     @Test
-    public void execute_singlePlayCommandEmptyDeck_throwCommandException() throws Exception {
+    public void execute_singlePlayCommandSelectedButEmptyDeck_throwCommandException() {
         model.addDeck(deck);
         model.selectDeck(Index.fromZeroBased(0));
         assertCommandException("/play", MESSAGE_EMPTY_DECK);
     }
 
     @Test
-    public void execute_singlePlayCommandWithSelectedDeck_success() throws Exception {
+    public void execute_singlePlayCommandWithSelectedAndFullDeck_success() throws Exception {
         deck.addEntry(entry);
         model.addDeck(deck);
         model.selectDeck(Index.fromZeroBased(0));
