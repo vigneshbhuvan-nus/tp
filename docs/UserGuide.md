@@ -105,7 +105,7 @@ been successfully carried out, or if there are errors in your command formats.
     Figure 4. New deck called Japanese Animals
     
     Your screen should now look like Figure 4.
-    The previous command that you wrote created a new Deck in GreenTea called `Japanese Animals`.
+    The previous command that you entered created a new Deck in GreenTea called `Japanese Animals`.
     Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `1`. 
     
     - `select 1` 
@@ -114,7 +114,7 @@ been successfully carried out, or if there are errors in your command formats.
     Figure 5. Selecting the first deck in the list
     
     Your screen should now look like Figure 5.
-    The previous command that you wrote made GreenTea `select` the deck with index `1` which happens to be the Deck 
+    The previous command that you entered made GreenTea `select` the deck with index `1` which happens to be the Deck 
     `Japanese Animals` that you have created previously. Notice that the current tab has automatically changed to the 
     Entries Tab. The Entries Tab is empty because there are currently no entries in `Japanese Animals`. Let's fix that
     shall we?
@@ -125,7 +125,7 @@ been successfully carried out, or if there are errors in your command formats.
     Figure 6. Adding an Entry
 
     Your screen should now look like Figure 6.
-    The previous command that you wrote added a new Entry into the selected deck. The entry consists of 
+    The previous command that you entered added a new Entry into the selected deck. The entry consists of 
     the word `Dolphin` and the translation `Iruka`. Notice that the Entries Tab, which displays the current selected deck,
     has updated accordingly. Now, let us try editing the entry using the japanese characters for `Dolphin` instead 
     of the translation `Iruka`.
@@ -136,7 +136,7 @@ been successfully carried out, or if there are errors in your command formats.
     Figure 7. Editing an entry
     
     Your screen should look like Figure 7. 
-    The previous command modified the translation of the entry from `Iruka` to `イルカ`. Notice that now the
+    The previous command that you entered modified the translation of the entry from `Iruka` to `イルカ`. Notice that now the
     first entry in the entries tab has the word `Dolphin` and the translation `イルカ`. Congratulations! You have 
     now created a brand new deck called `Japanese Animals` with a new entry of the word `Dolphin` and the 
     translation `イルカ`. Try adding a few more entries into GreenTea!
@@ -155,28 +155,42 @@ been successfully carried out, or if there are errors in your command formats.
     
     Figure 9. Playing a Game of Flashcards
     
-    Your screen should now look similar to Figure 9 but the translation given on the left side of the Quiz Tab might be different
+    Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
     depending on the entries you have written into `Japanese Animals`.
     
-    The command you wrote previously had switched GreenTea into Quiz mode. This means that all commands written from now on
-    will be treated as answers to the question given by GreenTea and the tab has switched to the Quiz Tab.
+    The command you entered previously had switched GreenTea into Quiz mode. This means that all commands written from now on
+    will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
     
-    From Figure 9, we can see that GreenTea is asking us "What is the english word for the translation `イルカ`?" We 
+    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We 
     already know that the correct word is `Dolphin`. However, let us try typing the wrong answer `dog`.
     
     Figure 10. Wrong answer given
     
-    GreenTea has accepted the answer we had given it and has updated the translation shown on the Quiz Tab. Also,
+    GreenTea has accepted the answer we had given it and has updated the translation shown on the Quiz Tab. Do take 
     note that the right side of the Quiz Tab displays your history of answers to the quiz including the translation,
     the correct word/answer as well as the given answer. 
     
-    Try finishing the quiz by answering the rest of the questions and playing the quiz a few more times!
-
-7. After playing the quiz a few times, aren't you curious about your progress so far? Thankfully, GreenTea has been
+    Finishing the quiz by answering the rest of the questions will bring you out of Quiz mode and you would be able
+    to use your regular commands such as `play` or `edit` again.
+    
+    Try playing the quiz a few more times!
+    
+7. Have you tried quizzing yourself a few more times? aren't you curious about your progress so far? Thankfully, GreenTea has been
 keeping track of your scores in the background and can display in the form of a graph. Try typing the following commands
 into GreenTea!
 
-8. Refer to [Chapter 6 Features](#6-features) for a detailed explanation for each command.
+    - `stats 1`
+    
+    Figure 11. Statistics of Deck 1
+    
+    Your screen should now look similar to Figure 11. The previous command that you entered changed the current tab
+    into the Statistics Tab of Deck `1` which refers to the Deck `Japanese Animals`. In this tab, you can see 
+    your score history as well as the time stamp of each attempt. Based on our progression, we think we need a 
+    little bit more practise with our deck! 
+
+8. Congratulations! We have come to the end of this chapter. We hope that you have learned the basic of 
+using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
+commands with complete explanations to learn in [Chapter 6](#6-features).
 
 # 4. Using This Guide (Melanie)
 
