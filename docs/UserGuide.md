@@ -252,7 +252,8 @@ Now that we have an understanding of the Big Picture of *GreenTea*, let us take 
 
 # 6. Features
 
-In this chapter, we will go into detail each feature of GreenTea, along with their command format and examples.
+In this chapter, we will be going into detail each feature of GreenTea, along with their command format and 
+relevant examples.
 
 ## 6.1 Deck Commands (Melanie)
 As mentioned earlier, Decks are the foundation to GreenTea. A deck is simply a list of entries
