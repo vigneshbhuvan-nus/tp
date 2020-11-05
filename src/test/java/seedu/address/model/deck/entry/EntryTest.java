@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.testutil.entry.EntryBuilder;
 
 public class EntryTest {
-    
+
     @Test
     public void isSameEntry() {
         // same object -> returns true

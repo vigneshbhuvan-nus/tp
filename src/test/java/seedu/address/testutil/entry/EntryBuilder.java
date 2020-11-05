@@ -11,7 +11,7 @@ public class EntryBuilder {
 
     public static final String DEFAULT_WORD = "Apple Pear";
     public static final String DEFAULT_TRANSLATION = "りんご　梨";
-    
+
     private Word word;
     private Translation translation;
 
@@ -59,5 +59,4 @@ public class EntryBuilder {
     public Entry build() {
         return new Entry(word, translation);
     }
-
 }

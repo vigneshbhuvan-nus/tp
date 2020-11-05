@@ -28,13 +28,13 @@ public class DeckListPanel extends UiPart<Region> {
     public DeckListPanel(ObservableList<Deck> deckList) {
         super(FXML);
         deckListView.setItems(deckList);
-        deckListView.setCellFactory(listView -> new deckListViewCell());
+        deckListView.setCellFactory(listView -> new DeckListViewCell());
     }
 
     /**
      * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code EntryCard}.
      */
-    class deckListViewCell extends ListCell<Deck> {
+    class DeckListViewCell extends ListCell<Deck> {
         @Override
         protected void updateItem(Deck deck, boolean empty) {
             super.updateItem(deck, empty);
