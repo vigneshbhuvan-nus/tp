@@ -23,7 +23,6 @@ public class Leitner {
      * @param input A UniqueEntryList containing all the entries to quiz the user
      */
     public Leitner(UniqueEntryList input) {
-        assert (!input.isEmpty());
         for (Entry entry : input) {
             entryList.add(entry);
         }
@@ -32,12 +31,17 @@ public class Leitner {
             questionList.add(entry.getTranslation());
             answerList.add(entry.getWord());
         }
+        assert (!input.isEmpty());
         assert (!questionList.isEmpty());
         assert (!answerList.isEmpty());
     }
 
     public ArrayList<Word> getAnswers() {
         return answerList;
+    }
+
+    public ArrayList<Translation> getQuestions() {
+        return questionList;
     }
 
     public ArrayList<Entry> getEntries() {
