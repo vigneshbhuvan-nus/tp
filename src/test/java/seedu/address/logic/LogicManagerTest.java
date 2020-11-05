@@ -15,7 +15,6 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.core.index.Index;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.storage.JsonAddressBookStorage;
