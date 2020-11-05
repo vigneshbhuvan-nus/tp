@@ -6,7 +6,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
-- [3. Getting Started (Gabriel and Melanie)](#3-getting-started-gabriel-and-melanie)
+- [3. Getting Started (Gabriel and Vignesh)](#3-getting-started-gabriel-and-vignesh)
 - [4. Using This Guide (Melanie)](#4-using-this-guide-melanie)
     - [4.1 Symbols](#41-symbols)
     - [4.2 Command Format](#42-command-format)
@@ -61,7 +61,7 @@ That's why here at GreenTea, we have come up with this neat
 user guide to help **you** hit the ground running. With this foolproof User Guide, learning a new
 language will be as relaxing as drinking a hot cup of GreenTea.
 
-# 3. Getting Started (Gabriel and Melanie)
+# 3. Getting Started (Gabriel and Vignesh)
 
 Greetings! This chapter will be on helping you get started with using GreenTea. In this chapter,
 we will be covering installation, explanation of the GUI and basic commands needed to use GreenTea.
