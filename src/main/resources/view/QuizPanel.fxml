@@ -20,15 +20,15 @@
                     <Insets left="30" right="20"/>
                 </padding>
             </VBox>
-            <ScrollPane styleClass="answer-list" minWidth="300" minHeight="400" maxHeight="400"
+            <ScrollPane styleClass="answer-list" minHeight="400" maxHeight="400"
             maxWidth="450" HBox.hgrow="ALWAYS">
                 <Label fx:id="answerList" StackPane.alignment="CENTER" wrapText="true">
                     <padding>
-                        <Insets left="20" right="20"/>
+                        <Insets left="20" right="10"/>
                     </padding>
                 </Label>
                 <padding>
-                    <Insets right="5"/>
+                    <Insets right="10"/>
                 </padding>
             </ScrollPane>
         </HBox>

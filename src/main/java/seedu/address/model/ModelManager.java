@@ -58,8 +58,8 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         /*filteredEntries = new FilteredList<>(this.addressBook.getEntryList());*/
-        filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
-        currentDeckIndex = Optional.empty();
+        this.filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
+        this.currentDeckIndex = Optional.empty();
         this.currentView = new CurrentView(View.START_VIEW);
     }
 
