@@ -12,25 +12,24 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [4.2 Command Format](#42-command-format)
         - [4.2.1 Arrowed Brackets](#421-arrowed-brackets)
         - [4.2.2 Square Brackets](#422-square-brackets)
-- [5. Big Picture (Vignesh)](#5-big-picture)
-- [6. Features (Melanie)](#6-features)
-    - [6.1 Deck Commands (Melanie)](#61-deck-commands-melanie)
-      - [6.1.1 Creating a deck: new](#611-creating-a-deck-new)
-      - [6.1.2 Removing a deck: remove](#612-removing-a-deck-remove)
-      - [6.1.3 Selecting a deck: select](#613-selecting-a-deck-select)
-    - [6.2. Entry Commands (Vignesh)](#62-entry-commands-gabriel)
-      - [6.2.1 Adding a new entry: add](#621-adding-a-new-entry-add-vignesh)
-      - [6.2.2 Editing an entry: edit](#622-editing-an-entry-edit-vignesh)
-      - [6.2.3 Deleting an entry: delete](#623-deleting-an-entry-delete-vignesh)
-    - [6.3. PLay Commands (Georgie)](#63-play-commands-georgie)
-      - [6.3.1 Play a Game](#631-play-a-game-georgie)
-      - [6.3.2 Stop a Game](#632-stop-a-game--georgie)
-    - [6.4. Extra Commands (Georgie)](#64-extra-commands-georgie)
-      - [6.4.1 Viewing help: help](#641-viewing-help-help)
-      - [6.4.2 Exiting the program: exit](#642-exiting-the-program-exit)
-- [7. Statistics (Melanie)](#7-statistics-melanie)
-- [8. FAQ (Gabriel)](#8-faq-gabriel)
-- [9. Command Summary (Gabriel)](#9-command-summary-gabriel)
+- [5. Features (Melanie)](#6-features)
+    - [5.1 Deck Commands (Melanie)](#61-deck-commands-melanie)
+      - [5.1.1 Creating a deck: new](#611-creating-a-deck-new)
+      - [5.1.2 Removing a deck: remove](#612-removing-a-deck-remove)
+      - [5.1.3 Selecting a deck: select](#613-selecting-a-deck-select)
+    - [5.2. Entry Commands (Vignesh)](#62-entry-commands-gabriel)
+      - [5.2.1 Adding a new entry: add](#621-adding-a-new-entry-add-vignesh)
+      - [5.2.2 Editing an entry: edit](#622-editing-an-entry-edit-vignesh)
+      - [5.2.3 Deleting an entry: delete](#623-deleting-an-entry-delete-vignesh)
+    - [5.3. PLay Commands (Georgie)](#63-play-commands-georgie)
+      - [5.3.1 Play a Game](#631-play-a-game-georgie)
+      - [5.3.2 Stop a Game](#632-stop-a-game--georgie)
+    - [5.4. Extra Commands (Georgie)](#64-extra-commands-georgie)
+      - [5.4.1 Viewing help: help](#641-viewing-help-help)
+      - [5.4.2 Exiting the program: exit](#642-exiting-the-program-exit)
+- [6. Statistics (Melanie)](#7-statistics-melanie)
+- [7. FAQ (Gabriel)](#8-faq-gabriel)
+- [8. Command Summary (Gabriel)](#9-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 *GreenTea* is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
@@ -226,29 +225,6 @@ Words in `[Square Brackets]` are optional inputs. They may or may not be added b
 E.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1 [w/word]` or `edit 1 [t/translation]`
 or `edit 1 [w/word] [t/translation]` __but cannot be written as__ `edit 1`
 
-
-# 5. Big Picture
-Let us first understand the Big Picture of how this app works. Let us use the example of Bobby, who is learning Spanish to surprise his girlfriend from Madrid. 
-When Bobby begins learning, he is initially bombarded with many new words, and he finds it difficult to remember them. Luckily, he chanced upon *GreenTea*, which would help in this process. 
-
-Bobby would like to remember Spanish greetings so that he can start off with the basics. He could create a `Deck` named 'Spanish Greetings', and store `Entries` in them. An `Entry` consists of a `Word` and its `Translation`
-For example, Bobby would like to remember the word 'Hola', which is Spanish for 'Hello'. He would add it to 'Spanish Greetings', and will be able to access the deck later on and remember the words he have learned so far. 
-
-The `Deck` feature allows Bobby to group different words separately. If he would like to remember Spanish directions, he can create a new `Deck` called 'Spanish Directions'.
-If Bobby is going on a business trip to Paris and would like to learn French, he could create a new `Deck` called 'French Business Terms'. This classification of words allows Bobby to learn the vocabulary efficiently. 
- 
- 
-Now that Bobby has learnt new vocabulary, he would like to test his progress thus far. However, he wants to find an automated way to do it. Once again, *GreenTea* has a solution.
-A quiz, using the principles of the famous Leitner System, can be played to improve memory retention of the vocabulary.
-For example, Bobby would like to test his memory of 'Japanese Food'. He would be able to play a quiz that requires him to answer each English `Translation` with its corresponding `Word`.
-At the end of the quiz, he would be able to see his results, allowing him to understand his strength and weaknesses. Therefore, Bobby can fine tune his learning progress by choosing which words and decks to prioritise. 
-
-After learning Spanish for weeks, he would like to see his progress so far. *GreenTea* has a `Statistics` feature that allows him to visualise his progress for each deck. 
-For example he can look at a graph showing the changes in the scores for each Quiz attempt. He can also see the words he is weakest in. 
-
-Now that we have an understanding of the Big Picture of *GreenTea*, let us take a look at each particular feature and how it can be used. 
-//Will need to add Pictures later on
-![GreenTea](images/Ui.png)
 
 # 6. Features
 
