@@ -33,6 +33,12 @@ Given below are my contributions to the project.
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&zFR=false&tabType=authorship&tabAuthor=gabrielsimbingyang&tabRepo=AY2021S1-CS2103T-T09-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other)
 
 * **Project management**:
+  * Team leader
+  * Managed workload and guided teammates with their contributions by providing step by step instructions when possible
+    (Pull requests [\#72](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/72))
+  * Led group meetings and discussion and set expectations such as datelines for tasks
+  * Reported bugs and gave meaningful feedback to the team 
+    (examples: [1](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/183), [2](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/40), [3](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/38))
   * Managed releases `v1.3` - `v1.4` (3 releases) on GitHub
 
 * **Enhancements to existing features**:
@@ -60,10 +66,4 @@ Given below are my contributions to the project.
     
 
 * **Community**:
-  * Team leader
-  * Managed workload and guided teammates with their contributions by providing step by step instructions when possible
-  * Led group meetings and discussion and set expectations such as datelines for tasks
-  * Monitored datelines and dashboard progress
-  * PRs reviewed (with non-trivial review comments): [\#12](), [\#32](), [\#19](), [\#42]()
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs and suggestions for other teams in the class (examples: [1](), [2](), [3]())
+  * Contributed to forum discussions (examples: [1](https://github.com/nus-cs2103-AY2021S1/forum/issues/291), [2](https://github.com/nus-cs2103-AY2021S1/forum/issues/137), [3](https://github.com/nus-cs2103-AY2021S1/forum/issues/384))
