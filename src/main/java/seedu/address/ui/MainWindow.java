@@ -294,6 +294,8 @@ public class MainWindow extends UiPart<Stage> {
             if (logic.getCurrentView() == View.STATISTICS_VIEW) {
                 handleStatisticsPanel();
             }
+
+            //Change tab according to the command that the user enters
             handleChangeTab();
 
             return commandResult;

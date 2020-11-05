@@ -179,9 +179,9 @@ Brass : A5AF37  unused
 /* Tab styling */
 .tab  {
     -fx-background-color: #383838;
+    -fx-padding: 0 0 7 0;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
-    -fx-padding: 0 0 7 0;
 }
 
 .tab:selected {
@@ -191,11 +191,11 @@ Brass : A5AF37  unused
 }
 
 .tab-pane {
-    -fx-background-color: #383838;
+    -fx-background-color: derive(#2B3E13, 20%);
 }
 
 .tab-header-background {
-    -fx-background-color: transparent;
+    -fx-background-color: #383838;
 }
 
 .tab-label {
