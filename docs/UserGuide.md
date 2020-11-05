@@ -33,15 +33,15 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 # 1. What is GreenTea? (Gabriel)
 *GreenTea* is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
-still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language, 
+still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language,
 but often struggle due to the difficulty of remembering new vocabulary. For many learners, vocabulary remains the most challenging aspect of learning a new language.
-We felt that we could help learners struggling with vocabulary to learn the language more efficiently. 
-Therefore, GreenTea uses a proven memory retention system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d6edafae7f0) 
-and implements it in the context of a FlashCard game. 
+We felt that we could help learners struggling with vocabulary to learn the language more efficiently.
+Therefore, GreenTea uses a proven memory retention system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d6edafae7f0)
+and implements it in the context of a FlashCard game.
 
-**Fun Fact:** You may be wondering, why did we choose the name *GreenTea*? Well, in the initial stages of development, the app was intended for users looking to learn Japanese, hence the name *GreenTea*. 
-Although the application now allows for the learning of [many languages](http://www.unicode.org/charts/index.html), 
-we kept the name *GreenTea* to denote the cultural journey a user undertakes when using this application.  
+**Fun Fact:** You may be wondering, why did we choose the name *GreenTea*? Well, in the initial stages of development, the app was intended for users looking to learn Japanese, hence the name *GreenTea*.
+Although the application now allows for the learning of [many languages](http://www.unicode.org/charts/index.html),
+we kept the name *GreenTea* to denote the cultural journey a user undertakes when using this application.
 
 In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly and have an enjoyable journey with it.
@@ -81,10 +81,10 @@ Figure 2.  GreenTea's GUI
 ![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
 Figure 3. Annotated GUI
 
-Figure 3 is simply an annotated version of Figure 2 that we will use to explain the GUI. 
+Figure 3 is simply an annotated version of Figure 2 that we will use to explain the GUI.
 There are four main components to the GUI. The deck list, the tab panels, the result display and the command box
 
-1. Deck List - The deck list displays all the decks that you currently have in GreenTea. 
+1. Deck List - The deck list displays all the decks that you currently have in GreenTea.
 A deck is a list of entries and an entry consists of a word and a translation. It will update as you keep adding decks.
 2. Tab Panels - The main features of GreenTea are separated into tabs. The tabs will change automatically, depending on your
 commands, so you do not need to worry about changing the tabs manually. GreenTea currently has four different tabs.
@@ -92,8 +92,8 @@ commands, so you do not need to worry about changing the tabs manually. GreenTea
     2. Entries Tab: Displays all the entries of a selected deck.
     3. Quiz Tab: Displays the current.
     4. Statistics Tab: Displays the score of your past attempts of the current selected deck or overall.
-    
-    We understand that you might be curious about each part of the GUI, don't worry, in this chapter we will briefly look through 
+
+    We understand that you might be curious about each part of the GUI, don't worry, in this chapter we will briefly look through
     every part of the GUI.
 3. Result Display - The result display is where the outcome of your commands are shown. GreenTea will feedback to you if your command has
 been successfully carried out, or if there are errors in your command formats.
@@ -102,95 +102,95 @@ been successfully carried out, or if there are errors in your command formats.
 5. Try typing these commands to start playing with GreenTea
 
     - `new Japanese Animals`
-    
+
     ![GreenTea](images/user-guide/3JapaneseAnimalDeck.png)
     Figure 4. New deck called Japanese Animals
-    
+
     Your screen should now look like Figure 4.
     The previous command that you entered created a new Deck in GreenTea called `Japanese Animals`.
-    Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `1`. 
-    
-    - `select 1` 
-    
+    Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `1`.
+
+    - `select 1`
+
     ![GreenTea](images/user-guide/4SelectDeckExample.png)
     Figure 5. Selecting the first deck in the list
-    
+
     Your screen should now look like Figure 5.
-    The previous command that you entered made GreenTea `select` the deck with index `1` which happens to be the Deck 
-    `Japanese Animals` that you have created previously. Notice that the current tab has automatically changed to the 
+    The previous command that you entered made GreenTea `select` the deck with index `1` which happens to be the Deck
+    `Japanese Animals` that you have created previously. Notice that the current tab has automatically changed to the
     Entries Tab. The Entries Tab is empty because there are currently no entries in `Japanese Animals`. Let's fix that
     shall we?
 
     - `add w/Dolphin t/Iruka`
-    
+
     ![GreenTea](images/user-guide/5AddEntryExample.png)
     Figure 6. Adding an Entry
 
     Your screen should now look like Figure 6.
-    The previous command that you entered added a new Entry into the selected deck. The entry consists of 
+    The previous command that you entered added a new Entry into the selected deck. The entry consists of
     the word `Dolphin` and the translation `Iruka`. Notice that the Entries Tab, which displays the current selected deck,
-    has updated accordingly. Now, let us try editing the entry using the japanese characters for `Dolphin` instead 
+    has updated accordingly. Now, let us try editing the entry using the japanese characters for `Dolphin` instead
     of the translation `Iruka`.
-    
+
     - `edit 1 t/イルカ`
 
     ![GreenTea](images/user-guide/6EditEntryExample.png)
     Figure 7. Editing an entry
-    
-    Your screen should look like Figure 7. 
+
+    Your screen should look like Figure 7.
     The previous command that you entered modified the translation of the entry from `Iruka` to `イルカ`. Notice that now the
-    first entry in the entries tab has the word `Dolphin` and the translation `イルカ`. Congratulations! You have 
-    now created a brand new deck called `Japanese Animals` with a new entry of the word `Dolphin` and the 
+    first entry in the entries tab has the word `Dolphin` and the translation `イルカ`. Congratulations! You have
+    now created a brand new deck called `Japanese Animals` with a new entry of the word `Dolphin` and the
     translation `イルカ`. Try adding a few more entries into GreenTea!
-    
+
 6. Hopefully you have written a few more entries into GreenTea. We went ahead and added two new entries into the Deck
-`Japanese Animals`. 
+`Japanese Animals`.
 
     Figure 8. Added more entries into `Japanese Animals`
-    
-    Figure 8 is a screenshot of our latest Deck containing the new entries that we have written. 
-    Now, Let us try to play a game of FlashCards to memorise what we have written. 
-    Note than in our application, we use the terms Flashcards and Quizzes 
+
+    Figure 8 is a screenshot of our latest Deck containing the new entries that we have written.
+    Now, Let us try to play a game of FlashCards to memorise what we have written.
+    Note than in our application, we use the terms Flashcards and Quizzes
     interchangeably. Try typing and entering the following commands into GreenTea.
 
     - `/play`
-    
+
     Figure 9. Playing a Game of Flashcards
-    
+
     Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
     depending on the entries you have written into `Japanese Animals`.
-    
+
     The command you entered previously had switched GreenTea into Quiz mode. This means that all commands written from now on
     will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
-    
-    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We 
+
+    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We
     already know that the correct word is `Dolphin`. However, let us try typing the wrong answer `dog`.
-    
+
     Figure 10. Wrong answer given
-    
-    GreenTea has accepted the answer we had given it and has updated the translation shown on the Quiz Tab. Do take 
+
+    GreenTea has accepted the answer we had given it and has updated the translation shown on the Quiz Tab. Do take
     note that the right side of the Quiz Tab displays your history of answers to the quiz including the translation,
-    the correct word/answer as well as the given answer. 
-    
+    the correct word/answer as well as the given answer.
+
     Finishing the quiz by answering the rest of the questions will bring you out of Quiz mode and you would be able
     to use your regular commands such as `play` or `edit` again.
-    
+
     Try playing the quiz a few more times!
-    
+
 7. Have you tried quizzing yourself a few more times? aren't you curious about your progress so far? Thankfully, GreenTea has been
 keeping track of your scores in the background and can display in the form of a graph. Try typing the following commands
 into GreenTea!
 
     - `stats 1`
-    
-    Figure 11. Statistics of Deck 1
-    
-    Your screen should now look similar to Figure 11. The previous command that you entered changed the current tab
-    into the Statistics Tab of Deck `1` which refers to the Deck `Japanese Animals`. In this tab, you can see 
-    your score history as well as the time stamp of each attempt. Based on our progression, we think we need a 
-    little bit more practise with our deck! 
 
-8. Congratulations! We have come to the end of this chapter. We hope that you have learned the basic of 
+    Figure 11. Statistics of Deck 1
+
+    Your screen should now look similar to Figure 11. The previous command that you entered changed the current tab
+    into the Statistics Tab of Deck `1` which refers to the Deck `Japanese Animals`. In this tab, you can see
+    your score history as well as the time stamp of each attempt. Based on our progression, we think we need a
+    little bit more practise with our deck!
+
+8. Congratulations! We have come to the end of this chapter. We hope that you have learned the basic of
 using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
 commands with complete explanations to learn in [Chapter 6](#6-features).
 
@@ -228,7 +228,7 @@ or `edit 1 [w/word] [t/translation]` __but cannot be written as__ `edit 1`
 
 # 5. Features
 
-In this chapter, we will be going into detail each feature of GreenTea, along with their command format and 
+In this chapter, we will be going into detail each feature of GreenTea, along with their command format and
 relevant examples.
 
 ## 5.1 Deck Commands (Melanie)
