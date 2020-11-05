@@ -14,19 +14,20 @@ import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.play.scoring.QuizAttempt;
 
 /**
- * Represents a deck of flashcards
+ * A deck represents a list of entries
+ * Each deck has a unique deck name
+ * Users will be able to attempt quizzes using these decks
  */
 public class Deck {
 
     private final DeckName deckName;
     private UniqueEntryList entries;
     private FilteredList<Entry> filteredEntries;
-    private List<QuizAttempt> quizAttempts; // append-only
+    private List<QuizAttempt> quizAttempts;
 
     /**
-     * Name must be present and not null
-     *
-     * @param deckName name of the deck of cards
+     * Constructs a deck object. Each deck is initialized with a given name {@code deckName}
+     * Other fields in the deck class are all initialized to empty lists upon initialization.
      */
     public Deck(DeckName deckName) {
         requireNonNull(deckName);
@@ -36,14 +37,26 @@ public class Deck {
         this.quizAttempts = new ArrayList<>();
     }
 
+    /**
+     * Returns the name of the deck
+     * @return Name of the deck
+     */
     public DeckName getDeckName() {
         return this.deckName;
     }
 
+    /**
+     * Returns the list of entries in the deck
+     * @return List of entries in the deck
+     */
     public UniqueEntryList getEntries() {
         return this.entries;
     }
 
+    /**
+     * Return the list of quiz attemp
+     * @return
+     */
     public List<QuizAttempt> getQuizAttempts() {
         return this.quizAttempts;
     }
@@ -129,9 +142,6 @@ public class Deck {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-
-        builder.append(getDeckName());
-        return builder.toString();
+        return String.valueOf(getDeckName());
     }
 }

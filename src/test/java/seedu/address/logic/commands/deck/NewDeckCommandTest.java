@@ -30,6 +30,9 @@ import seedu.address.model.play.scoring.QuizAttempt;
 import seedu.address.model.view.View;
 import seedu.address.testutil.deck.DeckBuilder;
 
+/**
+ * Tests for NewDeckCommand using a model stub to replace model.
+ */
 public class NewDeckCommandTest {
 
     @Test

@@ -32,6 +32,9 @@ import seedu.address.model.play.scoring.QuizAttempt;
 import seedu.address.model.view.View;
 import seedu.address.testutil.entry.EntryBuilder;
 
+/**
+ * Tests for AddCommand, using a model stub to replace model.
+ */
 public class AddCommandTest {
 
     @Test

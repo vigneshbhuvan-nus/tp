@@ -11,6 +11,12 @@ import javafx.collections.ObservableList;
 import seedu.address.model.deck.exceptions.DeckNotFoundException;
 import seedu.address.model.deck.exceptions.DuplicateDeckException;
 
+/**
+ * A list of decks that is comprised of unique decks
+ * Decks are considered unique if no two decks share the same deck name
+ * A deck is determined to be unique by comparing using {@code Deck#isSameDeck(Deck)}.
+ * Supports a minimal set of list operations
+ */
 public class UniqueDeckList implements Iterable<Deck> {
 
     private final ObservableList<Deck> internalList = FXCollections.observableArrayList();
@@ -19,6 +25,8 @@ public class UniqueDeckList implements Iterable<Deck> {
 
     /**
      * Returns true if the deckList contains an equivalent deck as the given argument.
+     * @param toCheck Deck to check if it exists in the deckList.
+     * @return True if the deck already exists in the deckList.
      */
     public boolean contains(Deck toCheck) {
         requireNonNull(toCheck);
@@ -26,21 +34,24 @@ public class UniqueDeckList implements Iterable<Deck> {
     }
 
     /**
-     * Adds an deck to the deckList.
-     * The deck must not already exist in the list.
+     * Adds a deck {@code toAdd} to the deckList.
+     * The deck must not already exist in the deckList.
+     * @param toAdd Deck to be added to the deckList.
      */
     public void add(Deck toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
             throw new DuplicateDeckException();
         }
-        internalList.add(toAdd); //calls some javafx library code to create a change  to ui
+        internalList.add(toAdd);
     }
 
     /**
      * Replaces the deck {@code target} in the deckList with {@code editedDeck}.
      * {@code target} must exist in the list.
      * The deck identity of {@code editedDeck} must not be the same as another existing deck in the list.
+     * @param target Deck to be replaced.
+     * @param editedDeck Deck to replace the target deck.
      */
     public void setDeck(Deck target, Deck editedDeck) {
         requireAllNonNull(target, editedDeck);
@@ -58,8 +69,9 @@ public class UniqueDeckList implements Iterable<Deck> {
     }
 
     /**
-     * Removes the equivalent deck from the deckList.
+     * Removes the equivalent deck {@code toRemove} from the deckList.
      * The deck must exist in the list.
+     * @param toRemove Deck to be removed from the deckList.
      */
     public void remove(Deck toRemove) {
         requireNonNull(toRemove);
@@ -68,6 +80,10 @@ public class UniqueDeckList implements Iterable<Deck> {
         }
     }
 
+    /**
+     * Replaces the current list with the contents of the given list {@code replacement}.
+     * @param replacement List to replace the current list.
+     */
     public void setDecks(UniqueDeckList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
@@ -76,6 +92,7 @@ public class UniqueDeckList implements Iterable<Deck> {
     /**
      * Replaces the contents of this list with {@code decks}.
      * {@code decks} must not contain duplicate decks.
+     * @param decks List of decks to replace the contents of the current list.
      */
     public void setDecks(List<Deck> decks) {
         requireAllNonNull(decks);
@@ -87,7 +104,8 @@ public class UniqueDeckList implements Iterable<Deck> {
     }
 
     /**
-     * Returns the backing list as an unmodifiable {@code ObservableList}.
+     * Returns the entry list as an unmodifiable {@code ObservableList}.
+     * @return Entry list as an unmodifiable list.
      */
     public ObservableList<Deck> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
@@ -112,6 +130,8 @@ public class UniqueDeckList implements Iterable<Deck> {
 
     /**
      * Returns true if {@code decks} contains only unique decks.
+     * @param decks List of decks to check if all decks are different.
+     * @return True if all the decks in the given list are different.
      */
     private boolean decksAreUnique(List<Deck> decks) {
         for (int i = 0; i < decks.size() - 1; i++) {
