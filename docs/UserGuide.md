@@ -6,7 +6,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
-- [3. Getting Started (Gabriel)](#3-getting-started-gabriel)
+- [3. Getting Started (Gabriel and Melanie)](#3-getting-started-gabriel-and-melanie)
 - [4. Using This Guide (Melanie)](#4-using-this-guide-melanie)
     - [4.1 Symbols](#41-symbols)
     - [4.2 Command Format](#42-command-format)
@@ -197,7 +197,9 @@ commands with complete explanations to learn in [Chapter 6](#6-features).
 
 # 4. Using This Guide (Melanie)
 
-Before going into the features, lets get familiar with the symbols and command format used in this user guide
+In this chapter,  we will get familiar with the symbols and command format used in this user guide.
+
+Before progressing further, we strongly recommend going through [Chapter 3](#3-getting-started-gabriel-and-melanie) first.
 
 ## 4.1 Symbols
 
@@ -250,7 +252,7 @@ Now that we have an understanding of the Big Picture of *GreenTea*, let us take 
 
 # 6. Features
 
-In this section, we will go into each feature of GreenTea, along with their command format and examples.
+In this chapter, we will go into detail each feature of GreenTea, along with their command format and examples.
 
 ## 6.1 Deck Commands (Melanie)
 As mentioned earlier, Decks are the foundation to GreenTea. A deck is simply a list of entries
