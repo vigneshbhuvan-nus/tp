@@ -459,6 +459,7 @@ In order to view your statistics, you must first [play a game!](#631-play-a-game
 **Q**: How do I transfer my data to someone else? <br>
 **A**: Ensure that the other person has GreenTea installed on their computer. Use the platform of your choice which supports file sharing (E.g whatsApp, telegram, email).
 Locate the folder in your computer where you installed GreenTea. In the folder, there is file called wordbank.json. Send the file to the other person.  
+
 ---
 
 ## 8. Command Summary (Gabriel)
