@@ -139,19 +139,44 @@ been successfully carried out, or if there are errors in your command formats.
     The previous command modified the translation of the entry from `Iruka` to `イルカ`. Notice that now the
     first entry in the entries tab has the word `Dolphin` and the translation `イルカ`. Congratulations! You have 
     now created a brand new deck called `Japanese Animals` with a new entry of the word `Dolphin` and the 
-    translation `イルカ`.
+    translation `イルカ`. Try adding a few more entries into GreenTea!
     
-6. Now, let us try to play a game of FlashCards. Note than in our application, we use the terms Flashcards and Quizzes 
-interchangeably. Try typing and entering the following commands into GreenTea.
+6. Hopefully you have written a few more entries into GreenTea. We went ahead and added two new entries into the Deck
+`Japanese Animals`. 
+
+    Figure 8. Added more entries into `Japanese Animals`
+    
+    Figure 8 is a screenshot of our latest Deck containing the new entries that we have written. 
+    Now, Let us try to play a game of FlashCards to memorise what we have written. 
+    Note than in our application, we use the terms Flashcards and Quizzes 
+    interchangeably. Try typing and entering the following commands into GreenTea.
 
     - `/play`
-    Figure 8. Playing a Game of Flashcards
     
-    Your screen should now look like Figure 8.  
-    The command you wrote previously switched GreenTea into Quiz mode. This means that all commands written from now on
-    will be treated as answers to the question given by GreenTea. 
+    Figure 9. Playing a Game of Flashcards
+    
+    Your screen should now look similar to Figure 9 but the translation given on the left side of the Quiz Tab might be different
+    depending on the entries you have written into `Japanese Animals`.
+    
+    The command you wrote previously had switched GreenTea into Quiz mode. This means that all commands written from now on
+    will be treated as answers to the question given by GreenTea and the tab has switched to the Quiz Tab.
+    
+    From Figure 9, we can see that GreenTea is asking us "What is the english word for the translation `イルカ`?" We 
+    already know that the correct word is `Dolphin`. However, let us try typing the wrong answer `dog`.
+    
+    Figure 10. Wrong answer given
+    
+    GreenTea has accepted the answer we had given it and has updated the translation shown on the Quiz Tab. Also,
+    note that the right side of the Quiz Tab displays your history of answers to the quiz including the translation,
+    the correct word/answer as well as the given answer. 
+    
+    Try finishing the quiz by answering the rest of the questions and playing the quiz a few more times!
 
-6. Refer to [Chapter 6 Features](#6-features) for a detailed explanation for each command.
+7. After playing the quiz a few times, aren't you curious about your progress so far? Thankfully, GreenTea has been
+keeping track of your scores in the background and can display in the form of a graph. Try typing the following commands
+into GreenTea!
+
+8. Refer to [Chapter 6 Features](#6-features) for a detailed explanation for each command.
 
 # 4. Using This Guide (Melanie)
 
