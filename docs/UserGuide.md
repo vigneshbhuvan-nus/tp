@@ -448,11 +448,10 @@ Figure 19. Result of viewing statistics of a single deck
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#631-play-a-game-georgie)
 
-## 7. FAQ (Gabriel and Vignesh)
+## 7. FAQ (Gabriel)
 
 **Q**: Will my score be recorded if I stop a game before I finish it?<br>
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
-
 
 ## 8. Command Summary (Gabriel)
 
