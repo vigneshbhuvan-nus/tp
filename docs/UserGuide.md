@@ -36,7 +36,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language,
 but often struggle due to the difficulty of remembering new vocabulary. For many learners, vocabulary remains the most challenging aspect of learning a new language.
 We felt that we could help learners struggling with vocabulary to learn the language more efficiently.
-Therefore, GreenTea uses a proven memory retention system known as the [Leitner System](https://medium.com/@jessewhelan/using-the-leitner-system-to-improve-your-study-d6edafae7f0)
+Therefore, GreenTea uses a proven memory retention system known as the [Leitner System](https://jessewhelan.medium.com/using-the-leitner-system-to-improve-your-study-d5edafae7f0)
 and implements it in the context of a FlashCard game.
 
 **Fun Fact:** You may be wondering, why did we choose the name *GreenTea*? Well, in the initial stages of development, the app was intended for users looking to learn Japanese, hence the name *GreenTea*.
@@ -414,9 +414,7 @@ Exits the program.
 
 Format: `exit`
 
-Result:
-
-![GreenTea](images/Ui.png)
+Result: Program will be closed
 
 ## 6. Statistics (Melanie)
 
