@@ -35,7 +35,7 @@
 ## 1. Introduction
 
 Green Tea is a flashcard application, designed for users who want to practice their language skills and
-keep track of their learning progress.  
+keep track of their learning progress.
 
 ### 1.1 Purpose
 
@@ -175,7 +175,7 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 
 `MainWindow.fxml` contains a **tabPanel** which switches between 4 panels depending on the command given by the user.
 Commands update a class called `CurrentView.java` in `Model`. Based on the current view, the tab panel will be updated accordingly
- 
+
 - Panel which shows upon _starting the application_ is `StartPanel.fxml`.
 - Panel which shows upon _selecting a deck_ is `EntryListPanel.fxml`.
 - Panel which shows upon _starting a quiz game_ is `QuizPanel.fxml`.
@@ -211,7 +211,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 The `Model` component is in charge of changing the data within the application.
 This includes information about decks, entries and statistics.
-The general overview of the structure diagram of the `Model` component is shown below. 
+The general overview of the structure diagram of the `Model` component is shown below.
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -238,7 +238,7 @@ that can be 'observed'. E.g. the UI can be bound to this list so that the UI aut
 The `Storage` component handles the reading and writing of data from a data file. By storing the data,
 the application will be able to load the data from the previous session back to the user when the user opens
 the application.
-The general overview of the structure diagram of the `Storage` component is shown below. 
+The general overview of the structure diagram of the `Storage` component is shown below.
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -332,7 +332,7 @@ UI, Logic and Model components.
 - **Alternative 2**: `delete <deck_index> <entry_index>` Entry level commands specify a deck. E.g `delete 1 1`
   - Pros: Single command for users to execute
   - Cons: May cause confusion to the users.
-  
+
 Utimately, we decided that user navigability was more important than the extra `select` command needed. This is because
 Green Tea is designed to be a simple and easy system for new users to use.
 
@@ -590,7 +590,7 @@ Initial launch
 
 1. Download the jar file and copy into an empty folder
 
-2. Double-click the jar file.<br> 
+2. Double-click the jar file.<br>
 Expected: Shows the GUI with a set of sample decks. The window size may not be optimum.
 
 Saving window preferences
@@ -608,7 +608,7 @@ Removing a deck while all decks are being shown
 
 2.  Test case: `remove 1`<br>
     Expected: First deck is removed from the list. Status message shown to confirm that the deck has been deleted.
-    
+
 3. Test case: `select 1` then `remove 1`<br>
     Expected: First deck is removed from the list. Status message shown to confirm that the deck has been deleted.
     The tab panel, previously showing the entries of deck 1, will show the start panel.
@@ -633,4 +633,7 @@ Dealing with missing data files
 
 Dealing with corrupted data files
 
-1. 
+1. The data file is located at /data, addressbook.json.
+2. Remove the _d_ in _decks_ on line 2 of the data file.
+3. Launch the application. Green Tea should display an empty deck list.
+4. Add a deck to Green Tea then close the application. The data file should now be in the correct format.
