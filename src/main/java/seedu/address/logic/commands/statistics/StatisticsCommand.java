@@ -26,7 +26,7 @@ public class StatisticsCommand extends Command {
 
         if (currentDeckIndex == -1) { // invalid deck, or none
             MESSAGE_SUCCESS = "Either invalid deck index or index out of bounds. \n"
-                    + "Please choose an index that is listed and ensure it is a positive integer that is less than"
+                    + "Please choose an index that is listed and ensure it is a positive integer that is less than "
                     + "2,147,483,648 "
                     + "Viewing statistics across all decks instead.";
         } else {
