@@ -20,25 +20,25 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.exceptions.DuplicateDeckException;
 import seedu.address.testutil.deck.DeckBuilder;
 
-public class AddressBookTest {
+public class WordBankTest {
 
-    private final AddressBook addressBook = new AddressBook();
+    private final WordBank wordBank = new WordBank();
 
     @Test
     public void constructor() {
-        assertEquals(Collections.emptyList(), addressBook.getDeckList());
+        assertEquals(Collections.emptyList(), wordBank.getDeckList());
     }
 
     @Test
     public void resetData_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.resetData(null));
+        assertThrows(NullPointerException.class, () -> wordBank.resetData(null));
     }
 
     @Test
     public void resetData_withValidReadOnlyAddressBook_replacesData() {
-        AddressBook newData = getTypicalAddressBook();
-        addressBook.resetData(newData);
-        assertEquals(newData, addressBook);
+        WordBank newData = getTypicalAddressBook();
+        wordBank.resetData(newData);
+        assertEquals(newData, wordBank);
     }
 
     @Test
@@ -48,50 +48,50 @@ public class AddressBookTest {
         List<Deck> newDecks = Arrays.asList(JAPANESE_DECK, editedJapaneseDeck);
         AddressBookStub newData = new AddressBookStub(newDecks);
 
-        assertThrows(DuplicateDeckException.class, () -> addressBook.resetData(newData));
+        assertThrows(DuplicateDeckException.class, () -> wordBank.resetData(newData));
     }
 
     @Test
     public void hasDeck_nullDeck_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasDeck(null));
+        assertThrows(NullPointerException.class, () -> wordBank.hasDeck(null));
     }
 
     @Test
     public void hasDeck_deckNotInAddressBook_returnsFalse() {
-        assertFalse(addressBook.hasDeck(JAPANESE_DECK));
+        assertFalse(wordBank.hasDeck(JAPANESE_DECK));
     }
 
     @Test
     public void hasDeck_deckInAddressBook_returnsTrue() {
-        addressBook.addDeck(JAPANESE_DECK);
-        assertTrue(addressBook.hasDeck(JAPANESE_DECK));
+        wordBank.addDeck(JAPANESE_DECK);
+        assertTrue(wordBank.hasDeck(JAPANESE_DECK));
     }
 
     @Test
     public void removeDeck_emptyAddressBook_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getDeckList().remove(0));
+        assertThrows(UnsupportedOperationException.class, () -> wordBank.getDeckList().remove(0));
     }
 
     @Test
     public void removeDeck_entryInAddressBook_success() {
-        ObservableList deckListCopy = addressBook.getDeckList();
+        ObservableList deckListCopy = wordBank.getDeckList();
         Deck validDeck = new DeckBuilder().build();
-        addressBook.addDeck(validDeck);
-        addressBook.removeDeck(validDeck);
-        assertEquals(deckListCopy, addressBook.getDeckList());
+        wordBank.addDeck(validDeck);
+        wordBank.removeDeck(validDeck);
+        assertEquals(deckListCopy, wordBank.getDeckList());
     }
 
     @Test
     public void hasDeck_deckWithSameIdentityFieldsInAddressBook_returnsTrue() {
-        addressBook.addDeck(JAPANESE_DECK);
+        wordBank.addDeck(JAPANESE_DECK);
         Deck editedJapaneseDeck = new DeckBuilder(JAPANESE_DECK).build();
-        assertTrue(addressBook.hasDeck(editedJapaneseDeck));
+        assertTrue(wordBank.hasDeck(editedJapaneseDeck));
     }
 
     @Test
     public void toString_emptyAddressBook_returnsZeroDecks() {
-        String expectedString = addressBook.getObservedEntries().asUnmodifiableObservableList().size() + " decks";
-        assertEquals(expectedString, addressBook.toString());
+        String expectedString = wordBank.getObservedEntries().asUnmodifiableObservableList().size() + " decks";
+        assertEquals(expectedString, wordBank.toString());
     }
 
 

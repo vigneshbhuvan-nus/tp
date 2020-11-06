@@ -32,7 +32,7 @@ public class ModelManager implements Model {
 
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final WordBank wordBank;
     private final UserPrefs userPrefs;
     private CurrentView currentView;
     private final FilteredList<Deck> filteredDecks;
@@ -46,7 +46,7 @@ public class ModelManager implements Model {
 
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given wordBank and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
@@ -55,16 +55,16 @@ public class ModelManager implements Model {
         logger.fine(
                 "Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.wordBank = new WordBank(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
-        /*filteredEntries = new FilteredList<>(this.addressBook.getEntryList());*/
-        this.filteredDecks = new FilteredList<>(this.addressBook.getDeckList());
-        this.currentDeckIndex = Optional.empty();
+        /*filteredEntries = new FilteredList<>(this.wordBank.getEntryList());*/
+        filteredDecks = new FilteredList<>(this.wordBank.getDeckList());
+        currentDeckIndex = Optional.empty();
         this.currentView = new CurrentView(View.START_VIEW);
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new WordBank(), new UserPrefs());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -128,14 +128,14 @@ public class ModelManager implements Model {
     //=========== Word Bank ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setWordBank(ReadOnlyAddressBook wordBank) {
+        this.wordBank.resetData(wordBank);
         this.currentDeckIndex = Optional.empty();
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyAddressBook getWordBank() {
+        return wordBank;
     }
 
     @Override
@@ -150,12 +150,12 @@ public class ModelManager implements Model {
         requireNonNull(target);
         Deck currentDeck = getCurrentDeck();
         currentDeck.removeEntry(target);
-        addressBook.getObservedEntries().remove(target);
+        wordBank.getObservedEntries().remove(target);
     }
 
     /**
      * This function takes the entry and adds it to the deck entry list as well as the
-     * observedEntries in the AddressBook
+     * observedEntries in the WordBank
      *
      * @param entry refers to the entry inputted by the user
      */
@@ -165,7 +165,7 @@ public class ModelManager implements Model {
         requireNonNull(entry);
         Deck currentDeck = getCurrentDeck();
         currentDeck.addEntry(entry);
-        addressBook.getObservedEntries().add(entry);
+        wordBank.getObservedEntries().add(entry);
         updateFilteredEntryList(PREDICATE_SHOW_ALL_ENTRIES);
     }
 
@@ -179,7 +179,7 @@ public class ModelManager implements Model {
     @Override
     public boolean hasDeck(Deck deck) {
         requireNonNull(deck);
-        return addressBook.hasDeck(deck);
+        return wordBank.hasDeck(deck);
     }
 
     @Override
@@ -189,13 +189,13 @@ public class ModelManager implements Model {
             clearEntryList();
             setCurrentView(View.START_VIEW);
         }
-        addressBook.removeDeck(target);
+        wordBank.removeDeck(target);
     }
 
 
     @Override
     public void addDeck(Deck deck) {
-        addressBook.addDeck(deck);
+        wordBank.addDeck(deck);
         updateFilteredDeckList(PREDICATE_SHOW_ALL_DECKS);
     }
 
@@ -213,8 +213,8 @@ public class ModelManager implements Model {
     public void replaceEntryList() throws ConcurrentModificationException {
         try {
             UniqueEntryList newEntryList = getCurrentDeck().getEntries();
-            addressBook.resetEntryList();
-            addressBook.replaceEntryList(newEntryList);
+            wordBank.resetEntryList();
+            wordBank.replaceEntryList(newEntryList);
         } catch (ConcurrentModificationException e) {
             throw e;
         }
@@ -222,7 +222,7 @@ public class ModelManager implements Model {
 
     @Override
     public void clearEntryList() {
-        addressBook.resetEntryList();
+        wordBank.resetEntryList();
     }
 
 
@@ -240,17 +240,17 @@ public class ModelManager implements Model {
 
     /**
      * Returns a default deck as memory is not fixed yet. During initialisation, the
-     * observedEntryList value is passed as the AddressBook.javas uniqueEntryList. I.e the GUI now
-     * watches for any changes in the AddressBook,java field observedEntries {@code
+     * observedEntryList value is passed as the WordBank.javas uniqueEntryList. I.e the GUI now
+     * watches for any changes in the WordBank,java field observedEntries {@code
      * versionedAddressBook}
      */
     @Override
     public ObservableList<Entry> getFilteredEntryList() {
         if (this.getCurrentDeck() == null) {
             logger.info("Current Deck is null");
-            return addressBook.getFilteredEntries();
+            return wordBank.getFilteredEntries();
         }
-        return addressBook.getFilteredEntries();
+        return wordBank.getFilteredEntries();
     }
 
     @Override
@@ -258,8 +258,8 @@ public class ModelManager implements Model {
         requireNonNull(predicate);
         Deck currentDeck = getCurrentDeck();
         currentDeck.updateFilteredEntryList(predicate);
-        addressBook.resetEntryList();
-        addressBook.replaceEntryList(currentDeck.getEntries());
+        wordBank.resetEntryList();
+        wordBank.replaceEntryList(currentDeck.getEntries());
     }
 
     /**
@@ -291,7 +291,7 @@ public class ModelManager implements Model {
 
         //state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return wordBank.equals(other.wordBank)
                 && userPrefs.equals(other.userPrefs)
                 && filteredDecks.equals(other.filteredDecks);
     }
@@ -303,8 +303,8 @@ public class ModelManager implements Model {
         leitner = new Leitner(observedList);
         quizLength = leitner.getEntries().size();
         currentIndex = 0;
-        addressBook.resetEntryList();
-        addressBook.replaceEntryListLeitner(leitner.getUniqueEntryList());
+        wordBank.resetEntryList();
+        wordBank.replaceEntryListLeitner(leitner.getUniqueEntryList());
 
         currentQuizAttempt = new QuizAttempt(new BinaryScoring());
     }
@@ -328,7 +328,7 @@ public class ModelManager implements Model {
         leitner.addGuess(guess);
         String correctAnswer = leitner.getAnswers().get(currentIndex).toString();
         Entry entryToAdd = leitner.getEntries().get(currentIndex);
-        Entry entryToRemove = addressBook.getObservedEntries().get(currentIndex);
+        Entry entryToRemove = wordBank.getObservedEntries().get(currentIndex);
 
         logger.info(String.format("You have answered %s.", guess));
 
@@ -344,7 +344,7 @@ public class ModelManager implements Model {
                     guess, correctAnswer));
         }
 
-        addressBook.setEntry(entryToRemove, entryToAdd); //swaps entry in GUI
+        wordBank.setEntry(entryToRemove, entryToAdd); //swaps entry in GUI
         currentIndex++;
     }
 

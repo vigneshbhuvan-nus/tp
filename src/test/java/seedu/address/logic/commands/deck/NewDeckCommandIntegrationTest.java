@@ -28,7 +28,7 @@ public class NewDeckCommandIntegrationTest {
     public void execute_newDeck_success() {
         Deck validDeck = new DeckBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getWordBank(), new UserPrefs());
         expectedModel.addDeck(validDeck);
 
         assertCommandSuccess(new NewDeckCommand(validDeck), model,
@@ -39,7 +39,7 @@ public class NewDeckCommandIntegrationTest {
     public void execute_duplicateDeck_throwsCommandException() {
         Deck validDeck = new DeckBuilder().build();
         model.addDeck(validDeck);
-        Deck deckInList = model.getAddressBook().getDeckList().get(0);
+        Deck deckInList = model.getWordBank().getDeckList().get(0);
         assertCommandFailure(new NewDeckCommand(deckInList), model, NewDeckCommand.MESSAGE_DUPLICATE_DECK);
     }
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.WordBank;
 import seedu.address.model.deck.entry.Entry;
 
 /**
@@ -41,11 +41,11 @@ public class TypicalEntries {
     private TypicalEntries() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical entries.
-     * @return Address book with all the typical entries in it
+     * Returns an {@code WordBank} with all the typical entries.
+     * @return WordBank with all the typical entries in it
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static WordBank getTypicalAddressBook() {
+        WordBank ab = new WordBank();
         for (Entry entry : getTypicalEntries()) {
             ab.addEntry(entry);
         }

@@ -50,12 +50,12 @@ public class StorageManagerTest {
     //        /*
     //         * Note: This is an integration test that verifies the StorageManager is properly wired to the
     //         * {@link JsonAddressBookStorage} class.
-    //         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
+    //         * More extensive testing of UserPref saving/reading is done in {@link JsonWordBankStorageTest} class.
     //         */
-    //        AddressBook original = getTypicalAddressBook();
+    //        WordBank original = getTypicalAddressBook();
     //            storageManager.saveAddressBook(original);
     //        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
-    //        assertEquals(original, new AddressBook(retrieved));
+    //        assertEquals(original, new WordBank(retrieved));
     }
 
     @Test

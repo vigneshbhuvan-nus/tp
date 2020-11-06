@@ -22,7 +22,7 @@ import seedu.address.testutil.entry.EditEntryDescriptorBuilder;
 import seedu.address.testutil.entry.EntryBuilder;
 import seedu.address.testutil.entry.EntryUtil;
 
-public class AddressBookParserTest {
+public class WordBankParserTest {
 
     private final AddressBookParser parser = new AddressBookParser();
 

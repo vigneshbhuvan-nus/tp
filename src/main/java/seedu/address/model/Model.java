@@ -60,14 +60,14 @@ public interface Model {
     void setAddressBookFilePath(Path addressBookFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces address book data with the data in {@code wordBank}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setWordBank(ReadOnlyAddressBook wordBank);
 
     /**
-     * Returns the AddressBook
+     * Returns the WordBank
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyAddressBook getWordBank();
 
     /**
      * Returns true if an entry with the same identity as {@code entry} exists in the word bank.
