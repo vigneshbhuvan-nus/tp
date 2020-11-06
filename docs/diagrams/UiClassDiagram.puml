@@ -11,14 +11,22 @@ Class UiManager
 Class MainWindow
 Class HelpWindow
 Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
 Class StatusBarFooter
 Class CommandBox
+package Deck {
 Class DeckListPanel
-Class EntryListPanel
 Class DeckCard
+}
+package Entry {
+Class EntryListPanel
 Class EntryCard
+}
+package Panels {
+Class QuizPanel
+Class ScorePanel
+Class StartPanel
+Class StatisticsPanel
+}
 }
 
 package Model <<Rectangle>> {
@@ -40,12 +48,21 @@ MainWindow *-down-> ResultDisplay
 MainWindow *-down-> DeckListPanel
 MainWindow *-down-> EntryListPanel
 MainWindow *-down-> StatusBarFooter
+MainWindow *-down--> QuizPanel
+MainWindow *-down-> ScorePanel
+MainWindow *-down-> StartPanel
+MainWindow *-down-> StatisticsPanel
 
-DeckListPanel -down-> DeckCard
-EntryListPanel -down-> EntryCard
+DeckListPanel --> DeckCard
+EntryListPanel --> EntryCard
 
-MainWindow -left-|> UiPart
+MainWindow -|> UiPart
 
+
+QuizPanel --|> UiPart
+StartPanel --|> UiPart
+ScorePanel --|> UiPart
+StatisticsPanel --|> UiPart
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 DeckListPanel --|> UiPart
@@ -55,7 +72,11 @@ EntryCard --|> UiPart
 StatusBarFooter --|> UiPart
 HelpWindow -down-|> UiPart
 
-PersonCard ..> Model
+DeckCard ..> Model
+EntryCard ..> Model
+QuizPanel ..> Model
+StatisticsPanel ..> Model
+
 UiManager -right-> Logic
 MainWindow -left-> Logic
 

@@ -22,9 +22,9 @@ import seedu.address.testutil.entry.EditEntryDescriptorBuilder;
 import seedu.address.testutil.entry.EntryBuilder;
 import seedu.address.testutil.entry.EntryUtil;
 
-public class WordBankParserTest {
+public class CommandModeParserTest {
 
-    private final AddressBookParser parser = new AddressBookParser();
+    private final CommandModeParser parser = new CommandModeParser();
 
     @Test
     public void parseCommand_add() throws Exception {

@@ -12,13 +12,22 @@ Class StorageManager
 Class JsonUserPrefsStorage
 Class JsonWordBankStorage
 
-StorageManager .left.|> Storage
-StorageManager o-right-> UserPrefsStorage
+StorageManager .up.|> Storage
 StorageManager o--> WordBankStorage
+StorageManager o--> UserPrefsStorage
 
-JsonUserPrefsStorage .left.|> UserPrefsStorage
-JsonWordBankStorage .left.|> WordBankStorage
+JsonUserPrefsStorage .up.|> UserPrefsStorage
+JsonWordBankStorage .up.|> WordBankStorage
 JsonWordBankStorage .down.> JsonSerializableWordBankStorage
-JsonSerializableWordBankStorage .right.> JsonSerializablePerson
-JsonSerializablePerson .right.> JsonAdaptedTag
+
+JsonSerializableWordBankStorage ..> JsonAdaptedDeck
+
+JsonAdaptedDeck ..> JsonAdaptedEntry
+JsonAdaptedDeck ..> JsonQuizAttempt
+
+JsonAdaptedEntry ..> JsonAdaptedWord
+JsonAdaptedEntry ..> JsonAdaptedTranslation
+
+JsonQuizAttempt ..> JsonAdaptedQuestionAttempt
+JsonQuizAttempt ..> JsonAdaptedScore
 @enduml

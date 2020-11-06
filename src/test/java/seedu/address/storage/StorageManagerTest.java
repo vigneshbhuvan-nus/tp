@@ -21,7 +21,7 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonAddressBookStorage addressBookStorage = new JsonAddressBookStorage(getTempFilePath("ab"));
+        JsonWordBankStorage addressBookStorage = new JsonWordBankStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         storageManager = new StorageManager(addressBookStorage, userPrefsStorage);
     }
@@ -49,12 +49,12 @@ public class StorageManagerTest {
     public void addressBookReadSave() throws Exception {
     //        /*
     //         * Note: This is an integration test that verifies the StorageManager is properly wired to the
-    //         * {@link JsonAddressBookStorage} class.
+    //         * {@link JsonWordBankStorage} class.
     //         * More extensive testing of UserPref saving/reading is done in {@link JsonWordBankStorageTest} class.
     //         */
     //        WordBank original = getTypicalAddressBook();
     //            storageManager.saveAddressBook(original);
-    //        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
+    //        ReadOnlyWordBank retrieved = storageManager.readAddressBook().get();
     //        assertEquals(original, new WordBank(retrieved));
     }
 

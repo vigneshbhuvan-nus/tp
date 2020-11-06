@@ -19,8 +19,8 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.ReadOnlyWordBank;
 import seedu.address.model.WordBank;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
@@ -126,12 +126,12 @@ public class NewDeckCommandTest {
         }
 
         @Override
-        public void setWordBank(ReadOnlyAddressBook newData) {
+        public void setWordBank(ReadOnlyWordBank newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getWordBank() {
+        public ReadOnlyWordBank getWordBank() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -303,7 +303,7 @@ public class NewDeckCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getWordBank() {
+        public ReadOnlyWordBank getWordBank() {
             return new WordBank();
         }
     }

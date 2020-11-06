@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyWordBank;
 import seedu.address.model.WordBank;
 
 public class JsonWordBankStorageTest {
@@ -25,8 +25,8 @@ public class JsonWordBankStorageTest {
         assertThrows(NullPointerException.class, () -> readAddressBook(null));
     }
 
-    private java.util.Optional<ReadOnlyAddressBook> readAddressBook(String filePath) throws Exception {
-        return new JsonAddressBookStorage(Paths.get(filePath)).readAddressBook(addToTestDataPathIfNotNull(filePath));
+    private java.util.Optional<ReadOnlyWordBank> readAddressBook(String filePath) throws Exception {
+        return new JsonWordBankStorage(Paths.get(filePath)).readAddressBook(addToTestDataPathIfNotNull(filePath));
     }
 
     private Path addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
@@ -55,12 +55,12 @@ public class JsonWordBankStorageTest {
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
     //        Path filePath = testFolder.resolve("TempAddressBook.json");
     //        WordBank original = getTypicalAddressBook();
-    //        JsonAddressBookStorage jsonAddressBookStorage = new JsonAddressBookStorage(filePath);
+    //        JsonWordBankStorage jsonAddressBookStorage = new JsonWordBankStorage(filePath);
     //
     //        // Save in new file and read back
     //        System.out.println (original);
     //        jsonAddressBookStorage.saveAddressBook(original, filePath);
-    //        ReadOnlyAddressBook readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
+    //        ReadOnlyWordBank readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
     //        assertEquals(original, new WordBank(readBack));
     //
     //        // Modify data, overwrite exiting file, and read back
@@ -84,9 +84,9 @@ public class JsonWordBankStorageTest {
     /**
      * Saves {@code addressBook} at the specified {@code filePath}.
      */
-    private void saveAddressBook(ReadOnlyAddressBook addressBook, String filePath) {
+    private void saveAddressBook(ReadOnlyWordBank addressBook, String filePath) {
         try {
-            new JsonAddressBookStorage(Paths.get(filePath))
+            new JsonWordBankStorage(Paths.get(filePath))
                     .saveAddressBook(addressBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);

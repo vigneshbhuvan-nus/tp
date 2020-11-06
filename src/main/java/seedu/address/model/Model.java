@@ -62,12 +62,12 @@ public interface Model {
     /**
      * Replaces address book data with the data in {@code wordBank}.
      */
-    void setWordBank(ReadOnlyAddressBook wordBank);
+    void setWordBank(ReadOnlyWordBank wordBank);
 
     /**
      * Returns the WordBank
      */
-    ReadOnlyAddressBook getWordBank();
+    ReadOnlyWordBank getWordBank();
 
     /**
      * Returns true if an entry with the same identity as {@code entry} exists in the word bank.

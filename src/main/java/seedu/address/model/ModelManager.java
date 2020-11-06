@@ -48,7 +48,7 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given wordBank and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyWordBank addressBook, ReadOnlyUserPrefs userPrefs) {
         super();
         requireAllNonNull(addressBook, userPrefs);
 
@@ -128,13 +128,13 @@ public class ModelManager implements Model {
     //=========== Word Bank ================================================================================
 
     @Override
-    public void setWordBank(ReadOnlyAddressBook wordBank) {
+    public void setWordBank(ReadOnlyWordBank wordBank) {
         this.wordBank.resetData(wordBank);
         this.currentDeckIndex = Optional.empty();
     }
 
     @Override
-    public ReadOnlyAddressBook getWordBank() {
+    public ReadOnlyWordBank getWordBank() {
         return wordBank;
     }
 
