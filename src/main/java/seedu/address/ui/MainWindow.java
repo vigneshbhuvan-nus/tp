@@ -115,7 +115,7 @@ public class MainWindow extends UiPart<Stage> {
                 logger.info(String.format("Tab switched from %s to %s", oldValue.getId(), newValue.getId()));
                 switch(newValue.getId()) {
                 case "statistics_panel":
-                    handleStatisticsPanel();
+                    handleStatisticsPanel(-1);
                     break;
                 default:
                     break;
@@ -248,6 +248,11 @@ public class MainWindow extends UiPart<Stage> {
     private void handleQuizMode() {
         QuizPanel quizPanel = new QuizPanel(logic.getLeitner(), logic.getCurrentIndex());
         quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
+    }
+
+    private void handleStatisticsPanel(int deckId) {
+        StatisticsPanel statisticsPanel = new StatisticsPanel(logic, deckId);
+        statisticsPanelPlaceholder.getChildren().add(statisticsPanel.getRoot());
     }
 
     private void handleStatisticsPanel() {

@@ -33,10 +33,7 @@ public class Score {
      * @return
      */
     public static boolean isValidScore(double score) {
-        if (score < 0) {
-            return false;
-        }
-        return true;
+        return !(score < 0);
     }
 
     @Override

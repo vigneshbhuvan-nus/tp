@@ -71,7 +71,7 @@ public class StatisticsPanel extends UiPart<Region> {
                 .filter(idx -> indexOfSelectedDeck == -1 || idx == indexOfSelectedDeck)
                 .mapToObj(originalDecks::get).collect(Collectors.toList());
 
-        if (indexOfSelectedDeck == -1) {
+        if (indexOfSelectedDeck == -1 || decks.size() == 0) {
             chartTitle = "Recent performance over all decks.";
         } else {
             chartTitle = "Recent performance over deck " + decks.get(0).getDeckName();
