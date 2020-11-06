@@ -17,7 +17,7 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL =
-                                            "https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md";
+            "https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md";
 
     public static final String DECK_COMMANDS = "==============================="
                                              + "DECK COMMANDS"
@@ -62,7 +62,7 @@ public class HelpWindow extends UiPart<Stage> {
                                             + "==============================\n\n"
                                             + "**Remember to select a deck before using a Quiz command**\n\n";
 
-    public static final String PLAY_COMMAND =  "Play a quiz: /play\n"
+    public static final String PLAY_COMMAND = "Play a quiz: /play\n"
                                             + "Format: /play\n\n";
 
     public static final String STOP_COMMAND = "Stop a quiz: /stop\n"
@@ -94,7 +94,7 @@ public class HelpWindow extends UiPart<Stage> {
                                             + HELP_COMMAND + EXIT_COMMAND;
 
     public static final String HELP_MESSAGE = "Please refer to the user guide at this link for more information: "
-                                            + USERGUIDE_URL + "\n\n"+ COMMAND_LIST;
+                                            + USERGUIDE_URL + "\n\n" + COMMAND_LIST;
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
     private static final String FXML = "HelpWindow.fxml";
