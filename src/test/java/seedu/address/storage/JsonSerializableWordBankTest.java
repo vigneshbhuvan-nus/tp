@@ -22,8 +22,8 @@ public class JsonSerializableWordBankTest {
 
     @Test
     public void toModelType_typicalEntriesFile_success() throws Exception {
-    //        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_ENTRIES_FILE,
-    //        JsonSerializableAddressBook.class).get();
+    //        JsonSerializableWordBank dataFromFile = JsonUtil.readJsonFile(TYPICAL_ENTRIES_FILE,
+    //        JsonSerializableWordBank.class).get();
     //        WordBank addressBookFromFile = dataFromFile.toModelType();
     //        WordBank typicalEntriesAddressBook = TypicalEntries.getTypicalAddressBook();
     //        assertEquals(addressBookFromFile, typicalEntriesAddressBook);
@@ -31,16 +31,16 @@ public class JsonSerializableWordBankTest {
 
     @Test
     public void toModelType_invalidEntryFile_throwsIllegalValueException() throws Exception {
-    //        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(INVALID_ENTRY_FILE,
-    //                JsonSerializableAddressBook.class).get();
+    //        JsonSerializableWordBank dataFromFile = JsonUtil.readJsonFile(INVALID_ENTRY_FILE,
+    //                JsonSerializableWordBank.class).get();
     //        assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
     public void toModelType_duplicateEntries_throwsIllegalValueException() throws Exception {
-    //        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(DUPLICATE_ENTRY_FILE,
-    //                JsonSerializableAddressBook.class).get();
-    //        assertThrows(IllegalValueException.class, JsonSerializableAddressBook.MESSAGE_DUPLICATE_DECK,
+    //        JsonSerializableWordBank dataFromFile = JsonUtil.readJsonFile(DUPLICATE_ENTRY_FILE,
+    //                JsonSerializableWordBank.class).get();
+    //        assertThrows(IllegalValueException.class, JsonSerializableWordBank.MESSAGE_DUPLICATE_DECK,
     //                dataFromFile::toModelType);
     }
 

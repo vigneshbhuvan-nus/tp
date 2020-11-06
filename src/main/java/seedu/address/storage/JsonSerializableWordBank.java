@@ -18,25 +18,25 @@ import seedu.address.model.deck.Deck;
  * An Immutable WordBank that is serializable to JSON format.
  */
 @JsonRootName(value = "addressbook")
-class JsonSerializableAddressBook {
+class JsonSerializableWordBank {
 
     public static final String MESSAGE_DUPLICATE_DECK = "Decks list contains duplicate deck(s).";
     private final List<JsonAdaptedDeck> decks = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given entries.
+     * Constructs a {@code JsonSerializableWordBank} with the given entries.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("decks") List<JsonAdaptedDeck> decks) {
+    public JsonSerializableWordBank(@JsonProperty("decks") List<JsonAdaptedDeck> decks) {
         this.decks.addAll(decks);
     }
 
     /**
      * Converts a given {@code ReadOnlyWordBank} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableWordBank}.
      */
-    public JsonSerializableAddressBook(ReadOnlyWordBank source) {
+    public JsonSerializableWordBank(ReadOnlyWordBank source) {
         decks.addAll(source.getDeckList().stream().map(JsonAdaptedDeck::new).collect(Collectors.toList()));
     }
 

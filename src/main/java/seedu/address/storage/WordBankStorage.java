@@ -11,7 +11,7 @@ import seedu.address.model.WordBank;
 /**
  * Represents a storage for {@link WordBank}.
  */
-public interface AddressBookStorage {
+public interface WordBankStorage {
 
     /**
      * Returns the file path of the data file.
