@@ -174,6 +174,8 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 :information_source: **Note:**
 
 `MainWindow.fxml` contains a **tabPanel** which switches between 4 panels depending on the command given by the user.
+Commands update a class called `CurrentView.java` in `Model`. Based on the current view, the tab panel will be updated accordingly
+ 
 - Panel which shows upon _starting the application_ is `StartPanel.fxml`.
 - Panel which shows upon _selecting a deck_ is `EntryListPanel.fxml`.
 - Panel which shows upon _starting a quiz game_ is `QuizPanel.fxml`.
