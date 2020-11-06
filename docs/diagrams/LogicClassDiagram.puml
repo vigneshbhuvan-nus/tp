@@ -8,7 +8,8 @@ package Logic {
 
 package Parser {
 Interface Parser <<Interface>>
-Class WordBankParser
+Class CommandModeParser
+Class PlayModeParser
 Class XYZCommandParser
 Class CliSyntax
 Class ParserUtil
@@ -35,8 +36,10 @@ Class HiddenOutside #FFFFFF
 HiddenOutside ..> Logic
 
 LogicManager .up.|> Logic
-LogicManager -->"1" WordBankParser
-WordBankParser .left.> XYZCommandParser: creates >
+LogicManager -->"1" CommandModeParser
+LogicManager ->"1" PlayModeParser
+PlayModeParser .> XYZCommandParser: creates >
+CommandModeParser .left.> XYZCommandParser: creates >
 
 XYZCommandParser ..> XYZCommand : creates >
 XYZCommandParser ..|> Parser
