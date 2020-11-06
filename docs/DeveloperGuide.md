@@ -1,4 +1,4 @@
-## Green Tea Developer Guide (v1.2)
+## Green Tea Developer Guide (v1.4)
 
 ### Table of Contents
 
@@ -15,9 +15,9 @@
   - [3.6 Storage component](#36-storage-component)
   - [3.7 PhaseManager component](#37-phasemanager-component)
 - [4. Implementation](#4-implementation)
-  - [4.1 Deck System](#41-deck-system)
-  - [4.2 Select Deck](#42-select-deck)
-  - [4.3 [Proposed] Flashcard System](#43-proposed-flashcard-system)
+  - [4.1 Deck System](#41-deck-system-melanie)
+  - [4.2 Select Deck](#42-select-deck-melanie)
+  - [4.3 Flashcard System](#43-flashcard-system-gabriel)
   - [4.4 [Proposed] Data Analysis](#44-proposed-data-analysis)
 - [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
 - [6. Appendix: Requirements](#6-appendix-requirements)
@@ -85,7 +85,7 @@ It is responsible for:
 
 The rest of the App consists of four components.
 
-- [**`UI`**](#33-ui-component): The UI of the App.
+- [**`UI`**](#33-ui-component): The UI (User Interface) of the App.
 - [**`Logic`**](#34-logic-component): The command executor.
 - [**`Model`**](#35-model-component): Holds the data of the App in memory.
 - [**`Storage`**](#36-storage-component): Reads data from, and writes data to, the hard disk.
@@ -126,10 +126,10 @@ Common classes include:
 
 ### 3.3 UI component
 
-The UI component is the portion of the application which are visible to the user.
-The UI consists of a `MainWindow` that is made up of parts (E.g `CommandBox`, `ResultDisplay`, `DeckListPanel`, `StatusBarFooter`)
+The `UI` component is the portion of the application which is visible to the user.
+The `UI` consists of a `MainWindow` that is made up of parts (E.g `CommandBox`, `ResultDisplay`, `DeckListPanel`, `StatusBarFooter`)
 All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
-A diagram showing the structure of the UI component is shown below.
+The structure diagram of the `UI` component is shown below.
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -138,13 +138,13 @@ A diagram showing the structure of the UI component is shown below.
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
-Role of the `UI` component:
-- Takes in user input from the UI.
+Role of the `Ui` component:
+- Receives the user input.
 - Executes user commands using the `Logic` component.
-- Listens for changes to `Model` data so that the UI can be updated with the modified data.
+- Listens for changes to `Model` data so that the `Ui` can be updated with the modified data.
 
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+The `Ui` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 `MainWindow.fxml` - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox. Contains the code for the actual menu bar
@@ -173,14 +173,19 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 
 
 :information_source: **Note:**
+
 `MainWindow.fxml` contains a **tabPanel** which switches between 4 panels depending on the command given by the user.
-- Default panel which shows upon starting the application is `StartPanel.fxml`.
-- Panel which shows upon selecting a deck is `EntryListPanel.fxml`.
-- Panel which shows upon starting a quiz game is `QuizPanel.fxml`.
-- Panel which shows upon giving `stats` command is `StatisticsPanel.fxml`.
+- Panel which shows upon _starting the application_ is `StartPanel.fxml`.
+- Panel which shows upon _selecting a deck_ is `EntryListPanel.fxml`.
+- Panel which shows upon _starting a quiz game_ is `QuizPanel.fxml`.
+- Panel which shows upon _giving stats command_ is `StatisticsPanel.fxml`.
 
 
 ### 3.4 Logic component
+
+The `Logic` component is the bridge between the `UI` and `Model` components. It is in charge of deciding what to do with the
+user input received from the `UI`. This component consists of **commands** and the **parser**.
+The structure diagram of the `Logic` component is shown below.
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 <p align="center"> Figure 5. Logic component class relationship diagram
@@ -188,13 +193,12 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
-1. `Logic` uses the `WorkBankParser` class to parse the user command.
-1. This results in a `Command` object which is passed to `LogicManager`.
-   1. The `Command` is first checked by `PhaseManager` whether it can be executed in the current `Phase`.
-   1. If yes, execute the `Command`; otherwise, throw `PhaseIncorrectException`.
-1. The command execution can affect the `Model` (e.g. adding a deck).
-1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
-1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+Role of the `Logic` component:
+-  Uses the `WorkBankParser` class to parse the user command.
+-  Creates a `Command` object which is passed to `LogicManager`.
+-  Executing the command can affect the `Model` (e.g. adding a deck).
+-  Returns the result of the command execution as a `CommandResult` object which is passed back to the `Ui`.
+-  In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
@@ -204,12 +208,15 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ### 3.5 Model component
 
+The `Model` component is in charge of changing the data within the application.
+This includes information about decks, entries and statistics.
+The general overview of the structure diagram of the `Model` component is shown below. 
+
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
 <p align="center"> Figure 7. Model component class relationship diagram
 
-Figure 7 shows a general overview of the model component. The diagram below will give more details about the
-word bank section of the model component.
+The diagram below will give more details about the word bank section of the model component.
 
 ![Structure of the Model Component](images/ModelWordBankDiagram.png)
 
@@ -217,13 +224,13 @@ word bank section of the model component.
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
-The `Model`
+Role of `Model` component:
 
-- stores a `UserPref` object that represents the user’s preferences.
-- stores a `FilteredList<Deck>` object that maintain`s the current list of decks in memory.
-- exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`
+- Stores a `UserPref` object that represents the user’s preferences.
+- Stores a `FilteredList<Deck>` object that maintain`s the current list of decks in memory.
+- Exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`
 that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-- does not depend on any of the other three components.
+- Does not depend on any of the other three components.
 
 ### 3.6 Storage component
 
