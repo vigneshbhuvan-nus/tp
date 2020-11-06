@@ -20,7 +20,7 @@ import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.entry.EditCommand;
 import seedu.address.logic.commands.entry.EditCommand.EditEntryDescriptor;
-import seedu.address.model.AddressBook;
+import seedu.address.model.WordBank;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -41,7 +41,7 @@ public class EditCommandTest {
 
     @BeforeEach
     public void setup() {
-        model = new ModelManager(new AddressBook(), new UserPrefs());
+        model = new ModelManager(new WordBank(), new UserPrefs());
         Deck deck = new Deck(new DeckName("Stub"));
         Entry entry = new EntryBuilder(new Entry (new Word(VALID_WORD_JAPANESE),
                 new Translation(VALID_TRANSLATION_JAPANESE))).build();

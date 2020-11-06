@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.WordBank;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
@@ -13,7 +13,7 @@ import seedu.address.model.deck.entry.Word;
 
 public class SampleDataUtilTest {
 
-    private AddressBook addressBookTest = new AddressBook();
+    private WordBank wordBankTest = new WordBank();
 
     private Deck japaneseSampleDeckTest() {
         Deck deck = new Deck(new DeckName("Japanese"));
@@ -33,8 +33,8 @@ public class SampleDataUtilTest {
 
     @Test
     public void getSampleAddressBook_sameFieldsAddressBook_success() {
-        addressBookTest.addDeck(japaneseSampleDeckTest());
-        addressBookTest.addDeck(spanishSampleDeckTest());
-        assertEquals(addressBookTest, SampleDataUtil.getSampleAddressBook());
+        wordBankTest.addDeck(japaneseSampleDeckTest());
+        wordBankTest.addDeck(spanishSampleDeckTest());
+        assertEquals(wordBankTest, SampleDataUtil.getSampleAddressBook());
     }
 }

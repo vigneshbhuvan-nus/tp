@@ -1,6 +1,6 @@
 package seedu.address.model.util;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.WordBank;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
@@ -9,7 +9,7 @@ import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.Word;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code WordBank} with sample data.
  */
 public class SampleDataUtil {
     private static Entry[] getSampleEntriesJapanese() {
@@ -45,7 +45,7 @@ public class SampleDataUtil {
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+        WordBank sampleAb = new WordBank();
         sampleAb.addDeck(getSampleJapaneseDeck());
         sampleAb.addDeck(getSampleSpanishDeck());
         return sampleAb;

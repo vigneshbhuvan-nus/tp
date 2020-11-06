@@ -49,9 +49,9 @@ public interface Logic {
     Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the WordBank.
      *
-     * @see seedu.address.model.Model#getAddressBook()
+     * @see seedu.address.model.Model#getWordBank()
      */
     ReadOnlyAddressBook getAddressBook();
 

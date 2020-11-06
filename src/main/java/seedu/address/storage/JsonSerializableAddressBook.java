@@ -9,13 +9,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
+import seedu.address.model.WordBank;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.deck.Deck;
 
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable WordBank that is serializable to JSON format.
  */
 @JsonRootName(value = "addressbook")
 class JsonSerializableAddressBook {
@@ -41,19 +41,19 @@ class JsonSerializableAddressBook {
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this address book into the model's {@code WordBank} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
+    public WordBank toModelType() throws IllegalValueException {
+        WordBank wordBank = new WordBank();
         for (JsonAdaptedDeck jsonAdaptedDeck: decks) {
             Deck deck = jsonAdaptedDeck.toModelType();
-            if (addressBook.hasDeck(deck)) {
+            if (wordBank.hasDeck(deck)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_DECK);
             }
-            addressBook.addDeck(deck);
+            wordBank.addDeck(deck);
         }
-        return addressBook;
+        return wordBank;
     }
 }

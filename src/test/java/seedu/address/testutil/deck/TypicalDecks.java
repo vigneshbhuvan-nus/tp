@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.WordBank;
 import seedu.address.model.deck.Deck;
 
 public class TypicalDecks {
@@ -17,10 +17,10 @@ public class TypicalDecks {
     private TypicalDecks() {} // prevents instantiation
 
     /**
-     * Returns an {@code AddressBook} with all the typical decks.
+     * Returns an {@code WordBank} with all the typical decks.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static WordBank getTypicalAddressBook() {
+        WordBank ab = new WordBank();
         for (Deck deck : getTypicalDecks()) {
             ab.addDeck(deck);
         }

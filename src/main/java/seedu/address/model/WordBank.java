@@ -17,7 +17,7 @@ import seedu.address.model.deck.entry.UniqueEntryList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSameEntry comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class WordBank implements ReadOnlyAddressBook {
 
     /*private final UniqueEntryList entries;*/
     private final UniqueDeckList observedDecks;
@@ -37,13 +37,13 @@ public class AddressBook implements ReadOnlyAddressBook {
         filteredEntries = new FilteredList<>(observedEntries.asUnmodifiableObservableList());
     }
 
-    public AddressBook() {
+    public WordBank() {
     }
 
     /**
-     * Creates an AddressBook using the Entries in the {@code toBeCopied}
+     * Creates an WordBank using the Entries in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public WordBank(ReadOnlyAddressBook toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -108,7 +108,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Resets the existing data of this {@code AddressBook} with {@code newData}.
+     * Resets the existing data of this {@code WordBank} with {@code newData}.
      */
     public void resetData(ReadOnlyAddressBook newData) {
         requireNonNull(newData);
@@ -127,7 +127,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
-     * Removes {@code key} from this {@code AddressBook}.
+     * Removes {@code key} from this {@code WordBank}.
      * {@code key} must exist in the word bank.
      */
     public void removeDeck(Deck key) {
@@ -157,8 +157,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && observedDecks.equals(((AddressBook) other).observedDecks));
+                || (other instanceof WordBank // instanceof handles nulls
+                && observedDecks.equals(((WordBank) other).observedDecks));
     }
 
     @Override

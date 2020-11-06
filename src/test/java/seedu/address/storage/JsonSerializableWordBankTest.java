@@ -10,12 +10,12 @@ import org.junit.jupiter.api.Test;
 //
 //import seedu.address.commons.exceptions.IllegalValueException;
 //import seedu.address.commons.util.JsonUtil;
-//import seedu.address.model.AddressBook;
+//import seedu.address.model.WordBank;
 //import seedu.address.testutil.entry.TypicalEntries;
 
-public class JsonSerializableAddressBookTest {
+public class JsonSerializableWordBankTest {
 
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableAddressBookTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonSerializableWordBankTest");
     private static final Path TYPICAL_ENTRIES_FILE = TEST_DATA_FOLDER.resolve("typicalEntriesAddressBook.json");
     private static final Path INVALID_ENTRY_FILE = TEST_DATA_FOLDER.resolve("invalidEntryAddressBook.json");
     private static final Path DUPLICATE_ENTRY_FILE = TEST_DATA_FOLDER.resolve("duplicateEntryAddressBook.json");
@@ -24,8 +24,8 @@ public class JsonSerializableAddressBookTest {
     public void toModelType_typicalEntriesFile_success() throws Exception {
     //        JsonSerializableAddressBook dataFromFile = JsonUtil.readJsonFile(TYPICAL_ENTRIES_FILE,
     //        JsonSerializableAddressBook.class).get();
-    //        AddressBook addressBookFromFile = dataFromFile.toModelType();
-    //        AddressBook typicalEntriesAddressBook = TypicalEntries.getTypicalAddressBook();
+    //        WordBank addressBookFromFile = dataFromFile.toModelType();
+    //        WordBank typicalEntriesAddressBook = TypicalEntries.getTypicalAddressBook();
     //        assertEquals(addressBookFromFile, typicalEntriesAddressBook);
     }
 
