@@ -114,5 +114,13 @@ public class QuizAttempt {
     public void setQuestionAttempts(List<QuestionAttempt> questionAttempts) {
         this.questionAttempts = questionAttempts;
     }
+
+    public String getTakenAtAndScore() {
+        return takenAt.toString() + ", " + score.toString();
+    }
+
+    public String getTakenAtAndScoreInPercentage() {
+        return takenAt.toString() + ", " + score.getScoreInPercentage();
+    }
 }
 

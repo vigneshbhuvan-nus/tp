@@ -65,7 +65,7 @@ public class StatisticsPanel extends UiPart<Region> {
         @Override
         public String toString() {
             return "DataPoint{" + "scoreInPercentage="
-                    + scoreInPercentage + ", takenAt=" + takenAt + '}';
+                + scoreInPercentage + ", takenAt=" + takenAt + '}';
 
         }
     }
@@ -81,8 +81,8 @@ public class StatisticsPanel extends UiPart<Region> {
         ObservableList<Deck> originalDecks = logic.getFilteredDeckList();
         // decide which deck to get, or get all of them if indexOfSelectedDeck==-1
         List<Deck> decks = IntStream.range(0, originalDecks.size())
-                .filter(idx -> indexOfSelectedDeck == -1 || idx == indexOfSelectedDeck)
-                .mapToObj(originalDecks::get).collect(Collectors.toList());
+            .filter(idx -> indexOfSelectedDeck == -1 || idx == indexOfSelectedDeck)
+            .mapToObj(originalDecks::get).collect(Collectors.toList());
 
         if (indexOfSelectedDeck == -1 || decks.size() == 0) {
             chartTitle = "Recent performance over all decks.";
@@ -114,8 +114,8 @@ public class StatisticsPanel extends UiPart<Region> {
         series.setName("");
         for (DataPoint dataPoint : dataPoints) {
             series.getData()
-                    .add(new XYChart.Data<>(dataPoint.getTakenAtString(),
-                            dataPoint.getScoreInPercentage()));
+                .add(new XYChart.Data<>(dataPoint.getTakenAtString(),
+                    dataPoint.getScoreInPercentage()));
         }
         statisticsLineChart.getData().add(series);
     }
@@ -154,41 +154,10 @@ public class StatisticsPanel extends UiPart<Region> {
 
     /**
      * Helper function to merge the sorted (by date taken) list of quiz attempts
+     *
+     * @param listsToMerge
      */
-    private List<DataPoint> mergeSortedListsOfAttempts(List<List<QuizAttempt>> listsToMerge) {
-        List<DataPoint> listFromMerging = new ArrayList<>();
-        int numberOfLists = listsToMerge.size();
-        int[] lengths = new int[numberOfLists];
-        int[] positions = new int[numberOfLists];
-        for (int i = 0; i < numberOfLists; ++i) {
-            lengths[i] = listsToMerge.get(i).size();
-        }
+    private List<DataPoint> mergeKSorted(List<List<QuizAttempt>> listsToMerge) {
 
-        Queue<QuizAttempt> pq = new PriorityQueue<>(Comparator.comparing(QuizAttempt::getTakenAt));
-
-        for (int i = 0; i < numberOfLists; ++i) {
-            if (positions[i] < lengths[i]) {
-                pq.offer(listsToMerge.get(i).get(0));
-                positions[i]++;
-            }
-        }
-
-        int idx = 0;
-        while (!pq.isEmpty()) {
-            QuizAttempt attempt = pq.poll();
-            LocalDateTime takenAt = attempt.getTakenAt();
-            double scoreInPercentage = attempt.getScore().getScoreInPercentage();
-            listFromMerging.add(new DataPoint(takenAt, scoreInPercentage));
-
-            if (positions[idx] < lengths[idx]) {
-                // process the idx-th list
-                pq.offer(listsToMerge.get(idx).get(positions[idx]));
-                positions[idx]++;
-            }
-
-            idx++;
-        }
-
-        return listFromMerging;
     }
 }
