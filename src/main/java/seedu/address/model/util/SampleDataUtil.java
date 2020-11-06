@@ -1,7 +1,7 @@
 package seedu.address.model.util;
 
-import seedu.address.model.WordBank;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.WordBank;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
