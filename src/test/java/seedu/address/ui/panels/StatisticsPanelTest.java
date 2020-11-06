@@ -23,7 +23,7 @@ import seedu.address.model.play.scoring.QuizAttempt;
 class StatisticsPanelTest {
 
     List<List<QuizAttempt>> listsToMerge;
-    List<QuizAttempt> correctMostRecent, myMostRecent;
+    List<QuizAttempt> correctMostRecent;
 
     @BeforeEach
     void setUp() {
@@ -74,34 +74,108 @@ class StatisticsPanelTest {
 //            System.out.println(listsToMerge.get(i).size());
 //        }
 
+        for (var list : listsToMerge) {
+            list.sort(Comparator.comparing(QuizAttempt::getTakenAt));
+        }
         List<QuizAttempt> temp = new ArrayList<>();
         for (var list : listsToMerge) {
             temp.addAll(list);
         }
-        temp.sort(Comparator.comparing(QuizAttempt::getTakenAt));
-        Collections.reverse(temp);
-        correctMostRecent = temp.subList(0, 10); // this is our correct 10 most recent elements
+        temp.sort(Comparator.comparing(QuizAttempt::getTakenAt).reversed());
+        correctMostRecent = temp;
+//        correctMostRecent = temp.subList(0, 10); // this is our correct 10 most recent elements
     }
 
-    boolean compareListsOfQuizAttempts(List<QuizAttempt> list1, List<QuizAttempt> list2) {
-        int m = list1.size(), n = list2.size();
-        if (m != n) {
-            return false;
-        }
 
-        for (int i = 0; i < m; ++i) {
-            if (list1.get(i).getTakenAtAndScoreInPercentage() != list2.get(i)
-                .getTakenAtAndScoreInPercentage()) {
-                return false;
-            }
+    @Test
+    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals10() {
+        int k = 10;
+        List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
+//        for (int i = 0; i < k; ++i) {
+//            System.out.println(correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+//        }
+//        System.out.println("================");
+//        for (var i : ans) {
+//            System.out.println(i.getTakenAtAndScoreInPercentage());
+//        }
+        for (int i = 0; i < Math.min(ans.size(), k); ++i) {
+            assertEquals(ans.get(i)
+                    .getTakenAtAndScoreInPercentage(),
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
         }
-
-        return true;
     }
 
     @Test
-    void testMergeKSorted_shouldGiveCorrectResult() {
+    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals20() {
+        int k = 20;
+        List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
+//        for (int i = 0; i < k; ++i) {
+//            System.out.println(correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+//        }
+//        System.out.println("================");
+//        for (var i : ans) {
+//            System.out.println(i.getTakenAtAndScoreInPercentage());
+//        }
+        for (int i = 0; i < Math.min(ans.size(), k); ++i) {
+            assertEquals(ans.get(i)
+                    .getTakenAtAndScoreInPercentage(),
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+            System.out.println(i);
+        }
+    }
 
+    @Test
+    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals30() {
+        int k = 30;
+        List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
+//        for (int i = 0; i < k; ++i) {
+//            System.out.println(correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+//        }
+//        System.out.println("================");
+//        for (var i : ans) {
+//            System.out.println(i.getTakenAtAndScoreInPercentage());
+//        }
+        for (int i = 0; i < Math.min(ans.size(), k); ++i) {
+            assertEquals(ans.get(i)
+                    .getTakenAtAndScoreInPercentage(),
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+        }
+    }
+
+    @Test
+    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals50() {
+        int k = 50;
+        List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
+//        for (int i = 0; i < k; ++i) {
+//            System.out.println(correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+//        }
+//        System.out.println("================");
+//        for (var i : ans) {
+//            System.out.println(i.getTakenAtAndScoreInPercentage());
+//        }
+        for (int i = 0; i < Math.min(ans.size(), k); ++i) {
+            assertEquals(ans.get(i)
+                    .getTakenAtAndScoreInPercentage(),
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+        }
+    }
+
+    @Test
+    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals100() {
+        int k = 100;
+        List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
+//        for (int i = 0; i < k; ++i) {
+//            System.out.println(correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+//        }
+//        System.out.println("================");
+//        for (var i : ans) {
+//            System.out.println(i.getTakenAtAndScoreInPercentage());
+//        }
+        for (int i = 0; i < Math.min(ans.size(), k); ++i) {
+            assertEquals(ans.get(i)
+                    .getTakenAtAndScoreInPercentage(),
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+        }
     }
 
 

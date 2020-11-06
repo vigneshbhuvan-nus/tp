@@ -3,6 +3,7 @@ package seedu.address.ui.panels;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -157,7 +158,45 @@ public class StatisticsPanel extends UiPart<Region> {
      *
      * @param listsToMerge
      */
-    private List<DataPoint> mergeKSorted(List<List<QuizAttempt>> listsToMerge) {
+    public static List<QuizAttempt> mergeSortedListsAndRetrieveFirstK(
+        List<List<QuizAttempt>> listsToMerge, int k) {
+        PriorityQueue<QuizAttempt> pq = new PriorityQueue<>(k,
+            Comparator.comparing(QuizAttempt::getTakenAt).reversed());
+        int numLists = listsToMerge.size();
+        int[] listPtrs = new int[numLists]; // tracks current pos in each list
 
+        // get sizes and make the initial pq
+        for (int i = 0; i < numLists; ++i) {
+            listPtrs[i] = listsToMerge.get(i).size() - 1;
+            // System.out.println("---- " + listsToMerge.get(i).get(listPtrs[i]).getTakenAtAndScoreInPercentage());
+            pq.add(listsToMerge.get(i).get(listPtrs[i]));
+            --listPtrs[i];
+        }
+
+        int curList = 0;
+        List<QuizAttempt> ret = new ArrayList<>();
+        while (true) {
+            ret.add(pq.poll());
+            if(ret.size() == k) break;
+
+            // TODO: update comment below
+            // here, we're trying to find the first list where we still have valid elements to consider
+            // by checking if listPtr[idx] (current pos in that list) < listSize[idx] (size of that list)
+            int offset = 0;
+            while (offset < numLists && listPtrs[(curList + offset) % numLists] < 0
+            ) {
+                ++offset;
+            }
+            if (offset == numLists) {
+                // we're at the end of every list - no more valid elements to consider
+                // this implies that k > sum of list sizes
+                break;
+            }
+            curList += offset;
+
+            pq.add(listsToMerge.get(curList%numLists).get(listPtrs[(curList++)%numLists]--));
+        }
+
+        return ret;
     }
 }
