@@ -1,6 +1,7 @@
 package seedu.address.ui.panels;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -11,7 +12,10 @@ import java.util.stream.IntStream;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.NumberAxis;
+import javafx.scene.chart.NumberAxis.DefaultFormatter;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
@@ -29,6 +33,11 @@ public class StatisticsPanel extends UiPart<Region> {
     private Label lastLoginLabel;
     @FXML
     private LineChart<String, Number> statisticsLineChart;
+    @FXML
+    private NumberAxis yAxis;
+    @FXML
+    private CategoryAxis xAxis;
+
     private String chartTitle;
 
     private static class DataPoint {
@@ -47,6 +56,10 @@ public class StatisticsPanel extends UiPart<Region> {
 
         public LocalDateTime getTakenAt() {
             return takenAt;
+        }
+
+        public String getTakenAtString() {
+            return takenAt.format(DateTimeFormatter.ofPattern("yyyy-MM-dd\nHH:mm:ss"));
         }
 
         @Override
@@ -79,6 +92,7 @@ public class StatisticsPanel extends UiPart<Region> {
 
         StatisticsManager statisticsManager = logic.getStatisticsManager();
 
+        initialize();
         plotDataPoints(getDeckPlottingPoints(decks));
 
         String lastLoginString = statisticsManager.getLastLoginString();
@@ -86,13 +100,21 @@ public class StatisticsPanel extends UiPart<Region> {
         lastLoginLabel.setText(String.format("Last Login: %s", lastLoginString));
     }
 
-    private void plotDataPoints(List<DataPoint> dataPoints) {
+    private void initialize() {
+        yAxis.setAutoRanging(false);
+        yAxis.setLowerBound(0);
+        yAxis.setUpperBound(100);
+        yAxis.setTickLabelFormatter(new DefaultFormatter(yAxis, null, "%"));
+
         statisticsLineChart.setTitle(chartTitle);
+    }
+
+    private void plotDataPoints(List<DataPoint> dataPoints) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("");
         for (DataPoint dataPoint : dataPoints) {
             series.getData()
-                    .add(new XYChart.Data<>(dataPoint.getTakenAt().toString(),
+                    .add(new XYChart.Data<>(dataPoint.getTakenAtString(),
                             dataPoint.getScoreInPercentage()));
         }
         statisticsLineChart.getData().add(series);
