@@ -55,9 +55,9 @@ Deck *-->"1" DeckName
 Deck *-->"1" UniqueEntryList
 
 BinaryScoring ..up|> Scoring
-QuizAttempt *--> Score
+QuizAttempt *-->"1" Score
 QuizAttempt *->"*" QuestionAttempt
-QuizAttempt ..>"1" Scoring
+QuizAttempt ..> Scoring
 QuestionAttempt *->"1" Score
 
 Score --up[hidden]> Leitner
