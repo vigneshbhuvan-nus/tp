@@ -42,12 +42,12 @@ public class JsonWordBankStorageTest {
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatWordBank.json"));
     }
 
     @Test
     public void readAddressBook_invalidEntryAddressBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("invalidEntryAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readAddressBook("invalidEntryWordBank.json"));
     }
 
     //Commented out this test, will try to sort out the issue and re-include.
