@@ -7,25 +7,41 @@ skinparam classBackgroundColor MODEL_COLOR
 Package Model <<Rectangle>>{
 Interface ReadOnlyWordBank <<Interface>>
 Interface Model <<Interface>>
-Interface ObservableList <<Interface>>
+Interface ReadOnlyUserPrefs <<Interface>>
 Class WordBank
 Class ReadOnlyWordBank
-Class Model
 Class ModelManager
 Class UserPrefs
 Class ReadOnlyUserPrefs
 
-Package Person {
-Class Person
-Class Address
-Class Email
-Class Name
-Class Phone
-Class UniquePersonList
+Package Deck {
+Package Entry {
+Class Entry
+Class Translation
+Class UniqueEntryList
+Class Word
+Class WordContainsKeywordsPredicate
+
+}
+Class Deck
+Class DeckName
+Class UniqueDeckList
 }
 
-Package Tag {
-Class Tag
+Package Play {
+Package Scoring {
+Class BinaryScoring
+Class QuestionAttempt
+Class QuizAttempt
+Interface Scoring <<Scoring>>
+}
+Class Leitner
+Class Score
+}
+
+Package View {
+Class CurrentView
+Class View
 }
 }
 

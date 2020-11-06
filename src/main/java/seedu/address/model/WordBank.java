@@ -17,7 +17,7 @@ import seedu.address.model.deck.entry.UniqueEntryList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSameEntry comparison)
  */
-public class WordBank implements ReadOnlyAddressBook {
+public class WordBank implements ReadOnlyWordBank {
 
     /*private final UniqueEntryList entries;*/
     private final UniqueDeckList observedDecks;
@@ -43,7 +43,7 @@ public class WordBank implements ReadOnlyAddressBook {
     /**
      * Creates an WordBank using the Entries in the {@code toBeCopied}
      */
-    public WordBank(ReadOnlyAddressBook toBeCopied) {
+    public WordBank(ReadOnlyWordBank toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -110,7 +110,7 @@ public class WordBank implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code WordBank} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyWordBank newData) {
         requireNonNull(newData);
 
         setDecks(newData.getDeckList());

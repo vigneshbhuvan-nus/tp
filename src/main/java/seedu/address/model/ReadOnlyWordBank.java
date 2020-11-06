@@ -7,7 +7,7 @@ import seedu.address.model.deck.Deck;
 /**
  * Unmodifiable view of a word bank
  */
-public interface ReadOnlyAddressBook {
+public interface ReadOnlyWordBank {
 
     /*
      *

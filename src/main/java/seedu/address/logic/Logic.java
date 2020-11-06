@@ -8,7 +8,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyWordBank;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
@@ -53,7 +53,7 @@ public interface Logic {
      *
      * @see seedu.address.model.Model#getWordBank()
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyWordBank getAddressBook();
 
     /** Returns an unmodifiable view of the filtered list of entries */
     ObservableList<Deck> getFilteredDeckList();

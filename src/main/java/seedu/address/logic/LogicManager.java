@@ -15,7 +15,7 @@ import seedu.address.logic.parser.CommandModeParser;
 import seedu.address.logic.parser.PlayModeParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.ReadOnlyWordBank;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
@@ -112,7 +112,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
+    public ReadOnlyWordBank getAddressBook() {
         return model.getWordBank();
     }
 

@@ -46,7 +46,7 @@ public class WordBankTest {
         // Two decks with the same identity fields
         Deck editedJapaneseDeck = new DeckBuilder(JAPANESE_DECK).build();
         List<Deck> newDecks = Arrays.asList(JAPANESE_DECK, editedJapaneseDeck);
-        AddressBookStub newData = new AddressBookStub(newDecks);
+        WordBankStub newData = new WordBankStub(newDecks);
 
         assertThrows(DuplicateDeckException.class, () -> wordBank.resetData(newData));
     }
@@ -96,12 +96,12 @@ public class WordBankTest {
 
 
     /**
-     * A stub ReadOnlyAddressBook whose entries list can violate interface constraints.
+     * A stub ReadOnlyWordBank whose entries list can violate interface constraints.
      */
-    private static class AddressBookStub implements ReadOnlyAddressBook {
+    private static class WordBankStub implements ReadOnlyWordBank {
         private final ObservableList<Deck> decks = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Deck> decks) {
+        WordBankStub(Collection<Deck> decks) {
             this.decks.setAll(decks);
         }
 

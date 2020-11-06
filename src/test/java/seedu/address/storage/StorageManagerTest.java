@@ -54,7 +54,7 @@ public class StorageManagerTest {
     //         */
     //        WordBank original = getTypicalAddressBook();
     //            storageManager.saveAddressBook(original);
-    //        ReadOnlyAddressBook retrieved = storageManager.readAddressBook().get();
+    //        ReadOnlyWordBank retrieved = storageManager.readAddressBook().get();
     //        assertEquals(original, new WordBank(retrieved));
     }
 
