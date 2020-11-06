@@ -50,7 +50,6 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
     private StartPanel startPanel;
-    private StatisticsPanel statisticsPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -107,6 +106,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Adds event listeners to update GUI when user clicks on a component
+     * Only for statistics panel.
      */
     public void addEventListeners() {
         // switch tab event listener
@@ -169,8 +169,7 @@ public class MainWindow extends UiPart<Stage> {
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList()); //get the initial decklist
         deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
-        entryListPanel = new EntryListPanel(
-            logic.getFilteredEntryList()); //get the initial entrylist from model
+        entryListPanel = new EntryListPanel(logic.getFilteredEntryList()); //get the initial entrylist from model
         entryListPanelPlaceholder.getChildren().add(entryListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -246,7 +245,7 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
-    private void handleQuizMode(String commandText) {
+    private void handleQuizMode() {
         QuizPanel quizPanel = new QuizPanel(logic.getLeitner(), logic.getCurrentIndex());
         quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
@@ -257,8 +256,7 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void handleScorePanel() {
-        ScorePanel scorePanel = new ScorePanel(logic.getLastScore(),
-                logic.getFilteredEntryList().size());
+        ScorePanel scorePanel = new ScorePanel(logic.getLastScore(), logic.getFilteredEntryList().size());
         quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
     }
 
@@ -288,12 +286,14 @@ public class MainWindow extends UiPart<Stage> {
             }
 
             if (logic.getCurrentView() == View.QUIZ_VIEW) {
-                handleQuizMode(commandText);
+                handleQuizMode();
             }
 
             if (logic.getCurrentView() == View.STATISTICS_VIEW) {
                 handleStatisticsPanel();
             }
+
+            //Change tab according to the command that the user enters
             handleChangeTab();
 
             return commandResult;

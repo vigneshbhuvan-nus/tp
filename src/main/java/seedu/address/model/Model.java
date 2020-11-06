@@ -109,7 +109,7 @@ public interface Model {
     boolean hasDeck(Deck deck);
 
     /**
-     * Removes the given deck. The deck must exist in the word bank.
+     * Removes the given deck {@code target}. The deck must exist in the word bank.
      */
     void removeDeck(Deck target);
 
@@ -120,7 +120,6 @@ public interface Model {
 
     /**
      * Selects the deck at the specified index
-     *
      * @param index of the selected deck
      */
     void selectDeck(Index index);
@@ -137,7 +136,6 @@ public interface Model {
 
     /**
      * Updates the filter of the filtered deck list to filter by the given {@code predicate}.
-     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredDeckList(Predicate<Deck> predicate);
@@ -160,11 +158,11 @@ public interface Model {
 
     boolean checkScoreTwo();
 
-    //int editDistance(String answer, String correctAnswer, int answerLength, int correctAnswerLength);
     //view methods
 
     /**
-     * Changes the current view of the system
+     * Changes the current view of the system to the specified view {@code view}
+     * @param view View to change the current view to
      */
     void setCurrentView(View view);
 

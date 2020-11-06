@@ -73,28 +73,28 @@ public class UniqueDeckListTest {
 
     @Test
     public void setDeck_editedDeckIsSameDeck_success() {
+        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         uniqueDeckList.add(JAPANESE_DECK);
         uniqueDeckList.setDeck(JAPANESE_DECK, JAPANESE_DECK);
-        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         expectedUniqueDeckList.add(JAPANESE_DECK);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
     }
 
     @Test
     public void setDeck_editedDeckHasSameIdentity_success() {
-        uniqueDeckList.add(JAPANESE_DECK);
         Deck editedJapanese = new DeckBuilder(JAPANESE_DECK).build();
-        uniqueDeckList.setDeck(JAPANESE_DECK, editedJapanese);
         UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
+        uniqueDeckList.add(JAPANESE_DECK);
+        uniqueDeckList.setDeck(JAPANESE_DECK, editedJapanese);
         expectedUniqueDeckList.add(editedJapanese);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
     }
 
     @Test
     public void setDeck_editedDeckHasDifferentIdentity_success() {
+        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         uniqueDeckList.add(JAPANESE_DECK);
         uniqueDeckList.setDeck(JAPANESE_DECK, SPANISH_DECK);
-        UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
         expectedUniqueDeckList.add(SPANISH_DECK);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);
     }
@@ -131,8 +131,8 @@ public class UniqueDeckListTest {
 
     @Test
     public void setDecks_uniqueDeckList_replacesOwnListWithProvidedUniqueDeckList() {
-        uniqueDeckList.add(JAPANESE_DECK);
         UniqueDeckList expectedUniqueDeckList = new UniqueDeckList();
+        uniqueDeckList.add(JAPANESE_DECK);
         expectedUniqueDeckList.add(SPANISH_DECK);
         uniqueDeckList.setDecks(expectedUniqueDeckList);
         assertEquals(expectedUniqueDeckList, uniqueDeckList);

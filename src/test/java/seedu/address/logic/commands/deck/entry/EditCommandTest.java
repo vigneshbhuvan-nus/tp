@@ -42,6 +42,7 @@ public class EditCommandTest {
     @BeforeEach
     public void setup() {
         model = new ModelManager(new WordBank(), new UserPrefs());
+
         Deck deck = new Deck(new DeckName("Stub"));
         Entry entry = new EntryBuilder(new Entry (new Word(VALID_WORD_JAPANESE),
                 new Translation(VALID_TRANSLATION_JAPANESE))).build();
@@ -63,7 +64,6 @@ public class EditCommandTest {
 
     @Test
     public void execute_duplicateEntryFilteredList_failure() {
-        // edit entry in filtered list into a duplicate in address book
         model.selectDeck(INDEX_FIRST);
         Entry entryInList = model.getFilteredEntryList().get(INDEX_SECOND.getZeroBased());
         EditCommand editCommand = new EditCommand(INDEX_FIRST,

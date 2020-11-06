@@ -22,13 +22,14 @@ public class DeckNameTest {
 
     @Test
     public void constructor_invalidDeckNameLength_throwsIllegalArgumentException() {
+        //Deck name of length 101 characters. Maximum deck name length is 100 characters.
         String invalidDeckNameLength = "01234567890123456789012345678901234567890123456789"
                 + "0123456789012345678901234567890123456789012345678910";
         assertThrows(IllegalArgumentException.class, () -> new DeckName(invalidDeckNameLength));
     }
 
     @Test
-    public void getDeckNameTest() {
+    public void getDeckNameTest_validDeckName_success() {
         String test = "test";
         DeckName deckName = new DeckName(test);
         assertEquals(deckName.getDeckName(), test);

@@ -28,20 +28,37 @@ public class UniqueEntryList implements Iterable<Entry> {
     private final ObservableList<Entry> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
+    /**
+     * Returns the entry at the specified index in the list.
+     * Indexing starts from 0.
+     * @param index Index of specific entry.
+     * @return Entry at the specified index.
+     */
     public Entry get(int index) {
+        assert (index >= 0);
         return internalList.get(index);
     }
 
+    /**
+     * Returns the length of the entry list.
+     * @return Length of entry list.
+     */
     public int length() {
         return internalList.size();
     }
 
+    /**
+     * Return true if the list is empty.
+     * @return True if the list does not contain any entries.
+     */
     public boolean isEmpty() {
         return internalList.isEmpty();
     }
 
     /**
      * Returns true if the list contains an equivalent entry as the given argument.
+     * @param toCheck Entry to check whether or not it is in the list
+     * @return True if the entry already exists in the list
      */
     public boolean contains(Entry toCheck) {
         requireNonNull(toCheck);
@@ -50,7 +67,8 @@ public class UniqueEntryList implements Iterable<Entry> {
 
     /**
      * Adds an entry to the list.
-     * The entry must not already exist in the list.
+     * The entry cannot already exist in the list.
+     * @param toAdd Entry to be added to the list.
      */
     public void add(Entry toAdd) {
         requireNonNull(toAdd);
@@ -61,9 +79,10 @@ public class UniqueEntryList implements Iterable<Entry> {
     }
 
     /**
-     * Adds an entry to the list
-     * The entry can already exist in the list
-     * Only called in Leitner.java during quiz mode
+     * Adds an entry to the list.
+     * The entry can already exist in the list.
+     * Only called when user is playing a quiz.
+     * @param toAdd Entry to be added to the list.
      */
     public void addLeitner (Entry toAdd) {
         requireNonNull(toAdd);
@@ -74,10 +93,11 @@ public class UniqueEntryList implements Iterable<Entry> {
      * Replaces the entry {@code target} in the list with {@code editedEntry}.
      * {@code target} must exist in the list.
      * The entry identity of {@code editedEntry} must not be the same as another existing entry in the list.
+     * @param target The entry to be replaced.
+     * @param editedEntry The entry to replace the target with.
      */
     public void setEntry(Entry target, Entry editedEntry) {
         requireAllNonNull(target, editedEntry);
-
         int index = internalList.indexOf(target);
         if (index == -1) {
             throw new EntryNotFoundException();
@@ -91,8 +111,9 @@ public class UniqueEntryList implements Iterable<Entry> {
     }
 
     /**
-     * Removes the equivalent entry from the list.
-     * The entry must exist in the list.
+     * Removes the specified entry from the list.
+     * The entry must already be in the list.
+     * @param toRemove Entry to be removed from the list.
      */
     public void remove(Entry toRemove) {
         requireNonNull(toRemove);
@@ -101,6 +122,10 @@ public class UniqueEntryList implements Iterable<Entry> {
         }
     }
 
+    /**
+     * Replaces the current entry list with another entry list.
+     * @param replacement Entry list to replace the current list.
+     */
     public void setEntries(UniqueEntryList replacement) {
         requireNonNull(replacement);
         internalList.setAll(replacement.internalList);
@@ -109,6 +134,7 @@ public class UniqueEntryList implements Iterable<Entry> {
     /**
      * Replaces the contents of this list with {@code entries}.
      * {@code entries} must not contain duplicate entries.
+     * @param entries Entries to replace entries in the current list.
      */
     public void setEntries(List<Entry> entries) {
         requireAllNonNull(entries);
@@ -121,6 +147,7 @@ public class UniqueEntryList implements Iterable<Entry> {
 
     /**
      * Returns the backing list as an unmodifiable {@code ObservableList}.
+     * @return The current list of entries as an unmodifiable list
      */
     public ObservableList<Entry> asUnmodifiableObservableList() {
         return internalUnmodifiableList;
@@ -145,6 +172,8 @@ public class UniqueEntryList implements Iterable<Entry> {
 
     /**
      * Returns true if {@code entries} contains only unique entries.
+     * @param entries Entries in the list
+     * @return True if the entries in the list are all different
      */
     public static boolean entriesAreUnique(List<Entry> entries) {
         for (int i = 0; i < entries.size() - 1; i++) {

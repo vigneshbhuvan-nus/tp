@@ -82,8 +82,8 @@ public class UniqueEntryListTest {
 
     @Test
     public void setEntry_editedEntryHasSameIdentity_success() {
-        uniqueEntryList.add(JAPANESE_1);
         Entry editedJapanese = new EntryBuilder(JAPANESE_1).build();
+        uniqueEntryList.add(JAPANESE_1);
         uniqueEntryList.setEntry(JAPANESE_1, editedJapanese);
         UniqueEntryList expectedUniqueEntryList = new UniqueEntryList();
         expectedUniqueEntryList.add(editedJapanese);
@@ -162,7 +162,7 @@ public class UniqueEntryListTest {
     @Test
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
-            -> uniqueEntryList.asUnmodifiableObservableList().remove(0));
+            -> uniqueEntryList.asUnmodifiableObservableList().remove(INDEX_FIRST.getZeroBased()));
     }
 
     @Test

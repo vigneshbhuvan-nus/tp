@@ -3,6 +3,9 @@ package seedu.address.model.deck;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
 
+/**
+ * A class which serves to identify a unique deck. No two decks can have the same deck name
+ */
 public class DeckName {
 
     public static final String MESSAGE_CONSTRAINTS = "Deck name cannot be blank";
@@ -19,7 +22,6 @@ public class DeckName {
 
     /**
      * Constructs an {@code DeckName}.
-     *
      * @param deckName A valid deck name.
      */
     public DeckName(String deckName) {
@@ -30,12 +32,19 @@ public class DeckName {
     }
 
     /**
-     * Returns true if a given string is a valid name.
+     * Returns true if the given string {@code test} is a valid deck name.
+     * @param test String to be tested if it is a valid deck name.
+     * @return True is the given string is a valid deck name.
      */
     public static boolean isValidDeckName(String test) {
         return test.matches(VALIDATION_REGEX);
     }
 
+    /**
+     * Returns true if the given string {@code test} is of valid length.
+     * @param test String to be tested if it is of valid length.
+     * @return Truw if the given string is of valid length.
+     */
     public static boolean isValidLength (String test) {
         return test.length() <= MAXIMUM_LENGTH;
     }

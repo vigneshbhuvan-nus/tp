@@ -32,12 +32,6 @@ public class TypicalEntries {
     public static final Entry SPANISH_3 = new EntryBuilder().withWord("Spring")
             .withTranslation("primavera").build();
 
-    // Manually added
-    public static final Entry HOON = new EntryBuilder().withWord("Hoon Meier")
-            .withTranslation("stefan@example.com").build();
-    public static final Entry IDA = new EntryBuilder().withWord("Ida Mueller")
-            .withTranslation("hans@example.com").build();
-
     // Manually added - Entry's details found in {@code CommandTestUtil}
     public static final Entry JAPANESE = new EntryBuilder().withWord(VALID_WORD_JAPANESE)
             .withTranslation(VALID_TRANSLATION_JAPANESE).build();
@@ -45,8 +39,10 @@ public class TypicalEntries {
             .withTranslation(VALID_TRANSLATION_SPANISH).build();
 
     private TypicalEntries() {} // prevents instantiation
+
     /**
      * Returns an {@code WordBank} with all the typical entries.
+     * @return WordBank with all the typical entries in it
      */
     public static WordBank getTypicalAddressBook() {
         WordBank ab = new WordBank();
@@ -56,6 +52,10 @@ public class TypicalEntries {
         return ab;
     }
 
+    /**
+     * Returns the typical entries in a list
+     * @return List of typical entries
+     */
     public static List<Entry> getTypicalEntries() {
         return new ArrayList<>(Arrays.asList(JAPANESE_1, JAPANESE_2, JAPANESE_3, JAPANESE_4,
                 SPANISH_1, SPANISH_2, SPANISH_3));

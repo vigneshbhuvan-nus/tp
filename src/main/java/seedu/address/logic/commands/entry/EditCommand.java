@@ -51,8 +51,9 @@ public class EditCommand extends Command {
     private final EditEntryDescriptor editEntryDescriptor;
 
     /**
-     * @param index               of the entry in the filtered entry list to edit
-     * @param editEntryDescriptor details to edit the entry with
+     * Constructs an EditCommand object
+     * @param index Index of the entry in the filtered entry list to edit
+     * @param editEntryDescriptor Details to edit the entry with
      */
     public EditCommand(Index index, EditEntryDescriptor editEntryDescriptor) {
         requireNonNull(index);
@@ -100,7 +101,8 @@ public class EditCommand extends Command {
      * edited with {@code editEntryDescriptor}.
      */
     private static Entry createEditedEntry(Entry entryToEdit, EditEntryDescriptor editEntryDescriptor) {
-        assert entryToEdit != null;
+        requireNonNull(entryToEdit);
+        requireNonNull(editEntryDescriptor);
 
         Word updatedWord = editEntryDescriptor.getWord().orElse(entryToEdit.getWord());
         Translation updatedTranslation = editEntryDescriptor.getTranslation().orElse(entryToEdit.getTranslation());
