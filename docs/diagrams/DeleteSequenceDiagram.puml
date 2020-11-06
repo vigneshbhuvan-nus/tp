@@ -3,7 +3,7 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":WordBankParser" as WordBankParser LOGIC_COLOR
+participant ":CommandModeParser" as CommandModeParser LOGIC_COLOR
 participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
 participant "d:DeleteCommand" as DeleteCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
@@ -16,17 +16,17 @@ end box
 [-> LogicManager : execute("delete 1")
 activate LogicManager
 
-LogicManager -> WordBankParser : parseCommand("delete 1")
-activate WordBankParser
+LogicManager -> CommandModeParser : parseCommand("delete 1")
+activate CommandModeParser
 
 create DeleteCommandParser
-WordBankParser -> DeleteCommandParser
+CommandModeParser -> DeleteCommandParser
 activate DeleteCommandParser
 
-DeleteCommandParser --> WordBankParser
+DeleteCommandParser --> CommandModeParser
 deactivate DeleteCommandParser
 
-WordBankParser -> DeleteCommandParser : parse("1")
+CommandModeParser -> DeleteCommandParser : parse("1")
 activate DeleteCommandParser
 
 create DeleteCommand
@@ -36,14 +36,14 @@ activate DeleteCommand
 DeleteCommand --> DeleteCommandParser : d
 deactivate DeleteCommand
 
-DeleteCommandParser --> WordBankParser : d
+DeleteCommandParser --> CommandModeParser : d
 deactivate DeleteCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteCommandParser -[hidden]-> WordBankParser
+DeleteCommandParser -[hidden]-> CommandModeParser
 destroy DeleteCommandParser
 
-WordBankParser --> LogicManager : d
-deactivate WordBankParser
+CommandModeParser --> LogicManager : d
+deactivate CommandModeParser
 
 LogicManager -> DeleteCommand : execute()
 activate DeleteCommand
