@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 import seedu.address.model.play.Score;
 
-public class QuizAttempt {
+public class QuizAttempt implements Comparable<QuizAttempt> {
 
     private Score score;
     private int duration; // time in seconds
@@ -117,6 +117,15 @@ public class QuizAttempt {
 
     public String getTakenAtAndScore() {
         return takenAt.toString() + ", " + score.toString();
+    }
+
+    @Override
+    public int compareTo(QuizAttempt other) {
+        if (takenAt.compareTo(other.getTakenAt()) == 0) {
+            return Double.compare(score.getScoreInPercentage(), other.getScore().getScoreInPercentage());
+        }
+
+        return takenAt.compareTo((other.getTakenAt()));
     }
 
     public String getTakenAtAndScoreInPercentage() {

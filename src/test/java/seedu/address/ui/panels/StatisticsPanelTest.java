@@ -15,6 +15,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.address.model.play.Score;
@@ -22,8 +23,8 @@ import seedu.address.model.play.scoring.QuizAttempt;
 
 class StatisticsPanelTest {
 
-    List<List<QuizAttempt>> listsToMerge;
-    List<QuizAttempt> correctMostRecent;
+    static List<List<QuizAttempt>> listsToMerge;
+    static List<QuizAttempt> correctMostRecent;
 
     @BeforeEach
     void setUp() {
@@ -79,11 +80,20 @@ class StatisticsPanelTest {
         }
         List<QuizAttempt> temp = new ArrayList<>();
         for (var list : listsToMerge) {
+//            try {
+//                System.out.println("==============");
+//                System.out.println(list.get(list.size() - 1).getTakenAtAndScoreInPercentage());
+//                System.out.println(list.get(list.size() - 2).getTakenAtAndScoreInPercentage());
+//                System.out.println(list.get(list.size() - 3).getTakenAtAndScoreInPercentage());
+//                System.out.println("==============");
+//            } catch (Exception ignored) {
+//            }
             temp.addAll(list);
         }
         temp.sort(Comparator.comparing(QuizAttempt::getTakenAt).reversed());
         correctMostRecent = temp;
 //        correctMostRecent = temp.subList(0, 10); // this is our correct 10 most recent elements
+
     }
 
 
@@ -99,9 +109,12 @@ class StatisticsPanelTest {
 //            System.out.println(i.getTakenAtAndScoreInPercentage());
 //        }
         for (int i = 0; i < Math.min(ans.size(), k); ++i) {
-            assertEquals(ans.get(i)
-                    .getTakenAtAndScoreInPercentage(),
-                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+//            System.out.println(
+//                "-----------" + i + ", " + ans.get(i).getTakenAtAndScoreInPercentage() + " | "
+//                    + correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+            assertEquals(
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
@@ -117,10 +130,11 @@ class StatisticsPanelTest {
 //            System.out.println(i.getTakenAtAndScoreInPercentage());
 //        }
         for (int i = 0; i < Math.min(ans.size(), k); ++i) {
-            assertEquals(ans.get(i)
-                    .getTakenAtAndScoreInPercentage(),
-                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
-            System.out.println(i);
+//            System.out
+//                .println("===========" + i + ", " + ans.get(i).getTakenAtAndScoreInPercentage());
+            assertEquals(
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
@@ -136,9 +150,9 @@ class StatisticsPanelTest {
 //            System.out.println(i.getTakenAtAndScoreInPercentage());
 //        }
         for (int i = 0; i < Math.min(ans.size(), k); ++i) {
-            assertEquals(ans.get(i)
-                    .getTakenAtAndScoreInPercentage(),
-                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+            assertEquals(
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
@@ -154,9 +168,9 @@ class StatisticsPanelTest {
 //            System.out.println(i.getTakenAtAndScoreInPercentage());
 //        }
         for (int i = 0; i < Math.min(ans.size(), k); ++i) {
-            assertEquals(ans.get(i)
-                    .getTakenAtAndScoreInPercentage(),
-                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+            assertEquals(
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
@@ -172,9 +186,9 @@ class StatisticsPanelTest {
 //            System.out.println(i.getTakenAtAndScoreInPercentage());
 //        }
         for (int i = 0; i < Math.min(ans.size(), k); ++i) {
-            assertEquals(ans.get(i)
-                    .getTakenAtAndScoreInPercentage(),
-                correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
+            assertEquals(
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 

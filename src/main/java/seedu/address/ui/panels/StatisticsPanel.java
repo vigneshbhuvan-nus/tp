@@ -4,8 +4,10 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.stream.Collectors;
@@ -71,6 +73,40 @@ public class StatisticsPanel extends UiPart<Region> {
         }
     }
 
+    // helper class
+    private static class Pair<S extends Comparable<S>, T extends Comparable<T>> implements
+        Comparable<Pair<S, T>> {
+
+        private S first;
+        private T second;
+
+        Pair(S first, T second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        public S getFirst() {
+            return first;
+        }
+
+        public T getSecond() {
+            return second;
+        }
+
+        public void setSecond(T second) {
+            this.second = second;
+        }
+
+        public void setFirst(S first) {
+            this.first = first;
+        }
+
+        @Override
+        public int compareTo(Pair<S, T> other) {
+            return this.first.compareTo(other.getFirst());
+        }
+    }
+
     /**
      * Constructor for statistics panel
      */
@@ -125,76 +161,74 @@ public class StatisticsPanel extends UiPart<Region> {
      * Helper function to compute the statistics for plotting/displaying
      */
     private List<DataPoint> getDeckPlottingPoints(List<Deck> decks) {
-        // List<List<QuizAttempt>> listsToMerge = new ArrayList<>();
-        //
-        // for (Deck deck : decks) {
-        // listsToMerge.add(deck.getQuizAttempts());
-        // }
 
-        List<DataPoint> ret = new ArrayList<>();
-
-        Queue<QuizAttempt> pq = new PriorityQueue<>(Comparator.comparing(QuizAttempt::getTakenAt));
+        List<List<QuizAttempt>> listsToMerge = new ArrayList<>();
 
         for (Deck deck : decks) {
-            for (QuizAttempt qa : deck.getQuizAttempts()) {
-                pq.offer(qa);
-            }
+            listsToMerge.add(deck.getQuizAttempts());
         }
 
-        while (!pq.isEmpty()) {
-            QuizAttempt attempt = pq.poll();
+        List<QuizAttempt> merged = mergeSortedListsAndRetrieveFirstK(listsToMerge, 10);
+        Collections.reverse(merged);
+        List<DataPoint> ret = new ArrayList<>();
+
+        for (var attempt : merged) {
             LocalDateTime takenAt = attempt.getTakenAt();
             double scoreInPercentage = attempt.getScore().getScoreInPercentage();
             ret.add(new DataPoint(takenAt, scoreInPercentage));
         }
 
         return ret;
-
-        // return mergeSortedListsOfAttempts(listsToMerge);
     }
 
     /**
-     * Helper function to merge the sorted (by date taken) list of quiz attempts
+     * Helper function to get the first k latest QuizAttempts by takenAt, amongst a list of lists of
+     * QuizAttempts. We assume the lists of QuizAttempts in listsToMerge are sorted ascending order
+     * by takenAt so we need to process each list from the end to start.
+     * Time complexity: O(k * log(numLists)) as we poll from a PQ of size numLists at most k times to
+     * form the return list of size k.
      *
      * @param listsToMerge
      */
     public static List<QuizAttempt> mergeSortedListsAndRetrieveFirstK(
         List<List<QuizAttempt>> listsToMerge, int k) {
-        PriorityQueue<QuizAttempt> pq = new PriorityQueue<>(k,
-            Comparator.comparing(QuizAttempt::getTakenAt).reversed());
         int numLists = listsToMerge.size();
-        int[] listPtrs = new int[numLists]; // tracks current pos in each list
+        PriorityQueue<Pair<QuizAttempt, Integer>> pq = new PriorityQueue<>(numLists,
+            Collections.reverseOrder());
 
-        // get sizes and make the initial pq
+        int[] ptrs = new int[numLists]; // tracks current pos in each list
+
+        // make the initial pq of size numLists
+        // by adding the biggest element (last element, if it exists) of each list
+        // to the pq. We also track which list this element is from.
         for (int i = 0; i < numLists; ++i) {
-            listPtrs[i] = listsToMerge.get(i).size() - 1;
-            // System.out.println("---- " + listsToMerge.get(i).get(listPtrs[i]).getTakenAtAndScoreInPercentage());
-            pq.add(listsToMerge.get(i).get(listPtrs[i]));
-            --listPtrs[i];
+            int idx = listsToMerge.get(i).size() - 1;
+
+            if (idx >= 0) {
+                ptrs[i] = idx - 1;
+                pq.add(new Pair<>(listsToMerge.get(i).get(idx), i));
+            }
         }
 
-        int curList = 0;
         List<QuizAttempt> ret = new ArrayList<>();
-        while (true) {
-            ret.add(pq.poll());
-            if(ret.size() == k) break;
-
-            // TODO: update comment below
-            // here, we're trying to find the first list where we still have valid elements to consider
-            // by checking if listPtr[idx] (current pos in that list) < listSize[idx] (size of that list)
-            int offset = 0;
-            while (offset < numLists && listPtrs[(curList + offset) % numLists] < 0
-            ) {
-                ++offset;
+        while (!pq.isEmpty()) {
+            Pair<QuizAttempt, Integer> pair = pq.poll();
+            ret.add(pair.getFirst());
+            if (ret.size() == k) {
+                // we are done building a list of size k, let's return it
+                return ret;
             }
-            if (offset == numLists) {
-                // we're at the end of every list - no more valid elements to consider
-                // this implies that k > sum of list sizes
-                break;
-            }
-            curList += offset;
 
-            pq.add(listsToMerge.get(curList%numLists).get(listPtrs[(curList++)%numLists]--));
+            int listIdx = pair.getSecond(); // this is the list the quiz attempt was taken from
+
+            if (ptrs[listIdx] >= 0) {
+                // if we still have elements from listIdx to consider i.e. our pointer has not
+                // gone past the start of the list, then we take the element at ptrs[listIdx]
+                pq.add(new Pair<>(listsToMerge.get(listIdx).get(ptrs[listIdx]), listIdx));
+
+                // and decrement the pointer position
+                ptrs[listIdx]--;
+            }
         }
 
         return ret;
