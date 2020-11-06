@@ -15,10 +15,9 @@
   - [3.6 Storage component](#36-storage-component)
   - [3.7 PhaseManager component](#37-phasemanager-component)
 - [4. Implementation](#4-implementation)
-  - [4.1 Deck System](#41-deck-system-melanie)
-  - [4.2 Select Deck](#42-select-deck-melanie)
-  - [4.3 Flashcard System](#43-flashcard-system-gabriel)
-  - [4.4 [Proposed] Data Analysis](#44-proposed-data-analysis)
+  - [4.1 Deck System](#41-deck-feature-melanie)
+  - [4.2 Flashcard System](#42-flashcard-system-gabriel)
+  - [4.3 [Proposed] Data Analysis](#43-proposed-data-analysis)
 - [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
 - [6. Appendix: Requirements](#6-appendix-requirements)
   - [6.1 Product scope](#61-product-scope)
@@ -234,6 +233,11 @@ that can be 'observed'. E.g. the UI can be bound to this list so that the UI aut
 
 ### 3.6 Storage component
 
+The `Storage` component handles the reading and writing of data from a data file. By storing the data,
+the application will be able to load the data from the previous session back to the user when the user opens
+the application.
+The general overview of the structure diagram of the `Storage` component is shown below. 
+
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
 <p align="center"> Figure 9. Storage component class relationship diagram
@@ -242,10 +246,11 @@ that can be 'observed'. E.g. the UI can be bound to this list so that the UI aut
 
 The `Storage` component,
 
-- can save `UserPref` objects in json format and read it back.
-- can save the word bank data, such as `Deck`, `Entry`, `Word` and `Translation` in json format and read it back.
-- can save the statistics and scores of each individual quiz
-``
+- Saves`UserPref` objects in json format and read it back.
+- Saves the word bank data, such as `Deck`, `Entry`, `Word` and `Translation` in json format and read it back.
+- Saves the statistics and scores of each individual quiz taken by the user.
+
+
 Each `Word` and `Translation` is saved in a `JsonAdaptedWord `and `JsonAdaptedTranslation` object respectively.
 Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdaptedWord` and `JsonAdaptedTranslation`.
 Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry`.
@@ -258,11 +263,12 @@ This format allows the files to be saved in json format and be read back accurat
 
 This section describes some noteworthy details on how and why certain features are implemented.
 
-### 4.1 Deck System (Melanie)
+### 4.1 Deck Feature (Melanie)
 
-This feature allows the user to create multiple lists of entries rather than having
-all entries together in the same list. The user could have different decks
-for different languages or multiple decks for the same language.
+### 4.1.1 Overview
+
+This feature allows the user to create multiple lists of entries called decks.
+The user could have different decks for different languages or multiple decks for the same language.
 
 E.g.
 
@@ -270,12 +276,36 @@ E.g.
 - Deck 2: Spanish Food
 - Deck 3: Spanish Animals
 
+Users will be able to `add` decks, `delete` decks and `select` decks.
+
 #### Design Considerations
+##### Aspect: One long list of entries or deck system
 
-The rationale behind the deck system is so that users will be better able to organize their entries.
-A deck system will also allow the flashcard system, to be implemented more easily.
+- **Alternative 1 (current choice)**: Deck system
+  - Pros: Users are better organize their entries into groups.
+          Additional commands such as `find` and `list` to filter entries are no longer needed.
+          Allows [flashcard system](#42-flashcard-system-gabriel) to be implemented more easily.
+          Higher level of abstraction.
+  - Cons: Harder to implement, more code and commands required
 
-### 4.2 Select Deck (Melanie)
+- **Alternative 2**: One long list of entries
+  - Pros: Easier implementation, less code required.
+  - Cons: Harder for users to navigate and find the entry that they are looking for.
+
+### 4.1.2 Commands Implemented
+
+Three commands are used in order to support having a deck system - New Deck Command, Remove Deck Command and Select Command
+
+- `new <DECK>` - Adds a new deck to the word bank.
+- `remove <INDEX>` - Removes the deck at the specified index.
+- `select <INDEX>` - Selects the deck at the specified index.
+
+Each of these three commands require the use of the `UI`, `Logic` and `Model` components.
+For example, when a deck is added, the `model` must be updated with a new deck list containing the added deck. The
+`UI` must also reflect the added deck to be shown to the user.
+The `Storage` component is needed for commands `new` and `remove`
+
+### 4.1.3 Select Deck
 
 This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
 Only after selecting a deck, can some other commands (E.g `add`, `delete`, `edit`, `/play`) be performed.
@@ -284,7 +314,7 @@ The implementation of this feature requires the GUI to be updated whenever a dec
 UI, Logic and Model components.
 
 - The selected deck is retrieved from `FilteredList<Deck>` in the model component.
-- This entries in the selected deck replaces the current entries in the `UniqueEntryList` object of WordBank causing the GUI to change accordingly.
+- These entries in the selected deck replaces the current entries in the `UniqueEntryList` object of WordBank causing the GUI to change accordingly.
 - A similar approach is done for other commands that changes the GUI such as `add <entry>` and `clear` command
 
 #### Design Considerations
@@ -300,8 +330,11 @@ UI, Logic and Model components.
 - **Alternative 2**: `delete <deck_index> <entry_index>` Entry level commands specify a deck. E.g `delete 1 1`
   - Pros: Single command for users to execute
   - Cons: May cause confusion to the users.
+  
+Utimately, we decided that user navigability was more important than the extra `select` command needed. This is because
+Green Tea is designed to be a simple and easy system for new users to use.
 
-### 4.3 Flashcard System (Gabriel)
+### 4.2 Flashcard System (Gabriel)
 
 Three additional commands are used for the flashcard system -  PlayCommand, StopCommand and AnswerCommand.
 
@@ -344,7 +377,7 @@ __The diagram for this process will be created after the flashcard system is imp
   - Pros: Easier to implement
   - Cons: Users may not learn as effectively
 
-### 4.4 \[Proposed\] Data Analysis
+### 4.3 \[Proposed\] Data Analysis
 
 Some of the proposed parameters tracked by GreenTea include:
 
