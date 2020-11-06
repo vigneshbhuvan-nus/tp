@@ -11,7 +11,7 @@ import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.logic.parser.AddressBookParser;
+import seedu.address.logic.parser.CommandModeParser;
 import seedu.address.logic.parser.PlayModeParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -33,7 +33,7 @@ public class LogicManager implements Logic {
     private final StatisticsManager statisticsManager;
     private final Model model;
     private final Storage storage;
-    private final AddressBookParser addressBookParser;
+    private final CommandModeParser commandModeParser;
     private final PlayModeParser playModeParser;
     private boolean isPlayMode = false;
 
@@ -44,7 +44,7 @@ public class LogicManager implements Logic {
         this.statisticsManager = new StatisticsManager();
         this.model = model;
         this.storage = storage;
-        addressBookParser = new AddressBookParser();
+        commandModeParser = new CommandModeParser();
         playModeParser = new PlayModeParser();
     }
 
@@ -64,7 +64,7 @@ public class LogicManager implements Logic {
             command = createAnswerOrStopCommands(commandText);
         } else {
             //create regular commands
-            command = addressBookParser.parseCommand(commandText);
+            command = commandModeParser.parseCommand(commandText);
         }
         commandResult = command.execute(model);
 

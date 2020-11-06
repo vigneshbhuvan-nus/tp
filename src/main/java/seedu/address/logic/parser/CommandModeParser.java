@@ -30,7 +30,7 @@ import seedu.address.logic.parser.statistics.StatisticsCommandParser;
 /**
  * Parses user input.
  */
-public class AddressBookParser {
+public class CommandModeParser {
 
     /**
      * Used for initial separation of command word and args.
