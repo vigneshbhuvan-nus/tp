@@ -17,8 +17,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
-import seedu.address.storage.JsonWordBankStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.JsonWordBankStorage;
 import seedu.address.storage.StorageManager;
 
 public class LogicManagerTest {

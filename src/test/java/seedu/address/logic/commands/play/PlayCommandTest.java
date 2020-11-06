@@ -22,8 +22,8 @@ import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
 import seedu.address.model.deck.entry.Word;
-import seedu.address.storage.JsonWordBankStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
+import seedu.address.storage.JsonWordBankStorage;
 import seedu.address.storage.StorageManager;
 
 public class PlayCommandTest {
