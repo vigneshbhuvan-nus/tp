@@ -24,7 +24,6 @@ else ([Command Word or arguments are not valid])
 endif
 endif
 
-:Reflect changes in GUI to user;
 stop
 
 @enduml
