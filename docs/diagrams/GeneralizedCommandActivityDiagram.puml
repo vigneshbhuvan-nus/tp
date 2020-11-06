@@ -6,7 +6,7 @@ if() then ([Logic Manager is in Play Mode])
 :Parse user input via PlayModeParser;
 :Determine command word and arguments;
 if () then ([Command Word is "/play"])
-:Display an relevant error message to the result box of the UI;
+:Display relevant error message to the result box of the UI;
 else ([Command Word is not "/play"])
 :Create command based on command word and arguments;
 :Perform relevant actions;
@@ -19,7 +19,7 @@ if() then ([Command Word and arguments are valid])
 :Create command based on command word and arguments;
 :Perform relevant actions;
 else ([Command Word or arguments are not valid])
-:Display an relevant error message to the result box of the UI;
+:Display relevant error message to the result box of the UI;
 
 endif
 endif
