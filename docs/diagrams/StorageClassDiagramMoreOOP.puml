@@ -6,28 +6,38 @@ skinparam classBackgroundColor STORAGE_COLOR
 
 Interface Storage <<Interface>>
 Interface UserPrefsStorage <<Interface>>
-Interface WordBankStorage <<Interface>>
+Interface WordBankDeckStorage <<Interface>>
+Interface WordBankQuizStorage <<Interface>>
+Interface WordBankEntryStorage <<Interface>>
 
 Class StorageManager
 Class JsonUserPrefsStorage
-Class JsonWordBankStorage
+Class JsonWordBankDeckStorage
 
-StorageManager .left.|> Storage
-StorageManager o-right-> UserPrefsStorage
-StorageManager o--> WordBankStorage
+StorageManager .up.|> Storage
+StorageManager o--> UserPrefsStorage
+StorageManager o--> WordBankDeckStorage
+StorageManager o--> WordBankEntryStorage
+StorageManager o--> WordBankQuizStorage
 
-JsonUserPrefsStorage .left.|> UserPrefsStorage
-JsonWordBankStorage .up.|> WordBankStorage
-JsonWordBankStorage .down.> JsonSerializableWordBankStorage
+JsonUserPrefsStorage .up.|> UserPrefsStorage
 
-JsonSerializableWordBankStorage ..> JsonAdaptedDeck
+JsonWordBankDeckStorage .up.|> WordBankDeckStorage
+JsonWordBankDeckStorage .down.> JsonSerializableWordBankDeckStorage
+JsonSerializableWordBankDeckStorage ..> JsonAdaptedDeck
 
-JsonAdaptedDeck ..> JsonAdaptedEntry
-JsonAdaptedDeck ..> JsonQuizAttempt
+JsonWordBankQuizStorage .up.|> WordBankQuizStorage
+JsonWordBankQuizStorage .down.> JsonSerializableWordBankQuizStorage
+JsonSerializableWordBankQuizStorage ..> JsonAdaptedQuizAttempt
+JsonAdaptedQuizAttempt ..> JsonAdaptedQuestionAttempt
+JsonAdaptedQuizAttempt ..> JsonAdaptedScore
 
+JsonWordBankEntryStorage .up.|> WordBankEntryStorage
+JsonWordBankEntryStorage .down.> JsonSerializableWordBankEntryStorage
+JsonSerializableWordBankEntryStorage ..> JsonAdaptedEntry
 JsonAdaptedEntry ..> JsonAdaptedWord
 JsonAdaptedEntry ..> JsonAdaptedTranslation
 
-JsonQuizAttempt ..> JsonAdaptedQuestionAttempt
-JsonQuizAttempt ..> JsonAdaptedScore
+
+
 @enduml

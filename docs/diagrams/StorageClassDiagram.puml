@@ -12,11 +12,11 @@ Class StorageManager
 Class JsonUserPrefsStorage
 Class JsonWordBankStorage
 
-StorageManager .left.|> Storage
-StorageManager o-right-> UserPrefsStorage
+StorageManager .up.|> Storage
 StorageManager o--> WordBankStorage
+StorageManager o--> UserPrefsStorage
 
-JsonUserPrefsStorage .left.|> UserPrefsStorage
+JsonUserPrefsStorage .up.|> UserPrefsStorage
 JsonWordBankStorage .up.|> WordBankStorage
 JsonWordBankStorage .down.> JsonSerializableWordBankStorage
 
