@@ -65,7 +65,7 @@ Score --up[hidden]> Leitner
 UniqueDeckList -[hidden]> UniqueEntryList
 
 WordBank .|> ReadOnlyWordBank
-WordBank *--->"1" UniqueEntryList
+WordBank *-->"1" UniqueEntryList
 WordBank *-->"1" UniqueDeckList
 WordBank -> Entry: has filtered list of
 
