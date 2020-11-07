@@ -52,6 +52,33 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
         this.duration = (int) this.takenAt.until(LocalDateTime.now(), ChronoUnit.SECONDS);
     }
 
+    public Score getScore() {
+        return score;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public LocalDateTime getTakenAt() {
+        return takenAt;
+    }
+
+    public List<QuestionAttempt> getQuestionAttempts() {
+        return questionAttempts;
+    }
+
+    public Scoring getScoringMethod() {
+        return scoringMethod;
+    }
+
+    public void setScore(Score score) {
+        this.score = score;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
 
     @Override
     public boolean equals(Object o) {
