@@ -27,9 +27,9 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   - [5.4 Extra Commands (Georgie)](#54-extra-commands-georgie)
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
-  - [6. Statistics (Melanie)](#6-statistics-melanie)
-  - [7. FAQ (Gabriel &amp; Melanie)](#7-faq-gabriel--melanie)
-  - [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
+  - [5.5 Statistics (Melanie)](#55-statistics-melanie)
+- [6. FAQ (Gabriel &amp; Melanie)](#7-faq-gabriel--melanie)
+- [7. Command Summary (Gabriel)](#8-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -385,7 +385,7 @@ Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `/play` and
 `/stop`.
 
-## 5.3.1 Play a Game (Georgie)
+### 5.3.1 Play a Game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
@@ -403,7 +403,7 @@ Result:
 ![GreenTea](images/user-guide/21PlayAGame.png)
 Figure 21. Result of playing a game
 
-## 5.3.2 Stop a Game (Georgie)
+### 5.3.2 Stop a Game (Georgie)
 
 Stop the current game prematurely. Note the slash `/` in the command.
 
@@ -440,7 +440,7 @@ Format: `exit`
 
 Result: Program will be closed
 
-## 6. Statistics (Melanie)
+## 5.5 Statistics (Melanie)
 
 Statistics are how you get to see your own progression as you continuously build and play GreenTea.
 The statistics tab displays the scores of games up to your last 10 attempts in the form of
@@ -453,8 +453,8 @@ Format: `stats`
 
 Result:
 
-![GreenTea](images/user-guide/19StatsAllDecks.PNG)
-Figure 19. Result of viewing statistics across all decks
+![GreenTea](images/user-guide/24StatsAllDecks.PNG)
+Figure 24. Result of viewing statistics across all decks
 
 To view statistics of **a single deck**:
 
@@ -466,13 +466,13 @@ Example:
 
 Result:
 
-![GreenTea](images/user-guide/20StatsOneDeck.PNG)
-Figure 20. Result of viewing statistics of a single deck
+![GreenTea](images/user-guide/25StatsOneDeck.PNG)
+Figure 25. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
 
-## 7. FAQ (Gabriel & Melanie)
+# 6. FAQ (Gabriel & Melanie)
 
 **Q**: Will my score be recorded if I stop a game before I finish it?<br>
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
@@ -485,7 +485,7 @@ you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignes
 **A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
 any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
 
-## 8. Command Summary (Gabriel)
+# 7. Command Summary (Gabriel)
 
 | Action         | Format <img width=00/>                  | Examples                      | Remarks                                                                |
 | -------------- | --------------------------------------- | ----------------------------- | ---------------------------------------------------------------------- |
