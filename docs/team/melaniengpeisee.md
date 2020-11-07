@@ -12,8 +12,10 @@ It is written in Java, and has about 10 kLoC.
 Given below are my contributions to the project.
 
 * **New Feature**: Implemented the deck system along with new commands (NewDeckCommand, RemoveDeckCommand, SelectDeckCommand).
+
   Pull requests: [\#56](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/56)
   Commit: [\AddSelectDeckCommand](https://github.com/AY2021S1-CS2103T-T09-4/tp/commit/bd036d7fc33d5fea091aeae658ab7967e1d8e010#diff-d126ae081f932363c3d9e4b8117d275191d41cee659ff81474b4d917c8530533)
+  
   * What it does: Allows the user to create decks and add entries to the deck.
   * Justification: Users can organize their entries better. Also allows the quizzing system to be implemented more easily.
   * Highlights: This feature was difficult to implement since it required entries to be embedded within decks. This means that
@@ -21,13 +23,15 @@ Given below are my contributions to the project.
                 There was also many bugs that had to be fixed during the implementation of this feature such as existing commands
                 not working like they should (edit command).
                 This feature required modifications to the ui component, model component, logic component and storage component.
-                Most of my contributions for this feature was in the model and logic components.
+                Most of my contributions for this feature was in the model and logic components and planning how to implement this feature.
                 The ui component for this feature was handled by my teammate, Gabriel. The storage component was handled by my teammate, Vignesh
                 
   * Credits: *{I utilized the existing command format in Address Book 3 to write the command classes for new commands. I also utilized the person class in Address Book 3 to design the deck system}*
 
 * **New Feature**: Create tab panels in the GUI which will display the appropriate information to the user depending on the command given.
+
   Pull requests: [\#114](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/114) [\#119](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/119)
+  
   * What it does: Allows users to see only what is necessary depending on the command given
   * Justification: Cleaner UI. More flexibility in how to display the quiz and statistics to the user.
   * Highlights: Created a package in model called view. Commands will change the view which will in turn change the tabs.
@@ -51,6 +55,7 @@ Given below are my contributions to the project.
     * Added images and labelling for user guide [\#144](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/144)
     * Added documentation for section 1 (What is GreenTea) [\#141](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/141)
     * Added documentation for section 2 (About this document) [\#141](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/141)
+    * Added documentation for section 5 (Features), deck commands and statistics section
     
   * Developer Guide:
     * Added prefaces to each section for the various components. [\#200](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/200)
