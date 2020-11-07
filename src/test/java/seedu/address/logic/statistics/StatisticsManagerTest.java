@@ -21,6 +21,13 @@ class StatisticsManagerTest {
     }
 
     @Test
+    void testGetLastLoginString_ShouldBePlaceholder_IfEventsHas1Login() {
+        StatisticsManager sm = new StatisticsManager();
+        assertEquals(sm.getLastLoginString(), "None - first login.");
+    }
+
+
+    @Test
     void testGetLastLogin_ShouldBeCorrect_IfEventsHas2Logins() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog().get(0);

@@ -48,7 +48,7 @@ public class StatisticsManager {
     public String getLastLoginString() {
         LocalDateTime lastLogin = getLastLogin();
         logger.info("Starting Up: " + statistics.toString());
-        return lastLogin == null ? "-" : lastLogin.toString();
+        return lastLogin == null ? "None - first login." : lastLogin.toString();
     }
 
     public LocalDateTime getLastLogin() {

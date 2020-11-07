@@ -144,7 +144,7 @@ public class StatisticsPanel extends UiPart<Region> {
 
     private void plotDataPoints(List<DataPoint> dataPoints) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("");
+         series.setName("Score (in %)");
         for (DataPoint dataPoint : dataPoints) {
             series.getData()
                 .add(new XYChart.Data<>(dataPoint.getTakenAtString(),
