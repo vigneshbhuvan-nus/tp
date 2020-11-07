@@ -4,6 +4,8 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 ## Table of Contents
 
+- [User Guide](#user-guide)
+  - [Table of Contents](#table-of-contents)
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
 - [3. Getting Started (Gabriel and Vignesh)](#3-getting-started-gabriel-and-vignesh)
@@ -12,24 +14,24 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   - [4.2 Command Format](#42-command-format)
     - [4.2.1 Arrowed Brackets](#421-arrowed-brackets)
     - [4.2.2 Square Brackets](#422-square-brackets)
-- [5. Features (Melanie)](#5-features)
+- [5. Features](#5-features)
   - [5.1 Deck Commands (Melanie)](#51-deck-commands-melanie)
     - [5.1.1 Creating a deck: new](#511-creating-a-deck-new)
     - [5.1.2 Removing a deck: remove](#512-removing-a-deck-remove)
     - [5.1.3 Selecting a deck: select](#513-selecting-a-deck-select)
-  - [5.2. Entry Commands (Vignesh)](#52-entry-commands-gabriel)
-    - [5.2.1 Adding a new entry: add](#521-adding-a-new-entry-add-vignesh)
-    - [5.2.2 Editing an entry: edit](#522-editing-an-entry-edit-vignesh)
-    - [5.2.3 Deleting an entry: delete](#523-deleting-an-entry-delete-vignesh)
-  - [5.3. PLay Commands (Georgie)](#53-play-commands-georgie)
-    - [5.3.1 Play a Game](#531-play-a-game-georgie)
-    - [5.3.2 Stop a Game](#532-stop-a-game--georgie)
-  - [5.4. Extra Commands (Georgie)](#54-extra-commands-georgie)
+  - [5.2 Entry Commands (Gabriel)](#52-entry-commands-gabriel)
+    - [5.2.1 Adding a new entry: add (Vignesh)](#521-adding-a-new-entry-add-vignesh)
+    - [5.2.2 Editing an entry: edit (Vignesh)](#522-editing-an-entry-edit-vignesh)
+    - [5.2.3 Deleting an entry: delete (Vignesh)](#523-deleting-an-entry-delete-vignesh)
+  - [5.3 Play Commands (Georgie)](#53-play-commands-georgie)
+  - [5.3.1 Play a Game (Georgie)](#531-play-a-game-georgie)
+  - [5.3.2 Stop a Game (Georgie)](#532-stop-a-game-georgie)
+  - [5.4 Extra Commands (Georgie)](#54-extra-commands-georgie)
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
-- [6. Statistics (Melanie)](#6-statistics-melanie)
-- [7. FAQ (Gabriel and Melanie)](#7-faq-gabriel)
-- [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
+  - [6. Statistics (Melanie)](#6-statistics-melanie)
+  - [7. FAQ (Gabriel &amp; Melanie)](#7-faq-gabriel--melanie)
+  - [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -222,7 +224,6 @@ Words in `[Square Brackets]` are optional inputs. They may or may not be added b
 E.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1 [w/word]` or `edit 1 [t/translation]`
 or `edit 1 [w/word] [t/translation]` **but cannot be written as** `edit 1`
 
-
 # 5. Features
 
 In this chapter, we will be going into detail each feature of GreenTea, along with their command format and
@@ -293,7 +294,6 @@ After deck 1 is selected:
 
 ![GreenTea](images/user-guide/11SelectingADeckAfter.PNG)
 Figure 11: GUI after deck 1 is selected
-
 
 ## 5.2 Entry Commands (Gabriel)
 
@@ -376,7 +376,7 @@ the complexities behind starting a new FlashCard game. In fact, there are only t
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
-to you at the end of the game. 
+to you at the end of the game.
 
 Format: `/play`
 
@@ -443,8 +443,6 @@ Result:
 ![GreenTea](images/user-guide/19StatsAllDecks.PNG)
 Figure 19. Result of viewing statistics across all decks
 
-
-
 To view statistics of **a single deck**:
 
 Format: `stats <INDEX>`
@@ -456,7 +454,6 @@ Result:
 ![GreenTea](images/user-guide/20StatsOneDeck.PNG)
 Figure 20. Result of viewing statistics of a single deck
 
-
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
 
@@ -467,11 +464,11 @@ In order to view your statistics, you must first [play a game!](#531-play-a-game
 
 **Q**: Will all my data be saved when I exit Green Tea?
 **A**: Yes. All your data will be stores in a file called wordbank.json. This file can be found in the same folder where
-       you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignesh)
+you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignesh)
 
 **Q**: Where do I go to if I need help?
 **A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
-       any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
+any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
 
 ## 8. Command Summary (Gabriel)
 
