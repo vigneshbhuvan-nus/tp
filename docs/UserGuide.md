@@ -252,7 +252,7 @@ Figure 7. Result of creating new decks
 The name of the deck cannot be more than 100 characters long.
 
 :information_source: **Note:**
-A deck is simply a place to store a list of entries
+A deck is simply a place to store a list of entries.
 
 ### 5.1.2 Removing a deck: `remove`
 
@@ -265,11 +265,11 @@ To get the index of a deck, you may view it on the GUI. It would be the number d
 
 Example: `remove 1`
 
-Before a deck is removed:
+Before deck 1 is removed:
 ![GreenTea](images/user-guide/8RemovingADeckBefore.png)
 Figure 8: GUI before deck 1 is removed
 
-Result:
+After deck 1 is removed:
 
 ![GreenTea](images/user-guide/9RemovingADeckAfter.png)
 Figure 9. GUI after deck 1 is removed
@@ -375,6 +375,7 @@ Format: `/play`
 
 :information_source: **Note:**
 Note the slash `/` in the command.
+
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
 
