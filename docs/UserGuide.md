@@ -80,7 +80,7 @@ To start using GreenTea:
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 2.  GreenTea's GUI
 
-Before we get started with the program, let us first understand the GUI of GreenTea. We shall use of Figure 3 below to explain it. 
+Before we get started with the program, let us first understand the GUI of GreenTea. We shall use Figure 3 below to explain it. 
 ![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
 Figure 3. Annotated GUI
 
