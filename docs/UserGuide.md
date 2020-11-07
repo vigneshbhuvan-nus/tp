@@ -453,8 +453,8 @@ Format: `stats`
 
 Result:
 
-![GreenTea](images/user-guide/19StatsAllDecks.PNG)
-Figure 19. Result of viewing statistics across all decks
+![GreenTea](images/user-guide/24StatsAllDecks.PNG)
+Figure 24. Result of viewing statistics across all decks
 
 To view statistics of **a single deck**:
 
@@ -466,8 +466,8 @@ Example:
 
 Result:
 
-![GreenTea](images/user-guide/20StatsOneDeck.PNG)
-Figure 20. Result of viewing statistics of a single deck
+![GreenTea](images/user-guide/25StatsOneDeck.PNG)
+Figure 25. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
