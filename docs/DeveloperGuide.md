@@ -98,14 +98,14 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
 
-<p align="center"> Figure 2. Example of a component's API and functionality
+<p align="center"> Figure 2. Example Class Diagram of the Logic Component
 
 #### How the architecture components interact with one another
 
 The _Sequence Diagram_ below (Figure 3) shows how the components interact with one another when the user issues the command `remove 1`.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
-<p align="center"> Figure 3. Components interacting with one another
+![Sequence Diagram of Various Components](images/ArchitectureSequenceDiagram.png)
+<p align="center"> Figure 3. Sequence Diagram of Various Components
 
 The sections below give more details about each component.
 
