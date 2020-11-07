@@ -62,7 +62,7 @@ how the components work together with one another.
 The components of the application are Main, Commons, UI, Logic, Model and Storage.
 
 <p align="center"><<img src="images/ArchitectureDiagram.png" width="450" />
-<p align="center">Figure 1.Overview of components and their relationships </p>
+<p align="center">Figure 1.Architecture Diagram </p>
 
 The **_Component Overview Diagram_** above shows the high-level design of the application.
 Given below is a quick overview of each component.
@@ -89,10 +89,10 @@ The rest of the App consists of four components.
 - [**`Storage`**](#36-storage-component): Reads data from, and writes data to, the hard disk.
 
 
-Each of the four components
+Each of the four components:
 
-- defines its _API_ in an `interface` with the same name as the Component.
-- exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
+- Defines its _API_ in an `interface` with the same name as the Component.
+- Exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
