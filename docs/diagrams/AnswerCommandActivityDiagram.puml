@@ -21,7 +21,7 @@ if() then ([Answer is not "/play"])
     : Display a message to the UI result box indicating the current score;
     endif
 else([Answer is "/play"])
-:Display an error message to the result box of the UI indicating that the application is currently in play mode;
+:Throw currently in play mode command exception;
 endif
 stop
 @enduml

@@ -8,8 +8,8 @@ endif
 if() then ([Leitner has unanswered questions])
         :Add new QuestionAttempt to QuizAttempt;
         : Display next question on the quiz tab of the UI;
-        : Display previous question, previous answer given and correct answer
-        to the previous question on the right side of the quiz tab;
+        : Display previous question, previous answer given
+        and correct answer on the right side of the quiz tab;
         else ([Leitner has no more unanswered question])
         : Switch Logic Manager back to Command Mode;
         : Extract current score from Model;

@@ -6,10 +6,10 @@ if() then([Index is valid])
 :Switch the current tab on the UI to the Entries tab;
 :Display entries of the selected deck on the Entries tab (if any);
 else([Index is not valid])
-:Display an error message to the result box of the UI indicating that the index is not valid;
+:Throw invalid index command exception;
 endif
 else([Command is not in the correct format])
-:Display an error message to the result box of the UI indicating that the command is not in the right format;
+:Throw invalid command format parse exception;
 endif
 stop
 @enduml

@@ -15,7 +15,7 @@ if() then ([Logic Manager is in Play Mode])
 :Parse user input via PlayModeParser;
 :Determine command word and arguments;
 if () then ([Command Word is "/play"])
-:Display relevant error message to the result box of the UI;
+:Throw deck already in play mode command exception;
 else ([Command Word is not "/play"])
 :Create command based on command word and arguments;
 :Perform relevant actions <$rake>;
@@ -28,7 +28,7 @@ if() then ([Command Word and arguments are valid])
 :Create command based on command word and arguments;
 :Perform relevant actions <$rake> ;
 else ([Command Word or arguments are not valid])
-:Display relevant error message to the result box of the UI;
+:Throw invalid command format parse exception;
 
 endif
 endif
