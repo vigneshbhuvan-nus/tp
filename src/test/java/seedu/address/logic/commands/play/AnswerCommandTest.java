@@ -1,7 +1,5 @@
 package seedu.address.logic.commands.play;
 
-import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
-
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -38,8 +36,9 @@ public class AnswerCommandTest {
     @BeforeEach
     public void setUp() {
         JsonWordBankStorage addressBookStorage =
-                new JsonWordBankStorage(temporaryFolder.resolve("wordbank.json"));
-        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
+            new JsonWordBankStorage(temporaryFolder.resolve("wordbank.json"));
+        JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(
+            temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
         deck.addEntry(entry);
@@ -49,17 +48,12 @@ public class AnswerCommandTest {
     }
 
     @Test
-    public void execute_answerCommandUntilDeckLimit_throwParseException() throws CommandException, ParseException {
+    public void execute_answerCommandUntilDeckLimit_throwParseException()
+        throws CommandException, ParseException {
         logicTestHelper.assertCommandSuccess("/play", "Playmode Started", model);
-        logicTestHelper.assertCommandSuccess("/stop", "Playmode stopped! Your score was not recorded!",
+        logicTestHelper
+            .assertCommandSuccess("/stop", "Playmode stopped! Your score was not recorded!",
                 model);
     }
-
-//    @Test
-//    public void execute_answerCommandWithStopCommandWord_throwParseException() throws CommandException, ParseException {
-//        logicTestHelper.assertCommandSuccess("/play", "Playmode Started", model);
-//        logicTestHelper.assertCommandSuccess("answer", "Your score was 0 / 1", model);
-//        logicTestHelper.assertParseException("another answer", MESSAGE_UNKNOWN_COMMAND);
-//    }
 
 }
