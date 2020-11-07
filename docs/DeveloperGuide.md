@@ -216,7 +216,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 The `Model` component is in charge of changing the data within the application.
 This includes information about decks, entries and statistics.
-The `Model` component consists of the `Play` and `Deck` package. The `Play` package consists of the `Scoring` package,
+The `Model` component consists of the `Play`, `Deck` and `View` package. The `Play` package consists of the `Scoring` package,
 `Leitner` object and the `Score` object. The `Deck` package consists of the `Entry` package, the `Deck` object and 
 all other similar object. 
 
@@ -233,6 +233,7 @@ The diagram below will give more details about the word bank section of the mode
 
 Role of `Model` component:
 - Stores a `UserPref` object that represents the user’s preferences.
+- Stores a `CurrentView` object that represents the current tab view on the UI.
 - Stores a `WordBank` component that maintains all the current `Entry` and `Deck` data.
 - Stores a `FilteredList<Deck>` object that maintains the current list of `Deck` in memory for error checking purposes.
 - Creates and maintains a `Leitner` object and a `QuizAttempt` object using a selected deck from `FilteredList<Deck>` if
@@ -365,6 +366,8 @@ Green Tea is designed to be a simple and easy system for new users to use.
 ![SelectActivityDiagram](images/SelectActivityDiagram.png)
 
 ![AddEntry](images/AddEntryActivityDiagram.png)
+
+![AddEntrySequence](images/AddEntrySequenceDiagram.png)
 
 ### 4.2 Flashcard System (Gabriel)
 
