@@ -19,9 +19,9 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.logic.Logic;
+import seedu.address.logic.statistics.StatisticsManager;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.play.scoring.QuizAttempt;
-import seedu.address.logic.statistics.StatisticsManager;
 import seedu.address.ui.UiPart;
 
 public class StatisticsPanel extends UiPart<Region> {
@@ -144,7 +144,7 @@ public class StatisticsPanel extends UiPart<Region> {
 
     private void plotDataPoints(List<DataPoint> dataPoints) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-         series.setName("Score (in %)");
+        series.setName("Score (in %)");
         for (DataPoint dataPoint : dataPoints) {
             series.getData()
                 .add(new XYChart.Data<>(dataPoint.getTakenAtString(),
@@ -180,15 +180,18 @@ public class StatisticsPanel extends UiPart<Region> {
     /**
      * Helper function to get the first k latest QuizAttempts by takenAt, amongst a list of lists of
      * QuizAttempts. We assume the lists of QuizAttempts in listsToMerge are sorted ascending order
-     * by takenAt so we need to process each list from the end to start.
-     * Time complexity: O(k * log(numLists)) as we poll from a PQ of size numLists at most k times to
-     * form the return list of size k.
+     * by takenAt so we need to process each list from the end to start. Time complexity: O(k *
+     * log(numLists)) as we poll from a PQ of size numLists at most k times to form the return list
+     * of size k.
      *
      * @param listsToMerge
      */
     public static List<QuizAttempt> mergeSortedListsAndRetrieveFirstK(
         List<List<QuizAttempt>> listsToMerge, int k) {
         int numLists = listsToMerge.size();
+        if (numLists == 0) {
+            return new ArrayList<>();
+        }
         PriorityQueue<Pair<QuizAttempt, Integer>> pq = new PriorityQueue<>(numLists,
             Collections.reverseOrder());
 
