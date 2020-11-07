@@ -45,6 +45,15 @@ public class Deck {
         return this.deckName;
     }
 
+    public FilteredList<Entry> getFilteredEntries() {
+        return filteredEntries;
+    }
+
+    public void setFilteredEntries(
+        FilteredList<Entry> filteredEntries) {
+        this.filteredEntries = filteredEntries;
+    }
+
     /**
      * Returns the list of entries in the deck.
      * @return List of entries in the deck.
