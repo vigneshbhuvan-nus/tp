@@ -27,9 +27,9 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   - [5.4 Extra Commands (Georgie)](#54-extra-commands-georgie)
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
-  - [6. Statistics (Melanie)](#6-statistics-melanie)
-  - [7. FAQ (Gabriel &amp; Melanie)](#7-faq-gabriel--melanie)
-  - [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
+  - [5.5 Statistics (Melanie)](#55-statistics-melanie)
+- [6. FAQ (Gabriel &amp; Melanie)](#7-faq-gabriel--melanie)
+- [7. Command Summary (Gabriel)](#8-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -80,8 +80,9 @@ To start using GreenTea:
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 2.  GreenTea's GUI
 
-Before we get started with the program, let us first understand the GUI of GreenTea. We shall use Figure 3 below to explain it. 
-![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
+
+Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of Figure 2 to explain it. 
+![GreenTea](images/user-guide/3EmptyGUIWithAnnotation.png)
 Figure 3. Annotated GUI
 
 There are four main components to the GUI. The deck list, the tab panels, the result display and the command box
@@ -104,7 +105,7 @@ been successfully carried out, or if there are errors in your command formats.
 
     - `new Japanese Animals`
 
-    ![GreenTea](images/user-guide/3JapaneseAnimalDeck.png)
+    ![GreenTea](images/user-guide/4JapaneseAnimalDeck.PNG)
     Figure 4. New deck called Japanese Animals
 
     Your screen should now look like Figure 4.
@@ -113,7 +114,7 @@ been successfully carried out, or if there are errors in your command formats.
 
     - `select 1`
 
-    ![GreenTea](images/user-guide/4SelectDeckExample.png)
+    ![GreenTea](images/user-guide/5SelectDeckExample.png)
     Figure 5. Selecting the first deck in the list
 
     Your screen should now look like Figure 5.
@@ -124,7 +125,7 @@ been successfully carried out, or if there are errors in your command formats.
 
     - `add w/Dolphin t/Iruka`
 
-    ![GreenTea](images/user-guide/5AddEntryExample.png)
+    ![GreenTea](images/user-guide/6AddEntryExample.png)
     Figure 6. Adding an Entry
 
     Your screen should now look like Figure 6.
@@ -135,7 +136,7 @@ been successfully carried out, or if there are errors in your command formats.
 
     - `edit 1 t/イルカ`
 
-    ![GreenTea](images/user-guide/6EditEntryExample.png)
+    ![GreenTea](images/user-guide/7EditEntryExample.png)
     Figure 7. Editing an entry
 
     Your screen should look like Figure 7.
@@ -147,7 +148,7 @@ been successfully carried out, or if there are errors in your command formats.
 6. Hopefully you have written a few more entries into GreenTea. We went ahead and added two new entries into the Deck
 `Japanese Animals`.
     
-    ![GreenTea](images/user-guide/AdditionalEntriesJapanese.PNG)
+    ![GreenTea](images/user-guide/8AdditionalEntriesJapanese.PNG)
     Figure 8. Added more entries into `Japanese Animals`
 
     Figure 8 is a screenshot of our latest Deck containing the new entries that we have written.
@@ -157,7 +158,7 @@ been successfully carried out, or if there are errors in your command formats.
 
     - `/play`
     
-    ![GreenTea](images/user-guide/PlayJapaneseDeck.PNG)
+    ![GreenTea](images/user-guide/9PlayJapaneseDeck.PNG)
     Figure 9. Playing a Game of Flashcards
 
     Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
@@ -169,7 +170,7 @@ been successfully carried out, or if there are errors in your command formats.
     From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `いいえ`?" We
     already know that the correct word is `No`. However, let us try typing the wrong answer `dog`.
 
-    ![GreenTea](images/user-guide/WrongAnswer.PNG)
+    ![GreenTea](images/user-guide/10WrongAnswer.PNG)
     Figure 10. Wrong answer given
 
     GreenTea has accepted the answer we had given it and has updated the translation shown on the Quiz Tab. Do take
@@ -187,7 +188,7 @@ been successfully carried out, or if there are errors in your command formats.
 
     - `stats 1`
 
-    ![GreenTea](images/user-guide/Statistics.PNG)
+    ![GreenTea](images/user-guide/11Statistics.PNG)
     Figure 11. Statistics of Deck 1
 
     Your screen should now look similar to Figure 11. The previous command that you entered changed the current tab
@@ -253,8 +254,8 @@ Examples:
 
 Result:
 
-![GreenTea](images/user-guide/7CreatingADeck.png)
-Figure 7. Result of creating new decks
+![GreenTea](images/user-guide/12CreatingADeck.png)
+Figure 12. Result of creating new decks
 
 :information_source: **Note:**
 The name of the deck cannot be more than 100 characters long.
@@ -274,13 +275,13 @@ Example:
 
 Before deck 1 is removed:
 
-![GreenTea](images/user-guide/8RemovingADeckBefore.png)
-Figure 8: GUI before deck 1 is removed
+![GreenTea](images/user-guide/13RemovingADeckBefore.png)
+Figure 13: GUI before deck 1 is removed
 
 After deck 1 is removed:
 
-![GreenTea](images/user-guide/9RemovingADeckAfter.png)
-Figure 9. GUI after deck 1 is removed
+![GreenTea](images/user-guide/14RemovingADeckAfter.png)
+Figure 14. GUI after deck 1 is removed
 
 ### 5.1.3 Selecting a deck: `select`
 
@@ -297,13 +298,13 @@ Example:
 
 Before deck 1 is selected:
 
-![GreenTea](images/user-guide/10SelectingADeckBefore.png)
-Figure 10: GUI before deck 1 is selected
+![GreenTea](images/user-guide/15SelectingADeckBefore.png)
+Figure 15: GUI before deck 1 is selected
 
 After deck 1 is selected:
 
-![GreenTea](images/user-guide/11SelectingADeckAfter.PNG)
-Figure 11: GUI after deck 1 is selected
+![GreenTea](images/user-guide/16SelectingADeckAfter.PNG)
+Figure 16: GUI after deck 1 is selected
 
 ## 5.2 Entry Commands (Gabriel)
 
@@ -331,8 +332,8 @@ Examples:
 
 Result:
 
-![GreenTea](images/user-guide/12AddingAnEntry.png)
-Figure 12: Result of adding an entry
+![GreenTea](images/user-guide/17AddingAnEntry.png)
+Figure 17: Result of adding an entry
 
 :information_source: **Note:**
 A word cannot be more than 200 characters long. A translation cannot be more than 200 characters long
@@ -355,8 +356,8 @@ Examples:
 
 Result:
 
-![GreenTea](images/user-guide/13EditingAnEntry.png)
-Figure 13. Result of editing an entry
+![GreenTea](images/user-guide/18EditingAnEntry.png)
+Figure 18. Result of editing an entry
 
 ### 5.2.3 Deleting an entry: `delete` (Vignesh)
 
@@ -370,13 +371,13 @@ Example:
 
 Before entry 1 is deleted:
 
-![GreenTea](images/user-guide/14DeletingAnEntryBefore.png)
-Figure 14. GUI before entry 1 is deleted
+![GreenTea](images/user-guide/19DeletingAnEntryBefore.png)
+Figure 19. GUI before entry 1 is deleted
 
 After entry 1 is deleted:
 
-![GreenTea](images/user-guide/15DeletingAnEntryAfter.png)
-Figure 15. GUI after entry 1 is deleted
+![GreenTea](images/user-guide/20DeletingAnEntryAfter.png)
+Figure 20. GUI after entry 1 is deleted
 
 ## 5.3 Play Commands (Georgie)
 
@@ -384,7 +385,7 @@ Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `/play` and
 `/stop`.
 
-## 5.3.1 Play a Game (Georgie)
+### 5.3.1 Play a Game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
@@ -399,10 +400,10 @@ The slash `/` in the command.
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
-![GreenTea](images/user-guide/16PlayAGame.png)
-Figure 16. Result of playing a game
+![GreenTea](images/user-guide/21PlayAGame.png)
+Figure 21. Result of playing a game
 
-## 5.3.2 Stop a Game (Georgie)
+### 5.3.2 Stop a Game (Georgie)
 
 Stop the current game prematurely. Note the slash `/` in the command.
 
@@ -412,8 +413,8 @@ Format: `/stop`
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
-![GreenTea](images/user-guide/17StopAGame.png)
-Figure 17. Result of stopping a game
+![GreenTea](images/user-guide/22StopAGame.png)
+Figure 22. Result of stopping a game
 
 ## 5.4 Extra Commands (Georgie)
 
@@ -439,7 +440,7 @@ Format: `exit`
 
 Result: Program will be closed
 
-## 6. Statistics (Melanie)
+## 5.5 Statistics (Melanie)
 
 Statistics are how you get to see your own progression as you continuously build and play GreenTea.
 The statistics tab displays the scores of games up to your last 10 attempts in the form of
@@ -452,8 +453,8 @@ Format: `stats`
 
 Result:
 
-![GreenTea](images/user-guide/19StatsAllDecks.PNG)
-Figure 19. Result of viewing statistics across all decks
+![GreenTea](images/user-guide/24StatsAllDecks.PNG)
+Figure 24. Result of viewing statistics across all decks
 
 To view statistics of **a single deck**:
 
@@ -465,13 +466,13 @@ Example:
 
 Result:
 
-![GreenTea](images/user-guide/20StatsOneDeck.PNG)
-Figure 20. Result of viewing statistics of a single deck
+![GreenTea](images/user-guide/25StatsOneDeck.PNG)
+Figure 25. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
 
-## 7. FAQ (Gabriel & Melanie)
+# 6. FAQ (Gabriel & Melanie)
 
 **Q**: Will my score be recorded if I stop a game before I finish it?<br>
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
@@ -484,7 +485,7 @@ you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignes
 **A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
 any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
 
-## 8. Command Summary (Gabriel)
+# 7. Command Summary (Gabriel)
 
 | Action         | Format <img width=00/>                  | Examples                      | Remarks                                                                |
 | -------------- | --------------------------------------- | ----------------------------- | ---------------------------------------------------------------------- |
