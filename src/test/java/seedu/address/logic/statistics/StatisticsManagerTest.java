@@ -9,6 +9,7 @@ class StatisticsManagerTest {
 
     @Test
     void test_newStatisticsManagerShouldHaveOneLoginEvent() {
+
         StatisticsManager sm = new StatisticsManager();
         assertEquals(sm.getStatistics().getEventLog().size(), 1);
         assertEquals(sm.getStatistics().getEventLog().get(0).getEventType(), EventType.LOGIN);

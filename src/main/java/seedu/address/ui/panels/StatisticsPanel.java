@@ -180,9 +180,9 @@ public class StatisticsPanel extends UiPart<Region> {
     /**
      * Helper function to get the first k latest QuizAttempts by takenAt, amongst a list of lists of
      * QuizAttempts. We assume the lists of QuizAttempts in listsToMerge are sorted ascending order
-     * by takenAt so we need to process each list from the end to start.
-     * Time complexity: O(k * log(numLists)) as we poll from a PQ of size numLists at most k times to
-     * form the return list of size k.
+     * by takenAt so we need to process each list from the end to start. Time complexity: O(k *
+     * log(numLists)) as we poll from a PQ of size numLists at most k times to form the return list
+     * of size k.
      *
      * @param listsToMerge
      */
