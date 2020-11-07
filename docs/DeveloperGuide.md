@@ -231,12 +231,24 @@ The diagram below will give more details about the word bank section of the mode
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 Role of `Model` component:
-
 - Stores a `UserPref` object that represents the user’s preferences.
-- Stores a `FilteredList<Deck>` object that maintain`s the current list of decks in memory.
+- Stores a `WordBank` component that maintains all the current `Entry` and `Deck` data.
+- Stores a `FilteredList<Deck>` object that maintains the current list of `Deck` in memory for error checking purposes.
+- Creates and maintains a `Leitner` object and a `QuizAttempt` object using a selected deck from `FilteredList<Deck>` if
+a `PlayCommand` object is executed by `Logic`.
+
+Role of `WordBank` component
+- Maintains all the current `Entry` and `Deck` data.
+- Stores a `FilteredList<Entry>` object that maintains the current list of `Entry` in memory.
 - Exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`
 that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-- Does not depend on any of the other three components.
+
+Role of `Leitner` object:
+- Shuffles a given `Deck` by decomposing it into a list of `Translations` and a list of `Word`.
+- Return each `Translation` and `Word` when called by `ModelManager`.
+
+Role of `QuizAttempt` object:
+- Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
 
 ### 3.6 Storage component
 
