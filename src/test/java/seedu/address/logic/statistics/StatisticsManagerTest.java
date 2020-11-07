@@ -8,6 +8,13 @@ import org.junit.jupiter.api.Test;
 class StatisticsManagerTest {
 
     @Test
+    void testNewStatisticsManager_ShouldHave1LoginEvent() {
+        StatisticsManager sm = new StatisticsManager();
+        assertEquals(sm.getStatistics().getEventLog().size(), 1);
+        assertEquals(sm.getStatistics().getEventLog().get(0).getEventType(), EventType.LOGIN);
+    }
+
+    @Test
     void testGetLastLogin_ShouldBeNull_IfEventsHas1Login() {
         StatisticsManager sm = new StatisticsManager();
         assertNull(sm.getLastLogin());
