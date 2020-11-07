@@ -28,7 +28,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
 - [6. Statistics (Melanie)](#6-statistics-melanie)
-- [7. FAQ (Gabriel)](#7-faq-gabriel)
+- [7. FAQ (Gabriel and Melanie)](#7-faq-gabriel)
 - [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
@@ -443,7 +443,9 @@ Result:
 ![GreenTea](images/user-guide/19StatsAllDecks.PNG)
 Figure 19. Result of viewing statistics across all decks
 
-To view statistics of a single deck:
+
+
+To view statistics of **a single deck**:
 
 Format: `stats <INDEX>`
 
@@ -454,13 +456,22 @@ Result:
 ![GreenTea](images/user-guide/20StatsOneDeck.PNG)
 Figure 20. Result of viewing statistics of a single deck
 
+
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
 
-## 7. FAQ (Gabriel)
+## 7. FAQ (Gabriel & Melanie)
 
 **Q**: Will my score be recorded if I stop a game before I finish it?<br>
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
+
+**Q**: Will all my data be saved when I exit Green Tea?
+**A**: Yes. All your data will be stores in a file called wordbank.json. This file can be found in the same folder where
+       you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignesh)
+
+**Q**: Where do I go to if I need help?
+**A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
+       any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
 
 ## 8. Command Summary (Gabriel)
 
