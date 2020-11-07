@@ -24,7 +24,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   - [5.3 Play Commands (Georgie)](#53-play-commands-georgie)
     - [5.3.1 Playing a game (Georgie)](#531-playing-a-game-georgie)
     - [5.3.2 Stopping a game (Georgie)](#532-stopping-a-game-georgie)
-    - [5.3.3 Answering a question (Georgie)](#532-answering-a-question-georgie)
+    - [5.3.3 Answering a question (Georgie)](#533-answering-a-question-georgie)
   - [5.4 Extra Commands (Georgie)](#54-extra-commands-georgie)
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
