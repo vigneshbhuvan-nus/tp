@@ -24,6 +24,7 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   - [5.3 Play Commands (Georgie)](#53-play-commands-georgie)
     - [5.3.1 Playing a game (Georgie)](#531-playing-a-game-georgie)
     - [5.3.2 Stopping a game (Georgie)](#532-stopping-a-game-georgie)
+    - [5.3.3 Answering a question (Georgie)](#532-answering-a-question-georgie)
   - [5.4 Extra Commands (Georgie)](#54-extra-commands-georgie)
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
@@ -106,7 +107,9 @@ been successfully carried out, or if there are errors in your command formats.
     ![GreenTea](images/user-guide/4JapaneseAnimalDeck.PNG)
     Figure 4. New deck called Japanese Animals
 
-    Your screen should now look like Figure 4.
+    Your screen should now look like Figure 4. However, we have rewritten the exact command that we entered, into the `Command Box`. We will be
+    doing this for the rest of the document as well!
+    
     The previous command that you entered created a new Deck in GreenTea called `Japanese Animals`.
     Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `1`.
 
@@ -257,6 +260,8 @@ Figure 12. Result of creating new decks
 :information_source: **Note:**
 The name of the deck cannot be more than 100 characters long.
 
+:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`. 
+
 ### 5.1.2 Removing a deck: `remove`
 
 Removes a deck with the given index.
@@ -334,6 +339,8 @@ Figure 17: Result of adding an entry
 :information_source: **Note:**
 A word cannot be more than 200 characters long. A translation cannot be more than 200 characters long
 
+:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`.
+
 ### 5.2.2 Editing an entry: `edit` (Vignesh)
 
 Edits an entry with the given index using the given word or translation or both.
@@ -395,6 +402,8 @@ The slash `/` in the command.
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
+:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`. 
+
 Result:
 
 ![GreenTea](images/user-guide/21PlayAGame.png)
@@ -413,6 +422,20 @@ Result:
 ![GreenTea](images/user-guide/22StopAGame.png)
 Figure 22. Result of stopping a game
 
+### 5.3.3 Answering a question (Georgie)
+
+GreenTea is extremely user friendly! After starting a game, any word given by you will be considered as an answer other than the input `/stop`. There 
+are no special command words or format required!
+
+Format: `[Anything!]`
+
+:information_source: **Note:**
+Please make sure that your answer contains at least one character!
+
+Result:
+![GreenTea](images/user-guide/23AnsweringAQuestion.png)
+Figure 23. Answering a question
+
 ## 5.4 Extra Commands (Georgie)
 
 These are some extra commands that you can access at any point in the application except when
@@ -427,7 +450,7 @@ Format: `help`
 Result:
 
 ![GreenTea](images/user-guide/HelpCommand.PNG)
-Figure 23. Result of Opening Help Window
+Figure 24. Result of Opening Help Window
 
 ### 5.4.2 Exiting the program: `exit`
 
@@ -451,7 +474,7 @@ Format: `stats`
 Result:
 
 ![GreenTea](images/user-guide/24StatsAllDecks.PNG)
-Figure 24. Result of viewing statistics across all decks
+Figure 25. Result of viewing statistics across all decks
 
 To view statistics of **a single deck**:
 
@@ -464,7 +487,7 @@ Example:
 Result:
 
 ![GreenTea](images/user-guide/25StatsOneDeck.PNG)
-Figure 25. Result of viewing statistics of a single deck
+Figure 26. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#531-playing-a-game-georgie)
@@ -494,6 +517,7 @@ any problems related to Green Tea. Feel free to create an issue to let us know i
 | **Delete**     | `delete <INDEX>`                        | `delete 3`                    | Deletes the Entry with the Given Index                                 |
 | **Play**       | `/play`                                 |                               | Starts a New FlashCard Game with the Selected Deck                     |
 | **Stop**       | `/stop`                                 |                               | Stops an Existing Game                                                 |
+| **Answer**       | `[Anything!]`                         |                               | Answers a Question                                               |
 | **Statistics** | `stats`                                 | `stats`                       | Shows Statistics of all Decks combined                                 |
 | **Statistics** | `stats <INDEX>`                         | `stats 1`                     | Shows Statistics of a Particular Deck <INDEX>                          |
 | **Clear**      | `clear`                                 |                               | Deletes All Decks and Entries                                          |
