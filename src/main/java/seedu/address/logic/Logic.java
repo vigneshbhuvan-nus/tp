@@ -12,39 +12,41 @@ import seedu.address.model.ReadOnlyWordBank;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
-import seedu.address.model.view.View;
 import seedu.address.logic.statistics.StatisticsManager;
+import seedu.address.model.view.View;
 
 /**
  * API of the Logic component
  */
 public interface Logic {
+
     /**
      * Executes the command and returns the result.
      *
      * @param commandText The command as entered by the user.
      * @return the result of the command execution.
      * @throws CommandException If an error occurs during command execution.
-     * @throws ParseException If an error occurs during parsing.
+     * @throws ParseException   If an error occurs during parsing.
      */
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Switches logic manager to play mode by modifying the PlayMode object and returning a Play Command.
+     * Switches logic manager to play mode by modifying the PlayMode object and returning a Play
+     * Command.
      *
      * @return a Play Command.
      * @throws CommandException If there is no deck currently selected or if the deck is empty.
-     * @throws ParseException If an error occurs during parsing.
+     * @throws ParseException   If an error occurs during parsing.
      */
     Command initialisePlayMode() throws CommandException, ParseException;
 
     /**
-     * Creates a Answer Command or a Stop Command depending on the input. If a Stop Command is created, isPlayMode is
-     * set to false
+     * Creates a Answer Command or a Stop Command depending on the input. If a Stop Command is
+     * created, isPlayMode is set to false
      *
      * @return a Answer Command or a Stop Command.
      * @throws CommandException If LogicManager if already in play mode.
-     * @throws ParseException If an error occurs during parsing.
+     * @throws ParseException   If an error occurs during parsing.
      */
     Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException;
 
@@ -55,10 +57,14 @@ public interface Logic {
      */
     ReadOnlyWordBank getAddressBook();
 
-    /** Returns an unmodifiable view of the filtered list of entries */
+    /**
+     * Returns an unmodifiable view of the filtered list of entries
+     */
     ObservableList<Deck> getFilteredDeckList();
 
-    /** Returns an unmodifiable view of the filtered list of entries */
+    /**
+     * Returns an unmodifiable view of the filtered list of entries
+     */
     ObservableList<Entry> getFilteredEntryList();
 
     /**

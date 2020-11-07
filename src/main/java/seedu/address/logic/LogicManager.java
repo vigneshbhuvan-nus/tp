@@ -19,14 +19,15 @@ import seedu.address.model.ReadOnlyWordBank;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Leitner;
-import seedu.address.model.view.View;
 import seedu.address.logic.statistics.StatisticsManager;
+import seedu.address.model.view.View;
 import seedu.address.storage.Storage;
 
 /**
  * The main LogicManager of the app.
  */
 public class LogicManager implements Logic {
+
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
@@ -95,7 +96,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException {
+    public Command createAnswerOrStopCommands(String commandText)
+        throws CommandException, ParseException {
         assert (isPlayMode);
         try {
             Command command = playModeParser.parseCommand(commandText);
