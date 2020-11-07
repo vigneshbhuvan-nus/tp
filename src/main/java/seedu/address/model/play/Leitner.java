@@ -54,7 +54,7 @@ public class Leitner {
         } else {
             Map<String, Pair<Word, Translation>> map = new HashMap<>();
             for (var entry : entries) {
-                map.put(entry.getTranslation().toString(),
+                map.put(entry.getWord().toString(),
                     new Pair<>(entry.getWord(), entry.getTranslation()));
             }
             int n = deck.getQuizAttempts().size();
