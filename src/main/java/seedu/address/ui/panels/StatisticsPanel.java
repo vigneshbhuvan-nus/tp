@@ -3,13 +3,9 @@ package seedu.address.ui.panels;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -25,7 +21,7 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.Logic;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.play.scoring.QuizAttempt;
-import seedu.address.statistics.StatisticsManager;
+import seedu.address.logic.statistics.StatisticsManager;
 import seedu.address.ui.UiPart;
 
 public class StatisticsPanel extends UiPart<Region> {
