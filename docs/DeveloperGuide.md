@@ -204,7 +204,6 @@ The class diagram of the `Logic` component is shown below in Figure 5.
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Role of the `Logic` component:
-
 - `Logic` receives the user command.
 - `Logic Manager` can either be in `Play Mode` or in `Command Mode`.
 - Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
@@ -214,6 +213,18 @@ Role of the `Logic` component:
 - Initialises the `StatisticsManager` on startup via `LogicManager` and maintains the `Statistics`.
 - Any changes from executing a `Command` object is recorded in `Statistics` by `Statistics Manager`.
 - In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+
+Role of the `Parser` package:
+- Derives the command word and the arguments of the user input
+- Throws a `ParserException` if the command word or argument are not correctly written
+
+Role of the `Statistics` package:
+- Maintains the `Statistics` of the all the decks in memory
+- More explained under [Implementations - Statistics](#43-implementaion-not-written-yet)
+
+Role of the `Command` package:
+- Contains the instructions for `Model`
+- Throws a `CommandException` if an error occurs between execution and obtaining `CommandResult`
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
@@ -258,12 +269,13 @@ Role of `WordBank` component
 
 Role of `Leitner` object:
 
-- Shuffles a given `Deck` by decomposing it into a list of `Translations` and a list of `Word`.
-- Return each `Translation` and `Word` when called by `ModelManager`.
+- Shuffles a given `Deck` by decomposing it into a list of `Translations` and a list of `Word` called questions and answers respectively.
+- Returns each `Translation` (question)) and `Word` (answer) when called by `ModelManager`.
+- More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
 
 Role of `QuizAttempt` object:
-
 - Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
+- More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
 
 ### 3.6 Storage component
 
