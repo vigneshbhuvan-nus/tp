@@ -270,7 +270,9 @@ Format: `remove <INDEX OF DECK>`
 :information_source: **Note:**
 To get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck.
 
-Example: `remove 1`
+Example: 
+
+- `remove 1`
 
 Before deck 1 is removed:
 
@@ -291,7 +293,9 @@ Format: `select <INDEX OF DECK>`
 :information_source: **Note:**
 The index of the deck is the number displayed it on the user interface.
 
-Example: `select 1`
+Example: 
+
+- `select 1`
 
 Before deck 1 is selected:
 
@@ -362,7 +366,9 @@ Deletes the entry with the given index.
 
 Format: `delete <INDEX>`
 
-Example: `delete 1`
+Example: 
+
+- `delete 1`
 
 Before entry 1 is deleted:
 
@@ -455,7 +461,9 @@ To view statistics of **a single deck**:
 
 Format: `stats <INDEX>`
 
-Example: `stats 1`
+Example: 
+
+- `stats 1`
 
 Result:
 
@@ -470,11 +478,11 @@ In order to view your statistics, you must first [play a game!](#531-play-a-game
 **Q**: Will my score be recorded if I stop a game before I finish it?<br>
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
 
-**Q**: Will all my data be saved when I exit Green Tea?
+**Q**: Will all my data be saved when I exit Green Tea? <br>
 **A**: Yes. All your data will be stores in a file called wordbank.json. This file can be found in the same folder where
 you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignesh)
 
-**Q**: Where do I go to if I need help?
+**Q**: Where do I go to if I need help? <br>
 **A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
 any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
 
