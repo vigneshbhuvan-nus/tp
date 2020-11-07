@@ -15,7 +15,7 @@ Given below are my contributions to the project.
 
   Pull requests: [\#56](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/56)
   Commit: [\AddSelectDeckCommand](https://github.com/AY2021S1-CS2103T-T09-4/tp/commit/bd036d7fc33d5fea091aeae658ab7967e1d8e010#diff-d126ae081f932363c3d9e4b8117d275191d41cee659ff81474b4d917c8530533)
-  
+
   * What it does: Allows the user to create decks and add entries to the deck.
   * Justification: Users can organize their entries better. Also allows the quizzing system to be implemented more easily.
   * Highlights: This feature was difficult to implement since it required entries to be embedded within decks. This means that
@@ -25,20 +25,20 @@ Given below are my contributions to the project.
                 This feature required modifications to the ui component, model component, logic component and storage component.
                 Most of my contributions for this feature was in the model and logic components and planning how to implement this feature.
                 The ui component for this feature was handled by my teammate, Gabriel. The storage component was handled by my teammate, Vignesh
-                
+
   * Credits: *{I utilized the existing command format in Address Book 3 to write the command classes for new commands. I also utilized the person class in Address Book 3 to design the deck system}*
 
 * **New Feature**: Create tab panels in the GUI which will display the appropriate information to the user depending on the command given.
 
   Pull requests: [\#114](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/114) [\#119](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/119)
-  
+
   * What it does: Allows users to see only what is necessary depending on the command given
   * Justification: Cleaner UI. More flexibility in how to display the quiz and statistics to the user.
   * Highlights: Created a package in model called view. Commands will change the view which will in turn change the tabs.
                 There are 5 panels which are visible to the user (start, entry list, quiz, score and statistics).
                 I created and designed the start, quiz and score panels. My teammate Georgie was in charge of the statistics panel.
                 This feature required changes to be made to the logic, model and ui components.
-                 
+
 * **Code contributed**: [RepoSense link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=IlyaRin&tabRepo=AY2021S1-CS2103T-T09-4%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 
 * **Project management**:
@@ -56,12 +56,12 @@ Given below are my contributions to the project.
     * Added documentation for section 1 (What is GreenTea) [\#141](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/141)
     * Added documentation for section 2 (About this document) [\#141](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/141)
     * Added documentation for section 5 (Features), deck commands and statistics section
-    
+
   * Developer Guide:
     * Added prefaces to each section for the various components. [\#200](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/200)
-    * Added NFRs [\#200](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/200) [\#12](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/12) 
+    * Added NFRs [\#200](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/200) [\#12](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/12)
     * Added documentation for Manual Testing [\#200](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/200)
     * Added implementation details of the deck feature.
 
 * **Community**:
-  * PRs reviewed (with non-trivial review comments): [\#52](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/52) [\#94](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/94)
+* PRs reviewed (with non-trivial review comments): [\#52](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/52) [\#94](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/94)
