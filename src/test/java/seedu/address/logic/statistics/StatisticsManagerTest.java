@@ -1,6 +1,5 @@
 package seedu.address.logic.statistics;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -9,7 +8,8 @@ import org.junit.jupiter.api.Test;
 class StatisticsManagerTest {
 
     @Test
-    void testNewStatisticsManager_shouldHave1LoginEvent() {
+    void test_newStatisticsManagerShouldHaveOneLoginEvent() {
+
         StatisticsManager sm = new StatisticsManager();
         assertEquals(sm.getStatistics().getEventLog().size(), 1);
         assertEquals(sm.getStatistics().getEventLog().get(0).getEventType(), EventType.LOGIN);
@@ -41,21 +41,21 @@ class StatisticsManagerTest {
     void testGetLastLogin_shouldBeSecondLatestLogin_ifEventsHasSomeLoginLogoutEvents() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog()
-            .get(sm.getStatistics().getEventLog().size() - 1);
+                .get(sm.getStatistics().getEventLog().size() - 1);
         sm.getStatistics().registerAppLogout();
         sm.getStatistics().registerAppLogin();
         for (int i = 0; i < 10000; ++i) {
             ; // simulate blocking
         }
         Event event2 = sm.getStatistics().getEventLog()
-            .get(sm.getStatistics().getEventLog().size() - 1);
+                .get(sm.getStatistics().getEventLog().size() - 1);
         sm.getStatistics().registerAppLogout();
         for (int i = 0; i < 10000; ++i) {
             ; // simulate blocking
         }
         sm.getStatistics().registerAppLogin();
         Event event3 = sm.getStatistics().getEventLog()
-            .get(sm.getStatistics().getEventLog().size() - 1);
+                .get(sm.getStatistics().getEventLog().size() - 1);
         for (int i = 0; i < 10000; ++i) {
             ; // simulate blocking
         }
@@ -67,21 +67,21 @@ class StatisticsManagerTest {
     void testGetLastLogin_shouldBeSecondLatestLogin_ifEventsHasMoreRandomEvents() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog()
-            .get(sm.getStatistics().getEventLog().size() - 1);
+                .get(sm.getStatistics().getEventLog().size() - 1);
         sm.getStatistics().registerAppLogout();
         sm.getStatistics().registerAppLogin();
         for (int i = 0; i < 10000; ++i) {
             ; // simulate blocking
         }
         Event event2 = sm.getStatistics().getEventLog()
-            .get(sm.getStatistics().getEventLog().size() - 1);
+                .get(sm.getStatistics().getEventLog().size() - 1);
         sm.getStatistics().registerAppLogout();
         for (int i = 0; i < 10000; ++i) {
             ; // simulate blocking
         }
         sm.getStatistics().registerAppLogin();
         Event event3 = sm.getStatistics().getEventLog()
-            .get(sm.getStatistics().getEventLog().size() - 1);
+                .get(sm.getStatistics().getEventLog().size() - 1);
         for (int i = 0; i < 10000; ++i) {
             ; // simulate blocking
         }
@@ -103,7 +103,7 @@ class StatisticsManagerTest {
         sm.getStatistics().registerAppLogout();
         sm.getStatistics().registerAppLogin();
         Event correctEvent = sm.getStatistics().getEventLog()
-            .get(sm.getStatistics().getEventLog().size() - 1);
+                .get(sm.getStatistics().getEventLog().size() - 1);
         sm.getStatistics().registerAppLogout();
         sm.getStatistics().registerAppLogout();
         sm.getStatistics().registerAppLogout();

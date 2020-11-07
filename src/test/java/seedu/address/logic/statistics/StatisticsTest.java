@@ -87,7 +87,8 @@ class StatisticsTest {
         for (int i = 0; i < 3; ++i) {
             statistics.registerAppLogout();
         }
-        assertEquals(statistics.getEventLog().stream()
-            .filter(event -> event.getEventType() == EventType.LOGIN).count(), 6);
+
+        assertEquals(statistics.getEventLog().stream().filter(event -> event.getEventType()
+                == EventType.LOGIN).count(), 6);
     }
 }
