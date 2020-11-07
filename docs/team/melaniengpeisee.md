@@ -43,7 +43,7 @@ Given below are my contributions to the project.
 * **Enhancements to existing features**:
   * Change GUI to current form (Pull requests [\#114](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/114), [\#131](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/131))
   * Wrote additional tests for existing features to increase code coverage (Pull requests [\#182](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/182), [\#60](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/60))
-  * Fixed several bugs
+  * Fixed several bugs (Pull requests [\#181](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/181) [\#177](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/177) [\#138](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/138) [\#128](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/128) [\#88](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/88))
 
 * **Documentation**:
   * User Guide:
@@ -53,11 +53,10 @@ Given below are my contributions to the project.
     * Added documentation for section 2 (About this document) [\#141](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/141)
     
   * Developer Guide:
-    * Added prefaces to each section for the various components.
+    * Added prefaces to each section for the various components. [\#200](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/200)
+    * Added NFRs [\#200](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/200) [\#12](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/12) 
+    * Added documentation for Manual Testing [\#200](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/200)
     * Added implementation details of the deck feature.
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments): [\#52](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/52) [\#94](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/94)
-  * Contributed to forum discussions (examples: [1](), [2](), [3](), [4]())
-  * Reported bugs (examples: [1](), [2](), [3]())
-  * Some parts of the history feature I added was adopted by several other class mates ([1](), [2]())
