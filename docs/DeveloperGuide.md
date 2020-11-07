@@ -186,10 +186,11 @@ Commands update a class called `CurrentView.java` in `Model`. Based on the curre
 
 The `Logic` component is the bridge between the `UI` and `Model` components. It is in charge of deciding what to do with the
 user input received from the `UI`. This component consists of the `Statistics`, `Parser` and the `Command` package.
+
 The class diagram of the `Logic` component is shown below in Figure 5.
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
-<p align="center"> Figure 5. Logic component class relationship diagram
+<p align="center"> Figure 5. Logic Component Class Diagram
 
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
@@ -209,7 +210,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
-<p align="center"> Figure 6. Interactions between different parts of the logic component
+<p align="center"> Figure 6. Sequence Diagram of Logic Component for "Remove 1" Command
 
 ### 3.5 Model component
 
@@ -224,7 +225,7 @@ All these information on the `Model` component is visually expressed in the clas
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
-<p align="center"> Figure 7. Model component class relationship diagram
+<p align="center"> Figure 7. Model Component Class Diagram
 
 The diagram below will give more details about the word bank section of the model component.
 
@@ -255,11 +256,11 @@ Role of `QuizAttempt` object:
 The `Storage` component handles the reading and writing of data from a data file. By storing the data,
 the application will be able to load the data from the previous session back to the user when the user opens
 the application.
-The general overview of the structure diagram of the `Storage` component is shown below.
+The class diagram of the `Storage` component is shown below.
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
-<p align="center"> Figure 9. Storage component class relationship diagram
+<p align="center"> Figure 8. Storage Component Class Diagram
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
@@ -275,6 +276,12 @@ Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdapt
 Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry`.
 
 This format allows the files to be saved in json format and be read back accurately.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br> 
+
+![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 9 More OOP Storage Class Diagram</i></sup></div><br>
+
 
 ---
 
