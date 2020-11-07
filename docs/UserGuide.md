@@ -33,16 +33,15 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 # 1. What is GreenTea? (Gabriel)
 
-_GreenTea_ is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
-still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language,
+GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language,
 but often struggle due to the difficulty of remembering new vocabulary. For many learners, vocabulary remains the most challenging aspect of learning a new language.
 We felt that we could help learners struggling with vocabulary to learn the language more efficiently.
 Therefore, GreenTea uses a proven memory retention system known as the [Leitner System](https://jessewhelan.medium.com/using-the-leitner-system-to-improve-your-study-d5edafae7f0)
 and implements it in the context of a FlashCard game.
 
-**Fun Fact:** You may be wondering, why did we choose the name _GreenTea_? Well, in the initial stages of development, the app was intended for users looking to learn Japanese, hence the name _GreenTea_.
+**Fun Fact:** You may be wondering, why did we choose the name GreenTea? Well, in the initial stages of development, the app was intended for users looking to learn Japanese, hence the name GreenTea.
 Although the application now allows for the learning of [many languages](http://www.unicode.org/charts/index.html),
-we kept the name _GreenTea_ to denote the cultural journey a user undertakes when using this application.
+we kept the name GreenTea to denote the cultural journey a user undertakes when using this application.
 
 In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly and have an enjoyable journey with it.
@@ -67,8 +66,7 @@ language will be as relaxing as drinking a hot cup of GreenTea.
 Greetings! This chapter will be on helping you get started with using GreenTea. In this chapter,
 we will be covering installation, explanation of the GUI and basic commands needed to use GreenTea.
 
-Before you can start using GreenTea, you will need to ensure that `Java 11`
-is installed on your computer.
+Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) is installed on your computer.
 
 To start using GreenTea:
 
@@ -151,7 +149,7 @@ been successfully carried out, or if there are errors in your command formats.
     Figure 8. Added more entries into `Japanese Animals`
 
     Figure 8 is a screenshot of our latest Deck containing the new entries that we have written.
-    Now, Let us try to play a game of FlashCards to memorise what we have written.
+    Now, let us try to play a game of FlashCards to memorise what we have written.
     Note than in our application, we use the terms Flashcards and Quizzes
     interchangeably. Try typing and entering the following commands into GreenTea.
 
@@ -166,8 +164,8 @@ been successfully carried out, or if there are errors in your command formats.
     The command you entered previously had switched GreenTea into Quiz mode. This means that all commands written from now on
     will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
 
-    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `いいえ`?" We
-    already know that the correct word is `No`. However, let us try typing the wrong answer `dog`.
+    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We
+    already know that the correct word is `Dolphin`. However, let us try typing a wrong answer for example`dog`. 
 
     ![GreenTea](images/user-guide/WrongAnswer.PNG)
     Figure 10. Wrong answer given
@@ -181,9 +179,9 @@ been successfully carried out, or if there are errors in your command formats.
 
     Try playing the quiz a few more times!
 
-7.  Have you tried quizzing yourself a few more times? aren't you curious about your progress so far? Thankfully, GreenTea has been
-    keeping track of your scores in the background and can display in the form of a graph. Try typing the following commands
-    into GreenTea!
+7. Have you tried quizzing yourself a few more times? Aren't you curious about your progress so far? Thankfully, GreenTea has been
+keeping track of your scores in the background and can display your statistics in the form of a graph. Try typing the following commands
+into GreenTea!
 
     - `stats 1`
 
@@ -195,9 +193,9 @@ been successfully carried out, or if there are errors in your command formats.
     your score history as well as the time stamp of each attempt. Based on our progression, we think we need a
     little bit more practise with our deck!
 
-8.  Congratulations! We have come to the end of this chapter. We hope that you have learned the basic of
-    using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
-    commands with complete explanations to learn in [Chapter 5](#5-features).
+8. Congratulations! We have come to the end of this chapter. We hope that you have learnt the basics of
+using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
+commands with complete explanations to learn in [Chapter 5](#5-features).
 
 # 4. Using This Guide (Melanie)
 
@@ -218,7 +216,7 @@ has to be followed. The following is an explanation of how commands are describe
 
 ### 4.2.1 Arrowed Brackets
 
-Words in `<Arrowed Brackets>` are compulsory inputs supplied by you. They are generally names or translations that
+Words in `<Arrowed Brackets>` are compulsory inputs supplied by you. They are generally words or translations that
 are unique to each input.
 
 E.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the input, `NAME OF NEW DECK`
@@ -232,13 +230,12 @@ or `edit 1 [w/word] [t/translation]` **but cannot be written as** `edit 1`
 
 # 5. Features
 
-In this chapter, we will be going into detail each feature of GreenTea, along with their command format and
+In this chapter, we will be going into detail of GreenTea's features, along with their command format and
 relevant examples.
 
 ## 5.1 Deck Commands (Melanie)
 
-As mentioned earlier, Decks are the foundation to GreenTea. A deck is simply a list of entries
-you write into GreenTea. A deck can be your favourite Korean Dramas or a list of Japanese Words.
+As mentioned earlier, decks are the foundation of GreenTea. A deck is simply a list of entries you write into GreenTea. A deck can be your favourite Korean Dramas or a list of Japanese Words.
 
 ### 5.1.1 Creating a deck: `new`
 
@@ -254,7 +251,7 @@ Examples:
 Result:
 
 ![GreenTea](images/user-guide/7CreatingADeck.png)
-Figure 7. Result of creating new decks
+Figure 12. Result of creating new decks
 
 :information_source: **Note:**
 The name of the deck cannot be more than 100 characters long.
@@ -275,12 +272,12 @@ Example:
 Before deck 1 is removed:
 
 ![GreenTea](images/user-guide/8RemovingADeckBefore.png)
-Figure 8: GUI before deck 1 is removed
+Figure 13: GUI before a deck is removed
 
 After deck 1 is removed:
 
 ![GreenTea](images/user-guide/9RemovingADeckAfter.png)
-Figure 9. GUI after deck 1 is removed
+Figure 14. Result of removing a deck
 
 ### 5.1.3 Selecting a deck: `select`
 
@@ -292,18 +289,17 @@ Format: `select <INDEX OF DECK>`
 The index of the deck is the number displayed it on the user interface.
 
 Example: 
-
 - `select 1`
 
 Before deck 1 is selected:
 
 ![GreenTea](images/user-guide/10SelectingADeckBefore.png)
-Figure 10: GUI before deck 1 is selected
+Figure 15: GUI before deck 1 is selected
 
 After deck 1 is selected:
 
 ![GreenTea](images/user-guide/11SelectingADeckAfter.PNG)
-Figure 11: GUI after deck 1 is selected
+Figure 16: GUI after deck 1 is selected
 
 ## 5.2 Entry Commands (Gabriel)
 
@@ -332,7 +328,7 @@ Examples:
 Result:
 
 ![GreenTea](images/user-guide/12AddingAnEntry.png)
-Figure 12: Result of adding an entry
+Figure 17: Result of adding an entry
 
 :information_source: **Note:**
 A word cannot be more than 200 characters long. A translation cannot be more than 200 characters long
@@ -356,7 +352,7 @@ Examples:
 Result:
 
 ![GreenTea](images/user-guide/13EditingAnEntry.png)
-Figure 13. Result of editing an entry
+Figure 18. Result of editing an entry
 
 ### 5.2.3 Deleting an entry: `delete` (Vignesh)
 
@@ -371,12 +367,12 @@ Example:
 Before entry 1 is deleted:
 
 ![GreenTea](images/user-guide/14DeletingAnEntryBefore.png)
-Figure 14. GUI before entry 1 is deleted
+Figure 19. GUI before entry 1 is deleted
 
 After entry 1 is deleted:
 
 ![GreenTea](images/user-guide/15DeletingAnEntryAfter.png)
-Figure 15. GUI after entry 1 is deleted
+Figure 20. GUI after entry 1 is deleted
 
 ## 5.3 Play Commands (Georgie)
 
@@ -384,7 +380,7 @@ Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `/play` and
 `/stop`.
 
-## 5.3.1 Play a Game (Georgie)
+### 5.3.1 Play a Game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
@@ -399,8 +395,9 @@ The slash `/` in the command.
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
+
 ![GreenTea](images/user-guide/16PlayAGame.png)
-Figure 16. Result of playing a game
+Figure 21. Result of playing a game
 
 ## 5.3.2 Stop a Game (Georgie)
 
@@ -412,8 +409,9 @@ Format: `/stop`
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
+
 ![GreenTea](images/user-guide/17StopAGame.png)
-Figure 17. Result of stopping a game
+Figure 22. Result of stopping a game
 
 ## 5.4 Extra Commands (Georgie)
 
@@ -428,8 +426,8 @@ Format: `help`
 
 Result:
 
-![GreenTea](images/user-guide/18HelpWindow.PNG)
-Figure 18. Result of Opening Help Window
+![GreenTea](images/user-guide/HelpCommand.PNG)
+Figure 23. Result of Opening Help Window
 
 ### 5.4.2 Exiting the program: `exit`
 
@@ -453,7 +451,7 @@ Format: `stats`
 Result:
 
 ![GreenTea](images/user-guide/19StatsAllDecks.PNG)
-Figure 19. Result of viewing statistics across all decks
+Figure 24. Result of viewing statistics across all decks
 
 To view statistics of **a single deck**:
 
@@ -466,7 +464,7 @@ Example:
 Result:
 
 ![GreenTea](images/user-guide/20StatsOneDeck.PNG)
-Figure 20. Result of viewing statistics of a single deck
+Figure 25. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
