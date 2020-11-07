@@ -120,7 +120,7 @@ public class StatisticsPanel extends UiPart<Region> {
         if (indexOfSelectedDeck == -1 || decks.size() == 0) {
             chartTitle = "Recent performance over all decks.";
         } else {
-            chartTitle = "Recent performance over deck " + decks.get(0).getDeckName();
+            chartTitle = "Recent performance over [" + decks.get(0).getDeckName() + "]";
         }
 
         StatisticsManager statisticsManager = logic.getStatisticsManager();
@@ -136,7 +136,7 @@ public class StatisticsPanel extends UiPart<Region> {
     private void initialize() {
         yAxis.setAutoRanging(false);
         yAxis.setLowerBound(0);
-        yAxis.setUpperBound(100);
+        yAxis.setUpperBound(101);
         yAxis.setTickLabelFormatter(new DefaultFormatter(yAxis, null, "%"));
 
         statisticsLineChart.setTitle(chartTitle);
