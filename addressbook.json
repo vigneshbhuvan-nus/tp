@@ -1,0 +1,130 @@
+{
+  "decks" : [ {
+    "quizAttempts" : [ {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 1.0
+      },
+      "duration" : 230,
+      "takenAt" : "2020-10-27T14:38:57.4544",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 0.0
+      },
+      "duration" : 3,
+      "takenAt" : "2020-10-27T19:47:09.158326",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 0.0
+      },
+      "duration" : 1,
+      "takenAt" : "2020-10-27T19:47:25.916549",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 0.0
+      },
+      "duration" : 6,
+      "takenAt" : "2020-10-27T19:47:30.260968",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 3.0
+      },
+      "duration" : 7,
+      "takenAt" : "2020-10-27T19:47:40.981975",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 5.0
+      },
+      "duration" : 4,
+      "takenAt" : "2020-10-27T19:47:53.2391",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 4.0
+      },
+      "duration" : 6,
+      "takenAt" : "2020-10-27T19:47:59.50495",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 4.0
+      },
+      "duration" : 6,
+      "takenAt" : "2020-10-27T22:40:47.606972",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 3.0
+      },
+      "duration" : 8,
+      "takenAt" : "2020-10-27T22:48:13.029081",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 0.0
+      },
+      "duration" : 2,
+      "takenAt" : "2020-10-27T22:48:39.602465",
+      "questionAttempts" : [ ]
+    }, {
+      "score" : {
+        "maxScore" : 5.0,
+        "yourScore" : 0.0
+      },
+      "duration" : 1,
+      "takenAt" : "2020-10-28T18:42:06.907841",
+      "questionAttempts" : [ ]
+    } ],
+    "deckName" : "deck1",
+    "internalList" : [ {
+      "word" : "word",
+      "translation" : "translate"
+    }, {
+      "word" : "word2",
+      "translation" : "translate2"
+    }, {
+      "word" : "word3",
+      "translation" : "translate3"
+    }, {
+      "word" : "word4",
+      "translation" : "translate4"
+    }, {
+      "word" : "word5",
+      "translation" : "translate5"
+    } ]
+  }, {
+    "quizAttempts" : [ ],
+    "deckName" : "deck2",
+    "internalList" : [ ]
+  }, {
+    "quizAttempts" : [ ],
+    "deckName" : "deck3",
+    "internalList" : [ ]
+  }, {
+    "quizAttempts" : [ ],
+    "deckName" : "deck4",
+    "internalList" : [ ]
+  }, {
+    "quizAttempts" : [ ],
+    "deckName" : "deckrawrxd",
+    "internalList" : [ ]
+  }, {
+    "quizAttempts" : [ ],
+    "deckName" : "deck1234213",
+    "internalList" : [ ]
+  } ]
+}

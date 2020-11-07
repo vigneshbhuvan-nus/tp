@@ -189,6 +189,7 @@ public class StatisticsPanel extends UiPart<Region> {
     public static List<QuizAttempt> mergeSortedListsAndRetrieveFirstK(
         List<List<QuizAttempt>> listsToMerge, int k) {
         int numLists = listsToMerge.size();
+        if (numLists == 0) return new ArrayList<>();
         PriorityQueue<Pair<QuizAttempt, Integer>> pq = new PriorityQueue<>(numLists,
             Collections.reverseOrder());
 
