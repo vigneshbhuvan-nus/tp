@@ -90,7 +90,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_forKEquals10() {
+    void testMergeSortedListsAndRetrieveFirstK_forKEquals10_shouldGiveCorrectResult() {
         int k = 10;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
         //        for (int i = 0; i < k; ++i) {
@@ -111,7 +111,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_forKEquals20() {
+    void testMergeSortedListsAndRetrieveFirstK_forKEquals20_shouldGiveCorrectResult() {
         int k = 20;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
         //        for (int i = 0; i < k; ++i) {
@@ -131,7 +131,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_forKEquals30() {
+    void testMergeSortedListsAndRetrieveFirstK_forKEquals30_shouldGiveCorrectResult() {
         int k = 30;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
         //        for (int i = 0; i < k; ++i) {
@@ -149,7 +149,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_forKEquals50() {
+    void testMergeSortedListsAndRetrieveFirstK_forKEquals50_shouldGiveCorrectResult() {
         int k = 50;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
         //        for (int i = 0; i < k; ++i) {
@@ -167,7 +167,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_forKEquals100() {
+    void testMergeSortedListsAndRetrieveFirstK_forKEquals100_shouldGiveCorrectResult() {
         int k = 100;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
         //        for (int i = 0; i < k; ++i) {
