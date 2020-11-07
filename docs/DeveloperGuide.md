@@ -185,7 +185,7 @@ Commands update a class called `CurrentView.java` in `Model`. Based on the curre
 ### 3.4 Logic component
 
 The `Logic` component is the bridge between the `UI` and `Model` components. It is in charge of deciding what to do with the
-user input received from the `UI`. This component consists of the **Statistics**, **Parser** and the **Command** package.
+user input received from the `UI`. This component consists of the `Statistics`, `Parser` and the `Command` package.
 The class diagram of the `Logic` component is shown below in Figure 5.
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
@@ -215,21 +215,18 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 The `Model` component is in charge of changing the data within the application.
 This includes information about decks, entries and statistics.
-The general overview of the structure diagram of the `Model` component is shown below.
+The `Model` component consists of the `Play` and `Deck` package. The `Play` package consists of the `Scoring` package,
+`Leitner` object and the `Score` object. The `Deck` package consists of the `Entry` package, the `Deck` object and 
+all other similar object. 
+
+All these information on the `Model` component is visually expressed in the class diagram below.
+
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
 <p align="center"> Figure 7. Model component class relationship diagram
 
-There are three main components in model, namely word bank, leitner and quiz attempts. Word bank stores information about
-decks and entries. Leitner provides quiz information when a user starts a quiz. Quiz attempts stores data about user's
-performance in the quiz to be reflected in statistics.
-
 The diagram below will give more details about the word bank section of the model component.
-
-![Structure of the Model Component](images/ModelWordBankDiagram.png)
-
-<p align="center"> Figure 8. Structure of classes in the word bank
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
