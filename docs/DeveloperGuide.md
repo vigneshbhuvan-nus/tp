@@ -185,8 +185,8 @@ Commands update a class called `CurrentView.java` in `Model`. Based on the curre
 ### 3.4 Logic component
 
 The `Logic` component is the bridge between the `UI` and `Model` components. It is in charge of deciding what to do with the
-user input received from the `UI`. This component consists of **commands** and the **parser**.
-The structure diagram of the `Logic` component is shown below.
+user input received from the `UI`. This component consists of the **Statistics**, **Parser** and the **Command** package.
+The class diagram of the `Logic` component is shown below in Figure 5.
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 <p align="center"> Figure 5. Logic component class relationship diagram
@@ -195,10 +195,14 @@ The structure diagram of the `Logic` component is shown below.
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Role of the `Logic` component:
--  Uses the `WorkBankParser` class to parse the user command.
--  Creates a `Command` object which is passed to `LogicManager`.
+-  `Logic` receives the user command.
+- `Logic Manager` can either be in `Play Mode` or in `Command Mode`.
+-  Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
+-  Creates a `Command` object which is passed and executed by `LogicManager`.
 -  Executing the command can affect the `Model` (e.g. adding a deck).
 -  Returns the result of the command execution as a `CommandResult` object which is passed back to the `Ui`.
+-  Initialises the `StatisticsManager` on startup via `LogicManager` and maintains the `Statistics`.
+-  Any changes from executing a `Command` object is recorded in `Statistics` by `Statistics Manager`.
 -  In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
