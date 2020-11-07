@@ -1,8 +1,8 @@
 package seedu.address.logic.statistics;
 
-import static org.junit.jupiter.api.Assertions.*;
 
-import java.lang.reflect.Array;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
