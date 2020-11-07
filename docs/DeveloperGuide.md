@@ -395,7 +395,11 @@ With reference to figure 12, when the user types a AnswerCommand into the system
  * The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
  * The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
 
-__The diagram for this process will be created after the flashcard system is implemented__
+![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
+![PlayCommand](images/PlayActivityDiagram.png)
+![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
+![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
+
 
 #### Design Considerations:
 
