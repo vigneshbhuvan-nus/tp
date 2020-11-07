@@ -98,7 +98,7 @@ class StatisticsPanelTest {
 
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals10() {
+    void testMergeSortedListsAndRetrieveFirstK_ShouldGiveCorrectResult_ForKEquals10() {
         int k = 10;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
 //        for (int i = 0; i < k; ++i) {
@@ -119,7 +119,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals20() {
+    void testMergeSortedListsAndRetrieveFirstK_ShouldGiveCorrectResult_ForKEquals20() {
         int k = 20;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
 //        for (int i = 0; i < k; ++i) {
@@ -139,7 +139,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals30() {
+    void testMergeSortedListsAndRetrieveFirstK_ShouldGiveCorrectResult_ForKEquals30() {
         int k = 30;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
 //        for (int i = 0; i < k; ++i) {
@@ -157,7 +157,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals50() {
+    void testMergeSortedListsAndRetrieveFirstK_ShouldGiveCorrectResult_ForKEquals50() {
         int k = 50;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
 //        for (int i = 0; i < k; ++i) {
@@ -175,7 +175,7 @@ class StatisticsPanelTest {
     }
 
     @Test
-    void testMergeSortedListsAndRetrieveFirstK_shouldGiveCorrectResult_ForKEquals100() {
+    void testMergeSortedListsAndRetrieveFirstK_ShouldGiveCorrectResult_ForKEquals100() {
         int k = 100;
         List<QuizAttempt> ans = StatisticsPanel.mergeSortedListsAndRetrieveFirstK(listsToMerge, k);
 //        for (int i = 0; i < k; ++i) {

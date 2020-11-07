@@ -54,15 +54,27 @@ public class StatisticsManager {
     public LocalDateTime getLastLogin() {
         List<Event> eventLog = statistics.getEventLog();
 
-        if (eventLog.size() == 0) {
+        int n = eventLog.size();
+        if (n == 0 || n == 1) {
             return null;
         }
 
-        int idx = eventLog.size() - 2;
+        boolean seenFirstLogin = false;
+        int i;
+        Event cur;
         // get the second most recent login event
-        while (idx >= 0 && eventLog.get(idx).getEventType() != EventType.LOGIN) {
-            idx--;
+        for(i=n-1; i>=0; --i){
+            cur = eventLog.get(i);
+
+            if (cur.getEventType() != EventType.LOGIN) continue;
+
+            if (!seenFirstLogin) {
+                seenFirstLogin = true;
+            } else {
+                return cur.getLocalDateTime();
+            }
         }
-        return idx == -1 ? null : eventLog.get(idx).getLocalDateTime();
+
+        return null;
     }
 }
