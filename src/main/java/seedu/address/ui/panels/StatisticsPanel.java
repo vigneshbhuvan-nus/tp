@@ -130,7 +130,7 @@ public class StatisticsPanel extends UiPart<Region> {
 
         String lastLoginString = statisticsManager.getLastLoginString();
 
-        lastLoginLabel.setText(String.format("Last Login: %s", lastLoginString));
+//        lastLoginLabel.setText(String.format("Last Login: %s", lastLoginString));
     }
 
     private void initialize() {
