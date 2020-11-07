@@ -125,9 +125,10 @@ Common classes include:
 ### 3.3 UI component
 
 The `UI` component is the portion of the application which is visible to the user.
-The `UI` consists of a `MainWindow` that is made up of parts (E.g `CommandBox`, `ResultDisplay`, `DeckListPanel`, `StatusBarFooter`)
+The `UI` consists of a `MainWindow` that is made up of various parts (E.g `CommandBox`, `ResultDisplay`, `DeckListPanel`, `StatusBarFooter`)
 All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
-The structure diagram of the `UI` component is shown below.
+
+The structure diagram of the `UI` component is shown below in Figure 4.
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -142,24 +143,24 @@ Role of the `Ui` component:
 - Listens for changes to `Model` data so that the `Ui` can be updated with the modified data.
 
 
-The `Ui` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+The `Ui` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 `MainWindow.fxml` - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox. Contains the code for the actual menu bar
 
-`CommandBox.fxml` - Takes in user input
+`CommandBox.fxml` - Takes in the user input and passes it to `MainWindow` which will pass the input to `Logic`
 
 `DeckListPanel.fxml` - Houses a ListView<Deck>
 
 `EntryListPanel.fxml` - Houses a ListView<Entry>
 
-`EntryListCard.fxml`- (not housed by Mainwindow.fxml) Contains the data from each entry
+`EntryListCard.fxml`- Contains the word and translation data of each entry. Note that it is not housed by MainWindow.fxml
 
 `QuizPanel.fxml` - Displays quiz information to the user
 
 `ScorePanel.fxml` - Displays quiz score to the user only after a quiz has ended
 
-`StartPanel.fxml` - Displays green tea icon and some commands to the user
+`StartPanel.fxml` - Displays green tea icon and some sample commands to the user
 
 `StatisticsPanel.fxml` - Displays the statistics of past quizzes to the user
 
