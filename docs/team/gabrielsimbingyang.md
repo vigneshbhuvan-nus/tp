@@ -34,9 +34,11 @@ Given below are my contributions to the project.
 
 * **Project management**:
   * Team leader
-  * Managed workload and guided teammates with their contributions by providing step by step instructions when possible
+  * Helped other team members with their task and contributions
+  * Kept the team on schedule by monitoring dashboard, issues , milestones and datelines
+  * Ensured team members focused on goals during weekly group meetings
+  * Gave meaningful updates on my own progress to help teammates better understand the current state of the application
     (Pull requests [\#72](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/72))
-  * Led group meetings and discussion and set expectations such as datelines for tasks
   * Reported bugs and gave meaningful feedback to the team
     (examples: [1](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/183), [2](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/40), [3](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/38))
   * Managed releases `v1.3` - `v1.4` (3 releases) on GitHub
