@@ -4,6 +4,8 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 
 ## Table of Contents
 
+- [User Guide](#user-guide)
+  - [Table of Contents](#table-of-contents)
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
 - [3. Getting Started (Gabriel and Vignesh)](#3-getting-started-gabriel-and-vignesh)
@@ -12,24 +14,24 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   - [4.2 Command Format](#42-command-format)
     - [4.2.1 Arrowed Brackets](#421-arrowed-brackets)
     - [4.2.2 Square Brackets](#422-square-brackets)
-- [5. Features (Melanie)](#5-features)
+- [5. Features](#5-features)
   - [5.1 Deck Commands (Melanie)](#51-deck-commands-melanie)
     - [5.1.1 Creating a deck: new](#511-creating-a-deck-new)
     - [5.1.2 Removing a deck: remove](#512-removing-a-deck-remove)
     - [5.1.3 Selecting a deck: select](#513-selecting-a-deck-select)
-  - [5.2. Entry Commands (Vignesh)](#52-entry-commands-gabriel)
-    - [5.2.1 Adding a new entry: add](#521-adding-a-new-entry-add-vignesh)
-    - [5.2.2 Editing an entry: edit](#522-editing-an-entry-edit-vignesh)
-    - [5.2.3 Deleting an entry: delete](#523-deleting-an-entry-delete-vignesh)
-  - [5.3. PLay Commands (Georgie)](#53-play-commands-georgie)
-    - [5.3.1 Play a Game](#531-play-a-game-georgie)
-    - [5.3.2 Stop a Game](#532-stop-a-game--georgie)
-  - [5.4. Extra Commands (Georgie)](#54-extra-commands-georgie)
+  - [5.2 Entry Commands (Gabriel)](#52-entry-commands-gabriel)
+    - [5.2.1 Adding a new entry: add (Vignesh)](#521-adding-a-new-entry-add-vignesh)
+    - [5.2.2 Editing an entry: edit (Vignesh)](#522-editing-an-entry-edit-vignesh)
+    - [5.2.3 Deleting an entry: delete (Vignesh)](#523-deleting-an-entry-delete-vignesh)
+  - [5.3 Play Commands (Georgie)](#53-play-commands-georgie)
+  - [5.3.1 Play a Game (Georgie)](#531-play-a-game-georgie)
+  - [5.3.2 Stop a Game (Georgie)](#532-stop-a-game-georgie)
+  - [5.4 Extra Commands (Georgie)](#54-extra-commands-georgie)
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
-- [6. Statistics (Melanie)](#6-statistics-melanie)
-- [7. FAQ (Gabriel)](#7-faq-gabriel)
-- [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
+  - [6. Statistics (Melanie)](#6-statistics-melanie)
+  - [7. FAQ (Gabriel &amp; Melanie)](#7-faq-gabriel--melanie)
+  - [8. Command Summary (Gabriel)](#8-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -201,7 +203,7 @@ Before progressing further, we strongly recommend going through [Chapter 3](#3-g
 
 :information_source: This symbol represents important information
 
-:bulb: This symbol represents additional information
+:bulb: This symbol represents additional information or fun facts
 
 ## 4.2 Command Format
 
@@ -251,9 +253,6 @@ Figure 7. Result of creating new decks
 :information_source: **Note:**
 The name of the deck cannot be more than 100 characters long.
 
-:information_source: **Note:**
-A deck is simply a place to store a list of entries.
-
 ### 5.1.2 Removing a deck: `remove`
 
 Removes a deck with the given index.
@@ -266,6 +265,7 @@ To get the index of a deck, you may view it on the GUI. It would be the number d
 Example: `remove 1`
 
 Before deck 1 is removed:
+
 ![GreenTea](images/user-guide/8RemovingADeckBefore.png)
 Figure 8: GUI before deck 1 is removed
 
@@ -283,11 +283,17 @@ Format: `select <INDEX OF DECK>`
 :information_source: **Note:**
 The index of the deck is the number displayed it on the user interface.
 
-Examples: `select 1`
+Example: `select 1`
 
-Result:
-![GreenTea](images/user-guide/10SelectingADeck.png)
-Figure 10: Result of selecting a deck
+Before deck 1 is selected:
+
+![GreenTea](images/user-guide/10SelectingADeckBefore.png)
+Figure 10: GUI before deck 1 is selected
+
+After deck 1 is selected:
+
+![GreenTea](images/user-guide/11SelectingADeckAfter.PNG)
+Figure 11: GUI after deck 1 is selected
 
 ## 5.2 Entry Commands (Gabriel)
 
@@ -297,7 +303,7 @@ language you are most familiar and the `translation` is written in the language 
 this User Guide, we will be assuming the language for `word` will be in English.
 
 :information_source: **Note:**
-Before you start giving entry commands, remember to [select a deck first!](#613-selecting-a-deck-select)
+Before you start giving entry commands, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 :bulb: Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
@@ -315,8 +321,8 @@ Examples:
 
 Result:
 
-![GreenTea](images/user-guide/11AddingAnEntry.png)
-Figure 11: Result of adding an entry
+![GreenTea](images/user-guide/12AddingAnEntry.png)
+Figure 12: Result of adding an entry
 
 :information_source: **Note:**
 A word cannot be more than 200 characters long. A translation cannot be more than 200 characters long
@@ -339,8 +345,8 @@ Examples:
 
 Result:
 
-![GreenTea](images/user-guide/12EditingAnEntry.png)
-Figure 12. Result of editing an entry
+![GreenTea](images/user-guide/13EditingAnEntry.png)
+Figure 13. Result of editing an entry
 
 ### 5.2.3 Deleting an entry: `delete` (Vignesh)
 
@@ -350,14 +356,15 @@ Format: `delete <INDEX>`
 
 Example: `delete 1`
 
-Before an entry is deleted:
+Before entry 1 is deleted:
 
-![GreenTea](images/user-guide/13DeletingAnEntryBefore.png)
-Figure 13. GUI before an entry is deleted
+![GreenTea](images/user-guide/14DeletingAnEntryBefore.png)
+Figure 14. GUI before entry 1 is deleted
 
-Result:
-![GreenTea](images/user-guide/14DeletingAnEntryAfter.png)
-Figure 14. Result of deleting an entry
+After entry 1 is deleted:
+
+![GreenTea](images/user-guide/15DeletingAnEntryAfter.png)
+Figure 15. GUI after entry 1 is deleted
 
 ## 5.3 Play Commands (Georgie)
 
@@ -369,7 +376,7 @@ the complexities behind starting a new FlashCard game. In fact, there are only t
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
-to you at the end of the game. 
+to you at the end of the game.
 
 Format: `/play`
 
@@ -377,11 +384,11 @@ Format: `/play`
 The slash `/` in the command.
 
 :information_source: **Note:**
-Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
+Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
-![GreenTea](images/user-guide/15PlayAGame.png)
-Figure 15. Result of playing a game
+![GreenTea](images/user-guide/16PlayAGame.png)
+Figure 16. Result of playing a game
 
 ## 5.3.2 Stop a Game (Georgie)
 
@@ -390,11 +397,11 @@ Stop the current game prematurely. Note the slash `/` in the command.
 Format: `/stop`
 
 :information_source: **Note:**
-Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
+Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
-![GreenTea](images/user-guide/16StopAGame.png)
-Figure 16. Result of stopping a game
+![GreenTea](images/user-guide/17StopAGame.png)
+Figure 17. Result of stopping a game
 
 ## 5.4 Extra Commands (Georgie)
 
@@ -409,8 +416,8 @@ Format: `help`
 
 Result:
 
-![GreenTea](images/user-guide/17HelpWindow.PNG)
-Figure 17. Result of Opening Help Window
+![GreenTea](images/user-guide/18HelpWindow.PNG)
+Figure 18. Result of Opening Help Window
 
 ### 5.4.2 Exiting the program: `exit`
 
@@ -433,10 +440,10 @@ Format: `stats`
 
 Result:
 
-![GreenTea](images/user-guide/18StatsAllDecks.PNG)
-Figure 18. Result of viewing statistics across all decks
+![GreenTea](images/user-guide/19StatsAllDecks.PNG)
+Figure 19. Result of viewing statistics across all decks
 
-To view statistics of a single deck:
+To view statistics of **a single deck**:
 
 Format: `stats <INDEX>`
 
@@ -444,16 +451,24 @@ Example: `stats 1`
 
 Result:
 
-![GreenTea](images/user-guide/19StatsOneDeck.PNG)
-Figure 19. Result of viewing statistics of a single deck
+![GreenTea](images/user-guide/20StatsOneDeck.PNG)
+Figure 20. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
-In order to view your statistics, you must first [play a game!](#631-play-a-game-georgie)
+In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
 
-## 7. FAQ (Gabriel)
+## 7. FAQ (Gabriel & Melanie)
 
 **Q**: Will my score be recorded if I stop a game before I finish it?<br>
 **A**: Your score will be displayed to you after you pass a `stop` command but it will not be recorded in the statistics tab
+
+**Q**: Will all my data be saved when I exit Green Tea?
+**A**: Yes. All your data will be stores in a file called wordbank.json. This file can be found in the same folder where
+you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignesh)
+
+**Q**: Where do I go to if I need help?
+**A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
+any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
 
 ## 8. Command Summary (Gabriel)
 

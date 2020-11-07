@@ -2,20 +2,28 @@
 
 ### Table of Contents
 
+- [Green Tea Developer Guide (v1.4)](#green-tea-developer-guide-v14)
+  - [Table of Contents](#table-of-contents)
 - [1. Introduction](#1-introduction)
   - [1.1 Purpose](#11-purpose)
   - [1.2 Audience](#12-audience)
 - [2. Setting up, getting started](#2-setting-up-getting-started)
 - [3. Design](#3-design)
   - [3.1 Component Overview](#31-component-overview)
+  - [How the architecture components interact with one another](#how-the-architecture-components-interact-with-one-another)
   - [3.2 Common classes](#32-common-classes)
   - [3.3 UI component](#33-ui-component)
   - [3.4 Logic component](#34-logic-component)
   - [3.5 Model component](#35-model-component)
   - [3.6 Storage component](#36-storage-component)
 - [4. Implementation](#4-implementation)
-  - [4.1 Deck System](#41-deck-feature-melanie)
-  - [4.2 Flashcard System](#42-flashcard-system-gabriel)
+  - [4.1 Deck Feature (Melanie)](#41-deck-feature-melanie)
+  - [4.1.1 Overview](#411-overview)
+  - [4.1.2 Commands Implemented](#412-commands-implemented)
+  - [4.1.3 Select Deck](#413-select-deck)
+  - [4.2 Flashcard System (Gabriel)](#42-flashcard-system-gabriel)
+  - [Design Considerations:](#design-considerations-2)
+    - [Aspect: Type of flashcard system](#aspect-type-of-flashcard-system)
   - [4.3 [Proposed] Data Analysis](#43-proposed-data-analysis)
 - [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
 - [6. Appendix: Requirements](#6-appendix-requirements)
@@ -89,7 +97,9 @@ The rest of the App consists of four components.
 - [**`Storage`**](#36-storage-component): Reads data from, and writes data to, the hard disk.
 
 
+
 Each of the four components:
+
 
 - Defines its _API_ in an `interface` with the same name as the Component.
 - Exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
@@ -138,12 +148,15 @@ The structure diagram of the `UI` component is shown below in Figure 4.
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
 
 Role of the `Ui` component:
+
 - Receives the user input.
 - Executes user commands using the `Logic` component.
 - Listens for changes to `Model` data so that the `Ui` can be updated with the modified data.
 
 
+
 The `Ui` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+
 For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 `MainWindow.fxml` - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox. Contains the code for the actual menu bar
@@ -170,7 +183,6 @@ For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103
 
 `StatusBarFooter.fxml` - Returns the path of the file retrieved
 
-
 :information_source: **Note:**
 
 `MainWindow.fxml` contains a **tabPanel** which switches between 4 panels depending on the command given by the user.
@@ -181,7 +193,6 @@ Commands update a class called `CurrentView.java` in `Model`. Based on the curre
 - Panel which shows upon _starting a quiz game_ is `QuizPanel.fxml`.
 - Panel which shows upon _giving stats command_ is `StatisticsPanel.fxml`.
 
-
 ### 3.4 Logic component
 
 The `Logic` component is the bridge between the `UI` and `Model` components. It is in charge of deciding what to do with the
@@ -190,12 +201,15 @@ user input received from the `UI`. This component consists of the `Statistics`, 
 The class diagram of the `Logic` component is shown below in Figure 5.
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
+
 <p align="center"> Figure 5. Logic Component Class Diagram
+
 
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Role of the `Logic` component:
+
 -  `Logic` receives the user command.
 - `Logic Manager` can either be in `Play Mode` or in `Command Mode`.
 -  Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
@@ -205,6 +219,7 @@ Role of the `Logic` component:
 -  Initialises the `StatisticsManager` on startup via `LogicManager` and maintains the `Statistics`.
 -  Any changes from executing a `Command` object is recorded in `Statistics` by `Statistics Manager`.
 -  In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
@@ -233,6 +248,7 @@ The diagram below will give more details about the word bank section of the mode
 
 Role of `Model` component:
 - Stores a `UserPref` object that represents the user’s preferences.
+
 - Stores a `CurrentView` object that represents the current tab view on the UI.
 - Stores a `WordBank` component that maintains all the current `Entry` and `Deck` data.
 - Stores a `FilteredList<Deck>` object that maintains the current list of `Deck` in memory for error checking purposes.
@@ -251,6 +267,7 @@ Role of `Leitner` object:
 
 Role of `QuizAttempt` object:
 - Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
+
 
 ### 3.6 Storage component
 
@@ -271,8 +288,7 @@ The `Storage` component,
 - Saves the word bank data, such as `Deck`, `Entry`, `Word` and `Translation` in json format and read it back.
 - Saves the statistics and scores of each individual quiz taken by the user.
 
-
-Each `Word` and `Translation` is saved in a `JsonAdaptedWord `and `JsonAdaptedTranslation` object respectively.
+Each `Word` and `Translation` is saved in a `JsonAdaptedWord`and `JsonAdaptedTranslation` object respectively.
 Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdaptedWord` and `JsonAdaptedTranslation`.
 Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry`.
 
@@ -306,13 +322,15 @@ E.g.
 Users will be able to `add` decks, `delete` decks and `select` decks.
 
 ##### Design Considerations
+
 ###### Aspect: One long list of entries or deck system
 
 - **Alternative 1 (current choice)**: Deck system
+
   - Pros: Users are better able to organize their entries into groups.
-          Commands such as `find` and `list` to filter entries are no longer needed.
-          Allows [flashcard system](#42-flashcard-system-gabriel) to be implemented more easily.
-          Higher level of abstraction.
+    Commands such as `find` and `list` to filter entries are no longer needed.
+    Allows [flashcard system](#42-flashcard-system-gabriel) to be implemented more easily.
+    Higher level of abstraction.
   - Cons: Harder to implement, more code and commands required
 
 - **Alternative 2**: One long list of entries
@@ -352,8 +370,9 @@ UI, Logic and Model components.
 
 - **Alternative 1 (current choice)**: `select <deck_index>` Select a deck before any entry level command can be given.
   E.g. `select 1` followed by `delete 1`
+
   - Pros: Easier for a user to make continuous changes to the same deck
-          Allows following features to be implemented more easily
+    Allows following features to be implemented more easily
   - Cons: Users have to give an additional command
 
 - **Alternative 2**: `delete <deck_index> <entry_index>` Entry level commands specify a deck. E.g `delete 1 1`
@@ -371,29 +390,34 @@ Green Tea is designed to be a simple and easy system for new users to use.
 
 ### 4.2 Flashcard System (Gabriel)
 
-Three additional commands are used for the flashcard system -  PlayCommand, StopCommand and AnswerCommand.
+Three additional commands are used for the flashcard system - PlayCommand, StopCommand and AnswerCommand.
 
 By default, StopCommand and AnswerCommand cannot be accessed by the user until a PlayCommand is typed by the user.
 
 ![Sequence Diagram of Play Command](images/PlayCommandSequenceDiagram.png)
+
 <p align="center"> Figure 11. Sequence Diagram of Play Command
 
 With reference to Figure 11, after a PlayCommand is created:
-* A boolean isPlayMode in AddressBookParser becomes True (not shown yet as the implementation might change).
-* All following user inputs are treated as either an AnswerCommand or a StopCommand
-* A Leitner object is created that stores the current entries of the selected deck and shuffles them
-* The Leitner object also forms questions and answers list based on the shuffled list
+
+- A boolean isPlayMode in AddressBookParser becomes True (not shown yet as the implementation might change).
+- All following user inputs are treated as either an AnswerCommand or a StopCommand
+- A Leitner object is created that stores the current entries of the selected deck and shuffles them
+- The Leitner object also forms questions and answers list based on the shuffled list
 
 ![Sequence Diagram of Answer Command](images/AnswerCommandSequenceDiagram.png)
+
 <p align="center"> Figure 12. Sequence Diagram of Play Command
 
 With reference to figure 12, when the user types a AnswerCommand into the system:
- * The AddressBookParser first checks if it is current is in play mode via the boolean isPlayMode
- * If it is not in play mode, an error message is shown to the user via the UI
- * If it is in play mode, an AnswerCommand containing hte user input is sent to the model and checked against
+
+- The AddressBookParser first checks if it is current is in play mode via the boolean isPlayMode
+- If it is not in play mode, an error message is shown to the user via the UI
+- If it is in play mode, an AnswerCommand containing hte user input is sent to the model and checked against
   the current question in Leitner.java
- * The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
- * The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
+- The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
+- The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
+
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
 
@@ -408,16 +432,17 @@ With reference to figure 12, when the user types a AnswerCommand into the system
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
 
 
+
 #### Design Considerations:
 
 ##### Aspect: Type of flashcard system
 
 - **Alternative 1 (current choice)** : Leitner System
   - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
-          using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
-          answered flashcards are put at the end of the question queue and incorrectly answered
-          flashcards are placed at the front.
-          (https://en.wikipedia.org/wiki/Leitner_system)
+    using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
+    answered flashcards are put at the end of the question queue and incorrectly answered
+    flashcards are placed at the front.
+    (https://en.wikipedia.org/wiki/Leitner_system)
   - Cons: More difficult to implement
 - **Alternative 2** : Random shuffling system
   - Pros: Easier to implement
@@ -462,6 +487,7 @@ _{Feature will be added in v1.3.2}_
 **Target user profile**:
 
 A person that:
+
 - wants to learn and practice a language
 - wants to remember the meaning and spelling of words in a new language
 - prefers question based testing to learn a language
@@ -477,23 +503,23 @@ leaning progress
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​  | I want to …​                                | So that I can…​                                        |
-| -------- | -------- | ------------------------------------------- | ------------------------------------------------------ |
-| `* * *`  | new user | see usage instructions                      | refer to instructions when I forget how to use the application |
-| `* * *`  | user     | add a Word-Meaning pair                     | populate the list with words and their translations        |
-| `* * *`  | user     | delete a Word-Meaning pair                  | delete an unwanted entry                               |
-| `* * *`  | user     | edit a Word-Meaning pair                    | edit an entry                                          |
-| `* * *`  | user     | access a Dictionary of Word-Meaning pairs   | refresh my understanding of the words                  |
-| `* * *`  | user     | create a question                           | test my understanding of a word                        |
-| `* * *`  | user     | create an open-ended question               | test my spelling and understanding of the word         |
-| `* * *`  | user     | delete a question                           | delete an unwanted entry                               |
-| `* * *`  | user     | edit a question                             | delete an unwanted entry                               |
-| `* * *`  | user     | access the list of questions                | view all the questions                                 |
-| `* * *`  | user     | create a quiz from the pool of questions    | attempt the questions                                  |
-| `* * *`  | user     | submit the quiz                             | see my results                                         |
-| `* *`    | user     | view statistics of the quiz                 | gauge my strengths and weaknesses                      |
-| `* *`    | user     | view past quiz scores                    | know how I performed for each quiz                     |
-| `*`      | user     | test my spelling                            | learn how to spell the words correctly                 |
+| Priority | As a …​  | I want to …​                              | So that I can…​                                                |
+| -------- | -------- | ----------------------------------------- | -------------------------------------------------------------- |
+| `* * *`  | new user | see usage instructions                    | refer to instructions when I forget how to use the application |
+| `* * *`  | user     | add a Word-Meaning pair                   | populate the list with words and their translations            |
+| `* * *`  | user     | delete a Word-Meaning pair                | delete an unwanted entry                                       |
+| `* * *`  | user     | edit a Word-Meaning pair                  | edit an entry                                                  |
+| `* * *`  | user     | access a Dictionary of Word-Meaning pairs | refresh my understanding of the words                          |
+| `* * *`  | user     | create a question                         | test my understanding of a word                                |
+| `* * *`  | user     | create an open-ended question             | test my spelling and understanding of the word                 |
+| `* * *`  | user     | delete a question                         | delete an unwanted entry                                       |
+| `* * *`  | user     | edit a question                           | delete an unwanted entry                                       |
+| `* * *`  | user     | access the list of questions              | view all the questions                                         |
+| `* * *`  | user     | create a quiz from the pool of questions  | attempt the questions                                          |
+| `* * *`  | user     | submit the quiz                           | see my results                                                 |
+| `* *`    | user     | view statistics of the quiz               | gauge my strengths and weaknesses                              |
+| `* *`    | user     | view past quiz scores                     | know how I performed for each quiz                             |
+| `*`      | user     | test my spelling                          | learn how to spell the words correctly                         |
 
 ### 6.3 Use cases
 
@@ -635,14 +661,14 @@ Initial launch
 1. Download the jar file and copy into an empty folder
 
 2. Double-click the jar file.<br>
-Expected: Shows the GUI with a set of sample decks. The window size may not be optimum.
+   Expected: Shows the GUI with a set of sample decks. The window size may not be optimum.
 
 Saving window preferences
 
 1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
 2. Re-launch the app by double-clicking the jar file.<br>
-    Expected: The most recent window size and location is retained.
+   Expected: The most recent window size and location is retained.
 
 ### 7.2 Removing a deck
 
@@ -653,7 +679,7 @@ Removing a deck while all decks are being shown
 2.  Test case: `remove 1`<br>
     Expected: First deck is removed from the list. Status message shown to confirm that the deck has been deleted.
 
-3. Test case: `select 1` then `remove 1`<br>
+3.  Test case: `select 1` then `remove 1`<br>
     Expected: First deck is removed from the list. Status message shown to confirm that the deck has been deleted.
     The tab panel, previously showing the entries of deck 1, will show the start panel.
 
@@ -664,7 +690,7 @@ Removing a deck while all decks are being shown
     - `remove`
     - `remove asdf`
     - `remove x` (where x is a positive integer larger than the list size)<br>
-    Expected: Similar to previous test case 4
+      Expected: Similar to previous test case 4
 
 ### Saving data
 
