@@ -362,6 +362,10 @@ UI, Logic and Model components.
 Utimately, we decided that user navigability was more important than the extra `select` command needed. This is because
 Green Tea is designed to be a simple and easy system for new users to use.
 
+![SelectActivityDiagram](images/SelectActivityDiagram.png)
+
+![AddEntry](images/AddEntryActivityDiagram.png)
+
 ### 4.2 Flashcard System (Gabriel)
 
 Three additional commands are used for the flashcard system -  PlayCommand, StopCommand and AnswerCommand.
