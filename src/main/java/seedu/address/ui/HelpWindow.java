@@ -17,7 +17,7 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL =
-            "https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md\n\n";
+            "https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md";
 
     public static final String DECK_COMMANDS = "==============================="
                                              + "DECK COMMANDS"
@@ -27,10 +27,10 @@ public class HelpWindow extends UiPart<Stage> {
                                                 + "Format: new <NAME OF NEW DECK> e.g. new Korean\n\n";
 
     public static final String REMOVE_DECK_COMMAND = "Removing an existing deck: remove\n"
-                                                   + "Format: remove <DECK_INDEX> e.g. remove 2\n\n";
+                                                   + "Format: remove <INDEX OF DECK> e.g. remove 2\n\n";
 
     public static final String SELECT_DECK_COMMAND = "Selecting an existing deck: select\n"
-                                                   + "Format: select <DECK_INDEX> e.g. select 1\n\n";
+                                                   + "Format: select <INDEX OF DECK> e.g. select 1\n\n";
 
     public static final String ENTRY_COMMANDS = "==============================="
                                                + "ENTRY COMMANDS"
@@ -47,33 +47,54 @@ public class HelpWindow extends UiPart<Stage> {
                                             + "Format: edit <INDEX> w/<WORD> t/<TRANSLATION> || "
                                             + "edit <INDEX> w/<WORD> || "
                                             + "edit <INDEX> t/<TRANSLATION> "
-                                            + "e.g. edit 1 w/hello t/こんにちは || "
+                                            + "\n          e.g. edit 1 w/hello t/こんにちは || "
                                             + "edit 1 w/hello || "
                                             + "edit 1 t/こんにちは\n\n";
 
     public static final String DELETE_COMMAND = "Deleting an entry: delete\n"
-                                            + "Format: delete <INDEX> e.g. delete 5\n\n";
+                                            + "Format: delete <INDEX OF ENTRY> e.g. delete 5\n\n";
 
     public static final String CLEAR_COMMAND = "Clearing all entries: clear\n"
                                             + "Format: clear\n\n";
 
-    public static final String MISC_COMMAND = "==============================="
+    public static final String QUIZ_COMMANDS = "==============================="
+                                            + "QUIZ COMMANDS"
+                                            + "==============================\n\n"
+                                            + "**Remember to select a deck before using a Quiz command**\n\n";
+
+    public static final String PLAY_COMMAND = "Play a quiz: /play\n"
+                                            + "Format: /play\n\n";
+
+    public static final String STOP_COMMAND = "Stop a quiz: /stop\n"
+                                            + "Format: /stop\n\n";
+
+    public static final String STATS_COMMAND = "View a summary of statistics: stats\n"
+                                            + "Format: stats || "
+                                            + "stats <INDEX> "
+                                            + "e.g. stats || stats 1\n\n";
+
+    public static final String MISC_COMMANDS = "==============================="
                                             + "MISC COMMANDS"
                                             + "==============================\n\n";
 
     public static final String EXIT_COMMAND = "Exiting the program: exit\n"
                                             + "Format: exit\n\n";
 
+    public static final String HELP_COMMAND = "View a summary of the commands: help\n"
+                                            + "Format: help\n\n";
+
     public static final String COMMAND_LIST = DECK_COMMANDS
                                             + NEW_DECK_COMMAND + REMOVE_DECK_COMMAND + SELECT_DECK_COMMAND
                                             + ENTRY_COMMANDS
                                             + ADD_COMMAND + LIST_COMMAND + EDIT_COMMAND
                                             + DELETE_COMMAND + CLEAR_COMMAND
-                                            + MISC_COMMAND
-                                            + EXIT_COMMAND;
+                                            + QUIZ_COMMANDS
+                                            + PLAY_COMMAND + STOP_COMMAND + STATS_COMMAND
+                                            + MISC_COMMANDS
+                                            + HELP_COMMAND + EXIT_COMMAND;
 
     public static final String HELP_MESSAGE = "Please refer to the user guide at this link for more information: "
-                                            + USERGUIDE_URL + COMMAND_LIST;
+                                            + USERGUIDE_URL + "\n\n" + COMMAND_LIST;
 
     private static final Logger logger = LogsCenter.getLogger(HelpWindow.class);
     private static final String FXML = "HelpWindow.fxml";
@@ -92,7 +113,7 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
         helpMessage.setText(HELP_MESSAGE);
-        helpMessage.setFont(new Font("Arial", 16));
+        helpMessage.setFont(new Font("Arial", 14));
     }
 
     /**

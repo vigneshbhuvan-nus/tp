@@ -406,7 +406,8 @@ Format: `help`
 
 Result:
 
-![GreenTea](images/Ui.png)
+![GreenTea](images/user-guide/17HelpWindow.PNG)
+Figure 17. Result of Opening Help Window
 
 ### 5.4.2 Exiting the program: `exit`
 
@@ -459,10 +460,11 @@ In order to view your statistics, you must first [play a game!](#631-play-a-game
 | **Remove**                                                                                         | `remove <INDEX OF DECK>`  |`remove 1`    |Removes the Deck with the Given Index          |
 | **Select**                                                                                         | `select <INDEX OF DECK>`  |`select 1`    |Selects the Deck with the Given Index and Lists All It's Entries         |
 | **Add**                                                                                            | `add w/<WORD> t/<TRANSLATION>` | `add w/Hello t/hola`       |Adds an Entry with the Given Word and Translation to the Selected Deck|
-| **Edit**                                                                                           | `edit 1 [w/word] [t/translation]` | `edit 1 w/hello t/こんにちは`   | Edits the Entry with the Given Index Using the Given Values|
+| **Edit**                                                                                           | `edit <INDEX> [w/word] [t/translation]` | `edit 1 w/hello t/こんにちは`   | Edits the Entry with the Given Index Using the Given Values|
 | **Delete**                                                                                         | `delete <INDEX>` | `delete 3`                                                                     | Deletes the Entry with the Given Index|
 | **Play**                                                                                           | `/play`       |  | Starts a New FlashCard Game with the Selected Deck
 | **Stop**                                                                                           | `/stop`       | | Stops an Existing Game
+| **Statistics**                                                                                     | `stats <INDEX>`| `stats 1`| Shows Statistics of a Particular Deck or Overall
 | **Clear**                                                                                          | `clear`      |  | Deletes All Decks and Entries
 | **Help**                                                                                           | `help`       | | Opens Our User Guide in the Application|
 | **Exit**                                                                                           | `exit`       |  | Saves and Exits the Program
