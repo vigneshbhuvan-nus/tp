@@ -1,0 +1,21 @@
+@startuml
+Start
+if() then ([Answer is correct])
+:Update Score in QuizAttempt;
+else(             [Answer is wrong])
+endif
+:Extract next question from Leitner object;
+if() then ([Leitner has unanswered questions])
+        :Add new QuestionAttempt to QuizAttempt;
+        : Display next question on the quiz tab of the UI;
+        : Display previous question, previous answer given
+        and correct answer on the right side of the quiz tab;
+        else ([Leitner has no more unanswered question])
+        : Switch Logic Manager back to Command Mode;
+        : Extract current score from Model;
+        : Save current score to Statistics object in Logic Manager;
+        : Display a message to the UI result box indicating the current score;
+        : Clear quiz tab;
+        endif
+Stop
+@enduml
