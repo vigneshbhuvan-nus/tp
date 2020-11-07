@@ -374,7 +374,7 @@ to you at the end of the game.
 Format: `/play`
 
 :information_source: **Note:**
-Note the slash `/` in the command.
+The slash `/` in the command.
 
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
