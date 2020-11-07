@@ -19,9 +19,9 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.logic.Logic;
+import seedu.address.logic.statistics.StatisticsManager;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.play.scoring.QuizAttempt;
-import seedu.address.logic.statistics.StatisticsManager;
 import seedu.address.ui.UiPart;
 
 public class StatisticsPanel extends UiPart<Region> {
@@ -64,14 +64,14 @@ public class StatisticsPanel extends UiPart<Region> {
         @Override
         public String toString() {
             return "DataPoint{" + "scoreInPercentage="
-                + scoreInPercentage + ", takenAt=" + takenAt + '}';
+                    + scoreInPercentage + ", takenAt=" + takenAt + '}';
 
         }
     }
 
     // helper class
     private static class Pair<S extends Comparable<S>, T extends Comparable<T>> implements
-        Comparable<Pair<S, T>> {
+            Comparable<Pair<S, T>> {
 
         private S first;
         private T second;
@@ -114,8 +114,8 @@ public class StatisticsPanel extends UiPart<Region> {
         ObservableList<Deck> originalDecks = logic.getFilteredDeckList();
         // decide which deck to get, or get all of them if indexOfSelectedDeck==-1
         List<Deck> decks = IntStream.range(0, originalDecks.size())
-            .filter(idx -> indexOfSelectedDeck == -1 || idx == indexOfSelectedDeck)
-            .mapToObj(originalDecks::get).collect(Collectors.toList());
+                .filter(idx -> indexOfSelectedDeck == -1 || idx == indexOfSelectedDeck)
+                .mapToObj(originalDecks::get).collect(Collectors.toList());
 
         if (indexOfSelectedDeck == -1 || decks.size() == 0) {
             chartTitle = "Recent performance over all decks.";
@@ -144,11 +144,11 @@ public class StatisticsPanel extends UiPart<Region> {
 
     private void plotDataPoints(List<DataPoint> dataPoints) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-         series.setName("Score (in %)");
+        series.setName("Score (in %)");
         for (DataPoint dataPoint : dataPoints) {
             series.getData()
-                .add(new XYChart.Data<>(dataPoint.getTakenAtString(),
-                    dataPoint.getScoreInPercentage()));
+                    .add(new XYChart.Data<>(dataPoint.getTakenAtString(),
+                            dataPoint.getScoreInPercentage()));
         }
         statisticsLineChart.getData().add(series);
     }
@@ -187,11 +187,13 @@ public class StatisticsPanel extends UiPart<Region> {
      * @param listsToMerge
      */
     public static List<QuizAttempt> mergeSortedListsAndRetrieveFirstK(
-        List<List<QuizAttempt>> listsToMerge, int k) {
+            List<List<QuizAttempt>> listsToMerge, int k) {
         int numLists = listsToMerge.size();
-        if (numLists == 0) return new ArrayList<>();
+        if (numLists == 0) {
+            return new ArrayList<>();
+        }
         PriorityQueue<Pair<QuizAttempt, Integer>> pq = new PriorityQueue<>(numLists,
-            Collections.reverseOrder());
+                Collections.reverseOrder());
 
         int[] ptrs = new int[numLists]; // tracks current pos in each list
 

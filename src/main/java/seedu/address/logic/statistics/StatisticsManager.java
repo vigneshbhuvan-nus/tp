@@ -63,10 +63,12 @@ public class StatisticsManager {
         int i;
         Event cur;
         // get the second most recent login event
-        for(i=n-1; i>=0; --i){
+        for (i = n - 1; i >= 0; --i) {
             cur = eventLog.get(i);
 
-            if (cur.getEventType() != EventType.LOGIN) continue;
+            if (cur.getEventType() != EventType.LOGIN) {
+                continue;
+            }
 
             if (!seenFirstLogin) {
                 seenFirstLogin = true;
