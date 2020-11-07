@@ -13,7 +13,6 @@
   - [3.4 Logic component](#34-logic-component)
   - [3.5 Model component](#35-model-component)
   - [3.6 Storage component](#36-storage-component)
-  - [3.7 PhaseManager component](#37-phasemanager-component)
 - [4. Implementation](#4-implementation)
   - [4.1 Deck System](#41-deck-feature-melanie)
   - [4.2 Flashcard System](#42-flashcard-system-gabriel)
@@ -217,6 +216,10 @@ The general overview of the structure diagram of the `Model` component is shown 
 
 <p align="center"> Figure 7. Model component class relationship diagram
 
+There are three main components in model, namely word bank, leitner and quiz attempts. Word bank stores information about
+decks and entries. Leitner provides quiz information when a user starts a quiz. Quiz attempts stores data about user's
+performance in the quiz to be reflected in statistics.
+
 The diagram below will give more details about the word bank section of the model component.
 
 ![Structure of the Model Component](images/ModelWordBankDiagram.png)
@@ -267,10 +270,10 @@ This section describes some noteworthy details on how and why certain features a
 
 ### 4.1 Deck Feature (Melanie)
 
-### 4.1.1 Overview
+#### 4.1.1 Overview
 
 This feature allows the user to create multiple lists of entries called decks.
-The user could have different decks for different languages or multiple decks for the same language.
+The user can have different decks for different languages or multiple decks for the same language.
 
 E.g.
 
@@ -280,12 +283,12 @@ E.g.
 
 Users will be able to `add` decks, `delete` decks and `select` decks.
 
-#### Design Considerations
-##### Aspect: One long list of entries or deck system
+##### Design Considerations
+###### Aspect: One long list of entries or deck system
 
 - **Alternative 1 (current choice)**: Deck system
-  - Pros: Users are better organize their entries into groups.
-          Additional commands such as `find` and `list` to filter entries are no longer needed.
+  - Pros: Users are better able to organize their entries into groups.
+          Commands such as `find` and `list` to filter entries are no longer needed.
           Allows [flashcard system](#42-flashcard-system-gabriel) to be implemented more easily.
           Higher level of abstraction.
   - Cons: Harder to implement, more code and commands required
@@ -294,7 +297,7 @@ Users will be able to `add` decks, `delete` decks and `select` decks.
   - Pros: Easier implementation, less code required.
   - Cons: Harder for users to navigate and find the entry that they are looking for.
 
-### 4.1.2 Commands Implemented
+#### 4.1.2 Commands Implemented
 
 Three commands are used in order to support having a deck system - New Deck Command, Remove Deck Command and Select Command
 
@@ -307,21 +310,23 @@ For example, when a deck is added, the `model` must be updated with a new deck l
 `UI` must also reflect the added deck to be shown to the user.
 The `Storage` component is needed for commands `new` and `remove`
 
-### 4.1.3 Select Deck
+#### 4.1.3 Select Deck
 
 This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
 Only after selecting a deck, can some other commands (E.g `add`, `delete`, `edit`, `/play`) be performed.
+
+:information_source: **Note:**
 
 The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
 UI, Logic and Model components.
 
 - The selected deck is retrieved from `FilteredList<Deck>` in the model component.
 - These entries in the selected deck replaces the current entries in the `UniqueEntryList` object of WordBank causing the GUI to change accordingly.
-- A similar approach is done for other commands that changes the GUI such as `add <entry>` and `clear` command
+- This approach is used for other commands that changes the GUI such as `add <entry>` and `clear` command
 
-#### Design Considerations
+##### Design Considerations
 
-##### Aspect: Command format to select a deck
+###### Aspect: Command format to select a deck
 
 - **Alternative 1 (current choice)**: `select <deck_index>` Select a deck before any entry level command can be given.
   E.g. `select 1` followed by `delete 1`
@@ -627,13 +632,13 @@ Removing a deck while all decks are being shown
 Dealing with missing data files
 
 1. Launch the application. Add a deck to Green Tea then close the application
-2. The data file is located at /data, addressbook.json. The deck you just created should be visible in the data file
+2. The data file is located at /data, wordbank.json. The deck you just created should be visible in the data file
 3. Delete the data file
 4. Launch the application again. Green Tea should display a list of sample decks.
 
 Dealing with corrupted data files
 
-1. The data file is located at /data, addressbook.json.
+1. The data file is located at /data, wordbank.json.
 2. Remove the _d_ in _decks_ on line 2 of the data file.
 3. Launch the application. Green Tea should display an empty deck list.
 4. Add a deck to Green Tea then close the application. The data file should now be in the correct format.
