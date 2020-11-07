@@ -25,6 +25,10 @@ Class DeckName
 Class UniqueDeckList
 }
 
+Package View {
+Class CurrentView
+}
+
 Package Play {
 Package Scoring {
 Class BinaryScoring
@@ -72,6 +76,6 @@ WordBank -> Entry: has filtered list of
 ModelManager *--->"0..1" Leitner
 ModelManager *-->"0..1" QuizAttempt
 ModelManager -> Deck: has filtered list of
-
+ModelManager *--->"1" View
 
 @enduml

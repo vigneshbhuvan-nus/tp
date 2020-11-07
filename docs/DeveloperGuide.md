@@ -70,7 +70,7 @@ how the components work together with one another.
 The components of the application are Main, Commons, UI, Logic, Model and Storage.
 
 <p align="center"><<img src="images/ArchitectureDiagram.png" width="450" />
-<p align="center">Figure 1.Overview of components and their relationships </p>
+<p align="center">Figure 1.Architecture Diagram </p>
 
 The **_Component Overview Diagram_** above shows the high-level design of the application.
 Given below is a quick overview of each component.
@@ -96,23 +96,26 @@ The rest of the App consists of four components.
 - [**`Model`**](#35-model-component): Holds the data of the App in memory.
 - [**`Storage`**](#36-storage-component): Reads data from, and writes data to, the hard disk.
 
-Each of the four components
 
-- defines its _API_ in an `interface` with the same name as the Component.
-- exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
+
+Each of the four components:
+
+
+- Defines its _API_ in an `interface` with the same name as the Component.
+- Exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
 
 For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
 
-<p align="center"> Figure 2. Example of a component's API and functionality
+<p align="center"> Figure 2. Example Class Diagram of the Logic Component
 
 #### How the architecture components interact with one another
 
 The _Sequence Diagram_ below (Figure 3) shows how the components interact with one another when the user issues the command `remove 1`.
 
-<img src="images/ArchitectureSequenceDiagram.png" width="574" />
-<p align="center"> Figure 3. Components interacting with one another
+![Sequence Diagram of Various Components](images/ArchitectureSequenceDiagram.png)
+<p align="center"> Figure 3. Sequence Diagram of Various Components
 
 The sections below give more details about each component.
 
@@ -132,9 +135,10 @@ Common classes include:
 ### 3.3 UI component
 
 The `UI` component is the portion of the application which is visible to the user.
-The `UI` consists of a `MainWindow` that is made up of parts (E.g `CommandBox`, `ResultDisplay`, `DeckListPanel`, `StatusBarFooter`)
+The `UI` consists of a `MainWindow` that is made up of various parts (E.g `CommandBox`, `ResultDisplay`, `DeckListPanel`, `StatusBarFooter`)
 All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
-The structure diagram of the `UI` component is shown below.
+
+The structure diagram of the `UI` component is shown below in Figure 4.
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -149,24 +153,27 @@ Role of the `Ui` component:
 - Executes user commands using the `Logic` component.
 - Listens for changes to `Model` data so that the `Ui` can be updated with the modified data.
 
-The `Ui` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+
+
+The `Ui` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
+
 For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 `MainWindow.fxml` - Houses the rest of the fxml (commandBox,HelpWindow, etc) in the VBox. Contains the code for the actual menu bar
 
-`CommandBox.fxml` - Takes in user input
+`CommandBox.fxml` - Takes in the user input and passes it to `MainWindow` which will pass the input to `Logic`
 
 `DeckListPanel.fxml` - Houses a ListView<Deck>
 
 `EntryListPanel.fxml` - Houses a ListView<Entry>
 
-`EntryListCard.fxml`- (not housed by Mainwindow.fxml) Contains the data from each entry
+`EntryListCard.fxml`- Contains the word and translation data of each entry. Note that it is not housed by MainWindow.fxml
 
 `QuizPanel.fxml` - Displays quiz information to the user
 
 `ScorePanel.fxml` - Displays quiz score to the user only after a quiz has ended
 
-`StartPanel.fxml` - Displays green tea icon and some commands to the user
+`StartPanel.fxml` - Displays green tea icon and some sample commands to the user
 
 `StatisticsPanel.fxml` - Displays the statistics of past quizzes to the user
 
@@ -189,70 +196,89 @@ Commands update a class called `CurrentView.java` in `Model`. Based on the curre
 ### 3.4 Logic component
 
 The `Logic` component is the bridge between the `UI` and `Model` components. It is in charge of deciding what to do with the
-user input received from the `UI`. This component consists of **commands** and the **parser**.
-The structure diagram of the `Logic` component is shown below.
+user input received from the `UI`. This component consists of the `Statistics`, `Parser` and the `Command` package.
+
+The class diagram of the `Logic` component is shown below in Figure 5.
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
-<p align="center"> Figure 5. Logic component class relationship diagram
+<p align="center"> Figure 5. Logic Component Class Diagram
+
 
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Role of the `Logic` component:
 
-- Uses the `WorkBankParser` class to parse the user command.
-- Creates a `Command` object which is passed to `LogicManager`.
-- Executing the command can affect the `Model` (e.g. adding a deck).
-- Returns the result of the command execution as a `CommandResult` object which is passed back to the `Ui`.
-- In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+-  `Logic` receives the user command.
+- `Logic Manager` can either be in `Play Mode` or in `Command Mode`.
+-  Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
+-  Creates a `Command` object which is passed and executed by `LogicManager`.
+-  Executing the command can affect the `Model` (e.g. adding a deck).
+-  Returns the result of the command execution as a `CommandResult` object which is passed back to the `Ui`.
+-  Initialises the `StatisticsManager` on startup via `LogicManager` and maintains the `Statistics`.
+-  Any changes from executing a `Command` object is recorded in `Statistics` by `Statistics Manager`.
+-  In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
-<p align="center"> Figure 6. Interactions between different parts of the logic component
+<p align="center"> Figure 6. Sequence Diagram of Logic Component for "Remove 1" Command
 
 ### 3.5 Model component
 
 The `Model` component is in charge of changing the data within the application.
 This includes information about decks, entries and statistics.
-The general overview of the structure diagram of the `Model` component is shown below.
+The `Model` component consists of the `Play`, `Deck` and `View` package. The `Play` package consists of the `Scoring` package,
+`Leitner` object and the `Score` object. The `Deck` package consists of the `Entry` package, the `Deck` object and 
+all other similar object. 
+
+All these information on the `Model` component is visually expressed in the class diagram below.
+
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
-<p align="center"> Figure 7. Model component class relationship diagram
-
-There are three main components in model, namely word bank, leitner and quiz attempts. Word bank stores information about
-decks and entries. Leitner provides quiz information when a user starts a quiz. Quiz attempts stores data about user's
-performance in the quiz to be reflected in statistics.
+<p align="center"> Figure 7. Model Component Class Diagram
 
 The diagram below will give more details about the word bank section of the model component.
-
-![Structure of the Model Component](images/ModelWordBankDiagram.png)
-
-<p align="center"> Figure 8. Structure of classes in the word bank
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 Role of `Model` component:
-
 - Stores a `UserPref` object that represents the user’s preferences.
-- Stores a `FilteredList<Deck>` object that maintain`s the current list of decks in memory.
-- Exposes an unmodifiable `ObservableList<Deck>` and `ObservableList<Entry>`
-  that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
-- Does not depend on any of the other three components.
+
+- Stores a `CurrentView` object that represents the current tab view on the UI.
+- Stores a `WordBank` component that maintains all the current `Entry` and `Deck` data.
+- Stores a `FilteredList<Deck>` object that maintains the current list of `Deck` in memory for error checking purposes.
+- Creates and maintains a `Leitner` object and a `QuizAttempt` object using a selected deck from `FilteredList<Deck>` if
+a `PlayCommand` object is executed by `Logic`.
+
+Role of `WordBank` component
+- Maintains all the current `Entry` and `Deck` data.
+- Stores a `FilteredList<Entry>` object that maintains the current list of `Entry` in memory.
+- Exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`
+that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+
+Role of `Leitner` object:
+- Shuffles a given `Deck` by decomposing it into a list of `Translations` and a list of `Word`.
+- Return each `Translation` and `Word` when called by `ModelManager`.
+
+Role of `QuizAttempt` object:
+- Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
+
 
 ### 3.6 Storage component
 
 The `Storage` component handles the reading and writing of data from a data file. By storing the data,
 the application will be able to load the data from the previous session back to the user when the user opens
 the application.
-The general overview of the structure diagram of the `Storage` component is shown below.
+The class diagram of the `Storage` component is shown below.
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
-<p align="center"> Figure 9. Storage component class relationship diagram
+<p align="center"> Figure 8. Storage Component Class Diagram
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
@@ -267,6 +293,12 @@ Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdapt
 Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry`.
 
 This format allows the files to be saved in json format and be read back accurately.
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br> 
+
+![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 9 More OOP Storage Class Diagram</i></sup></div><br>
+
 
 ---
 
@@ -350,6 +382,12 @@ UI, Logic and Model components.
 Utimately, we decided that user navigability was more important than the extra `select` command needed. This is because
 Green Tea is designed to be a simple and easy system for new users to use.
 
+![SelectActivityDiagram](images/SelectActivityDiagram.png)
+
+![AddEntry](images/AddEntryActivityDiagram.png)
+
+![AddEntrySequence](images/AddEntrySequenceDiagram.png)
+
 ### 4.2 Flashcard System (Gabriel)
 
 Three additional commands are used for the flashcard system - PlayCommand, StopCommand and AnswerCommand.
@@ -380,7 +418,13 @@ With reference to figure 12, when the user types a AnswerCommand into the system
 - The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
 - The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
 
-**The diagram for this process will be created after the flashcard system is implemented**
+
+![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
+![PlayCommand](images/PlayActivityDiagram.png)
+![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
+![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
+
+
 
 #### Design Considerations:
 
