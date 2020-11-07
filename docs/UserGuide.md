@@ -80,7 +80,7 @@ To start using GreenTea:
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 2.  GreenTea's GUI
 
-Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of Figure 2 to explain it. 
+Before we get started with the program, let us first understand the GUI of GreenTea. We shall use of Figure 3 below to explain it. 
 ![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
 Figure 3. Annotated GUI
 
@@ -166,8 +166,8 @@ been successfully carried out, or if there are errors in your command formats.
     The command you entered previously had switched GreenTea into Quiz mode. This means that all commands written from now on
     will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
 
-    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We
-    already know that the correct word is `Dolphin`. However, let us try typing the wrong answer `dog`.
+    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `いいえ`?" We
+    already know that the correct word is `No`. However, let us try typing the wrong answer `dog`.
 
     ![GreenTea](images/user-guide/WrongAnswer.PNG)
     Figure 10. Wrong answer given
@@ -185,7 +185,7 @@ been successfully carried out, or if there are errors in your command formats.
     keeping track of your scores in the background and can display in the form of a graph. Try typing the following commands
     into GreenTea!
 
-        - `stats 1`
+    - `stats 1`
 
     ![GreenTea](images/user-guide/Statistics.PNG)
     Figure 11. Statistics of Deck 1
