@@ -16,20 +16,20 @@ class StatisticsManagerTest {
     }
 
     @Test
-    void testGetLastLogin_shouldBeNull_ifEventsHas1Login() {
+    void testGetLastLogin_ifEventsHas1Login_shouldBeNull() {
         StatisticsManager sm = new StatisticsManager();
         assertNull(sm.getLastLogin());
     }
 
     @Test
-    void testGetLastLoginString_shouldBePlaceholder_ifEventsHas1Login() {
+    void testGetLastLoginString_ifEventsHas1Login_shouldBePlaceholder() {
         StatisticsManager sm = new StatisticsManager();
         assertEquals(sm.getLastLoginString(), "None - first login.");
     }
 
 
     @Test
-    void testGetLastLogin_shouldBeCorrect_ifEventsHas2Logins() {
+    void testGetLastLogin_ifEventsHas2Logins_shouldBeCorrect() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog().get(0);
         sm.getStatistics().registerAppLogout();
@@ -38,7 +38,7 @@ class StatisticsManagerTest {
     }
 
     @Test
-    void testGetLastLogin_shouldBeSecondLatestLogin_ifEventsHasSomeLoginLogoutEvents() {
+    void testGetLastLogin_ifEventsHasSomeLoginLogoutEvents_shouldBeSecondLatestLogin() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog()
             .get(sm.getStatistics().getEventLog().size() - 1);
@@ -64,7 +64,7 @@ class StatisticsManagerTest {
     }
 
     @Test
-    void testGetLastLogin_shouldBeSecondLatestLogin_ifEventsHasMoreRandomEvents() {
+    void testGetLastLogin_ifEventsHasMoreRandomEvents_shouldBeSecondLatestLogin() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog()
             .get(sm.getStatistics().getEventLog().size() - 1);
