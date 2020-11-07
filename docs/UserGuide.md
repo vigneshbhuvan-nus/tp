@@ -67,12 +67,12 @@ language will be as relaxing as drinking a hot cup of GreenTea.
 Greetings! This chapter will be on helping you get started with using GreenTea. In this chapter,
 we will be covering installation, explanation of the GUI and basic commands needed to use GreenTea.
 
-Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.java.com/en/)
+Before you can start using GreenTea, you will need to ensure that `Java 11`
 is installed on your computer.
 
 To start using GreenTea:
 
-1. Download the latest jar file [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases/new)
+1. Download the latest jar file [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases)
 2. Copy the jar file to your folder of choice (we recommend on your desktop!)
 3. Double-Click the file to start the application. The GUI should appear in a few seconds and it should look like Figure 2.
 
@@ -251,6 +251,9 @@ Figure 7. Result of creating new decks
 :information_source: **Note:**
 The name of the deck cannot be more than 100 characters long.
 
+:information_source: **Note:**
+A deck is simply a place to store a list of entries
+
 ### 5.1.2 Removing a deck: `remove`
 
 Removes a deck with the given index.
@@ -264,12 +267,12 @@ Example: `remove 1`
 
 Before a deck is removed:
 ![GreenTea](images/user-guide/8RemovingADeckBefore.png)
-Figure 8: GUI before a deck is removed
+Figure 8: GUI before deck 1 is removed
 
 Result:
 
 ![GreenTea](images/user-guide/9RemovingADeckAfter.png)
-Figure 9. Result of removing a deck
+Figure 9. GUI after deck 1 is removed
 
 ### 5.1.3 Selecting a deck: `select`
 
@@ -359,17 +362,19 @@ Figure 14. Result of deleting an entry
 ## 5.3 Play Commands (Georgie)
 
 Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of all
-the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `play` and
+the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `/play` and
 `/stop`.
 
 ## 5.3.1 Play a Game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
-to you at the end of the game. Note the slash `/` in the command.
+to you at the end of the game. 
 
 Format: `/play`
 
+:information_source: **Note:**
+Note the slash `/` in the command.
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
 
@@ -421,7 +426,7 @@ The statistics tab displays the scores of games up to your last 10 attempts in t
 a line graph.
 You can view the statistics of a single deck or the statistics across all your decks.
 
-To view statistics across all decks:
+To view statistics across **all** decks:
 
 Format: `stats`
 
