@@ -99,9 +99,10 @@ public class LeitnerTest {
         quizAttempt2.getQuestionAttempts().sort(Comparator
             .comparing(QuestionAttempt::getScore));
 
-        for(int i=0;i<100;++i){
+        for (int i = 0; i < 100; ++i) {
             Entry entry = leitner.getEntries().get(i);
-            assertEquals(entry.getTranslation().toString(), quizAttempt2.getQuestionAttempts().get(i).getAnswer());
+            assertEquals(entry.getTranslation().toString(),
+                quizAttempt2.getQuestionAttempts().get(i).getAnswer());
         }
     }
 }

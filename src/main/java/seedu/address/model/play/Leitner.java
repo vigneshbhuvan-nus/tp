@@ -47,7 +47,7 @@ public class Leitner {
 
         if (deck.getQuizAttempts().size() == 0) {
             // first time playing this deck so we randomly shuffle
-            for(var entry : entries) {
+            for (var entry : entries) {
                 entryList.add(entry);
             }
             Collections.shuffle(entryList);
