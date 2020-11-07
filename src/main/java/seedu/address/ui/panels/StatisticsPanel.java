@@ -3,13 +3,9 @@ package seedu.address.ui.panels;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -25,7 +21,7 @@ import javafx.scene.layout.Region;
 import seedu.address.logic.Logic;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.play.scoring.QuizAttempt;
-import seedu.address.statistics.StatisticsManager;
+import seedu.address.logic.statistics.StatisticsManager;
 import seedu.address.ui.UiPart;
 
 public class StatisticsPanel extends UiPart<Region> {
@@ -124,7 +120,7 @@ public class StatisticsPanel extends UiPart<Region> {
         if (indexOfSelectedDeck == -1 || decks.size() == 0) {
             chartTitle = "Recent performance over all decks.";
         } else {
-            chartTitle = "Recent performance over deck " + decks.get(0).getDeckName();
+            chartTitle = "Recent performance over [" + decks.get(0).getDeckName() + "]";
         }
 
         StatisticsManager statisticsManager = logic.getStatisticsManager();
@@ -140,7 +136,7 @@ public class StatisticsPanel extends UiPart<Region> {
     private void initialize() {
         yAxis.setAutoRanging(false);
         yAxis.setLowerBound(0);
-        yAxis.setUpperBound(100);
+        yAxis.setUpperBound(101);
         yAxis.setTickLabelFormatter(new DefaultFormatter(yAxis, null, "%"));
 
         statisticsLineChart.setTitle(chartTitle);
@@ -148,7 +144,7 @@ public class StatisticsPanel extends UiPart<Region> {
 
     private void plotDataPoints(List<DataPoint> dataPoints) {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
-        series.setName("");
+         series.setName("Score (in %)");
         for (DataPoint dataPoint : dataPoints) {
             series.getData()
                 .add(new XYChart.Data<>(dataPoint.getTakenAtString(),

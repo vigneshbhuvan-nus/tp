@@ -14,13 +14,13 @@ if() then ([Logic Manager is not in Play Mode])
         : Display a question on the quiz tab of the UI;
         : Display a success message to the result box of the UI indicating the start of the quiz;
         else ([Deck is empty])
-        : Display an error message to the result box of the UI indicating deck is empty;
+        :Throw empty deck command exception;
         endif
     else ([No deck is selected in ModelManager])
-    : Display an error message to the UI result box of the indicating no deck is currently selected;
+    :Throw no deck selected command exception;
     endif
 else([Logic Manager is currently in Play Mode])
-:Display an error message to the result box of the UI indicating that the application is currently in play mode;
+:Throw application already in play mode command exception;
 endif
 stop
 @enduml

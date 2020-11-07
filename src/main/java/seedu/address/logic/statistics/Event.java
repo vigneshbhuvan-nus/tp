@@ -1,4 +1,4 @@
-package seedu.address.statistics;
+package seedu.address.logic.statistics;
 
 import java.time.LocalDateTime;
 

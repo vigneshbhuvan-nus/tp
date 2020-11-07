@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.Objects;
+
 import seedu.address.model.play.Score;
 
 public class QuizAttempt implements Comparable<QuizAttempt> {
@@ -27,6 +27,7 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
      * it knows how to score a new entry when a new entry (questionAttemptt) comes in.
      * Here, scoring means computing the score received based on the difference between
      * what the given answer is and what the correct answer is.
+     *
      * @param scoringMethod
      */
     public QuizAttempt(Scoring scoringMethod) {
@@ -41,14 +42,13 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
     }
 
     /**
-     *
      * @param quizLength
      */
     public void endQuiz(int quizLength) {
         this.score = new Score(
                 quizLength,
                 questionAttempts.stream().mapToDouble(QuestionAttempt::getScore).sum()
-                );
+        );
         this.duration = (int) this.takenAt.until(LocalDateTime.now(), ChronoUnit.SECONDS);
     }
 
@@ -89,18 +89,18 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
             return false;
         }
         QuizAttempt that = (QuizAttempt) o;
-        return getDuration() == that.getDuration() &&
-            Objects.equals(getScore(), that.getScore()) &&
-            Objects.equals(getTakenAt(), that.getTakenAt()) &&
-            Objects.equals(getQuestionAttempts(), that.getQuestionAttempts()) &&
-            Objects.equals(getScoringMethod(), that.getScoringMethod());
+        return getDuration() == that.getDuration()
+                && Objects.equals(getScore(), that.getScore())
+                && Objects.equals(getTakenAt(), that.getTakenAt())
+                && Objects.equals(getQuestionAttempts(), that.getQuestionAttempts())
+                && Objects.equals(getScoringMethod(), that.getScoringMethod());
     }
 
     @Override
     public int hashCode() {
         return Objects
-            .hash(getScore(), getDuration(), getTakenAt(), getQuestionAttempts(),
-                getScoringMethod());
+                .hash(getScore(), getDuration(), getTakenAt(), getQuestionAttempts(),
+                        getScoringMethod());
     }
 
     public void setScoringMethod(Scoring scoringMethod) {
