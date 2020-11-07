@@ -8,27 +8,27 @@ import org.junit.jupiter.api.Test;
 class StatisticsManagerTest {
 
     @Test
-    void testNewStatisticsManager_ShouldHave1LoginEvent() {
+    void testNewStatisticsManager_shouldHave1LoginEvent() {
         StatisticsManager sm = new StatisticsManager();
         assertEquals(sm.getStatistics().getEventLog().size(), 1);
         assertEquals(sm.getStatistics().getEventLog().get(0).getEventType(), EventType.LOGIN);
     }
 
     @Test
-    void testGetLastLogin_ShouldBeNull_IfEventsHas1Login() {
+    void testGetLastLogin_shouldBeNull_ifEventsHas1Login() {
         StatisticsManager sm = new StatisticsManager();
         assertNull(sm.getLastLogin());
     }
 
     @Test
-    void testGetLastLoginString_ShouldBePlaceholder_IfEventsHas1Login() {
+    void testGetLastLoginString_shouldBePlaceholder_ifEventsHas1Login() {
         StatisticsManager sm = new StatisticsManager();
         assertEquals(sm.getLastLoginString(), "None - first login.");
     }
 
 
     @Test
-    void testGetLastLogin_ShouldBeCorrect_IfEventsHas2Logins() {
+    void testGetLastLogin_shouldBeCorrect_ifEventsHas2Logins() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog().get(0);
         sm.getStatistics().registerAppLogout();
@@ -37,7 +37,7 @@ class StatisticsManagerTest {
     }
 
     @Test
-    void testGetLastLogin_ShouldBeSecondLatestLogin_IfEventsHasSomeLoginLogoutEvents() {
+    void testGetLastLogin_shouldBeSecondLatestLogin_ifEventsHasSomeLoginLogoutEvents() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog()
             .get(sm.getStatistics().getEventLog().size() - 1);
@@ -63,7 +63,7 @@ class StatisticsManagerTest {
     }
 
     @Test
-    void testGetLastLogin_ShouldBeSecondLatestLogin_IfEventsHasMoreRandomEvents() {
+    void testGetLastLogin_shouldBeSecondLatestLogin_ifEventsHasMoreRandomEvents() {
         StatisticsManager sm = new StatisticsManager();
         Event event1 = sm.getStatistics().getEventLog()
             .get(sm.getStatistics().getEventLog().size() - 1);

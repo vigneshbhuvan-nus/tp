@@ -10,19 +10,19 @@ import org.junit.jupiter.api.Test;
 class StatisticsTest {
 
     @Test
-    void testTimesOpened_ShouldBeInitially0_ForNoArgsConstructor() {
+    void testTimesOpened_shouldBeInitially0_forNoArgsConstructor() {
         Statistics statistics = new Statistics();
         assertEquals(statistics.getTimesOpened(), 0);
     }
 
     @Test
-    void testEventLog_ShouldInitiallyBeEmpty_ForNoArgsConstructor() {
+    void testEventLog_shouldInitiallyBeEmpty_forNoArgsConstructor() {
         Statistics statistics = new Statistics();
         assertEquals(statistics.getEventLog().size(), 0);
     }
 
     @Test
-    void testTimesOpened_ShouldBeCorrect_ForConstructorWithArgs() {
+    void testTimesOpened_shouldBeCorrect_forConstructorWithArgs() {
         List<Event> eventLog = new ArrayList<>();
         eventLog.add(new Event(EventType.LOGIN));
         eventLog.add(new Event(EventType.LOGIN));
@@ -37,7 +37,7 @@ class StatisticsTest {
     }
 
     @Test
-    void testEventLog_ShouldBeCorrect_ForConstructorWithArgs() {
+    void testEventLog_shouldBeCorrect_forConstructorWithArgs() {
         List<Event> eventLog = new ArrayList<>();
         eventLog.add(new Event(EventType.LOGIN));
         eventLog.add(new Event(EventType.LOGIN));
@@ -52,7 +52,7 @@ class StatisticsTest {
     }
 
     @Test
-    void testTimesOpened_ShouldBeCorrect_For1RegisterLogin() {
+    void testTimesOpened_shouldBeCorrect_for1RegisterLogin() {
         Statistics statistics = new Statistics();
         assertEquals(statistics.getEventLog().size(), 0);
         statistics.registerAppLogin();
@@ -61,7 +61,7 @@ class StatisticsTest {
     }
 
     @Test
-    void testTimesOpened_ShouldBeCorrect_For1RegisterLoginLogout() {
+    void testTimesOpened_shouldBeCorrect_for1RegisterLoginLogout() {
         Statistics statistics = new Statistics();
         assertEquals(statistics.getEventLog().size(), 0);
         statistics.registerAppLogin();
@@ -72,7 +72,7 @@ class StatisticsTest {
     }
 
     @Test
-    void testTimesOpened_ShouldBeCorrect_ForMultipleLoginLogouts() {
+    void testTimesOpened_shouldBeCorrect_forMultipleLoginLogouts() {
         Statistics statistics = new Statistics();
         assertEquals(statistics.getEventLog().size(), 0);
         statistics.registerAppLogin();
@@ -80,12 +80,13 @@ class StatisticsTest {
         statistics.registerAppLogout();
         assertEquals(statistics.getEventLog().size(), 2);
         assertEquals(statistics.getEventLog().get(0).getEventType(), EventType.LOGIN);
-        for(int i=0;i<5;++i){
+        for (int i = 0; i < 5; ++i) {
             statistics.registerAppLogin();
         }
-        for(int i=0;i<3;++i){
+        for (int i = 0; i < 3; ++i) {
             statistics.registerAppLogout();
         }
-        assertEquals(statistics.getEventLog().stream().filter(event -> event.getEventType() == EventType.LOGIN).count(), 6);
+        assertEquals(statistics.getEventLog().stream()
+            .filter(event -> event.getEventType() == EventType.LOGIN).count(), 6);
     }
 }
