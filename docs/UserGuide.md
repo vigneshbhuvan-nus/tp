@@ -22,8 +22,8 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [5.2.2 Editing an entry: edit (Vignesh)](#522-editing-an-entry-edit-vignesh)
     - [5.2.3 Deleting an entry: delete (Vignesh)](#523-deleting-an-entry-delete-vignesh)
   - [5.3 Play Commands (Georgie)](#53-play-commands-georgie)
-  - [5.3.1 Play a Game (Georgie)](#531-play-a-game-georgie)
-  - [5.3.2 Stop a Game (Georgie)](#532-stop-a-game-georgie)
+    - [5.3.1 Play a Game (Georgie)](#531-play-a-game-georgie)
+    - [5.3.2 Stop a Game (Georgie)](#532-stop-a-game-georgie)
   - [5.4 Extra Commands (Georgie)](#54-extra-commands-georgie)
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
@@ -72,13 +72,14 @@ is installed on your computer.
 
 To start using GreenTea:
 
-1. Visit the GreenTea Releases Page [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases/new)
+1. Visit the GreenTea Releases Page [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases)
 2. Download GreenTea.jar from the latest release
 3. Once downloaded, copy the jar file to your folder of choice (we recommend on your desktop!)
 4. Double-Click the file to start the application. The GUI should appear in a few seconds and it should look like Figure 2.
 
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 2.  GreenTea's GUI
+
 
 Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of Figure 2 to explain it. 
 ![GreenTea](images/user-guide/3EmptyGUIWithAnnotation.png)
@@ -166,8 +167,8 @@ been successfully carried out, or if there are errors in your command formats.
     The command you entered previously had switched GreenTea into Quiz mode. This means that all commands written from now on
     will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
 
-    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We
-    already know that the correct word is `Dolphin`. However, let us try typing the wrong answer `dog`.
+    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `いいえ`?" We
+    already know that the correct word is `No`. However, let us try typing the wrong answer `dog`.
 
     ![GreenTea](images/user-guide/10WrongAnswer.PNG)
     Figure 10. Wrong answer given
@@ -185,7 +186,7 @@ been successfully carried out, or if there are errors in your command formats.
     keeping track of your scores in the background and can display in the form of a graph. Try typing the following commands
     into GreenTea!
 
-        - `stats 1`
+    - `stats 1`
 
     ![GreenTea](images/user-guide/11Statistics.PNG)
     Figure 11. Statistics of Deck 1
@@ -197,13 +198,13 @@ been successfully carried out, or if there are errors in your command formats.
 
 8.  Congratulations! We have come to the end of this chapter. We hope that you have learned the basic of
     using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
-    commands with complete explanations to learn in [Chapter 6](#6-features).
+    commands with complete explanations to learn in [Chapter 5](#5-features).
 
 # 4. Using This Guide (Melanie)
 
 In this chapter, we will get familiar with the symbols and command format used in this user guide.
 
-Before progressing further, we strongly recommend going through [Chapter 3](#3-getting-started-gabriel-and-melanie) first.
+Before progressing further, we strongly recommend going through [Chapter 3](#3-getting-started-gabriel-and-vignesh) first.
 
 ## 4.1 Symbols
 

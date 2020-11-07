@@ -11,7 +11,7 @@ import seedu.address.model.view.View;
 public class StatisticsCommand extends Command {
 
     public static final String COMMAND_WORD = "stats";
-    private static String MESSAGE_SUCCESS = "Viewing statistics.";
+    private static String messageSuccess = "Viewing statistics.";
     public final int deckIndex;
 
     public StatisticsCommand(int deckIndex) {
@@ -25,16 +25,16 @@ public class StatisticsCommand extends Command {
                 .setStatisticsDeckId(deckIndex - 1);
 
         if (currentDeckIndex == -1) { // invalid deck, or none
-            MESSAGE_SUCCESS = "Either invalid deck index or index out of bounds. \n"
+            messageSuccess = "Either invalid deck index or index out of bounds. \n"
                     + "Please choose an index that is listed and ensure it is a positive integer that is less than "
                     + "2,147,483,648 "
                     + "Viewing statistics across all decks instead.";
         } else {
-            MESSAGE_SUCCESS = String.format("Viewing statistics for deck %s (id=%d)",
+            messageSuccess = String.format("Viewing statistics for deck %s (id=%d)",
                     model.getFilteredDeckList().get(currentDeckIndex).getDeckName(), currentDeckIndex + 1);
         }
 
         model.setCurrentView(View.STATISTICS_VIEW);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(messageSuccess);
     }
 }

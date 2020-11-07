@@ -415,9 +415,17 @@ With reference to figure 12, when the user types a AnswerCommand into the system
 - The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
+
 ![PlayCommand](images/PlayActivityDiagram.png)
+
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
+
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
+
+
+![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
+
+![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
 
 #### Design Considerations:
 
