@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.List;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +14,6 @@ import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.DeckName;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.deck.entry.Translation;
-import seedu.address.model.deck.entry.UniqueEntryList;
 import seedu.address.model.deck.entry.Word;
 import seedu.address.model.play.scoring.QuestionAttempt;
 import seedu.address.model.play.scoring.QuizAttempt;
@@ -64,7 +62,7 @@ public class LeitnerTest {
         quizAttempt.getQuestionAttempts().sort(Comparator
             .comparing(QuestionAttempt::getScore));
         for (int i = 0; i < 99; ++i) {
-            // assertEquals(tmp.getAnswer(), leitner2.getEntries().get(i).getWord().toString());
+//            assertEquals(tmp.getAnswer(), leitner2.getEntries().get(i).getWord().toString());
             String s1 = leitner2.getEntries().get(i).getWord().toString();
             String s2 = leitner2.getEntries().get(i + 1).getWord().toString();
 //            System.out
