@@ -18,8 +18,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyWordBank;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;
-import seedu.address.model.play.Leitner;
 import seedu.address.logic.statistics.StatisticsManager;
+import seedu.address.model.play.Leitner;
 import seedu.address.model.view.View;
 import seedu.address.storage.Storage;
 

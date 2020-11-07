@@ -19,8 +19,8 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Region;
 import seedu.address.logic.Logic;
-import seedu.address.model.deck.Deck;
 import seedu.address.logic.statistics.StatisticsManager;
+import seedu.address.model.deck.Deck;
 import seedu.address.model.play.scoring.QuizAttempt;
 import seedu.address.ui.UiPart;
 
