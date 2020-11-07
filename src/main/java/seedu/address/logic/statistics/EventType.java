@@ -1,4 +1,4 @@
-package seedu.address.statistics;
+package seedu.address.logic.statistics;
 
 public enum EventType {
     LOGIN,
