@@ -96,10 +96,7 @@ The rest of the App consists of four components.
 - [**`Model`**](#35-model-component): Holds the data of the App in memory.
 - [**`Storage`**](#36-storage-component): Reads data from, and writes data to, the hard disk.
 
-
-
 Each of the four components:
-
 
 - Defines its _API_ in an `interface` with the same name as the Component.
 - Exposes its functionality using a concrete `{Component Name}Manager` class (which implements the corresponding API `interface` mentioned in the previous point.
@@ -115,6 +112,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 The _Sequence Diagram_ below (Figure 3) shows how the components interact with one another when the user issues the command `remove 1`.
 
 ![Sequence Diagram of Various Components](images/ArchitectureSequenceDiagram.png)
+
 <p align="center"> Figure 3. Sequence Diagram of Various Components
 
 The sections below give more details about each component.
@@ -152,8 +150,6 @@ Role of the `Ui` component:
 - Receives the user input.
 - Executes user commands using the `Logic` component.
 - Listens for changes to `Model` data so that the `Ui` can be updated with the modified data.
-
-
 
 The `Ui` component uses the JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder.
 
@@ -204,22 +200,20 @@ The class diagram of the `Logic` component is shown below in Figure 5.
 
 <p align="center"> Figure 5. Logic Component Class Diagram
 
-
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Role of the `Logic` component:
 
--  `Logic` receives the user command.
+- `Logic` receives the user command.
 - `Logic Manager` can either be in `Play Mode` or in `Command Mode`.
--  Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
--  Creates a `Command` object which is passed and executed by `LogicManager`.
--  Executing the command can affect the `Model` (e.g. adding a deck).
--  Returns the result of the command execution as a `CommandResult` object which is passed back to the `Ui`.
--  Initialises the `StatisticsManager` on startup via `LogicManager` and maintains the `Statistics`.
--  Any changes from executing a `Command` object is recorded in `Statistics` by `Statistics Manager`.
--  In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
-
+- Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
+- Creates a `Command` object which is passed and executed by `LogicManager`.
+- Executing the command can affect the `Model` (e.g. adding a deck).
+- Returns the result of the command execution as a `CommandResult` object which is passed back to the `Ui`.
+- Initialises the `StatisticsManager` on startup via `LogicManager` and maintains the `Statistics`.
+- Any changes from executing a `Command` object is recorded in `Statistics` by `Statistics Manager`.
+- In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
@@ -232,11 +226,10 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The `Model` component is in charge of changing the data within the application.
 This includes information about decks, entries and statistics.
 The `Model` component consists of the `Play`, `Deck` and `View` package. The `Play` package consists of the `Scoring` package,
-`Leitner` object and the `Score` object. The `Deck` package consists of the `Entry` package, the `Deck` object and 
-all other similar object. 
+`Leitner` object and the `Score` object. The `Deck` package consists of the `Entry` package, the `Deck` object and
+all other similar object.
 
 All these information on the `Model` component is visually expressed in the class diagram below.
-
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -247,27 +240,30 @@ The diagram below will give more details about the word bank section of the mode
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
 Role of `Model` component:
+
 - Stores a `UserPref` object that represents the user’s preferences.
 
 - Stores a `CurrentView` object that represents the current tab view on the UI.
 - Stores a `WordBank` component that maintains all the current `Entry` and `Deck` data.
 - Stores a `FilteredList<Deck>` object that maintains the current list of `Deck` in memory for error checking purposes.
 - Creates and maintains a `Leitner` object and a `QuizAttempt` object using a selected deck from `FilteredList<Deck>` if
-a `PlayCommand` object is executed by `Logic`.
+  a `PlayCommand` object is executed by `Logic`.
 
 Role of `WordBank` component
+
 - Maintains all the current `Entry` and `Deck` data.
 - Stores a `FilteredList<Entry>` object that maintains the current list of `Entry` in memory.
-- Exposes an unmodifiable `ObservableList<Deck>`  and `ObservableList<Entry>`
-that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
+- Exposes an unmodifiable `ObservableList<Deck>` and `ObservableList<Entry>`
+  that can be 'observed'. E.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 
 Role of `Leitner` object:
+
 - Shuffles a given `Deck` by decomposing it into a list of `Translations` and a list of `Word`.
 - Return each `Translation` and `Word` when called by `ModelManager`.
 
 Role of `QuizAttempt` object:
-- Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
 
+- Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
 
 ### 3.6 Storage component
 
@@ -294,11 +290,11 @@ Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `Jso
 
 This format allows the files to be saved in json format and be read back accurately.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br> 
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br>
 
 ![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 9 More OOP Storage Class Diagram</i></sup></div><br>
 
+<div align="center"><sup style="font-size:100%"><i>Figure 9 More OOP Storage Class Diagram</i></sup></div><br>
 
 ---
 
@@ -418,7 +414,6 @@ With reference to figure 12, when the user types a AnswerCommand into the system
 - The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
 - The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
 
-
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
 
 ![PlayCommand](images/PlayActivityDiagram.png)
@@ -427,11 +422,10 @@ With reference to figure 12, when the user types a AnswerCommand into the system
 
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
 
+
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
 
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
-
-
 
 #### Design Considerations:
 

@@ -27,6 +27,7 @@ import seedu.address.storage.Storage;
  * The main LogicManager of the app.
  */
 public class LogicManager implements Logic {
+
     public static final String FILE_OPS_ERROR_MESSAGE = "Could not save data to file: ";
     private final Logger logger = LogsCenter.getLogger(LogicManager.class);
 
@@ -95,7 +96,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Command createAnswerOrStopCommands(String commandText) throws CommandException, ParseException {
+    public Command createAnswerOrStopCommands(String commandText)
+        throws CommandException, ParseException {
         assert (isPlayMode);
         try {
             Command command = playModeParser.parseCommand(commandText);

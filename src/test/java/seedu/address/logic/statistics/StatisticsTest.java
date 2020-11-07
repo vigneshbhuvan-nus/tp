@@ -1,5 +1,6 @@
 package seedu.address.logic.statistics;
 
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -86,6 +87,7 @@ class StatisticsTest {
         for (int i = 0; i < 3; ++i) {
             statistics.registerAppLogout();
         }
+
         assertEquals(statistics.getEventLog().stream().filter(event -> event.getEventType()
                 == EventType.LOGIN).count(), 6);
     }

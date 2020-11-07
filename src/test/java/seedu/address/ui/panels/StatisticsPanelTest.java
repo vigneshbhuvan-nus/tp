@@ -28,9 +28,9 @@ class StatisticsPanelTest {
     private int maxLists = 100;
     private int minLists = 10;
     private long startDate = LocalDateTime.of(2020, 5, 1, 0, 0).atZone(ZoneId.systemDefault())
-            .toEpochSecond();
+        .toEpochSecond();
     private long endDate = LocalDateTime.of(2020, 12, 1, 0, 0).atZone(ZoneId.systemDefault())
-            .toEpochSecond();
+        .toEpochSecond();
 
     @BeforeEach
     void setUp() {
@@ -49,15 +49,15 @@ class StatisticsPanelTest {
         for (int i = 0; i < attempts; ++i) {
             QuizAttempt quizAttempt = new QuizAttempt();
             double totalScore =
-                    rand.nextInt((maxTotalScore - minTotalScore) + 1) + minTotalScore;
+                rand.nextInt((maxTotalScore - minTotalScore) + 1) + minTotalScore;
             double yourScore = rand.nextDouble() * totalScore;
             Score score = new Score(totalScore, yourScore);
             quizAttempt.setScore(score);
             LocalDateTime takenAt = LocalDateTime
-                    .ofInstant(Instant.ofEpochSecond(ThreadLocalRandom.current().nextLong(
-                            startDate,
-                            endDate
-                    )), ZoneId.systemDefault());
+                .ofInstant(Instant.ofEpochSecond(ThreadLocalRandom.current().nextLong(
+                    startDate,
+                    endDate
+                )), ZoneId.systemDefault());
             quizAttempt.setTakenAt(takenAt);
             // System.out.println(quizAttempt.getTakenAtAndScoreInPercentage());
             int listIdx = rand.nextInt(numberOfLists);
@@ -105,8 +105,8 @@ class StatisticsPanelTest {
             //                "-----------" + i + ", " + ans.get(i).getTakenAtAndScoreInPercentage() + " | "
             //                    + correctMostRecent.get(i).getTakenAtAndScoreInPercentage());
             assertEquals(
-                    correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
-                            .getTakenAtAndScoreInPercentage());
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
@@ -125,8 +125,8 @@ class StatisticsPanelTest {
             //            System.out
             //                .println("===========" + i + ", " + ans.get(i).getTakenAtAndScoreInPercentage());
             assertEquals(
-                    correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
-                            .getTakenAtAndScoreInPercentage());
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
@@ -143,8 +143,8 @@ class StatisticsPanelTest {
         //        }
         for (int i = 0; i < Math.min(ans.size(), k); ++i) {
             assertEquals(
-                    correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
-                            .getTakenAtAndScoreInPercentage());
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
@@ -161,8 +161,8 @@ class StatisticsPanelTest {
         //        }
         for (int i = 0; i < Math.min(ans.size(), k); ++i) {
             assertEquals(
-                    correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
-                            .getTakenAtAndScoreInPercentage());
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
@@ -179,8 +179,8 @@ class StatisticsPanelTest {
         //        }
         for (int i = 0; i < Math.min(ans.size(), k); ++i) {
             assertEquals(
-                    correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
-                            .getTakenAtAndScoreInPercentage());
+                correctMostRecent.get(i).getTakenAtAndScoreInPercentage(), ans.get(i)
+                    .getTakenAtAndScoreInPercentage());
         }
     }
 
