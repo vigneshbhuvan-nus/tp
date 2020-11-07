@@ -467,7 +467,7 @@ Result:
 Figure 25. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
-In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
+In order to view your statistics, you must first [play a game!](#531-playing-a-game-georgie)
 
 # 6. FAQ (Gabriel & Melanie)
 
