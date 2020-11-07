@@ -384,7 +384,7 @@ Format: `/play`
 The slash `/` in the command.
 
 :information_source: **Note:**
-Before you start playing a new game, remember to [select a deck first!](#613-selecting-a-deck-select)
+Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
 ![GreenTea](images/user-guide/16PlayAGame.png)
@@ -455,7 +455,7 @@ Result:
 Figure 20. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
-In order to view your statistics, you must first [play a game!](#631-play-a-game-georgie)
+In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
 
 ## 7. FAQ (Gabriel)
 
