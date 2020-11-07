@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -39,10 +40,6 @@ public class LeitnerTest {
         Leitner leitner1 = new Leitner(deck);
         ArrayList<Entry> entryList1 = leitner1.getEntries();
 
-//        for (int i = 0; i < 10; ++i) {
-//            System.out.println(entryList1.get(i).toString() + ", " + entryList2.get(i).toString());
-//        }
-
         assertNotEquals(entryList1, deck.getEntryList());
     }
 
@@ -62,11 +59,8 @@ public class LeitnerTest {
         quizAttempt.getQuestionAttempts().sort(Comparator
             .comparing(QuestionAttempt::getScore));
         for (int i = 0; i < 99; ++i) {
-//            assertEquals(tmp.getAnswer(), leitner2.getEntries().get(i).getWord().toString());
             String s1 = leitner2.getEntries().get(i).getWord().toString();
             String s2 = leitner2.getEntries().get(i + 1).getWord().toString();
-//            System.out
-//                .println(s1 + ", " + qnToScore.get(s1) + "--" + s2 + ", " + qnToScore.get(s2));
             assertTrue(qnToScore.get(s1) <= qnToScore.get(s2));
         }
     }
