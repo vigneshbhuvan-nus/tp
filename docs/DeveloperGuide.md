@@ -820,7 +820,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 1.
 
-**Use case 7: Exit**
+**Use case 10: Exit**
 
 **MSS**
 
