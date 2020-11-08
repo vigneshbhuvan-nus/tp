@@ -1,6 +1,7 @@
 package seedu.address.ui.panels;
 
 import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -41,7 +42,8 @@ public class QuizPanel extends UiPart<Region> {
     private ProgressBar progressBar;
 
     /**
-     * Constructor for quiz panel. Takes in a Leitner object {@code leitner} and an integer {@code currentIndex}
+     * Constructor for quiz panel. Takes in a Leitner object {@code leitner} and an integer {@code
+     * currentIndex}
      */
     public QuizPanel(Leitner leitner, int currentIndex) {
         super(FXML);

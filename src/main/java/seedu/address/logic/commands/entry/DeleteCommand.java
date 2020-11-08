@@ -3,6 +3,7 @@ package seedu.address.logic.commands.entry;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
@@ -20,9 +21,9 @@ public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the entry identified by the index number used in the displayed entry list.\n"
-            + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Deletes the entry identified by the index number used in the displayed entry list.\n"
+        + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648)\n"
+        + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_ENTRY_SUCCESS = "Deleted Entry: %1$s";
 
@@ -55,7 +56,7 @@ public class DeleteCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DeleteCommand // instanceof handles nulls
-                && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
+            || (other instanceof DeleteCommand // instanceof handles nulls
+            && targetIndex.equals(((DeleteCommand) other).targetIndex)); // state check
     }
 }

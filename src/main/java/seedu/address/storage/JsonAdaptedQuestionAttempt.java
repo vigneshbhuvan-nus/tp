@@ -2,6 +2,7 @@ package seedu.address.storage;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.play.scoring.BinaryScoring;
 import seedu.address.model.play.scoring.QuestionAttempt;
@@ -21,7 +22,7 @@ public class JsonAdaptedQuestionAttempt {
      */
     @JsonCreator
     public JsonAdaptedQuestionAttempt(@JsonProperty("answer") String answer,
-                                      @JsonProperty("guess") String guess) {
+        @JsonProperty("guess") String guess) {
         this.answer = answer;
         this.guess = guess;
         Scoring scoringMethod = new BinaryScoring();
@@ -38,6 +39,7 @@ public class JsonAdaptedQuestionAttempt {
     }
 
     //Dummy Constructor
+
     /**
      *
      */
@@ -62,16 +64,17 @@ public class JsonAdaptedQuestionAttempt {
     /**
      * Converts this Jackson-friendly adapted Score object into the model's {@code score} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted Score.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted
+     *                               Score.
      */
     public QuestionAttempt toModelType() throws IllegalValueException {
         if (answer == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    QuestionAttempt.class.getSimpleName()));
+                QuestionAttempt.class.getSimpleName()));
         }
         if (guess == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    QuestionAttempt.class.getSimpleName()));
+                QuestionAttempt.class.getSimpleName()));
         }
         return new QuestionAttempt(answer, guess, score);
     }

@@ -1,11 +1,13 @@
 package seedu.address.storage;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.deck.entry.Entry;
 import seedu.address.model.play.Score;
@@ -30,9 +32,9 @@ class JsonAdaptedQuizAttempt {
      */
     @JsonCreator
     public JsonAdaptedQuizAttempt(@JsonProperty("score") JsonAdaptedScore score,
-                                  @JsonProperty("duration") int duration,
-                                  @JsonProperty("takenAt") LocalDateTime takenAt,
-                                  @JsonProperty("questionAttempts") List<JsonAdaptedQuestionAttempt> questionAttempts) {
+        @JsonProperty("duration") int duration,
+        @JsonProperty("takenAt") LocalDateTime takenAt,
+        @JsonProperty("questionAttempts") List<JsonAdaptedQuestionAttempt> questionAttempts) {
         this.score = score;
         this.duration = duration;
         this.takenAt = takenAt;
@@ -50,20 +52,21 @@ class JsonAdaptedQuizAttempt {
         this.duration = source.getDuration();
         this.takenAt = source.getTakenAt();
         this.questionAttempts.addAll(source.getQuestionAttempts().stream()
-                .map(JsonAdaptedQuestionAttempt::new)
-                .collect(Collectors.toList()));
+            .map(JsonAdaptedQuestionAttempt::new)
+            .collect(Collectors.toList()));
     }
 
     /**
      * Converts this Jackson-friendly adapted entry object into the model's {@code Entry} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted entry.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted
+     *                               entry.
      */
     public QuizAttempt toModelType() throws IllegalValueException {
 
         if (score == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    JsonAdaptedScore.class.getSimpleName()));
+                JsonAdaptedScore.class.getSimpleName()));
         }
         if (!Score.isValidScore(score.getMaxScore())) {
             throw new IllegalValueException(Score.MESSAGE_CONSTRAINTS);

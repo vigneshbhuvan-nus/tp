@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Logger;
+
 import javafx.application.Application;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.util.FileUtil;
@@ -13,6 +14,7 @@ import seedu.address.commons.util.FileUtil;
  * Represents the parsed command-line parameters given to the application.
  */
 public class AppParameters {
+
     private static final Logger logger = LogsCenter.getLogger(AppParameters.class);
 
     private Path configPath;
@@ -34,10 +36,12 @@ public class AppParameters {
 
         String configPathParameter = namedParameters.get("config");
         if (configPathParameter != null && !FileUtil.isValidPath(configPathParameter)) {
-            logger.warning("Invalid config path " + configPathParameter + ". Using default config path.");
+            logger.warning(
+                "Invalid config path " + configPathParameter + ". Using default config path.");
             configPathParameter = null;
         }
-        appParameters.setConfigPath(configPathParameter != null ? Paths.get(configPathParameter) : null);
+        appParameters
+            .setConfigPath(configPathParameter != null ? Paths.get(configPathParameter) : null);
 
         return appParameters;
     }

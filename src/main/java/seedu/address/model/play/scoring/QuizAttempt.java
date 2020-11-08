@@ -5,6 +5,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 import seedu.address.model.play.Score;
 
 public class QuizAttempt implements Comparable<QuizAttempt> {
@@ -23,10 +24,10 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
     }
 
     /**
-     * This is the constructor that we will pass the scoring method to so
-     * it knows how to score a new entry when a new entry (questionAttemptt) comes in.
-     * Here, scoring means computing the score received based on the difference between
-     * what the given answer is and what the correct answer is.
+     * This is the constructor that we will pass the scoring method to so it knows how to score a
+     * new entry when a new entry (questionAttemptt) comes in. Here, scoring means computing the
+     * score received based on the difference between what the given answer is and what the correct
+     * answer is.
      *
      * @param scoringMethod
      */
@@ -46,8 +47,8 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
      */
     public void endQuiz(int quizLength) {
         this.score = new Score(
-                quizLength,
-                questionAttempts.stream().mapToDouble(QuestionAttempt::getScore).sum()
+            quizLength,
+            questionAttempts.stream().mapToDouble(QuestionAttempt::getScore).sum()
         );
         this.duration = (int) this.takenAt.until(LocalDateTime.now(), ChronoUnit.SECONDS);
     }
@@ -90,17 +91,17 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
         }
         QuizAttempt that = (QuizAttempt) o;
         return getDuration() == that.getDuration()
-                && Objects.equals(getScore(), that.getScore())
-                && Objects.equals(getTakenAt(), that.getTakenAt())
-                && Objects.equals(getQuestionAttempts(), that.getQuestionAttempts())
-                && Objects.equals(getScoringMethod(), that.getScoringMethod());
+            && Objects.equals(getScore(), that.getScore())
+            && Objects.equals(getTakenAt(), that.getTakenAt())
+            && Objects.equals(getQuestionAttempts(), that.getQuestionAttempts())
+            && Objects.equals(getScoringMethod(), that.getScoringMethod());
     }
 
     @Override
     public int hashCode() {
         return Objects
-                .hash(getScore(), getDuration(), getTakenAt(), getQuestionAttempts(),
-                        getScoringMethod());
+            .hash(getScore(), getDuration(), getTakenAt(), getQuestionAttempts(),
+                getScoringMethod());
     }
 
     public void setScoringMethod(Scoring scoringMethod) {
@@ -122,7 +123,8 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
     @Override
     public int compareTo(QuizAttempt other) {
         if (takenAt.compareTo(other.getTakenAt()) == 0) {
-            return Double.compare(score.getScoreInPercentage(), other.getScore().getScoreInPercentage());
+            return Double
+                .compare(score.getScoreInPercentage(), other.getScore().getScoreInPercentage());
         }
 
         return takenAt.compareTo((other.getTakenAt()));

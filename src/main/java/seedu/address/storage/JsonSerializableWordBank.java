@@ -1,11 +1,13 @@
 package seedu.address.storage;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.ReadOnlyWordBank;
 import seedu.address.model.WordBank;
@@ -32,10 +34,12 @@ class JsonSerializableWordBank {
     /**
      * Converts a given {@code ReadOnlyWordBank} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableWordBank}.
+     * @param source future changes to this will not affect the created {@code
+     *               JsonSerializableWordBank}.
      */
     public JsonSerializableWordBank(ReadOnlyWordBank source) {
-        decks.addAll(source.getDeckList().stream().map(JsonAdaptedDeck::new).collect(Collectors.toList()));
+        decks.addAll(
+            source.getDeckList().stream().map(JsonAdaptedDeck::new).collect(Collectors.toList()));
     }
 
     /**
@@ -45,7 +49,7 @@ class JsonSerializableWordBank {
      */
     public WordBank toModelType() throws IllegalValueException {
         WordBank wordBank = new WordBank();
-        for (JsonAdaptedDeck jsonAdaptedDeck: decks) {
+        for (JsonAdaptedDeck jsonAdaptedDeck : decks) {
             Deck deck = jsonAdaptedDeck.toModelType();
             if (wordBank.hasDeck(deck)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_DECK);

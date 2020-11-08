@@ -3,6 +3,7 @@ package seedu.address.logic.commands.deck;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.Command;
@@ -18,15 +19,16 @@ public class RemoveDeckCommand extends Command {
 
     public static final String COMMAND_WORD = "remove";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Removes the deck identified by the index number used in the displayed deck list.\n"
-            + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648)\n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Removes the deck identified by the index number used in the displayed deck list.\n"
+        + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648)\n"
+        + "Example: " + COMMAND_WORD + " 1";
     public static final String MESSAGE_REMOVE_DECK_SUCCESS = "Removed Deck: %1$s";
 
     private final Index targetIndex;
 
     /**
      * Constructs a RemoveDeckCommand object
+     *
      * @param targetIndex Index of the object to be removed
      */
     public RemoveDeckCommand(Index targetIndex) {
@@ -51,7 +53,7 @@ public class RemoveDeckCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof RemoveDeckCommand // instanceof handles nulls
-                && targetIndex.equals(((RemoveDeckCommand) other).targetIndex)); // state check
+            || (other instanceof RemoveDeckCommand // instanceof handles nulls
+            && targetIndex.equals(((RemoveDeckCommand) other).targetIndex)); // state check
     }
 }

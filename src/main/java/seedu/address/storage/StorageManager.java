@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Logger;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyUserPrefs;
@@ -20,7 +21,8 @@ public class StorageManager implements Storage {
     private UserPrefsStorage userPrefsStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code WordBankStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given {@code WordBankStorage} and {@code
+     * UserPrefStorage}.
      */
     public StorageManager(WordBankStorage wordBankStorage, UserPrefsStorage userPrefsStorage) {
         super();
@@ -53,12 +55,14 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyWordBank> readAddressBook() throws DataConversionException, IOException {
+    public Optional<ReadOnlyWordBank> readAddressBook()
+        throws DataConversionException, IOException {
         return readAddressBook(wordBankStorage.getAddressBookFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyWordBank> readAddressBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyWordBank> readAddressBook(Path filePath)
+        throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
         return wordBankStorage.readAddressBook(filePath);
     }

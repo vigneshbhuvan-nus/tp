@@ -1,6 +1,7 @@
 package seedu.address.ui;
 
 import java.util.logging.Logger;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -104,20 +105,21 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
-     * Adds event listeners to update GUI when user clicks on a component
-     * Only for statistics panel.
+     * Adds event listeners to update GUI when user clicks on a component Only for statistics
+     * panel.
      */
     public void addEventListeners() {
         // switch tab event listener
         tabPanelPlaceholder.getSelectionModel().selectedItemProperty().addListener((
                 observable, oldValue, newValue) -> {
-                logger.info(String.format("Tab switched from %s to %s", oldValue.getId(), newValue.getId()));
-                switch(newValue.getId()) {
-                case "statistics_panel":
-                    handleStatisticsPanel(-1);
-                    break;
-                default:
-                    break;
+                logger.info(
+                    String.format("Tab switched from %s to %s", oldValue.getId(), newValue.getId()));
+                switch (newValue.getId()) {
+                    case "statistics_panel":
+                        handleStatisticsPanel(-1);
+                        break;
+                    default:
+                        break;
                 }
             }
         );
@@ -168,7 +170,8 @@ public class MainWindow extends UiPart<Stage> {
         deckListPanel = new DeckListPanel(logic.getFilteredDeckList()); //get the initial decklist
         deckListPanelPlaceholder.getChildren().add(deckListPanel.getRoot());
 
-        entryListPanel = new EntryListPanel(logic.getFilteredEntryList()); //get the initial entrylist from model
+        entryListPanel = new EntryListPanel(
+            logic.getFilteredEntryList()); //get the initial entrylist from model
         entryListPanelPlaceholder.getChildren().add(entryListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -240,7 +243,6 @@ public class MainWindow extends UiPart<Stage> {
             break;
         default:
             tabPanelPlaceholder.getSelectionModel().select(START_INDEX);
-            break;
         }
     }
 
@@ -260,7 +262,8 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void handleScorePanel() {
-        ScorePanel scorePanel = new ScorePanel(logic.getLastScore(), logic.getFilteredEntryList().size());
+        ScorePanel scorePanel = new ScorePanel(logic.getLastScore(),
+            logic.getFilteredEntryList().size());
         quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
     }
 

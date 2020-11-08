@@ -7,6 +7,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_ENTRIES;
 
 import java.util.List;
 import java.util.Optional;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -26,7 +27,8 @@ public class EditCommand extends Command {
 
     public static final String COMMAND_WORD = "edit";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the entry identified "
+    public static final String MESSAGE_USAGE =
+        COMMAND_WORD + ": Edits the details of the entry identified "
             + "by the index number used in the displayed entry list. "
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648) "
@@ -42,7 +44,8 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_EDIT_ENTRY_SUCCESS = "Edited Entry: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_ENTRY = "This entry already exists in the word bank."
+    public static final String MESSAGE_DUPLICATE_ENTRY =
+        "This entry already exists in the word bank."
             + "Two entries cannot have the same translation.";
     public static final String MESSAGES_FORBIDDEN = "Word or translations can't be %s ";
 
@@ -51,7 +54,8 @@ public class EditCommand extends Command {
 
     /**
      * Constructs an EditCommand object
-     * @param index Index of the entry in the filtered entry list to edit
+     *
+     * @param index               Index of the entry in the filtered entry list to edit
      * @param editEntryDescriptor Details to edit the entry with
      */
     public EditCommand(Index index, EditEntryDescriptor editEntryDescriptor) {
@@ -82,9 +86,9 @@ public class EditCommand extends Command {
             throw new CommandException(MESSAGE_DUPLICATE_ENTRY);
         }
         if (editedEntry.getWord().toString().equals("/stop")
-                || editedEntry.getTranslation().toString().equals("/stop")
-                || editedEntry.getWord().toString().equals("/play")
-                || editedEntry.getTranslation().toString().equals("/play")) {
+            || editedEntry.getTranslation().toString().equals("/stop")
+            || editedEntry.getWord().toString().equals("/play")
+            || editedEntry.getTranslation().toString().equals("/play")) {
             throw new CommandException(String.format(MESSAGES_FORBIDDEN, "\"/stop\" or \"/play\""));
         }
 
@@ -96,15 +100,17 @@ public class EditCommand extends Command {
     }
 
     /**
-     * Creates and returns a {@code Entry} with the details of {@code entryToEdit}
-     * edited with {@code editEntryDescriptor}.
+     * Creates and returns a {@code Entry} with the details of {@code entryToEdit} edited with
+     * {@code editEntryDescriptor}.
      */
-    private static Entry createEditedEntry(Entry entryToEdit, EditEntryDescriptor editEntryDescriptor) {
+    private static Entry createEditedEntry(Entry entryToEdit,
+        EditEntryDescriptor editEntryDescriptor) {
         requireNonNull(entryToEdit);
         requireNonNull(editEntryDescriptor);
 
         Word updatedWord = editEntryDescriptor.getWord().orElse(entryToEdit.getWord());
-        Translation updatedTranslation = editEntryDescriptor.getTranslation().orElse(entryToEdit.getTranslation());
+        Translation updatedTranslation = editEntryDescriptor.getTranslation()
+            .orElse(entryToEdit.getTranslation());
 
         return new Entry(updatedWord, updatedTranslation);
     }
@@ -124,7 +130,7 @@ public class EditCommand extends Command {
         // state check
         EditCommand e = (EditCommand) other;
         return index.equals(e.index)
-                && editEntryDescriptor.equals(e.editEntryDescriptor);
+            && editEntryDescriptor.equals(e.editEntryDescriptor);
     }
 
     /**
@@ -132,6 +138,7 @@ public class EditCommand extends Command {
      * corresponding field value of the entry.
      */
     public static class EditEntryDescriptor {
+
         private Word word;
         private Translation translation;
 
@@ -139,8 +146,7 @@ public class EditCommand extends Command {
         }
 
         /**
-         * Copy constructor.
-         * A defensive copy of {@code tags} is used internally.
+         * Copy constructor. A defensive copy of {@code tags} is used internally.
          */
         public EditEntryDescriptor(EditEntryDescriptor toCopy) {
             setWord(toCopy.word);
@@ -186,7 +192,7 @@ public class EditCommand extends Command {
             EditEntryDescriptor e = (EditEntryDescriptor) other;
 
             return getWord().equals(e.getWord())
-                    && getTranslation().equals(e.getTranslation());
+                && getTranslation().equals(e.getTranslation());
         }
     }
 }

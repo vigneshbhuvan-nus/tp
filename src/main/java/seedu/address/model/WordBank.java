@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.model.deck.Deck;
@@ -156,8 +157,8 @@ public class WordBank implements ReadOnlyWordBank {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof WordBank // instanceof handles nulls
-                && observedDecks.equals(((WordBank) other).observedDecks));
+            || (other instanceof WordBank // instanceof handles nulls
+            && observedDecks.equals(((WordBank) other).observedDecks));
     }
 
     @Override

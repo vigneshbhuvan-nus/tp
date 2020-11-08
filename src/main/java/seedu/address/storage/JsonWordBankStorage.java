@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.logging.Logger;
+
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.IllegalValueException;
@@ -41,11 +42,12 @@ public class JsonWordBankStorage implements WordBankStorage {
      * @param filePath location of the data. Cannot be null.
      * @throws DataConversionException if the file is not in the correct format.
      */
-    public Optional<ReadOnlyWordBank> readAddressBook(Path filePath) throws DataConversionException {
+    public Optional<ReadOnlyWordBank> readAddressBook(Path filePath)
+        throws DataConversionException {
         requireNonNull(filePath);
 
         Optional<JsonSerializableWordBank> jsonAddressBook = JsonUtil.readJsonFile(
-                filePath, JsonSerializableWordBank.class);
+            filePath, JsonSerializableWordBank.class);
         if (!jsonAddressBook.isPresent()) {
             return Optional.empty();
         }

@@ -7,7 +7,6 @@ public class QuestionAttempt {
     private double score;
 
     /**
-     *
      * @param answer
      * @param guess
      * @param scoringMethod
@@ -19,7 +18,6 @@ public class QuestionAttempt {
     }
 
     /**
-     *
      * @param answer
      * @param guess
      * @param score

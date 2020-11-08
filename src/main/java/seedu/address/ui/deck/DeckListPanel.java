@@ -1,6 +1,7 @@
 package seedu.address.ui.deck;
 
 import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
@@ -15,6 +16,7 @@ import seedu.address.ui.UiPart;
  * Panel containing the list of entries.
  */
 public class DeckListPanel extends UiPart<Region> {
+
     private static final String FXML = "DeckListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(DeckListPanel.class);
 
@@ -31,9 +33,11 @@ public class DeckListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code EntryCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code
+     * EntryCard}.
      */
     class DeckListViewCell extends ListCell<Deck> {
+
         @Override
         protected void updateItem(Deck deck, boolean empty) {
             super.updateItem(deck, empty);

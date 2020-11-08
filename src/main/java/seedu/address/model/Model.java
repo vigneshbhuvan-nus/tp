@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.nio.file.Path;
 import java.util.ConcurrentModificationException;
 import java.util.function.Predicate;
+
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.index.Index;
@@ -119,6 +120,7 @@ public interface Model {
 
     /**
      * Selects the deck at the specified index
+     *
      * @param index of the selected deck
      */
     void selectDeck(Index index);
@@ -135,6 +137,7 @@ public interface Model {
 
     /**
      * Updates the filter of the filtered deck list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredDeckList(Predicate<Deck> predicate);
@@ -161,6 +164,7 @@ public interface Model {
 
     /**
      * Changes the current view of the system to the specified view {@code view}
+     *
      * @param view View to change the current view to
      */
     void setCurrentView(View view);
