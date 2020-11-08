@@ -311,14 +311,11 @@ a list of `JsonAdaptedDeck`.
 
 `StorageManager` is the main managing system that allows JSON files to be read, and data to be saved to the JSON files. 
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** 
-An alternative (arguably, a more OOP) model is given below in Figure 9.
-In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data 
-This allows for better management of data eventually.
-</div><br>
+:information_source: **Note:** An alternative (arguably, a more OOP) model is given below in Figure 9.
+In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data. 
+This allows for better management of data and for example could allow users to share `Deck` data with other users without sharing their `QuizData`. 
 
 ![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
-
 <div align="center"><sup style="font-size:100%"><i>Figure 9 More OOP Storage Class Diagram</i></sup></div><br>
 
 ---
@@ -376,9 +373,7 @@ The `Storage` component is needed for commands `new` and `remove`
 This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
 Only after selecting a deck, can some other commands (E.g `add`, `delete`, `edit`, `/play`) be performed.
 
-:information_source: **Note:**
-
-The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
+:information_source: **Note:** The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
 UI, Logic and Model components.
 
 - The selected deck is retrieved from `FilteredList<Deck>` in the model component.
@@ -430,7 +425,7 @@ If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will 
 
 If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input using the `CommandModeParser`.
 
-Do note that in Play Mode, all commands are treated as valid unless the command word is `/play`.
+:information_source: **Note:** In Play Mode, all commands are treated as valid unless the command word is `/play`.
 
 The figure below is a activity diagram that visually describes what is explained in this chapter.
 
@@ -458,7 +453,9 @@ Below is a sequence diagram for the `PlayCommand`.
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
 
 The two figure below are the activity diagram that describes the behavior of `LogicManager` when the user 
-enters a `AnswerCommand`. Note that both figures are connected by the rake symbol.
+enters a `AnswerCommand`. 
+
+:information_source: **Note:** Both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
 Figure X
@@ -690,10 +687,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+:information_source: **Note:** These instructions only provide a starting point for testers to work on;
 testers are expected to do more *exploratory* testing.
 
-</div>
 
 ### 7.1 Launch and shutdown
 
@@ -717,7 +713,7 @@ Displays a guide for all commands.
 
 Prerequisites: Launch GreenTea succesfully.
 
-Test case: `help`
+Test case: `help`<br>
 Expected: A help window pops up and provides a link to the Official UserGuide
 
 ### 7.3 Creating a Deck
@@ -727,6 +723,9 @@ Prerequisites: Launch GreenTea successfully
 
 1. Test Case: `new Japanese Animals`<br>
     Expected: an empty Deck named Japanese Animals created and displayed in the DeckList panel. Status message to say "New deck added: Japanese Animals"
+    
+2. Other incorrect commands:
+    - `new` without providing the name of the deck
     
 ### 7.4 Removing a deck
 
@@ -745,8 +744,8 @@ Removing a deck while all decks are being shown
     Expected: No deck is removed. Error details shown in the status message.
 
 5.  Other incorrect remove commands to try:
-    - `remove`
-    - `remove asdf`
+    - `remove` without providing index
+    - `remove asdf` providing an invalid index
     - `remove x` (where x is a positive integer larger than the list size)<br>
       Expected: Similar to previous test case 4
   
@@ -757,6 +756,11 @@ Prerequisites: Have a deck present
 
 1. Test Case: `select 1` and then `add w/Hola t/Hello`<br>
     Expected: An Entry added to Deck 1, displayed in the Entries panel. Status message to say "New entry added: hola Translation: hello"
+    
+2. Other incorrect commands to try:
+    - `add w/Hola t/Hello` without selecting a deck before
+    - `select 1` and then `add w/Hola` without providing its word 
+    - `select 1` and then `t/Hello` without providing its translation
 
 ### 7.6 Editing an Entry
 Editing an existing entry in a particular deck
@@ -776,6 +780,36 @@ Prerequisites: Have a deck with entries present
    and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola amigos Translation: hello friends"
    
+ 4. Other incorrect commands to try:
+    - `edit 2 t/hello there` without selecting a deck first
+    - `select 1` and then `edit w/hola amigos` without providing index
+    - `select 1` and then `edit 2 w/` without providing word
+    - `select 1` and then `edit 2 t/` without providing translation
+    
+### 7.7. Playing and Stopping a Quiz
+Playing a Flashcard Quiz with a particular deck
+
+Prerequisites: Have a deck with entries present, preferably multiple entries
+
+1. Test Case: `select 1` and then `/play`<br>
+   Expected: App will switch to the Quiz tab, and will display the first translation to be answered and various statistics.
+   Status message to say "PlayMode started" 
+   
+2. Test Case: after entering PlayMode, answer the question by entering the answer on the command line<br>
+   Expected: Display will be updated to show the next question, as well as the previous answers and questions
+   Status message to say "Question Answered: answer"
+   
+ 3. Test Case: after entering PlayMode, enter `/stop`<br>
+   Expected: PlayMode will be stopped and will switch back to the main mode.
+   Status message to say "Edited Entry: hola amigos Translation: hello friends"
+   
+ 4. Other incorrect commands to try:
+    - `select 1` and then `play` instead of `play`
+    - `\play` without selecting a deck first
+    - While in PlayMode, `stop` instead of `/stop`
+
+###
+       
 ### 7.7 Saving data
 
 Dealing with missing data files
