@@ -2,8 +2,6 @@
 
 ### Table of Contents
 
-- [Green Tea Developer Guide (v1.4)](#green-tea-developer-guide-v14)
-  - [Table of Contents](#table-of-contents)
 - [1. Introduction](#1-introduction)
   - [1.1 Purpose](#11-purpose)
   - [1.2 Audience](#12-audience)
@@ -18,10 +16,13 @@
   - [3.6 Storage component](#36-storage-component)
 - [4. Implementation](#4-implementation)
   - [4.1 Deck Feature (Melanie)](#41-deck-feature-melanie)
-  - [4.1.1 Overview](#411-overview)
-  - [4.1.2 Commands Implemented](#412-commands-implemented)
-  - [4.1.3 Select Deck](#413-select-deck)
+      - [4.1.1 Overview](#411-overview)
+      - [4.1.2 Commands Implemented](#412-commands-implemented)
+      - [4.1.3 Select Deck](#413-select-deck)
   - [4.2 Flashcard System (Gabriel)](#42-flashcard-system-gabriel)
+      - [4.2.1 Play Mode and Command Mode (Gabriel)](#421-play-mode-and-command-mode-gabriel)
+      - [4.2.2 Play Mode Commands (Gabriel)](#422-play-mode-commands-gabriel)
+      - [4.2.3 Leitner and QuizAttempt (Georgie)](#423-leitner-and-quizattempt-georgie)
   - [Design Considerations:](#design-considerations-2)
     - [Aspect: Type of flashcard system](#aspect-type-of-flashcard-system)
   - [4.3 [Proposed] Data Analysis](#43-proposed-data-analysis)
@@ -428,7 +429,7 @@ enters any command.
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 13 Generalized Command Activity Diagram</i></sup></div><br>
 
-The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#413-select-deck) (besides the `PlayCommand`)
+The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#422-play-mode-commands-gabriel) (besides the `PlayCommand`)
 while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
 
 To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
@@ -459,7 +460,7 @@ Step 9. `Logic Manager` executes the `args` command.
 
 Step 10. The `args` command invokes `newGame()` in `Model`.
 
-Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#link)
+Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#423-leitner-and-quizattempt-georgie)
 
 Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`. 
 
@@ -509,7 +510,7 @@ Step 9. The `answer` command invokes `playGame(answer)` in `Model`.
 
 Step 10. Depending on the correctness of the `answer`, Model will update the score via `updateScore()`.
 
-Step 11a. If the [`Leitner` object](#link) stored in `Model` has more than one question left, `Model` 
+Step 11a. If the [`Leitner` object](#423-leitner-and-quizattempt-georgie) stored in `Model` has more than one question left, `Model` 
 will update the next question via `updateQuestion()`.
 A `CommandResult` object is created storing the `answer` and returned to `Logic Manager` to signify the end of the command execution.
 The `CommandResult` displays the answer details to the user via the GUI to signify the end of the command execution.
