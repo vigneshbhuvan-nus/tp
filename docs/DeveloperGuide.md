@@ -96,14 +96,14 @@ It is responsible for:
 - At app launch: Initializes the components in the correct sequence and connects them up with each other.
 - At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#32-common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#33-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-- [**`UI`**](#33-ui-component): The UI (User Interface) of the App.
-- [**`Logic`**](#34-logic-component): The command executor.
-- [**`Model`**](#35-model-component): Holds the data of the App in memory.
-- [**`Storage`**](#36-storage-component): Reads data from, and writes data to, the hard disk.
+- [**`UI`**](#34-ui-component): The UI (User Interface) of the App.
+- [**`Logic`**](#35-logic-component): The command executor.
+- [**`Model`**](#36-model-component): Holds the data of the App in memory.
+- [**`Storage`**](#37-storage-component): Reads data from, and writes data to, the hard disk.
 
 Each of the four components:
 
@@ -232,7 +232,7 @@ Role of the `Parser` package:
 Role of the `Statistics` package:
 
 - Maintains the `Statistics` of the all the decks in memory
-- More explained under [Implementations - Statistics](#43-implementaion-not-written-yet)
+- More explained under [Implementations - Statistics](#43-statistics-georgie)
 
 Role of the `Command` package:
 
@@ -491,7 +491,7 @@ enters any command.
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 14 Generalized Command Activity Diagram</i></sup></div><br>
 
-The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#422-play-mode-commands-gabriel) (besides the `PlayCommand`)
+The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#424-answer-command-and-stop-command-gabriel) (besides the `PlayCommand`)
 while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
 
 To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
@@ -522,7 +522,7 @@ Step 9. `Logic Manager` executes the `args` command.
 
 Step 10. The `args` command invokes `newGame()` in `Model`.
 
-Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#423-leitner-and-quizattempt-georgie)
+Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#425-leitner-and-quizattempt-georgie)
 
 Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`. 
 
@@ -568,7 +568,7 @@ Step 9. The `answer` command invokes `playGame(answer)` in `Model`.
 
 Step 10. Depending on the correctness of the `answer`, Model will update the score via `updateScore()`.
 
-Step 11a. If the [`Leitner` object](#423-leitner-and-quizattempt-georgie) stored in `Model` has more than one question left, `Model` 
+Step 11a. If the [`Leitner` object](#425-leitner-and-quizattempt-georgie) stored in `Model` has more than one question left, `Model` 
 will update the next question via `updateQuestion()`.
 A `CommandResult` object is created storing the `answer` and returned to `Logic Manager` to signify the end of the command execution.
 The `CommandResult` displays the answer details to the user via the GUI to signify the end of the command execution.
