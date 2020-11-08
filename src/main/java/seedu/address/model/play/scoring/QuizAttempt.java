@@ -20,6 +20,7 @@ public class QuizAttempt implements Comparable<QuizAttempt> {
      * This is the default constructor mostly used for testing purposes.
      */
     public QuizAttempt() {
+        questionAttempts = new ArrayList<>();
     }
 
     /**

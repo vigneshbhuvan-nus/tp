@@ -10,8 +10,8 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
 - [4. Using This Guide (Melanie)](#4-using-this-guide-melanie)
   - [4.1 Symbols](#41-symbols)
   - [4.2 Command Format](#42-command-format)
-    - [4.2.1 Arrowed Brackets](#421-arrowed-brackets)
-    - [4.2.2 Square Brackets](#422-square-brackets)
+    - [4.2.1 Arrowed brackets](#421-arrowed-brackets)
+    - [4.2.2 Square brackets](#422-square-brackets)
 - [5. Features](#5-features)
   - [5.1 Deck Commands (Melanie)](#51-deck-commands-melanie)
     - [5.1.1 Creating a deck: new](#511-creating-a-deck-new)
@@ -22,8 +22,9 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [5.2.2 Editing an entry: edit (Vignesh)](#522-editing-an-entry-edit-vignesh)
     - [5.2.3 Deleting an entry: delete (Vignesh)](#523-deleting-an-entry-delete-vignesh)
   - [5.3 Play Commands (Georgie)](#53-play-commands-georgie)
-    - [5.3.1 Play a Game (Georgie)](#531-play-a-game-georgie)
-    - [5.3.2 Stop a Game (Georgie)](#532-stop-a-game-georgie)
+    - [5.3.1 Playing a game (Georgie)](#531-playing-a-game-georgie)
+    - [5.3.2 Stopping a game (Georgie)](#532-stopping-a-game-georgie)
+    - [5.3.3 Answering a question (Georgie)](#533-answering-a-question-georgie)
   - [5.4 Extra Commands (Georgie)](#54-extra-commands-georgie)
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
@@ -106,7 +107,9 @@ been successfully carried out, or if there are errors in your command formats.
     ![GreenTea](images/user-guide/4JapaneseAnimalDeck.PNG)
     Figure 4. New deck called Japanese Animals
 
-    Your screen should now look like Figure 4.
+    Your screen should now look like Figure 4. However, we have rewritten the exact command that we entered, into the `Command Box`. We will be
+    doing this for the rest of the document as well!
+    
     The previous command that you entered created a new Deck in GreenTea called `Japanese Animals`.
     Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `1`.
 
@@ -215,14 +218,14 @@ Before progressing further, we strongly recommend going through [Chapter 3](#3-g
 Every feature can be accessed with a command and every command has a certain format that
 has to be followed. The following is an explanation of how commands are described in this document.
 
-### 4.2.1 Arrowed Brackets
+### 4.2.1 Arrowed brackets
 
 Words in `<Arrowed Brackets>` are compulsory inputs supplied by you. They are generally words or translations that
 are unique to each input.
 
 E.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the input, `NAME OF NEW DECK`
 
-### 4.2.2 Square Brackets
+### 4.2.2 Square brackets
 
 Words in `[Square Brackets]` are optional inputs. They may or may not be added but **at least one** is required
 
@@ -256,6 +259,8 @@ Figure 12. Result of creating new decks
 
 :information_source: **Note:**
 The name of the deck cannot be more than 100 characters long.
+
+:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`. 
 
 ### 5.1.2 Removing a deck: `remove`
 
@@ -334,6 +339,8 @@ Figure 17: Result of adding an entry
 :information_source: **Note:**
 A word cannot be more than 200 characters long. A translation cannot be more than 200 characters long
 
+:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`.
+
 ### 5.2.2 Editing an entry: `edit` (Vignesh)
 
 Edits an entry with the given index using the given word or translation or both.
@@ -381,7 +388,7 @@ Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `/play` and
 `/stop`.
 
-### 5.3.1 Play a Game (Georgie)
+### 5.3.1 Playing a game (Georgie)
 
 Plays the current deck. GreenTea will do a shuffle of the current deck and asks you what is the
 the english `word` of a randomly selected `translation`. Your score will be recorded and displayed
@@ -395,12 +402,14 @@ The slash `/` in the command.
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
+:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`. 
+
 Result:
 
 ![GreenTea](images/user-guide/21PlayAGame.png)
 Figure 21. Result of playing a game
 
-### 5.3.2 Stop a Game (Georgie)
+### 5.3.2 Stopping a game (Georgie)
 
 Stop the current game prematurely. Note the slash `/` in the command.
 
@@ -412,6 +421,20 @@ Before you start playing a new game, remember to [select a deck first!](#513-sel
 Result:
 ![GreenTea](images/user-guide/22StopAGame.png)
 Figure 22. Result of stopping a game
+
+### 5.3.3 Answering a question (Georgie)
+
+GreenTea is extremely user friendly! After starting a game, any word given by you will be considered as an answer other than the input `/stop`. There 
+are no special command words or format required!
+
+Format: `[Anything!]`
+
+:information_source: **Note:**
+Please make sure that your answer contains at least one character!
+
+Result:
+![GreenTea](images/user-guide/23AnsweringAQuestion.png)
+Figure 23. Answering a question
 
 ## 5.4 Extra Commands (Georgie)
 
@@ -427,7 +450,7 @@ Format: `help`
 Result:
 
 ![GreenTea](images/user-guide/HelpCommand.PNG)
-Figure 23. Result of Opening Help Window
+Figure 24. Result of Opening Help Window
 
 ### 5.4.2 Exiting the program: `exit`
 
@@ -451,7 +474,7 @@ Format: `stats`
 Result:
 
 ![GreenTea](images/user-guide/24StatsAllDecks.PNG)
-Figure 24. Result of viewing statistics across all decks
+Figure 25. Result of viewing statistics across all decks
 
 To view statistics of **a single deck**:
 
@@ -464,10 +487,10 @@ Example:
 Result:
 
 ![GreenTea](images/user-guide/25StatsOneDeck.PNG)
-Figure 25. Result of viewing statistics of a single deck
+Figure 26. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
-In order to view your statistics, you must first [play a game!](#531-play-a-game-georgie)
+In order to view your statistics, you must first [play a game!](#531-playing-a-game-georgie)
 
 # 6. FAQ (Gabriel & Melanie)
 
@@ -494,6 +517,7 @@ any problems related to Green Tea. Feel free to create an issue to let us know i
 | **Delete**     | `delete <INDEX>`                        | `delete 3`                    | Deletes the Entry with the Given Index                                 |
 | **Play**       | `/play`                                 |                               | Starts a New FlashCard Game with the Selected Deck                     |
 | **Stop**       | `/stop`                                 |                               | Stops an Existing Game                                                 |
+| **Answer**       | `[Anything!]`                         |                               | Answers a Question                                               |
 | **Statistics** | `stats`                                 | `stats`                       | Shows Statistics of all Decks combined                                 |
 | **Statistics** | `stats <INDEX>`                         | `stats 1`                     | Shows Statistics of a Particular Deck <INDEX>                          |
 | **Clear**      | `clear`                                 |                               | Deletes All Decks and Entries                                          |

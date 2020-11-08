@@ -299,8 +299,7 @@ public class ModelManager implements Model {
     //====Games=====
     @Override
     public void newGame() {
-        UniqueEntryList observedList = getCurrentDeck().getEntries(); //get selected deck
-        leitner = new Leitner(observedList);
+        leitner = new Leitner(getCurrentDeck());
         quizLength = leitner.getEntries().size();
         currentIndex = 0;
         wordBank.resetEntryList();
