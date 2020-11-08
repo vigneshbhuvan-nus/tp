@@ -22,9 +22,8 @@
   - [4.1.2 Commands Implemented](#412-commands-implemented)
   - [4.1.3 Select Deck](#413-select-deck)
   - [4.2 Flashcard System (Gabriel)](#42-flashcard-system-gabriel)
-  - [Design Considerations:](#design-considerations-2)
-    - [Aspect: Type of flashcard system](#aspect-type-of-flashcard-system)
-  - [4.3 [Proposed] Data Analysis](#43-proposed-data-analysis)
+  - [4.2.3 Leitner and QuizAttempt (Georgie)](#42-leitner-and-quizattempt-georgie)
+  - [4.3 Data Tracking (Georgie)](#43-data-tracking-georgie)
 - [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
 - [6. Appendix: Requirements](#6-appendix-requirements)
   - [6.1 Product scope](#61-product-scope)
@@ -204,6 +203,7 @@ The class diagram of the `Logic` component is shown below in Figure 5.
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Role of the `Logic` component:
+
 - `Logic` receives the user command.
 - `Logic Manager` can either be in `Play Mode` or in `Command Mode`.
 - Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
@@ -215,14 +215,17 @@ Role of the `Logic` component:
 - In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Role of the `Parser` package:
+
 - Derives the command word and the arguments of the user input
 - Throws a `ParserException` if the command word or argument are not correctly written
 
 Role of the `Statistics` package:
+
 - Maintains the `Statistics` of the all the decks in memory
 - More explained under [Implementations - Statistics](#43-implementaion-not-written-yet)
 
 Role of the `Command` package:
+
 - Contains the instructions for `Model`
 - Throws a `CommandException` if an error occurs between execution and obtaining `CommandResult`
 
@@ -274,6 +277,7 @@ Role of `Leitner` object:
 - More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
 
 Role of `QuizAttempt` object:
+
 - Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
 - More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
 
@@ -404,6 +408,7 @@ The user can quiz themselves by ensuring a deck is already selected using a `Sel
 The `SelectCommand` follows the format: `select <index>` while the `PlayCommand` follows the format: `/play`.
 
 This section explains:
+
 - How the application separates the play mode commands from the command mode commands.
 - How the play mode commands work.
 - How scoring is calculated and saved in `Storage` based on each quiz.
@@ -411,9 +416,9 @@ This section explains:
 #### 4.2.1 Play Mode and Command Mode (Gabriel)
 
 The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
-the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`. 
+the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`.
 
-If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input using the `PlayModeParser`. 
+If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input using the `PlayModeParser`.
 
 If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input using the `CommandModeParser`.
 
@@ -430,12 +435,13 @@ When in Play Mode, `Logic Manager` will only handle three commands. They are the
 In this implementation, all commands that do not match the format for `PlayCommand` or `StopCommand` are treated as `AnswerCommand`.
 
 The format for the Play Mode commands are as follows:
+
 - The user input format for `PlayCommand` is `/play`.
 - The user input format for `StopCommand` is `/stop`.
 - There is no format for `AnswerCommand`.
 
 The figure below is an activity diagram that describes the behavior of `LogicManager` when the user
- enters a `PlayCommand`. The behavior for `StopCommand` is similar to the `PlayCommand`.
+enters a `PlayCommand`. The behavior for `StopCommand` is similar to the `PlayCommand`.
 
 ![PlayCommand](images/PlayActivityDiagram.png)
 Figure X
@@ -444,7 +450,7 @@ Below is a sequence diagram for the `PlayCommand`.
 
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
 
-The two figure below are the activity diagram that describes the behavior of `LogicManager` when the user 
+The two figure below are the activity diagram that describes the behavior of `LogicManager` when the user
 enters a `AnswerCommand`. Note that both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
@@ -457,44 +463,55 @@ Below is the corresponding sequence diagram for the 'AnswerCommand'.
 
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
 
+#### 4.2.3 Leitner (Georgie)
 
-#### 4.2.3 Leitner and QuizAttempt (Georgie)
+The Leitner system is a system to randomize the questions presented to a user based on their most recent past attempt of the quiz if any, otherwise random shuffle is executed. `Leitner` is a class that encapsulates this logic. It is constructed with `Deck` as the only parameter and stores the next question list to be presented to the player in its internal `entryList` object, retrieved via `leitner.getEntries()`.
 
+How it works is as follows (this is in `ModelManager`):
 
-#### Design Considerations:
+```java
+// construct the Leitner object, passing in the deck
+Leitner leitner = new Leitner(deck);
 
-##### Aspect: Type of flashcard system
+// shuffle and store results of shuffle in leitner's internal entryList
+leitner.doTheLeitner();
 
-- **Alternative 1 (current choice)** : Leitner System
-  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
-    using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
-    answered flashcards are put at the end of the question queue and incorrectly answered
-    flashcards are placed at the front.
-    (https://en.wikipedia.org/wiki/Leitner_system)
-  - Cons: More difficult to implement
-- **Alternative 2** : Random shuffling system
-  - Pros: Easier to implement
-  - Cons: Users may not learn as effectively
+// get the entries (questions) to show the player
+// the order of the questions in the entry follows that of the Leitner system described above
+Entry entries = leitner.getEntries();
+```
 
-### 4.3 Statistics (Georgie)
+Later, a series of `leitner.addGuess(guess)` is called until the end of the quiz to reflect "answering a question". Leitner will create a new `QuestionAttempt` for each of these guesses and store all the `QuestionAttempt`s in a list. This list of `QuestionAttempt` is stored in a `QuizAttempt` in the `Deck` and is used in generating the next order of questions to show the user.
 
-Some of the proposed parameters tracked by GreenTea include:
+### 4.3 Data Tracking (Georgie)
 
-- Number of correctly answered flashcards
-- Previous scores
-- Average time taken in total
-- Time of quiz
+We needed to track quiz-specific and app-wide data. Quiz-specific data refers to data that reflects the complete attempt/playthrough of a particular quiz which we call a `QuizAttempt`. In particular, `QuizAttempt` is a list of `QuestionAttempt`s, where each `QuestionAttempt` consists of the user's answer, the correct answer, and the total score received for that question out of `1.0`.
 
-From these data, GreenTea would be able to derive some meaningful analytics to
-display to the user. These include:
+App-wide data on the other hand refers events like logins and logouts, time last logged in, average time spent on app, number of quizzes taken in total, etc. We disembarked working on this feature in favor of other features such as Leitner as we found it to not value-add to the user that much. Nonetheless, we decided to include it as it might be interesting from an engineering standpoint.
 
-- Progression since last attempt
-- Length of time between quizzes
-- Most forgotten phrase/translation
-- Language mastery
-- Progress in each deck
+#### 4.3.1 `QuizAttempt` and `QuestionAttempt` (Georgie)
 
-_{Feature will be added in v1.3.2}_
+Each `Deck` consists of a list of `QuizAttempt`s. Each `QuizAttempt` object encapsulates a given entire playthrough of the `Deck`.
+
+It contains:
+
+- list of `QuestionAttempt`s;
+- duration of the quiz;
+- time the quiz was taken at;
+- total score;
+- and `Scoring`.
+
+Apart from `Scoring`, the rest of the attributes are computed on the fly as a new `QuestionAttempt` is added to the `QuizAttempt`. `Scoring` is just an interface that has an abstract method `computeScore` which takes in two strings and returns a `double` between `0.0` and `1.0`, depending on how it is implemented e.g. `BinaryScoring` will give `1.0` if the strings are same, and `0.0` if not; `EditDistanceScoring` will score based on the edit distance between the two strings.
+
+As a new `QuestionAttempt` is added, `Scoring` will compute the score for that question based on the answer the user gave and the correct answer.
+
+To make `Deck` as cohesive as possible, a `Deck` consist of a list of `QuizAttempt`. This way, when `Deck` is persisted to disk, we also persist the list of `QuizAttempt` for that deck together with it. Also, `QuizAttempt` is only ever used together with `Deck` so it made sense to store list of `QuizAttempt`s as an attribute of `Deck`.
+
+#### 4.3.2 `StatisticsManager` (Georgie)
+
+I wrote the `StatisticsManager` singleton class to encapsulate all app-related event logs. Whenever the `StatisticsManager` class is created, a `LOGIN` event is appended to its internal event log. Whenever `cleanup()` is called on `StatisticsManager`, a `LOGOUT` event is called. Each event also has an associated timestamp. Through the log of events, statistics like average time spent on app, last login time, etc can be computed on demand.
+
+An instance of `StatisticsManager` is instantiated in the constructor of `LogicManager` and destroyed when `cleanup()` is called on `LogicManager`. It makes the most sense to call these lifecycle operations in these parts of `LogicManager` as they parallel the opening and closing lifecycle of the app.
 
 ---
 
