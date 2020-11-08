@@ -42,7 +42,8 @@ public class QuizPanel extends UiPart<Region> {
     private ProgressBar progressBar;
 
     /**
-     * Constructor for quiz panel. Takes in a Leitner object {@code leitner} and an integer {@code currentIndex}
+     * Constructor for quiz panel. Takes in a Leitner object {@code leitner} and an integer {@code
+     * currentIndex}
      */
     public QuizPanel(Leitner leitner, int currentIndex) {
         super(FXML);

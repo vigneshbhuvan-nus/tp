@@ -18,7 +18,7 @@ public class JsonAdaptedScore {
      */
     @JsonCreator
     public JsonAdaptedScore(@JsonProperty("maxScore") double maxScore,
-                            @JsonProperty("yourScore") double yourScore) {
+        @JsonProperty("yourScore") double yourScore) {
         this.maxScore = maxScore;
         this.yourScore = yourScore;
     }
@@ -32,6 +32,7 @@ public class JsonAdaptedScore {
     }
 
     //Dummy Constructor
+
     /**
      *
      */
@@ -51,7 +52,8 @@ public class JsonAdaptedScore {
     /**
      * Converts this Jackson-friendly adapted Score object into the model's {@code score} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted Score.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted
+     *                               Score.
      */
     public Score toModelType() throws IllegalValueException {
         if (!Score.isValidScore(maxScore)) {

@@ -38,14 +38,16 @@ public class JsonAdaptedTranslation {
     }
 
     /**
-     * Converts this Jackson-friendly adapted Translation object into the model's {@code Translation} object.
+     * Converts this Jackson-friendly adapted Translation object into the model's {@code
+     * Translation} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted Translation.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted
+     *                               Translation.
      */
     public Translation toModelType() throws IllegalValueException {
         if (translation == null) {
             throw new IllegalValueException(
-                    String.format(MISSING_FIELD_MESSAGE_FORMAT, Translation.class.getSimpleName()));
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, Translation.class.getSimpleName()));
         }
         if (!Translation.isValidTranslation(translation)) {
             throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);

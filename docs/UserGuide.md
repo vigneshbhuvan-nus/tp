@@ -50,6 +50,8 @@ actions that would allow you to use GreenTea seamlessly and have an enjoyable jo
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 1. GreenTea's Graphical User Interface (GUI)
 
+
+
 # 2. About This Document (Gabriel)
 
 Welcome to the GreenTea User Guide!
@@ -61,6 +63,8 @@ going through and we feel **frustrated** just as much you do.
 That's why here at GreenTea, we have come up with this neat
 user guide to help **you** hit the ground running. With this foolproof User Guide, learning a new
 language will be as relaxing as drinking a hot cup of GreenTea.
+
+
 
 # 3. Getting Started (Gabriel and Vignesh)
 
@@ -77,29 +81,31 @@ To start using GreenTea:
 4. Double-Click the file to start the application. The GUI should appear in a few seconds and it should look like Figure 2.
 
 ![GreenTea](images/user-guide/1EmptyGUI.png)
-Figure 2.  GreenTea's GUI
+Figure 2. GreenTea's GUI
 
 
-Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of Figure 2 to explain it. 
+Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of Figure 2 to explain it.
 ![GreenTea](images/user-guide/3EmptyGUIWithAnnotation.png)
 Figure 3. Annotated GUI
 
+We understand that you might be curious about each part of the GUI, don't worry, in this chapter we will briefly look through
+every part of the GUI.
+
 There are four main components to the GUI. The deck list, the tab panels, the result display and the command box
 
-1. `Deck List` - The deck list displays all the decks that you currently have in GreenTea.
-A deck is a list of entries and an entry consists of a word and a translation. It will update as you keep adding decks.
-2. `Tab Panels` - The main features of GreenTea are separated into tabs. The tabs will change automatically, depending on your
-commands, so you do not need to worry about changing the tabs manually. GreenTea currently has four different tabs.
+1.  `Deck List` - The deck list displays all the decks that you currently have in GreenTea.
+    A deck is a list of entries and an entry consists of a word and a translation. It will update as you keep adding decks.
+2.  `Tab Panels` - The main features of GreenTea are separated into tabs. The tabs will change automatically, depending on your
+    commands, so you do not need to worry about changing the tabs manually. GreenTea currently has four different tabs.
+    
     1. `Start Tab`: Consists of the welcome page that is shown on startup of the application.
     2. `Entries Tab`: Displays all the entries of a selected deck.
     3. `Quiz Tab`: Displays the current.
     4. `Statistics Tab`: Displays the score of your past attempts of the current selected deck or overall.
 
-    We understand that you might be curious about each part of the GUI, don't worry, in this chapter we will briefly look through
-    every part of the GUI.
-3. `Result Display` - The result display is where the outcome of your commands are shown. GreenTea will feedback to you if your command has
-been successfully carried out, or if there are errors in your command formats.
-4. `Command Box` - The command box is where you type in your commands. Pressing **enter** on your keyboard will execute the commands.
+3.  `Result Display` - The result display is where the outcome of your commands are shown. GreenTea will feedback to you if your command has
+    been successfully carried out, or if there are errors in your command formats.
+4.  `Command Box` - The command box is where you type in your commands. Pressing **enter** on your keyboard will execute the commands.
 5.  Try typing these commands to start playing with GreenTea
 
     - `new Japanese Animals`
@@ -109,7 +115,7 @@ been successfully carried out, or if there are errors in your command formats.
 
     Your screen should now look like Figure 4. However, we have rewritten the exact command that we entered, into the `Command Box`. We will be
     doing this for the rest of the document as well!
-    
+
     The previous command that you entered created a new Deck in GreenTea called `Japanese Animals`.
     Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `1`.
 
@@ -146,9 +152,9 @@ been successfully carried out, or if there are errors in your command formats.
     now created a brand new deck called `Japanese Animals` with a new entry of the word `Dolphin` and the
     translation `イルカ`. Try adding a few more entries into GreenTea!
 
-6. Hopefully you have written a few more entries into GreenTea. We went ahead and added two new entries into the Deck
-`Japanese Animals`.
-    
+6.  Hopefully you have written a few more entries into GreenTea. We went ahead and added two new entries into the Deck
+    `Japanese Animals`.
+
     ![GreenTea](images/user-guide/8AdditionalEntriesJapanese.PNG)
     Figure 8. Added more entries into `Japanese Animals`
 
@@ -158,7 +164,7 @@ been successfully carried out, or if there are errors in your command formats.
     interchangeably. Try typing and entering the following commands into GreenTea.
 
     - `/play`
-    
+
     ![GreenTea](images/user-guide/9PlayJapaneseDeck.PNG)
     Figure 9. Playing a Game of Flashcards
 
@@ -169,7 +175,7 @@ been successfully carried out, or if there are errors in your command formats.
     will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
 
     From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We
-    already know that the correct word is `Dolphin`. However, let us try typing a wrong answer for example`dog`. 
+    already know that the correct word is `Dolphin`. However, let us try typing a wrong answer for example`dog`.
 
     ![GreenTea](images/user-guide/10WrongAnswer.PNG)
     Figure 10. Wrong answer given
@@ -183,9 +189,9 @@ been successfully carried out, or if there are errors in your command formats.
 
     Try playing the quiz a few more times!
 
-7. Have you tried quizzing yourself a few more times? Aren't you curious about your progress so far? Thankfully, GreenTea has been
-keeping track of your scores in the background and can display your statistics in the form of a graph. Try typing the following commands
-into GreenTea!
+7.  Have you tried quizzing yourself a few more times? Aren't you curious about your progress so far? Thankfully, GreenTea has been
+    keeping track of your scores in the background and can display your statistics in the form of a graph. Try typing the following commands
+    into GreenTea!
 
     - `stats 1`
 
@@ -197,9 +203,11 @@ into GreenTea!
     your score history as well as the time stamp of each attempt. Based on our progression, we think we need a
     little bit more practise with our deck!
 
-8. Congratulations! We have come to the end of this chapter. We hope that you have learnt the basics of
-using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
-commands with complete explanations to learn in [Chapter 5](#5-features).
+8.  Congratulations! We have come to the end of this chapter. We hope that you have learnt the basics of
+    using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
+    commands with complete explanations to learn in [Chapter 5](#5-features).
+
+
 
 # 4. Using This Guide (Melanie)
 
@@ -207,11 +215,13 @@ In this chapter, we will get familiar with the symbols and command format used i
 
 Before progressing further, we strongly recommend going through [Chapter 3](#3-getting-started-gabriel-and-vignesh) first.
 
+
 ## 4.1 Symbols
 
 :information_source: This symbol represents important information
 
 :bulb: This symbol represents additional information or fun facts
+
 
 ## 4.2 Command Format
 
@@ -232,14 +242,18 @@ Words in `[Square Brackets]` are optional inputs. They may or may not be added b
 E.g The edit command `edit 1 [w/word] [t/translation]` can be written as `edit 1 [w/word]` or `edit 1 [t/translation]`
 or `edit 1 [w/word] [t/translation]` **but cannot be written as** `edit 1`
 
+
+
 # 5. Features
 
 In this chapter, we will be going into detail of GreenTea's features, along with their command format and
 relevant examples.
 
+
 ## 5.1 Deck Commands (Melanie)
 
 As mentioned earlier, decks are the foundation of GreenTea. A deck is simply a list of entries you write into GreenTea. A deck can be your favourite Korean Dramas or a list of Japanese Words.
+
 
 ### 5.1.1 Creating a deck: `new`
 
@@ -260,7 +274,8 @@ Figure 12. Result of creating new decks
 :information_source: **Note:**
 The name of the deck cannot be more than 100 characters long.
 
-:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`. 
+:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`.
+
 
 ### 5.1.2 Removing a deck: `remove`
 
@@ -271,7 +286,7 @@ Format: `remove <INDEX OF DECK>`
 :information_source: **Note:**
 To get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck.
 
-Example: 
+Example:
 
 - `remove 1`
 
@@ -280,10 +295,12 @@ Before deck 1 is removed:
 ![GreenTea](images/user-guide/13RemovingADeckBefore.png)
 Figure 13: GUI before deck 1 is removed
 
+
 After deck 1 is removed:
 
 ![GreenTea](images/user-guide/14RemovingADeckAfter.png)
 Figure 14. GUI after deck 1 is removed
+
 
 ### 5.1.3 Selecting a deck: `select`
 
@@ -294,7 +311,8 @@ Format: `select <INDEX OF DECK>`
 :information_source: **Note:**
 The index of the deck is the number displayed it on the user interface.
 
-Example: 
+Example:
+
 - `select 1`
 
 Before deck 1 is selected:
@@ -302,10 +320,12 @@ Before deck 1 is selected:
 ![GreenTea](images/user-guide/15SelectingADeckBefore.png)
 Figure 15: GUI before deck 1 is selected
 
+
 After deck 1 is selected:
 
 ![GreenTea](images/user-guide/16SelectingADeckAfter.PNG)
 Figure 16: GUI after deck 1 is selected
+
 
 ## 5.2 Entry Commands (Gabriel)
 
@@ -319,6 +339,7 @@ Before you start giving entry commands, remember to [select a deck first!](#513-
 
 :bulb: Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
+
 
 ### 5.2.1 Adding a new entry: `add` (Vignesh)
 
@@ -341,6 +362,7 @@ A word cannot be more than 200 characters long. A translation cannot be more tha
 
 :information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`.
 
+
 ### 5.2.2 Editing an entry: `edit` (Vignesh)
 
 Edits an entry with the given index using the given word or translation or both.
@@ -362,13 +384,14 @@ Result:
 ![GreenTea](images/user-guide/18EditingAnEntry.png)
 Figure 18. Result of editing an entry
 
+
 ### 5.2.3 Deleting an entry: `delete` (Vignesh)
 
 Deletes the entry with the given index.
 
 Format: `delete <INDEX>`
 
-Example: 
+Example:
 
 - `delete 1`
 
@@ -377,16 +400,19 @@ Before entry 1 is deleted:
 ![GreenTea](images/user-guide/19DeletingAnEntryBefore.png)
 Figure 19. GUI before entry 1 is deleted
 
+
 After entry 1 is deleted:
 
 ![GreenTea](images/user-guide/20DeletingAnEntryAfter.png)
 Figure 20. GUI after entry 1 is deleted
+
 
 ## 5.3 Play Commands (Georgie)
 
 Memory retention is the main goal of GreenTea. Thankfully, we have gotten rid of all
 the complexities behind starting a new FlashCard game. In fact, there are only two commands in this section, `/play` and
 `/stop`.
+
 
 ### 5.3.1 Playing a game (Georgie)
 
@@ -402,12 +428,13 @@ The slash `/` in the command.
 :information_source: **Note:**
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
-:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`. 
+:information_source: **Note:** We have rewritten the exact command that we entered, into the `Command Box`.
 
 Result:
 
 ![GreenTea](images/user-guide/21PlayAGame.png)
 Figure 21. Result of playing a game
+
 
 ### 5.3.2 Stopping a game (Georgie)
 
@@ -422,9 +449,10 @@ Result:
 ![GreenTea](images/user-guide/22StopAGame.png)
 Figure 22. Result of stopping a game
 
+
 ### 5.3.3 Answering a question (Georgie)
 
-GreenTea is extremely user friendly! After starting a game, any word given by you will be considered as an answer other than the input `/stop`. There 
+GreenTea is extremely user friendly! After starting a game, any word given by you will be considered as an answer other than the input `/stop`. There
 are no special command words or format required!
 
 Format: `[Anything!]`
@@ -436,10 +464,12 @@ Result:
 ![GreenTea](images/user-guide/23AnsweringAQuestion.png)
 Figure 23. Answering a question
 
+
 ## 5.4 Extra Commands (Georgie)
 
 These are some extra commands that you can access at any point in the application except when
 you are currently playing a game.
+
 
 ### 5.4.1 Viewing help: `help`
 
@@ -452,6 +482,7 @@ Result:
 ![GreenTea](images/user-guide/HelpCommand.PNG)
 Figure 24. Result of Opening Help Window
 
+
 ### 5.4.2 Exiting the program: `exit`
 
 Exits the program.
@@ -459,6 +490,7 @@ Exits the program.
 Format: `exit`
 
 Result: Program will be closed
+
 
 ## 5.5 Statistics (Melanie)
 
@@ -480,7 +512,7 @@ To view statistics of **a single deck**:
 
 Format: `stats <INDEX>`
 
-Example: 
+Example:
 
 - `stats 1`
 
@@ -491,6 +523,8 @@ Figure 26. Result of viewing statistics of a single deck
 
 :information_source: **Note:**
 In order to view your statistics, you must first [play a game!](#531-playing-a-game-georgie)
+
+
 
 # 6. FAQ (Gabriel & Melanie)
 
@@ -505,6 +539,8 @@ you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignes
 **A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
 any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
 
+
+
 # 7. Command Summary (Gabriel)
 
 | Action         | Format <img width=00/>                  | Examples                      | Remarks                                                                |
@@ -517,7 +553,7 @@ any problems related to Green Tea. Feel free to create an issue to let us know i
 | **Delete**     | `delete <INDEX>`                        | `delete 3`                    | Deletes the Entry with the Given Index                                 |
 | **Play**       | `/play`                                 |                               | Starts a New FlashCard Game with the Selected Deck                     |
 | **Stop**       | `/stop`                                 |                               | Stops an Existing Game                                                 |
-| **Answer**       | `[Anything!]`                         |                               | Answers a Question                                               |
+| **Answer**     | `[Anything!]`                           |                               | Answers a Question                                                     |
 | **Statistics** | `stats`                                 | `stats`                       | Shows Statistics of all Decks combined                                 |
 | **Statistics** | `stats <INDEX>`                         | `stats 1`                     | Shows Statistics of a Particular Deck <INDEX>                          |
 | **Clear**      | `clear`                                 |                               | Deletes All Decks and Entries                                          |

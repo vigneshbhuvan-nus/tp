@@ -15,6 +15,7 @@ import seedu.address.ui.UiPart;
  * Panel containing the list of entries.
  */
 public class EntryListPanel extends UiPart<Region> {
+
     private static final String FXML = "EntryListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(EntryListPanel.class);
 
@@ -32,9 +33,11 @@ public class EntryListPanel extends UiPart<Region> {
     }
 
     /**
-     * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code EntryCard}.
+     * Custom {@code ListCell} that displays the graphics of a {@code Entry} using a {@code
+     * EntryCard}.
      */
     class EntryListViewCell extends ListCell<Entry> {
+
         @Override
         protected void updateItem(Entry entry, boolean empty) {
             super.updateItem(entry, empty);

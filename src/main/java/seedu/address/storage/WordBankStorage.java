@@ -19,20 +19,23 @@ public interface WordBankStorage {
     Path getAddressBookFilePath();
 
     /**
-     * Returns WordBank data as a {@link ReadOnlyWordBank}.
-     *   Returns {@code Optional.empty()} if storage file is not found.
+     * Returns WordBank data as a {@link ReadOnlyWordBank}. Returns {@code Optional.empty()} if
+     * storage file is not found.
+     *
      * @throws DataConversionException if the data in storage is not in the expected format.
-     * @throws IOException if there was any problem when reading from the storage.
+     * @throws IOException             if there was any problem when reading from the storage.
      */
     Optional<ReadOnlyWordBank> readAddressBook() throws DataConversionException, IOException;
 
     /**
      * @see #getAddressBookFilePath()
      */
-    Optional<ReadOnlyWordBank> readAddressBook(Path filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyWordBank> readAddressBook(Path filePath)
+        throws DataConversionException, IOException;
 
     /**
      * Saves the given {@link ReadOnlyWordBank} to the storage.
+     *
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */

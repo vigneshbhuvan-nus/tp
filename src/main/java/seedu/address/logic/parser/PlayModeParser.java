@@ -20,7 +20,8 @@ public class PlayModeParser {
     /**
      * Used for initial separation of command word and args.
      */
-    private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
+    private static final Pattern BASIC_COMMAND_FORMAT = Pattern
+        .compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
     /**
      * Parses user input into command for execution.
@@ -32,7 +33,8 @@ public class PlayModeParser {
     public Command parseCommand(String userInput) throws ParseException {
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
+            throw new ParseException(
+                String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
         final String commandWord = matcher.group("commandWord");
@@ -40,12 +42,10 @@ public class PlayModeParser {
 
         switch (userInput) {
         case "/play":
-
             return new PlayCommand();
         case "/stop":
             return new StopCommand();
         default:
-            // for commands with additional args
             if (arguments.isEmpty()) {
                 return new AnswerCommandParser().parse(commandWord);
             } else {

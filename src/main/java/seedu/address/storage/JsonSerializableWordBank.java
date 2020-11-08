@@ -34,10 +34,12 @@ class JsonSerializableWordBank {
     /**
      * Converts a given {@code ReadOnlyWordBank} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableWordBank}.
+     * @param source future changes to this will not affect the created {@code
+     *               JsonSerializableWordBank}.
      */
     public JsonSerializableWordBank(ReadOnlyWordBank source) {
-        decks.addAll(source.getDeckList().stream().map(JsonAdaptedDeck::new).collect(Collectors.toList()));
+        decks.addAll(
+            source.getDeckList().stream().map(JsonAdaptedDeck::new).collect(Collectors.toList()));
     }
 
     /**
@@ -47,7 +49,7 @@ class JsonSerializableWordBank {
      */
     public WordBank toModelType() throws IllegalValueException {
         WordBank wordBank = new WordBank();
-        for (JsonAdaptedDeck jsonAdaptedDeck: decks) {
+        for (JsonAdaptedDeck jsonAdaptedDeck : decks) {
             Deck deck = jsonAdaptedDeck.toModelType();
             if (wordBank.hasDeck(deck)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_DECK);
