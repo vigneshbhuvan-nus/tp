@@ -3,7 +3,6 @@ package seedu.address.logic.statistics;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.logging.Logger;
-
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.ModelManager;
 

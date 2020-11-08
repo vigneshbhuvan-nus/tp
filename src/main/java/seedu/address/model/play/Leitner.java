@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javafx.util.Pair;
 import seedu.address.model.deck.Deck;
 import seedu.address.model.deck.entry.Entry;

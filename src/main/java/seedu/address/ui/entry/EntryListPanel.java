@@ -1,7 +1,6 @@
 package seedu.address.ui.entry;
 
 import java.util.logging.Logger;
-
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;

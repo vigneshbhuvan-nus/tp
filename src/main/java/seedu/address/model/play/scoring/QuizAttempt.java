@@ -5,7 +5,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import seedu.address.model.play.Score;
 
 public class QuizAttempt implements Comparable<QuizAttempt> {

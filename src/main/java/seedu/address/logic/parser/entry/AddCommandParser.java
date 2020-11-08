@@ -5,7 +5,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TRANSLATION;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_WORD;
 
 import java.util.stream.Stream;
-
 import seedu.address.logic.commands.entry.AddCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;

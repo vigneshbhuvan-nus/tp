@@ -1,7 +1,6 @@
 package seedu.address.ui.panels;
 
 import java.util.ArrayList;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
