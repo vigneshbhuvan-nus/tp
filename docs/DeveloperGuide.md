@@ -418,10 +418,16 @@ Utimately, we decided that user navigability was more important than the extra `
 Green Tea is designed to be a simple and easy system for new users to use.
 
 ![SelectActivityDiagram](images/SelectActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 10 </i></sup></div><br>
 
 ![AddEntry](images/AddEntryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 11 </i></sup></div><br>
 
-![AddEntrySequence](images/AddEntrySequenceDiagram.png)
+![AddEntrySequenceDiagram](images/AddEntrySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 12 </i></sup></div><br>
+
+![SelectDeckSequenceDiagram](images/SelectDeckSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 13 </i></sup></div><br>
 
 ### 4.2 Flashcard System (Gabriel)
 
@@ -483,7 +489,7 @@ The figure below is an activity diagram that provides a generalized overview on 
 enters any command.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 13 Generalized Command Activity Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 14 Generalized Command Activity Diagram</i></sup></div><br>
 
 The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#422-play-mode-commands-gabriel) (besides the `PlayCommand`)
 while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
@@ -491,7 +497,7 @@ while the right rake symbol can refer to any Command Mode command such as [the s
 To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
 
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 14 Play Command Sequence Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 15 Play Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering `/play` will result in the follow steps:
 
@@ -525,7 +531,7 @@ The `CommandResult` displays the command success message to the user via the GUI
 
 The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`. 
 ![PlayCommand](images/PlayActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 15 Play Command Activity Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16 Play Command Activity Diagram</i></sup></div><br>
 
 #### 4.2.4 Answer Command and Stop Command (Gabriel)
 
@@ -537,7 +543,7 @@ Below is the corresponding sequence diagram for the 'AnswerCommand'. The sequenc
 as seen in Figure 17.
 
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 16 Answer Command Sequence Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 17 Answer Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering an answer in Play Mode will result in the follow steps:
 
@@ -581,10 +587,10 @@ captures the states of the 'AnswerCommand'.
 Also, note that they both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 17 Answer Command Activity Diagram One</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram One</i></sup></div><br>
 
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram Two</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 19 Answer Command Activity Diagram Two</i></sup></div><br>
 
 #### 4.2.5 Leitner and QuizAttempt (Georgie)
 
