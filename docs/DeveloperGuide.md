@@ -422,24 +422,52 @@ If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and w
 
 Do note that in Play Mode, all commands are treated as valid unless the command word is `/play`.
 
-The figure below is an activity diagram that describes what is explained in this chapter.
+The figure below is an activity diagram that provides a generalized overview on the behavior of `Logic Manager` when a user
+enters any command.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
-The left rake symbol in the above figure can be extended to any Play Mode command such as [the answer command](#413-select-deck) (beside the `PlayCommand`).
+The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#413-select-deck) (beside the `PlayCommand`)
+while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
 
-The right rake symbol can be extended to any Command Mode command such as [the select command](#413-select-deck)
-
-The figure below is an activity diagram that describes the behavior of `LogicManager` when the user
- enters a `PlayCommand`. The behavior for `StopCommand` is similar to the `PlayCommand`.
-
-![PlayCommand](images/PlayActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+To switch into Play Mode, the user can enter a `PlayCommand`. 
 
 Below is a sequence diagram for the `PlayCommand`.
-
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+
+From the above diagram, entering a `Play Command` will result in the follow steps:
+
+Step 1: User enters `/play`
+
+Step 2. The input is saved as a `String` and passed into `Logic Manager`.
+
+Step 3. The boolean field `isPlayMode` in `Logic Manager` becomes `true`.
+
+Step 4. `Logic Manager` passes the `String` to `PlayModeParser`
+
+Step 5. A `PlayCommandParser` is created.
+
+Step 6. The `String` is passed from `PlayModeParser` to `PlayCommandParser` to parse.
+
+Step 7. `PlayCommandParser` creates a new `PlayCommand` object stored as a variable `args`.
+
+Step 8. `args` is then pass back to `Logic Manager` via `PlayCommandParser` and `PlayModeParser`. `PlayCommandParser`
+is then deleted.
+
+Step 9. `Logic Manager` executes the `args` command.
+
+Step 10. The `args` command invokes `newGame()` in `Model`.
+
+Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#link)
+
+Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`. 
+
+Step 13. A `CommandResult` object is created and returned to `Logic Manager` to signify the end of the command execution.
+
+The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`. 
+![PlayCommand](images/PlayActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
 #### 4.2.2 Play Mode Commands (Gabriel)
