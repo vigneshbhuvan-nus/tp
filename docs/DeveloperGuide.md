@@ -422,14 +422,11 @@ Green Tea is designed to be a simple and easy system for new users to use.
 
 ### 4.2 Flashcard System (Gabriel)
 
+#### 4.2.1 Overview (Gabriel)
+
 The `Flashcard System` is a feature that allows the user to quiz themselves on a selected deck's entries.
 The user can quiz themselves after ensuring a deck is already selected using a `SelectCommand` and then 
 invoking a `PlayCommand`. This feature will also keep track and update the score of the quiz.
-
-The `SelectCommand` follows the format: `select <index>`. 
-
-
-The `PlayCommand` follows the format: `/play`.
 
 This section will explain:
 
@@ -437,14 +434,28 @@ This section will explain:
 - How the play mode commands work.
 - How scoring is calculated and saved in `Storage` based on each quiz.
 
+#### 4.2.2 Commands Implemented (Gabriel)
+
+The `SelectCommand` follows the format: `select <index>`. 
+
+The `PlayCommand` follows the format: `/play`.
+
+Three commands are used in order to support the Flashcard system - PlayCommand, StopCommand and AnswerCommand
+
+- `/play` - Starts a new Flashcard game / quiz.
+- `/stop` - Stops the current Flashcard game/ quiz.
+- `[Any Answer]` - Answers the current question in the Flashcard game / quiz. This input does not have a specific structure or command.
+
+Each of these three commands require the use of the `UI`, `Logic` and `Model` components.
+For example, when a deck is played, the `model` must be updated with a shuffled deck containing the shuffled entries. The
+`UI` must also reflect the added deck to be shown to the user.
+
 #### 4.2.1 Play Mode and Command Mode (Gabriel)
 
 The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
 the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`.
 
-
 If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input through the `PlayModeParser`. 
-
 
 If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input through the `CommandModeParser`.
 
@@ -504,15 +515,8 @@ When in Play Mode, `Logic Manager` will only handle two commands. They are the `
 In this implementation, all inputs that do not match the format for the `StopCommand` are treated as inputs
 to the `AnswerCommand`.
 
-The format for the Play Mode commands are as follows:
-
-- The user input format for `StopCommand` is `/stop`.
-- All other user input are used "as is" for the `AnswerCommand`.
-
-
 Below is the corresponding sequence diagram for the 'AnswerCommand'. The sequence diagram for the `StopCommand` is trivial
 as seen in Figure 17.
-
 
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 16 Answer Command Sequence Diagram</i></sup></div><br>
@@ -530,7 +534,6 @@ Step 4. A `AnswerCommandParser` is created.
 Step 5. The `String` is passed from `PlayModeParser` to `AnswerCommandParser` for parsing.
 
 Step 6. `AnswerCommandParser` creates a new `AnswerCommand` object stored as a variable `answer`.
-
 
 Step 7. `answer` is then pass back to `Logic Manager` via `AnswerCommandParser` and `PlayModeParser`. 
 `AnswerCommandParser` is then deleted.
