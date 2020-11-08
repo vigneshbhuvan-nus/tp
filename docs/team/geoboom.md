@@ -49,6 +49,10 @@ Given below are my contributions to the project.
 
 - **Documentation**:
 
+  - Developer Guide:
+
+    - Wrote DG sections for leitner system (4.2.3) and data tracking (4.3).
+
   - User Guide:
 
     - Ported over initial user guide from docx -> md
