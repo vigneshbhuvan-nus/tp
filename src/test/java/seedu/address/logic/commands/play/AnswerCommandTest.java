@@ -1,5 +1,7 @@
 package seedu.address.logic.commands.play;
 
+import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+
 import java.nio.file.Path;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -27,10 +29,9 @@ public class AnswerCommandTest {
 
     @TempDir
     public Path temporaryFolder;
-    private Model model = new ModelManager();
-    private Entry entry = new Entry(new Word("abc"), new Translation("123"));
-    private Deck deck = new Deck(new DeckName("test"));
-    private Logic logic;
+    private final Model model = new ModelManager();
+    private final Entry entry = new Entry(new Word("abc"), new Translation("123"));
+    private final Deck deck = new Deck(new DeckName("test"));
     private LogicTestHelper logicTestHelper;
 
     @BeforeEach
@@ -40,11 +41,11 @@ public class AnswerCommandTest {
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(
             temporaryFolder.resolve("userPrefs.json"));
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
-        logic = new LogicManager(model, storage);
+        Logic logic = new LogicManager(model, storage);
         deck.addEntry(entry);
         model.addDeck(deck);
         model.selectDeck(Index.fromZeroBased(0));
-        logicTestHelper = new LogicTestHelper(this.logic, this.model);
+        logicTestHelper = new LogicTestHelper(logic, this.model);
     }
 
     @Test
@@ -56,4 +57,10 @@ public class AnswerCommandTest {
                 model);
     }
 
+    @Test
+    public void execute_answerCommandWithStopCommandWord_throwParseException() throws CommandException, ParseException {
+        logicTestHelper.assertCommandSuccess("/play", "Playmode Started", model);
+        logicTestHelper.assertCommandSuccess("answer", "Your score was 0 / 1", model);
+        logicTestHelper.assertParseException("another answer", MESSAGE_UNKNOWN_COMMAND);
+    }
 }
