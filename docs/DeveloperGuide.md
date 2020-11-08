@@ -2,28 +2,30 @@
 
 ### Table of Contents
 
-- [Green Tea Developer Guide (v1.4)](#green-tea-developer-guide-v14)
-  - [Table of Contents](#table-of-contents)
 - [1. Introduction](#1-introduction)
   - [1.1 Purpose](#11-purpose)
   - [1.2 Audience](#12-audience)
 - [2. Setting up, getting started](#2-setting-up-getting-started)
 - [3. Design](#3-design)
   - [3.1 Component Overview](#31-component-overview)
-  - [How the architecture components interact with one another](#how-the-architecture-components-interact-with-one-another)
-  - [3.2 Common classes](#32-common-classes)
-  - [3.3 UI component](#33-ui-component)
-  - [3.4 Logic component](#34-logic-component)
-  - [3.5 Model component](#35-model-component)
-  - [3.6 Storage component](#36-storage-component)
+  - [3.2 Architecture Overview](#32-architecture-overview)
+  - [3.3 Common classes](#33-common-classes)
+  - [3.4 UI component](#34-ui-component)
+  - [3.5 Logic component](#35-logic-component)
+  - [3.6 Model component](#36-model-component)
+  - [3.7 Storage component](#37-storage-component)
 - [4. Implementation](#4-implementation)
   - [4.1 Deck Feature (Melanie)](#41-deck-feature-melanie)
-  - [4.1.1 Overview](#411-overview)
-  - [4.1.2 Commands Implemented](#412-commands-implemented)
-  - [4.1.3 Select Deck](#413-select-deck)
+      - [4.1.1 Overview](#411-overview)
+      - [4.1.2 Commands Implemented](#412-commands-implemented)
+      - [4.1.3 Select Deck](#413-select-deck)
   - [4.2 Flashcard System (Gabriel)](#42-flashcard-system-gabriel)
-  - [4.2.3 Leitner and QuizAttempt (Georgie)](#42-leitner-and-quizattempt-georgie)
-  - [4.3 Data Tracking (Georgie)](#43-data-tracking-georgie)
+      - [4.2.1 Play Mode and Command Mode (Gabriel)](#421-play-mode-and-command-mode-gabriel)
+      - [4.2.2 Play Mode Commands (Gabriel)](#422-play-mode-commands-gabriel)
+      - [4.2.3 Leitner and QuizAttempt (Georgie)](#423-leitner-and-quizattempt-georgie)
+  - [4.3 Statistics (Georgie)](#43-statistics-georgie)
+  - [4.4 Design Considerations:](#44-design-considerations)
+    - [4.4.1 Aspect: Type of flashcard system](#441-aspect-type-of-flashcard-system)
 - [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
 - [6. Appendix: Requirements](#6-appendix-requirements)
   - [6.1 Product scope](#61-product-scope)
@@ -34,7 +36,7 @@
 - [7. Appendix: Instructions for manual testing](#7-appendix-instructions-for-manual-testing)
   - [7.1 Launch and shutdown](#71-launch-and-shutdown)
   - [7.2 Removing a deck](#72-removing-a-deck)
-  - [Saving data](#saving-data)
+  - [7.3 Saving data](#73-saving-data)
 
 ---
 
@@ -106,7 +108,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 <p align="center"> Figure 2. Example Class Diagram of the Logic Component
 
-#### How the architecture components interact with one another
+#### 3.2 Architecture Overview
 
 The _Sequence Diagram_ below (Figure 3) shows how the components interact with one another when the user issues the command `remove 1`.
 
@@ -116,7 +118,7 @@ The _Sequence Diagram_ below (Figure 3) shows how the components interact with o
 
 The sections below give more details about each component.
 
-### 3.2 Common classes
+### 3.3 Common classes
 
 Common classes are classes used by multiple components.
 They can be found in the `seedu.addressbook.commons` package.
@@ -129,7 +131,7 @@ Common classes include:
 - `GuiSettings`: Contains the GUI settings.
 - `LogsCenter`: Writes messages to the console and a log file. Records the state of the program as the app is running.
 
-### 3.3 UI component
+### 3.4 UI component
 
 The `UI` component is the portion of the application which is visible to the user.
 The `UI` consists of a `MainWindow` that is made up of various parts (E.g `CommandBox`, `ResultDisplay`, `DeckListPanel`, `StatusBarFooter`)
@@ -188,7 +190,7 @@ Commands update a class called `CurrentView.java` in `Model`. Based on the curre
 - Panel which shows upon _starting a quiz game_ is `QuizPanel.fxml`.
 - Panel which shows upon _giving stats command_ is `StatisticsPanel.fxml`.
 
-### 3.4 Logic component
+### 3.5 Logic component
 
 The `Logic` component is the bridge between the `UI` and `Model` components. It is in charge of deciding what to do with the
 user input received from the `UI`. This component consists of the `Statistics`, `Parser` and the `Command` package.
@@ -235,7 +237,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 <p align="center"> Figure 6. Sequence Diagram of Logic Component for "Remove 1" Command
 
-### 3.5 Model component
+### 3.6 Model component
 
 The `Model` component is in charge of changing the data within the application.
 This includes information about decks, entries and statistics.
@@ -281,7 +283,7 @@ Role of `QuizAttempt` object:
 - Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
 - More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
 
-### 3.6 Storage component
+### 3.7 Storage component
 
 The `Storage` component handles the reading and writing of data from a data file. By storing the data,
 the application will be able to load the data from the previous session back to the user when the user opens
@@ -403,11 +405,15 @@ Green Tea is designed to be a simple and easy system for new users to use.
 ### 4.2 Flashcard System (Gabriel)
 
 The `Flashcard System` is a feature that allows the user to quiz themselves on a selected deck's entries.
-The user can quiz themselves by ensuring a deck is already selected using a `SelectCommand` and invoking a `PlayCommand`.
+The user can quiz themselves after ensuring a deck is already selected using a `SelectCommand` and then 
+invoking a `PlayCommand`. This feature will also keep track and update the score of the quiz.
 
-The `SelectCommand` follows the format: `select <index>` while the `PlayCommand` follows the format: `/play`.
+The `SelectCommand` follows the format: `select <index>`. 
 
-This section explains:
+
+The `PlayCommand` follows the format: `/play`.
+
+This section will explain:
 
 - How the application separates the play mode commands from the command mode commands.
 - How the play mode commands work.
@@ -418,52 +424,131 @@ This section explains:
 The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
 the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`.
 
-If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input using the `PlayModeParser`.
 
-If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input using the `CommandModeParser`.
+If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input through the `PlayModeParser`. 
+
+
+If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input through the `CommandModeParser`.
 
 Do note that in Play Mode, all commands are treated as valid unless the command word is `/play`.
 
-The figure below is a activity diagram that visually describes what is explained in this chapter.
+The figure below is an activity diagram that provides a generalized overview on the behavior of `Logic Manager` when a user
+enters any command.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
-Figure X
+<div align="center"><sup style="font-size:100%"><i>Figure 13 Generalized Command Activity Diagram</i></sup></div><br>
+
+The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#422-play-mode-commands-gabriel) (besides the `PlayCommand`)
+while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
+
+To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
+
+![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 14 Play Command Sequence Diagram</i></sup></div><br>
+
+From the above diagram, entering `/play` will result in the follow steps:
+
+Step 1: User enters `/play`
+
+Step 2. The input is saved as a `String` and passed into `Logic Manager`.
+
+Step 3. The boolean field `isPlayMode` in `Logic Manager` becomes `true`.
+
+Step 4. `Logic Manager` passes the `String` to `PlayModeParser`
+
+Step 5. A `PlayCommandParser` is created.
+
+Step 6. The `String` is passed from `PlayModeParser` to `PlayCommandParser` to parse.
+
+Step 7. `PlayCommandParser` creates a new `PlayCommand` object stored as a variable `args`.
+
+Step 8. `args` is then pass back to `Logic Manager` via `PlayCommandParser` and `PlayModeParser`. `PlayCommandParser`
+is then deleted.
+
+Step 9. `Logic Manager` executes the `args` command.
+
+Step 10. The `args` command invokes `newGame()` in `Model`.
+
+Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#423-leitner-and-quizattempt-georgie)
+
+Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`. 
+
+Step 13. A `CommandResult` object is created and returned to `Logic Manager` to signify the end of the command execution.
+The `CommandResult` displays the command success message to the user via the GUI to signify the end of the command execution.
+
+The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`. 
+![PlayCommand](images/PlayActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 15 Play Command Activity Diagram</i></sup></div><br>
 
 #### 4.2.2 Play Mode Commands (Gabriel)
 
-When in Play Mode, `Logic Manager` will only handle three commands. They are the `PlayCommand`, `StopCommand` and `AnswerCommand`.
-In this implementation, all commands that do not match the format for `PlayCommand` or `StopCommand` are treated as `AnswerCommand`.
+When in Play Mode, `Logic Manager` will only handle two commands. They are the `StopCommand` and the `AnswerCommand`.
+In this implementation, all inputs that do not match the format for the `StopCommand` are treated as inputs
+to the `AnswerCommand`.
 
 The format for the Play Mode commands are as follows:
 
-- The user input format for `PlayCommand` is `/play`.
 - The user input format for `StopCommand` is `/stop`.
-- There is no format for `AnswerCommand`.
+- All other user input are used "as is" for the `AnswerCommand`.
 
-The figure below is an activity diagram that describes the behavior of `LogicManager` when the user
-enters a `PlayCommand`. The behavior for `StopCommand` is similar to the `PlayCommand`.
 
-![PlayCommand](images/PlayActivityDiagram.png)
-Figure X
+Below is the corresponding sequence diagram for the 'AnswerCommand'. The sequence diagram for the `StopCommand` is trivial
+as seen in Figure 17.
 
-Below is a sequence diagram for the `PlayCommand`.
-
-![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
-
-The two figure below are the activity diagram that describes the behavior of `LogicManager` when the user
-enters a `AnswerCommand`. Note that both figures are connected by the rake symbol.
-
-![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
-Figure X
-
-![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-Figure X
-
-Below is the corresponding sequence diagram for the 'AnswerCommand'.
 
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 16 Answer Command Sequence Diagram</i></sup></div><br>
 
-#### 4.2.3 Leitner (Georgie)
+From the above diagram, entering an answer in Play Mode will result in the follow steps:
+
+Step 1: User enters `Sample Answer`
+
+Step 2. The input is saved as a `String` and passed into `Logic Manager`.
+
+Step 3. `Logic Manager` passes the `String` to `PlayModeParser`
+
+Step 4. A `AnswerCommandParser` is created.
+
+Step 5. The `String` is passed from `PlayModeParser` to `AnswerCommandParser` for parsing.
+
+Step 6. `AnswerCommandParser` creates a new `AnswerCommand` object stored as a variable `answer`.
+
+
+Step 7. `answer` is then pass back to `Logic Manager` via `AnswerCommandParser` and `PlayModeParser`. 
+`AnswerCommandParser` is then deleted.
+
+Step 8. `Logic Manager` executes the `answer` command.
+
+Step 9. The `answer` command invokes `playGame(answer)` in `Model`.
+
+Step 10. Depending on the correctness of the `answer`, Model will update the score via `updateScore()`.
+
+Step 11a. If the [`Leitner` object](#423-leitner-and-quizattempt-georgie) stored in `Model` has more than one question left, `Model` 
+will update the next question via `updateQuestion()`.
+A `CommandResult` object is created storing the `answer` and returned to `Logic Manager` to signify the end of the command execution.
+The `CommandResult` displays the answer details to the user via the GUI to signify the end of the command execution.
+
+Step 11b. Else, the current question is the final question that is answered in the quiz.
+A `CommandResult` object is created and returned to `Logic Manager` storing the `playerScore` and the `maxScore` of the quiz as `Strings`.
+The `CommandResult` displays the score to the user via the GUI to signify the end of the command execution.
+
+
+The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user 
+enters a answer in Play Mode.  
+
+Note that Figure 17 mainly capture the states of the 'StopCommand' while Figure 18 
+captures the states of the 'AnswerCommand'. 
+
+Also, note that they both figures are connected by the rake symbol.
+
+![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 17 Answer Command Activity Diagram One</i></sup></div><br>
+
+![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram Two</i></sup></div><br>
+
+#### 4.2.3 Leitner and QuizAttempt (Georgie)
+
 
 The Leitner system is a system to randomize the questions presented to a user based on their most recent past attempt of the quiz if any, otherwise random shuffle is executed. `Leitner` is a class that encapsulates this logic. It is constructed with `Deck` as the only parameter and stores the next question list to be presented to the player in its internal `entryList` object, retrieved via `leitner.getEntries()`.
 
@@ -483,7 +568,7 @@ Entry entries = leitner.getEntries();
 
 Later, a series of `leitner.addGuess(guess)` is called until the end of the quiz to reflect "answering a question". Leitner will create a new `QuestionAttempt` for each of these guesses and store all the `QuestionAttempt`s in a list. This list of `QuestionAttempt` is stored in a `QuizAttempt` in the `Deck` and is used in generating the next order of questions to show the user.
 
-### 4.3 Data Tracking (Georgie)
+### 4.3 Statistics (Georgie)
 
 We needed to track quiz-specific and app-wide data. Quiz-specific data refers to data that reflects the complete attempt/playthrough of a particular quiz which we call a `QuizAttempt`. In particular, `QuizAttempt` is a list of `QuestionAttempt`s, where each `QuestionAttempt` consists of the user's answer, the correct answer, and the total score received for that question out of `1.0`.
 
@@ -513,6 +598,20 @@ I wrote the `StatisticsManager` singleton class to encapsulate all app-related e
 
 An instance of `StatisticsManager` is instantiated in the constructor of `LogicManager` and destroyed when `cleanup()` is called on `LogicManager`. It makes the most sense to call these lifecycle operations in these parts of `LogicManager` as they parallel the opening and closing lifecycle of the app.
 
+#### 4.4 Design Considerations:
+
+##### 4.4.1 Aspect: Type of flashcard system
+
+- **Alternative 1 (current choice)** : Leitner System
+  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
+    using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
+    answered flashcards are put at the end of the question queue and incorrectly answered
+    flashcards are placed at the front.
+    (https://en.wikipedia.org/wiki/Leitner_system)
+  - Cons: More difficult to implement
+- **Alternative 2** : Random shuffling system
+  - Pros: Easier to implement
+  - Cons: Users may not learn as effectively
 ---
 
 ## 5. Documentation, logging, testing, configuration, dev-ops
@@ -737,7 +836,7 @@ Removing a deck while all decks are being shown
     - `remove x` (where x is a positive integer larger than the list size)<br>
       Expected: Similar to previous test case 4
 
-### Saving data
+### 7.3 Saving data
 
 Dealing with missing data files
 

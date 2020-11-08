@@ -6,12 +6,9 @@ if() then ([Logic Manager is not in Play Mode])
     if() then ([A deck is selected in ModelManager])
         if() then ([Deck is not empty])
         : Switch Logic Manager to Play Mode;
-        : Create a new Leitner object in ModelManager ;
-        : Add all entries of selected deck into Leitner;
-        : Shuffle and split the entries into a list of questions(containing the entry's translation)
-         and a list of answers (containing the entry's word) in the Leitner object;
-        : Create a new QuizAttempt object in ModelManager;
-        : Display a question on the quiz tab of the UI;
+        : Create and execute a new PlayCommand;
+        : Create a new Leitner object and QuizAttempt object in ModelManager;
+        : Switch curret view to the quiz tab of the UI;
         : Display a success message to the result box of the UI indicating the start of the quiz;
         else ([Deck is empty])
         :Throw empty deck command exception;
