@@ -204,7 +204,6 @@ The class diagram of the `Logic` component is shown below in Figure 5.
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Role of the `Logic` component:
-
 - `Logic` receives the user command.
 - `Logic Manager` can either be in `Play Mode` or in `Command Mode`.
 - Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
@@ -214,6 +213,18 @@ Role of the `Logic` component:
 - Initialises the `StatisticsManager` on startup via `LogicManager` and maintains the `Statistics`.
 - Any changes from executing a `Command` object is recorded in `Statistics` by `Statistics Manager`.
 - In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
+
+Role of the `Parser` package:
+- Derives the command word and the arguments of the user input
+- Throws a `ParserException` if the command word or argument are not correctly written
+
+Role of the `Statistics` package:
+- Maintains the `Statistics` of the all the decks in memory
+- More explained under [Implementations - Statistics](#43-implementaion-not-written-yet)
+
+Role of the `Command` package:
+- Contains the instructions for `Model`
+- Throws a `CommandException` if an error occurs between execution and obtaining `CommandResult`
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
 
@@ -258,12 +269,13 @@ Role of `WordBank` component
 
 Role of `Leitner` object:
 
-- Shuffles a given `Deck` by decomposing it into a list of `Translations` and a list of `Word`.
-- Return each `Translation` and `Word` when called by `ModelManager`.
+- Shuffles a given `Deck` by decomposing it into a list of `Translations` and a list of `Word` called questions and answers respectively.
+- Returns each `Translation` (question)) and `Word` (answer) when called by `ModelManager`.
+- More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
 
 Role of `QuizAttempt` object:
-
 - Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
+- More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
 
 ### 3.6 Storage component
 
@@ -386,46 +398,68 @@ Green Tea is designed to be a simple and easy system for new users to use.
 
 ### 4.2 Flashcard System (Gabriel)
 
-Three additional commands are used for the flashcard system - PlayCommand, StopCommand and AnswerCommand.
+The `Flashcard System` is a feature that allows the user to quiz themselves on a selected deck's entries.
+The user can quiz themselves by ensuring a deck is already selected using a `SelectCommand` and invoking a `PlayCommand`.
 
-By default, StopCommand and AnswerCommand cannot be accessed by the user until a PlayCommand is typed by the user.
+The `SelectCommand` follows the format: `select <index>` while the `PlayCommand` follows the format: `/play`.
 
-![Sequence Diagram of Play Command](images/PlayCommandSequenceDiagram.png)
+This section explains:
+- How the application separates the play mode commands from the command mode commands.
+- How the play mode commands work.
+- How scoring is calculated and saved in `Storage` based on each quiz.
 
-<p align="center"> Figure 11. Sequence Diagram of Play Command
+#### 4.2.1 Play Mode and Command Mode (Gabriel)
 
-With reference to Figure 11, after a PlayCommand is created:
+The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
+the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`. 
 
-- A boolean isPlayMode in AddressBookParser becomes True (not shown yet as the implementation might change).
-- All following user inputs are treated as either an AnswerCommand or a StopCommand
-- A Leitner object is created that stores the current entries of the selected deck and shuffles them
-- The Leitner object also forms questions and answers list based on the shuffled list
+If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input using the `PlayModeParser`. 
 
-![Sequence Diagram of Answer Command](images/AnswerCommandSequenceDiagram.png)
+If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input using the `CommandModeParser`.
 
-<p align="center"> Figure 12. Sequence Diagram of Play Command
+Do note that in Play Mode, all commands are treated as valid unless the command word is `/play`.
 
-With reference to figure 12, when the user types a AnswerCommand into the system:
-
-- The AddressBookParser first checks if it is current is in play mode via the boolean isPlayMode
-- If it is not in play mode, an error message is shown to the user via the UI
-- If it is in play mode, an AnswerCommand containing hte user input is sent to the model and checked against
-  the current question in Leitner.java
-- The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
-- The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
+The figure below is a activity diagram that visually describes what is explained in this chapter.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
+Figure X
+
+#### 4.2.2 Play Mode Commands (Gabriel)
+
+When in Play Mode, `Logic Manager` will only handle three commands. They are the `PlayCommand`, `StopCommand` and `AnswerCommand`.
+In this implementation, all commands that do not match the format for `PlayCommand` or `StopCommand` are treated as `AnswerCommand`.
+
+The format for the Play Mode commands are as follows:
+- The user input format for `PlayCommand` is `/play`.
+- The user input format for `StopCommand` is `/stop`.
+- There is no format for `AnswerCommand`.
+
+The figure below is an activity diagram that describes the behavior of `LogicManager` when the user
+ enters a `PlayCommand`. The behavior for `StopCommand` is similar to the `PlayCommand`.
 
 ![PlayCommand](images/PlayActivityDiagram.png)
+Figure X
 
-![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
-
-![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-
+Below is a sequence diagram for the `PlayCommand`.
 
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
 
+The two figure below are the activity diagram that describes the behavior of `LogicManager` when the user 
+enters a `AnswerCommand`. Note that both figures are connected by the rake symbol.
+
+![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
+Figure X
+
+![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
+Figure X
+
+Below is the corresponding sequence diagram for the 'AnswerCommand'.
+
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
+
+
+#### 4.2.3 Leitner and QuizAttempt (Georgie)
+
 
 #### Design Considerations:
 
@@ -442,7 +476,7 @@ With reference to figure 12, when the user types a AnswerCommand into the system
   - Pros: Easier to implement
   - Cons: Users may not learn as effectively
 
-### 4.3 \[Proposed\] Data Analysis
+### 4.3 Statistics (Georgie)
 
 Some of the proposed parameters tracked by GreenTea include:
 
