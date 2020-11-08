@@ -115,11 +115,11 @@ public class MainWindow extends UiPart<Stage> {
                 logger.info(
                     String.format("Tab switched from %s to %s", oldValue.getId(), newValue.getId()));
                 switch (newValue.getId()) {
-                    case "statistics_panel":
-                        handleStatisticsPanel(-1);
-                        break;
-                    default:
-                        break;
+                case "statistics_panel":
+                    handleStatisticsPanel(-1);
+                    break;
+                default:
+                    break;
                 }
             }
         );
