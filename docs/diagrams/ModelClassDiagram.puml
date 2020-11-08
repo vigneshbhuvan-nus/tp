@@ -76,6 +76,6 @@ WordBank -> Entry: has filtered list of
 ModelManager *--->"0..1" Leitner
 ModelManager *-->"0..1" QuizAttempt
 ModelManager -> Deck: has filtered list of
-ModelManager *--->"1" View
+ModelManager *--->"1" CurrentView
 
 @enduml

@@ -20,12 +20,15 @@
       - [4.1.2 Commands Implemented](#412-commands-implemented)
       - [4.1.3 Select Deck](#413-select-deck)
   - [4.2 Flashcard System (Gabriel)](#42-flashcard-system-gabriel)
-      - [4.2.1 Play Mode and Command Mode (Gabriel)](#421-play-mode-and-command-mode-gabriel)
-      - [4.2.2 Play Mode Commands (Gabriel)](#422-play-mode-commands-gabriel)
-      - [4.2.3 Leitner and QuizAttempt (Georgie)](#423-leitner-and-quizattempt-georgie)
+      - [4.2.1 Overview (Gabriel)](#421-overview-gabriel)
+      - [4.2.2 Commands Implemented (Gabriel)](#422-commands-implemented-gabriel)
+      - [4.2.3 Play Mode and Command Mode (Gabriel)](#423-play-mode-and-command-mode-gabriel)
+      - [4.2.4 Answer Command and Stop Command (Gabriel)](#424-answer-command-and-stop-command-gabriel)
+      - [4.2.5 Leitner and QuizAttempt (Georgie)](#425-leitner-and-quizattempt-georgie)
   - [4.3 Statistics (Georgie)](#43-statistics-georgie)
-  - [4.4 Design Considerations:](#44-design-considerations)
-    - [4.4.1 Aspect: Type of flashcard system](#441-aspect-type-of-flashcard-system)
+      - [4.3.1 Overview](#431-overview)
+      - [4.3.2 QuizAttempt and QuestionAttempt](#432-quizattempt-and-questionattempt)
+      - [4.3.3 Statistics Manager](#433-statistics-manager)
 - [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
 - [6. Appendix: Requirements](#6-appendix-requirements)
   - [6.1 Product scope](#61-product-scope)
@@ -41,7 +44,7 @@
   - [7.5 Creating an Entry](#75-creating-an-entry)
   - [7.6 Editing an Entry](#76-editing-an-entry)
   - [7.7 Saving dara](#77-saving-data)
-  
+
 
 ---
 
@@ -93,14 +96,14 @@ It is responsible for:
 - At app launch: Initializes the components in the correct sequence and connects them up with each other.
 - At shut down: Shuts down the components and invokes cleanup methods where necessary.
 
-[**`Commons`**](#32-common-classes) represents a collection of classes used by multiple other components.
+[**`Commons`**](#33-common-classes) represents a collection of classes used by multiple other components.
 
 The rest of the App consists of four components.
 
-- [**`UI`**](#33-ui-component): The UI (User Interface) of the App.
-- [**`Logic`**](#34-logic-component): The command executor.
-- [**`Model`**](#35-model-component): Holds the data of the App in memory.
-- [**`Storage`**](#36-storage-component): Reads data from, and writes data to, the hard disk.
+- [**`UI`**](#34-ui-component): The UI (User Interface) of the App.
+- [**`Logic`**](#35-logic-component): The command executor.
+- [**`Model`**](#36-model-component): Holds the data of the App in memory.
+- [**`Storage`**](#37-storage-component): Reads data from, and writes data to, the hard disk.
 
 Each of the four components:
 
@@ -229,7 +232,7 @@ Role of the `Parser` package:
 Role of the `Statistics` package:
 
 - Maintains the `Statistics` of the all the decks in memory
-- More explained under [Implementations - Statistics](#43-implementaion-not-written-yet)
+- More explained under [Implementations - Statistics](#43-statistics-georgie)
 
 Role of the `Command` package:
 
@@ -313,18 +316,18 @@ Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdapt
 Each `QuestionAttempt` and `Score` is saved in a `JsonAdaptedQuestionAttempt` and `JsonAdaptedScore` respectively.
 Each QuizAttempt is saved in a `JsonAdaptedQuizAttempt` object, consisting of a `JsonAdaptedQuestionaAttempt` and `JsonAdaptedScore` among other attributes.
 
-Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry` and a list of `JsonAdaptedQuizAttempt`. 
+Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry` and a list of `JsonAdaptedQuizAttempt`.
 
 To store all decks, a WordBank storage is used in the form of `JsonSerializableWordBankStorage`, which consists of
-a list of `JsonAdaptedDeck`. 
+a list of `JsonAdaptedDeck`.
 
-`JsonSerializableWordBankStorage` allows the data in it to be serialized, allowing the program to read from what has been stored in `wordbank.json`. 
+`JsonSerializableWordBankStorage` allows the data in it to be serialized, allowing the program to read from what has been stored in `wordbank.json`.
 
-`StorageManager` is the main managing system that allows JSON files to be read, and data to be saved to the JSON files. 
+`StorageManager` is the main managing system that allows JSON files to be read, and data to be saved to the JSON files.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** 
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
 An alternative (arguably, a more OOP) model is given below in Figure 9.
-In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data 
+In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data
 This allows for better management of data eventually.
 </div><br>
 
@@ -415,21 +418,24 @@ Utimately, we decided that user navigability was more important than the extra `
 Green Tea is designed to be a simple and easy system for new users to use.
 
 ![SelectActivityDiagram](images/SelectActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 10 </i></sup></div><br>
 
 ![AddEntry](images/AddEntryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 11 </i></sup></div><br>
 
-![AddEntrySequence](images/AddEntrySequenceDiagram.png)
+![AddEntrySequenceDiagram](images/AddEntrySequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 12 </i></sup></div><br>
+
+![SelectDeckSequenceDiagram](images/SelectDeckSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 13 </i></sup></div><br>
 
 ### 4.2 Flashcard System (Gabriel)
 
+#### 4.2.1 Overview (Gabriel)
+
 The `Flashcard System` is a feature that allows the user to quiz themselves on a selected deck's entries.
-The user can quiz themselves after ensuring a deck is already selected using a `SelectCommand` and then 
+The user can quiz themselves after ensuring a deck is already selected using a `SelectCommand` and then
 invoking a `PlayCommand`. This feature will also keep track and update the score of the quiz.
-
-The `SelectCommand` follows the format: `select <index>`. 
-
-
-The `PlayCommand` follows the format: `/play`.
 
 This section will explain:
 
@@ -437,14 +443,43 @@ This section will explain:
 - How the play mode commands work.
 - How scoring is calculated and saved in `Storage` based on each quiz.
 
-#### 4.2.1 Play Mode and Command Mode (Gabriel)
+
+##### Design Considerations:
+
+###### Aspect: Type of flashcard system
+
+- **Alternative 1 (current choice)** : Leitner System
+  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
+    using spaced repetition. Questions are sorted based on the user's ability to answer them. Correctly
+    answered questions are put at the end of the question queue and incorrectly answered
+    flashcards are placed at the front.
+  - Cons: More difficult to implement
+- **Alternative 2** : Random shuffling system
+  - Pros: Easier to implement
+  - Cons: Users may not learn as effectively
+
+#### 4.2.2 Commands Implemented (Gabriel)
+
+The `SelectCommand` follows the format: `select <index>`.
+
+The `PlayCommand` follows the format: `/play`.
+
+Three commands are used in order to support the Flashcard system - PlayCommand, StopCommand and AnswerCommand
+
+- `/play` - Starts a new Flashcard game / quiz.
+- `/stop` - Stops the current Flashcard game/ quiz.
+- `[Any Answer]` - Answers the current question in the Flashcard game / quiz. This input does not have a specific structure or command.
+
+Each of these three commands require the use of the `UI`, `Logic` and `Model` components.
+For example, when a deck is played, the `model` must be updated with a shuffled deck containing the shuffled entries. The
+`UI` must also reflect the added deck to be shown to the user.
+
+#### 4.2.3 Play Mode and Command Mode (Gabriel)
 
 The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
 the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`.
 
-
-If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input through the `PlayModeParser`. 
-
+If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input through the `PlayModeParser`.
 
 If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input through the `CommandModeParser`.
 
@@ -454,15 +489,15 @@ The figure below is an activity diagram that provides a generalized overview on 
 enters any command.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 13 Generalized Command Activity Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 14 Generalized Command Activity Diagram</i></sup></div><br>
 
-The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#422-play-mode-commands-gabriel) (besides the `PlayCommand`)
+The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#424-answer-command-and-stop-command-gabriel) (besides the `PlayCommand`)
 while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
 
 To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
 
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 14 Play Command Sequence Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 15 Play Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering `/play` will result in the follow steps:
 
@@ -487,35 +522,28 @@ Step 9. `Logic Manager` executes the `args` command.
 
 Step 10. The `args` command invokes `newGame()` in `Model`.
 
-Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#423-leitner-and-quizattempt-georgie)
+Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#425-leitner-and-quizattempt-georgie)
 
-Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`. 
+Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`.
 
 Step 13. A `CommandResult` object is created and returned to `Logic Manager` to signify the end of the command execution.
 The `CommandResult` displays the command success message to the user via the GUI to signify the end of the command execution.
 
-The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`. 
+The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`.
 ![PlayCommand](images/PlayActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 15 Play Command Activity Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16 Play Command Activity Diagram</i></sup></div><br>
 
-#### 4.2.2 Play Mode Commands (Gabriel)
+#### 4.2.4 Answer Command and Stop Command (Gabriel)
 
 When in Play Mode, `Logic Manager` will only handle two commands. They are the `StopCommand` and the `AnswerCommand`.
 In this implementation, all inputs that do not match the format for the `StopCommand` are treated as inputs
 to the `AnswerCommand`.
 
-The format for the Play Mode commands are as follows:
-
-- The user input format for `StopCommand` is `/stop`.
-- All other user input are used "as is" for the `AnswerCommand`.
-
-
 Below is the corresponding sequence diagram for the 'AnswerCommand'. The sequence diagram for the `StopCommand` is trivial
 as seen in Figure 17.
 
-
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 16 Answer Command Sequence Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 17 Answer Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering an answer in Play Mode will result in the follow steps:
 
@@ -531,8 +559,7 @@ Step 5. The `String` is passed from `PlayModeParser` to `AnswerCommandParser` fo
 
 Step 6. `AnswerCommandParser` creates a new `AnswerCommand` object stored as a variable `answer`.
 
-
-Step 7. `answer` is then pass back to `Logic Manager` via `AnswerCommandParser` and `PlayModeParser`. 
+Step 7. `answer` is then pass back to `Logic Manager` via `AnswerCommandParser` and `PlayModeParser`.
 `AnswerCommandParser` is then deleted.
 
 Step 8. `Logic Manager` executes the `answer` command.
@@ -541,7 +568,7 @@ Step 9. The `answer` command invokes `playGame(answer)` in `Model`.
 
 Step 10. Depending on the correctness of the `answer`, Model will update the score via `updateScore()`.
 
-Step 11a. If the [`Leitner` object](#423-leitner-and-quizattempt-georgie) stored in `Model` has more than one question left, `Model` 
+Step 11a. If the [`Leitner` object](#425-leitner-and-quizattempt-georgie) stored in `Model` has more than one question left, `Model`
 will update the next question via `updateQuestion()`.
 A `CommandResult` object is created storing the `answer` and returned to `Logic Manager` to signify the end of the command execution.
 The `CommandResult` displays the answer details to the user via the GUI to signify the end of the command execution.
@@ -551,22 +578,21 @@ A `CommandResult` object is created and returned to `Logic Manager` storing the 
 The `CommandResult` displays the score to the user via the GUI to signify the end of the command execution.
 
 
-The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user 
-enters a answer in Play Mode.  
+The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user
+enters a answer in Play Mode.
 
-Note that Figure 17 mainly capture the states of the 'StopCommand' while Figure 18 
-captures the states of the 'AnswerCommand'. 
+Note that Figure 17 mainly capture the states of the 'StopCommand' while Figure 18
+captures the states of the 'AnswerCommand'.
 
 Also, note that they both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 17 Answer Command Activity Diagram One</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram One</i></sup></div><br>
 
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram Two</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 19 Answer Command Activity Diagram Two</i></sup></div><br>
 
-#### 4.2.3 Leitner and QuizAttempt (Georgie)
-
+#### 4.2.5 Leitner and QuizAttempt (Georgie)
 
 The Leitner system is a system to randomize the questions presented to a user based on their most recent past attempt of the quiz if any, otherwise random shuffle is executed. `Leitner` is a class that encapsulates this logic. It is constructed with `Deck` as the only parameter and stores the next question list to be presented to the player in its internal `entryList` object, retrieved via `leitner.getEntries()`.
 
@@ -588,11 +614,13 @@ Later, a series of `leitner.addGuess(guess)` is called until the end of the quiz
 
 ### 4.3 Statistics (Georgie)
 
+#### 4.3.1 Overview
+
 We needed to track quiz-specific and app-wide data. Quiz-specific data refers to data that reflects the complete attempt/playthrough of a particular quiz which we call a `QuizAttempt`. In particular, `QuizAttempt` is a list of `QuestionAttempt`s, where each `QuestionAttempt` consists of the user's answer, the correct answer, and the total score received for that question out of `1.0`.
 
 App-wide data on the other hand refers events like logins and logouts, time last logged in, average time spent on app, number of quizzes taken in total, etc. We disembarked working on this feature in favor of other features such as Leitner as we found it to not value-add to the user that much. Nonetheless, we decided to include it as it might be interesting from an engineering standpoint.
 
-#### 4.3.1 `QuizAttempt` and `QuestionAttempt` (Georgie)
+#### 4.3.2 QuizAttempt and QuestionAttempt
 
 Each `Deck` consists of a list of `QuizAttempt`s. Each `QuizAttempt` object encapsulates a given entire playthrough of the `Deck`.
 
@@ -610,26 +638,12 @@ As a new `QuestionAttempt` is added, `Scoring` will compute the score for that q
 
 To make `Deck` as cohesive as possible, a `Deck` consist of a list of `QuizAttempt`. This way, when `Deck` is persisted to disk, we also persist the list of `QuizAttempt` for that deck together with it. Also, `QuizAttempt` is only ever used together with `Deck` so it made sense to store list of `QuizAttempt`s as an attribute of `Deck`.
 
-#### 4.3.2 `StatisticsManager` (Georgie)
+#### 4.3.3 Statistics Manager
 
 I wrote the `StatisticsManager` singleton class to encapsulate all app-related event logs. Whenever the `StatisticsManager` class is created, a `LOGIN` event is appended to its internal event log. Whenever `cleanup()` is called on `StatisticsManager`, a `LOGOUT` event is called. Each event also has an associated timestamp. Through the log of events, statistics like average time spent on app, last login time, etc can be computed on demand.
 
 An instance of `StatisticsManager` is instantiated in the constructor of `LogicManager` and destroyed when `cleanup()` is called on `LogicManager`. It makes the most sense to call these lifecycle operations in these parts of `LogicManager` as they parallel the opening and closing lifecycle of the app.
 
-#### 4.4 Design Considerations:
-
-##### 4.4.1 Aspect: Type of flashcard system
-
-- **Alternative 1 (current choice)** : Leitner System
-  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
-    using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
-    answered flashcards are put at the end of the question queue and incorrectly answered
-    flashcards are placed at the front.
-    (https://en.wikipedia.org/wiki/Leitner_system)
-  - Cons: More difficult to implement
-- **Alternative 2** : Random shuffling system
-  - Pros: Easier to implement
-  - Cons: Users may not learn as effectively
 ---
 
 ## 5. Documentation, logging, testing, configuration, dev-ops
@@ -831,10 +845,10 @@ Saving window preferences
 
 2. Re-launch the app by double-clicking the jar file.<br>
    Expected: The most recent window size and location is retained.
-      
+
 ### 7.2 Getting Help
 
-Displays a guide for all commands. 
+Displays a guide for all commands.
 
 Prerequisites: Launch GreenTea succesfully.
 
@@ -848,7 +862,7 @@ Prerequisites: Launch GreenTea successfully
 
 1. Test Case: `new Japanese Animals`<br>
     Expected: an empty Deck named Japanese Animals created and displayed in the DeckList panel. Status message to say "New deck added: Japanese Animals"
-    
+
 ### 7.4 Removing a deck
 
 Removing a deck while all decks are being shown
@@ -870,7 +884,7 @@ Removing a deck while all decks are being shown
     - `remove asdf`
     - `remove x` (where x is a positive integer larger than the list size)<br>
       Expected: Similar to previous test case 4
-  
+
 ### 7.5 Creating an Entry
 Creating an entry in a selected deck
 
@@ -887,16 +901,16 @@ Prerequisites: Have a deck with entries present
 1. Test Case: `select 1` and then `edit 2 t/hello there`<br>
    Expected: Entry 2 in Deck 1 will have its translation edited to "hello there", and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola Translation: hello there"
-   
+
 2. Test Case: `select 1` and then `edit 2 w/hola amigos`<br>
    Expected: Entry 2 in Deck 1 will have its word edited to "hola amigos", and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola amigos Translation: hello there"
-   
+
  3. Test Case: `select 1` and then `edit 2 w/hola amigos t/hello friends`<br>
    Expected: Entry 2 in Deck 1 will have its word and translation edited to "hola amigos" and "hello friends" respectively,
    and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola amigos Translation: hello friends"
-   
+
 ### 7.7 Saving data
 
 Dealing with missing data files
@@ -912,5 +926,3 @@ Dealing with corrupted data files
 2. Remove the _d_ in _decks_ on line 2 of the data file.
 3. Launch the application. Green Tea should display an empty deck list.
 4. Add a deck to Green Tea then close the application. The data file should now be in the correct format.
-   
- 
