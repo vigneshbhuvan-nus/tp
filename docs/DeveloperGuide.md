@@ -399,11 +399,14 @@ Green Tea is designed to be a simple and easy system for new users to use.
 ### 4.2 Flashcard System (Gabriel)
 
 The `Flashcard System` is a feature that allows the user to quiz themselves on a selected deck's entries.
-The user can quiz themselves by ensuring a deck is already selected using a `SelectCommand` and invoking a `PlayCommand`.
+The user can quiz themselves after ensuring a deck is already selected using a `SelectCommand` and then 
+invoking a `PlayCommand`. This feature will also keep track and update the score of the quiz.
 
-The `SelectCommand` follows the format: `select <index>` while the `PlayCommand` follows the format: `/play`.
+The `SelectCommand` follows the format: `select <index>`. 
 
-This section explains:
+The `PlayCommand` follows the format: `/play`.
+
+This section will explain:
 - How the application separates the play mode commands from the command mode commands.
 - How the play mode commands work.
 - How scoring is calculated and saved in `Storage` based on each quiz.
@@ -413,50 +416,54 @@ This section explains:
 The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
 the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`. 
 
-If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input using the `PlayModeParser`. 
+If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input through the `PlayModeParser`. 
 
-If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input using the `CommandModeParser`.
+If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input through the `CommandModeParser`.
 
 Do note that in Play Mode, all commands are treated as valid unless the command word is `/play`.
 
-The figure below is a activity diagram that visually describes what is explained in this chapter.
+The figure below is an activity diagram that describes what is explained in this chapter.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
-Figure X
+<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
-#### 4.2.2 Play Mode Commands (Gabriel)
+The left rake symbol in the above figure can be extended to any Play Mode command such as [the answer command](#413-select-deck) (beside the `PlayCommand`).
 
-When in Play Mode, `Logic Manager` will only handle three commands. They are the `PlayCommand`, `StopCommand` and `AnswerCommand`.
-In this implementation, all commands that do not match the format for `PlayCommand` or `StopCommand` are treated as `AnswerCommand`.
-
-The format for the Play Mode commands are as follows:
-- The user input format for `PlayCommand` is `/play`.
-- The user input format for `StopCommand` is `/stop`.
-- There is no format for `AnswerCommand`.
+The right rake symbol can be extended to any Command Mode command such as [the select command](#413-select-deck)
 
 The figure below is an activity diagram that describes the behavior of `LogicManager` when the user
  enters a `PlayCommand`. The behavior for `StopCommand` is similar to the `PlayCommand`.
 
 ![PlayCommand](images/PlayActivityDiagram.png)
-Figure X
+<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
 Below is a sequence diagram for the `PlayCommand`.
 
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+
+#### 4.2.2 Play Mode Commands (Gabriel)
+
+When in Play Mode, `Logic Manager` will only handle two commands. They are the `StopCommand` and `AnswerCommand`.
+In this implementation, all commands that do not match the format for the `StopCommand` are treated as `AnswerCommand`.
+
+The format for the Play Mode commands are as follows:
+- The user input format for `StopCommand` is `/stop`.
+- All other user input are used as is for the `AnswerCommand`.
 
 The two figure below are the activity diagram that describes the behavior of `LogicManager` when the user 
 enters a `AnswerCommand`. Note that both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
-Figure X
+<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-Figure X
+<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
 Below is the corresponding sequence diagram for the 'AnswerCommand'.
 
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
-
+<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
 #### 4.2.3 Leitner and QuizAttempt (Georgie)
 
