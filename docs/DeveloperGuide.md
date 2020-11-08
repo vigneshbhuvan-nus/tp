@@ -396,7 +396,13 @@ Green Tea is designed to be a simple and easy system for new users to use.
 
 ![AddEntrySequence](images/AddEntrySequenceDiagram.png)
 
-### 4.2 Flashcard System (Gabriel)
+### 4.2 Flashcard System
+
+#### 4.2.1 Play Mode and Command Mode
+
+#### 4.2.2 Play Mode Commands
+
+#### 4.2.3 Leitner and QuizAttempt
 
 Three additional commands are used for the flashcard system - PlayCommand, StopCommand and AnswerCommand.
 
@@ -454,7 +460,7 @@ With reference to figure 12, when the user types a AnswerCommand into the system
   - Pros: Easier to implement
   - Cons: Users may not learn as effectively
 
-### 4.3 \[Proposed\] Data Analysis
+### 4.3 Statistics
 
 Some of the proposed parameters tracked by GreenTea include:
 
