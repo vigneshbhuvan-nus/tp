@@ -426,7 +426,7 @@ The figure below is an activity diagram that provides a generalized overview on 
 enters any command.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 13 Generalized Command Activity Diagram</i></sup></div><br>
 
 The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#413-select-deck) (besides the `PlayCommand`)
 while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
@@ -434,7 +434,7 @@ while the right rake symbol can refer to any Command Mode command such as [the s
 To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
 
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 14 Play Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering `/play` will result in the follow steps:
 
@@ -468,7 +468,7 @@ The `CommandResult` displays the command success message to the user via the GUI
 
 The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`. 
 ![PlayCommand](images/PlayActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 15 Play Command Activity Diagram</i></sup></div><br>
 
 #### 4.2.2 Play Mode Commands (Gabriel)
 
@@ -480,10 +480,11 @@ The format for the Play Mode commands are as follows:
 - The user input format for `StopCommand` is `/stop`.
 - All other user input are used "as is" for the `AnswerCommand`.
 
-Below is the corresponding sequence diagram for the 'AnswerCommand'.
+Below is the corresponding sequence diagram for the 'AnswerCommand'. The sequence diagram for the `StopCommand` is trivial
+as seen in Figure 17.
 
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16 Answer Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering an answer in Play Mode will result in the follow steps:
 
@@ -519,13 +520,18 @@ The `CommandResult` displays the score to the user via the GUI to signify the en
 
 
 The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user 
-enters a answer. Note that both figures are connected by the rake symbol.
+enters a answer in Play Mode.  
+
+Note that Figure 17 mainly capture the states of the 'StopCommand' while Figure 18 
+captures the states of the 'AnswerCommand'. 
+
+Also, note that they both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 17 Answer Command Activity Diagram One</i></sup></div><br>
 
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram Two</i></sup></div><br>
 
 #### 4.2.3 Leitner and QuizAttempt (Georgie)
 
