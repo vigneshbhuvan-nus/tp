@@ -20,12 +20,15 @@
       - [4.1.2 Commands Implemented](#412-commands-implemented)
       - [4.1.3 Select Deck](#413-select-deck)
   - [4.2 Flashcard System (Gabriel)](#42-flashcard-system-gabriel)
-      - [4.2.1 Play Mode and Command Mode (Gabriel)](#421-play-mode-and-command-mode-gabriel)
-      - [4.2.2 Play Mode Commands (Gabriel)](#422-play-mode-commands-gabriel)
-      - [4.2.3 Leitner and QuizAttempt (Georgie)](#423-leitner-and-quizattempt-georgie)
+      - [4.2.1 Overview (Gabriel)](#421-overview-gabriel)
+      - [4.2.2 Commands Implemented (Gabriel)](#422-commands-implemented-gabriel)
+      - [4.2.3 Play Mode and Command Mode (Gabriel)](#423-play-mode-and-command-mode-gabriel)
+      - [4.2.4 Answer Command and Stop Command (Gabriel)](#424-answer-command-and-stop-command-gabriel)
+      - [4.2.5 Leitner and QuizAttempt (Georgie)](#425-leitner-and-quizattempt-georgie)
   - [4.3 Statistics (Georgie)](#43-statistics-georgie)
-  - [4.4 Design Considerations:](#44-design-considerations)
-    - [4.4.1 Aspect: Type of flashcard system](#441-aspect-type-of-flashcard-system)
+      - [4.3.1 Overview](#431-overview)
+      - [4.3.2 QuizAttempt and QuestionAttempt](#432-quizattempt-and-questionattempt)
+      - [4.3.3 Statistics Manager](#433-statistics-manager)
 - [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
 - [6. Appendix: Requirements](#6-appendix-requirements)
   - [6.1 Product scope](#61-product-scope)
@@ -465,7 +468,7 @@ Each of these three commands require the use of the `UI`, `Logic` and `Model` co
 For example, when a deck is played, the `model` must be updated with a shuffled deck containing the shuffled entries. The
 `UI` must also reflect the added deck to be shown to the user.
 
-#### 4.2.1 Play Mode and Command Mode (Gabriel)
+#### 4.2.3 Play Mode and Command Mode (Gabriel)
 
 The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
 the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`.
@@ -524,7 +527,7 @@ The activity diagram below summarizes the high level behavior of `LogicManager` 
 ![PlayCommand](images/PlayActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 15 Play Command Activity Diagram</i></sup></div><br>
 
-#### 4.2.2 Play Mode Commands (Gabriel)
+#### 4.2.4 Answer Command and Stop Command (Gabriel)
 
 When in Play Mode, `Logic Manager` will only handle two commands. They are the `StopCommand` and the `AnswerCommand`.
 In this implementation, all inputs that do not match the format for the `StopCommand` are treated as inputs
@@ -583,7 +586,7 @@ Also, note that they both figures are connected by the rake symbol.
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram Two</i></sup></div><br>
 
-#### 4.2.3 Leitner and QuizAttempt (Georgie)
+#### 4.2.5 Leitner and QuizAttempt (Georgie)
 
 The Leitner system is a system to randomize the questions presented to a user based on their most recent past attempt of the quiz if any, otherwise random shuffle is executed. `Leitner` is a class that encapsulates this logic. It is constructed with `Deck` as the only parameter and stores the next question list to be presented to the player in its internal `entryList` object, retrieved via `leitner.getEntries()`.
 
@@ -605,11 +608,13 @@ Later, a series of `leitner.addGuess(guess)` is called until the end of the quiz
 
 ### 4.3 Statistics (Georgie)
 
+#### 4.3.1 Overview 
+
 We needed to track quiz-specific and app-wide data. Quiz-specific data refers to data that reflects the complete attempt/playthrough of a particular quiz which we call a `QuizAttempt`. In particular, `QuizAttempt` is a list of `QuestionAttempt`s, where each `QuestionAttempt` consists of the user's answer, the correct answer, and the total score received for that question out of `1.0`.
 
 App-wide data on the other hand refers events like logins and logouts, time last logged in, average time spent on app, number of quizzes taken in total, etc. We disembarked working on this feature in favor of other features such as Leitner as we found it to not value-add to the user that much. Nonetheless, we decided to include it as it might be interesting from an engineering standpoint.
 
-#### 4.3.1 `QuizAttempt` and `QuestionAttempt` (Georgie)
+#### 4.3.2 QuizAttempt and QuestionAttempt
 
 Each `Deck` consists of a list of `QuizAttempt`s. Each `QuizAttempt` object encapsulates a given entire playthrough of the `Deck`.
 
@@ -627,7 +632,7 @@ As a new `QuestionAttempt` is added, `Scoring` will compute the score for that q
 
 To make `Deck` as cohesive as possible, a `Deck` consist of a list of `QuizAttempt`. This way, when `Deck` is persisted to disk, we also persist the list of `QuizAttempt` for that deck together with it. Also, `QuizAttempt` is only ever used together with `Deck` so it made sense to store list of `QuizAttempt`s as an attribute of `Deck`.
 
-#### 4.3.2 `StatisticsManager` (Georgie)
+#### 4.3.3 Statistics Manager
 
 I wrote the `StatisticsManager` singleton class to encapsulate all app-related event logs. Whenever the `StatisticsManager` class is created, a `LOGIN` event is appended to its internal event log. Whenever `cleanup()` is called on `StatisticsManager`, a `LOGOUT` event is called. Each event also has an associated timestamp. Through the log of events, statistics like average time spent on app, last login time, etc can be computed on demand.
 
