@@ -18,15 +18,17 @@ public class SelectDeckCommand extends Command {
 
     public static final String COMMAND_WORD = "select";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Selects the deck identified by the index number used in the displayed deck list.\n"
-            + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648) \n"
-            + "Example: " + COMMAND_WORD + " 1";
+        + ": Selects the deck identified by the index number used in the displayed deck list.\n"
+        + "Parameters: INDEX (must be a positive integer that is less than 2,147,483,648) \n"
+        + "Example: " + COMMAND_WORD + " 1";
     public static final String MESSAGE_SELECT_DECK_SUCCESS = "Selected Deck: %1$s";
 
     private final Index targetIndex;
 
     /**
-     * Constructs a SelectDeckCommand object. Selects the deck at the given index {@code targetIndex}.
+     * Constructs a SelectDeckCommand object. Selects the deck at the given index {@code
+     * targetIndex}.
+     *
      * @param targetIndex Index of deck to select.
      */
     public SelectDeckCommand(Index targetIndex) {

@@ -53,7 +53,7 @@ public class ModelManager implements Model {
         requireAllNonNull(addressBook, userPrefs);
 
         logger.fine(
-                "Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+            "Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
 
         this.wordBank = new WordBank(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
@@ -292,8 +292,8 @@ public class ModelManager implements Model {
         //state check
         ModelManager other = (ModelManager) obj;
         return wordBank.equals(other.wordBank)
-                && userPrefs.equals(other.userPrefs)
-                && filteredDecks.equals(other.filteredDecks);
+            && userPrefs.equals(other.userPrefs)
+            && filteredDecks.equals(other.filteredDecks);
     }
 
     //====Games=====
@@ -335,11 +335,13 @@ public class ModelManager implements Model {
             replaceEntryList();
         } else if (correctAnswer.equals(guess)) {
             currentQuizAttempt.answerQuestion(correctAnswer, guess);
-            logger.info(String.format("Answer given was %s, the correct answer was %s, Correct answer given",
+            logger.info(String
+                .format("Answer given was %s, the correct answer was %s, Correct answer given",
                     guess, correctAnswer));
         } else {
             currentQuizAttempt.answerQuestion(correctAnswer, guess);
-            logger.info(String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
+            logger.info(
+                String.format("Answer given was %s, the correct answer was %s, Wrong answer given",
                     guess, correctAnswer));
         }
 

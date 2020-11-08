@@ -157,8 +157,8 @@ public class WordBank implements ReadOnlyWordBank {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof WordBank // instanceof handles nulls
-                && observedDecks.equals(((WordBank) other).observedDecks));
+            || (other instanceof WordBank // instanceof handles nulls
+            && observedDecks.equals(((WordBank) other).observedDecks));
     }
 
     @Override

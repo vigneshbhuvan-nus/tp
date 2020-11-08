@@ -31,33 +31,36 @@ public class JsonUtil {
     private static final Logger logger = LogsCenter.getLogger(JsonUtil.class);
 
     private static ObjectMapper objectMapper = new ObjectMapper().findAndRegisterModules()
-            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-            .setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE)
-            .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
-            .registerModule(new SimpleModule("SimpleModule")
-                    .addSerializer(Level.class, new ToStringSerializer())
-                    .addDeserializer(Level.class, new LevelDeserializer(Level.class)));
+        .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+        .setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.NONE)
+        .setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY)
+        .registerModule(new SimpleModule("SimpleModule")
+            .addSerializer(Level.class, new ToStringSerializer())
+            .addDeserializer(Level.class, new LevelDeserializer(Level.class)));
 
-    static <T> void serializeObjectToJsonFile(Path jsonFile, T objectToSerialize) throws IOException {
+    static <T> void serializeObjectToJsonFile(Path jsonFile, T objectToSerialize)
+        throws IOException {
         FileUtil.writeToFile(jsonFile, toJsonString(objectToSerialize));
     }
 
     static <T> T deserializeObjectFromJsonFile(Path jsonFile, Class<T> classOfObjectToDeserialize)
-            throws IOException {
+        throws IOException {
         return fromJsonString(FileUtil.readFromFile(jsonFile), classOfObjectToDeserialize);
     }
 
     /**
-     * Returns the Json object from the given file or {@code Optional.empty()} object if the file is not found.
-     * If any values are missing from the file, default values will be used, as long as the file is a valid json file.
+     * Returns the Json object from the given file or {@code Optional.empty()} object if the file is
+     * not found. If any values are missing from the file, default values will be used, as long as
+     * the file is a valid json file.
      *
      * @param filePath                   cannot be null.
-     * @param classOfObjectToDeserialize Json file has to correspond to the structure in the class given here.
+     * @param classOfObjectToDeserialize Json file has to correspond to the structure in the class
+     *                                   given here.
      * @throws DataConversionException if the file format is not as expected.
      */
     public static <T> Optional<T> readJsonFile(
-            Path filePath, Class<T> classOfObjectToDeserialize) throws DataConversionException {
+        Path filePath, Class<T> classOfObjectToDeserialize) throws DataConversionException {
         requireNonNull(filePath);
 
         if (!Files.exists(filePath)) {
@@ -78,8 +81,8 @@ public class JsonUtil {
     }
 
     /**
-     * Saves the Json object to the specified file.
-     * Overwrites existing file if it exists, creates a new file if it doesn't.
+     * Saves the Json object to the specified file. Overwrites existing file if it exists, creates a
+     * new file if it doesn't.
      *
      * @param jsonFile cannot be null
      * @param filePath cannot be null

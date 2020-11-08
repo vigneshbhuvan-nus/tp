@@ -40,11 +40,13 @@ public class JsonAdaptedWord {
     /**
      * Converts this Jackson-friendly adapted Word object into the model's {@code Word} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted Word.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted
+     *                               Word.
      */
     public Word toModelType() throws IllegalValueException {
         if (word == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Word.class.getSimpleName()));
+            throw new IllegalValueException(
+                String.format(MISSING_FIELD_MESSAGE_FORMAT, Word.class.getSimpleName()));
         }
         if (!Word.isValidWord(word)) {
             throw new IllegalValueException(Word.MESSAGE_CONSTRAINTS);

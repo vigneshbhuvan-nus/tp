@@ -23,7 +23,7 @@ class JsonAdaptedEntry {
      */
     @JsonCreator
     public JsonAdaptedEntry(@JsonProperty("word") JsonAdaptedWord word,
-                            @JsonProperty("translation") JsonAdaptedTranslation translation) {
+        @JsonProperty("translation") JsonAdaptedTranslation translation) {
         this.word = word;
         this.translation = translation;
     }
@@ -39,13 +39,14 @@ class JsonAdaptedEntry {
     /**
      * Converts this Jackson-friendly adapted entry object into the model's {@code Entry} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted entry.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted
+     *                               entry.
      */
     public Entry toModelType() throws IllegalValueException {
 
         if (word == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    JsonAdaptedWord.class.getSimpleName()));
+                JsonAdaptedWord.class.getSimpleName()));
         }
         if (!Word.isValidWord(word.getWord())) {
             throw new IllegalValueException(Word.MESSAGE_CONSTRAINTS);
@@ -53,7 +54,7 @@ class JsonAdaptedEntry {
         final Word modelWord = new Word(word.getWord());
         if (translation == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    JsonAdaptedTranslation.class.getSimpleName()));
+                JsonAdaptedTranslation.class.getSimpleName()));
         }
         if (!Translation.isValidTranslation(translation.getTranslation())) {
             throw new IllegalValueException(Translation.MESSAGE_CONSTRAINTS);
