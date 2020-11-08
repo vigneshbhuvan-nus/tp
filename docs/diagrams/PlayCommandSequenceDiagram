@@ -16,8 +16,6 @@ end box
 [-> LogicManager : execute("Sample Answer")
 activate LogicManager
 
-LogicManager -> LogicManager: isPlayMode == true
-
 LogicManager -> PlayModeParser : parseCommand("Sample Answer")
 activate PlayModeParser
 

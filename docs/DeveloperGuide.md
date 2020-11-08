@@ -428,16 +428,15 @@ enters any command.
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
-The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#413-select-deck) (beside the `PlayCommand`)
+The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#413-select-deck) (besides the `PlayCommand`)
 while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
 
-To switch into Play Mode, the user can enter a `PlayCommand`. 
+To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
 
-Below is a sequence diagram for the `PlayCommand`.
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
-From the above diagram, entering a `Play Command` will result in the follow steps:
+From the above diagram, entering `/play` will result in the follow steps:
 
 Step 1: User enters `/play`
 
@@ -465,6 +464,7 @@ Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#link
 Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`. 
 
 Step 13. A `CommandResult` object is created and returned to `Logic Manager` to signify the end of the command execution.
+The `CommandResult` displays the command success message to the user via the GUI to signify the end of the command execution.
 
 The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`. 
 ![PlayCommand](images/PlayActivityDiagram.png)
@@ -472,25 +472,56 @@ The activity diagram below summarizes the high level behavior of `LogicManager` 
 
 #### 4.2.2 Play Mode Commands (Gabriel)
 
-When in Play Mode, `Logic Manager` will only handle two commands. They are the `StopCommand` and `AnswerCommand`.
-In this implementation, all commands that do not match the format for the `StopCommand` are treated as `AnswerCommand`.
+When in Play Mode, `Logic Manager` will only handle two commands. They are the `StopCommand` and the `AnswerCommand`.
+In this implementation, all inputs that do not match the format for the `StopCommand` are treated as inputs
+to the `AnswerCommand`.
 
 The format for the Play Mode commands are as follows:
 - The user input format for `StopCommand` is `/stop`.
-- All other user input are used as is for the `AnswerCommand`.
+- All other user input are used "as is" for the `AnswerCommand`.
 
-The two figure below are the activity diagram that describes the behavior of `LogicManager` when the user 
-enters a `AnswerCommand`. Note that both figures are connected by the rake symbol.
+Below is the corresponding sequence diagram for the 'AnswerCommand'.
+
+![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
+
+From the above diagram, entering an answer in Play Mode will result in the follow steps:
+
+Step 1: User enters `Sample Answer`
+
+Step 2. The input is saved as a `String` and passed into `Logic Manager`.
+
+Step 3. `Logic Manager` passes the `String` to `PlayModeParser`
+
+Step 4. A `AnswerCommandParser` is created.
+
+Step 5. The `String` is passed from `PlayModeParser` to `AnswerCommandParser` for parsing.
+
+Step 6. `AnswerCommandParser` creates a new `AnswerCommand` object stored as a variable `answer`.
+
+Step 7. `answer` is then pass back to `Logic Manager` via `AnswerCommandParser` and `PlayModeParser`. 
+`AnswerCommandParser` is then deleted.
+
+Step 8. `Logic Manager` executes the `answer` command.
+
+Step 9. The `answer` command invokes `playGame(answer)` in `Model`.
+
+Step 10a. If the [`Leitner` object](#link) stored in `Model` has more than one question left, 
+a `CommandResult` object is created storing the `answer` and returned to `Logic Manager` to signify the end of the command execution.
+The `CommandResult` displays the answer details to the user via the GUI to signify the end of the command execution.
+
+Step 10b. Else, the current question is the final question that is answered in the quiz.
+A `CommandResult` object is created and returned to `Logic Manager` storing the `playerScore` and the `maxScore` of the quiz as `Strings`.
+The `CommandResult` displays the score to the user via the GUI to signify the end of the command execution.
+
+
+The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user 
+enters a answer. Note that both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-<div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
-
-Below is the corresponding sequence diagram for the 'AnswerCommand'.
-
-![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure X</i></sup></div><br>
 
 #### 4.2.3 Leitner and QuizAttempt (Georgie)
