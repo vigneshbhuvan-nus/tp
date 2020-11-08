@@ -78,28 +78,25 @@ To start using GreenTea:
 4. Double-Click the file to start the application. The GUI should appear in a few seconds and it should look like Figure 2.
 
 ![GreenTea](images/user-guide/1EmptyGUI.png)
-Figure 2.  GreenTea's GUI
+Figure 2. GreenTea's GUI
 
-Before we get started with the program, let us first understand the GUI of GreenTea. We shall use Figure 3 below to explain it. 
+Before we get started with the program, let us first understand the GUI of GreenTea. We shall use Figure 3 below to explain it.
 ![GreenTea](images/user-guide/2EmptyGUIWithAnnotation.png)
 Figure 3. Annotated GUI
 
 There are four main components to the GUI. The deck list, the tab panels, the result display and the command box
 
-1. `Deck List` - The deck list displays all the decks that you currently have in GreenTea.
-A deck is a list of entries and an entry consists of a word and a translation. It will update as you keep adding decks.
-2. `Tab Panels` - The main features of GreenTea are separated into tabs. The tabs will change automatically, depending on your
-commands, so you do not need to worry about changing the tabs manually. GreenTea currently has four different tabs.
-    1. `Start Tab`: Consists of the welcome page that is shown on startup of the application.
-    2. `Entries Tab`: Displays all the entries of a selected deck.
-    3. `Quiz Tab`: Displays the current.
-    4. `Statistics Tab`: Displays the score of your past attempts of the current selected deck or overall.
+1.  `Deck List` - The deck list displays all the decks that you currently have in GreenTea.
+    A deck is a list of entries and an entry consists of a word and a translation. It will update as you keep adding decks.
+2.  `Tab Panels` - The main features of GreenTea are separated into tabs. The tabs will change automatically, depending on your
+    commands, so you do not need to worry about changing the tabs manually. GreenTea currently has four different tabs. 1. `Start Tab`: Consists of the welcome page that is shown on startup of the application. 2. `Entries Tab`: Displays all the entries of a selected deck. 3. `Quiz Tab`: Displays the current. 4. `Statistics Tab`: Displays the score of your past attempts of the current selected deck or overall.
 
-    We understand that you might be curious about each part of the GUI, don't worry, in this chapter we will briefly look through
-    every part of the GUI.
-3. `Result Display` - The result display is where the outcome of your commands are shown. GreenTea will feedback to you if your command has
-been successfully carried out, or if there are errors in your command formats.
-4. `Command Box` - The command box is where you type in your commands. Pressing **enter** on your keyboard will execute the commands.
+        We understand that you might be curious about each part of the GUI, don't worry, in this chapter we will briefly look through
+        every part of the GUI.
+
+3.  `Result Display` - The result display is where the outcome of your commands are shown. GreenTea will feedback to you if your command has
+    been successfully carried out, or if there are errors in your command formats.
+4.  `Command Box` - The command box is where you type in your commands. Pressing **enter** on your keyboard will execute the commands.
 5.  Try typing these commands to start playing with GreenTea
 
     - `new Japanese Animals`
@@ -144,42 +141,42 @@ been successfully carried out, or if there are errors in your command formats.
     now created a brand new deck called `Japanese Animals` with a new entry of the word `Dolphin` and the
     translation `イルカ`. Try adding a few more entries into GreenTea!
 
-6. Hopefully you have written a few more entries into GreenTea. We went ahead and added two new entries into the Deck
-`Japanese Animals`.
-    
+6.  Hopefully you have written a few more entries into GreenTea. We went ahead and added two new entries into the Deck
+    `Japanese Animals`.
+
     ![GreenTea](images/user-guide/AdditionalEntriesJapanese.PNG)
     Figure 8. Added more entries into `Japanese Animals`
 
-    Figure 8 is a screenshot of our latest Deck containing the new entries that we have written.
-    Now, Let us try to play a game of FlashCards to memorise what we have written.
-    Note than in our application, we use the terms Flashcards and Quizzes
-    interchangeably. Try typing and entering the following commands into GreenTea.
+        Figure 8 is a screenshot of our latest Deck containing the new entries that we have written.
+        Now, Let us try to play a game of FlashCards to memorise what we have written.
+        Note than in our application, we use the terms Flashcards and Quizzes
+        interchangeably. Try typing and entering the following commands into GreenTea.
 
-    - `/play`
-    
-    ![GreenTea](images/user-guide/PlayJapaneseDeck.PNG)
-    Figure 9. Playing a Game of Flashcards
+        - `/play`
 
-    Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
-    depending on the entries you have written into `Japanese Animals`.
+        ![GreenTea](images/user-guide/PlayJapaneseDeck.PNG)
+        Figure 9. Playing a Game of Flashcards
 
-    The command you entered previously had switched GreenTea into Quiz mode. This means that all commands written from now on
-    will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
+        Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
+        depending on the entries you have written into `Japanese Animals`.
 
-    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `いいえ`?" We
-    already know that the correct word is `No`. However, let us try typing the wrong answer `dog`.
+        The command you entered previously had switched GreenTea into Quiz mode. This means that all commands written from now on
+        will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
 
-    ![GreenTea](images/user-guide/WrongAnswer.PNG)
-    Figure 10. Wrong answer given
+        From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `いいえ`?" We
+        already know that the correct word is `No`. However, let us try typing the wrong answer `dog`.
 
-    GreenTea has accepted the answer we had given it and has updated the translation shown on the Quiz Tab. Do take
-    note that the right side of the Quiz Tab displays your history of answers to the quiz including the translation,
-    the correct word/answer as well as the given answer.
+        ![GreenTea](images/user-guide/WrongAnswer.PNG)
+        Figure 10. Wrong answer given
 
-    Finishing the quiz by answering the rest of the questions will bring you out of Quiz mode and you would be able
-    to use your regular commands such as `play` or `edit` again.
+        GreenTea has accepted the answer we had given it and has updated the translation shown on the Quiz Tab. Do take
+        note that the right side of the Quiz Tab displays your history of answers to the quiz including the translation,
+        the correct word/answer as well as the given answer.
 
-    Try playing the quiz a few more times!
+        Finishing the quiz by answering the rest of the questions will bring you out of Quiz mode and you would be able
+        to use your regular commands such as `play` or `edit` again.
+
+        Try playing the quiz a few more times!
 
 7.  Have you tried quizzing yourself a few more times? aren't you curious about your progress so far? Thankfully, GreenTea has been
     keeping track of your scores in the background and can display in the form of a graph. Try typing the following commands
@@ -268,7 +265,7 @@ Format: `remove <INDEX OF DECK>`
 :information_source: **Note:**
 To get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck.
 
-Example: 
+Example:
 
 - `remove 1`
 
@@ -291,7 +288,7 @@ Format: `select <INDEX OF DECK>`
 :information_source: **Note:**
 The index of the deck is the number displayed it on the user interface.
 
-Example: 
+Example:
 
 - `select 1`
 
@@ -364,7 +361,7 @@ Deletes the entry with the given index.
 
 Format: `delete <INDEX>`
 
-Example: 
+Example:
 
 - `delete 1`
 
@@ -459,7 +456,7 @@ To view statistics of **a single deck**:
 
 Format: `stats <INDEX>`
 
-Example: 
+Example:
 
 - `stats 1`
 
