@@ -28,21 +28,20 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
     - [5.4.1 Viewing help: help](#541-viewing-help-help)
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
   - [5.5 Statistics (Melanie)](#55-statistics-melanie)
-- [6. FAQ (Gabriel &amp; Melanie)](#7-faq-gabriel--melanie)
-- [7. Command Summary (Gabriel)](#8-command-summary-gabriel)
+- [6. FAQ (Gabriel &amp; Melanie)](#6-faq-gabriel--melanie)
+- [7. Command Summary (Gabriel)](#7-command-summary-gabriel)
 
 # 1. What is GreenTea? (Gabriel)
 
-_GreenTea_ is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while
-still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language,
+GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language,
 but often struggle due to the difficulty of remembering new vocabulary. For many learners, vocabulary remains the most challenging aspect of learning a new language.
 We felt that we could help learners struggling with vocabulary to learn the language more efficiently.
 Therefore, GreenTea uses a proven memory retention system known as the [Leitner System](https://jessewhelan.medium.com/using-the-leitner-system-to-improve-your-study-d5edafae7f0)
 and implements it in the context of a FlashCard game.
 
-**Fun Fact:** You may be wondering, why did we choose the name _GreenTea_? Well, in the initial stages of development, the app was intended for users looking to learn Japanese, hence the name _GreenTea_.
+**Fun Fact:** You may be wondering, why did we choose the name GreenTea? Well, in the initial stages of development, the app was intended for users looking to learn Japanese, hence the name GreenTea.
 Although the application now allows for the learning of [many languages](http://www.unicode.org/charts/index.html),
-we kept the name _GreenTea_ to denote the cultural journey a user undertakes when using this application.
+we kept the name GreenTea to denote the cultural journey a user undertakes when using this application.
 
 In this User Guide (UG), you will learn about the various commands and
 actions that would allow you to use GreenTea seamlessly and have an enjoyable journey with it.
@@ -67,8 +66,7 @@ language will be as relaxing as drinking a hot cup of GreenTea.
 Greetings! This chapter will be on helping you get started with using GreenTea. In this chapter,
 we will be covering installation, explanation of the GUI and basic commands needed to use GreenTea.
 
-Before you can start using GreenTea, you will need to ensure that `Java 11`
-is installed on your computer.
+Before you can start using GreenTea, you will need to ensure that [Java 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) is installed on your computer.
 
 To start using GreenTea:
 
@@ -152,7 +150,7 @@ been successfully carried out, or if there are errors in your command formats.
     Figure 8. Added more entries into `Japanese Animals`
 
     Figure 8 is a screenshot of our latest Deck containing the new entries that we have written.
-    Now, Let us try to play a game of FlashCards to memorise what we have written.
+    Now, let us try to play a game of FlashCards to memorise what we have written.
     Note than in our application, we use the terms Flashcards and Quizzes
     interchangeably. Try typing and entering the following commands into GreenTea.
 
@@ -167,8 +165,8 @@ been successfully carried out, or if there are errors in your command formats.
     The command you entered previously had switched GreenTea into Quiz mode. This means that all commands written from now on
     will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
 
-    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `いいえ`?" We
-    already know that the correct word is `No`. However, let us try typing the wrong answer `dog`.
+    From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We
+    already know that the correct word is `Dolphin`. However, let us try typing a wrong answer for example`dog`. 
 
     ![GreenTea](images/user-guide/10WrongAnswer.PNG)
     Figure 10. Wrong answer given
@@ -182,9 +180,9 @@ been successfully carried out, or if there are errors in your command formats.
 
     Try playing the quiz a few more times!
 
-7.  Have you tried quizzing yourself a few more times? aren't you curious about your progress so far? Thankfully, GreenTea has been
-    keeping track of your scores in the background and can display in the form of a graph. Try typing the following commands
-    into GreenTea!
+7. Have you tried quizzing yourself a few more times? Aren't you curious about your progress so far? Thankfully, GreenTea has been
+keeping track of your scores in the background and can display your statistics in the form of a graph. Try typing the following commands
+into GreenTea!
 
     - `stats 1`
 
@@ -196,9 +194,9 @@ been successfully carried out, or if there are errors in your command formats.
     your score history as well as the time stamp of each attempt. Based on our progression, we think we need a
     little bit more practise with our deck!
 
-8.  Congratulations! We have come to the end of this chapter. We hope that you have learned the basic of
-    using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
-    commands with complete explanations to learn in [Chapter 5](#5-features).
+8. Congratulations! We have come to the end of this chapter. We hope that you have learnt the basics of
+using GreenTea but if you are still itching to bring your learning to the next level, there are still a ton of
+commands with complete explanations to learn in [Chapter 5](#5-features).
 
 # 4. Using This Guide (Melanie)
 
@@ -219,7 +217,7 @@ has to be followed. The following is an explanation of how commands are describe
 
 ### 4.2.1 Arrowed Brackets
 
-Words in `<Arrowed Brackets>` are compulsory inputs supplied by you. They are generally names or translations that
+Words in `<Arrowed Brackets>` are compulsory inputs supplied by you. They are generally words or translations that
 are unique to each input.
 
 E.g `new <NAME OF NEW DECK>` is a command that creates a new deck with the input, `NAME OF NEW DECK`
@@ -233,13 +231,12 @@ or `edit 1 [w/word] [t/translation]` **but cannot be written as** `edit 1`
 
 # 5. Features
 
-In this chapter, we will be going into detail each feature of GreenTea, along with their command format and
+In this chapter, we will be going into detail of GreenTea's features, along with their command format and
 relevant examples.
 
 ## 5.1 Deck Commands (Melanie)
 
-As mentioned earlier, Decks are the foundation to GreenTea. A deck is simply a list of entries
-you write into GreenTea. A deck can be your favourite Korean Dramas or a list of Japanese Words.
+As mentioned earlier, decks are the foundation of GreenTea. A deck is simply a list of entries you write into GreenTea. A deck can be your favourite Korean Dramas or a list of Japanese Words.
 
 ### 5.1.1 Creating a deck: `new`
 
@@ -293,7 +290,6 @@ Format: `select <INDEX OF DECK>`
 The index of the deck is the number displayed it on the user interface.
 
 Example: 
-
 - `select 1`
 
 Before deck 1 is selected:
@@ -400,6 +396,7 @@ The slash `/` in the command.
 Before you start playing a new game, remember to [select a deck first!](#513-selecting-a-deck-select)
 
 Result:
+
 ![GreenTea](images/user-guide/21PlayAGame.png)
 Figure 21. Result of playing a game
 
@@ -429,8 +426,8 @@ Format: `help`
 
 Result:
 
-![GreenTea](images/user-guide/18HelpWindow.PNG)
-Figure 18. Result of Opening Help Window
+![GreenTea](images/user-guide/HelpCommand.PNG)
+Figure 23. Result of Opening Help Window
 
 ### 5.4.2 Exiting the program: `exit`
 
