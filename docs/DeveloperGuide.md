@@ -298,11 +298,24 @@ The `Storage` component,
 
 Each `Word` and `Translation` is saved in a `JsonAdaptedWord`and `JsonAdaptedTranslation` object respectively.
 Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdaptedWord` and `JsonAdaptedTranslation`.
-Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry`.
 
-This format allows the files to be saved in json format and be read back accurately.
+Each `QuestionAttempt` and `Score` is saved in a `JsonAdaptedQuestionAttempt` and `JsonAdaptedScore` respectively.
+Each QuizAttempt is saved in a `JsonAdaptedQuizAttempt` object, consisting of a `JsonAdaptedQuestionaAttempt` and `JsonAdaptedScore` among other attributes.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `TrackPad`, which `Attraction` references. This allows `TrackPad` to only require one `Tag` object per unique `Tag`, instead of each `Attraction` needing their own `Tag` object.</div><br>
+Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry` and a list of `JsonAdaptedQuizAttempt`. 
+
+To store all decks, a WordBank storage is used in the form of `JsonSerializableWordBankStorage`, which consists of
+a list of `JsonAdaptedDeck`. 
+
+`JsonSerializableWordBankStorage` allows the data in it to be serialized, allowing the program to read from what has been stored in `wordbank.json`. 
+
+`StorageManager` is the main managing system that allows JSON files to be read, and data to be saved to the JSON files. 
+
+<div markdown="span" class="alert alert-info">:information_source: **Note:** 
+An alternative (arguably, a more OOP) model is given below in Figure 9.
+In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data 
+This allows for better management of data eventually.
+</div><br>
 
 ![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
 
@@ -697,8 +710,25 @@ Saving window preferences
 
 2. Re-launch the app by double-clicking the jar file.<br>
    Expected: The most recent window size and location is retained.
+      
+### 7.2 Getting Help
 
-### 7.2 Removing a deck
+Displays a guide for all commands. 
+
+Prerequisites: Launch GreenTea succesfully.
+
+Test case: `help`
+Expected: A help window pops up and provides a link to the Official UserGuide
+
+### 7.3 Creating a Deck
+Creating a deck while all decks are displayed
+
+Prerequisites: Launch GreenTea successfully
+
+1. Test Case: `new Japanese Animals`<br>
+    Expected: an empty Deck named Japanese Animals created and displayed in the DeckList panel. Status message to say "New deck added: Japanese Animals"
+    
+### 7.4 Removing a deck
 
 Removing a deck while all decks are being shown
 
@@ -719,8 +749,34 @@ Removing a deck while all decks are being shown
     - `remove asdf`
     - `remove x` (where x is a positive integer larger than the list size)<br>
       Expected: Similar to previous test case 4
+  
+### 7.5 Creating an Entry
+Creating an entry in a selected deck
 
-### Saving data
+Prerequisites: Have a deck present
+
+1. Test Case: `select 1` and then `add w/Hola t/Hello`<br>
+    Expected: An Entry added to Deck 1, displayed in the Entries panel. Status message to say "New entry added: hola Translation: hello"
+
+### 7.6 Editing an Entry
+Editing an existing entry in a particular deck
+
+Prerequisites: Have a deck with entries present
+
+1. Test Case: `select 1` and then `edit 2 t/hello there`<br>
+   Expected: Entry 2 in Deck 1 will have its translation edited to "hello there", and will be reflected in the entries panel.
+   Status message to say "Edited Entry: hola Translation: hello there"
+   
+2. Test Case: `select 1` and then `edit 2 w/hola amigos`<br>
+   Expected: Entry 2 in Deck 1 will have its word edited to "hola amigos", and will be reflected in the entries panel.
+   Status message to say "Edited Entry: hola amigos Translation: hello there"
+   
+ 3. Test Case: `select 1` and then `edit 2 w/hola amigos t/hello friends`<br>
+   Expected: Entry 2 in Deck 1 will have its word and translation edited to "hola amigos" and "hello friends" respectively,
+   and will be reflected in the entries panel.
+   Status message to say "Edited Entry: hola amigos Translation: hello friends"
+   
+### 7.7 Saving data
 
 Dealing with missing data files
 
@@ -735,3 +791,5 @@ Dealing with corrupted data files
 2. Remove the _d_ in _decks_ on line 2 of the data file.
 3. Launch the application. Green Tea should display an empty deck list.
 4. Add a deck to Green Tea then close the application. The data file should now be in the correct format.
+   
+ 
