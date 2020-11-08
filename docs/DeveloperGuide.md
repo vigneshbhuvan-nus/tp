@@ -434,6 +434,21 @@ This section will explain:
 - How the play mode commands work.
 - How scoring is calculated and saved in `Storage` based on each quiz.
 
+
+##### Design Considerations:
+
+###### Aspect: Type of flashcard system
+
+- **Alternative 1 (current choice)** : Leitner System
+  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
+    using spaced repetition. Questions are sorted based on the user's ability to answer them. Correctly
+    answered questions are put at the end of the question queue and incorrectly answered
+    flashcards are placed at the front.
+  - Cons: More difficult to implement
+- **Alternative 2** : Random shuffling system
+  - Pros: Easier to implement
+  - Cons: Users may not learn as effectively
+
 #### 4.2.2 Commands Implemented (Gabriel)
 
 The `SelectCommand` follows the format: `select <index>`. 
@@ -570,7 +585,6 @@ Also, note that they both figures are connected by the rake symbol.
 
 #### 4.2.3 Leitner and QuizAttempt (Georgie)
 
-
 The Leitner system is a system to randomize the questions presented to a user based on their most recent past attempt of the quiz if any, otherwise random shuffle is executed. `Leitner` is a class that encapsulates this logic. It is constructed with `Deck` as the only parameter and stores the next question list to be presented to the player in its internal `entryList` object, retrieved via `leitner.getEntries()`.
 
 How it works is as follows (this is in `ModelManager`):
@@ -619,20 +633,6 @@ I wrote the `StatisticsManager` singleton class to encapsulate all app-related e
 
 An instance of `StatisticsManager` is instantiated in the constructor of `LogicManager` and destroyed when `cleanup()` is called on `LogicManager`. It makes the most sense to call these lifecycle operations in these parts of `LogicManager` as they parallel the opening and closing lifecycle of the app.
 
-#### 4.4 Design Considerations:
-
-##### 4.4.1 Aspect: Type of flashcard system
-
-- **Alternative 1 (current choice)** : Leitner System
-  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
-    using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
-    answered flashcards are put at the end of the question queue and incorrectly answered
-    flashcards are placed at the front.
-    (https://en.wikipedia.org/wiki/Leitner_system)
-  - Cons: More difficult to implement
-- **Alternative 2** : Random shuffling system
-  - Pros: Easier to implement
-  - Cons: Users may not learn as effectively
 ---
 
 ## 5. Documentation, logging, testing, configuration, dev-ops
