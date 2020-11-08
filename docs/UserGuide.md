@@ -97,7 +97,7 @@ There are four main components to the GUI. The deck list, the tab panels, the re
     A deck is a list of entries and an entry consists of a word and a translation. It will update as you keep adding decks.
 2.  `Tab Panels` - The main features of GreenTea are separated into tabs. The tabs will change automatically, depending on your
     commands, so you do not need to worry about changing the tabs manually. GreenTea currently has four different tabs.
-    
+
     1. `Start Tab`: Consists of the welcome page that is shown on startup of the application.
     2. `Entries Tab`: Displays all the entries of a selected deck.
     3. `Quiz Tab`: Displays the current.

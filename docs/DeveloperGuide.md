@@ -44,7 +44,7 @@
   - [7.5 Creating an Entry](#75-creating-an-entry)
   - [7.6 Editing an Entry](#76-editing-an-entry)
   - [7.7 Saving dara](#77-saving-data)
-  
+
 
 ---
 
@@ -316,18 +316,18 @@ Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdapt
 Each `QuestionAttempt` and `Score` is saved in a `JsonAdaptedQuestionAttempt` and `JsonAdaptedScore` respectively.
 Each QuizAttempt is saved in a `JsonAdaptedQuizAttempt` object, consisting of a `JsonAdaptedQuestionaAttempt` and `JsonAdaptedScore` among other attributes.
 
-Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry` and a list of `JsonAdaptedQuizAttempt`. 
+Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry` and a list of `JsonAdaptedQuizAttempt`.
 
 To store all decks, a WordBank storage is used in the form of `JsonSerializableWordBankStorage`, which consists of
-a list of `JsonAdaptedDeck`. 
+a list of `JsonAdaptedDeck`.
 
-`JsonSerializableWordBankStorage` allows the data in it to be serialized, allowing the program to read from what has been stored in `wordbank.json`. 
+`JsonSerializableWordBankStorage` allows the data in it to be serialized, allowing the program to read from what has been stored in `wordbank.json`.
 
-`StorageManager` is the main managing system that allows JSON files to be read, and data to be saved to the JSON files. 
+`StorageManager` is the main managing system that allows JSON files to be read, and data to be saved to the JSON files.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** 
+<div markdown="span" class="alert alert-info">:information_source: **Note:**
 An alternative (arguably, a more OOP) model is given below in Figure 9.
-In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data 
+In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data
 This allows for better management of data eventually.
 </div><br>
 
@@ -434,7 +434,7 @@ Green Tea is designed to be a simple and easy system for new users to use.
 #### 4.2.1 Overview (Gabriel)
 
 The `Flashcard System` is a feature that allows the user to quiz themselves on a selected deck's entries.
-The user can quiz themselves after ensuring a deck is already selected using a `SelectCommand` and then 
+The user can quiz themselves after ensuring a deck is already selected using a `SelectCommand` and then
 invoking a `PlayCommand`. This feature will also keep track and update the score of the quiz.
 
 This section will explain:
@@ -460,7 +460,7 @@ This section will explain:
 
 #### 4.2.2 Commands Implemented (Gabriel)
 
-The `SelectCommand` follows the format: `select <index>`. 
+The `SelectCommand` follows the format: `select <index>`.
 
 The `PlayCommand` follows the format: `/play`.
 
@@ -479,7 +479,7 @@ For example, when a deck is played, the `model` must be updated with a shuffled 
 The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
 the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`.
 
-If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input through the `PlayModeParser`. 
+If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input through the `PlayModeParser`.
 
 If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input through the `CommandModeParser`.
 
@@ -524,12 +524,12 @@ Step 10. The `args` command invokes `newGame()` in `Model`.
 
 Step 11. `Model` creates a new [`Leitner` object and `QuizAttempt` object](#425-leitner-and-quizattempt-georgie)
 
-Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`. 
+Step 12. The `args` command also invokes the `Model` object to set the current view  to `QUIZ_VIEW`.
 
 Step 13. A `CommandResult` object is created and returned to `Logic Manager` to signify the end of the command execution.
 The `CommandResult` displays the command success message to the user via the GUI to signify the end of the command execution.
 
-The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`. 
+The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`.
 ![PlayCommand](images/PlayActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 16 Play Command Activity Diagram</i></sup></div><br>
 
@@ -559,7 +559,7 @@ Step 5. The `String` is passed from `PlayModeParser` to `AnswerCommandParser` fo
 
 Step 6. `AnswerCommandParser` creates a new `AnswerCommand` object stored as a variable `answer`.
 
-Step 7. `answer` is then pass back to `Logic Manager` via `AnswerCommandParser` and `PlayModeParser`. 
+Step 7. `answer` is then pass back to `Logic Manager` via `AnswerCommandParser` and `PlayModeParser`.
 `AnswerCommandParser` is then deleted.
 
 Step 8. `Logic Manager` executes the `answer` command.
@@ -568,7 +568,7 @@ Step 9. The `answer` command invokes `playGame(answer)` in `Model`.
 
 Step 10. Depending on the correctness of the `answer`, Model will update the score via `updateScore()`.
 
-Step 11a. If the [`Leitner` object](#425-leitner-and-quizattempt-georgie) stored in `Model` has more than one question left, `Model` 
+Step 11a. If the [`Leitner` object](#425-leitner-and-quizattempt-georgie) stored in `Model` has more than one question left, `Model`
 will update the next question via `updateQuestion()`.
 A `CommandResult` object is created storing the `answer` and returned to `Logic Manager` to signify the end of the command execution.
 The `CommandResult` displays the answer details to the user via the GUI to signify the end of the command execution.
@@ -578,11 +578,11 @@ A `CommandResult` object is created and returned to `Logic Manager` storing the 
 The `CommandResult` displays the score to the user via the GUI to signify the end of the command execution.
 
 
-The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user 
-enters a answer in Play Mode.  
+The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user
+enters a answer in Play Mode.
 
-Note that Figure 17 mainly capture the states of the 'StopCommand' while Figure 18 
-captures the states of the 'AnswerCommand'. 
+Note that Figure 17 mainly capture the states of the 'StopCommand' while Figure 18
+captures the states of the 'AnswerCommand'.
 
 Also, note that they both figures are connected by the rake symbol.
 
@@ -614,7 +614,7 @@ Later, a series of `leitner.addGuess(guess)` is called until the end of the quiz
 
 ### 4.3 Statistics (Georgie)
 
-#### 4.3.1 Overview 
+#### 4.3.1 Overview
 
 We needed to track quiz-specific and app-wide data. Quiz-specific data refers to data that reflects the complete attempt/playthrough of a particular quiz which we call a `QuizAttempt`. In particular, `QuizAttempt` is a list of `QuestionAttempt`s, where each `QuestionAttempt` consists of the user's answer, the correct answer, and the total score received for that question out of `1.0`.
 
@@ -845,10 +845,10 @@ Saving window preferences
 
 2. Re-launch the app by double-clicking the jar file.<br>
    Expected: The most recent window size and location is retained.
-      
+
 ### 7.2 Getting Help
 
-Displays a guide for all commands. 
+Displays a guide for all commands.
 
 Prerequisites: Launch GreenTea succesfully.
 
@@ -862,7 +862,7 @@ Prerequisites: Launch GreenTea successfully
 
 1. Test Case: `new Japanese Animals`<br>
     Expected: an empty Deck named Japanese Animals created and displayed in the DeckList panel. Status message to say "New deck added: Japanese Animals"
-    
+
 ### 7.4 Removing a deck
 
 Removing a deck while all decks are being shown
@@ -884,7 +884,7 @@ Removing a deck while all decks are being shown
     - `remove asdf`
     - `remove x` (where x is a positive integer larger than the list size)<br>
       Expected: Similar to previous test case 4
-  
+
 ### 7.5 Creating an Entry
 Creating an entry in a selected deck
 
@@ -901,16 +901,16 @@ Prerequisites: Have a deck with entries present
 1. Test Case: `select 1` and then `edit 2 t/hello there`<br>
    Expected: Entry 2 in Deck 1 will have its translation edited to "hello there", and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola Translation: hello there"
-   
+
 2. Test Case: `select 1` and then `edit 2 w/hola amigos`<br>
    Expected: Entry 2 in Deck 1 will have its word edited to "hola amigos", and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola amigos Translation: hello there"
-   
+
  3. Test Case: `select 1` and then `edit 2 w/hola amigos t/hello friends`<br>
    Expected: Entry 2 in Deck 1 will have its word and translation edited to "hola amigos" and "hello friends" respectively,
    and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola amigos Translation: hello friends"
-   
+
 ### 7.7 Saving data
 
 Dealing with missing data files
@@ -926,5 +926,3 @@ Dealing with corrupted data files
 2. Remove the _d_ in _decks_ on line 2 of the data file.
 3. Launch the application. Green Tea should display an empty deck list.
 4. Add a deck to Green Tea then close the application. The data file should now be in the correct format.
-   
- 
