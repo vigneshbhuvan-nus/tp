@@ -43,8 +43,9 @@
   - [7.4 Removing a Deck](#74-removing-a-deck)
   - [7.5 Creating an Entry](#75-creating-an-entry)
   - [7.6 Editing an Entry](#76-editing-an-entry)
-  - [7.7 Saving dara](#77-saving-data)
-
+  - [7.7 Playing and Stopping a Quiz](#77-playing-and-stopping-a-quiz)
+  - [7.8 Viewing Statistics](#78-viewing-statistics)
+  - [7.9 Saving Data](#79-saving-data)
 
 ---
 
@@ -307,32 +308,23 @@ The class diagram of the `Storage` component is shown below.
 The `Storage` component,
 
 - Saves`UserPref` objects in json format and read it back.
-- Saves the word bank data, such as `Deck`, `Entry`, `Word` and `Translation` in json format and read it back.
-- Saves the statistics and scores of each individual quiz taken by the user.
+- Saves the word bank data (mainly Decks and QuizAttempts) in json format and read it back
 
-Each `Word` and `Translation` is saved in a `JsonAdaptedWord`and `JsonAdaptedTranslation` object respectively.
-Each `Entry` is saved in a `JsonAdaptedEntry` object, consisting of a `JsonAdaptedWord` and `JsonAdaptedTranslation`.
+From Figure 8, it can be observed that `JsonSerializableWordBankStorage` consists of a list of `JsonAdaptedDeck` objects.
 
-Each `QuestionAttempt` and `Score` is saved in a `JsonAdaptedQuestionAttempt` and `JsonAdaptedScore` respectively.
-Each QuizAttempt is saved in a `JsonAdaptedQuizAttempt` object, consisting of a `JsonAdaptedQuestionaAttempt` and `JsonAdaptedScore` among other attributes.
+`JsonSerializableWordBankStorage` can be then serialized in order to convert data from json files into GreenTea's model. 
+Data from GreenTea's model can also be converted into json files through the reverse of this process. 
 
-Each `Deck` is saved in a `JsonAdaptedDeck` object, consisting of a list of `JsonAdaptedEntry` and a list of `JsonAdaptedQuizAttempt`.
+`StorageManager` manages the process of saving and reading data
 
-To store all decks, a WordBank storage is used in the form of `JsonSerializableWordBankStorage`, which consists of
-a list of `JsonAdaptedDeck`.
+All the data is eventually stored in `wordbank.json` in the `data` folder. When the application is restarted,
+the data from `wordbank.json` is read and converted into GreenTea's model. 
 
-`JsonSerializableWordBankStorage` allows the data in it to be serialized, allowing the program to read from what has been stored in `wordbank.json`.
-
-`StorageManager` is the main managing system that allows JSON files to be read, and data to be saved to the JSON files.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:**
-An alternative (arguably, a more OOP) model is given below in Figure 9.
-In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data
-This allows for better management of data eventually.
-</div><br>
+:information_source: **Note:** An alternative (arguably, a more OOP) model is given below in Figure 9.
+In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data. 
+This allows for better management of data and for example could allow users to share `Deck` data with other users without sharing their `QuizData`. 
 
 ![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
-
 <div align="center"><sup style="font-size:100%"><i>Figure 9 More OOP Storage Class Diagram</i></sup></div><br>
 
 ---
@@ -390,9 +382,7 @@ The `Storage` component is needed for commands `new` and `remove`
 This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
 Only after selecting a deck, can some other commands (E.g `add`, `delete`, `edit`, `/play`) be performed.
 
-:information_source: **Note:**
-
-The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
+:information_source: **Note:** The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
 UI, Logic and Model components.
 
 - The selected deck is retrieved from `FilteredList<Deck>` in the model component.
@@ -483,7 +473,7 @@ If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will 
 
 If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input through the `CommandModeParser`.
 
-Do note that in Play Mode, all commands are treated as valid unless the command word is `/play`.
+:information_source: **Note:** In Play Mode, all commands are treated as valid unless the command word is `/play`.
 
 The figure below is an activity diagram that provides a generalized overview on the behavior of `Logic Manager` when a user
 enters any command.
@@ -584,7 +574,7 @@ enters a answer in Play Mode.
 Note that Figure 17 mainly capture the states of the 'StopCommand' while Figure 18
 captures the states of the 'AnswerCommand'.
 
-Also, note that they both figures are connected by the rake symbol.
+:information_source: **Note:** both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram One</i></sup></div><br>
@@ -706,7 +696,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests help
-2.  GreenTea returns a message explaining how to access the help page
+2.  GreenTea returns a message explaining how to access the help page with the link to the Official UserGuide
+
     Use case ends.
 
 **Use case 2: Add a new entry**
@@ -763,7 +754,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  User requests to list entries
 2.  GreenTea shows a list of entries
 3.  User requests to delete a specific entry in the list via the given index
-4.  GreenTea deletes the person
+4.  GreenTea deletes the entry
 
     Use case ends.
 
@@ -790,7 +781,46 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
-**Use case 7: Exit**
+**Use case 7: Play a Quiz**
+
+**MSS**
+
+1. User requests to play a quiz for a particular deck
+2. GreenTea starts the quiz
+3. User answers each question and completes the quiz
+4. GreenTea provides the score and results of the quiz, and saves the results
+
+    Use case ends.
+    
+**Use case 8: Stop a Quiz**
+
+**MSS**
+
+1. User requests to play a quiz for a particular deck
+2. GreenTea starts the quiz
+3. User stops the quiz
+4. GreenTea stops the quiz and does not save the results
+
+    Use case ends. 
+    
+**Use case 9: View Statistics**
+
+**MSS**
+
+1. User requests to view statistics of quizzes played so far for a particular deck, or across all decks
+2. GreenTea displays the statistics accordingly
+    
+    Use case ends.
+
+**Extensions**
+
+- 9a. The given index is invalid.
+
+  - 9a1. GreenTea shows an error message.
+
+    Use case resumes at step 1.
+
+**Use case 10: Exit**
 
 **MSS**
 
@@ -825,18 +855,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 Given below are instructions to test the app manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+:information_source: **Note:** These instructions only provide a starting point for testers to work on;
+testers are expected to do more *exploratory* testing to understand the app better.
 
-</div>
 
 ### 7.1 Launch and shutdown
 
 Initial launch
 
-1. Download the jar file and copy into an empty folder
+Prerequisites: Have GreenTea.jar downloaded and copied into an empty folder
 
-2. Double-click the jar file.<br>
+1. Double-click the jar file.<br>
    Expected: Shows the GUI with a set of sample decks. The window size may not be optimum.
 
 Saving window preferences
@@ -852,8 +881,8 @@ Displays a guide for all commands.
 
 Prerequisites: Launch GreenTea succesfully.
 
-Test case: `help`
-Expected: A help window pops up and provides a link to the Official UserGuide
+1. Test case: `help`<br>
+   Expected: A help window pops up and provides a link to the Official UserGuide
 
 ### 7.3 Creating a Deck
 Creating a deck while all decks are displayed
@@ -863,25 +892,29 @@ Prerequisites: Launch GreenTea successfully
 1. Test Case: `new Japanese Animals`<br>
     Expected: an empty Deck named Japanese Animals created and displayed in the DeckList panel. Status message to say "New deck added: Japanese Animals"
 
+2. Other incorrect commands:
+    - `new` without providing the name of the deck
+    - `Japanese Animals` without providing the key word `new`
+
 ### 7.4 Removing a deck
 
-Removing a deck while all decks are being shown
+Removing a deck while all decks are displayed
 
-1.  Prerequisites: Multiple decks in the list.
+Prerequisites: Multiple decks in the list.
 
-2.  Test case: `remove 1`<br>
+1.  Test case: `remove 1`<br>
     Expected: First deck is removed from the list. Status message shown to confirm that the deck has been deleted.
 
-3.  Test case: `select 1` then `remove 1`<br>
+2.  Test case: `select 1` then `remove 1`<br>
     Expected: First deck is removed from the list. Status message shown to confirm that the deck has been deleted.
     The tab panel, previously showing the entries of deck 1, will show the start panel.
 
-4.  Test case: `remove 0`<br>
+3.  Test case: `remove 0`<br>
     Expected: No deck is removed. Error details shown in the status message.
 
-5.  Other incorrect remove commands to try:
-    - `remove`
-    - `remove asdf`
+4.  Other incorrect remove commands to try:
+    - `remove` without providing index
+    - `remove asdf` providing an invalid index
     - `remove x` (where x is a positive integer larger than the list size)<br>
       Expected: Similar to previous test case 4
 
@@ -891,7 +924,12 @@ Creating an entry in a selected deck
 Prerequisites: Have a deck present
 
 1. Test Case: `select 1` and then `add w/Hola t/Hello`<br>
-    Expected: An Entry added to Deck 1, displayed in the Entries panel. Status message to say "New entry added: hola Translation: hello"
+    Expected: An entry (Hola, Hello) would be added to Deck 1, displayed in the Entries panel. Status message to say "New entry added: hola Translation: hello"
+    
+2. Other incorrect commands to try:
+    - `add w/Hola t/Hello` without selecting a deck before
+    - `select 1` and then `add w/Hola` without providing its word 
+    - `select 1` and then `t/Hello` without providing its translation
 
 ### 7.6 Editing an Entry
 Editing an existing entry in a particular deck
@@ -910,19 +948,63 @@ Prerequisites: Have a deck with entries present
    Expected: Entry 2 in Deck 1 will have its word and translation edited to "hola amigos" and "hello friends" respectively,
    and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola amigos Translation: hello friends"
+   
+ 4. Other incorrect commands to try:
+    - `edit 2 t/hello there` without selecting a deck first
+    - `select 1` and then `edit w/hola amigos` without providing index
+    - `select 1` and then `edit 2 w/` without providing word
+    - `select 1` and then `edit 2 t/` without providing translation
+    
+### 7.7. Playing and Stopping a Quiz
+Playing a Flashcard Quiz with a particular deck
 
-### 7.7 Saving data
+Prerequisites: Have a deck with entries present, preferably multiple entries
 
+1. Test Case: `select 1` and then `/play`<br>
+   Expected: App will switch to the Quiz tab, and will display the first translation to be answered and various statistics.
+   Status message to say "Playmode started" 
+   
+2. Test Case: after entering PlayMode, answer the question by entering the answer on the command line<br>
+   Expected: Display will be updated to show the next question, as well as the previous answers and questions
+   Status message to say "Your answer was: hola"
+   
+3. Test Case: after entering PlayMode, enter `/stop`<br>
+   Expected: PlayMode will be stopped and will exit the quiz. The score and remarks will be displayed. 
+   Status message to say "Playmode stopped! Your score was not recorded!"
+   
+4. Test Case: after entering Playmode, finish the quiz by answering all the questions<br>
+    Expected: Playmode will be stopped and will exit the quiz. The score and remarks will be displayed.
+    Status message to say "Your score was 3/3"
+   
+5. Other incorrect commands to try:
+    - `select 1` and then `play` instead of `play`
+    - `\play` without selecting a deck first
+    - While in PlayMode, `stop` instead of `/stop`
+
+### 7.8 Viewing Statistics
+Viewing the statistics (e.g. score and average) of a selected deck or all decks
+
+Prerequisites: Have multiple decks with entries, with quizzes played before
+
+1. Test Case: `stats`<br>
+    Expected: Display will switch to the Statistics tab, and will display statistics of all quiz performances
+    Status message to say "No deck / invalid deck ID selected. Showing statistics across all decks."
+2. Test Case: `stats 1`<br>
+    Expected: Display will switch to the Statistics tab, and will display statistics of Deck 1
+    Status message to say "Viewing statistics for deck Spanish (id=1)"
+       
+### 7.9 Saving data
 Dealing with missing data files
 
-1. Launch the application. Add a deck to Green Tea then close the application
-2. The data file is located at /data, wordbank.json. The deck you just created should be visible in the data file
-3. Delete the data file
-4. Launch the application again. Green Tea should display a list of sample decks.
+Prerequisites: Have a deck with entries and then close the application
+1. The data file is located at /data, wordbank.json. The deck you just created should be visible in the data file
+2. Delete the data file
+3. Launch the application again. Green Tea should display a list of sample decks.
 
 Dealing with corrupted data files
 
+Prerequisite: Have a deck with entries and then close the application
 1. The data file is located at /data, wordbank.json.
-2. Remove the _d_ in _decks_ on line 2 of the data file.
-3. Launch the application. Green Tea should display an empty deck list.
+2. Change "decks" on line 2 of the data file to "ecks", in order to corrupt the data file.
+3. Launch the application again. Green Tea should display an empty deck list.
 4. Add a deck to Green Tea then close the application. The data file should now be in the correct format.
