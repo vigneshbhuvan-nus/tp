@@ -52,6 +52,10 @@ public class Leitner {
                 entryList.add(entry);
             }
             Collections.shuffle(entryList);
+            for (var entry : entries) {
+                answerList.add(entry.getWord());
+                questionList.add(entry.getTranslation());
+            }
         } else {
             Map<String, Pair<Word, Translation>> map = new HashMap<>();
             for (var entry : entries) {
