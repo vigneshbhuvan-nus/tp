@@ -506,11 +506,14 @@ Step 8. `Logic Manager` executes the `answer` command.
 
 Step 9. The `answer` command invokes `playGame(answer)` in `Model`.
 
-Step 10a. If the [`Leitner` object](#link) stored in `Model` has more than one question left, 
-a `CommandResult` object is created storing the `answer` and returned to `Logic Manager` to signify the end of the command execution.
+Step 10. Depending on the correctness of the `answer`, Model will update the score via `updateScore()`.
+
+Step 11a. If the [`Leitner` object](#link) stored in `Model` has more than one question left, `Model` 
+will update the next question via `updateQuestion()`.
+A `CommandResult` object is created storing the `answer` and returned to `Logic Manager` to signify the end of the command execution.
 The `CommandResult` displays the answer details to the user via the GUI to signify the end of the command execution.
 
-Step 10b. Else, the current question is the final question that is answered in the quiz.
+Step 11b. Else, the current question is the final question that is answered in the quiz.
 A `CommandResult` object is created and returned to `Logic Manager` storing the `playerScore` and the `maxScore` of the quiz as `Strings`.
 The `CommandResult` displays the score to the user via the GUI to signify the end of the command execution.
 

@@ -50,7 +50,9 @@ activate AnswerCommand
 
 activate Model
 AnswerCommand -> Model : playGame(answer)
+Model -> Model : updateScore()
 alt Leitner has more than one more question
+Model -> Model: updateQuestion()
 Model --> AnswerCommand
 
 create CommandResult
@@ -61,7 +63,6 @@ deactivate CommandResult
 
 else Leitner has one more question
 Model -> AnswerCommand : Model.getScore()
-Model -> Model : Model.endGame()
 
 create CommandResult
 AnswerCommand -> CommandResult : (playerScore, maxScore)
