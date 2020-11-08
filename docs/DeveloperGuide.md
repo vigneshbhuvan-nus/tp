@@ -422,6 +422,7 @@ Do note that in Play Mode, all commands are treated as valid unless the command 
 The figure below is a activity diagram that visually describes what is explained in this chapter.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
+Figure X
 
 #### 4.2.2 Play Mode Commands (Gabriel)
 
@@ -433,50 +434,32 @@ The format for the Play Mode commands are as follows:
 - The user input format for `StopCommand` is `/stop`.
 - There is no format for `AnswerCommand`.
 
+The figure below is an activity diagram that describes the behavior of `LogicManager` when the user
+ enters a `PlayCommand`. The behavior for `StopCommand` is similar to the `PlayCommand`.
+
+![PlayCommand](images/PlayActivityDiagram.png)
+Figure X
+
+Below is a sequence diagram for the `PlayCommand`.
+
+![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
+
+The two figure below are the activity diagram that describes the behavior of `LogicManager` when the user 
+enters a `AnswerCommand`. Note that both figures are connected by the rake symbol.
+
+![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
+Figure X
+
+![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
+Figure X
+
+Below is the corresponding sequence diagram for the 'AnswerCommand'.
+
+![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
 
 
 #### 4.2.3 Leitner and QuizAttempt (Georgie)
 
-Three additional commands are used for the flashcard system - PlayCommand, StopCommand and AnswerCommand.
-
-By default, StopCommand and AnswerCommand cannot be accessed by the user until a PlayCommand is typed by the user.
-
-![Sequence Diagram of Play Command](images/PlayCommandSequenceDiagram.png)
-
-<p align="center"> Figure 11. Sequence Diagram of Play Command
-
-With reference to Figure 11, after a PlayCommand is created:
-
-- A boolean isPlayMode in AddressBookParser becomes True (not shown yet as the implementation might change).
-- All following user inputs are treated as either an AnswerCommand or a StopCommand
-- A Leitner object is created that stores the current entries of the selected deck and shuffles them
-- The Leitner object also forms questions and answers list based on the shuffled list
-
-![Sequence Diagram of Answer Command](images/AnswerCommandSequenceDiagram.png)
-
-<p align="center"> Figure 12. Sequence Diagram of Play Command
-
-With reference to figure 12, when the user types a AnswerCommand into the system:
-
-- The AddressBookParser first checks if it is current is in play mode via the boolean isPlayMode
-- If it is not in play mode, an error message is shown to the user via the UI
-- If it is in play mode, an AnswerCommand containing hte user input is sent to the model and checked against
-  the current question in Leitner.java
-- The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
-- The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
-
-
-
-![PlayCommand](images/PlayActivityDiagram.png)
-
-![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
-
-![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-
-
-![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
-
-![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
 
 #### Design Considerations:
 
@@ -493,7 +476,7 @@ With reference to figure 12, when the user types a AnswerCommand into the system
   - Pros: Easier to implement
   - Cons: Users may not learn as effectively
 
-### 4.3 Statistics
+### 4.3 Statistics (Georgie)
 
 Some of the proposed parameters tracked by GreenTea include:
 
