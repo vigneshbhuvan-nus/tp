@@ -144,8 +144,8 @@ There are four main components to the GUI. The deck list, the tab panels, the re
 
 6.  Hopefully you have written a few more entries into GreenTea. We went ahead and added two new entries into the Deck
     `Japanese Animals`.
-      
-     ![GreenTea](images/user-guide/8AdditionalEntriesJapanese.PNG)
+
+    ![GreenTea](images/user-guide/8AdditionalEntriesJapanese.PNG)
     Figure 8. Added more entries into `Japanese Animals`
 
         Figure 8 is a screenshot of our latest Deck containing the new entries that we have written.
