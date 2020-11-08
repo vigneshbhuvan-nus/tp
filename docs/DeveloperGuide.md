@@ -396,13 +396,23 @@ Green Tea is designed to be a simple and easy system for new users to use.
 
 ![AddEntrySequence](images/AddEntrySequenceDiagram.png)
 
-### 4.2 Flashcard System
+### 4.2 Flashcard System (Gabriel)
 
-#### 4.2.1 Play Mode and Command Mode
+The `Flashcard System` is a feature that allows the user to quiz themselves on a selected deck's entries.
+The user can quiz themselves by ensuring a deck is already selected using a `SelectCommand` and invoking a `PlayCommand`.
 
-#### 4.2.2 Play Mode Commands
+The `SelectCommand` follows the format: `select <index>` while the `PlayCommand` follows the format: `/play`.
 
-#### 4.2.3 Leitner and QuizAttempt
+This section explains:
+- How the application separates the play mode commands from the command mode commands.
+- How the play mode commands work.
+- How scoring is calculated and saved in `Storage` based on each quiz.
+
+#### 4.2.1 Play Mode and Command Mode (Gabriel)
+
+#### 4.2.2 Play Mode Commands (Gabriel)
+
+#### 4.2.3 Leitner and QuizAttempt (Georgie)
 
 Three additional commands are used for the flashcard system - PlayCommand, StopCommand and AnswerCommand.
 
