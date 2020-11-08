@@ -8,12 +8,12 @@
 - [2. Setting up, getting started](#2-setting-up-getting-started)
 - [3. Design](#3-design)
   - [3.1 Component Overview](#31-component-overview)
-  - [How the architecture components interact with one another](#how-the-architecture-components-interact-with-one-another)
-  - [3.2 Common classes](#32-common-classes)
-  - [3.3 UI component](#33-ui-component)
-  - [3.4 Logic component](#34-logic-component)
-  - [3.5 Model component](#35-model-component)
-  - [3.6 Storage component](#36-storage-component)
+  - [3.2 Architecture Overview](#32-architecture-overview)
+  - [3.3 Common classes](#33-common-classes)
+  - [3.4 UI component](#34-ui-component)
+  - [3.5 Logic component](#35-logic-component)
+  - [3.6 Model component](#36-model-component)
+  - [3.7 Storage component](#37-storage-component)
 - [4. Implementation](#4-implementation)
   - [4.1 Deck Feature (Melanie)](#41-deck-feature-melanie)
       - [4.1.1 Overview](#411-overview)
@@ -23,9 +23,9 @@
       - [4.2.1 Play Mode and Command Mode (Gabriel)](#421-play-mode-and-command-mode-gabriel)
       - [4.2.2 Play Mode Commands (Gabriel)](#422-play-mode-commands-gabriel)
       - [4.2.3 Leitner and QuizAttempt (Georgie)](#423-leitner-and-quizattempt-georgie)
-  - [Design Considerations:](#design-considerations-2)
-    - [Aspect: Type of flashcard system](#aspect-type-of-flashcard-system)
-  - [4.3 [Proposed] Data Analysis](#43-proposed-data-analysis)
+  - [4.3 Statistics (Georgie)](#43-statistics-georgie)
+  - [4.4 Design Considerations:](#44-design-considerations)
+    - [4.4.1 Aspect: Type of flashcard system](#441-aspect-type-of-flashcard-system)
 - [5. Documentation, logging, testing, configuration, dev-ops](#5-documentation-logging-testing-configuration-dev-ops)
 - [6. Appendix: Requirements](#6-appendix-requirements)
   - [6.1 Product scope](#61-product-scope)
@@ -36,7 +36,7 @@
 - [7. Appendix: Instructions for manual testing](#7-appendix-instructions-for-manual-testing)
   - [7.1 Launch and shutdown](#71-launch-and-shutdown)
   - [7.2 Removing a deck](#72-removing-a-deck)
-  - [Saving data](#saving-data)
+  - [7.3 Saving data](#73-saving-data)
 
 ---
 
@@ -108,7 +108,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 
 <p align="center"> Figure 2. Example Class Diagram of the Logic Component
 
-#### How the architecture components interact with one another
+#### 3.2 Architecture Overview
 
 The _Sequence Diagram_ below (Figure 3) shows how the components interact with one another when the user issues the command `remove 1`.
 
@@ -118,7 +118,7 @@ The _Sequence Diagram_ below (Figure 3) shows how the components interact with o
 
 The sections below give more details about each component.
 
-### 3.2 Common classes
+### 3.3 Common classes
 
 Common classes are classes used by multiple components.
 They can be found in the `seedu.addressbook.commons` package.
@@ -131,7 +131,7 @@ Common classes include:
 - `GuiSettings`: Contains the GUI settings.
 - `LogsCenter`: Writes messages to the console and a log file. Records the state of the program as the app is running.
 
-### 3.3 UI component
+### 3.4 UI component
 
 The `UI` component is the portion of the application which is visible to the user.
 The `UI` consists of a `MainWindow` that is made up of various parts (E.g `CommandBox`, `ResultDisplay`, `DeckListPanel`, `StatusBarFooter`)
@@ -190,7 +190,7 @@ Commands update a class called `CurrentView.java` in `Model`. Based on the curre
 - Panel which shows upon _starting a quiz game_ is `QuizPanel.fxml`.
 - Panel which shows upon _giving stats command_ is `StatisticsPanel.fxml`.
 
-### 3.4 Logic component
+### 3.5 Logic component
 
 The `Logic` component is the bridge between the `UI` and `Model` components. It is in charge of deciding what to do with the
 user input received from the `UI`. This component consists of the `Statistics`, `Parser` and the `Command` package.
@@ -233,7 +233,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 <p align="center"> Figure 6. Sequence Diagram of Logic Component for "Remove 1" Command
 
-### 3.5 Model component
+### 3.6 Model component
 
 The `Model` component is in charge of changing the data within the application.
 This includes information about decks, entries and statistics.
@@ -278,7 +278,7 @@ Role of `QuizAttempt` object:
 - Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
 - More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
 
-### 3.6 Storage component
+### 3.7 Storage component
 
 The `Storage` component handles the reading and writing of data from a data file. By storing the data,
 the application will be able to load the data from the previous session back to the user when the user opens
@@ -536,22 +536,6 @@ Also, note that they both figures are connected by the rake symbol.
 
 #### 4.2.3 Leitner and QuizAttempt (Georgie)
 
-
-#### Design Considerations:
-
-##### Aspect: Type of flashcard system
-
-- **Alternative 1 (current choice)** : Leitner System
-  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
-    using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
-    answered flashcards are put at the end of the question queue and incorrectly answered
-    flashcards are placed at the front.
-    (https://en.wikipedia.org/wiki/Leitner_system)
-  - Cons: More difficult to implement
-- **Alternative 2** : Random shuffling system
-  - Pros: Easier to implement
-  - Cons: Users may not learn as effectively
-
 ### 4.3 Statistics (Georgie)
 
 Some of the proposed parameters tracked by GreenTea include:
@@ -572,6 +556,20 @@ display to the user. These include:
 
 _{Feature will be added in v1.3.2}_
 
+#### 4.4 Design Considerations:
+
+##### 4.4.1 Aspect: Type of flashcard system
+
+- **Alternative 1 (current choice)** : Leitner System
+  - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
+    using spaced repetition. Flashcards are sorted based on the user's ability to answer them. Correctly
+    answered flashcards are put at the end of the question queue and incorrectly answered
+    flashcards are placed at the front.
+    (https://en.wikipedia.org/wiki/Leitner_system)
+  - Cons: More difficult to implement
+- **Alternative 2** : Random shuffling system
+  - Pros: Easier to implement
+  - Cons: Users may not learn as effectively
 ---
 
 ## 5. Documentation, logging, testing, configuration, dev-ops
@@ -796,7 +794,7 @@ Removing a deck while all decks are being shown
     - `remove x` (where x is a positive integer larger than the list size)<br>
       Expected: Similar to previous test case 4
 
-### Saving data
+### 7.3 Saving data
 
 Dealing with missing data files
 
