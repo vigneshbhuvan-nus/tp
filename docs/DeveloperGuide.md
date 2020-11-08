@@ -410,7 +410,30 @@ This section explains:
 
 #### 4.2.1 Play Mode and Command Mode (Gabriel)
 
+The `Logic` component is responsible for receiving, parsing and executing the user command. In addition to this,
+the `Logic Manager` maintains a private `boolean` field known as `isPlayMode` that is originally set to `false`. 
+
+If `isPlayMode` is set to `true`, `Logic Manager` will be in Play Mode and will parse all incoming input using the `PlayModeParser`. 
+
+If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and will parse all incoming input using the `CommandModeParser`.
+
+Do note that in Play Mode, all commands are treated as valid unless the command word is `/play`.
+
+The figure below is a activity diagram that visually describes what is explained in this chapter.
+
+![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
+
 #### 4.2.2 Play Mode Commands (Gabriel)
+
+When in Play Mode, `Logic Manager` will only handle three commands. They are the `PlayCommand`, `StopCommand` and `AnswerCommand`.
+In this implementation, all commands that do not match the format for `PlayCommand` or `StopCommand` are treated as `AnswerCommand`.
+
+The format for the Play Mode commands are as follows:
+- The user input format for `PlayCommand` is `/play`.
+- The user input format for `StopCommand` is `/stop`.
+- There is no format for `AnswerCommand`.
+
+
 
 #### 4.2.3 Leitner and QuizAttempt (Georgie)
 
@@ -442,7 +465,7 @@ With reference to figure 12, when the user types a AnswerCommand into the system
 - The response (correct / wrong answer) is then relayed backed to the user and the next question is loaded.
 - The process ends when the Leitner.java has no more question to ask (not shown as implementation might change)
 
-![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
+
 
 ![PlayCommand](images/PlayActivityDiagram.png)
 
