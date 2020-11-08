@@ -25,10 +25,11 @@ public class StatisticsCommand extends Command {
                 .setStatisticsDeckId(deckIndex - 1);
 
         if (currentDeckIndex == -1) { // invalid deck, or none
-            messageSuccess = "Either invalid deck index or index out of bounds. \n"
-                    + "Please choose an index that is listed and ensure it is a positive integer that is less than "
-                    + "2,147,483,648 "
-                    + "Viewing statistics across all decks instead.";
+            messageSuccess = "No deck / invalid deck ID selected. Showing statistics across all decks.";
+            // messageSuccess = "Either invalid deck index or index out of bounds. \n"
+            //         + "Please choose an index that is listed and ensure it is a positive integer that is less than "
+            //         + "2,147,483,648 "
+            //         + "Viewing statistics across all decks instead.";
         } else {
             messageSuccess = String.format("Viewing statistics for deck %s (id=%d)",
                     model.getFilteredDeckList().get(currentDeckIndex).getDeckName(), currentDeckIndex + 1);
