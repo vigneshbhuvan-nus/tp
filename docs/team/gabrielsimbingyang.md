@@ -40,16 +40,16 @@ Given below are my contributions to the project.
   * Gave meaningful updates on my own progress to help teammates better understand the current state of the application
     (Pull requests [\#72](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/72))
   * Reported bugs and gave meaningful feedback to the team
-    (examples: [1](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/183), [2](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/40), [3](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/38))
+    (Examples: [1](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/183) [2](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/40) [3](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues/38))
   * Managed releases `v1.3` - `v1.4` (3 releases) on GitHub
 
 * **Enhancements to existing features**:
   * Wrote additional tests for existing features such as PlayCommand, StopCommand, TestCommand and Leitner.java
-  (Pull requests [\#188](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/188), [\#185](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/185)
+  (Pull requests [\#188](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/188) [\#185](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/185)
   * Updated the GUI color scheme
-  (Pull requests [\#61](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/61), [\#44](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/44))
+  (Pull requests [\#61](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/61) [\#44](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/44))
   * Fix several critical bugs such as the Select Command bug and the Answer Command Bug
-  (Pull requests [\#180](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/180), [\#72](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/72))
+  (Pull requests [\#180](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/180) [\#72](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/72))
 
 * **Documentation**:
   * User Guide:
@@ -58,26 +58,26 @@ Given below are my contributions to the project.
     * Added documentation for Chapter 2, About
     (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
     * Added documentation for Chapter 3, Getting Started
-    (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126),
+    (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
     [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189))
     * Added documentation for Chapter 8, FAQ
     (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
     * Added documentation for Chapter 9, Command Summary
-    (Pull requests [\#126]https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
+    (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
     * Did tweaks to existing documentation of Chapter 4, Using this Guide
     (Pull requests [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189))
   * Developer Guide:
     * Wrote the puml code for all the new diagram in the DG
-    (Pull requests [\#209](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/209),
+    (Pull requests [\#209](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/209)
     [\#204](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/204)
     [\#201](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/201))
     * Modified Chapter 3 of the DG
-    (Pull requests [\#243](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/243),
-    [\#240](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/240),
+    (Pull requests [\#243](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/243)
+    [\#240](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/240)
     [\#247](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/247))
     * Added the Flashcard portion of chapter 4
-    (Pull requests [\#243](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/243),
-    [\#218](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/218),
+    (Pull requests [\#243](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/243)
+    [\#218](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/218)
     [\#104](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/104))
   * Others:
     * Added the Leitner System psuedo code for team reference
