@@ -41,7 +41,7 @@ public class JsonAdaptedQuestionAttempt {
     //Dummy Constructor
 
     /**
-     *
+     * Empty Constructor
      */
     public JsonAdaptedQuestionAttempt() {
         answer = "";
