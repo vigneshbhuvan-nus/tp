@@ -292,7 +292,7 @@ Format: `remove <INDEX OF DECK>`
 To get the index of a deck, you may view it on the GUI. It is the number displayed beside a particular deck.
 
 :information_source: **Note:**
-Removing a deck will unselect the current deck!
+Removing a deck will unselect the current deck! This feature is to prevent you from getting confused, since the deck indexes will change after this command.
 
 Example:
 
