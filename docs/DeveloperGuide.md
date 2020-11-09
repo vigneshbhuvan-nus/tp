@@ -81,7 +81,7 @@ how the components work together with one another.
 The components of the application are Main, Commons, UI, Logic, Model and Storage.
 
 <p align="center"><img src="images/ComponentOverviewDiagram.png" width="450" />
-Figure 1. Component Overview Diagram
+<div align="center"><sup style="font-size:100%"><i>Figure 1. Component Overview Diagram</i></sup></div><br>
 
 The **_Component Overview Diagram_** above shows the high-level design of the application.
 Given below is a quick overview of each component.
