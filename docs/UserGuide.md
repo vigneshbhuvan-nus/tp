@@ -85,7 +85,7 @@ There should be two sample decks for you to begin with, Japanese and Spanish.
 Figure 2. GreenTea's GUI
 
 
-Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of the GUI to explain it.
+Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of an empty GUI to explain it.
 ![GreenTea](images/user-guide/3EmptyGUIWithAnnotation.png)
 Figure 3. Annotated GUI
 
