@@ -912,9 +912,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - **Deck**: A collection of entries
 - **Entry**: A word and its translation
-- **Mainstream OS**: Windows, Linux, Unix, OS-X
-- **Private contact detail**: A contact detail that is not meant to be shared with others
 - **Word bank**: A collection of decks
+- **Mainstream OS**: Windows, Linux, Unix, OS-X
 
 ---
 
