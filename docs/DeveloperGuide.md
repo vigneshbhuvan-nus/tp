@@ -945,7 +945,7 @@ Saving window preferences
 
 Displays a guide for all commands.
 
-Prerequisites: Launch Green Tea succesfully.
+Prerequisites: Launch Green Tea successfully.
 
 1. Test case: `help`<br>
    Expected: A help window pops up and provides a link to the Official UserGuide
@@ -987,10 +987,10 @@ Prerequisites: Multiple decks in the list.
 ### 7.5 Creating an Entry
 Creating an entry in a selected deck
 
-Prerequisites: Have a deck present
+Prerequisites: Have a deck present, no deck selected yet.
 
 1. Test Case: `select 1` and then `add w/Hola t/Hello`<br>
-    Expected: An entry (Hola, Hello) would be added to Deck 1, displayed in the Entries panel. Status message to say "New entry added: hola Translation: hello"
+    Expected: An entry with word `Hola` and translation `Hello` would be added to Deck 1, displayed in the Entries panel. Status message in UI should read "New entry added: hola Translation: hello"
 
 2. Other incorrect commands to try:
     - `add w/Hola t/Hello` without selecting a deck before
@@ -1000,7 +1000,7 @@ Prerequisites: Have a deck present
 ### 7.6 Editing an Entry
 Editing an existing entry in a particular deck
 
-Prerequisites: Have a deck with entries present
+Prerequisites: Have a deck with entries present, no deck currently selected.
 
 1. Test Case: `select 1` and then `edit 2 t/hello there`<br>
    Expected: Entry 2 in Deck 1 will have its translation edited to "hello there", and will be reflected in the entries panel.
@@ -1024,7 +1024,7 @@ Prerequisites: Have a deck with entries present
 ### 7.7. Playing and Stopping a Quiz
 Playing a Flashcard Quiz with a particular deck
 
-Prerequisites: Have a deck with entries present, preferably multiple entries
+Prerequisites: Have a deck with entries present, preferably multiple entries and no deck selected.
 
 1. Test Case: `select 1` and then `/play`<br>
    Expected: App will switch to the Quiz tab, and will display the first translation to be answered and various statistics.
