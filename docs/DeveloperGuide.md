@@ -118,7 +118,7 @@ For example, the `Logic` component (see the class diagram given below) defines i
 <div align="center"><sup style="font-size:100%"><i>Figure 2. Example Class Diagram of the Logic Component</i></sup></div><br>
 
 
-#### 3.2 Architecture Sequence Overview
+### 3.2 Architecture Sequence Overview
 
 Each of the components interact with one another when the user issues a command. Most, if not all commands utilize `UI`,
 `Logic` and `Model` components. `Storage` is utilized depending on whether the command requires data to be stored for
