@@ -237,7 +237,7 @@ Role of the `Statistics` package:
 
 Role of the `Command` package:
 
-- Contains the instructions for various command classes
+- Contains the various command classes
 - Throws a `CommandException` if an error occurs between execution and obtaining `CommandResult`
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("remove 1")` API call.
