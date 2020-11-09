@@ -650,10 +650,10 @@ The `CommandResult` displays the score to the user via the GUI to signify the en
 The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user
 enters a answer in Play Mode.
 
-Note that Figure 16 mainly capture the states of the 'StopCommand' while Figure 17
-captures the states of the 'AnswerCommand'.
+:information_source: **Note:** Both figures are connected by the rake symbol.
 
-:information_source: **Note:** both figures are connected by the rake symbol.
+:information_source: **Note:** Figure 17 mainly capture the states of the 'StopCommand' while Figure 18
+captures the states of the 'AnswerCommand'.
 
 <span style="display:block;align:center">![AnswerCommandActivityDiagram](images/AnswerCommandActivityDiagram.png)</span>
 <div align="center"><sup style="font-size:100%"><i>Figure 17. Answer Command Activity Diagram One</i></sup></div><br>
