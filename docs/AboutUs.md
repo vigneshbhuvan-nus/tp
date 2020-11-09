@@ -4,32 +4,32 @@ We are a team based in the [School of Computing, National University of Singapor
 
 ## Project team
 
-### Vignesh Bhuvan
-
-<img src="images/vigneshbhuvan-nus.png" width="200px">
-
-[[GitHub](http://github.com/vigneshbhuvan-nus)]
-[[Portfolio](team/johndoe.md)]
-
-* Role: Team Leader
-* Responsibilities: UI
-
 ### Gabriel Sim
 
 <img src="images/gabrielsimbingyang.png" width="200px">
 
 [[GitHub](http://github.com/GabrielSimbingyang)]
-[[Portfolio](team/johndoe.md)]
+[[Portfolio](team/gabrielsimbingyang.md)]
+
+* Role: Team Leader and Developer
+* Responsibilities: Data
+
+### Vignesh Bhuvan
+
+<img src="images/vigneshbhuvan-nus.png" width="200px">
+
+[[GitHub](http://github.com/vigneshbhuvan-nus)]
+[[Portfolio](team/vigneshbhuvan-nus.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: UI
 
 ### Melanie Ng
 
 <img src="images/ilyarin.png" width="200px">
 
 [[GitHub](http://github.com/IlyaRin)]
-[[Portfolio](team/johndoe.md)]
+[[Portfolio](team/ilyarin.md)]
 
 * Role: Developer
 * Responsibilities: Dev Ops + Threading
@@ -39,7 +39,7 @@ We are a team based in the [School of Computing, National University of Singapor
 <img src="images/geoboom.png" width="200px">
 
 [[GitHub](http://github.com/geoboom)]
-[[Portfolio](team/johndoe.md)]
+[[Portfolio](team/geoboom.md)]
 
 * Role: Developer
 * Responsibilities: UI
