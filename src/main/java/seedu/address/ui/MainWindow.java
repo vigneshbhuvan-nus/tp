@@ -104,27 +104,6 @@ public class MainWindow extends UiPart<Stage> {
         return primaryStage;
     }
 
-    /**
-     * Adds event listeners to update GUI when user clicks on a component Only for statistics
-     * panel.
-     */
-    public void addEventListeners() {
-        // switch tab event listener
-        tabPanelPlaceholder.getSelectionModel().selectedItemProperty().addListener((
-                observable, oldValue, newValue) -> {
-                logger.info(
-                    String.format("Tab switched from %s to %s", oldValue.getId(), newValue.getId()));
-                switch (newValue.getId()) {
-                case "statistics_panel":
-                    handleStatisticsPanel(-1);
-                    break;
-                default:
-                    break;
-                }
-            }
-        );
-    }
-
     private void setAccelerators() {
         setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
     }
