@@ -17,7 +17,7 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL =
-        "https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/docs/UserGuide.md";
+        "https://ay2021s1-cs2103t-t09-4.github.io/tp/UserGuide.html";
 
     public static final String HELP_MESSAGE =
         "Please refer to the user guide at this link for more information: "
