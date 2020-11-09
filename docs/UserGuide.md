@@ -176,7 +176,7 @@ There are four main components to the GUI. The deck list, the tab panels, the re
     will be treated as answers to the question given by GreenTea. Also, note that the tab had switched to the Quiz Tab.
 
     From Figure 9, we can see that GreenTea is asking us the question "What is the english word for the translation `イルカ`?" We
-    already know that the correct word is `Dolphin`. However, let us try typing a wrong answer for example`dog`.
+    already know that the correct word is `Dolphin`. However, let us try typing a wrong answer for example`Dog`.
 
     ![GreenTea](images/user-guide/10WrongAnswer.PNG)
     Figure 10. Wrong answer given
@@ -186,7 +186,7 @@ There are four main components to the GUI. The deck list, the tab panels, the re
     the correct word/answer as well as the given answer.
 
     Finishing the quiz by answering the rest of the questions will bring you out of Quiz mode and you would be able
-    to use your regular commands such as `play` or `edit` again.
+    to use your regular commands such as `/play` or `edit` again.
 
     Try playing the quiz a few more times!
 
@@ -194,13 +194,13 @@ There are four main components to the GUI. The deck list, the tab panels, the re
     keeping track of your scores in the background and can display your statistics in the form of a graph. Try typing the following commands
     into GreenTea!
 
-    - `stats 1`
+    - `stats 3`
 
     ![GreenTea](images/user-guide/11Statistics.PNG)
     Figure 11. Statistics of Deck 1
 
     Your screen should now look similar to Figure 11. The previous command that you entered changed the current tab
-    into the Statistics Tab of Deck `1` which refers to the Deck `Japanese Animals`. In this tab, you can see
+    into the Statistics Tab of Deck `3` which refers to the Deck `Japanese Animals`. In this tab, you can see
     your score history as well as the time stamp of each attempt. Based on our progression, we think we need a
     little bit more practise with our deck!
 
