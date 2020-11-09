@@ -34,6 +34,7 @@ title: User Guide
 <div style="page-break-after: always;"></div>
 
 <div style="page-break-after: always;"></div>
+
 # 1. What is GreenTea? (Gabriel)
 
 GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language,
@@ -171,7 +172,7 @@ There are four main components to the GUI. The deck list, the tab panels, the re
     ![GreenTea](images/user-guide/9PlayJapaneseDeck.PNG)
     Figure 9. Playing a Game of Flashcards
 
-
+<div style="page-break-after: always;"></div>
     Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
     depending on the entries you have written into `Japanese Animals`.
 
@@ -350,7 +351,7 @@ see if your chosen language is supported, click [here!](http://www.unicode.org/c
 Adds a new entry with the given word and translation.
 
 Format: `add w/<WORD> t/<TRANSLATION>`
-
+<div style="page-break-after: always;"></div>
 Examples:
 
 - `add w/Fruits t/果物`
@@ -443,7 +444,7 @@ Figure 21. Result of playing a game
 ### 5.3.2 Stopping a game (Georgie)
 
 Stop the current game prematurely. Note the slash `/` in the command.
-
+<div style="page-break-after: always;"></div>
 Format: `/stop`
 
 :information_source: **Note:**
@@ -519,7 +520,7 @@ Format: `stats <INDEX>`
 Example:
 
 - `stats 1`
-
+<div style="page-break-after: always;"></div>
 Result:
 
 ![GreenTea](images/user-guide/25StatsOneDeck.PNG)
