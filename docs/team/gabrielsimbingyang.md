@@ -3,9 +3,9 @@ layout: page
 title: Gabriel Sim's Project Portfolio Page
 ---
 
-## Project: GreenTea
+## Project: Green Tea
 
-GreenTea is a desktop app for learning a new language, optimized for use via a Command Line Interface (CLI)
+Green Tea is a desktop app for learning a new language, optimized for use via a Command Line Interface (CLI)
 while still having the benefits of a Graphical User Interface (GUI) created with JavaFX.
 It is written in Java, and has about 10 kLoC.
 
@@ -13,7 +13,7 @@ Given below are my contributions to the project.
 
 * **New Feature**: Implemented the basic quizzing system including new commands such as the PlayCommand, StopCommand and AnswerCommand.
 (Pull requests [\#106](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/106) [\#185](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/185))
-  * What it does: Allows the user to quiz themselves on the different entries they have added to the GreenTea.
+  * What it does: Allows the user to quiz themselves on the different entries they have added to the Green Tea.
   * Justification: This feature is essentially the core of the application. The entire application is built around this compulsory feature including other features such as
   statistics and switching tabs.
   * Highlights: This implementation was incredibly difficult to implement because it utilised portions of logic, model and ui. Implementing this feature allowed
@@ -23,7 +23,7 @@ Given below are my contributions to the project.
   * Credits: I wrote this by myself but I utilized the existing commands created by my teammate, Melanie.
 
 * **New Feature**: Split the UI to hold both deck list and entry list. (Pull requests [\#67](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/67))
-  * What it does: Allows the user to observe both the deck list and the entry list which is essential for GreenTea to be an intuitive application.
+  * What it does: Allows the user to observe both the deck list and the entry list which is essential for Green Tea to be an intuitive application.
   * Justification: This feature allowed the user to observe a more intuitive user interface. It also allowed the team to develop  the tabbing feature which meant
   that more data/features can be stored in each of the tabs
   * Highlights: This implementation was difficult to implement because it required knowledge it utilised portions of logic, model and UI. Specifically, understanding how
@@ -53,7 +53,7 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for Chapter 1, What is GreenTea
+    * Added documentation for Chapter 1, What is Green Tea
     (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
     * Added documentation for Chapter 2, About
     (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
