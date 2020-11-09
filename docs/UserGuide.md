@@ -79,12 +79,13 @@ To start using GreenTea:
 2. Download GreenTea.jar from the latest release
 3. Once downloaded, copy the jar file to your folder of choice (we recommend on your desktop!)
 4. Double-Click the file to start the application. The GUI should appear in a few seconds and it should look like Figure 2.
+There should be two sample decks for you to begin with, Japanese and Spanish.
 
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 2. GreenTea's GUI
 
 
-Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of Figure 2 to explain it.
+Before we get started with the program, let us first understand the GUI of GreenTea. We shall use an annotated version of the GUI to explain it.
 ![GreenTea](images/user-guide/3EmptyGUIWithAnnotation.png)
 Figure 3. Annotated GUI
 
@@ -117,15 +118,15 @@ There are four main components to the GUI. The deck list, the tab panels, the re
     doing this for the rest of the document as well!
 
     The previous command that you entered created a new Deck in GreenTea called `Japanese Animals`.
-    Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `1`.
+    Notice that the Deck List has been updated to include a new Deck called `Japanese Animals` with an index `3`.
 
-    - `select 1`
+    - `select 3`
 
     ![GreenTea](images/user-guide/5SelectDeckExample.png)
-    Figure 5. Selecting the first deck in the list
+    Figure 5. Selecting the third deck in the list
 
     Your screen should now look like Figure 5.
-    The previous command that you entered made GreenTea `select` the deck with index `1` which happens to be the Deck
+    The previous command that you entered made GreenTea `select` the deck with index `3` which happens to be the Deck
     `Japanese Animals` that you have created previously. Notice that the current tab has automatically changed to the
     Entries Tab. The Entries Tab is empty because there are currently no entries in `Japanese Animals`. Let's fix that
     shall we?
@@ -284,7 +285,7 @@ Removes a deck with the given index.
 Format: `remove <INDEX OF DECK>`
 
 :information_source: **Note:**
-To get the index of a deck, you may view it on the GUI. It would be the number displayed beside a particular deck.
+To get the index of a deck, you may view it on the GUI. It is the number displayed beside a particular deck.
 
 Example:
 
@@ -309,7 +310,7 @@ Selects a deck with the given index and lists all of its entries.
 Format: `select <INDEX OF DECK>`
 
 :information_source: **Note:**
-The index of the deck is the number displayed it on the user interface.
+To get the index of a deck, you may view it on the GUI. It is the number displayed beside a particular deck.
 
 Example:
 
