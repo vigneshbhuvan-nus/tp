@@ -4,7 +4,7 @@ title: User Guide
 ---
 ## Table of Contents
 
-- [1. What is Green Tea? (Gabriel)](#1-what-is-Green Tea-gabriel)
+- [1. What is Green Tea? (Gabriel)](#1-what-is-green-tea-gabriel)
 - [2. About This Document (Gabriel)](#2-about-this-document-gabriel)
 - [3. Getting Started (Gabriel and Vignesh)](#3-getting-started-gabriel-and-vignesh)
 - [4. Using This Guide (Melanie)](#4-using-this-guide-melanie)
@@ -84,7 +84,7 @@ To start using Green Tea:
 4. Double-Click the file to start the application. The GUI should appear in a few seconds and it should look like Figure 2.
 There should be two sample decks for you to begin with, Japanese and Spanish.
 
-![Green Tea](images/user-gui****de/1EmptyGUI.png)
+![Green Tea](images/user-guide/1EmptyGUI.png)
 Figure 2. Green Tea's GUI
 
 
