@@ -609,8 +609,7 @@ When in Play Mode, `Logic Manager` will only handle two commands. They are the `
 In this implementation, all inputs that do not match the format for the `StopCommand` are treated as inputs
 to the `AnswerCommand`.
 
-Below is the corresponding sequence diagram for the 'AnswerCommand'. The sequence diagram for the `StopCommand` is trivial
-as seen in Figure 16.
+Below is the corresponding sequence diagram for the 'AnswerCommand'.
 
 <span style="display:block;align:center">![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)</span>
 <div align="center"><sup style="font-size:100%"><i>Figure 16. Answer Command Sequence Diagram</i></sup></div><br>
