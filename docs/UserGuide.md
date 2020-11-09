@@ -79,7 +79,7 @@ Before you can start using Green Tea, you will need to ensure that [Java 11](htt
 To start using Green Tea:
 
 1. Visit the Green Tea Releases Page [here](https://github.com/AY2021S1-CS2103T-T09-4/tp/releases)
-2. Download Green Tea.jar from the latest release
+2. Download GreenTea.jar from the latest release
 3. Once downloaded, copy the jar file to your folder of choice (we recommend on your desktop!)
 4. Double-Click the file to start the application. The GUI should appear in a few seconds and it should look like Figure 2.
 There should be two sample decks for you to begin with, Japanese and Spanish.

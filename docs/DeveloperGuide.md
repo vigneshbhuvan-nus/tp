@@ -929,7 +929,7 @@ testers are expected to do more *exploratory* testing to understand the app bett
 
 Initial launch
 
-Prerequisites: Have Green Tea.jar downloaded and copied into an empty folder
+Prerequisites: Have GreenTea.jar downloaded and copied into an empty folder
 
 1. Double-click the jar file.<br>
    Expected: Shows the GUI with a set of sample decks. The window size may not be optimum.
