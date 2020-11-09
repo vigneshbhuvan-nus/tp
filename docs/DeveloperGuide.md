@@ -523,7 +523,7 @@ This section will explain:
   - Pros: The Letiner system is a proven quizzing system that increases the user's rate of learning by
     using spaced repetition. Questions are sorted based on the user's ability to answer them. Correctly
     answered questions are put at the end of the question queue and incorrectly answered
-    flashcards are placed at the front.
+    questions are placed at the front.
   - Cons: More difficult to implement
 - **Alternative 2** : Random shuffling system
   - Pros: Easier to implement
