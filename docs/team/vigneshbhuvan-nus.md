@@ -3,9 +3,9 @@ layout: page
 title: Vignesh Bhuvan's Project Portfolio Page
 ---
 
-## Project: Green_Tea
+## Project: Green Tea
 
-Green_Tea is a desktop app for learning a new language, optimized for use via a Command Line Interface (CLI)
+Green Tea is a desktop app for learning a new language, optimized for use via a Command Line Interface (CLI)
 while still having the benefits of a Graphical User Interface (GUI) created with JavaFX.
 It is written in Java, and has about 10 kLoC.
 
@@ -30,7 +30,7 @@ Given below are my contributions to the project.
 - **New Feature**: Helped in the implementation of Leitner System and Flashcard System
 
   - Pull requests: [#103](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/103)
-  - What it does: Allows the users to quiz themselves on the different entries they have added to Green_Tea.
+  - What it does: Allows the users to quiz themselves on the different entries they have added to Green Tea.
   - Justification: This feature is essentially the core of the application. The entire application is built around this compulsory feature including other features such as
                      statistics and switching tabs.
   - Highlights:
