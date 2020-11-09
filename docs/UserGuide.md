@@ -1,6 +1,7 @@
-# User Guide
-
-Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
+---
+layout: page
+title: User Guide
+---
 
 ## Table of Contents
 
