@@ -288,6 +288,10 @@ Role of `QuizAttempt` object:
 - Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
 - More explained under [Implementations - Leitner and QuizAttempt](#425-leitner-and-quizattempt-georgie)
 
+Role of `scoring` component
+
+- Computes the score of the user during a quiz, depending on how similar the given answer is to the actual answer
+
 
 ### 3.7 Storage component
 
@@ -335,6 +339,7 @@ This section describes some noteworthy details on how and why certain features a
 #### 4.1.1 Overview (Melanie)
 
 This feature allows the user to create multiple lists of entries called decks.
+
 The user can have different decks for different languages or multiple decks for the same language.
 
 E.g.
@@ -361,22 +366,27 @@ Users will be able to `add` decks, `delete` decks and `select` decks.
   - Pros: Easier implementation, less code required.
   - Cons: Harder for users to navigate and find the entry that they are looking for.
 
+
 #### 4.1.2 Commands Implemented (Melanie)
 
-Three commands are used in order to support having a deck system - New Deck Command, Remove Deck Command and Select Deck Command
+Three commands are used in order to support having a deck system - New Deck Command, Remove Deck Command and Select Deck Command.
 
 - `new <DECK>` - Adds a new deck to the word bank.
 - `remove <INDEX>` - Removes the deck at the specified index.
 - `select <INDEX>` - Selects the deck at the specified index.
 
 Each of these three commands require the use of the `UI`, `Logic` and `Model` components.
-For example, when a deck is added, the `Model` must be updated with a new deck list containing the added deck. The
-`UI` must also reflect the added deck to be shown to the user.
-The `Storage` component is needed for commands `new` and `remove`
+
+For example, when a deck is added:
+- The `Logic` must execute the command.
+- The `Model` must be updated with a new deck list containing the added deck.
+- The`UI` must also reflect the added deck to be shown to the user.
+- The `Storage` component is needed for commands `new` and `remove`.
 
 #### 4.1.3 Select Deck (Melanie)
 
 This feature requires the user to select a deck (using `select <INDEX>`) in order to change the contents of the deck.
+
 Only after selecting a deck, can some other commands (E.g `add`, `delete`, `edit`, `/play`) be performed.
 
 
@@ -399,6 +409,7 @@ There are two criteria to be met in order for a `SelectDeckCommand` to be succes
 - The index given must be valid. A valid index is a positive integer that not larger than the current deck list size.
 
 When these two criteria are met,
+
 - The field `currentDeckIndex` in `ModelManager` will be updated to the selected deck index.
 - The UI will change tabs to the entries tab (if it was not already on entries tab). This is done by changing the `currentView`
   in `ModelManager` to `View.ENTRY_VIEW`.
@@ -407,14 +418,14 @@ When these two criteria are met,
 
 ##### Design Considerations
 
-Aspect: Command format to select a deck
+###### Aspect: Command format to select a deck
 
 - **Alternative 1 (current choice)**: `select <DECK_INDEX>` Select a deck before any entry level command can be given.
   E.g. `select 1` followed by `delete 1`
 
-  - Pros: Easier for a user to make continuous changes to the same deck
-    Allows following features to be implemented more easily
-  - Cons: Users have to give an additional command
+  - Pros: Easier for a user to make continuous changes to the same deck.
+    Allows following features to be implemented more easily.
+  - Cons: Users have to give an additional command.
 
 - **Alternative 2**: `delete <DECK_INDEX> <ENTRY_INDEX>` Entry level commands specify a deck. E.g `delete 1 1`
   - Pros: Single command for users to execute
@@ -430,6 +441,7 @@ Due to the design decisions for the [select deck command](#413-select-deck-melan
 `add`, `delete`, `edit` and `/play` can only be performed after a deck is selected.
 
 The diagrams below illustrate the steps taken in order to successfully execute an `AddCommand`.
+
 First, a deck has to be selected.
 
 Given below is the sequence diagram for `SelectDeckCommand`
@@ -466,6 +478,7 @@ message to the user via the GUI to signify the end of the command execution.
 
 
 Now that a `SelectDeckCommand` has been sucessfully executed, the `AddCommand` can be executed.
+
 Given below is the activity diagram for an `AddCommand`.
 
 ![AddEntry](images/AddEntryActivityDiagram.png)
