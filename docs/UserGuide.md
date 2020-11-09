@@ -466,7 +466,7 @@ are no special command words or format required!
 Format: `[Anything!]`
 
 :information_source: **Note:**
-Please make sure that your answer contains at least one character!
+Please make sure that your answer contains at least one character that is not a space!
 
 Result:
 ![Green Tea](images/user-guide/23AnsweringAQuestion.png)
