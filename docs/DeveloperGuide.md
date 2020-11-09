@@ -750,7 +750,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​  | I want to …​                              | So that I can…​                                                |
 | -------- | -------- | ----------------------------------------- | -------------------------------------------------------------- |
 | `* * *`  | new user | see usage instructions                    | refer to instructions when I forget how to use the application |
-| `* * *`  | user     | add a Word-Translation pair               | populate the list with words and their translations            |
+| `* * *`  | user     | add a Word-Translation pair               | so that I can populate the list with entries            |
 | `* * *`  | user     | delete a Word-Translation pair            | delete an unwanted entry                                       |
 | `* * *`  | user     | edit a Word-Translation pair              | edit an entry                                                  |
 | `* * *`  | user     | access a Dictionary of Word-Translation pairs | refresh my understanding of the words                      |
