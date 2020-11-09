@@ -85,4 +85,4 @@ Given below are my contributions to the project.
 
 
 * **Community**:
-  * Contributed to forum discussions (examples: [1](https://github.com/nus-cs2103-AY2021S1/forum/issues/291), [2](https://github.com/nus-cs2103-AY2021S1/forum/issues/137), [3](https://github.com/nus-cs2103-AY2021S1/forum/issues/384))
+  * Contributed to forum discussions (Examples: [1](https://github.com/nus-cs2103-AY2021S1/forum/issues/291) [2](https://github.com/nus-cs2103-AY2021S1/forum/issues/137) [3](https://github.com/nus-cs2103-AY2021S1/forum/issues/384))
