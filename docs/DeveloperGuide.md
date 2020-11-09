@@ -114,7 +114,7 @@ Each of the four components:
 
 For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
-<p align="center"><img src="images/LogicClassDiagram.png" width="450" />
+<p align="center"><img src="images/LogicClassDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 2. Example Class Diagram of the Logic Component</i></sup></div><br>
 
 
@@ -126,7 +126,7 @@ future references.
 
 The _Sequence Diagram_ below (Figure 3) shows how the components interact with one another when the user issues the command `remove 1`.
 
-![Sequence Diagram of Various Components](images/ArchitectureSequenceDiagram.png)
+<p align="center"><img src="images/ArchitectureSequenceDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 3. Sequence Diagram of Various Components</i></sup></div><br>
 
 The sections below give more details about each component.
@@ -152,7 +152,7 @@ All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The structure diagram of the `UI` component is shown below in Figure 4.
 
-![Structure of the UI Component](images/UiClassDiagram.png)
+<p align="center"><img src="images/UiClassDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 4. UI component class relationship diagram</i></sup></div><br>
 
 **API** :
@@ -209,7 +209,7 @@ user input received from the `UI`. This component consists of the `Statistics`, 
 
 The class diagram of the `Logic` component is shown below in Figure 5.
 
-![Structure of the Logic Component](images/LogicClassDiagram.png)
+<p align="center"><img src="images/LogicClassDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 5. Logic Component Class Diagram</i></sup></div><br>
 
 **API** :
@@ -242,7 +242,7 @@ Role of the `Command` package:
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("remove 1")` API call.
 
-![Interactions Inside the Logic Component for the `remove 1` Command](images/RemoveSequenceDiagram.png)
+<p align="center"><img src="images/RemoveSequenceDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 6. Sequence Diagram of Logic Component for "Remove 1" Command</i></sup></div><br>
 
 ### 3.6 Model component
@@ -257,7 +257,7 @@ all other similar object.
 
 All these information on the `Model` component is visually expressed in the class diagram below.
 
-![Structure of the Model Component](images/ModelClassDiagram.png)
+<p align="center"><img src="images/ModelClassDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 7. Model Component Class Diagram</i></sup></div><br>
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
@@ -300,7 +300,7 @@ the application will be able to load the data from the previous session back to 
 the application.
 The class diagram of the `Storage` component is shown below.
 
-![Structure of the Storage Component](images/StorageClassDiagram.png)
+<p align="center"><img src="images/StorageClassDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 8. Storage Component Class Diagram</i></sup></div><br>
 
 
@@ -325,7 +325,7 @@ the data from `wordbank.json` is read and converted into GreenTea's model.
 In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data.
 This allows for better management of data and for example could allow users to share `Deck` data with other users without sharing their `QuizData`.
 
-![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
+<p align="center"><img src="images/StorageClassDiagramMoreOOP.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 9. More OOP Storage Class Diagram</i></sup></div><br>
 
 ---
@@ -400,7 +400,7 @@ UI, Logic and Model components.
 
 The figure below is an activity diagram that provides the behavior of the system when the user gives a `SelectDeckCommand`.
 
-![SelectActivityDiagram](images/SelectActivityDiagram.png)
+<p align="center"><img src="images/SelectActivityDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 10. Select Deck Command Activity Diagram</i></sup></div><br>
 
 There are two criteria to be met in order for a `SelectDeckCommand` to be successfully executed.
@@ -446,7 +446,7 @@ First, a deck has to be selected.
 
 Given below is the sequence diagram for `SelectDeckCommand`
 
-![SelectDeckSequenceDiagram](images/SelectDeckSequenceDiagram.png)
+<p align="center"><img src="images/SelectDeckSequenceDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 11. Select Deck Command Sequence Diagram</i></sup></div><br>
 
 From the diagram above, entering `select 1` will result in the following steps:
@@ -481,7 +481,7 @@ Now that a `SelectDeckCommand` has been sucessfully executed, the `AddCommand` c
 
 Given below is the activity diagram for an `AddCommand`.
 
-![AddEntry](images/AddEntryActivityDiagram.png)
+<p align="center"><img src="images/AddEntryActivityDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 12. Add Command Activity Diagram</i></sup></div><br>
 
 There are four criteria to be met in order for an `AddCommand` to be successfully carried out.
@@ -558,7 +558,7 @@ If `isPlayMode` is set to `false`, `Logic Manager` will be in Command Mode and w
 The figure below is an activity diagram that provides a generalized overview on the behavior of `Logic Manager` when a user
 enters any command.
 
-![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
+<p align="center"><img src="images/GeneralizedCommandActivityDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 13. Generalized Command Activity Diagram</i></sup></div><br>
 
 The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#424-answer-command-and-stop-command) (besides the `PlayCommand`)
@@ -566,7 +566,7 @@ while the right rake symbol can refer to any Command Mode command such as [the s
 
 To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
 
-![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
+<p align="center"><img src="images/AnswerCommandSequenceDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 14. Play Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering `/play` will result in the follow steps:
@@ -600,7 +600,7 @@ Step 13. A `CommandResult` object is created and returned to `Logic Manager` to 
 The `CommandResult` displays the command success message to the user via the GUI to signify the end of the command execution.
 
 The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`.
-![PlayCommand](images/PlayActivityDiagram.png)
+<p align="center"><img src="images/PlayActivityDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 15. Play Command Activity Diagram</i></sup></div><br>
 
 #### 4.2.4 Answer Command and Stop Command
@@ -612,7 +612,7 @@ to the `AnswerCommand`.
 Below is the corresponding sequence diagram for the 'AnswerCommand'. The sequence diagram for the `StopCommand` is trivial
 as seen in Figure 16.
 
-![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
+<p align="center"><img src="images/PlayCommandSequenceDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 16. Answer Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering an answer in Play Mode will result in the follow steps:
@@ -656,10 +656,10 @@ captures the states of the 'AnswerCommand'.
 
 :information_source: **Note:** both figures are connected by the rake symbol.
 
-![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
+<p align="center"><img src="images/AnswerCommandActivityDiagram.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 17. Answer Command Activity Diagram One</i></sup></div><br>
 
-![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
+<p align="center"><img src="images/AnswerCommandActivityDiagramTwo.png" width="700" />
 <div align="center"><sup style="font-size:100%"><i>Figure 18. Answer Command Activity Diagram Two</i></sup></div><br>
 
 #### 4.2.5 Leitner and QuizAttempt
