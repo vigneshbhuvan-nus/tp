@@ -190,6 +190,7 @@ public class ModelManager implements Model {
             setCurrentView(View.START_VIEW);
         }
         wordBank.removeDeck(target);
+        this.currentDeckIndex = Optional.empty();
     }
 
 
