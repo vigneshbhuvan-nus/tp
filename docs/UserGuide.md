@@ -521,6 +521,7 @@ Example:
 
 - `stats 1`
 <div style="page-break-after: always;"></div>
+
 Result:
 
 ![GreenTea](images/user-guide/25StatsOneDeck.PNG)
