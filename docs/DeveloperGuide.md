@@ -1,4 +1,4 @@
-## Green Tea's Developer Guide
+## Developer Guide
 
 ### Table of Contents
 
