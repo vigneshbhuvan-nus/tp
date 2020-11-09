@@ -1,5 +1,6 @@
 @startuml
 Start
+:Model checks Answer command;
 if() then ([Answer is correct])
 :Update Score in QuizAttempt;
 else(             [Answer is wrong])
