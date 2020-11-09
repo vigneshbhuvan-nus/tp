@@ -1,7 +1,7 @@
-# User Guide
-
-Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
-
+---
+layout: page
+title: User Guide
+---
 ## Table of Contents
 
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
@@ -31,6 +31,9 @@ Team Name: AY2021S1-CS2103T-T09-4 Since: August 2020
   - [5.5 Statistics (Melanie)](#55-statistics-melanie)
 - [6. FAQ (Gabriel &amp; Melanie)](#6-faq-gabriel--melanie)
 - [7. Command Summary (Gabriel)](#7-command-summary-gabriel)
+<div style="page-break-after: always;"></div>
+
+<div style="page-break-after: always;"></div>
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -49,7 +52,7 @@ actions that would allow you to use GreenTea seamlessly and have an enjoyable jo
 
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 1. GreenTea's Graphical User Interface (GUI)
-
+<div style="page-break-after: always;"></div>
 
 
 # 2. About This Document (Gabriel)
@@ -168,6 +171,7 @@ There are four main components to the GUI. The deck list, the tab panels, the re
 
     ![GreenTea](images/user-guide/9PlayJapaneseDeck.PNG)
     Figure 9. Playing a Game of Flashcards
+
 
     Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
     depending on the entries you have written into `Japanese Animals`.
@@ -347,7 +351,7 @@ see if your chosen language is supported, click [here!](http://www.unicode.org/c
 Adds a new entry with the given word and translation.
 
 Format: `add w/<WORD> t/<TRANSLATION>`
-
+<div style="page-break-after: always;"></div>
 Examples:
 
 - `add w/Fruits t/果物`
@@ -440,7 +444,7 @@ Figure 21. Result of playing a game
 ### 5.3.2 Stopping a game (Georgie)
 
 Stop the current game prematurely. Note the slash `/` in the command.
-
+<div style="page-break-after: always;"></div>
 Format: `/stop`
 
 :information_source: **Note:**
@@ -516,6 +520,7 @@ Format: `stats <INDEX>`
 Example:
 
 - `stats 1`
+<div style="page-break-after: always;"></div>
 
 Result:
 
@@ -538,8 +543,7 @@ you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignes
 
 **Q**: Where do I go to if I need help? <br>
 **A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
-any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
-
+any problems related to Green Tea. Feel free to create an issue to let us know if you require help! <div style="page-break-after: always;"></div>
 
 
 # 7. Command Summary (Gabriel)
