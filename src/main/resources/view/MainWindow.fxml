@@ -40,7 +40,7 @@
           <StackPane fx:id="deckListPanelPlaceholder" VBox.vgrow="ALWAYS" minWidth="300" maxWidth="300"/>
           <VBox HBox.hgrow="ALWAYS">
             <TabPane fx:id="tabPanelPlaceholder" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE"
-              tabMinWidth="150" minWidth="450" minHeight="360" mouseTransparent="true">
+              tabMinWidth="150" minWidth="450" minHeight="360">
               <Tab id="start_panel" text="Start">
                 <StackPane fx:id="startPanelPlaceholder" VBox.vgrow="ALWAYS"/>
               </Tab>
