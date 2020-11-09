@@ -8,7 +8,7 @@
 - [2. Setting up, getting started](#2-setting-up-getting-started)
 - [3. Design](#3-design)
   - [3.1 Component Overview](#31-component-overview)
-  - [3.2 Architecture Overview](#32-architecture-overview)
+  - [3.2 Architecture Sequence Overview](#32-architecture-sequence-overview)
   - [3.3 Common classes](#33-common-classes)
   - [3.4 UI component](#34-ui-component)
   - [3.5 Logic component](#35-logic-component)
@@ -16,9 +16,10 @@
   - [3.7 Storage component](#37-storage-component)
 - [4. Implementation](#4-implementation)
   - [4.1 Deck Feature (Melanie)](#41-deck-feature-melanie)
-      - [4.1.1 Overview](#411-overview)
-      - [4.1.2 Commands Implemented](#412-commands-implemented)
-      - [4.1.3 Select Deck](#413-select-deck)
+      - [4.1.1 Overview (Melanie)](#411-overview-melanie)
+      - [4.1.2 Commands Implemented (Melanie)](#412-commands-implemented-melanie)
+      - [4.1.3 Select Deck (Melanie)](#413-select-deck-melanie)
+      - [4.1.4 Entry Level Commands (Melanie)](#414-entry-level-commands-melanie)
   - [4.2 Flashcard System (Gabriel)](#42-flashcard-system-gabriel)
       - [4.2.1 Overview (Gabriel)](#421-overview-gabriel)
       - [4.2.2 Commands Implemented (Gabriel)](#422-commands-implemented-gabriel)
@@ -56,11 +57,11 @@ keep track of their learning progress.
 
 ### 1.1 Purpose
 
-This document details the architecture, design decisions and implementations for the flashcard application, Green Tea.
+This document details the architecture, design decisions and implementations for the flashcard application, GreenTea.
 
 ### 1.2 Audience
 
-The intended audience of this document are the developers and testers of Green Tea.
+The intended audience of this document are the developers and testers of GreenTea.
 
 ---
 
@@ -79,8 +80,8 @@ how the components work together with one another.
 
 The components of the application are Main, Commons, UI, Logic, Model and Storage.
 
-<p align="center"><<img src="images/ArchitectureDiagram.png" width="450" />
-<p align="center">Figure 1.Architecture Diagram </p>
+<p align="center"><img src="images/ComponentOverviewDiagram.png" width="450" />
+<div align="center"><sup style="font-size:100%"><i>Figure 1. Architecture Diagram</i></sup></div><br>
 
 The **_Component Overview Diagram_** above shows the high-level design of the application.
 Given below is a quick overview of each component.
@@ -114,16 +115,19 @@ Each of the four components:
 For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
 ![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 2. Example Class Diagram of the Logic Component</i></sup></div><br>
 
-<p align="center"> Figure 2. Example Class Diagram of the Logic Component
 
-#### 3.2 Architecture Overview
+#### 3.2 Architecture Sequence Overview
+
+Each of the components interact with one another when the user issues a command. Most, if not all commands utilize `UI`,
+`Logic` and `Model` components. `Storage` is utilized depending on whether the command requires data to be stored for
+future references.
 
 The _Sequence Diagram_ below (Figure 3) shows how the components interact with one another when the user issues the command `remove 1`.
 
 ![Sequence Diagram of Various Components](images/ArchitectureSequenceDiagram.png)
-
-<p align="center"> Figure 3. Sequence Diagram of Various Components
+<div align="center"><sup style="font-size:100%"><i>Figure 3. Sequence Diagram of Various Components</i></sup></div><br>
 
 The sections below give more details about each component.
 
@@ -149,8 +153,7 @@ All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 The structure diagram of the `UI` component is shown below in Figure 4.
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
-
-<p align="center"> Figure 4. UI component class relationship diagram </p>
+<div align="center"><sup style="font-size:100%"><i>Figure 4. UI component class relationship diagram</i></sup></div><br>
 
 **API** :
 [`Ui.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/ui/Ui.java)
@@ -207,22 +210,20 @@ user input received from the `UI`. This component consists of the `Statistics`, 
 The class diagram of the `Logic` component is shown below in Figure 5.
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
-
-<p align="center"> Figure 5. Logic Component Class Diagram
+<div align="center"><sup style="font-size:100%"><i>Figure 5. Logic Component Class Diagram</i></sup></div><br>
 
 **API** :
 [`Logic.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/logic/Logic.java)
 
 Role of the `Logic` component:
 
-- `Logic` receives the user command.
-- `Logic Manager` can either be in `Play Mode` or in `Command Mode`.
+- Receives the user command.
+- `Logic Manager` can either be in Play Mode or in Command Mode.
 - Uses the `PlayModeParser` or the `CommandModeParser` class to parse the user command depending on the mode it is in.
 - Creates a `Command` object which is passed and executed by `LogicManager`.
 - Executing the command can affect the `Model` (e.g. adding a deck).
 - Returns the result of the command execution as a `CommandResult` object which is passed back to the `Ui`.
 - Initialises the `StatisticsManager` on startup via `LogicManager` and maintains the `Statistics`.
-- Any changes from executing a `Command` object is recorded in `Statistics` by `Statistics Manager`.
 - In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
 Role of the `Parser` package:
@@ -232,35 +233,32 @@ Role of the `Parser` package:
 
 Role of the `Statistics` package:
 
-- Maintains the `Statistics` of the all the decks in memory
 - More explained under [Implementations - Statistics](#43-statistics-georgie)
 
 Role of the `Command` package:
 
-- Contains the instructions for `Model`
+- Contains the instructions for various command classes
 - Throws a `CommandException` if an error occurs between execution and obtaining `CommandResult`
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("remove 1")` API call.
 
-![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
-
-<p align="center"> Figure 6. Sequence Diagram of Logic Component for "Remove 1" Command
+![Interactions Inside the Logic Component for the `remove 1` Command](images/RemoveSequenceDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 6. Sequence Diagram of Logic Component for "Remove 1" Command</i></sup></div><br>
 
 ### 3.6 Model component
 
 The `Model` component is in charge of changing the data within the application.
 This includes information about decks, entries and statistics.
-The `Model` component consists of the `Play`, `Deck` and `View` package. The `Play` package consists of the `Scoring` package,
-`Leitner` object and the `Score` object. The `Deck` package consists of the `Entry` package, the `Deck` object and
+The `Model` component consists of the `Play`, `Deck` and `View` package.
+- The `Play` package consists of the `Scoring` package,`Leitner` object and the `Score` object.
+- The `Deck` package consists of the `Entry` package, the `Deck` object and
 all other similar object.
+- The `View` package consists of a `CurrentView` class and an enumeration of possible `Views` that the system can have.
 
 All these information on the `Model` component is visually expressed in the class diagram below.
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
-
-<p align="center"> Figure 7. Model Component Class Diagram
-
-The diagram below will give more details about the word bank section of the model component.
+<div align="center"><sup style="font-size:100%"><i>Figure 7. Model Component Class Diagram</i></sup></div><br>
 
 **API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/model/Model.java)
 
@@ -283,14 +281,13 @@ Role of `WordBank` component
 
 Role of `Leitner` object:
 
-- Shuffles a given `Deck` by decomposing it into a list of `Translations` and a list of `Word` called questions and answers respectively.
-- Returns each `Translation` (question)) and `Word` (answer) when called by `ModelManager`.
-- More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
+- More explained under [Implementations - Leitner and QuizAttempt](#425-leitner-and-quizattempt-georgie)
 
 Role of `QuizAttempt` object:
 
 - Maintains the list of current `Score` and `QuestionAttempt` of the quiz.
-- More explained under [Implementations - Flashcard](#42-flashcard-system-gabriel)
+- More explained under [Implementations - Leitner and QuizAttempt](#425-leitner-and-quizattempt-georgie)
+
 
 ### 3.7 Storage component
 
@@ -300,8 +297,8 @@ the application.
 The class diagram of the `Storage` component is shown below.
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 8. Storage Component Class Diagram</i></sup></div><br>
 
-<p align="center"> Figure 8. Storage Component Class Diagram
 
 **API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-T09-4/tp/blob/master/src/main/java/seedu/address/storage/Storage.java)
 
@@ -325,7 +322,7 @@ In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` d
 This allows for better management of data and for example could allow users to share `Deck` data with other users without sharing their `QuizData`. 
 
 ![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 9 More OOP Storage Class Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 9. More OOP Storage Class Diagram</i></sup></div><br>
 
 ---
 
@@ -335,7 +332,7 @@ This section describes some noteworthy details on how and why certain features a
 
 ### 4.1 Deck Feature (Melanie)
 
-#### 4.1.1 Overview
+#### 4.1.1 Overview (Melanie)
 
 This feature allows the user to create multiple lists of entries called decks.
 The user can have different decks for different languages or multiple decks for the same language.
@@ -364,23 +361,24 @@ Users will be able to `add` decks, `delete` decks and `select` decks.
   - Pros: Easier implementation, less code required.
   - Cons: Harder for users to navigate and find the entry that they are looking for.
 
-#### 4.1.2 Commands Implemented
+#### 4.1.2 Commands Implemented (Melanie)
 
-Three commands are used in order to support having a deck system - New Deck Command, Remove Deck Command and Select Command
+Three commands are used in order to support having a deck system - New Deck Command, Remove Deck Command and Select Deck Command
 
 - `new <DECK>` - Adds a new deck to the word bank.
 - `remove <INDEX>` - Removes the deck at the specified index.
 - `select <INDEX>` - Selects the deck at the specified index.
 
 Each of these three commands require the use of the `UI`, `Logic` and `Model` components.
-For example, when a deck is added, the `model` must be updated with a new deck list containing the added deck. The
+For example, when a deck is added, the `Model` must be updated with a new deck list containing the added deck. The
 `UI` must also reflect the added deck to be shown to the user.
 The `Storage` component is needed for commands `new` and `remove`
 
-#### 4.1.3 Select Deck
+#### 4.1.3 Select Deck (Melanie)
 
-This feature requires the user to select a deck (using `select <index>`) in order to change the contents of the deck.
+This feature requires the user to select a deck (using `select <INDEX>`) in order to change the contents of the deck.
 Only after selecting a deck, can some other commands (E.g `add`, `delete`, `edit`, `/play`) be performed.
+
 
 :information_source: **Note:** The implementation of this feature requires the GUI to be updated whenever a deck is selected. This is done by using the
 UI, Logic and Model components.
@@ -389,35 +387,104 @@ UI, Logic and Model components.
 - These entries in the selected deck replaces the current entries in the `UniqueEntryList` object of WordBank causing the GUI to change accordingly.
 - This approach is used for other commands that changes the GUI such as `add <entry>` and `clear` command
 
+
+The figure below is an activity diagram that provides the behavior of the system when the user gives a `SelectDeckCommand`.
+
+![SelectActivityDiagram](images/SelectActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 10. Select Deck Command Activity Diagram</i></sup></div><br>
+
+There are two criteria to be met in order for a `SelectDeckCommand` to be successfully executed.
+
+- The command format must be correct (`select <INDEX>`)
+- The index given must be valid. A valid index is a positive integer that not larger than the current deck list size.
+
+When these two criteria are met,
+- The field `currentDeckIndex` in `ModelManager` will be updated to the selected deck index.
+- The UI will change tabs to the entries tab (if it was not already on entries tab). This is done by changing the `currentView`
+  in `ModelManager` to `View.ENTRY_VIEW`.
+- The UI will display the entries of the selected deck to the user
+
+
 ##### Design Considerations
 
-###### Aspect: Command format to select a deck
+Aspect: Command format to select a deck
 
-- **Alternative 1 (current choice)**: `select <deck_index>` Select a deck before any entry level command can be given.
+- **Alternative 1 (current choice)**: `select <DECK_INDEX>` Select a deck before any entry level command can be given.
   E.g. `select 1` followed by `delete 1`
 
   - Pros: Easier for a user to make continuous changes to the same deck
     Allows following features to be implemented more easily
   - Cons: Users have to give an additional command
 
-- **Alternative 2**: `delete <deck_index> <entry_index>` Entry level commands specify a deck. E.g `delete 1 1`
+- **Alternative 2**: `delete <DECK_INDEX> <ENTRY_INDEX>` Entry level commands specify a deck. E.g `delete 1 1`
   - Pros: Single command for users to execute
   - Cons: May cause confusion to the users.
 
 Utimately, we decided that user navigability was more important than the extra `select` command needed. This is because
 Green Tea is designed to be a simple and easy system for new users to use.
 
-![SelectActivityDiagram](images/SelectActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 10 </i></sup></div><br>
 
-![AddEntry](images/AddEntryActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 11 </i></sup></div><br>
+#### 4.1.4 Entry Level Commands (Melanie)
 
-![AddEntrySequenceDiagram](images/AddEntrySequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 12 </i></sup></div><br>
+Due to the design decisions for the [select deck command](#413-select-deck-melanie), all entry level commands such as
+`add`, `delete`, `edit` and `/play` can only be performed after a deck is selected.
+
+The diagrams below illustrate the steps taken in order to successfully execute an `AddCommand`.
+First, a deck has to be selected.
+
+Given below is the sequence diagram for `SelectDeckCommand`
 
 ![SelectDeckSequenceDiagram](images/SelectDeckSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 13 </i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 11. Select Deck Command Sequence Diagram</i></sup></div><br>
+
+From the diagram above, entering `select 1` will result in the following steps:
+
+Step 1: User enters `select 1`
+
+Step 2: The user input is saved as a `String` and passed into `LogicManager`
+
+Step 3: `LogicManager` passes the `String` to `CommandModeParser`
+
+Step 4: A `SelectDeckCommandParser` is created
+
+Step 5: The `String` is passed from `CommandModeParser` to `SelectDeckCommandParser` to parse
+
+Step 6: `SelectDeckCommandParser` creates a new `SelectDeckCommand` object stored as a variable `toSelect`
+
+Step 7: `toSelect` is then passed back to `LogicManager` via `SelectDeckCommandParser` and `CommandModeParser`.
+
+Step 8: `LogicManager` executes the `toSelect` command
+
+Step 9: The `toSelect` command invokes `selectDeck(Index index)` method in `Model`
+
+Step 10: The `toSelect` command then invokes `replaceEntryList()` method in `Model` update the entry list to that of the selected deck
+
+Step 11: The `toSelect` command also invokes `setCurrentView(View view)` method in `Model` to set the current view to `ENTRY_VIEW`
+
+Step 12: A `CommandResult` object is created and returned to `LogicManager`. The `CommandResult` displays the command success
+message to the user via the GUI to signify the end of the command execution.
+
+
+Now that a `SelectDeckCommand` has been sucessfully executed, the `AddCommand` can be executed.
+Given below is the activity diagram for an `AddCommand`.
+
+![AddEntry](images/AddEntryActivityDiagram.png)
+<div align="center"><sup style="font-size:100%"><i>Figure 12. Add Command Activity Diagram</i></sup></div><br>
+
+There are four criteria to be met in order for an `AddCommand` to be successfully carried out.
+
+- First, the command format must be correct. (`add w/<WORD> t/<TRANSLATION>`)
+- Second, a deck must be selected. (_see figure 11_)
+- Third, reserve words like `/play` and `/stop` cannot be added into the word bank.
+- Fourth, the word-translation pair cannot already exist in the word bank. (_Word-translation pairs are considered to be
+the same if they have the exact same translation_)
+
+When these criteria are met,
+
+- The entry with the word-translation pair will be added to the selected deck in `ModelManager`.
+- The GUI will update to show the new entry in the entry list.
+
+
 
 ### 4.2 Flashcard System (Gabriel)
 
@@ -479,15 +546,15 @@ The figure below is an activity diagram that provides a generalized overview on 
 enters any command.
 
 ![GeneralizedCommand](images/GeneralizedCommandActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 14 Generalized Command Activity Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 13. Generalized Command Activity Diagram</i></sup></div><br>
 
 The left rake symbol in the above figure can refer to any Play Mode command such as [the answer command](#424-answer-command-and-stop-command-gabriel) (besides the `PlayCommand`)
-while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck)
+while the right rake symbol can refer to any Command Mode command such as [the select command](#413-select-deck-melanie)
 
 To switch `Logic Manager` into Play Mode, the user can enter a `PlayCommand`. Below is a sequence diagram for the `PlayCommand`.
 
 ![AnswerCommandSequenceDiagram](images/AnswerCommandSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 15 Play Command Sequence Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 14. Play Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering `/play` will result in the follow steps:
 
@@ -505,7 +572,7 @@ Step 6. The `String` is passed from `PlayModeParser` to `PlayCommandParser` to p
 
 Step 7. `PlayCommandParser` creates a new `PlayCommand` object stored as a variable `args`.
 
-Step 8. `args` is then pass back to `Logic Manager` via `PlayCommandParser` and `PlayModeParser`. `PlayCommandParser`
+Step 8. `args` is then passed back to `Logic Manager` via `PlayCommandParser` and `PlayModeParser`. `PlayCommandParser`
 is then deleted.
 
 Step 9. `Logic Manager` executes the `args` command.
@@ -521,7 +588,7 @@ The `CommandResult` displays the command success message to the user via the GUI
 
 The activity diagram below summarizes the high level behavior of `LogicManager` and `Model` when the user enters a `PlayCommand`.
 ![PlayCommand](images/PlayActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 16 Play Command Activity Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 15. Play Command Activity Diagram</i></sup></div><br>
 
 #### 4.2.4 Answer Command and Stop Command (Gabriel)
 
@@ -530,10 +597,10 @@ In this implementation, all inputs that do not match the format for the `StopCom
 to the `AnswerCommand`.
 
 Below is the corresponding sequence diagram for the 'AnswerCommand'. The sequence diagram for the `StopCommand` is trivial
-as seen in Figure 17.
+as seen in Figure 16.
 
 ![PlayCommandSequenceDiagram](images/PlayCommandSequenceDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 17 Answer Command Sequence Diagram</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 16. Answer Command Sequence Diagram</i></sup></div><br>
 
 From the above diagram, entering an answer in Play Mode will result in the follow steps:
 
@@ -571,20 +638,21 @@ The `CommandResult` displays the score to the user via the GUI to signify the en
 The two figures below are the activity diagram that describes the high level behavior of `LogicManager` and `Model` when the user
 enters a answer in Play Mode.
 
-Note that Figure 17 mainly capture the states of the 'StopCommand' while Figure 18
+Note that Figure 16 mainly capture the states of the 'StopCommand' while Figure 17
 captures the states of the 'AnswerCommand'.
 
 :information_source: **Note:** both figures are connected by the rake symbol.
 
 ![AnswerCommandOne](images/AnswerCommandActivityDiagram.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 18 Answer Command Activity Diagram One</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 17. Answer Command Activity Diagram One</i></sup></div><br>
 
 ![AnswerCommandTwo](images/AnswerCommandActivityDiagramTwo.png)
-<div align="center"><sup style="font-size:100%"><i>Figure 19 Answer Command Activity Diagram Two</i></sup></div><br>
+<div align="center"><sup style="font-size:100%"><i>Figure 18. Answer Command Activity Diagram Two</i></sup></div><br>
 
 #### 4.2.5 Leitner and QuizAttempt (Georgie)
 
-The Leitner system is a system to randomize the questions presented to a user based on their most recent past attempt of the quiz if any, otherwise random shuffle is executed. `Leitner` is a class that encapsulates this logic. It is constructed with `Deck` as the only parameter and stores the next question list to be presented to the player in its internal `entryList` object, retrieved via `leitner.getEntries()`.
+The Leitner system is a system to randomize the questions presented to a user based on their most recent past attempt of the quiz if any, otherwise random shuffle is executed.
+`Leitner` is a class that encapsulates this algorithm. It is constructed with `Deck` as the only parameter and stores the next question list to be presented to the player in its internal `entryList` object, retrieved via `leitner.getEntries()`.
 
 How it works is as follows (this is in `ModelManager`):
 
@@ -606,7 +674,7 @@ Later, a series of `leitner.addGuess(guess)` is called until the end of the quiz
 
 #### 4.3.1 Overview
 
-We needed to track quiz-specific and app-wide data. Quiz-specific data refers to data that reflects the complete attempt/playthrough of a particular quiz which we call a `QuizAttempt`. In particular, `QuizAttempt` is a list of `QuestionAttempt`s, where each `QuestionAttempt` consists of the user's answer, the correct answer, and the total score received for that question out of `1.0`.
+We track quiz-specific and app-wide data. Quiz-specific data refers to data that reflects the complete attempt/playthrough of a particular quiz which we call a `QuizAttempt`. In particular, `QuizAttempt` is a list of `QuestionAttempt`s, where each `QuestionAttempt` consists of the user's answer, the correct answer, and the total score received for that question out of `1.0`.
 
 App-wide data on the other hand refers events like logins and logouts, time last logged in, average time spent on app, number of quizzes taken in total, etc. We disembarked working on this feature in favor of other features such as Leitner as we found it to not value-add to the user that much. Nonetheless, we decided to include it as it might be interesting from an engineering standpoint.
 
@@ -616,11 +684,11 @@ Each `Deck` consists of a list of `QuizAttempt`s. Each `QuizAttempt` object enca
 
 It contains:
 
-- list of `QuestionAttempt`s;
-- duration of the quiz;
-- time the quiz was taken at;
-- total score;
-- and `Scoring`.
+- list of `QuestionAttempt`s
+- duration of the quiz
+- time the quiz was taken at
+- total score
+- and `Scoring`
 
 Apart from `Scoring`, the rest of the attributes are computed on the fly as a new `QuestionAttempt` is added to the `QuizAttempt`. `Scoring` is just an interface that has an abstract method `computeScore` which takes in two strings and returns a `double` between `0.0` and `1.0`, depending on how it is implemented e.g. `BinaryScoring` will give `1.0` if the strings are same, and `0.0` if not; `EditDistanceScoring` will score based on the edit distance between the two strings.
 
@@ -630,7 +698,7 @@ To make `Deck` as cohesive as possible, a `Deck` consist of a list of `QuizAttem
 
 #### 4.3.3 Statistics Manager
 
-I wrote the `StatisticsManager` singleton class to encapsulate all app-related event logs. Whenever the `StatisticsManager` class is created, a `LOGIN` event is appended to its internal event log. Whenever `cleanup()` is called on `StatisticsManager`, a `LOGOUT` event is called. Each event also has an associated timestamp. Through the log of events, statistics like average time spent on app, last login time, etc can be computed on demand.
+`StatisticsManager` singleton class to encapsulate all app-related event logs. Whenever the `StatisticsManager` class is created, a `LOGIN` event is appended to its internal event log. Whenever `cleanup()` is called on `StatisticsManager`, a `LOGOUT` event is called. Each event also has an associated timestamp. Through the log of events, statistics like average time spent on app, last login time, etc can be computed on demand.
 
 An instance of `StatisticsManager` is instantiated in the constructor of `LogicManager` and destroyed when `cleanup()` is called on `LogicManager`. It makes the most sense to call these lifecycle operations in these parts of `LogicManager` as they parallel the opening and closing lifecycle of the app.
 
@@ -672,14 +740,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​  | I want to …​                              | So that I can…​                                                |
 | -------- | -------- | ----------------------------------------- | -------------------------------------------------------------- |
 | `* * *`  | new user | see usage instructions                    | refer to instructions when I forget how to use the application |
-| `* * *`  | user     | add a Word-Meaning pair                   | populate the list with words and their translations            |
-| `* * *`  | user     | delete a Word-Meaning pair                | delete an unwanted entry                                       |
-| `* * *`  | user     | edit a Word-Meaning pair                  | edit an entry                                                  |
-| `* * *`  | user     | access a Dictionary of Word-Meaning pairs | refresh my understanding of the words                          |
+| `* * *`  | user     | add a Word-Translation pair               | populate the list with words and their translations            |
+| `* * *`  | user     | delete a Word-Translation pair            | delete an unwanted entry                                       |
+| `* * *`  | user     | edit a Word-Translation pair              | edit an entry                                                  |
+| `* * *`  | user     | access a Dictionary of Word-Translation pairs | refresh my understanding of the words                      |
 | `* * *`  | user     | create a question                         | test my understanding of a word                                |
 | `* * *`  | user     | create an open-ended question             | test my spelling and understanding of the word                 |
-| `* * *`  | user     | delete a question                         | delete an unwanted entry                                       |
-| `* * *`  | user     | edit a question                           | delete an unwanted entry                                       |
+| `* * *`  | user     | delete a question                         | delete an unwanted test question                               |
+| `* * *`  | user     | edit a question                           | edit a question                                                |
 | `* * *`  | user     | access the list of questions              | view all the questions                                         |
 | `* * *`  | user     | create a quiz from the pool of questions  | attempt the questions                                          |
 | `* * *`  | user     | submit the quiz                           | see my results                                                 |
