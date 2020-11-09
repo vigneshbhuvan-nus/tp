@@ -5,7 +5,7 @@ title: Georgie Lee's Project Portfolio Page
 
 ## Project: Green Tea
 
-GreenTea is a desktop app for learning a new language, optimized for use via a Command Line Interface (CLI)
+Green Tea is a desktop app for learning a new language, optimized for use via a Command Line Interface (CLI)
 while still having the benefits of a Graphical User Interface (GUI) created with JavaFX.
 It is written in Java, and has about 10 kLoC.
 
