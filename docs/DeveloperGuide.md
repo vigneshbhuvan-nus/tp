@@ -752,17 +752,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `* * *`  | new user | see usage instructions                    | refer to instructions when I forget how to use the application |
 | `* * *`  | user     | add a Word-Translation pair               | so that I can populate the list with entries            |
 | `* * *`  | user     | delete a Word-Translation pair            | delete an unwanted entry                                       |
-| `* * *`  | user     | edit a Word-Translation pair              | edit an entry                                                  |
 | `* * *`  | user     | access a Dictionary of Word-Translation pairs | refresh my understanding of the words                      |
 | `* * *`  | user     | create a question                         | test my understanding of a word                                |
-| `* * *`  | user     | create an open-ended question             | test my spelling and understanding of the word                 |
 | `* * *`  | user     | delete a question                         | delete an unwanted test question                               |
 | `* * *`  | user     | edit a question                           | edit a question                                                |
-| `* * *`  | user     | access the list of questions              | view all the questions                                         |
-| `* * *`  | user     | create a quiz from the pool of questions  | attempt the questions                                          |
-| `* * *`  | user     | submit the quiz                           | see my results                                                 |
+| `* *`  | user     | access the list of questions              | view all the questions                                         |
+| `* *`  | user     | create a quiz from the pool of questions  | attempt the questions                                          |
+| `* *`  | user     | submit the quiz                           | see my results                                                 |
 | `* *`    | user     | view statistics of the quiz               | gauge my strengths and weaknesses                              |
 | `* *`    | user     | view past quiz scores                     | know how I performed for each quiz                             |
+| `* *`  | user     | edit a Word-Translation pair              | edit an entry                                                  |
 | `*`      | user     | test my spelling                          | learn how to spell the words correctly                         |
 
 ### 6.3 Use cases
