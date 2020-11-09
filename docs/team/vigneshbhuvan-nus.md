@@ -17,21 +17,17 @@ Given below are my contributions to the project.
   - What it does: Allows for the storage of decks and its entries in `wordbank.json`, and allows json files to be serialized back into the model.
   - Justification: Storage of data is essential to the functioning of the app, and allows for the sharing of progress between multiple users
   - Highlights:
-    - Moderately difficult to implement, as I was new to the concept of JSON serialization. I got through this issue by understandning the initial source code, as well as hours of research online for
-       the implementation of these concepts.
+    - Moderately difficult to implement, as I was new to the concept of JSON serialization. I got through this issue by understandning the initial source code, as well as hours of research online for the implementation of these concepts.
 
 - **New Feature**: Implemented Storage System for QuizAttempt, QuestionAttempt and Score.
 
   - Pull requests: [#129](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/129)
   - What it does: Allows for the storage of quiz attempts, question attempts and their respective scores, and allows for json files to be serialized back into the model. 
-  - Justification: Allows users to track their progress of all their previous attempts at the quiz, and essentially allows for the implementation of the Leitner system, in which
-  a users worst entries are tracked and sorted for the system to work. 
+  - Justification: Allows users to track their progress of all their previous attempts at the quiz, and essentially allows for the implementation of the Leitner system, in which a user's worst entries are tracked and sorted for the system to work. 
   - Highlights:
-    - Moderately complex to implement. Although I learnt from my initial work with Deck Storage, this was different as I had to work with the storage of interfaces. I was stuck on a problem 
-    involving the serialization of the classes, and I got through it by researching (In one instance, I needed to create an empty constructor for the serialization to function properly)
-    
-    
-* **New Feature**: Helped in the implementation of Leitner System and Flashcard System
+    - Moderately complex to implement. Although I learnt from my initial work with Deck Storage, this was different as I had to work with the storage of interfaces. I was stuck on a problem involving the serialization of the classes, and I got through it by researching (In one instance, I needed to create an empty constructor for the serialization to function properly)        
+
+- **New Feature**: Helped in the implementation of Leitner System and Flashcard System
 
   - Pull requests: [#103](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/103)
   - What it does: Allows the users to quiz themselves on the different entries they have added to GreenTea.
