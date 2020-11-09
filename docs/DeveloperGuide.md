@@ -542,8 +542,7 @@ Three commands are used in order to support the Flashcard system - PlayCommand, 
 - `[Any Answer]` - Answers the current question in the Flashcard game / quiz. This input does not have a specific structure or command.
 
 Each of these three commands require the use of the `UI`, `Logic` and `Model` components.
-For example, when a deck is played, the `model` must be updated with a shuffled deck containing the shuffled entries. The
-`UI` must also reflect the added deck to be shown to the user.
+For example, when a deck is played, the `model` must be updated with a shuffled deck containing the shuffled entries.
 
 #### 4.2.3 Play Mode and Command Mode
 
