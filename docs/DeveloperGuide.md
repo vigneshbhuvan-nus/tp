@@ -799,12 +799,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case resumes at step 2.
 
-**Use case 3: List all entries**
+**Use case 3: Exit application**
 
 **MSS**
 
-1.  User requests to see the list of entries
-2.  Green Tea shows a list of entries
+1.  User requests to exit program
+2.  Green Tea exits
 
     Use case ends.
 
@@ -890,20 +890,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-- 9a. The given index is invalid.
+- 1a. The given index is invalid.
 
-  - 9a1. Green Tea shows an error message.
+  - 1a1. Green Tea shows an error message.
 
     Use case resumes at step 1.
 
-**Use case 10: Exit**
-
-**MSS**
-
-1.  User requests to exit program
-2.  Green Tea exits
-
-    Use case ends.
 
 ### 6.4 Non-Functional Requirements
 
