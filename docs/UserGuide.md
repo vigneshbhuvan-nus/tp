@@ -545,6 +545,7 @@ you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignes
 **A**: Green Tea has an [issue page](https://github.com/AY2021S1-CS2103T-T09-4/tp/issues) where we will be monitoring for
 any problems related to Green Tea. Feel free to create an issue to let us know if you require help! <div style="page-break-after: always;"></div>
 
+<div style="page-break-after: always;"></div>
 # 7. Command Summary (Gabriel)
 
 | Action         | Format <img width=00/>                  | Examples                      | Remarks                                                                |
