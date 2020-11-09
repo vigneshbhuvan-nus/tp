@@ -5,7 +5,7 @@ title: Melanie Ng's Project Portfolio Page
 
 ## Project: Green Tea
 
-GreenTea is a desktop app for learning a new language, optimized for use via a Command Line Interface (CLI)
+Green Tea is a desktop app for learning a new language, optimized for use via a Command Line Interface (CLI)
 while still having the benefits of a Graphical User Interface (GUI) created with JavaFX.
 It is written in Java, and has about 10 kLoC.
 
@@ -27,6 +27,8 @@ Given below are my contributions to the project.
                 The ui component for this feature was handled by my teammate, Gabriel. The storage component was handled by my teammate, Vignesh
 
   * Credits: *{I utilized the existing command format in Address Book 3 to write the command classes for new commands. I also utilized the person class in Address Book 3 to design the deck system}*
+
+<div style="page-break-after: always;"></div>
 
 * **New Feature**: Create tab panels in the GUI which will display the appropriate information to the user depending on the command given.
 
