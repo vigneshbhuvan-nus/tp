@@ -546,7 +546,7 @@ you first installed Green Tea's [jar file](#3-getting-started-gabriel-and-vignes
 any problems related to Green Tea. Feel free to create an issue to let us know if you require help!
 
 
-
+<div style="page-break-after: always;"></div>
 # 7. Command Summary (Gabriel)
 
 | Action         | Format <img width=00/>                  | Examples                      | Remarks                                                                |
