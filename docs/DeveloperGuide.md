@@ -1,5 +1,3 @@
-## Green Tea Developer Guide (v1.4)
-
 ### Table of Contents
 
 - [1. Introduction](#1-introduction)
@@ -57,11 +55,11 @@ keep track of their learning progress.
 
 ### 1.1 Purpose
 
-This document details the architecture, design decisions and implementations for the flashcard application, GreenTea.
+This document details the architecture, design decisions and implementations for the flashcard application, Green Tea.
 
 ### 1.2 Audience
 
-The intended audience of this document are the developers and testers of GreenTea.
+The intended audience of this document are the developers and testers of Green Tea.
 
 ---
 
@@ -314,13 +312,13 @@ The `Storage` component,
 
 From Figure 8, it can be observed that `JsonSerializableWordBankStorage` consists of a list of `JsonAdaptedDeck` objects.
 
-`JsonSerializableWordBankStorage` can be then serialized in order to convert data from json files into GreenTea's model.
-Data from GreenTea's model can also be converted into json files through the reverse of this process.
+`JsonSerializableWordBankStorage` can be then serialized in order to convert data from json files into Green Tea's model.
+Data from Green Tea's model can also be converted into json files through the reverse of this process.
 
 `StorageManager` manages the process of saving and reading data
 
 All the data is eventually stored in `wordbank.json` in the `data` folder. When the application is restarted,
-the data from `wordbank.json` is read and converted into GreenTea's model.
+the data from `wordbank.json` is read and converted into Green Tea's model.
 
 :information_source: **Note:** An alternative (arguably, a more OOP) model is given below in Figure 9.
 In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data.
@@ -752,31 +750,30 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | Priority | As a …​  | I want to …​                              | So that I can…​                                                |
 | -------- | -------- | ----------------------------------------- | -------------------------------------------------------------- |
 | `* * *`  | new user | see usage instructions                    | refer to instructions when I forget how to use the application |
-| `* * *`  | user     | add a Word-Translation pair               | populate the list with words and their translations            |
+| `* * *`  | user     | add a Word-Translation pair               | so that I can populate the list with entries            |
 | `* * *`  | user     | delete a Word-Translation pair            | delete an unwanted entry                                       |
-| `* * *`  | user     | edit a Word-Translation pair              | edit an entry                                                  |
 | `* * *`  | user     | access a Dictionary of Word-Translation pairs | refresh my understanding of the words                      |
 | `* * *`  | user     | create a question                         | test my understanding of a word                                |
-| `* * *`  | user     | create an open-ended question             | test my spelling and understanding of the word                 |
 | `* * *`  | user     | delete a question                         | delete an unwanted test question                               |
 | `* * *`  | user     | edit a question                           | edit a question                                                |
-| `* * *`  | user     | access the list of questions              | view all the questions                                         |
-| `* * *`  | user     | create a quiz from the pool of questions  | attempt the questions                                          |
-| `* * *`  | user     | submit the quiz                           | see my results                                                 |
+| `* *`  | user     | access the list of questions              | view all the questions                                         |
+| `* *`  | user     | create a quiz from the pool of questions  | attempt the questions                                          |
+| `* *`  | user     | submit the quiz                           | see my results                                                 |
 | `* *`    | user     | view statistics of the quiz               | gauge my strengths and weaknesses                              |
 | `* *`    | user     | view past quiz scores                     | know how I performed for each quiz                             |
+| `* *`  | user     | edit a Word-Translation pair              | edit an entry                                                  |
 | `*`      | user     | test my spelling                          | learn how to spell the words correctly                         |
 
 ### 6.3 Use cases
 
-(For all use cases below, the **System** is `GreenTea` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Green Tea` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case 1: View help**
 
 **MSS**
 
 1.  User requests help
-2.  GreenTea returns a message explaining how to access the help page with the link to the Official UserGuide
+2.  Green Tea returns a message explaining how to access the help page with the link to the Official UserGuide
 
     Use case ends.
 
@@ -785,7 +782,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to add a new entry
-2.  GreenTea add the new entry
+2.  Green Tea add the new entry
 
     Use case ends.
 
@@ -793,7 +790,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 1a. The entry is invalid
 
-  - 1a1. GreenTea shows an error message
+  - 1a1. Green Tea shows an error message
 
   Use case ends.
 
@@ -801,12 +798,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
   Use case resumes at step 2.
 
-**Use case 3: List all entries**
+**Use case 3: Exit application**
 
 **MSS**
 
-1.  User requests to see the list of entries
-2.  GreenTea shows a list of entries
+1.  User requests to exit program
+2.  Green Tea exits
 
     Use case ends.
 
@@ -815,7 +812,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to edit an entry with updated fields via the given index
-2.  GreenTea updates entry with new fields
+2.  Green Tea updates entry with new fields
 
     Use case ends.
 
@@ -823,7 +820,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 1a. User gives an invalid index
 
-  - 1a1. GreenTea returns an error message
+  - 1a1. Green Tea returns an error message
 
   Use case ends.
 
@@ -831,24 +828,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list entries
-2.  GreenTea shows a list of entries
-3.  User requests to delete a specific entry in the list via the given index
-4.  GreenTea deletes the entry
+1.  User requests to delete a specific entry in the list via the given index
+2.  Green Tea deletes the entry
 
     Use case ends.
 
 **Extensions**
 
-- 3a. The given input does not match the format
+- 1a. The given input does not match the format
 
-  - 3a1. GreenTea shows an error message
+  - 1a1. Green Tea shows an error message
 
     Use case resumes at step 2.
 
-- 3b. The given index is invalid.
+- 1b. The given index is invalid.
 
-  - 3b1. GreenTea shows an error message.
+  - 1b1. Green Tea shows an error message.
 
     Use case resumes at step 2.
 
@@ -857,7 +852,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to clear decks
-2.  GreenTea clears all decks
+2.  Green Tea clears all decks
 
     Use case ends.
 
@@ -866,9 +861,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to play a quiz for a particular deck
-2. GreenTea starts the quiz
+2. Green Tea starts the quiz
 3. User answers each question and completes the quiz
-4. GreenTea provides the score and results of the quiz, and saves the results
+4. Green Tea provides the score and results of the quiz, and saves the results
 
     Use case ends.
 
@@ -877,9 +872,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to play a quiz for a particular deck
-2. GreenTea starts the quiz
+2. Green Tea starts the quiz
 3. User stops the quiz
-4. GreenTea stops the quiz and does not save the results
+4. Green Tea stops the quiz and does not save the results
 
     Use case ends.
 
@@ -888,26 +883,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to view statistics of quizzes played so far for a particular deck, or across all decks
-2. GreenTea displays the statistics accordingly
+2. Green Tea displays the statistics accordingly
 
     Use case ends.
 
 **Extensions**
 
-- 9a. The given index is invalid.
+- 1a. The given index is invalid.
 
-  - 9a1. GreenTea shows an error message.
+  - 1a1. Green Tea shows an error message.
 
     Use case resumes at step 1.
 
-**Use case 10: Exit**
-
-**MSS**
-
-1.  User requests to exit program
-2.  GreenTea exits
-
-    Use case ends.
 
 ### 6.4 Non-Functional Requirements
 
@@ -925,9 +912,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - **Deck**: A collection of entries
 - **Entry**: A word and its translation
-- **Mainstream OS**: Windows, Linux, Unix, OS-X
-- **Private contact detail**: A contact detail that is not meant to be shared with others
 - **Word bank**: A collection of decks
+- **Mainstream OS**: Windows, Linux, Unix, OS-X
 
 ---
 
@@ -959,7 +945,7 @@ Saving window preferences
 
 Displays a guide for all commands.
 
-Prerequisites: Launch GreenTea succesfully.
+Prerequisites: Launch Green Tea successfully.
 
 1. Test case: `help`<br>
    Expected: A help window pops up and provides a link to the Official UserGuide
@@ -967,7 +953,7 @@ Prerequisites: Launch GreenTea succesfully.
 ### 7.3 Creating a Deck
 Creating a deck while all decks are displayed
 
-Prerequisites: Launch GreenTea successfully
+Prerequisites: Launch Green Tea successfully
 
 1. Test Case: `new Japanese Animals`<br>
     Expected: an empty Deck named Japanese Animals created and displayed in the DeckList panel. Status message to say "New deck added: Japanese Animals"
@@ -1001,10 +987,10 @@ Prerequisites: Multiple decks in the list.
 ### 7.5 Creating an Entry
 Creating an entry in a selected deck
 
-Prerequisites: Have a deck present
+Prerequisites: Have a deck present, no deck selected yet.
 
 1. Test Case: `select 1` and then `add w/Hola t/Hello`<br>
-    Expected: An entry (Hola, Hello) would be added to Deck 1, displayed in the Entries panel. Status message to say "New entry added: hola Translation: hello"
+    Expected: An entry with word `Hola` and translation `Hello` would be added to Deck 1, displayed in the Entries panel. Status message in UI should read "New entry added: hola Translation: hello"
 
 2. Other incorrect commands to try:
     - `add w/Hola t/Hello` without selecting a deck before
@@ -1014,7 +1000,7 @@ Prerequisites: Have a deck present
 ### 7.6 Editing an Entry
 Editing an existing entry in a particular deck
 
-Prerequisites: Have a deck with entries present
+Prerequisites: Have a deck with entries present, no deck currently selected.
 
 1. Test Case: `select 1` and then `edit 2 t/hello there`<br>
    Expected: Entry 2 in Deck 1 will have its translation edited to "hello there", and will be reflected in the entries panel.
@@ -1038,7 +1024,7 @@ Prerequisites: Have a deck with entries present
 ### 7.7. Playing and Stopping a Quiz
 Playing a Flashcard Quiz with a particular deck
 
-Prerequisites: Have a deck with entries present, preferably multiple entries
+Prerequisites: Have a deck with entries present, preferably multiple entries and no deck selected.
 
 1. Test Case: `select 1` and then `/play`<br>
    Expected: App will switch to the Quiz tab, and will display the first translation to be answered and various statistics.
