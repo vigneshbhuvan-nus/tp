@@ -1,4 +1,4 @@
-# GreenTea
+# Green Tea
 ## The Revolutionary Language Learning Application
 
 [![CI Status](https://github.com/AY2021S1-CS2103T-T09-4/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-T09-4/tp/actions)
