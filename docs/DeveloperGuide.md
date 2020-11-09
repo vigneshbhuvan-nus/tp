@@ -829,24 +829,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1.  User requests to list entries
-2.  Green Tea shows a list of entries
-3.  User requests to delete a specific entry in the list via the given index
-4.  Green Tea deletes the entry
+1.  User requests to delete a specific entry in the list via the given index
+2.  Green Tea deletes the entry
 
     Use case ends.
 
 **Extensions**
 
-- 3a. The given input does not match the format
+- 1a. The given input does not match the format
 
-  - 3a1. Green Tea shows an error message
+  - 1a1. Green Tea shows an error message
 
     Use case resumes at step 2.
 
-- 3b. The given index is invalid.
+- 1b. The given index is invalid.
 
-  - 3b1. Green Tea shows an error message.
+  - 1b1. Green Tea shows an error message.
 
     Use case resumes at step 2.
 
