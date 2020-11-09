@@ -172,7 +172,6 @@ There are four main components to the GUI. The deck list, the tab panels, the re
     ![Green Tea](images/user-guide/9PlayJapaneseDeck.PNG)
     Figure 9. Playing a Game of Flashcards
 
-
     Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
     depending on the entries you have written into `Japanese Animals`.
 
