@@ -34,7 +34,7 @@ public class JsonAdaptedScore {
     //Dummy Constructor
 
     /**
-     *
+     * Empty Constructor
      */
     public JsonAdaptedScore() {
         maxScore = 1;
