@@ -45,20 +45,27 @@ Given below are my contributions to the project.
 
 * **Enhancements to existing features**:
   * Wrote additional tests for existing features such as PlayCommand, StopCommand, TestCommand and Leitner.java
-  (Pull requests [\#188](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/188) [\#185](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/185)
+  (Pull requests [\#188](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/188), [\#185](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/185)
   * Updated the GUI color scheme
-  (Pull requests [\#61](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/61) [\#44](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/44))
+  (Pull requests [\#61](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/61), [\#44](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/44))
   * Fix several critical bugs such as the Select Command bug and the Answer Command Bug
-  (Pull requests [\#180](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/180) [\#72](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/72))
+  (Pull requests [\#180](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/180), [\#72](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/72))
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for Chapter 1, What is GreenTea [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
-    * Added documentation for Chapter 2, About [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
-    * Added documentation for Chapter 3, Getting Started [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126) [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
-    * Added documentation for Chapter 8, FAQ  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
-    * Added documentation for Chapter 9, Command Summary  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
-    * Did tweaks to existing documentation of Chapter 4, Using this Guide [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
+    * Added documentation for Chapter 1, What is GreenTea
+    (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
+    * Added documentation for Chapter 2, About
+    (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
+    * Added documentation for Chapter 3, Getting Started
+    (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126),
+    [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189))
+    * Added documentation for Chapter 8, FAQ
+    (Pull requests [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
+    * Added documentation for Chapter 9, Command Summary
+    (Pull requests [\#126]https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126))
+    * Did tweaks to existing documentation of Chapter 4, Using this Guide
+    (Pull requests [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189))
   * Developer Guide:
     * Wrote the puml code for all the new diagram in the DG
     (Pull requests [\#209](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/209),
