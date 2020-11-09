@@ -253,7 +253,7 @@ The `Model` component consists of the `Play`, `Deck` and `View` package.
 - The `Play` package consists of the `Scoring` package,`Leitner` object and the `Score` object.
 - The `Deck` package consists of the `Entry` package, the `Deck` object and
 all other similar object.
-- The `View` package consists of a `CurrentView` class and an enumeration of possible `Views` that the system can have.
+- The `View` package consists of a `CurrentView` class.
 
 All these information on the `Model` component is visually expressed in the class diagram below.
 
