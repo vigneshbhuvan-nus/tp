@@ -78,7 +78,6 @@ public class QuizPanel extends UiPart<Region> {
         questionsLeft.setText("Questions to go: " + questionsLeftNumber);
         answerList.setText(setAnswerList());
     }
-    
     private void setBlankText() {
         question.setText("");
         totalQuestions.setText("");
@@ -109,7 +108,6 @@ public class QuizPanel extends UiPart<Region> {
         double progress = (double) currentIndex / totalQuestionNumber;
         progressBar.setProgress(progress);
     }
-    
     private void setProgressBarBlank() {
         progressBar.setProgress(0.0);
     }
