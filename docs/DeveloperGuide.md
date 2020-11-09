@@ -114,7 +114,7 @@ Each of the four components:
 
 For example, the `Logic` component (see the class diagram given below) defines its API in the `Logic.java` interface and exposes its functionality using the `LogicManager.java` class which implements the `Logic` interface.
 
-![Class Diagram of the Logic Component](images/LogicClassDiagram.png)
+<p align="center"><img src="images/LogicClassDiagram.png" width="450" />
 <div align="center"><sup style="font-size:100%"><i>Figure 2. Example Class Diagram of the Logic Component</i></sup></div><br>
 
 
