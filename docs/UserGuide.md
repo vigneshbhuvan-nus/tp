@@ -506,6 +506,9 @@ The statistics tab displays the scores of games up to your last 10 attempts in t
 a line graph.
 You can view the statistics of a single deck or the statistics across all your decks.
 
+:information_source: **Note:** The graph in the statistics tab will only update after you enter the `stats` command!
+Feel free to `/play` multiple games before you see your combined data!
+
 To view statistics across **all** decks:
 
 Format: `stats`
