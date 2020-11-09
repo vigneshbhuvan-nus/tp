@@ -18,7 +18,7 @@ Given below are my contributions to the project.
   statistics and switching tabs.
   * Highlights: This implementation was incredibly difficult to implement because it utilised portions of logic, model and ui. Implementing this feature allowed
   me to understand the inner working of AddressBook and allowed me to greater help my teammates with their work by communicating to them what is and is not technically
-  feasible in this product. This enchancement also affected what code can be added to the future and what existing code can be removed. Modifying the implementation to
+  feasible in this product. Since this is a core feature, this implementation also affected what code can be added to the future and what existing code can be removed. Modifying the implementation to
   allow the program to switch between play mode and command mode also required deep analysis of design alternatives.
   * Credits: I wrote this by myself but I utilized the existing commands created by my teammate, Melanie.
 
@@ -53,15 +53,25 @@ Given below are my contributions to the project.
 
 * **Documentation**:
   * User Guide:
-    * Added documentation for the Chapter 1, What is GreenTea [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
-    * Added documentation for the Chapter 2, About [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
-    * Added documentation for the Chapter 3, Getting Started [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126) [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
-    * Added documentation for the Chapter 8, FAQ  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
-    * Added documentation for the Chapter 9, Command Summary  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
+    * Added documentation for Chapter 1, What is GreenTea [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
+    * Added documentation for Chapter 2, About [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
+    * Added documentation for Chapter 3, Getting Started [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126) [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
+    * Added documentation for Chapter 8, FAQ  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
+    * Added documentation for Chapter 9, Command Summary  [\#126](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/126)
     * Did tweaks to existing documentation of Chapter 4, Using this Guide [\#189](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/189)
   * Developer Guide:
-    * Added several diagrams to the developer guide such as the logic uml diagrams
-    (Pull requests [\#104](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/104) [\#109](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/109))
+    * Wrote the puml code for all the new diagram in the DG
+    (Pull requests [\#209](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/209),
+    [\#204](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/204)
+    [\#201](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/201))
+    * Modified Chapter 3 of the DG
+    (Pull requests [\#243](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/243),
+    [\#240](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/240),
+    [\#247](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/247))
+    * Added the Flashcard portion of chapter 4
+    (Pull requests [\#243](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/243),
+    [\#218](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/218),
+    [\#104](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/104))
   * Others:
     * Added the Leitner System psuedo code for team reference
     (Pull requests [\#65](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/65))
