@@ -1,5 +1,5 @@
 title: "GreenTea"
-theme: jekyll-theme-slate
+theme: jekyll-theme-cayman
 
 header_pages:
   - UserGuide.md
