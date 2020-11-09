@@ -54,6 +54,16 @@ public class QuizPanel extends UiPart<Region> {
         setProgressBar();
     }
 
+    /**
+     * Constructor for quiz panel, renders an empty panel if system is not in quiz mode
+     */
+    public QuizPanel() {
+        super(FXML);
+        this.currentIndex = 0;
+        setBlankText();
+        setProgressBarBlank();
+    }
+
     private void initializeEntries(Leitner leitner) {
         totalQuestionNumber = leitner.getEntries().size();
         questionsLeftNumber = totalQuestionNumber - currentIndex;
@@ -67,6 +77,13 @@ public class QuizPanel extends UiPart<Region> {
         questionsAnswered.setText("Questions Answered: " + currentIndex);
         questionsLeft.setText("Questions to go: " + questionsLeftNumber);
         answerList.setText(setAnswerList());
+    }
+    private void setBlankText() {
+        question.setText("");
+        totalQuestions.setText("");
+        questionsAnswered.setText("");
+        questionsLeft.setText("");
+        answerList.setText("");
     }
 
     private String setAnswerList() {
@@ -90,5 +107,8 @@ public class QuizPanel extends UiPart<Region> {
     private void setProgressBar() {
         double progress = (double) currentIndex / totalQuestionNumber;
         progressBar.setProgress(progress);
+    }
+    private void setProgressBarBlank() {
+        progressBar.setProgress(0.0);
     }
 }

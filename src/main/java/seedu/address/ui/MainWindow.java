@@ -242,8 +242,12 @@ public class MainWindow extends UiPart<Stage> {
 
     private void handleScorePanel() {
         ScorePanel scorePanel = new ScorePanel(logic.getLastScore(),
-            logic.getFilteredEntryList().size());
+                logic.getFilteredEntryList().size());
         quizPanelPlaceholder.getChildren().add(scorePanel.getRoot());
+    }
+    private void handleNonQuizMode() {
+        QuizPanel quizPanel = new QuizPanel();
+        quizPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
 
     /**
@@ -277,8 +281,14 @@ public class MainWindow extends UiPart<Stage> {
 
             if (logic.getCurrentView() == View.STATISTICS_VIEW) {
                 handleStatisticsPanel();
+                handleNonQuizMode();
             }
-
+            if (logic.getCurrentView() == View.ENTRY_VIEW) {
+                handleNonQuizMode();
+            }
+            if (logic.getCurrentView() == View.START_VIEW) {
+                handleNonQuizMode();
+            }
             //Change tab according to the command that the user enters
             handleChangeTab();
 
