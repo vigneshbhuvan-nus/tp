@@ -2,7 +2,6 @@
 layout: page
 title: User Guide
 ---
-
 ## Table of Contents
 
 - [1. What is GreenTea? (Gabriel)](#1-what-is-greentea-gabriel)
@@ -32,6 +31,7 @@ title: User Guide
   - [5.5 Statistics (Melanie)](#55-statistics-melanie)
 - [6. FAQ (Gabriel &amp; Melanie)](#6-faq-gabriel--melanie)
 - [7. Command Summary (Gabriel)](#7-command-summary-gabriel)
+<div style="page-break-after: always;"></div>
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -50,7 +50,7 @@ actions that would allow you to use GreenTea seamlessly and have an enjoyable jo
 
 ![GreenTea](images/user-guide/1EmptyGUI.png)
 Figure 1. GreenTea's Graphical User Interface (GUI)
-
+<div style="page-break-after: always;"></div>
 
 
 # 2. About This Document (Gabriel)
