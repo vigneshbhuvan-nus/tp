@@ -1,5 +1,6 @@
 @startuml
 start
+:User enters an AddEntryCommand;
 if() then([Command is in the correct format])
 if() then ([Deck is selected])
 if() then([Words and Translations do not contain "/play" or "/stop"])
