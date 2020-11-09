@@ -1,5 +1,6 @@
 @startuml
 start
+:User enters a SelectDeckCommand;
 if() then([Command is in the correct format])
 if() then([Index is valid])
 :Update selected deck in ModelManager;

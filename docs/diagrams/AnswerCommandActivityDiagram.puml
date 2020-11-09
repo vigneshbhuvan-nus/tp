@@ -11,6 +11,7 @@ sprite $rake [16x16/8] {
 }
 
 start
+:User enters an Answer;
 if() then ([Answer is not "/play"])
     if() then ([Answer is not "/stop"])
         : Create a new answer command based on user input;
