@@ -1,5 +1,3 @@
-## Green Tea Developer Guide (v1.4)
-
 ### Table of Contents
 
 - [1. Introduction](#1-introduction)
@@ -57,11 +55,11 @@ keep track of their learning progress.
 
 ### 1.1 Purpose
 
-This document details the architecture, design decisions and implementations for the flashcard application, GreenTea.
+This document details the architecture, design decisions and implementations for the flashcard application, Green Tea.
 
 ### 1.2 Audience
 
-The intended audience of this document are the developers and testers of GreenTea.
+The intended audience of this document are the developers and testers of Green Tea.
 
 ---
 
@@ -314,13 +312,13 @@ The `Storage` component,
 
 From Figure 8, it can be observed that `JsonSerializableWordBankStorage` consists of a list of `JsonAdaptedDeck` objects.
 
-`JsonSerializableWordBankStorage` can be then serialized in order to convert data from json files into GreenTea's model.
-Data from GreenTea's model can also be converted into json files through the reverse of this process.
+`JsonSerializableWordBankStorage` can be then serialized in order to convert data from json files into Green Tea's model.
+Data from Green Tea's model can also be converted into json files through the reverse of this process.
 
 `StorageManager` manages the process of saving and reading data
 
 All the data is eventually stored in `wordbank.json` in the `data` folder. When the application is restarted,
-the data from `wordbank.json` is read and converted into GreenTea's model.
+the data from `wordbank.json` is read and converted into Green Tea's model.
 
 :information_source: **Note:** An alternative (arguably, a more OOP) model is given below in Figure 9.
 In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data.
@@ -769,14 +767,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### 6.3 Use cases
 
-(For all use cases below, the **System** is `GreenTea` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Green Tea` and the **Actor** is the `user`, unless specified otherwise)
 
 **Use case 1: View help**
 
 **MSS**
 
 1.  User requests help
-2.  GreenTea returns a message explaining how to access the help page with the link to the Official UserGuide
+2.  Green Tea returns a message explaining how to access the help page with the link to the Official UserGuide
 
     Use case ends.
 
@@ -785,7 +783,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to add a new entry
-2.  GreenTea add the new entry
+2.  Green Tea add the new entry
 
     Use case ends.
 
@@ -793,7 +791,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 1a. The entry is invalid
 
-  - 1a1. GreenTea shows an error message
+  - 1a1. Green Tea shows an error message
 
   Use case ends.
 
@@ -806,7 +804,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to see the list of entries
-2.  GreenTea shows a list of entries
+2.  Green Tea shows a list of entries
 
     Use case ends.
 
@@ -815,7 +813,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to edit an entry with updated fields via the given index
-2.  GreenTea updates entry with new fields
+2.  Green Tea updates entry with new fields
 
     Use case ends.
 
@@ -823,7 +821,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 1a. User gives an invalid index
 
-  - 1a1. GreenTea returns an error message
+  - 1a1. Green Tea returns an error message
 
   Use case ends.
 
@@ -832,9 +830,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to list entries
-2.  GreenTea shows a list of entries
+2.  Green Tea shows a list of entries
 3.  User requests to delete a specific entry in the list via the given index
-4.  GreenTea deletes the entry
+4.  Green Tea deletes the entry
 
     Use case ends.
 
@@ -842,13 +840,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 3a. The given input does not match the format
 
-  - 3a1. GreenTea shows an error message
+  - 3a1. Green Tea shows an error message
 
     Use case resumes at step 2.
 
 - 3b. The given index is invalid.
 
-  - 3b1. GreenTea shows an error message.
+  - 3b1. Green Tea shows an error message.
 
     Use case resumes at step 2.
 
@@ -857,7 +855,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to clear decks
-2.  GreenTea clears all decks
+2.  Green Tea clears all decks
 
     Use case ends.
 
@@ -866,9 +864,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to play a quiz for a particular deck
-2. GreenTea starts the quiz
+2. Green Tea starts the quiz
 3. User answers each question and completes the quiz
-4. GreenTea provides the score and results of the quiz, and saves the results
+4. Green Tea provides the score and results of the quiz, and saves the results
 
     Use case ends.
 
@@ -877,9 +875,9 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to play a quiz for a particular deck
-2. GreenTea starts the quiz
+2. Green Tea starts the quiz
 3. User stops the quiz
-4. GreenTea stops the quiz and does not save the results
+4. Green Tea stops the quiz and does not save the results
 
     Use case ends.
 
@@ -888,7 +886,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1. User requests to view statistics of quizzes played so far for a particular deck, or across all decks
-2. GreenTea displays the statistics accordingly
+2. Green Tea displays the statistics accordingly
 
     Use case ends.
 
@@ -896,7 +894,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 - 9a. The given index is invalid.
 
-  - 9a1. GreenTea shows an error message.
+  - 9a1. Green Tea shows an error message.
 
     Use case resumes at step 1.
 
@@ -905,7 +903,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User requests to exit program
-2.  GreenTea exits
+2.  Green Tea exits
 
     Use case ends.
 
@@ -943,7 +941,7 @@ testers are expected to do more *exploratory* testing to understand the app bett
 
 Initial launch
 
-Prerequisites: Have GreenTea.jar downloaded and copied into an empty folder
+Prerequisites: Have Green Tea.jar downloaded and copied into an empty folder
 
 1. Double-click the jar file.<br>
    Expected: Shows the GUI with a set of sample decks. The window size may not be optimum.
@@ -959,7 +957,7 @@ Saving window preferences
 
 Displays a guide for all commands.
 
-Prerequisites: Launch GreenTea succesfully.
+Prerequisites: Launch Green Tea succesfully.
 
 1. Test case: `help`<br>
    Expected: A help window pops up and provides a link to the Official UserGuide
@@ -967,7 +965,7 @@ Prerequisites: Launch GreenTea succesfully.
 ### 7.3 Creating a Deck
 Creating a deck while all decks are displayed
 
-Prerequisites: Launch GreenTea successfully
+Prerequisites: Launch Green Tea successfully
 
 1. Test Case: `new Japanese Animals`<br>
     Expected: an empty Deck named Japanese Animals created and displayed in the DeckList panel. Status message to say "New deck added: Japanese Animals"
