@@ -313,17 +313,17 @@ The `Storage` component,
 
 From Figure 8, it can be observed that `JsonSerializableWordBankStorage` consists of a list of `JsonAdaptedDeck` objects.
 
-`JsonSerializableWordBankStorage` can be then serialized in order to convert data from json files into GreenTea's model. 
-Data from GreenTea's model can also be converted into json files through the reverse of this process. 
+`JsonSerializableWordBankStorage` can be then serialized in order to convert data from json files into GreenTea's model.
+Data from GreenTea's model can also be converted into json files through the reverse of this process.
 
 `StorageManager` manages the process of saving and reading data
 
 All the data is eventually stored in `wordbank.json` in the `data` folder. When the application is restarted,
-the data from `wordbank.json` is read and converted into GreenTea's model. 
+the data from `wordbank.json` is read and converted into GreenTea's model.
 
 :information_source: **Note:** An alternative (arguably, a more OOP) model is given below in Figure 9.
-In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data. 
-This allows for better management of data and for example could allow users to share `Deck` data with other users without sharing their `QuizData`. 
+In this model, the `Deck` and `Entry` data is separated from the `QuizAttempt` data.
+This allows for better management of data and for example could allow users to share `Deck` data with other users without sharing their `QuizData`.
 
 ![BetterModelClassDiagram](images/StorageClassDiagramMoreOOP.png)
 <div align="center"><sup style="font-size:100%"><i>Figure 9. More OOP Storage Class Diagram</i></sup></div><br>
@@ -872,7 +872,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 4. GreenTea provides the score and results of the quiz, and saves the results
 
     Use case ends.
-    
+
 **Use case 8: Stop a Quiz**
 
 **MSS**
@@ -882,15 +882,15 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. User stops the quiz
 4. GreenTea stops the quiz and does not save the results
 
-    Use case ends. 
-    
+    Use case ends.
+
 **Use case 9: View Statistics**
 
 **MSS**
 
 1. User requests to view statistics of quizzes played so far for a particular deck, or across all decks
 2. GreenTea displays the statistics accordingly
-    
+
     Use case ends.
 
 **Extensions**
@@ -1006,10 +1006,10 @@ Prerequisites: Have a deck present
 
 1. Test Case: `select 1` and then `add w/Hola t/Hello`<br>
     Expected: An entry (Hola, Hello) would be added to Deck 1, displayed in the Entries panel. Status message to say "New entry added: hola Translation: hello"
-    
+
 2. Other incorrect commands to try:
     - `add w/Hola t/Hello` without selecting a deck before
-    - `select 1` and then `add w/Hola` without providing its word 
+    - `select 1` and then `add w/Hola` without providing its word
     - `select 1` and then `t/Hello` without providing its translation
 
 ### 7.6 Editing an Entry
@@ -1029,13 +1029,13 @@ Prerequisites: Have a deck with entries present
    Expected: Entry 2 in Deck 1 will have its word and translation edited to "hola amigos" and "hello friends" respectively,
    and will be reflected in the entries panel.
    Status message to say "Edited Entry: hola amigos Translation: hello friends"
-   
+
  4. Other incorrect commands to try:
     - `edit 2 t/hello there` without selecting a deck first
     - `select 1` and then `edit w/hola amigos` without providing index
     - `select 1` and then `edit 2 w/` without providing word
     - `select 1` and then `edit 2 t/` without providing translation
-    
+
 ### 7.7. Playing and Stopping a Quiz
 Playing a Flashcard Quiz with a particular deck
 
@@ -1043,20 +1043,20 @@ Prerequisites: Have a deck with entries present, preferably multiple entries
 
 1. Test Case: `select 1` and then `/play`<br>
    Expected: App will switch to the Quiz tab, and will display the first translation to be answered and various statistics.
-   Status message to say "Playmode started" 
-   
+   Status message to say "Playmode started"
+
 2. Test Case: after entering PlayMode, answer the question by entering the answer on the command line<br>
    Expected: Display will be updated to show the next question, as well as the previous answers and questions
    Status message to say "Your answer was: hola"
-   
+
 3. Test Case: after entering PlayMode, enter `/stop`<br>
-   Expected: PlayMode will be stopped and will exit the quiz. The score and remarks will be displayed. 
+   Expected: PlayMode will be stopped and will exit the quiz. The score and remarks will be displayed.
    Status message to say "Playmode stopped! Your score was not recorded!"
-   
+
 4. Test Case: after entering Playmode, finish the quiz by answering all the questions<br>
     Expected: Playmode will be stopped and will exit the quiz. The score and remarks will be displayed.
     Status message to say "Your score was 3/3"
-   
+
 5. Other incorrect commands to try:
     - `select 1` and then `play` instead of `play`
     - `\play` without selecting a deck first
@@ -1073,7 +1073,7 @@ Prerequisites: Have multiple decks with entries, with quizzes played before
 2. Test Case: `stats 1`<br>
     Expected: Display will switch to the Statistics tab, and will display statistics of Deck 1
     Status message to say "Viewing statistics for deck Spanish (id=1)"
-       
+
 ### 7.9 Saving data
 Dealing with missing data files
 
