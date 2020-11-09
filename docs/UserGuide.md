@@ -30,7 +30,8 @@ title: User Guide
     - [5.4.2 Exiting the program: exit](#542-exiting-the-program-exit)
   - [5.5 Statistics (Melanie)](#55-statistics-melanie)
 - [6. FAQ (Gabriel &amp; Melanie)](#6-faq-gabriel--melanie)
-- [7. Command Summary (Gabriel)](#7-command-summary-gabriel)<br>
+- [7. Command Summary (Gabriel)](#7-command-summary-gabriel)
+<div style="page-break-after: always;"></div>
 
 # 1. What is GreenTea? (Gabriel)
 
@@ -168,8 +169,8 @@ There are four main components to the GUI. The deck list, the tab panels, the re
 
     ![GreenTea](images/user-guide/9PlayJapaneseDeck.PNG)
     Figure 9. Playing a Game of Flashcards
-    
-    <br>
+
+
     Your screen should now look similar to Figure 9. However, the translation given on the left side of the Quiz Tab might be different
     depending on the entries you have written into `Japanese Animals`.
 
@@ -303,7 +304,7 @@ After deck 1 is removed:
 ![GreenTea](images/user-guide/14RemovingADeckAfter.png)
 Figure 14. GUI after deck 1 is removed
 
-<br>
+
 ### 5.1.3 Selecting a deck: `select`
 
 Selects a deck with the given index and lists all of its entries.
@@ -342,7 +343,7 @@ Before you start giving entry commands, remember to [select a deck first!](#513-
 :bulb: Fun fact: Did you know GreenTea supports over 100 languages including Telugu, Welsh and Xamtanga? To
 see if your chosen language is supported, click [here!](http://www.unicode.org/charts/index.html)
 
-<br>
+
 ### 5.2.1 Adding a new entry: `add` (Vignesh)
 
 Adds a new entry with the given word and translation.
@@ -437,7 +438,7 @@ Result:
 ![GreenTea](images/user-guide/21PlayAGame.png)
 Figure 21. Result of playing a game
 
-<br>
+
 ### 5.3.2 Stopping a game (Georgie)
 
 Stop the current game prematurely. Note the slash `/` in the command.
@@ -517,7 +518,7 @@ Format: `stats <INDEX>`
 Example:
 
 - `stats 1`
-<div style="page-break-after: always;"></div>
+
 Result:
 
 ![GreenTea](images/user-guide/25StatsOneDeck.PNG)
