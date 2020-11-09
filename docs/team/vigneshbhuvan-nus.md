@@ -25,9 +25,9 @@ Given below are my contributions to the project.
   - What it does: Allows for the storage of quiz attempts, question attempts and their respective scores, and allows for json files to be serialized back into the model. 
   - Justification: Allows users to track their progress of all their previous attempts at the quiz, and essentially allows for the implementation of the Leitner system, in which a user's worst entries are tracked and sorted for the system to work. 
   - Highlights:
-    - Moderately complex to implement. Although I learnt from my initial work with Deck Storage, this was different as I had to work with the storage of interfaces. I was stuck on a problem involving the serialization of the classes, and I got through it by researching (In one instance, I needed to create an empty constructor for the serialization to function properly)
-        
-* **New Feature**: Helped in the implementation of Leitner System and Flashcard System
+    - Moderately complex to implement. Although I learnt from my initial work with Deck Storage, this was different as I had to work with the storage of interfaces. I was stuck on a problem involving the serialization of the classes, and I got through it by researching (In one instance, I needed to create an empty constructor for the serialization to function properly)        
+
+- **New Feature**: Helped in the implementation of Leitner System and Flashcard System
 
   - Pull requests: [#103](https://github.com/AY2021S1-CS2103T-T09-4/tp/pull/103)
   - What it does: Allows the users to quiz themselves on the different entries they have added to GreenTea.
@@ -60,3 +60,4 @@ Given below are my contributions to the project.
   - User Guide:
 
     - Wrote user guide sections for Entry Commands (5.2), Getting Started (3), About this document (2) and formatting of the pictures and Table of Contents
+    
