@@ -197,7 +197,7 @@ There are four main components to the GUI. The deck list, the tab panels, the re
     - `stats 3`
 
     ![GreenTea](images/user-guide/11Statistics.PNG)
-    Figure 11. Statistics of Deck 1
+    Figure 11. Statistics of Deck 3
 
     Your screen should now look similar to Figure 11. The previous command that you entered changed the current tab
     into the Statistics Tab of Deck `3` which refers to the Deck `Japanese Animals`. In this tab, you can see
