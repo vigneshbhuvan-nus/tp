@@ -33,6 +33,7 @@ title: User Guide
 - [7. Command Summary (Gabriel)](#7-command-summary-gabriel)
 <div style="page-break-after: always;"></div>
 
+<div style="page-break-after: always;"></div>
 # 1. What is GreenTea? (Gabriel)
 
 GreenTea is a **desktop app for learning a new language, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). This app is great for users who wish to optimise their time learning a new language,
